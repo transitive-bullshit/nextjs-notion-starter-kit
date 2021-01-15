@@ -9,9 +9,6 @@ import { getEnv } from './get-env'
 export const isDev =
   process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
 
-export const defaultSiteImage = '/social.jpg'
-export const defaultSiteFavicon = '/favicon.ico'
-
 export const fathomId = isDev ? null : getEnv('FATHOM_ID', null)
 
 export const fathomConfig = fathomId

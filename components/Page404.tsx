@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import * as React from 'react'
 import * as types from 'lib/types'
-import { defaultSiteFavicon } from 'lib/config'
 import { PageHead } from './PageHead'
 
 import styles from './styles.module.css'
@@ -14,8 +13,6 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
       <PageHead site={site} />
 
       <Head>
-        <link rel='shortcut icon' href={defaultSiteFavicon} />
-
         <meta property='og:site_name' content={title} />
         <meta property='og:title' content={title} />
 

@@ -14,7 +14,7 @@ import { getBlockTitle } from 'notion-utils'
 import * as types from 'lib/types'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
-// import { isDev } from 'lib/config'
+import { isDev } from 'lib/config'
 
 // components
 import { CustomFont } from './CustomFont'
@@ -65,19 +65,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
   const title = getBlockTitle(block, recordMap) || site.name
-  let notionIcon = (block.format as any)?.page_icon
-
-  if (notionIcon && isUrl(notionIcon)) {
-    notionIcon = mapNotionImageUrl(notionIcon, block)
-  }
-
-  const icon = notionIcon
-  const iconUrl = (icon && isUrl(icon)) ?? icon
 
   console.log('notion page', {
-    // isDev,
-    rootNotionPageId: site.rootNotionPageId,
+    isDev,
+    title,
     pageId,
+    rootNotionPageId: site.rootNotionPageId,
     recordMap
   })
 
@@ -88,20 +81,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const siteMapPageUrl = mapPageUrl(site, recordMap, searchParams)
 
-  // const canonicalPageUrl =
-  //   !isDev && getCanonicalPageUrl(site, recordMap)(pageId)
+  const canonicalPageUrl =
+    !isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
   return (
     <>
       <PageHead site={site} />
 
       <Head>
-        {/* {iconUrl && <link rel='shortcut icon' href={iconUrl} />} */}
-
         <meta property='og:title' content={title} />
         <meta property='og:site_name' content={site.name} />
 
-        {/* {canonicalPageUrl && <link rel='canonical' href={canonicalPageUrl} />} */}
+        {canonicalPageUrl && <link rel='canonical' href={canonicalPageUrl} />}
 
         <title>{title}</title>
       </Head>

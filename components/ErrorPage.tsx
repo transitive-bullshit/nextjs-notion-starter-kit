@@ -1,6 +1,5 @@
 import React from 'react'
 import Head from 'next/head'
-import { defaultSiteFavicon } from 'lib/config'
 import { PageHead } from './PageHead'
 
 import styles from './styles.module.css'
@@ -13,8 +12,6 @@ export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
       <PageHead />
 
       <Head>
-        <link rel='shortcut icon' href={defaultSiteFavicon} />
-
         <meta property='og:site_name' content={title} />
         <meta property='og:title' content={title} />
 
