@@ -133,6 +133,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         fullPage={!isLiteMode}
         darkMode={isDarkMode}
         previewImages={site.previewImages !== false}
+        showCollectionViewDropdown={false}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapNotionImageUrl}
         rootPageId={site.rootNotionPageId}
