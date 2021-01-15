@@ -2,14 +2,61 @@
   "name": "transitive-bullshit",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal site of Travis Fischer using Notion as a CMS.",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "repository": "transitive-bullshit/transitivebullsh.it",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "vercel --prod",
+    "deps": "run-s deps:*",
+    "deps:update": "[ -z $GITHUB_ACTIONS ] && yarn add notion-client notion-types notion-utils || echo 'Skipping deps:update on CI'",
+    "deps:link": "[ -z $GITHUB_ACTIONS ] && yarn link notion-client notion-types notion-utils || echo 'Skipping deps:link on CI'",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+    "test": "run-s test:*",
+    "test:lint": "eslint .",
+    "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check"
   },
   "dependencies": {
+    "@google-cloud/firestore": "^4.8.1",
+    "classnames": "^2.2.6",
+    "lqip-modern": "^1.1.3",
     "next": "10.0.5",
+    "notion-client": "^2.4.1",
+    "notion-types": "^2.2.1",
+    "notion-utils": "^2.4.1",
+    "p-map": "^4.0.0",
+    "p-memoize": "^4.0.0",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-use": "^15.3.3"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^10.0.5",
+    "@types/classnames": "^2.2.10",
+    "@types/node": "^14.6.0",
+    "@types/react": "^17.0.0",
+    "babel-eslint": "^10.0.3",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-config-standard-react": "^11.0.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.18.0",
+    "next-svgr": "^0.0.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "typescript": "^4.0.2"
   }
 }
