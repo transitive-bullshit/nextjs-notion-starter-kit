@@ -45,7 +45,7 @@ export const notionRootPageId = getEnv('NOTION_ROOT_PAGE_ID')
 export const siteName = getEnv('SITE_NAME', 'Transitive Bullshit')
 export const siteDesc = getEnv(
   'SITE_DESC',
-  'Personal blog and portfolio of Travis Fischer aka Transitive Bullshit.'
+  'Personal site of Travis Fischer aka Transitive Bullshit.'
 )
 export const siteImage = getEnv('SITE_IMAGE', '/social.jpg')
 export const siteFavicon = getEnv('SITE_FAVICON', '/favicon.png')

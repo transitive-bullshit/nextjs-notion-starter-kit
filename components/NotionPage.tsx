@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useLocalStorage, useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
@@ -111,6 +112,32 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       <NotionRenderer
         bodyClassName={styles.notion}
+        components={{
+          pageLink: ({
+            href,
+            as,
+            passHref,
+            prefetch,
+            replace,
+            scroll,
+            shallow,
+            locale,
+            ...props
+          }) => (
+            <Link
+              href={href}
+              as={as}
+              passHref={passHref}
+              prefetch={prefetch}
+              replace={replace}
+              scroll={scroll}
+              shallow={shallow}
+              locale={locale}
+            >
+              <a {...props} />
+            </Link>
+          )
+        }}
         recordMap={recordMap}
         fullPage={!isLiteMode}
         darkMode={isDarkMode}
