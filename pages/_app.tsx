@@ -1,10 +1,19 @@
+// global styles shared across the entire site
 import 'styles/global.css'
-import 'react-notion/styles.css'
-import 'prismjs/themes/prism-tomorrow.css'
-import 'rc-dropdown/assets/index.css'
-import 'katex/dist/katex.min.css'
 
-import React from 'react'
+// core styles shared by all of react-notion-x (required)
+import 'react-notion-x/src/styles.css'
+
+// used for code syntax highlighting (optional)
+import 'prismjs/themes/prism-tomorrow.css'
+
+// used for collection views (optional)
+import 'rc-dropdown/assets/index.css'
+
+// used for rendering equations (optional)
+// import 'katex/dist/katex.min.css'
+
+import * as React from 'react'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { bootstrap } from 'lib/bootstrap-client'

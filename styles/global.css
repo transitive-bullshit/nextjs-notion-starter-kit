@@ -15,6 +15,10 @@ html {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  overflow-y: hidden;
+}
+
 .notion-page {
   margin: 0 12px;
 }

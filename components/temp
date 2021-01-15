@@ -1,0 +1,34 @@
+pageLink: ({ href = '', ...rest }) => {
+  const parts = href
+    .split('?')[0]
+    .split('/')
+    .filter((p: string) => !!p.trim())
+  let pagesPath =
+    parts.length <= 1 ? '/[domain]' : '/[domain]/[pageId]'
+  let as = href
+
+  if (isDemo) {
+    pagesPath = '/[domain]'
+  } else if (isDev) {
+    // localhost
+  } else {
+    // prod, non-demo
+    as = `/${site.domain}${href}`
+  }
+
+  console.log({ href, parts, domain: site.domain, as })
+  // const MyButton = React.forwardRef(
+  //   ({ href: href2, ...rest }, ref) => {
+  //     return (
+  //       <a {...rest} href={href2} ref={ref}>
+  //         Click Me
+  //       </a>
+  //     )
+  //   }
+  // )
+  return (
+    <Link href={pagesPath} as={as}>
+      <a href={as} {...rest} />
+    </Link>
+  )
+}
