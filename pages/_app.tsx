@@ -13,8 +13,10 @@ import 'rc-dropdown/assets/index.css'
 // used for rendering equations (optional)
 // import 'katex/dist/katex.min.css'
 
-import * as React from 'react'
-import { useEffect } from 'react'
+// global style overrides for notion
+import 'styles/notion.css'
+
+import React from 'react'
 import { useRouter } from 'next/router'
 import { bootstrap } from 'lib/bootstrap-client'
 import { fathomId, fathomConfig } from 'lib/config'
@@ -27,7 +29,7 @@ if (typeof window !== 'undefined') {
 export default function App({ Component, pageProps }) {
   const router = useRouter()
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (fathomId) {
       Fathom.load(fathomId, fathomConfig)
 

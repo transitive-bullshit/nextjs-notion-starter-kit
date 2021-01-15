@@ -50,14 +50,6 @@ export interface SiteMap {
   pageIds: string[]
 }
 
-export interface Breadcrumb {
-  block: Block
-  active: boolean
-  pageId: string
-  title: string
-  icon: string
-}
-
 export interface PreviewImage {
   url: string
   originalWidth: number
