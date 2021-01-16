@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import cs from 'classnames'
 import { useRouter } from 'next/router'
 import { useLocalStorage, useSearchParam } from 'react-use'
 import { IconContext } from 'react-icons'
@@ -104,7 +105,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
       {isLiteMode && <BodyClassName className='notion-lite' />}
 
       <NotionRenderer
-        bodyClassName={styles.notion}
+        bodyClassName={cs(
+          styles.notion,
+          pageId === site.rootNotionPageId && 'index-page'
+        )}
         components={{
           pageLink: ({
             href,
