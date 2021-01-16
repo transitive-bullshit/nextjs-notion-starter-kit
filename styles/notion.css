@@ -1,4 +1,19 @@
 .notion-page {
   margin: 0 12px;
   width: 728px;
+  padding-bottom: calc(max(5vh, 64px)) !important;
+  line-height: 1.75;
+}
+
+.notion-text {
+  padding: 0.5em 2px;
+}
+
+.notion-asset-caption {
+  text-align: center;
+}
+
+.notion-asset-wrapper {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
