@@ -5071,6 +5071,11 @@ react-dom@17.0.1:
     object-assign "^4.1.1"
     scheduler "^0.20.1"
 
+react-icons@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.1.0.tgz#9ca9bcbf2e3aee8e86e378bb9d465842947bbfc3"
+  integrity sha512-FCXBg1JbbR0vWALXIxmFAfozHdVIJmmwCD81Jk0EKOt7Ax4AdBNcaRkWhR0NaKy9ugJgoY3fFvo0PHpte55pXg==
+
 react-image@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/react-image/-/react-image-4.0.3.tgz#6fa722877660b67295298a914bff1ed87ad2cf83"

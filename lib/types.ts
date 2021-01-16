@@ -1,4 +1,4 @@
-import { Block, ExtendedRecordMap } from 'notion-types'
+import { ExtendedRecordMap, PageMap } from 'notion-types'
 
 export * from 'notion-types'
 
@@ -47,7 +47,15 @@ export interface Site extends Model {
 
 export interface SiteMap {
   site: Site
-  pageIds: string[]
+  pageMap: PageMap
+  canonicalPageMap: CanonicalPageMap
+}
+
+export interface CanonicalPageMap {
+  [canonicalPagePath: string]: {
+    pageId: string
+    recordMap: ExtendedRecordMap | null
+  }
 }
 
 export interface PreviewImage {

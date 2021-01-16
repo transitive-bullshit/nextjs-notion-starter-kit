@@ -42,104 +42,47 @@
   width: 640px;
 }
 
-.notion {
-  padding-bottom: calc(max(10vh, 120px));
-}
-
-.demoFooter {
-  position: fixed;
-  z-index: 800;
-  bottom: 1em;
-  left: 10vw;
-  right: 10vw;
-  border-radius: 4px;
-  background: #eb625a;
-  padding: 16px 24px;
+.footer {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  color: #fff;
 }
 
-.demoLhs a,
-.demoLhs a:visited,
-.demoLhs a:hover,
-.demoLhs a:active {
-  text-decoration: none;
-  color: #fff;
+.copyright {
+  font-size: 80%;
+  padding: 0.5em;
 }
 
-.demoLhs {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.social a {
+  font-size: 2em;
+  display: inline-block;
+  padding: 0.5em;
+  margin-right: 1vw;
+  transition: color 250ms ease-out;
 }
 
-.demoTitle {
-  font-size: 1.2em;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  padding-right: 0.5em;
-  margin-right: 0.5em;
-  border-right: 1px solid #fff;
-  white-space: nowrap;
+.social a:last-of-type {
+  margin-right: 0;
 }
 
-.demoTitle img {
-  height: 1.5em;
-  margin-right: 0.5em;
+.social a:hover {
+  transition: color 50ms ease-out;
 }
 
-.demoDesc {
-  font-size: 0.9em;
+.twitter:hover {
+  color: #2795e9;
 }
 
-.demoCta {
-  display: block;
-  margin-left: 0.5em;
-  font-size: 0.9em;
-  text-decoration: none;
-  color: #fff;
-  border-radius: 2px;
-  padding: 8px 12px;
-
-  background: transparent;
-  border: 1px solid #fff;
-  transition: all 300ms ease;
-  font-weight: 500;
-  white-space: nowrap;
-  transform: scale(1);
+.github:hover {
+  color: #c9510c;
 }
 
-.demoCta:hover {
-  background: #fff;
-  color: #eb625a;
-
-  transition: all 200ms ease;
-  transform: scale(1.05);
-}
-
-.demoCta:active {
-  transition: all 100ms ease;
-  transform: scale(1.03);
-}
-
-@media only screen and (max-width: 740px) {
-  .demoFooter {
-    left: 1em;
-    right: 1em;
-  }
-
-  .demoTitle {
-    border: 0 none;
-  }
-
-  .demoDesc {
-    display: none;
-  }
+.linkedin:hover {
+  color: #0077b5;
 }

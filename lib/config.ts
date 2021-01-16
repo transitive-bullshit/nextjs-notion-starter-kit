@@ -17,7 +17,7 @@ export const fathomConfig = fathomId
     }
   : undefined
 
-// TODO: address duplication between server-side env and client-side config
+// TODO: fix duplication between server-side env and client-side config
 export const apiBaseUrl = `/api`
 export const api = {
   createPreviewImage: `${apiBaseUrl}/create-preview-image`,

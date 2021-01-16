@@ -2,6 +2,7 @@ import * as acl from './acl'
 import * as types from './types'
 import { parsePageId } from 'notion-utils'
 import { getPage } from './notion'
+import { getSiteMaps } from './get-site-maps'
 import { getSiteForDomain } from './get-site-for-domain'
 
 export async function resolveNotionPage(domain: string, rawPageId?: string) {
@@ -11,6 +12,24 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
   if (rawPageId && rawPageId !== 'index') {
     pageId = parsePageId(rawPageId)
+
+    // handle mapping user-friendly canonical page paths to Notion page IDs
+    // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
+    if (!pageId) {
+      const siteMaps = await getSiteMaps()
+      const siteMap = siteMaps[0]
+      console.log(siteMap)
+      pageId = siteMap.canonicalPageMap[pageId]?.pageId
+
+      if (!pageId) {
+        return {
+          error: {
+            message: `Invalid notion page ID "${rawPageId}"`,
+            statusCode: 404
+          }
+        }
+      }
+    }
 
     if (!pageId) {
       return {

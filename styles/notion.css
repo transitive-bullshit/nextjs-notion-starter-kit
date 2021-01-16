@@ -17,3 +17,8 @@
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
+.notion-header {
+  max-width: 1100px;
+  margin: 0 auto;
+}

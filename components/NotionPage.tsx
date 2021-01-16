@@ -22,6 +22,7 @@ import { CustomHtml } from './CustomHtml'
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
+import { Footer } from './Footer'
 
 import styles from './styles.module.css'
 
@@ -138,6 +139,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapNotionImageUrl}
         searchNotion={searchNotion}
+        footer={<Footer />}
       />
 
       <CustomHtml site={site} />
