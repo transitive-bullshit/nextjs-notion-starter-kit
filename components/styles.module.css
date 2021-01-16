@@ -61,8 +61,8 @@
 
 .social a {
   font-size: 2em;
-  display: inline-block;
-  padding: 0.25;
+  display: inline-flex;
+  padding: 0.25em;
   margin-right: 1vw;
   transition: color 250ms ease-out;
 }

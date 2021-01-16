@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useLocalStorage, useSearchParam } from 'react-use'
+import { IconContext } from 'react-icons'
 import BodyClassName from 'react-body-classname'
 
 // core notion renderer
@@ -86,7 +87,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     !isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
   return (
-    <>
+    <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
       <PageHead site={site} />
 
       <Head>
@@ -143,6 +144,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       />
 
       <CustomHtml site={site} />
-    </>
+    </IconContext.Provider>
   )
 }
