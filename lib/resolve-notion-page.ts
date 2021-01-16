@@ -13,40 +13,33 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
   if (rawPageId && rawPageId !== 'index') {
     pageId = parsePageId(rawPageId)
 
-    // handle mapping user-friendly canonical page paths to Notion page IDs
-    // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
-    if (!pageId) {
+    if (pageId) {
+      const resources = await Promise.all([
+        getSiteForDomain(domain),
+        getPage(pageId)
+      ])
+
+      site = resources[0]
+      recordMap = resources[1]
+    } else {
+      // handle mapping of user-friendly canonical page paths to Notion page IDs
+      // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
       const siteMaps = await getSiteMaps()
       const siteMap = siteMaps[0]
-      console.log(siteMap)
-      pageId = siteMap.canonicalPageMap[pageId]?.pageId
+      pageId = siteMap.canonicalPageMap[rawPageId]
 
-      if (!pageId) {
+      if (pageId) {
+        site = await getSiteForDomain(domain)
+        recordMap = siteMap.pageMap[pageId]
+      } else {
         return {
           error: {
-            message: `Invalid notion page ID "${rawPageId}"`,
+            message: `Not found "${rawPageId}"`,
             statusCode: 404
           }
         }
       }
     }
-
-    if (!pageId) {
-      return {
-        error: {
-          message: `Invalid notion page ID "${rawPageId}"`,
-          statusCode: 404
-        }
-      }
-    }
-
-    const resources = await Promise.all([
-      getSiteForDomain(domain),
-      getPage(pageId)
-    ])
-
-    site = resources[0]
-    recordMap = resources[1]
   } else {
     site = await getSiteForDomain(domain)
     pageId = site.rootNotionPageId

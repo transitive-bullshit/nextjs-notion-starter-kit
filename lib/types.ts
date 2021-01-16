@@ -52,10 +52,7 @@ export interface SiteMap {
 }
 
 export interface CanonicalPageMap {
-  [canonicalPagePath: string]: {
-    pageId: string
-    recordMap: ExtendedRecordMap | null
-  }
+  [canonicalPageId: string]: string
 }
 
 export interface PreviewImage {

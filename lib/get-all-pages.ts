@@ -25,20 +25,17 @@ export async function getAllPagesImpl(
 
       if (map[canonicalPageId]) {
         console.error(
-          'duplicate canonical page id',
+          'error duplicate canonical page id',
           canonicalPageId,
           pageId,
-          map[canonicalPageId].pageId
+          map[canonicalPageId]
         )
 
         return map
       } else {
         return {
           ...map,
-          [canonicalPageId]: {
-            pageId,
-            recordMap
-          }
+          [canonicalPageId]: pageId
         }
       }
     },
