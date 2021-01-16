@@ -16,3 +16,10 @@ export const fathomConfig = fathomId
       excludedDomains: ['localhost', 'localhost:3000']
     }
   : undefined
+
+// TODO: address duplication between server-side env and client-side config
+export const apiBaseUrl = `/api`
+export const api = {
+  createPreviewImage: `${apiBaseUrl}/create-preview-image`,
+  searchNotion: `${apiBaseUrl}/search-notion`
+}

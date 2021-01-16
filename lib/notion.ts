@@ -1,5 +1,5 @@
 import { NotionAPI } from 'notion-client'
-import { ExtendedRecordMap } from 'notion-types'
+import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
 import { getPreviewImages } from './get-preview-images'
 import { mapNotionImageUrl } from './map-image-url'
 
@@ -52,14 +52,6 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   return recordMap
 }
 
-// export const getSearch = pMemoize(getSearchImpl, { maxAge: 20000 })
-
-// async function getSearchImpl(
-//   params: types.SearchParams
-// ): Promise<types.NotionSearchResultsType | types.NotionError> {
-//   const url = `${apiBaseUrl}/v1/search?${new URLSearchParams(
-//     params as any
-//   ).toString()}`
-
-//   return fetch(url).then((res) => res.json())
-// }
+export async function search(params: SearchParams): Promise<SearchResults> {
+  return notion.search(params)
+}

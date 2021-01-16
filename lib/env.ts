@@ -15,7 +15,8 @@ export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
 
 export const apiBaseUrl = `${host}/api`
 export const api = {
-  createPreviewImage: `${apiBaseUrl}/create-preview-image`
+  createPreviewImage: `${apiBaseUrl}/create-preview-image`,
+  searchNotion: `${apiBaseUrl}/search-notion`
 }
 
 export const googleProjectId = getEnv('GCLOUD_PROJECT')

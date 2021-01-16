@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useLocalStorage, useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
-import isUrl from 'is-url-superb'
 
 // core notion renderer
 import { NotionRenderer } from 'react-notion-x'
@@ -15,6 +14,7 @@ import * as types from 'lib/types'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
 import { isDev } from 'lib/config'
+import { searchNotion } from 'lib/search-notion'
 
 // components
 import { CustomFont } from './CustomFont'
@@ -130,13 +130,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
           )
         }}
         recordMap={recordMap}
+        rootPageId={site.rootNotionPageId}
         fullPage={!isLiteMode}
         darkMode={isDarkMode}
         previewImages={site.previewImages !== false}
         showCollectionViewDropdown={false}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapNotionImageUrl}
-        rootPageId={site.rootNotionPageId}
+        searchNotion={searchNotion}
       />
 
       <CustomHtml site={site} />
