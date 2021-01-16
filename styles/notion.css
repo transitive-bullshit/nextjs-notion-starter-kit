@@ -22,3 +22,37 @@
   max-width: 1100px;
   margin: 0 auto;
 }
+
+.notion-gallery-grid {
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-gap: 6vmin;
+  gap: 6vmin;
+}
+
+.notion-gallery-grid .notion-page-icon {
+  display: none;
+}
+
+.notion-gallery-grid .notion-page-title-text {
+  font-size: 2em;
+}
+
+.notion-gallery-grid .notion-collection-card-property {
+  white-space: unset;
+  text-overflow: unset;
+}
+
+.notion-collection-card {
+  border-radius: 10px;
+  box-shadow: rgba(15, 15, 15, 0.1) 2px 2px 8px 8px;
+  transition: all 150ms linear;
+}
+
+.notion-collection-card:hover .notion-collection-card-cover {
+  filter: grayscale(0);
+}
+
+.notion-collection-card-cover {
+  transition: filter 150ms linear;
+  filter: grayscale(0.5);
+}
