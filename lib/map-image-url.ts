@@ -1,15 +1,21 @@
 import { Block } from 'notion-types'
 
+const imageCDNHost = 'https://ssfy.io'
+
 export const mapNotionImageUrl = (url: string, block: Block) => {
   if (!url) {
     return null
   }
 
   if (url.startsWith('data:')) {
-    return null
+    return url
   }
 
-  const origUrl = url
+  if (url.startsWith(imageCDNHost)) {
+    return url
+  }
+
+  // const origUrl = url
 
   if (url.startsWith('/images')) {
     url = `https://www.notion.so${url}`
@@ -36,9 +42,9 @@ export const mapNotionImageUrl = (url: string, block: Block) => {
 
 export const mapImageUrl = (imageUrl: string) => {
   if (imageUrl.startsWith('data:')) {
-    return null
+    return imageUrl
   }
 
   // Our proxy uses Cloudflare's global CDN to cache these image assets
-  return `https://ssfy.io/${encodeURIComponent(imageUrl)}`
+  return `${imageCDNHost}/${encodeURIComponent(imageUrl)}`
 }
