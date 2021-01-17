@@ -79,6 +79,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   })
 
   if (!isServer) {
+    // add important objects global window for easy debugging
     ;(window as any).recordMap = recordMap
     ;(window as any).block = block
   }
@@ -90,6 +91,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   let comments: React.ReactNode = null
 
+  // only display comments on blog post pages
   if (block.type === 'page' && block.parent_table === 'collection') {
     comments = (
       <ReactUtterances
