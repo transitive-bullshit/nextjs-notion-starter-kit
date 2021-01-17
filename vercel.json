@@ -2,7 +2,12 @@
   "version": 2,
   "build": {
     "env": {
-      "GOOGLE_APPLICATION_CREDENTIALS": "@notionx-api-google-application-credentials"
+      "GOOGLE_APPLICATION_CREDENTIALS": "@transitive-bullshit-google-application-credentials",
+      "GCLOUD_PROJECT": "@transitive-bullshit-gcloud-project",
+      "FIREBASE_COLLECTION_IMAGES": "@transitive-bullshit-firebase-collection-images",
+      "DOMAIN": "@transitive-bullshit-domain",
+      "NOTION_ROOT_PAGE_ID": "@transitive-bullshit-notion-root-page-id",
+      "FATHOM_ID": "@transitive-bullshit-fathom-id"
     }
   }
 }

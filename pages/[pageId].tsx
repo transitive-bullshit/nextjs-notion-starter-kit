@@ -37,9 +37,8 @@ export async function getStaticPaths() {
 
   const ret = {
     paths: siteMaps.flatMap((siteMap) =>
-      siteMap.pageIds.map((pageId) => ({
+      Object.keys(siteMap.canonicalPageMap).map((pageId) => ({
         params: {
-          domain: siteMap.site.domain,
           pageId
         }
       }))
