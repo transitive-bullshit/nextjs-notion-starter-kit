@@ -86,3 +86,22 @@
 .linkedin:hover {
   color: #0077b5;
 }
+
+.comments {
+  width: 100%;
+  margin-top: 2em;
+  border-top: 1px solid var(--fg-color-0);
+}
+
+.utterances {
+  margin-top: 2em;
+  width: 100%;
+}
+
+@media only screen and (min-width: 567px) {
+  .utterances {
+    width: calc(100% + 60px);
+    position: relative;
+    left: -60px;
+  }
+}

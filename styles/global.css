@@ -18,3 +18,7 @@ html {
 body {
   overflow-y: hidden;
 }
+
+.utterances {
+  max-width: 100% !important;
+}

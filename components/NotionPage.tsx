@@ -25,6 +25,7 @@ import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
 import { Footer } from './Footer'
+import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
 
@@ -87,6 +88,20 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
+  let comments: React.ReactNode = null
+
+  if (block.type === 'page' && block.parent_table === 'collection') {
+    comments = (
+      <ReactUtterances
+        repo='transitive-bullshit/transitivebullsh.it'
+        issueMap='issue-term'
+        issueTerm='title'
+        label='blog'
+        theme='preferred-color-scheme'
+      />
+    )
+  }
+
   return (
     <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
       <PageHead site={site} />
@@ -144,6 +159,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapNotionImageUrl}
         searchNotion={searchNotion}
+        pageFooter={comments}
         footer={<Footer />}
       />
 
