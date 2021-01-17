@@ -96,7 +96,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         repo='transitive-bullshit/transitivebullsh.it'
         issueMap='issue-term'
         issueTerm='title'
-        label='blog'
+        label='blog post'
         theme='preferred-color-scheme'
       />
     )
