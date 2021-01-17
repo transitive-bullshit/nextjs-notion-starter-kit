@@ -1,23 +1,13 @@
 /**
- * All app config that needs to be available server-side.
+ * Config for third-party dependencies.
  *
- * @see config.ts for client-side version.
+ * - Google Cloud (Firebase) - used very simple database functionality.
+ * - Fathom - simple analytics.
+ *
+ * @see config.ts for primary configuration.
  */
 
 import { getEnv } from './get-env'
-import { isDev } from './config'
-
-export * from './config'
-
-export const port = getEnv('PORT', '3000')
-export const domain = getEnv('DOMAIN')
-export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
-
-export const apiBaseUrl = `${host}/api`
-export const api = {
-  createPreviewImage: `${apiBaseUrl}/create-preview-image`,
-  searchNotion: `${apiBaseUrl}/search-notion`
-}
 
 export const googleProjectId = getEnv('GCLOUD_PROJECT')
 
@@ -40,14 +30,3 @@ try {
 }
 
 export const firebaseCollectionImages = getEnv('FIREBASE_COLLECTION_IMAGES')
-
-export const notionRootPageId = getEnv('NOTION_ROOT_PAGE_ID')
-
-export const siteName = getEnv('SITE_NAME', 'Transitive Bullshit')
-export const siteDesc = getEnv(
-  'SITE_DESC',
-  'Personal site of Travis Fischer aka Transitive Bullshit.'
-)
-export const siteImage = getEnv('SITE_IMAGE', '/social.jpg')
-export const siteFavicon = getEnv('SITE_FAVICON', '/favicon.png')
-export const siteAuthor = getEnv('SITE_AUTHOR', 'Travis Fischer')

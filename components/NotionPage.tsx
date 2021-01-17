@@ -14,8 +14,16 @@ import { NotionRenderer } from 'react-notion-x'
 import { getBlockTitle } from 'notion-utils'
 import * as types from 'lib/types'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
-import { mapNotionImageUrl } from 'lib/map-image-url'
-import { isDev } from 'lib/config'
+import { mapImageUrl, mapNotionImageUrl } from 'lib/map-image-url'
+import { getPageDescription } from 'lib/get-page-description'
+import {
+  isDev,
+  api,
+  siteDescription,
+  defaultPageCover,
+  defaultPageCoverPosition,
+  defaultPageIcon
+} from 'lib/config'
 import { searchNotion } from 'lib/search-notion'
 
 // components
@@ -89,10 +97,15 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
+  const isBlogPost =
+    block.type === 'page' && block.parent_table === 'collection'
+  const socialImage = mapImageUrl(api.renderSocialImage(pageId))
+  const socialDescription =
+    getPageDescription(block, recordMap) ?? siteDescription
   let comments: React.ReactNode = null
 
   // only display comments on blog post pages
-  if (block.type === 'page' && block.parent_table === 'collection') {
+  if (isBlogPost) {
     comments = (
       <ReactUtterances
         repo='transitive-bullshit/transitivebullsh.it'
@@ -111,6 +124,15 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <Head>
         <meta property='og:title' content={title} />
         <meta property='og:site_name' content={site.name} />
+
+        {socialDescription && (
+          <>
+            <meta name='description' content={site.description} />
+            <meta property='og:site_name' content={site.name} />
+          </>
+        )}
+
+        {socialImage && <meta property='og:image' content={socialImage} />}
 
         {canonicalPageUrl && <link rel='canonical' href={canonicalPageUrl} />}
 
@@ -158,9 +180,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         darkMode={isDarkMode}
         previewImages={site.previewImages !== false}
         showCollectionViewDropdown={false}
-        defaultPageIcon='https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F797768e4-f24a-4e65-bd4a-b622ae9671dc%252Fprofile-2020-280w-circle.png%3Ftable%3Dblock%26id%3D78fc5a4b-88d7-4b0e-824e-29407e9f1ec1%26cache%3Dv2'
-        defaultPageCover='https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F9fc5ecae-2b4b-4e73-b0d4-918c829ba69f%252FIMG_0259-opt.jpg%3Ftable%3Dblock%26id%3D78fc5a4b-88d7-4b0e-824e-29407e9f1ec1%26cache%3Dv2'
-        defaultPageCoverPosition={0.1862}
+        defaultPageIcon={defaultPageIcon}
+        defaultPageCover={defaultPageCover}
+        defaultPageCoverPosition={defaultPageCoverPosition}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapNotionImageUrl}
         searchNotion={searchNotion}

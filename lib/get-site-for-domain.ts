@@ -1,4 +1,4 @@
-import * as config from './env'
+import * as config from './config'
 import * as types from './types'
 
 export const getSiteForDomain = async (
@@ -7,8 +7,7 @@ export const getSiteForDomain = async (
   return {
     domain,
     name: config.siteName,
-    rootNotionPageId: config.notionRootPageId,
-    description: config.siteDesc,
-    image: config.siteImage
+    rootNotionPageId: config.rootNotionPageId,
+    description: config.siteDescription
   } as types.Site
 }

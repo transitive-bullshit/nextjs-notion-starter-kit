@@ -1,7 +1,7 @@
 import crypto from 'crypto'
 import got from 'got'
 
-import { api } from './env'
+import { api } from './config'
 import * as types from './types'
 import * as db from './db'
 
