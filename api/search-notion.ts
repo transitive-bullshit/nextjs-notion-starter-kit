@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import * as types from 'lib/types'
-import * as notion from 'lib/notion'
+import { search } from 'lib/notion'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const searchParams: types.SearchParams = req.body
 
-  const results = await notion.search(searchParams)
+  const results = await search(searchParams)
 
   res.setHeader(
     'Cache-Control',

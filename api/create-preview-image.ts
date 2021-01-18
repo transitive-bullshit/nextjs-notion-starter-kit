@@ -3,8 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import got from 'got'
 import lqip from 'lqip-modern'
 
-import * as types from '../../lib/types'
-import * as db from '../../lib/db'
+import * as types from 'lib/types'
+import * as db from 'lib/db'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {

@@ -3,16 +3,17 @@ import chromium from 'chrome-aws-lambda'
 import renderSocialImage from 'puppeteer-social-image-transitive-bs'
 import { getBlockIcon, getBlockTitle } from 'notion-utils'
 
-import { getPage } from 'lib/notion'
-import * as types from 'lib/types'
+import { mapNotionImageUrl } from '../../lib/map-image-url'
+import { getPage } from '../../lib/notion'
+import * as types from '../../lib/types'
 import {
   siteDescription,
   defaultPageCover,
   defaultPageIcon,
   siteDomain,
   siteName
-} from 'lib/config'
-import { getPageDescription } from 'lib/get-page-description'
+} from '../../lib/config'
+import { getPageDescription } from '../../lib/get-page-description'
 
 export interface SocialImageConfig {
   title: string
@@ -71,9 +72,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   // TODO: centralize these default config values
   const image = await createSocialImage({
-    imageUrl: block.format?.page_cover ?? defaultPageCover,
+    imageUrl: mapNotionImageUrl(
+      block.format?.page_cover ?? defaultPageCover,
+      block
+    ),
     title: getBlockTitle(block, recordMap) ?? siteName,
-    logo: getBlockIcon(block, recordMap) ?? defaultPageIcon,
+    logo: mapNotionImageUrl(
+      getBlockIcon(block, recordMap) ?? defaultPageIcon,
+      block
+    ),
     subtitle: getPageDescription(block, recordMap) ?? siteDescription,
     watermark: siteDomain
   })
@@ -101,7 +108,7 @@ async function createSocialImage(params: SocialImageConfig) {
     const res = await renderSocialImage({
       template: 'article',
       templateParams: params,
-      templateStyles: `h1 { font-size: 96px; text-align: center; } h2 { font-size: 32px; }`,
+      templateStyles: `h1 { font-size: 96px; text-align: center; } h2 { font-size: 32px; text-align: center; }`,
       size: params.size,
       browser
     })
