@@ -11,8 +11,7 @@ import {
   socialImageTitle,
   socialImageSubtitle,
   defaultPageCover,
-  defaultPageIcon,
-  siteName
+  defaultPageIcon
 } from '../../lib/config'
 
 export interface SocialImageConfig {
