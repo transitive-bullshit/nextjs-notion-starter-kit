@@ -129,7 +129,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         <meta name='twitter:title' content={title} />
         <meta property='twitter:domain' content={site.domain} />
 
-        <meta name='twitter:site' content='@nytimesbits' />
         {siteAuthorTwitter && (
           <meta name='twitter:creator' content={`@${siteAuthorTwitter}`} />
         )}
