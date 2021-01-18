@@ -8,7 +8,8 @@ import { getPageDescription } from '../../lib/get-page-description'
 import { getPage } from '../../lib/notion'
 import * as types from '../../lib/types'
 import {
-  socialImageDescription,
+  socialImageTitle,
+  socialImageSubtitle,
   defaultPageCover,
   defaultPageIcon,
   siteName
@@ -74,12 +75,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       block.format?.page_cover ?? defaultPageCover,
       block
     ),
-    title: getBlockTitle(block, recordMap) ?? siteName,
     logo: mapNotionImageUrl(
       getBlockIcon(block, recordMap) ?? defaultPageIcon,
       block
     ),
-    subtitle: getPageDescription(block, recordMap) ?? socialImageDescription
+    title: getBlockTitle(block, recordMap) ?? socialImageTitle,
+    subtitle: getPageDescription(block, recordMap) ?? socialImageSubtitle
   })
 
   res.setHeader(
