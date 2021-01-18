@@ -7,8 +7,6 @@ const notion = new NotionAPI({
   apiBaseUrl: process.env.NOTION_API_BASE_URL
 })
 
-export default notion
-
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   const recordMap = await notion.getPage(pageId)
   const blockIds = Object.keys(recordMap.block)

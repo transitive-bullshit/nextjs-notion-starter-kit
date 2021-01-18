@@ -31,6 +31,13 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
       if (pageId) {
         site = await getSiteForDomain(domain)
         recordMap = siteMap.pageMap[pageId]
+
+        // TODO: we can't re-use the recordMap because our wrapper adds
+        // additional preview_images data to the recordMap...
+        // const resources = await Promise.all([
+        //   getSiteForDomain(domain),
+        //   getPage(pageId)
+        // ])
       } else {
         return {
           error: {

@@ -28,6 +28,7 @@ export async function createPreviewImage(
   url: string,
   id: string
 ): Promise<types.PreviewImage> {
+  console.log('createPreviewImage lambda', { url, id })
   const doc = db.images.doc(id)
 
   try {

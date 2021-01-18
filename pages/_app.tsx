@@ -8,7 +8,8 @@ import 'react-notion-x/src/styles.css'
 import 'prismjs/themes/prism-tomorrow.css'
 
 // used for collection views (optional)
-import 'rc-dropdown/assets/index.css'
+// TODO: re-add if we enable collection view dropdowns
+// import 'rc-dropdown/assets/index.css'
 
 // used for rendering equations (optional)
 // import 'katex/dist/katex.min.css'

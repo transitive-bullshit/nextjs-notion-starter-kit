@@ -2,7 +2,7 @@ import pMemoize from 'p-memoize'
 import { getAllPagesInSpace, getCanonicalPageId } from 'notion-utils'
 
 import * as types from './types'
-import notion from './notion'
+import { getPage } from './notion'
 
 export const getAllPages = pMemoize(getAllPagesImpl, { maxAge: 60000 * 5 })
 
@@ -13,7 +13,8 @@ export async function getAllPagesImpl(
   const pageMap = await getAllPagesInSpace(
     rootNotionPageId,
     rootNotionSpaceId,
-    notion.getPage.bind(notion)
+    getPage
+    // notion.getPage.bind(notion)
   )
 
   const canonicalPageMap = Object.keys(pageMap).reduce(
