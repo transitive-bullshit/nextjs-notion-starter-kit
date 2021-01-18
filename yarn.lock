@@ -3922,10 +3922,10 @@ puppeteer-core@^5.5.0:
     unbzip2-stream "^1.3.3"
     ws "^7.2.3"
 
-puppeteer-social-image-transitive-bs@^0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/puppeteer-social-image-transitive-bs/-/puppeteer-social-image-transitive-bs-0.8.1.tgz#388379fd555e9ce4798629099dd4e6c0bcf161be"
-  integrity sha512-jYasq40M/p8gmeBYGj5/vVTwRnY2eHG9HhMBLazVPl6x4Pu7pFF9MTVkB+NLHJvyIsaayeLht+TYrnIEGXBCHg==
+puppeteer-social-image-transitive-bs@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/puppeteer-social-image-transitive-bs/-/puppeteer-social-image-transitive-bs-0.8.2.tgz#1bf09ed377aeb933af6a486f1fc1621638341825"
+  integrity sha512-D5CJSrIzWSn361DLuYlJpHZaMJgQIwXty9a9gdRJgxX45imza1j4nSGiawfTi2oQ9uT2qvsyIo/sy5C0k7/miQ==
   dependencies:
     "@babel/polyfill" "^7.4.4"
     handlebars "^4.1.2"

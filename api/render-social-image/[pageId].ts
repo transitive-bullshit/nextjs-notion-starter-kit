@@ -116,7 +116,7 @@ async function createSocialImage(params: SocialImageConfig) {
     const res = await renderSocialImage({
       template: 'article',
       templateParams: params,
-      templateStyles: `h1 { font-size: 96px; text-align: center; } h2 { font-size: 32px; text-align: center; }`,
+      templateStyles: `h1 { font-size: 96px; text-align: center; } h2 { margin-top: 48px; font-size: 48px; text-align: center; }`,
       size: params.size,
       browser
     })
