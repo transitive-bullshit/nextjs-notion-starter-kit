@@ -82,7 +82,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       block
     ),
     title: isRootPage
-      ? socialImageSubtitle
+      ? socialImageTitle
       : getBlockTitle(block, recordMap) ?? socialImageTitle,
     subtitle: getPageDescription(block, recordMap) ?? socialImageSubtitle
   })
