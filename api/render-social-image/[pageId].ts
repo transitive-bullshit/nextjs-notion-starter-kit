@@ -4,16 +4,15 @@ import renderSocialImage from 'puppeteer-social-image-transitive-bs'
 import { getBlockIcon, getBlockTitle } from 'notion-utils'
 
 import { mapNotionImageUrl } from '../../lib/map-image-url'
+import { getPageDescription } from '../../lib/get-page-description'
 import { getPage } from '../../lib/notion'
 import * as types from '../../lib/types'
 import {
-  siteDescription,
+  socialImageDescription,
   defaultPageCover,
   defaultPageIcon,
-  siteDomain,
   siteName
 } from '../../lib/config'
-import { getPageDescription } from '../../lib/get-page-description'
 
 export interface SocialImageConfig {
   title: string
@@ -70,7 +69,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .send({ error: `unable to load notion page "${pageId}"` })
   }
 
-  // TODO: centralize these default config values
   const image = await createSocialImage({
     imageUrl: mapNotionImageUrl(
       block.format?.page_cover ?? defaultPageCover,
@@ -81,8 +79,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       getBlockIcon(block, recordMap) ?? defaultPageIcon,
       block
     ),
-    subtitle: getPageDescription(block, recordMap) ?? siteDescription,
-    watermark: siteDomain
+    subtitle: getPageDescription(block, recordMap) ?? socialImageDescription
   })
 
   res.setHeader(

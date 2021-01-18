@@ -100,7 +100,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
-  const socialImage = mapImageUrl(api.renderSocialImage(pageId))
+  const socialImage = api.renderSocialImage(pageId)
   const socialDescription =
     getPageDescription(block, recordMap) ?? siteDescription
   let comments: React.ReactNode = null
@@ -154,7 +154,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         {canonicalPageUrl && (
           <>
             <link rel='canonical' href={canonicalPageUrl} />
-
+            <meta property='og:url' content={canonicalPageUrl} />
             <meta property='twitter:url' content={canonicalPageUrl} />
           </>
         )}
