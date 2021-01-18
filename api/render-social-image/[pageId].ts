@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import chromium from 'chrome-aws-lambda'
 import renderSocialImage from 'puppeteer-social-image-transitive-bs'
-import { getBlockIcon, getBlockTitle } from 'notion-utils'
+import { getBlockIcon, getBlockTitle, parsePageId } from 'notion-utils'
 
 import { mapNotionImageUrl } from '../../lib/map-image-url'
 import { getPageDescription } from '../../lib/get-page-description'
@@ -11,7 +11,8 @@ import {
   socialImageTitle,
   socialImageSubtitle,
   defaultPageCover,
-  defaultPageIcon
+  defaultPageIcon,
+  rootNotionPageId
 } from '../../lib/config'
 
 export interface SocialImageConfig {
@@ -69,6 +70,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .send({ error: `unable to load notion page "${pageId}"` })
   }
 
+  const isRootPage = parsePageId(block.id) === parsePageId(rootNotionPageId)
+
   const image = await createSocialImage({
     imageUrl: mapNotionImageUrl(
       block.format?.page_cover ?? defaultPageCover,
@@ -78,7 +81,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       getBlockIcon(block, recordMap) ?? defaultPageIcon,
       block
     ),
-    title: getBlockTitle(block, recordMap) ?? socialImageTitle,
+    title: isRootPage
+      ? socialImageSubtitle
+      : getBlockTitle(block, recordMap) ?? socialImageTitle,
     subtitle: getPageDescription(block, recordMap) ?? socialImageSubtitle
   })
 
@@ -95,6 +100,7 @@ async function createSocialImage(params: SocialImageConfig) {
 
   try {
     // add font support for emojis
+    // @see https://github.com/alixaxel/chrome-aws-lambda#fonts
     await chromium.font(
       'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
     )
