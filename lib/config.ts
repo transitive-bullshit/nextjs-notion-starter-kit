@@ -12,6 +12,7 @@ export const rootNotionPageId = '78fc5a4b88d74b0e824e29407e9f1ec1'
 // general site config
 export const siteName = 'Transitive Bullshit'
 export const siteAuthor = 'Travis Fischer'
+export const siteAuthorTwitter = 'transitive_bs'
 export const siteDomain = 'transitivebullsh.it'
 export const siteDescription =
   'Personal site of Travis Fischer aka Transitive Bullshit'

@@ -3,6 +3,8 @@ import * as React from 'react'
 import * as types from 'lib/types'
 import { mapImageUrl } from 'lib/map-image-url'
 
+// TODO: remove duplication between PageHead and NotionPage Head
+
 export const PageHead: React.FC<types.PageProps> = ({ site }) => {
   return (
     <Head>

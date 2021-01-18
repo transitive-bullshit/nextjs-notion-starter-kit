@@ -20,6 +20,7 @@ import {
   isDev,
   api,
   siteDescription,
+  siteAuthorTwitter,
   defaultPageCover,
   defaultPageCoverPosition,
   defaultPageIcon
@@ -125,16 +126,39 @@ export const NotionPage: React.FC<types.PageProps> = ({
         <meta property='og:title' content={title} />
         <meta property='og:site_name' content={site.name} />
 
+        <meta name='twitter:title' content={title} />
+        <meta property='twitter:domain' content={site.domain} />
+
+        <meta name='twitter:site' content='@nytimesbits' />
+        {siteAuthorTwitter && (
+          <meta name='twitter:creator' content={`@${siteAuthorTwitter}`} />
+        )}
+
         {socialDescription && (
           <>
             <meta name='description' content={socialDescription} />
             <meta property='og:description' content={socialDescription} />
+            <meta name='twitter:description' content={socialDescription} />
           </>
         )}
 
-        {socialImage && <meta property='og:image' content={socialImage} />}
+        {socialImage ? (
+          <>
+            <meta name='twitter:card' content='summary_large_image' />
+            <meta name='twitter:image' content={socialImage} />
+            <meta property='og:image' content={socialImage} />
+          </>
+        ) : (
+          <meta name='twitter:card' content='summary' />
+        )}
 
-        {canonicalPageUrl && <link rel='canonical' href={canonicalPageUrl} />}
+        {canonicalPageUrl && (
+          <>
+            <link rel='canonical' href={canonicalPageUrl} />
+
+            <meta property='twitter:url' content={canonicalPageUrl} />
+          </>
+        )}
 
         <title>{title}</title>
       </Head>
