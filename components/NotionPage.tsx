@@ -127,8 +127,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
         {socialDescription && (
           <>
-            <meta name='description' content={site.description} />
-            <meta property='og:site_name' content={site.name} />
+            <meta name='description' content={socialDescription} />
+            <meta property='og:description' content={socialDescription} />
           </>
         )}
 
