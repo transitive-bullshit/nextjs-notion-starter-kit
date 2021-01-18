@@ -18,7 +18,7 @@ export const siteDescription =
   'Personal site of Travis Fischer aka Transitive Bullshit'
 export const siteFavicon = `https://${siteDomain}/favicon.png`
 export const socialImageTitle = 'Transitive Bullshit'
-export const socialImageSubtitle = 'Hello World 👋'
+export const socialImageSubtitle = 'Hello World! 👋'
 
 // default notion values for site-wide consistency (may be overridden on a per-page basis)
 export const defaultPageIcon =

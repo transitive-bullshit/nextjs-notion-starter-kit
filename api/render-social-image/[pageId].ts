@@ -94,6 +94,11 @@ async function createSocialImage(params: SocialImageConfig) {
   let browser
 
   try {
+    // add font support for emojis
+    await chromium.font(
+      'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
+    )
+
     browser = await chromium.puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
