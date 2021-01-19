@@ -74,17 +74,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const image = await createSocialImage({
     imageUrl: mapNotionImageUrl(
-      block.format?.page_cover ?? defaultPageCover,
+      block.format?.page_cover || defaultPageCover,
       block
     ),
     logo: mapNotionImageUrl(
-      getBlockIcon(block, recordMap) ?? defaultPageIcon,
+      getBlockIcon(block, recordMap) || defaultPageIcon,
       block
     ),
     title: isRootPage
       ? socialImageTitle
-      : getBlockTitle(block, recordMap) ?? socialImageTitle,
-    subtitle: getPageDescription(block, recordMap) ?? socialImageSubtitle
+      : getBlockTitle(block, recordMap) || socialImageTitle,
+    subtitle: getPageDescription(block, recordMap) || socialImageSubtitle
   })
 
   res.setHeader(
