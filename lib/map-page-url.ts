@@ -1,5 +1,10 @@
 import * as types from './types'
+import { isDev } from './config'
 import { getCanonicalPageId, uuidToId, parsePageId } from 'notion-utils'
+
+// include UUIDs in page URLs during local development but not in production
+// (they're nice for debugging and speed up local dev)
+const uuid = !!isDev
 
 export const mapPageUrl = (
   site: types.Site,
@@ -10,7 +15,7 @@ export const mapPageUrl = (
     return createUrl('/', searchParams)
   } else {
     return createUrl(
-      `/${getCanonicalPageId(pageId, recordMap, { uuid: false })}`,
+      `/${getCanonicalPageId(pageId, recordMap, { uuid })}`,
       searchParams
     )
   }
@@ -26,7 +31,7 @@ export const getCanonicalPageUrl = (
     return `https://${site.domain}`
   } else {
     return `https://${site.domain}/${getCanonicalPageId(pageUuid, recordMap, {
-      uuid: false
+      uuid
     })}`
   }
 }

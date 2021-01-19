@@ -1,4 +1,5 @@
 import * as types from 'lib/types'
+import { getTextContent } from 'notion-utils'
 
 export function getPageDescription(
   block: types.Block,
@@ -12,7 +13,7 @@ export function getPageDescription(
     )
 
     if (descriptionKey) {
-      return block.properties[descriptionKey]
+      return getTextContent(block.properties[descriptionKey])
     }
   }
 
