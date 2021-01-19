@@ -1,15 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import chromium from 'chrome-aws-lambda'
 import renderSocialImage from 'puppeteer-social-image-transitive-bs'
-import { getBlockIcon, getBlockTitle, parsePageId } from 'notion-utils'
+import { getBlockTitle, parsePageId } from 'notion-utils'
 
 import { mapNotionImageUrl } from '../../lib/map-image-url'
-import { getPageDescription } from '../../lib/get-page-description'
+// import { getPageDescription } from '../../lib/get-page-description'
 import { getPage } from '../../lib/notion'
 import * as types from '../../lib/types'
 import {
   socialImageTitle,
-  socialImageSubtitle,
+  // socialImageSubtitle,
   defaultPageCover,
   defaultPageIcon,
   rootNotionPageId
@@ -77,14 +77,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       block.format?.page_cover || defaultPageCover,
       block
     ),
-    logo: mapNotionImageUrl(
-      getBlockIcon(block, recordMap) || defaultPageIcon,
-      block
-    ),
+    logo: mapNotionImageUrl(defaultPageIcon, block),
     title: isRootPage
       ? socialImageTitle
-      : getBlockTitle(block, recordMap) || socialImageTitle,
-    subtitle: getPageDescription(block, recordMap) || socialImageSubtitle
+      : getBlockTitle(block, recordMap) || socialImageTitle
+    // subtitle: getPageDescription(block, recordMap) || socialImageSubtitle
   })
 
   res.setHeader(
