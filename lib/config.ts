@@ -6,7 +6,7 @@
 
 import { getEnv } from './get-env'
 
-// this is the most important config value which specifies the site's root Notion page
+// where it all starts -- the site's root Notion page
 export const rootNotionPageId = '78fc5a4b88d74b0e824e29407e9f1ec1'
 
 // general site config
@@ -20,7 +20,7 @@ export const siteFavicon = `https://${siteDomain}/favicon.png`
 export const socialImageTitle = 'Transitive Bullshit'
 export const socialImageSubtitle = 'Hello World! 👋'
 
-// default notion values for site-wide consistency (may be overridden on a per-page basis)
+// default notion values for site-wide consistency (optional; may be overridden on a per-page basis)
 export const defaultPageIcon =
   'https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F797768e4-f24a-4e65-bd4a-b622ae9671dc%252Fprofile-2020-280w-circle.png%3Ftable%3Dblock%26id%3D78fc5a4b-88d7-4b0e-824e-29407e9f1ec1%26cache%3Dv2'
 export const defaultPageCover =

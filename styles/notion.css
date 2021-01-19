@@ -1,3 +1,12 @@
+/**
+ * This file contains site-specifc style overrides for Notion elements from
+ * react-notion-x.
+ * 
+ * react-notion-x's goal is to match styling as close as possible to Notion,
+ * whereas our goal with this blog is to adjust Notion's styling in a few key
+ * places to add some flare and make our site look more like a blog.
+ */
+
 .notion-page {
   margin: 0 12px;
   width: 720px;
@@ -81,7 +90,7 @@
 }
 
 .notion-callout {
-  margin-bottom: 0.5em;
+  margin: 0.75em 0;
 }
 
 .notion-hr {
