@@ -4195,14 +4195,14 @@ normalize-url@^4.1.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.5.0.tgz#453354087e6ca96957bd8f5baf753f5982142129"
   integrity sha512-2s47yzUxdexf1OhyRi4Em83iQk0aPvwTddtFz4hnSSw9dCEsLEGf6SwIO8ss/19S9iBb5sJaOuTvTGDeZI00BQ==
 
-notion-client@^3.2.4:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-3.2.4.tgz#17f483e02b3d83f3c297a1a70f29f846aeb043c1"
-  integrity sha512-iPt1GElihMLF6euhHHzfwFzm6EsDUY96lmWVAhjPlVNWGJnBS8j1Y5tBw5Cb00rey/JBBq7wjaJTMi458DfbTg==
+notion-client@^3.2.6:
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-3.2.6.tgz#812277b1135ab778074163a73b3a92ffd6762876"
+  integrity sha512-HPfbaQl3AF0MG4z9BxeqGnslL0Y2sCSG4g8NZ3ggLCYUkT79/PWH5fskmz8uac6EJiDByRSncyOYFwxhAscgqw==
   dependencies:
     node-fetch "^2.6.1"
     notion-types "^3.1.1"
-    notion-utils "^3.2.4"
+    notion-utils "^3.2.6"
     p-map "^4.0.0"
 
 notion-types@^3.1.1:
@@ -4210,10 +4210,10 @@ notion-types@^3.1.1:
   resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-3.1.1.tgz#a617a8af0fe8b11e12d6a502ca41e6ee771370f7"
   integrity sha512-QhePG1KEela7yJ5lIH7VJG+hVM3MFcwYFsPStVliruU9aMxwNDnFJtGs3zyGWaM0l+wQNbO5EYLr2B8HdwYKSA==
 
-notion-utils@^3.2.4:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-3.2.4.tgz#62dac7ba6a1eca058f0f3683caa0d22cc941d40b"
-  integrity sha512-P+ugWuF86xzv1cBzoYnMusnyLUi6P6UuH82mP3O0cVjH/3ytrhAq3JbQlNkVKhpJ9798pIIZEbb/mURQliGlsA==
+notion-utils@^3.2.6:
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-3.2.6.tgz#aefd50da0cf9fd59335f693e30e68660d2d2f225"
+  integrity sha512-xBp6WrC1vKU0XnDnH/K8MQ8W4Wqy6SEmNCAe8e20tvZskGHGEnhc2bybFvOYE7Y/UxysoE3MSVKCxZD409kMWQ==
   dependencies:
     notion-types "^3.1.1"
     p-queue "^6.6.1"
@@ -5146,10 +5146,10 @@ react-modal@^3.11.2:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^3.2.5:
-  version "3.2.5"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-3.2.5.tgz#973ef522255200f190dac2fb33262d734d3860ae"
-  integrity sha512-6KWfxMOvW2DefiHl2j44uwnrdonVfps86rHZ/S2mT+8TB0ia22iULF2GzHSN036haKzBLinDPPL3hUOuemEenQ==
+react-notion-x@^3.2.6:
+  version "3.2.6"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-3.2.6.tgz#25e2218ad66cd2f25782d20d19b4842ccb359553"
+  integrity sha512-a2Ov8ufdqEG0frpSTED/006Guczwm2DcIgIrvkZflDp1aSAnRGPnC46owBOBRzCM/5wRsFaEP8wmzeTgm8tnvg==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     date-fns "^2.15.0"
@@ -5159,7 +5159,7 @@ react-notion-x@^3.2.5:
     lodash.throttle "^4.1.1"
     medium-zoom "^1.0.6"
     notion-types "^3.1.1"
-    notion-utils "^3.2.4"
+    notion-utils "^3.2.6"
     prismjs "^1.20.0"
     rc-dropdown "^3.1.2"
     rc-menu "^8.5.2"
