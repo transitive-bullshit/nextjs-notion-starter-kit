@@ -1,14 +1,21 @@
 import * as firestore from '@google-cloud/firestore'
 import * as types from './types'
-import * as config from './env'
+import * as env from './env'
+import { isPreviewImageSupportEnabled } from './config'
 
-export const db = new firestore.Firestore({
-  projectId: config.googleProjectId,
-  credentials: config.googleApplicationCredentials
-})
-export const images = db.collection(config.firebaseCollectionImages)
+export let db = null
+export let images = null
 
-export async function get<T extends types.Model>(
+if (isPreviewImageSupportEnabled) {
+  db = new firestore.Firestore({
+    projectId: env.googleProjectId,
+    credentials: env.googleApplicationCredentials
+  })
+
+  images = db.collection(env.firebaseCollectionImages)
+}
+
+async function get<T extends types.Model>(
   doc: firestore.DocumentReference,
   userId?: string
 ): Promise<T> {
@@ -33,7 +40,7 @@ export async function get<T extends types.Model>(
   }
 }
 
-export function getSnapshot<T extends types.Model>(
+function getSnapshot<T extends types.Model>(
   snapshot: firestore.DocumentSnapshot<firestore.DocumentData>
 ): T {
   const data = snapshot.data()

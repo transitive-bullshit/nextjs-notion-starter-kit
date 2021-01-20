@@ -27,6 +27,10 @@ export const defaultPageCover =
   'https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F9fc5ecae-2b4b-4e73-b0d4-918c829ba69f%252FIMG_0259-opt.jpg%3Ftable%3Dblock%26id%3D78fc5a4b-88d7-4b0e-824e-29407e9f1ec1%26cache%3Dv2'
 export const defaultPageCoverPosition = 0.1862
 
+// whether or not to enable support for LQIP preview images
+// (requires a Google Firebase collection)
+export const isPreviewImageSupportEnabled = true
+
 // ----------------------------------------------------------------------------
 
 export const isDev =
