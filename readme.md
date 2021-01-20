@@ -8,7 +8,7 @@
 
 > The perfect starter kit for building beautiful Next.js websites that are backed by Notion content.
 
-[![Build Status](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit.svg?branch=master)](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
+[![Build Status](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit.svg?branch=main)](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 
 ## Intro
 
@@ -20,7 +20,7 @@ The site is then deployed to [Vercel](http://vercel.com).
 
 ## Features
 
-- Setup only takes a few minutes! ([single config file](./site.config.js)) 💪
+- Setup only takes a few minutes ([single config file](./site.config.js)) 💪
 - Next.js / TS / React / Notion
 - Robust support for Notion content via [react-notion-x](https://github.com/NotionX/react-notion-x)
 - Excellent page speeds
@@ -48,7 +48,7 @@ You'll want to make your root Notion page **public** and then copy the link to y
 
 I recommend setting up a collection on your home page (I used an inline gallery [here](https://notion.so/78fc5a4b88d74b0e824e29407e9f1ec1)) that contains all of your articles / projects / content. There are no structural constraints on your Notion workspace, however, so feel free to add content as you would normally in Notion. There are a few parts of the code with logic to only show comments on blog post pages (collection item detail pages).
 
-## URL Pathnames
+## URL Paths
 
 The app defaults to slightly different pathnames in dev and prod (though pasting any dev pathname into prod will work and vice-versa).
 
@@ -69,6 +69,8 @@ All CSS styles that customize Notion content are located in [styles/notion.css](
 They mainly target global CSS classes exported by react-notion-x [styles.css](https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/styles.css).
 
 It should be pretty easy to customize most styling-related things, especially with local development and hot reload.
+
+Dark mode is fully supported by `react-notion-x`, but it not not yet customizable via the UI. You can add `?dark=true` to play around with it.
 
 ## Extras
 
