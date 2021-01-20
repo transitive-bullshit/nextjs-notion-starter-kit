@@ -13,11 +13,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   if (!isPreviewImageSupportEnabled) {
-    return res
-      .status(418)
-      .send({
-        error: 'preview image support has been disabled for this deployment'
-      })
+    return res.status(418).send({
+      error: 'preview image support has been disabled for this deployment'
+    })
   }
 
   const { url, id } = req.body
