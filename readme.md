@@ -130,19 +130,27 @@ Note that you shouldn't have to do anything extra to enable this feature as long
 
 ### Mobile Home Page
 
-<img alt="Mobile Home Page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F8ee728ab-d77e-411b-ab37-ce71b25dddfb%252Fhome-mobile-opt.jpg%3Ftable%3Dblock%26id%3Dbb5cb99f-f3fe-4060-8c42-05ff80c26f38%26cache%3Dv2" width="300">
+<a href="https://transitivebullsh.it">
+  <img alt="Mobile Home Page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F8ee728ab-d77e-411b-ab37-ce71b25dddfb%252Fhome-mobile-opt.jpg%3Ftable%3Dblock%26id%3Dbb5cb99f-f3fe-4060-8c42-05ff80c26f38%26cache%3Dv2" width="300">
+</a>
 
 ### Mobile Article Page
 
-<img alt="Mobile Article Page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F6c05a0f9-59a0-4322-bef9-3f08fe4efc6a%252Farticle-mobile-opt.jpg%3Ftable%3Dblock%26id%3Da1eb2263-fdf1-4d51-a3d4-8a02cb32bbba%26cache%3Dv2" width="300">
+<a href="https://transitivebullsh.it/free-resources-for-indie-saas-devs">
+  <img alt="Mobile Article Page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F6c05a0f9-59a0-4322-bef9-3f08fe4efc6a%252Farticle-mobile-opt.jpg%3Ftable%3Dblock%26id%3Da1eb2263-fdf1-4d51-a3d4-8a02cb32bbba%26cache%3Dv2" width="300">
+</a>
 
 ### Desktop Home Page
 
-<img alt="Desktop Home Page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F657b2c1b-c548-4a05-b6b7-09c6fe2f65b0%252Fhome-desktop-opt.jpg%3Ftable%3Dblock%26id%3D97f445e8-2da1-41cd-996a-5ad0e73a1d79%26cache%3Dv2" width="600">
+<a href="https://transitivebullsh.it">
+  <img alt="Desktop Home Page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F657b2c1b-c548-4a05-b6b7-09c6fe2f65b0%252Fhome-desktop-opt.jpg%3Ftable%3Dblock%26id%3D97f445e8-2da1-41cd-996a-5ad0e73a1d79%26cache%3Dv2" width="600">
+</a>
 
 ### Desktop Article Page
 
-<img alt="Desktop Article Page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F236cc4f2-4a85-4eb6-8f6a-4b835ccf63dd%252Farticle-desktop-opt.jpg%3Ftable%3Dblock%26id%3D16e03de2-0df7-4232-a129-e1666505c4d2%26cache%3Dv2" width="600">
+<a href="https://transitivebullsh.it/free-resources-for-indie-saas-devs">
+  <img alt="Desktop Article Page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F236cc4f2-4a85-4eb6-8f6a-4b835ccf63dd%252Farticle-desktop-opt.jpg%3Ftable%3Dblock%26id%3D16e03de2-0df7-4232-a129-e1666505c4d2%26cache%3Dv2" width="600">
+</a>
 
 ## License
 
