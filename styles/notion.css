@@ -31,7 +31,7 @@
   margin-bottom: 1em;
 }
 
-.notion-header {
+.notion-header .nav-header {
   max-width: 1100px;
   margin: 0 auto;
 }

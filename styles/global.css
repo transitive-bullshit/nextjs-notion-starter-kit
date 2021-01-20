@@ -15,10 +15,6 @@ html {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-body {
-  overflow-y: hidden;
-}
-
 .utterances {
   max-width: 100% !important;
 }
