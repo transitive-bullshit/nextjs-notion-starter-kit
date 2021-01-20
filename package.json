@@ -1,10 +1,10 @@
 {
-  "name": "transitive-bullshit",
+  "name": "nextjs-notion-starter-kit",
   "version": "0.1.0",
   "private": true,
-  "description": "Personal site of Travis Fischer.",
+  "description": "The perfect starter kit for building beautiful Next.js websites that are backed by Notion content.",
   "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "transitive-bullshit/transitivebullsh.it",
+  "repository": "transitive-bullshit/nextjs-notion-starter-kit",
   "license": "MIT",
   "engines": {
     "node": ">=10"
