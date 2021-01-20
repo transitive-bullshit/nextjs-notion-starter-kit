@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://transitivebullsh.it/free-resources-for-indie-saas-devs">
+  <a href="https://transitivebullsh.it">
     <img alt="Example article page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F236cc4f2-4a85-4eb6-8f6a-4b835ccf63dd%252Farticle-desktop-opt.jpg%3Ftable%3Dblock%26id%3D16e03de2-0df7-4232-a129-e1666505c4d2%26cache%3Dv2" width="689">
   </a>
 </p>
