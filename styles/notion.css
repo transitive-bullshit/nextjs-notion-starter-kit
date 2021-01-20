@@ -57,26 +57,24 @@
 }
 
 .notion-collection-card {
-  border-radius: 10px;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 15%;
+  border-top-right-radius: 5%;
+  border-bottom-left-radius: 5%;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
-/*
-.notion-collection-card {
-  transition: background-color 150ms linear;
-}
-
-.notion-collection-card:hover .notion-collection-card-cover {
-  filter: grayscale(0);
+.notion-collection-card-cover img {
+  border-radius: 0;
 }
 
 .notion-collection-card-cover {
   transition: filter 150ms linear;
-  filter: grayscale(0.25);
+  filter: brightness(100%);
 }
-*/
+
+.notion-collection-card:hover .notion-collection-card-cover {
+  filter: brightness(120%);
+}
 
 .notion-quote {
   padding: 0.2em 0.75em;
