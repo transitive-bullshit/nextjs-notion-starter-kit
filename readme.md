@@ -6,7 +6,7 @@
 
 > The perfect starter kit for building beautiful Next.js websites that are backed by Notion content.
 
-[![Build Status](https://travis-ci.com/tansitive-bullshit/nextjs-notion-starter-kit.svg?branch=master)](https://travis-ci.com/tansitive-bullshit/nextjs-notion-starter-kit) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
+[![Build Status](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit.svg?branch=master)](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 
 ## Intro
 
