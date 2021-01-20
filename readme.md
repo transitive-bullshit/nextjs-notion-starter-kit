@@ -60,6 +60,14 @@ See [mapPageUrl](./lib/map-page-url.ts) and [getCanonicalPageId](https://github.
 
 NOTE: if you have multiple pages in your workspace with the same slugified name, the app will throw an error letting you know that there are duplicate URL pathnames.
 
+## Theming
+
+All CSS styles that customize Notion content are located in [styles/notion.css](./styles/notion.css).
+
+They mainly target global CSS classes exported by react-notion-x [styles.css](https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/styles.css).
+
+It should be pretty easy to customize most styling-related things, especially with local development and hot reload.
+
 ## Extras
 
 All extra dependencies are optional -- the project should work just fine out of the box.
