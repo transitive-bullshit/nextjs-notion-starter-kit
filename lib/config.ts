@@ -1,5 +1,8 @@
 /**
  * Site-wide app configuration.
+ *
+ * This file pulls from the root "site.config.js" as well as environment variables
+ * for optional depenencies.
  */
 
 import { getSiteConfig, getEnv } from './get-config-value'
