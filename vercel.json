@@ -5,7 +5,7 @@
       "GOOGLE_APPLICATION_CREDENTIALS": "@transitive-bullshit-google-application-credentials",
       "GCLOUD_PROJECT": "@transitive-bullshit-gcloud-project",
       "FIREBASE_COLLECTION_IMAGES": "@transitive-bullshit-firebase-collection-images",
-      "FATHOM_ID": "@next-public-fathom-id"
+      "NEXT_PUBLIC_FATHOM_ID": "@next-public-fathom-id"
     }
   }
 }
