@@ -31,6 +31,8 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
 
   React.useEffect(() => {
+    console.log('loading fathom', { fathomId, fathomConfig })
+
     if (fathomId) {
       Fathom.load(fathomId, fathomConfig)
 

@@ -80,7 +80,7 @@ export const api = {
 
 // ----------------------------------------------------------------------------
 
-export const fathomId = isDev ? null : getEnv('FATHOM_ID', null)
+export const fathomId = isDev ? null : getEnv('NEXT_PUBLIC_FATHOM_ID', null)
 
 export const fathomConfig = fathomId
   ? {
