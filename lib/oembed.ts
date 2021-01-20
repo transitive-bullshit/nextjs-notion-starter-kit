@@ -16,8 +16,8 @@ export const oembed = async ({
   // TODO: handle pages with no pageId via domain
   const pageId = parsePageId(url)
 
-  let title = config.siteName
-  let authorName = config.siteAuthor
+  let title = config.name
+  let authorName = config.author
 
   try {
     const page = await getPage(pageId)
@@ -50,7 +50,7 @@ export const oembed = async ({
   return {
     version: '1.0',
     type: 'rich',
-    provider_name: config.siteName,
+    provider_name: config.author,
     provider_url: config.host,
     title,
     author_name: authorName,

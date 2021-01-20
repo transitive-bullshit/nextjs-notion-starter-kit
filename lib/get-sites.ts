@@ -3,5 +3,5 @@ import * as config from './config'
 import * as types from './types'
 
 export async function getSites(): Promise<types.Site[]> {
-  return [await getSiteForDomain(config.siteDomain)]
+  return [await getSiteForDomain(config.domain)]
 }

@@ -1,15 +1,15 @@
 import React from 'react'
-import { siteDomain } from 'lib/config'
+import { domain } from 'lib/config'
 import { resolveNotionPage } from 'lib/resolve-notion-page'
 import { NotionPage } from 'components'
 
 export const getStaticProps = async (context) => {
   try {
-    const props = await resolveNotionPage(siteDomain)
+    const props = await resolveNotionPage(domain)
 
     return { props, revalidate: 10 }
   } catch (err) {
-    console.error('page error', siteDomain, err)
+    console.error('page error', domain, err)
 
     return {
       props: {

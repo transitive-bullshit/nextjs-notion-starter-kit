@@ -12,20 +12,12 @@ import { NotionRenderer } from 'react-notion-x'
 
 // utils
 import { getBlockTitle } from 'notion-utils'
-import * as types from 'lib/types'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
-import { mapImageUrl, mapNotionImageUrl } from 'lib/map-image-url'
+import { mapNotionImageUrl } from 'lib/map-image-url'
 import { getPageDescription } from 'lib/get-page-description'
-import {
-  isDev,
-  api,
-  siteDescription,
-  siteAuthorTwitter,
-  defaultPageCover,
-  defaultPageCoverPosition,
-  defaultPageIcon
-} from 'lib/config'
 import { searchNotion } from 'lib/search-notion'
+import * as types from 'lib/types'
+import * as config from 'lib/config'
 
 // components
 import { CustomFont } from './CustomFont'
@@ -37,8 +29,6 @@ import { Footer } from './Footer'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
-
-const isServer = typeof window === 'undefined'
 
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
@@ -80,14 +70,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const title = getBlockTitle(block, recordMap) || site.name
 
   console.log('notion page', {
-    isDev,
+    isDev: config.isDev,
     title,
     pageId,
     rootNotionPageId: site.rootNotionPageId,
     recordMap
   })
 
-  if (!isServer) {
+  if (!config.isServer) {
     // add important objects global window for easy debugging
     ;(window as any).recordMap = recordMap
     ;(window as any).block = block
@@ -96,13 +86,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const siteMapPageUrl = mapPageUrl(site, recordMap, searchParams)
 
   const canonicalPageUrl =
-    !isDev && getCanonicalPageUrl(site, recordMap)(pageId)
+    !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
-  const socialImage = api.renderSocialImage(pageId)
+  const socialImage = config.api.renderSocialImage(pageId)
   const socialDescription =
-    getPageDescription(block, recordMap) ?? siteDescription
+    getPageDescription(block, recordMap) ?? config.description
   let comments: React.ReactNode = null
 
   // only display comments on blog post pages
@@ -129,8 +119,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         <meta name='twitter:title' content={title} />
         <meta property='twitter:domain' content={site.domain} />
 
-        {siteAuthorTwitter && (
-          <meta name='twitter:creator' content={`@${siteAuthorTwitter}`} />
+        {config.twitter && (
+          <meta name='twitter:creator' content={`@${config.twitter}`} />
         )}
 
         {socialDescription && (
@@ -203,9 +193,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         darkMode={isDarkMode}
         previewImages={site.previewImages !== false}
         showCollectionViewDropdown={false}
-        defaultPageIcon={defaultPageIcon}
-        defaultPageCover={defaultPageCover}
-        defaultPageCoverPosition={defaultPageCoverPosition}
+        defaultPageIcon={config.defaultPageIcon}
+        defaultPageCover={config.defaultPageCover}
+        defaultPageCoverPosition={config.defaultPageCoverPosition}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapNotionImageUrl}
         searchNotion={searchNotion}

@@ -1,18 +1,17 @@
 import * as firestore from '@google-cloud/firestore'
 import * as types from './types'
-import * as env from './env'
-import { isPreviewImageSupportEnabled } from './config'
+import * as config from './config'
 
-export let db = null
-export let images = null
+export let db: firestore.Firestore = null
+export let images: firestore.CollectionReference = null
 
-if (isPreviewImageSupportEnabled) {
+if (config.isPreviewImageSupportEnabled) {
   db = new firestore.Firestore({
-    projectId: env.googleProjectId,
-    credentials: env.googleApplicationCredentials
+    projectId: config.googleProjectId,
+    credentials: config.googleApplicationCredentials
   })
 
-  images = db.collection(env.firebaseCollectionImages)
+  images = db.collection(config.firebaseCollectionImages)
 }
 
 async function get<T extends types.Model>(

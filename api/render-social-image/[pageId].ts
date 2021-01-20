@@ -12,7 +12,8 @@ import {
   // socialImageSubtitle,
   defaultPageCover,
   defaultPageIcon,
-  rootNotionPageId
+  rootNotionPageId,
+  socialImageSubtitle
 } from '../../lib/config'
 
 export interface SocialImageConfig {
@@ -80,7 +81,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     logo: mapNotionImageUrl(defaultPageIcon, block),
     title: isRootPage
       ? socialImageTitle
-      : getBlockTitle(block, recordMap) || socialImageTitle
+      : getBlockTitle(block, recordMap) || socialImageTitle,
+    subtitle: isRootPage ? socialImageSubtitle : undefined
     // subtitle: getPageDescription(block, recordMap) || socialImageSubtitle
   })
 

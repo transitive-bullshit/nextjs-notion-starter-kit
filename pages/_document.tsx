@@ -1,13 +1,12 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { siteFavicon } from 'lib/config'
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang='en'>
         <Head>
-          <link rel='shortcut icon' href={siteFavicon} />
+          <link rel='shortcut icon' href='/favicon.png' />
 
           <link
             rel='apple-touch-icon'

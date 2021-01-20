@@ -6,8 +6,8 @@ export const getSiteForDomain = async (
 ): Promise<types.Site | null> => {
   return {
     domain,
-    name: config.siteName,
+    name: config.name,
     rootNotionPageId: config.rootNotionPageId,
-    description: config.siteDescription
+    description: config.description
   } as types.Site
 }
