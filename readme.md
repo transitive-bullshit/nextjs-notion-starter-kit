@@ -18,19 +18,21 @@ The site is then deployed to [Vercel](http://vercel.com).
 
 ## Features
 
-- Setup only takes a few minutes ([single config file](./site.config.js)!) 💪
-- Next.js / TS / React / Notion -- what more could you want?
+- Setup only takes a few minutes! ([single config file](./site.config.js)) 💪
+- Next.js / TS / React / Notion -- what more could you want?!
 - Robust support for Notion content via [react-notion-x](https://github.com/NotionX/react-notion-x)
 - Excellent page speeds
 - Sexy LQIP image previews
 - Embedded GitHub comments
 - Automatic open graph images
 - Automatic pretty URL paths
+- Quick search via CMD+P just like in Notion
 - Responsive for desktop / tablet / mobile
+- Optimized for Next.js and Vercel
 
 ## Setup
 
-!> All config is defined in [site.config.js](./site.config.js).
+**All config is defined in [site.config.js](./site.config.js).**
 
 1. Fork / clone this repo
 2. Change a few values in [site.config.js](./site.config.js)
@@ -101,6 +103,8 @@ GCLOUD_PROJECT=
 FIREBASE_COLLECTION_IMAGES=
 ```
 
+The actual work happens in the [create-preview-image](./api/create-preview-image) serverless function.
+
 #### Automatic Social Images
 
 <p align="center">
@@ -116,7 +120,7 @@ By default, it takes into account:
 - page title
 - page subtitle (optional; pulled from the "Description" property of collection pages)
 
-This feature works by rendering some custom HTML to a [Puppeteer](https://pptr.dev) instance [this lambda](./api/render-social-image/[pageId].ts) that takes in the page ID as input.
+This feature works by rendering some custom HTML to a [Puppeteer](https://pptr.dev) instance in this [serverless function](./api/render-social-image/[pageId].ts) that takes in the page ID as input.
 
 Here's an example of a social image URL in production: [/api/render-social-image/71201624b204481f862630ea25ce62fe](https://transitivebullsh.it/api/render-social-image/71201624b204481f862630ea25ce62fe)
 
