@@ -80,7 +80,12 @@ export const api = {
 
 // ----------------------------------------------------------------------------
 
-export const fathomId = isDev ? null : getEnv('NEXT_PUBLIC_FATHOM_ID', null)
+export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
+console.log('config', {
+  fathomId,
+  isDev,
+  env: process.env.NEXT_PUBLIC_FATHOM_ID
+})
 
 export const fathomConfig = fathomId
   ? {
