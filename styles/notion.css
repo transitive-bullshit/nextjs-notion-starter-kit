@@ -70,10 +70,12 @@
 .notion-collection-card-cover {
   transition: filter 150ms linear;
   filter: brightness(100%);
+  /* filter: hue-rotate(0); */
 }
 
 .notion-collection-card:hover .notion-collection-card-cover {
   filter: brightness(120%);
+  /* filter: hue-rotate(180deg); */
 }
 
 .notion-quote {
