@@ -21,7 +21,7 @@ module.exports = {
   github: 'transitive-bullshit',
   linkedin: 'fisch2',
 
-  // default notion values for site-wide consistency
+  // default notion icon and cover images for site-wide consistency
   // page-specific values will override these site-wide defaults
   // optional
   defaultPageIcon:
@@ -31,8 +31,13 @@ module.exports = {
   defaultPageCoverPosition: 0.1862,
 
   // image CDN host to proxy all image requests through
+  // NOTE: this requires you to set up an external image proxy
   // optional
   imageCDNHost: 'https://ssfy.io',
+
+  // Utteranc.es comments via GitHub issue comments
+  // optional
+  utterancesGitHubRepo: 'transitive-bullshit/transitivebullsh.it',
 
   // whether or not to enable support for LQIP preview images
   // NOTE: this requires you to set up Google Firebase and add the environment

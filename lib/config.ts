@@ -41,10 +41,16 @@ export const defaultPageCoverPosition: number = getSiteConfig(
   0.5
 )
 
-// image CDN host to proxy all image requests through
+// Optional utteranc.es comments via GitHub issue comments
+export const utterancesGitHubRepo: string | null = getSiteConfig(
+  'utterancesGitHubRepo',
+  null
+)
+
+// Optional image CDN host to proxy all image requests through
 export const imageCDNHost: string | null = getSiteConfig('imageCDNHost', null)
 
-// whether or not to enable support for LQIP preview images
+// Optional whether or not to enable support for LQIP preview images
 // (requires a Google Firebase collection)
 export const isPreviewImageSupportEnabled: boolean = getSiteConfig(
   'isPreviewImageSupportEnabled',

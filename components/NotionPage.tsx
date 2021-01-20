@@ -97,15 +97,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // only display comments on blog post pages
   if (isBlogPost) {
-    comments = (
-      <ReactUtterances
-        repo='transitive-bullshit/transitivebullsh.it'
-        issueMap='issue-term'
-        issueTerm='title'
-        label='blog post'
-        theme='preferred-color-scheme'
-      />
-    )
+    if (config.utterancesGitHubRepo) {
+      comments = (
+        <ReactUtterances
+          repo={config.utterancesGitHubRepo}
+          issueMap='issue-term'
+          issueTerm='title'
+          theme='preferred-color-scheme'
+        />
+      )
+    }
   }
 
   return (
