@@ -27,7 +27,8 @@ The site is then deployed to [Vercel](http://vercel.com).
 - Sexy LQIP image previews
 - Embedded GitHub comments
 - Automatic open graph images
-- Automatic pretty URL paths
+- Automatic pretty URLs
+- Automatic table of contents
 - Quick search via CMD+P just like in Notion
 - Responsive for desktop / tablet / mobile
 - Optimized for Next.js and Vercel
@@ -78,7 +79,7 @@ All extra dependencies are optional -- the project should work just fine out of 
 
 If you want to copy some of the fancier elements of my site, then you'll have to set up a few extras.
 
-#### Fathom Analytics
+### Fathom Analytics
 
 [Fathom](https://usefathom.com/ref/42TFOZ) provides a lightweight alternative to Google Analytics.
 
@@ -88,7 +89,7 @@ To enable analytics, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable.
 
 This environment variable will only be taken into account in production, so you don't have to worry about messing up your analytics with localhost development.
 
-#### GitHub Comments
+### GitHub Comments
 
 [Utteranc.es](https://utteranc.es/) is an amazing [open source project](https://github.com/utterance/utterances) which enables developers to embed GitHub issues as a comments section on their websites. Genius.
 
@@ -96,7 +97,7 @@ The integration is really simple. Just edit the `utterancesGitHubRepo` config va
 
 You probably want to read through the Utterances docs before enabling this in production, since there are some subtleties around how issues get mapped to pages on your site, but overall the setup was super easy imho and I love the results.
 
-#### Preview Images
+### Preview Images
 
 This is a really cool feature that's inspired by Medium's smooth image loading, where we first load a low quality, blurred version of an image and animate in the full quality version once it loads. It's such a nice effect, but it does add a bit of work to set up.
 
@@ -117,7 +118,7 @@ FIREBASE_COLLECTION_IMAGES=
 
 The actual work happens in the [create-preview-image](./api/create-preview-image) serverless function.
 
-#### Automatic Social Images
+### Automatic Social Images
 
 <p align="center">
   <img alt="Auto-generated social image" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252Fe1877c31-0bc9-46b7-8aaf-7bcae21baf2b%252Fsocial-image-opt.jpeg%3Ftable%3Dblock%26id%3D735b04d2-2a77-4035-8942-a17f8d41fe83%26cache%3Dv2" width="600">
@@ -137,6 +138,16 @@ This feature works by rendering some custom HTML to a [Puppeteer](https://pptr.d
 Here's an example of a social image URL in production: [/api/render-social-image/71201624b204481f862630ea25ce62fe](https://transitivebullsh.it/api/render-social-image/71201624b204481f862630ea25ce62fe)
 
 Note that you shouldn't have to do anything extra to enable this feature as long as you're deploying to Vercel.
+
+### Automatic Table of Contents
+
+<p align="center">
+  <img alt="Smooth ToC Scrollspy" src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcb2df62d-9028-440b-964b-117711450921%2Ftoc2.gif?table=block&id=d7e9951b-289c-4ff2-8b82-b0a61fe260b1&cache=v2" width="240">
+</p>
+
+By default, every article page will have a table of contents displayed as an `aside` on desktop. It uses scrollspy logic to automatically update the current section as the user scrolls through your document, and makes it really easy to jump between different sections.
+
+This table of contents uses the same logic that Notion uses for its built-in Table of Contents block (see [getPageTableOfContents](<[https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts](https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts)>) for the underlying logic and associated unit tests).
 
 ## Screenshots
 
