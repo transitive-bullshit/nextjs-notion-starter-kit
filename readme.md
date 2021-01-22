@@ -147,7 +147,7 @@ Note that you shouldn't have to do anything extra to enable this feature as long
 
 By default, every article page will have a table of contents displayed as an `aside` on desktop. It uses scrollspy logic to automatically update the current section as the user scrolls through your document, and makes it really easy to jump between different sections.
 
-This table of contents uses the same logic that Notion uses for its built-in Table of Contents block (see [getPageTableOfContents](<[https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts](https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts)>) for the underlying logic and associated unit tests).
+This table of contents uses the same logic that Notion uses for its built-in Table of Contents block (see [getPageTableOfContents](https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts) for the underlying logic and associated unit tests).
 
 ## Screenshots
 
