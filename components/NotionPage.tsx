@@ -90,6 +90,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
+  const showTableOfContents = !!isBlogPost
+  const minTableOfContentsItems = 3
+
   const socialImage = config.api.renderSocialImage(pageId)
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
@@ -194,6 +197,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         darkMode={isDarkMode}
         previewImages={site.previewImages !== false}
         showCollectionViewDropdown={false}
+        showTableOfContents={true}
+        minTableOfContentsItems={minTableOfContentsItems}
         defaultPageIcon={config.defaultPageIcon}
         defaultPageCover={config.defaultPageCover}
         defaultPageCoverPosition={config.defaultPageCoverPosition}

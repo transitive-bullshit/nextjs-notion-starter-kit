@@ -7,6 +7,10 @@
  * places to add some flare and make our site look more like a blog.
  */
 
+.notion {
+  --notion-max-width: 720px;
+}
+
 .notion-page {
   margin: 0 12px;
   width: 720px;
