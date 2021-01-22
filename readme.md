@@ -21,8 +21,8 @@ The site is then deployed to [Vercel](http://vercel.com).
 ## Features
 
 - Setup only takes a few minutes ([single config file](./site.config.js)) 💪
-- Next.js / TS / React / Notion
 - Robust support for Notion content via [react-notion-x](https://github.com/NotionX/react-notion-x)
+- Next.js / TS / React / Notion
 - Excellent page speeds
 - Sexy LQIP image previews
 - Embedded GitHub comments
