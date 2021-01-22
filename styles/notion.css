@@ -74,12 +74,20 @@
 .notion-collection-card-cover {
   transition: filter 150ms linear;
   filter: brightness(100%);
-  /* filter: hue-rotate(0); */
 }
 
 .notion-collection-card:hover .notion-collection-card-cover {
   filter: brightness(120%);
-  /* filter: hue-rotate(180deg); */
+}
+
+/* only target safari */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  _::-webkit-full-page-media,
+  _:future,
+  :root,
+  .notion-collection-card-cover {
+    transition: none 0ms linear;
+  }
 }
 
 .notion-quote {
