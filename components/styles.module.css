@@ -38,56 +38,6 @@
   align-items: center;
 }
 
-.errorImage {
-  max-width: 100%;
-  width: 640px;
-}
-
-.footer {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 8px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.copyright {
-  font-size: 80%;
-  padding: 0.5em;
-}
-
-.social a {
-  font-size: 2em;
-  display: inline-flex;
-  padding: 0.25em;
-  margin-right: 1vw;
-  transition: color 250ms ease-out;
-}
-
-.social a:last-of-type {
-  margin-right: 0;
-}
-
-.social a:hover {
-  transition: color 50ms ease-out;
-}
-
-.twitter:hover {
-  color: #2795e9;
-}
-
-.github:hover {
-  color: #c9510c;
-}
-
-.linkedin:hover {
-  color: #0077b5;
-}
-
 .comments {
   width: 100%;
   margin-top: 2em;

@@ -29,6 +29,7 @@ import { Footer } from './Footer'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
+import { useColorMode } from '@chakra-ui/react'
 
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
@@ -38,11 +39,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
 }) => {
   const router = useRouter()
 
-  const dark = useSearchParam('dark')
   const lite = useSearchParam('lite')
 
   const params: any = {}
-  if (dark) params.dark = dark
   if (lite) params.lite = lite
 
   const searchParams = new URLSearchParams(params)
@@ -54,7 +53,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   )
 
   const isLiteMode = lite === 'true'
-  const isDarkMode = dark !== null ? dark === 'true' : darkMode
+  const { colorMode } = useColorMode()
+  const isDarkMode = colorMode === 'dark'
 
   if (router.isFallback) {
     return <Loading />
@@ -69,13 +69,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const title = getBlockTitle(block, recordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+  // console.log('notion page', {
+  //   isDev: config.isDev,
+  //   title,
+  //   pageId,
+  //   rootNotionPageId: site.rootNotionPageId,
+  //   recordMap
+  // })
 
   if (!config.isServer) {
     // add important objects global window for easy debugging

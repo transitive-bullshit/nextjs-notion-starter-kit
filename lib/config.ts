@@ -15,6 +15,7 @@ export const name: string = getSiteConfig('name')
 export const author: string = getSiteConfig('author')
 export const domain: string = getSiteConfig('domain')
 export const description: string = getSiteConfig('description', 'Notion Blog')
+export const mainWeb: string = getSiteConfig('mainWeb')
 
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
@@ -92,9 +93,20 @@ const defaultEnvValueForPreviewImageSupport =
   isPreviewImageSupportEnabled && isServer ? undefined : null
 
 export const googleProjectId = getEnv(
-  'GCLOUD_PROJECT',
+  'FIREBASE_PROJECT_ID',
   defaultEnvValueForPreviewImageSupport
 )
+
+const config = {
+  client_email: getEnv(
+    'FIREBASE_CLIENT_EMAIL',
+    defaultEnvValueForPreviewImageSupport
+  ),
+  private_key: getEnv(
+    'FIREBASE_PRIVATE_KEY',
+    defaultEnvValueForPreviewImageSupport
+  )?.replace(/\\n/g, '\n')
+}
 
 export const googleApplicationCredentials = getGoogleApplicationCredentials()
 
@@ -110,20 +122,5 @@ function getGoogleApplicationCredentials() {
     return null
   }
 
-  try {
-    const googleApplicationCredentialsBase64 = getEnv(
-      'GOOGLE_APPLICATION_CREDENTIALS',
-      defaultEnvValueForPreviewImageSupport
-    )
-
-    return JSON.parse(
-      Buffer.from(googleApplicationCredentialsBase64, 'base64').toString()
-    )
-  } catch (err) {
-    console.error(
-      'Firebase config error: invalid "GOOGLE_APPLICATION_CREDENTIALS" should be base64-encoded JSON\n'
-    )
-
-    throw err
-  }
+  return config
 }

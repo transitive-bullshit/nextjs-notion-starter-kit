@@ -1,50 +1,46 @@
 import * as React from 'react'
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
+import {
+  Divider,
+  HStack,
+  Stack,
+  Text,
+  Link,
+  useColorMode,
+  IconButton,
+  Icon
+} from '@chakra-ui/react'
 import * as config from 'lib/config'
-
-import styles from './styles.module.css'
-
+import { BsArrowLeft } from 'react-icons/bs'
+import { FaSun, FaMoon } from 'react-icons/fa'
 export const Footer: React.FC<{}> = () => {
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2021 Travis Fischer</div>
-      <div className={styles.social}>
-        {config.twitter && (
-          <a
-            className={styles.twitter}
-            href={`https://twitter.com/${config.twitter}`}
-            title={`Twitter @${config.twitter}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaTwitter />
-          </a>
-        )}
-
-        {config.github && (
-          <a
-            className={styles.github}
-            href={`https://github.com/${config.github}`}
-            title={`GitHub @${config.github}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaGithub />
-          </a>
-        )}
-
-        {config.linkedin && (
-          <a
-            className={styles.linkedin}
-            href={`https://www.linkedin.com/in/${config.linkedin}`}
-            title={`LinkedIn ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaLinkedin />
-          </a>
-        )}
-      </div>
-    </footer>
+    <Stack as='footer' p={4} w='100%' maxW='1100px' fontSize={12}>
+      <HStack justifyContent='space-between'>
+        <Link href={config.mainWeb}>
+          <Icon as={BsArrowLeft} /> Kembali ke situs utama
+        </Link>
+        <IconButton
+          aria-label='change color mode'
+          variant='transparent'
+          size='sm'
+          onClick={toggleColorMode}
+          color='yellow.500'
+          icon={colorMode === 'dark' ? <FaMoon /> : <FaSun />}
+        />
+      </HStack>
+      <Divider />
+      <HStack justifyContent='space-between'>
+        <Link href={config.mainWeb} isExternal>
+          Edufair Online &#169; 2021
+        </Link>
+        <Text>
+          Made with ❤️ by{' '}
+          <Link href='https://wisesa.dev' isExternal>
+            wisesa
+          </Link>
+        </Text>
+      </HStack>
+    </Stack>
   )
 }
