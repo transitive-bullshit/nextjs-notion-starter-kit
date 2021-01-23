@@ -52,7 +52,8 @@
     "react-dom": "17.0.1",
     "react-icons": "^4.1.0",
     "react-notion-x": "^3.3.2",
-    "react-use": "^15.3.3"
+    "react-use": "^15.3.3",
+    "sass": "^1.32.5"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.5",
