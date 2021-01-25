@@ -46,12 +46,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const searchParams = new URLSearchParams(params)
 
-  // TODO: add ability to toggle dark mode
-  const [darkMode, setDarkMode] = useLocalStorage(
-    'notionx-dark-mode',
-    !!site?.darkMode
-  )
-
   const isLiteMode = lite === 'true'
   const { colorMode } = useColorMode()
   const isDarkMode = colorMode === 'dark'
