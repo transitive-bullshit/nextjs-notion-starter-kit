@@ -60,6 +60,10 @@
   text-overflow: unset;
 }
 
+.notion-gallery-grid .notion-property-text {
+  font-size: 14px;
+}
+
 .notion-collection-card {
   /* border-radius: 15%;
   border-top-right-radius: 5%;
