@@ -60,7 +60,14 @@
   padding: 0.5em;
 }
 
+.settings,
+.social {
+  user-select: none;
+}
+
+.settings a,
 .social a {
+  cursor: pointer;
   font-size: 2em;
   display: inline-flex;
   padding: 0.25em;
@@ -68,12 +75,18 @@
   transition: color 250ms ease-out;
 }
 
+.settings a:last-of-type,
 .social a:last-of-type {
   margin-right: 0;
 }
 
+.settings a:hover,
 .social a:hover {
   transition: color 50ms ease-out;
+}
+
+.toggleDarkMode:hover {
+  color: #2795e9;
 }
 
 .twitter:hover {

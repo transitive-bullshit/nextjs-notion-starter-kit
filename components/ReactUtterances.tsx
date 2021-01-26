@@ -37,6 +37,7 @@ export class ReactUtterances extends React.Component<
   ReactUtterancesState
 > {
   reference: React.RefObject<HTMLDivElement>
+  scriptElement: any
 
   constructor(props: ReactUtterancesProps) {
     super(props)
@@ -55,6 +56,18 @@ export class ReactUtterances extends React.Component<
 
     this.reference = React.createRef<HTMLDivElement>()
     this.state = { pending: true }
+  }
+
+  componentWillReceiveProps(props) {
+    // this.scriptElement.setAttribute('theme', props.theme)
+    const iframe = document.querySelector('iframe.utterances-frame') as any
+
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { type: 'set-theme', theme: props.theme },
+        'https://utteranc.es/'
+      )
+    }
   }
 
   componentDidMount(): void {
@@ -81,6 +94,7 @@ export class ReactUtterances extends React.Component<
     }
 
     // TODO: Check current availability
+    this.scriptElement = scriptElement
     this.reference.current!.appendChild(scriptElement)
   }
 

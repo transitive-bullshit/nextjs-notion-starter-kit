@@ -48,13 +48,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const searchParams = new URLSearchParams(params)
 
   // TODO: add ability to toggle dark mode
-  const [darkMode, setDarkMode] = useLocalStorage(
+  const [isDarkMode, setDarkMode] = useLocalStorage(
     'notionx-dark-mode',
-    !!site?.darkMode
+    dark !== null ? dark === true : !!site?.darkMode
   )
 
   const isLiteMode = lite === 'true'
-  const isDarkMode = dark !== null ? dark === 'true' : darkMode
 
   if (router.isFallback) {
     return <Loading />
@@ -106,7 +105,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           repo={config.utterancesGitHubRepo}
           issueMap='issue-term'
           issueTerm='title'
-          theme='preferred-color-scheme'
+          theme={isDarkMode ? 'photon-dark' : 'github-light'}
         />
       )
     }
@@ -206,7 +205,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapImageUrl={mapNotionImageUrl}
         searchNotion={searchNotion}
         pageFooter={comments}
-        footer={<Footer />}
+        footer={<Footer isDarkMode={isDarkMode} setDarkMode={setDarkMode} />}
       />
 
       <CustomHtml site={site} />

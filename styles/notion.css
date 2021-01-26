@@ -79,6 +79,7 @@
 }
 
 .notion-collection-card-cover {
+  border-bottom: 0 none;
   transition: filter 150ms linear;
   filter: none;
 }
@@ -114,11 +115,6 @@
 
 .notion-hr {
   margin: 2em 0;
-}
-
-.notion-dark .notion-collection-card {
-  border: 1px solid var(--fg-color-0);
-  box-shadow: unset;
 }
 
 @media only screen and (max-width: 900px) {
