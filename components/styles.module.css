@@ -120,6 +120,26 @@
   }
 }
 
+@media only screen and (max-width: 566px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer > div {
+    margin-top: 1em;
+  }
+
+  .footer .settings {
+    order: 1;
+  }
+  .footer .social {
+    order: 2;
+  }
+  .footer .copyright {
+    order: 3;
+  }
+}
+
 .pageActions {
   display: flex;
   flex-direction: row;
