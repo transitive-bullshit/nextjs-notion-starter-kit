@@ -97,10 +97,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const socialImage = config.api.renderSocialImage(pageId)
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
+
   let comments: React.ReactNode = null
   let pageAside: React.ReactChild = null
 
-  // only display comments on blog post pages
+  // only display comments and page actions on blog post pages
   if (isBlogPost) {
     if (config.utterancesGitHubRepo) {
       comments = (
