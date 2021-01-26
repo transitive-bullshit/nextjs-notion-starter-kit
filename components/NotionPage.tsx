@@ -50,7 +50,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // TODO: add ability to toggle dark mode
   const [isDarkMode, setDarkMode] = useLocalStorage(
     'notionx-dark-mode',
-    dark !== null ? dark === true : !!site?.darkMode
+    dark !== null ? dark === 'true' : !!site?.darkMode
   )
 
   const isLiteMode = lite === 'true'
