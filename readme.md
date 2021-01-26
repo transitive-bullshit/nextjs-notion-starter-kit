@@ -29,6 +29,7 @@ The site is then deployed to [Vercel](http://vercel.com).
 - Automatic open graph images
 - Automatic pretty URLs
 - Automatic table of contents
+- Full support for dark mode
 - Quick search via CMD+P just like in Notion
 - Responsive for desktop / tablet / mobile
 - Optimized for Next.js and Vercel
