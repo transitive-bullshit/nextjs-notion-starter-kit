@@ -1,9 +1,31 @@
 import React from 'react'
+import { IoHeartOutline } from 'react-icons/io5'
+import { AiOutlineRetweet } from 'react-icons/ai'
 
-import * as types from 'lib/types'
+import styles from './styles.module.css'
 
-// import styles from './styles.module.css'
+export const PageActions: React.FC<{ tweet: string }> = ({ tweet }) => {
+  return (
+    <div className={styles.pageActions}>
+      <a
+        className={styles.likeTweet}
+        href={`https://twitter.com/intent/like?tweet_id=${tweet}`}
+        target='_blank'
+        rel='noopener noreferrer'
+        title='Like this post on Twitter'
+      >
+        <IoHeartOutline />
+      </a>
 
-export const PageHead: React.FC<types.PageProps> = ({ site }) => {
-  return null
+      <a
+        className={styles.retweet}
+        href={`https://twitter.com/intent/retweet?tweet_id=${tweet}`}
+        target='_blank'
+        rel='noopener noreferrer'
+        title='Retweet this post on Twitter'
+      >
+        <AiOutlineRetweet />
+      </a>
+    </div>
+  )
 }

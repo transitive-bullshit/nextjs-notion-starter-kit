@@ -15,6 +15,7 @@ import { getBlockTitle } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
 import { getPageDescription } from 'lib/get-page-description'
+import { getPageTweet } from 'lib/get-page-tweet'
 import { searchNotion } from 'lib/search-notion'
 import * as types from 'lib/types'
 import * as config from 'lib/config'
@@ -25,6 +26,7 @@ import { CustomHtml } from './CustomHtml'
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
+import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { ReactUtterances } from './ReactUtterances'
 
@@ -96,6 +98,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
   let comments: React.ReactNode = null
+  let pageAside: React.ReactChild = null
 
   // only display comments on blog post pages
   if (isBlogPost) {
@@ -108,6 +111,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
           theme={isDarkMode ? 'photon-dark' : 'github-light'}
         />
       )
+    }
+
+    const tweet = getPageTweet(block, recordMap)
+    if (tweet) {
+      pageAside = <PageActions tweet={tweet} />
     }
   }
 
@@ -205,6 +213,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapImageUrl={mapNotionImageUrl}
         searchNotion={searchNotion}
         pageFooter={comments}
+        pageAside={pageAside}
         footer={<Footer isDarkMode={isDarkMode} setDarkMode={setDarkMode} />}
       />
 

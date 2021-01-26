@@ -119,3 +119,39 @@
     left: -60px;
   }
 }
+
+.pageActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 6px 12px 12px;
+}
+
+.pageActions a {
+  cursor: pointer;
+  font-size: 24px;
+  display: inline-flex;
+  padding: 12px;
+  margin-right: 1vw;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 250ms ease-out;
+}
+
+.pageActions a:last-of-type {
+  margin-right: 0;
+}
+
+.pageActions a:hover {
+  transition: all 50ms ease-out;
+}
+
+.likeTweet:hover {
+  background: #f6e3e8;
+  color: #e0265e;
+}
+
+.retweet:hover {
+  color: #19bf64;
+  background: #e5f2e8;
+}
