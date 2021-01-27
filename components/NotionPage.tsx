@@ -147,7 +147,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
           </>
         )}
 
-        <title>{title}</title>
+        <title>
+          {title} {pageId !== site.rootNotionPageId ? ' | ' + site.name : ''}
+        </title>
       </Head>
 
       <CustomFont site={site} />

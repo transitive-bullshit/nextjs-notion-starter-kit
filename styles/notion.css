@@ -116,3 +116,7 @@
 .notion img.notion-page-icon-cover {
   margin-top: -62px;
 } */
+
+.notion-frame {
+  min-height: 100vh;
+}
