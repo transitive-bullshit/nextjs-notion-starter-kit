@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { HTMLDivElement } from 'react-dom'
 import styles from './styles.module.css'
 
 export type MappingType =
@@ -86,16 +87,16 @@ export class ReactUtterances extends React.Component<
     }
 
     if (issueMap === 'issue-number') {
-      scriptElement.setAttribute('issue-number', issueNumber!.toString())
+      scriptElement.setAttribute('issue-number', issueNumber.toString())
     } else if (issueMap === 'issue-term') {
-      scriptElement.setAttribute('issue-term', issueTerm!)
+      scriptElement.setAttribute('issue-term', issueTerm)
     } else {
       scriptElement.setAttribute('issue-term', issueMap)
     }
 
     // TODO: Check current availability
     this.scriptElement = scriptElement
-    this.reference.current!.appendChild(scriptElement)
+    this.reference.current.appendChild(scriptElement)
   }
 
   render(): React.ReactElement {

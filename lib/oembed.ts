@@ -19,21 +19,18 @@ export const oembed = async ({
   let title = config.name
   let authorName = config.author
 
-  try {
-    const page = await getPage(pageId)
-    const pageTitle = getPageTitle(page)
-    if (pageTitle) title = pageTitle
+  // TODO: handle errors gracefully
 
-    const user = page.notion_user[Object.keys(page.notion_user)[0]]?.value
-    const name = [user.given_name, user.family_name]
-      .filter(Boolean)
-      .join(' ')
-      .trim()
-    if (name) authorName = name
-  } catch (err) {
-    // TODO: handle gracefully
-    throw err
-  }
+  const page = await getPage(pageId)
+  const pageTitle = getPageTitle(page)
+  if (pageTitle) title = pageTitle
+
+  const user = page.notion_user[Object.keys(page.notion_user)[0]]?.value
+  const name = [user.given_name, user.family_name]
+    .filter(Boolean)
+    .join(' ')
+    .trim()
+  if (name) authorName = name
 
   const params: any = { lite: 'true' }
   if (dark) {

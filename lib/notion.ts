@@ -36,6 +36,8 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
           }
         }
       }
+
+      return null
     })
     .filter(Boolean)
     .map(({ block, url }) => mapNotionImageUrl(url, block))

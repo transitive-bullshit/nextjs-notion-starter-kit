@@ -7,7 +7,10 @@ import { isPreviewImageSupportEnabled } from '../lib/config'
 import * as types from '../lib/types'
 import * as db from '../lib/db'
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   if (req.method !== 'POST') {
     return res.status(405).send({ error: 'method not allowed' })
   }

@@ -80,8 +80,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   if (!config.isServer) {
     // add important objects global window for easy debugging
-    ;(window as any).recordMap = recordMap
-    ;(window as any).block = block
+    const g = window as any
+    g.recordMap = recordMap
+    g.block = block
   }
 
   const siteMapPageUrl = mapPageUrl(site, recordMap, searchParams)
@@ -205,7 +206,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         darkMode={isDarkMode}
         previewImages={site.previewImages !== false}
         showCollectionViewDropdown={false}
-        showTableOfContents={true}
+        showTableOfContents={showTableOfContents}
         minTableOfContentsItems={minTableOfContentsItems}
         defaultPageIcon={config.defaultPageIcon}
         defaultPageCover={config.defaultPageCover}
