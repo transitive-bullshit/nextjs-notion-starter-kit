@@ -26,7 +26,7 @@
     "posttest": "run-s build"
   },
   "dependencies": {
-    "@google-cloud/firestore": "^4.8.1",
+    "@google-cloud/firestore": "^4.9.1",
     "chrome-aws-lambda": "^5.5.0",
     "classnames": "^2.2.6",
     "dangerously-set-html-content": "^1.0.8",
@@ -52,7 +52,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.5",
     "@types/classnames": "^2.2.10",
-    "@types/node": "^14.6.0",
+    "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
