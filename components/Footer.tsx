@@ -22,15 +22,13 @@ export const Footer: React.FC<{
       <div className={styles.copyright}>Copyright 2021 Travis Fischer</div>
 
       <div className={styles.settings}>
-        {!config.isServer && (
-          <a
-            className={styles.toggleDarkMode}
-            onClick={toggleDarkMode}
-            title='Tottle dark mode'
-          >
-            {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
-          </a>
-        )}
+        <a
+          className={styles.toggleDarkMode}
+          onClick={toggleDarkMode}
+          title='Tottle dark mode'
+        >
+          {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+        </a>
       </div>
 
       <div className={styles.social}>

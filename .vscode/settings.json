@@ -1,4 +1,5 @@
 {
+  "typescript.tsdk": "./node_modules/typescript/lib",
   "files.exclude": {
     "**/logs": true,
     "**/*.log": true,

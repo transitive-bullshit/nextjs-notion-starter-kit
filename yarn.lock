@@ -3926,9 +3926,9 @@ memorystream@^0.3.1:
   integrity sha1-htcJCzDORV1j+64S3aUaR93K+bI=
 
 merge-class-names@^1.1.1:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/merge-class-names/-/merge-class-names-1.3.0.tgz#c4cdc1a981a81dd9afc27aa4287e912a337c5dee"
-  integrity sha512-k0Qaj36VBpKgdc8c188LEZvo6v/zzry/FUufwopWbMSp6/knfVFU/KIB55/hJjeIpg18IH2WskXJCRnM/1BrdQ==
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/merge-class-names/-/merge-class-names-1.4.0.tgz#02edcdd5ff677fbb03b47ecd4586df89d697b81b"
+  integrity sha512-xNdBM7s+6uD+vNZJEymqrFbMBCDGzoA8clZTcj2F1XIy1QQKF+wjFVv7iDZFfdCBnViTdt54A4Ye2lmBsXrBjQ==
 
 merge-stream@^2.0.0:
   version "2.0.0"
@@ -5182,9 +5182,9 @@ rc-dropdown@^3.1.2:
     rc-trigger "^5.0.4"
 
 rc-menu@^8.5.2:
-  version "8.10.4"
-  resolved "https://registry.yarnpkg.com/rc-menu/-/rc-menu-8.10.4.tgz#234b6cb12690a39ca1e9c380aa846110ec06ffdb"
-  integrity sha512-eZOyl6RZFNwREP2MMyIOicrEOA9oeAFz13YG5LBmclz1nJQnpkWRN1NjSSQf2JQGybiuI3zQn+PMfFG99i0YxQ==
+  version "8.10.5"
+  resolved "https://registry.yarnpkg.com/rc-menu/-/rc-menu-8.10.5.tgz#44b7381c650cc76020dfd65753b535f415012179"
+  integrity sha512-8Ets93wQFy9IysmgRUm1VGdrEz6XfZTM0jQOqOPLYNXah5HgAmCh4xT0UOygfHB3IWiQeqDgr2uPB4uVhwI2+Q==
   dependencies:
     "@babel/runtime" "^7.10.1"
     classnames "2.x"

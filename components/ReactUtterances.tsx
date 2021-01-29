@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { HTMLDivElement } from 'react-dom'
 import styles from './styles.module.css'
 
 export type MappingType =
@@ -59,7 +58,7 @@ export class ReactUtterances extends React.Component<
     this.state = { pending: true }
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     // this.scriptElement.setAttribute('theme', props.theme)
     const iframe = document.querySelector('iframe.utterances-frame') as any
 
