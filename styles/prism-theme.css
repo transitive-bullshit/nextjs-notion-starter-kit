@@ -10,7 +10,9 @@
   background-color: rgba(17, 24, 39, 1);
   border-color: rgba(55, 65, 81, 1);
 }
-
+.notion pre {
+  border: 0 none;
+}
 .notion code {
   color: rgba(31, 41, 55, 1);
 }
