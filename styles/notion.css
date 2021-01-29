@@ -122,10 +122,17 @@
   margin: 2em 0;
 }
 
-@media only screen and (max-width: 900px) {
-  .notion-collection {
-    padding-left: 8px;
-    padding-right: 8px;
+@media only screen and (max-width: 920px) {
+  .index-page.notion-page {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .notion-page {
+    padding-left: 2vw;
+    padding-right: 2vw;
   }
 }
 
@@ -186,4 +193,10 @@
 .notion-page-icon-wrapper img.notion-page-icon {
   border-radius: 50%;
   box-shadow: 0 8px 40px 0 rgb(0 0 0 / 21%);
+}
+
+.notion-code {
+  background: rgba(249, 250, 251, 1);
+  border: 1px solid rgba(229, 231, 235, 1);
+  border-radius: 0.375rem;
 }

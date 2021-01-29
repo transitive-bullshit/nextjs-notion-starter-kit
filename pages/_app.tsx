@@ -5,7 +5,10 @@ import 'styles/global.css'
 import 'react-notion-x/src/styles.css'
 
 // used for code syntax highlighting (optional)
-import 'prismjs/themes/prism-tomorrow.css'
+import 'prismjs/themes/prism-coy.css'
+
+// this is better for dark mode
+// import 'prismjs/themes/prism-okaidia.css'
 
 // used for collection views (optional)
 // TODO: re-add if we enable collection view dropdowns
@@ -16,6 +19,15 @@ import 'prismjs/themes/prism-tomorrow.css'
 
 // global style overrides for notion
 import 'styles/notion.css'
+
+// global style overrides for prism theme
+import 'styles/prism-theme.css'
+
+import 'prismjs'
+import 'prismjs/components/prism-markup'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-typescript'
+import 'prismjs/components/prism-bash'
 
 import React from 'react'
 import { useRouter } from 'next/router'
