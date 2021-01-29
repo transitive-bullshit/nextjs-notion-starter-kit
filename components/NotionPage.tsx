@@ -4,8 +4,9 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import cs from 'classnames'
 import { useRouter } from 'next/router'
-import { useLocalStorage, useSearchParam } from 'react-use'
+import { useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
+import useDarkMode from 'use-dark-mode'
 
 // core notion renderer
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
@@ -35,11 +36,11 @@ import styles from './styles.module.css'
 // const Code = dynamic(() =>
 //   import('react-notion-x').then((notion) => notion.Code)
 // )
-
+//
 // const Collection = dynamic(() =>
 //   import('react-notion-x').then((notion) => notion.Collection)
 // )
-
+//
 // const CollectionRow = dynamic(
 //   () => import('react-notion-x').then((notion) => notion.CollectionRow),
 //   {
@@ -66,23 +67,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
   pageId
 }) => {
   const router = useRouter()
-
-  const dark = useSearchParam('dark')
   const lite = useSearchParam('lite')
 
   const params: any = {}
-  if (dark) params.dark = dark
   if (lite) params.lite = lite
 
+  // lite mode is for oembed
+  const isLiteMode = lite === 'true'
   const searchParams = new URLSearchParams(params)
 
-  // TODO: add ability to toggle dark mode
-  const [isDarkMode, setDarkMode] = useLocalStorage(
-    'notionx-dark-mode',
-    dark !== null ? dark === 'true' : !!site?.darkMode
-  )
-
-  const isLiteMode = lite === 'true'
+  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
 
   if (router.isFallback) {
     return <Loading />
@@ -137,7 +131,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           repo={config.utterancesGitHubRepo}
           issueMap='issue-term'
           issueTerm='title'
-          theme={isDarkMode ? 'photon-dark' : 'github-light'}
+          theme={darkMode.value ? 'photon-dark' : 'github-light'}
         />
       )
     }
@@ -235,7 +229,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
         fullPage={!isLiteMode}
-        darkMode={isDarkMode}
+        darkMode={darkMode.value}
         previewImages={site.previewImages !== false}
         showCollectionViewDropdown={false}
         showTableOfContents={showTableOfContents}
@@ -248,7 +242,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
         searchNotion={searchNotion}
         pageFooter={comments}
         pageAside={pageAside}
-        footer={<Footer isDarkMode={isDarkMode} setDarkMode={setDarkMode} />}
+        footer={
+          <Footer
+            isDarkMode={darkMode.value}
+            toggleDarkMode={darkMode.toggle}
+          />
+        }
       />
 
       <CustomHtml site={site} />

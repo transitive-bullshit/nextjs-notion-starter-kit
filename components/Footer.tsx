@@ -7,14 +7,14 @@ import styles from './styles.module.css'
 
 export const Footer: React.FC<{
   isDarkMode: boolean
-  setDarkMode: (boolean) => void
-}> = ({ isDarkMode, setDarkMode }) => {
-  const toggleDarkMode = React.useCallback(
+  toggleDarkMode: () => void
+}> = ({ isDarkMode, toggleDarkMode }) => {
+  const toggleDarkModeCb = React.useCallback(
     (e) => {
       e.preventDefault()
-      setDarkMode(!isDarkMode)
+      toggleDarkMode()
     },
-    [isDarkMode, setDarkMode]
+    [toggleDarkMode]
   )
 
   return (
@@ -24,7 +24,7 @@ export const Footer: React.FC<{
       <div className={styles.settings}>
         <a
           className={styles.toggleDarkMode}
-          onClick={toggleDarkMode}
+          onClick={toggleDarkModeCb}
           title='Tottle dark mode'
         >
           {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
