@@ -8,7 +8,7 @@ import { useLocalStorage, useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
 
 // core notion renderer
-import { NotionRenderer } from 'react-notion-x'
+import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
 
 // utils
 import { getBlockTitle } from 'notion-utils'
@@ -32,20 +32,26 @@ import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
 
-const Code = dynamic(() =>
-  import('react-notion-x').then((notion) => notion.Code)
-)
+// const Code = dynamic(() =>
+//   import('react-notion-x').then((notion) => notion.Code)
+// )
 
-const Collection = dynamic(() =>
-  import('react-notion-x').then((notion) => notion.Collection)
-)
+// const Collection = dynamic(() =>
+//   import('react-notion-x').then((notion) => notion.Collection)
+// )
 
-const CollectionRow = dynamic(() =>
-  import('react-notion-x').then((notion) => notion.CollectionRow)
-)
+// const CollectionRow = dynamic(
+//   () => import('react-notion-x').then((notion) => notion.CollectionRow),
+//   {
+//     ssr: false
+//   }
+// )
 
-const Tweet = dynamic(() =>
-  import('react-notion-x').then((notion) => notion.Tweet)
+const Tweet = dynamic(
+  () => import('react-notion-x').then((notion) => notion.Tweet),
+  {
+    ssr: false
+  }
 )
 
 const Modal = dynamic(
