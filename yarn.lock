@@ -4348,27 +4348,27 @@ normalize-url@^4.1.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.5.0.tgz#453354087e6ca96957bd8f5baf753f5982142129"
   integrity sha512-2s47yzUxdexf1OhyRi4Em83iQk0aPvwTddtFz4hnSSw9dCEsLEGf6SwIO8ss/19S9iBb5sJaOuTvTGDeZI00BQ==
 
-notion-client@^3.4.8:
-  version "3.4.8"
-  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-3.4.8.tgz#b129da85243ef30c5cfa7e92460e5fdf0697bc31"
-  integrity sha512-Ar8rsBtG+oLaVZNRru+EDZQSShbgWIi8XxNDBXf69EOUFQFo2yka/0+xVESZklU/mVL1gZUezNPq/36p384/JA==
+notion-client@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-4.0.0.tgz#622bce2d50018d49bcafbc5c769b4ab3acc96836"
+  integrity sha512-q80DrCAZQCBF1wFVfSFuhPE5toSbohzTmMVF+dPTk9F3cIfJwe81Ds+xQ4nkopLeo/X5F1LHV9p3Uh1GOxsYvw==
   dependencies:
     node-fetch "^2.6.1"
-    notion-types "^3.1.1"
-    notion-utils "^3.4.8"
+    notion-types "^4.0.0"
+    notion-utils "^4.0.0"
     p-map "^4.0.0"
 
-notion-types@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-3.1.1.tgz#a617a8af0fe8b11e12d6a502ca41e6ee771370f7"
-  integrity sha512-QhePG1KEela7yJ5lIH7VJG+hVM3MFcwYFsPStVliruU9aMxwNDnFJtGs3zyGWaM0l+wQNbO5EYLr2B8HdwYKSA==
+notion-types@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-4.0.0.tgz#f2ede73442be1f1fd873f642cb7b7432b578d849"
+  integrity sha512-bSOMhIcezidw48/kUj7QASK/fdK2coEl9CQOx5DiQ3Glee6GG3SQq5wZsQliyiSAGeoZCxP0Kyp5JCAQFHFrDA==
 
-notion-utils@^3.4.8:
-  version "3.4.8"
-  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-3.4.8.tgz#e6c8bdffc192ec7bfc9a837f2e863bb310a64c57"
-  integrity sha512-hTdj/nAcGp/c5dTrdv9+B7OWOMDe6dk8DfZHbaulxzanU9AhIupnHlyMxu82T3Ml83J7/ZKN5AFG5vazzCDjUw==
+notion-utils@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-4.0.0.tgz#b3d814b64de5134c0bb7b7d7e393f466bd8213b6"
+  integrity sha512-gvn+3muBKoqAn6elEgxuouXQ1Hfu9VNUscNXIcja7tPg/arwmTGCcC2o3S4407AEtuffejGANNIgp/+ZfTi0Qw==
   dependencies:
-    notion-types "^3.1.1"
+    notion-types "^4.0.0"
     p-queue "^6.6.1"
 
 npm-run-all@^4.1.5:
@@ -5304,10 +5304,10 @@ react-modal@^3.11.2:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^3.4.8:
-  version "3.4.8"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-3.4.8.tgz#2736ff6e4ae370b2da59f4dfd112cd8e795c88f4"
-  integrity sha512-bkNubPET46v/EU0bUUk3Mnd8Nj46AZDjT/IvquhyMfj2Mb+MjU6EqEeS8kDjH0lYMWJaU4B97DlTYxXcjgX4VQ==
+react-notion-x@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.0.0.tgz#018a65b36838be995ad9062268286709771bd9b6"
+  integrity sha512-oZ4LptNfHV7XWYJKyc7oI1d4GtDwdd5x6ajqh8Sej33sBz6sSHgNMVu6uGL9NDAtGoLv3glcsVxS/HwBfbvDuw==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     date-fns "^2.15.0"
@@ -5316,8 +5316,8 @@ react-notion-x@^3.4.8:
     katex "^0.12.0"
     lodash.throttle "^4.1.1"
     medium-zoom "^1.0.6"
-    notion-types "^3.1.1"
-    notion-utils "^3.4.8"
+    notion-types "^4.0.0"
+    notion-utils "^4.0.0"
     prismjs "^1.20.0"
     rc-dropdown "^3.1.2"
     rc-menu "^8.5.2"
