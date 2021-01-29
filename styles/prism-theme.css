@@ -1,35 +1,17 @@
 /* prism theme adjustments */
 
-.notion pre {
+.notion-code {
   background-color: rgba(249, 250, 251, 1);
+  border: 1px solid rgba(229, 231, 235, 1);
+  border-radius: 0.375rem;
 }
-.dark-mode .notion pre {
+
+.dark-mode .notion-code {
   background-color: rgba(17, 24, 39, 1);
-}
-.notion pre {
-  border-color: rgba(229, 231, 235, 1);
-}
-.dark-mode .notion pre {
   border-color: rgba(55, 65, 81, 1);
 }
-.notion pre {
-  border-width: 1px;
-}
+
 .notion code {
-  background-color: rgba(243, 244, 246, 1);
-}
-.dark-mode .notion code {
-  background-color: rgba(17, 24, 39, 1);
-}
-.notion code {
-  border-color: rgba(243, 244, 246, 1);
-}
-.dark-mode .notion code {
-  border-color: rgba(31, 41, 55, 1);
-}
-.notion code {
-  border-radius: 0.375rem;
-  border-width: 1px;
   color: rgba(31, 41, 55, 1);
 }
 .dark-mode .notion code {
