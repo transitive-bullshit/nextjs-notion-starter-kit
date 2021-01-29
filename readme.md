@@ -14,7 +14,7 @@
 
 This repo is what I use to power my personal blog / portfolio site [transitivebullsh.it](https://transitivebullsh.it).
 
-It uses Notion as a CMS, fetching content from a [root Notion doc](https://notion.so/78fc5a4b88d74b0e824e29407e9f1ec1) and then uses [Next.js](https://nextjs.org/) and [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything.
+It uses Notion as a CMS, fetching content from Notion and then uses [Next.js](https://nextjs.org/) and [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything.
 
 The site is then deployed to [Vercel](http://vercel.com).
 
@@ -44,11 +44,13 @@ The site is then deployed to [Vercel](http://vercel.com).
 4. `npm run dev` to test locally
 5. `run run deploy` to deploy to vercel 💪
 
-I tried to make configuration as easy as possible -- all you really need to change to get started is edit `rootNotionPageId`.
+I tried to make configuration as easy as possible.
 
-You'll want to make your root Notion page **public** and then copy the link to your clipboard. Now just extract the last part of the URL that looks like `d1b5dcf8b9ff425b8aef5ce6f0730202` as your root Notion page iD.
+All you really need to do to get started is edit `rootNotionPageId`. It defaults to rendering my site's public notion page [78fc5a4b88d74b0e824e29407e9f1ec1](https://notion.so/78fc5a4b88d74b0e824e29407e9f1ec1).
 
-I recommend setting up a collection on your home page (I used an inline gallery [here](https://notion.so/78fc5a4b88d74b0e824e29407e9f1ec1)) that contains all of your articles / projects / content. There are no structural constraints on your Notion workspace, however, so feel free to add content as you would normally in Notion. There are a few parts of the code with logic to only show comments on blog post pages (collection item detail pages).
+You'll want to make your root Notion page **public** and then copy the link to your clipboard. Then extract the last part of the URL that looks like `d1b5dcf8b9ff425b8aef5ce6f0730202`, which is your page's Notion iD.
+
+I recommend setting up a collection on your home page (I use an inline gallery [here](https://notion.so/78fc5a4b88d74b0e824e29407e9f1ec1)) that contains all of your articles / projects / content. There are no structural constraints on your Notion workspace, however, so feel free to add content as you would normally in Notion. There are a few parts of the code with logic to only show comments on blog post pages (collection item detail pages).
 
 ## URL Paths
 
