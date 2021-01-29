@@ -41,7 +41,6 @@ export interface Site extends Model {
 
   timestamp: Date
 
-  // disabled for payment reasons
   isDisabled: boolean
 }
 

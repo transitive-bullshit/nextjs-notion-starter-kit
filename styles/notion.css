@@ -3,8 +3,8 @@
  * react-notion-x.
  * 
  * react-notion-x's goal is to match styling as close as possible to Notion,
- * whereas our goal with this blog is to adjust Notion's styling in a few key
- * places to add some flare and make our site look more like a blog.
+ * whereas our goal with this site is to adjust Notion's styling in a few key
+ * places to add some flare.
  */
 
 .notion {
@@ -14,7 +14,7 @@
 .notion-page {
   margin: 0 12px;
   width: 720px;
-  padding-bottom: calc(max(5vh, 64px)) !important;
+  padding-bottom: calc(max(5vh, 32px)) !important;
   line-height: 1.65;
 }
 
@@ -65,10 +65,6 @@
 }
 
 .notion-collection-card {
-  /* border-radius: 15%;
-  border-top-right-radius: 5%;
-  border-bottom-left-radius: 5%; */
-  /* box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1); */
   border-radius: 16px;
   box-shadow: none;
 }
