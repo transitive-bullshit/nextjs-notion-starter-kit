@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // Insert this script in your index.html right after the <body> tag.
 // This will help to prevent a flash if dark mode is the default.
 
