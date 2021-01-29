@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import cs from 'classnames'
 import { useRouter } from 'next/router'
 import { useLocalStorage, useSearchParam } from 'react-use'
@@ -30,6 +31,27 @@ import { Footer } from './Footer'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
+
+const Code = dynamic(() =>
+  import('react-notion-x').then((notion) => notion.Code)
+)
+
+const Collection = dynamic(() =>
+  import('react-notion-x').then((notion) => notion.Collection)
+)
+
+const CollectionRow = dynamic(() =>
+  import('react-notion-x').then((notion) => notion.CollectionRow)
+)
+
+const Tweet = dynamic(() =>
+  import('react-notion-x').then((notion) => notion.Tweet)
+)
+
+const Modal = dynamic(
+  () => import('react-notion-x').then((notion) => notion.Modal),
+  { ssr: false }
+)
 
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
@@ -197,7 +219,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
             >
               <a {...props} />
             </Link>
-          )
+          ),
+          code: Code,
+          collection: Collection,
+          collectionRow: CollectionRow,
+          tweet: Tweet,
+          modal: Modal
         }}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
