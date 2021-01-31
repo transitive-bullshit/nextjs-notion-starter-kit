@@ -23,6 +23,8 @@ import 'styles/notion.css'
 // global style overrides for prism theme
 import 'styles/prism-theme.css'
 
+// here we're bringing in any languages we want to support for
+// syntax highlighting via Notion's Code block
 import 'prismjs'
 import 'prismjs/components/prism-markup'
 import 'prismjs/components/prism-javascript'

@@ -10,17 +10,11 @@
   background-color: rgba(17, 24, 39, 1);
   border-color: rgba(55, 65, 81, 1);
 }
-.notion pre {
-  border: 0 none;
-}
 .notion code {
   color: rgba(31, 41, 55, 1);
 }
 .dark-mode .notion code {
   color: rgba(229, 231, 235, 1);
-}
-.notion img {
-  margin: 0;
 }
 .token.cdata,
 .token.comment,
