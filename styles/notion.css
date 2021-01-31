@@ -13,13 +13,13 @@
 
 .notion-page {
   margin: 0 12px;
-  width: 720px;
+  width: var(--notion-max-width);
   padding-bottom: calc(max(5vh, 32px)) !important;
   line-height: 1.65;
 }
 
 .index-page {
-  width: 900px;
+  --notion-max-width: 900px;
 }
 
 .notion-text {
