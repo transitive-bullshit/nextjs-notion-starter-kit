@@ -240,8 +240,8 @@
   );
 }
 
-..notion-red_background,
-..notion-pink_background {
+.notion-red_background,
+.notion-pink_background {
   /* light pink */
   background-image: linear-gradient(
     119deg,
