@@ -14,14 +14,18 @@ export const getStaticProps = async (context) => {
   } catch (err) {
     console.error('page error', domain, rawPageId, err)
 
-    return {
-      props: {
-        error: {
-          statusCode: err.statusCode || 500,
-          message: err.message
-        }
-      }
-    }
+    // we don't want to publish the error version of this page, so
+    // let next.js know explicitly that incremental SSG failed
+    throw err
+
+    // return {
+    //   props: {
+    //     error: {
+    //       statusCode: err.statusCode || 500,
+    //       message: err.message
+    //     }
+    //   }
+    // }
   }
 }
 
