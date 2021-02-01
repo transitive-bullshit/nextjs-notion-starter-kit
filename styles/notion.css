@@ -213,15 +213,15 @@
   border-image-slice: 1;
 }
 
-.light-mode .notion-red_background,
-.light-mode .notion-pink_background,
-.light-mode .notion-blue_background,
-.light-mode .notion-purple_background,
-.light-mode .notion-teal_background,
-.light-mode .notion-yellow_background,
-.light-mode .notion-orange_background,
-.light-mode .notion-brown_background,
-.light-mode .notion-gray_background {
+.notion-red_background,
+.notion-pink_background,
+.notion-blue_background,
+.notion-purple_background,
+.notion-teal_background,
+.notion-yellow_background,
+.notion-orange_background,
+.notion-brown_background,
+.notion-gray_background {
   padding: 0 0.5rem;
   margin: 0 -0.5rem 0 -0.25rem;
   border-radius: 0.5rem;
@@ -240,8 +240,8 @@
   );
 }
 
-.light-mode .notion-red_background,
-.light-mode .notion-pink_background {
+..notion-red_background,
+..notion-pink_background {
   /* light pink */
   background-image: linear-gradient(
     119deg,
@@ -252,7 +252,7 @@
   );
 }
 
-.light-mode .notion-blue_background {
+.notion-blue_background {
   /* light blue */
   background-image: linear-gradient(
     119deg,
@@ -263,8 +263,8 @@
   );
 }
 
-.light-mode .notion-purple_background,
-.light-mode .notion-orange_background {
+.notion-purple_background,
+.notion-orange_background {
   /* light red */
   background-image: linear-gradient(
     119deg,
@@ -275,7 +275,7 @@
   );
 }
 
-.light-mode .notion-teal_background {
+.notion-teal_background {
   /* light green */
   background-image: linear-gradient(
     119deg,
@@ -286,8 +286,8 @@
   );
 }
 
-.light-mode .notion-brown_background,
-.light-mode .notion-gray_background {
+.notion-brown_background,
+.notion-gray_background {
   /* dark blue */
   background-image: linear-gradient(
     119deg,
