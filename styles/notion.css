@@ -240,7 +240,7 @@
   );
 }
 
-.notion-red_background,
+.notion-purple_background,
 .notion-pink_background {
   /* light pink */
   background-image: linear-gradient(
@@ -252,7 +252,8 @@
   );
 }
 
-.notion-blue_background {
+.notion-blue_background,
+.notion-gray_background {
   /* light blue */
   background-image: linear-gradient(
     119deg,
@@ -263,7 +264,7 @@
   );
 }
 
-.notion-purple_background,
+.notion-red_background,
 .notion-orange_background {
   /* light red */
   background-image: linear-gradient(
@@ -286,8 +287,7 @@
   );
 }
 
-.notion-brown_background,
-.notion-gray_background {
+.notion-brown_background {
   /* dark blue */
   background-image: linear-gradient(
     119deg,
