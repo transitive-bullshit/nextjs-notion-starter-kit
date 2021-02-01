@@ -204,10 +204,96 @@
 .notion-link {
   position: relative;
   transition: unset;
+  opacity: 1;
 }
 
 .notion-link:hover {
-  border-width: 4px;
+  border-width: 3px;
   border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
   border-image-slice: 1;
+}
+
+.light-mode .notion-red_background,
+.light-mode .notion-pink_background,
+.light-mode .notion-blue_background,
+.light-mode .notion-purple_background,
+.light-mode .notion-teal_background,
+.light-mode .notion-yellow_background,
+.light-mode .notion-orange_background,
+.light-mode .notion-brown_background,
+.light-mode .notion-gray_background {
+  padding: 0 0.5rem;
+  margin: 0 -0.5rem 0 -0.25rem;
+  border-radius: 0.5rem;
+  border-bottom-left-radius: 0.125rem;
+  box-decoration-break: clone;
+
+  background-color: none;
+
+  /* light yellow */
+  background-image: linear-gradient(
+    119deg,
+    transparent,
+    #fff697 10.5%,
+    #fdf59d 85.29%,
+    transparent
+  );
+}
+
+.light-mode .notion-red_background,
+.light-mode .notion-pink_background {
+  /* light pink */
+  background-image: linear-gradient(
+    119deg,
+    transparent,
+    #f5b8d1 10.5%,
+    #f9bcd3 85.29%,
+    transparent
+  );
+}
+
+.light-mode .notion-blue_background {
+  /* light blue */
+  background-image: linear-gradient(
+    119deg,
+    transparent,
+    #adedfc 10.5%,
+    #adebfd 85.29%,
+    transparent
+  );
+}
+
+.light-mode .notion-purple_background,
+.light-mode .notion-orange_background {
+  /* light red */
+  background-image: linear-gradient(
+    119deg,
+    transparent,
+    #f5c4ff 10.5%,
+    #e7a8fc 85.29%,
+    transparent
+  );
+}
+
+.light-mode .notion-teal_background {
+  /* light green */
+  background-image: linear-gradient(
+    119deg,
+    transparent,
+    #d4eabc 10.5%,
+    #d2eabc 85.29%,
+    transparent
+  );
+}
+
+.light-mode .notion-brown_background,
+.light-mode .notion-gray_background {
+  /* dark blue */
+  background-image: linear-gradient(
+    119deg,
+    transparent,
+    #96b8ec 10.5%,
+    #a6c3f0 85.29%,
+    transparent
+  );
 }
