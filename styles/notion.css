@@ -233,10 +233,10 @@
   /* light yellow */
   background-image: linear-gradient(
     119deg,
-    transparent,
+    var(--bg-color),
     #fff697 10.5%,
     #fdf59d 85.29%,
-    transparent
+    var(--bg-color)
   );
 }
 
@@ -245,10 +245,10 @@
   /* light pink */
   background-image: linear-gradient(
     119deg,
-    transparent,
+    var(--bg-color),
     #f5b8d1 10.5%,
     #f9bcd3 85.29%,
-    transparent
+    var(--bg-color)
   );
 }
 
@@ -256,10 +256,10 @@
   /* light blue */
   background-image: linear-gradient(
     119deg,
-    transparent,
+    var(--bg-color),
     #adedfc 10.5%,
     #adebfd 85.29%,
-    transparent
+    var(--bg-color)
   );
 }
 
@@ -268,10 +268,10 @@
   /* light red */
   background-image: linear-gradient(
     119deg,
-    transparent,
+    var(--bg-color),
     #f5c4ff 10.5%,
     #e7a8fc 85.29%,
-    transparent
+    var(--bg-color)
   );
 }
 
@@ -279,10 +279,10 @@
   /* light green */
   background-image: linear-gradient(
     119deg,
-    transparent,
+    var(--bg-color),
     #d4eabc 10.5%,
     #d2eabc 85.29%,
-    transparent
+    var(--bg-color)
   );
 }
 
@@ -291,10 +291,10 @@
   /* dark blue */
   background-image: linear-gradient(
     119deg,
-    transparent,
+    var(--bg-color),
     #96b8ec 10.5%,
     #a6c3f0 85.29%,
-    transparent
+    var(--bg-color)
   );
 }
 
