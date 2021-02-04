@@ -20,6 +20,10 @@ export async function getAllPagesImpl(
   const canonicalPageMap = Object.keys(pageMap).reduce(
     (map, pageId: string) => {
       const recordMap = pageMap[pageId]
+      if (!recordMap) {
+        throw new Error(`Error loading page "${pageId}"`)
+      }
+
       const canonicalPageId = getCanonicalPageId(pageId, recordMap, {
         uuid: false
       })
