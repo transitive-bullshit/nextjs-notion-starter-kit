@@ -8,7 +8,6 @@
 import { parsePageId } from 'notion-utils'
 import { getSiteConfig, getEnv } from './get-config-value'
 
-// where it all starts -- the site's root Notion page
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId', 'ROOT_NOTION_PAGE_ID'),
   { uuid: false }
@@ -101,10 +100,17 @@ export const isPreviewImageSupportEnabled: boolean = getSiteConfig(
   false
 )
 
-// ----------------------------------------------------------------------------
-
 export const isDev =
   process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
+
+// where it all starts -- the site's root Notion page
+export const includeNotionIdInUrls: boolean = getSiteConfig(
+  'includeNotionIdInUrls',
+  'INCLUDE_NOTION_ID_IN_URLS',
+  !!isDev
+)
+
+// ----------------------------------------------------------------------------
 
 export const isServer = typeof window === 'undefined'
 

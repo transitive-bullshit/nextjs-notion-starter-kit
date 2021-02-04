@@ -1,10 +1,10 @@
 import * as types from './types'
-import { isDev } from './config'
+import { includeNotionIdInUrls } from './config'
 import { getCanonicalPageId, uuidToId, parsePageId } from 'notion-utils'
 
 // include UUIDs in page URLs during local development but not in production
 // (they're nice for debugging and speed up local dev)
-const uuid = !!isDev
+const uuid = !!includeNotionIdInUrls
 
 export const mapPageUrl = (
   site: types.Site,
