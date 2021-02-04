@@ -4,7 +4,20 @@ if (!siteConfig) {
   throw new Error(`Config error: invalid site.config.js`)
 }
 
-export function getSiteConfig<T>(key: string, defaultValue?: T): T {
+export function getSiteConfig<T>(
+  key: string,
+  envKey?: string,
+  defaultValue?: T
+): T {
+  if (envKey) {
+    // allow environment variables to override site.config.js
+    const envValue = process.env[envKey]
+
+    if (envValue !== undefined) {
+      return (envValue as unknown) as T
+    }
+  }
+
   const value = siteConfig[key]
 
   if (value !== undefined) {

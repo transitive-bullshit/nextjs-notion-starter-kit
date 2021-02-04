@@ -10,63 +10,94 @@ import { getSiteConfig, getEnv } from './get-config-value'
 
 // where it all starts -- the site's root Notion page
 export const rootNotionPageId: string = parsePageId(
-  getSiteConfig('rootNotionPageId'),
+  getSiteConfig('rootNotionPageId', 'ROOT_NOTION_PAGE_ID'),
   { uuid: false }
 )
 
+if (!rootNotionPageId) {
+  throw new Error('Config error invalid "rootNotionPageId"')
+}
+
 // if you want to restrict pages to a single notion workspace (optional)
 export const rootNotionSpaceId: string | null = parsePageId(
-  getSiteConfig('rootNotionSpaceId', null),
+  getSiteConfig('rootNotionSpaceId', 'ROOT_NOTION_SPACE_ID', null),
   { uuid: true }
 )
 
 // general site config
-export const name: string = getSiteConfig('name')
-export const author: string = getSiteConfig('author')
-export const domain: string = getSiteConfig('domain')
-export const description: string = getSiteConfig('description', 'Notion Blog')
+export const name: string = getSiteConfig('name', 'SITE_NAME')
+export const author: string = getSiteConfig('author', 'SITE_AUTHOR')
+export const domain: string = getSiteConfig('domain', 'SITE_DOMAIN')
+export const description: string = getSiteConfig(
+  'description',
+  'SITE_DESCRIPTION',
+  'Notion Blog'
+)
 
 // social accounts
-export const twitter: string | null = getSiteConfig('twitter', null)
-export const github: string | null = getSiteConfig('github', null)
-export const linkedin: string | null = getSiteConfig('linkedin', null)
+export const twitter: string | null = getSiteConfig(
+  'twitter',
+  'SITE_TWITTER',
+  null
+)
+export const github: string | null = getSiteConfig(
+  'github',
+  'SITE_GITHUB',
+  null
+)
+export const linkedin: string | null = getSiteConfig(
+  'linkedin',
+  'SITE_LINKEDIN',
+  null
+)
 
 export const socialImageTitle: string | null = getSiteConfig(
   'socialImageTitle',
+  'SOCIAL_IMAGE_TITLE',
   null
 )
 export const socialImageSubtitle: string | null = getSiteConfig(
   'socialImageSubtitle',
+  'SOCIAL_IMAGE_SUBTITLE',
   null
 )
 
 // default notion values for site-wide consistency (optional; may be overridden on a per-page basis)
 export const defaultPageIcon: string | null = getSiteConfig(
   'defaultPageIcon',
+  'DEFAULT_PAGE_ICON',
   null
 )
 export const defaultPageCover: string | null = getSiteConfig(
   'defaultPageCover',
+  'DEFAULT_PAGE_COVER',
   null
 )
 export const defaultPageCoverPosition: number = getSiteConfig(
   'defaultPageCoverPosition',
+  null,
   0.5
 )
 
 // Optional utteranc.es comments via GitHub issue comments
 export const utterancesGitHubRepo: string | null = getSiteConfig(
   'utterancesGitHubRepo',
+  'UTTERANCES_GITHUB_REPO',
   null
 )
 
 // Optional image CDN host to proxy all image requests through
-export const imageCDNHost: string | null = getSiteConfig('imageCDNHost', null)
+export const imageCDNHost: string | null = getSiteConfig(
+  'imageCDNHost',
+  'IMAGE_CDN_HOST',
+  null
+)
 
 // Optional whether or not to enable support for LQIP preview images
 // (requires a Google Firebase collection)
 export const isPreviewImageSupportEnabled: boolean = getSiteConfig(
   'isPreviewImageSupportEnabled',
+  null,
   false
 )
 
