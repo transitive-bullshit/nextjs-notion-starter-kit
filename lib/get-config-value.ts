@@ -10,7 +10,7 @@ export function getSiteConfig<T>(
   defaultValue?: T
 ): T {
   if (envKey) {
-    // allow environment variables to override site.config.js
+    // allow environment variables to override site.config.js (optional)
     const envValue = process.env[envKey]
 
     if (envValue !== undefined) {
