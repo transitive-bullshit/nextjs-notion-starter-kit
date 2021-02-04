@@ -190,11 +190,6 @@
   padding: 2em;
 }
 
-.notion-page-icon-wrapper img.notion-page-icon {
-  border-radius: 50%;
-  box-shadow: 0 8px 40px 0 rgb(0 0 0 / 21%);
-}
-
 .notion-code {
   background: rgba(249, 250, 251, 1);
   border: 1px solid rgba(229, 231, 235, 1);
