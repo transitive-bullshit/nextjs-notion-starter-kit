@@ -3304,10 +3304,10 @@ normalize-url@^4.1.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.5.0.tgz#453354087e6ca96957bd8f5baf753f5982142129"
   integrity sha512-2s47yzUxdexf1OhyRi4Em83iQk0aPvwTddtFz4hnSSw9dCEsLEGf6SwIO8ss/19S9iBb5sJaOuTvTGDeZI00BQ==
 
-notion-client@^4.2.8:
-  version "4.2.8"
-  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-4.2.8.tgz#a9e963456b377a1354426382905aac8751e74124"
-  integrity sha512-F30vBLoiKPxOi2pbv1Rpm/eLbmf55Z69Xd9UGOhTfGuZtBrnSEtCvl2QWaffec0Yv2Sy0icsff8wyHqAl56OIg==
+notion-client@^4.2.9:
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-4.2.9.tgz#d95bc83430ddfae3be7763f598b0d937be8d5f46"
+  integrity sha512-6HcRvzCYY1D812jzohJcqqFpVzHYrxTaX131jTjMyZHt2C1rKFn4u1crGAVmzMtBNVryDILC7OXpKctAV6PVLg==
   dependencies:
     got "^11.8.1"
     notion-types "^4.0.0"
@@ -4110,10 +4110,10 @@ react-modal@^3.11.2:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^4.2.8:
-  version "4.2.8"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.2.8.tgz#d8c1aa5aab8bbb32046684686f4002ee160c16f3"
-  integrity sha512-uUON8qr+/tcKNXqXTl2anXfQVmc8XGAWRY+mc/dEIrTKp2+df9VzkvEonvstGWS4hX2n79te5YyvOWS5M+Galg==
+react-notion-x@^4.2.9:
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.2.9.tgz#f6cadf1a09350af0a81dd0472250e6336b623ec9"
+  integrity sha512-5YM86NoSuAq2dlfAbOUWvsnGTn7ZmTY2paHt9kJHu/JET9g9Ih5ujBfskI/FKjCspDWTpUOVFM1D3Qy0cdiXOg==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     date-fns "^2.15.0"
