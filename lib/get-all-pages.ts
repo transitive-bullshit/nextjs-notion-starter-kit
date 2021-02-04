@@ -14,7 +14,6 @@ export async function getAllPagesImpl(
     rootNotionPageId,
     rootNotionSpaceId,
     getPage
-    // notion.getPage.bind(notion)
   )
 
   const canonicalPageMap = Object.keys(pageMap).reduce(
