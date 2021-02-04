@@ -35,7 +35,7 @@
     "isomorphic-unfetch": "^3.1.0",
     "lqip-modern": "^1.1.3",
     "next": "^10.0.6",
-    "notion-client": "^4.2.9",
+    "notion-client": "^4.2.10",
     "notion-types": "^4.0.0",
     "notion-utils": "^4.2.7",
     "p-map": "^4.0.0",
