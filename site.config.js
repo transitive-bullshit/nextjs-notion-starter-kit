@@ -1,18 +1,18 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: '011aba605f584e42a8320e62be9bebc3',
+  rootNotionPageId: '86dfe71ddea84699a9e4a6db5d5c4ded',
 
   // if you want to restrict pages to a single notion workspace (optional)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Ubiquity Algorithmic Dollar',
-  domain: 'docs.ubq.fi',
-  author: 'Ubiquity DAO',
+  name: 'Ubiquity DAO Hub',
+  domain: 'dao.ubq.fi',
+  author: 'Ubiquity DAO Contributors Hub',
 
   // open graph metadata (optional)
-  description: 'Ubiquity Algorithmic Dollar Documentation',
-  socialImageTitle: 'Ubiquity Algorithmic Dollar Docs',
+  description: 'Ubiquity DAO Contributors Hub',
+  socialImageTitle: 'Ubiquity DAO Contributors Hub',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
