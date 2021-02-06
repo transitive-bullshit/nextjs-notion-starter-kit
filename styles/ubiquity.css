@@ -12,7 +12,7 @@
 }
 .dark-mode {
   --bg-color: #101010;
-  --fg-color: #bfbfbf;
+  --fg-color: #e0e0e0;
 }
 .notion-app {
   overflow: initial;
@@ -178,7 +178,12 @@ img.lazy-image-real {
   max-width: initial;
 }
 
-html {
+.notion {
   letter-spacing: -0.25px;
   text-rendering: optimizeSpeed;
+}
+
+.notion-page-content{
+  max-width: 640px;
+  margin: 0 auto;
 }
