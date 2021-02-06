@@ -34,3 +34,4 @@ img { max-width: 75vw !important; object-fit: cover; }
 img.lazy-image-preview, img.lazy-image-real { aspect-ratio: auto; }
 
 .notion-page-no-cover.notion-page-no-icon{padding-top:48px}
+.notion-h1, .notion-h2, .notion-h3, .notion-h4, .notion-h5, .notion-h6{padding-top:initial}
