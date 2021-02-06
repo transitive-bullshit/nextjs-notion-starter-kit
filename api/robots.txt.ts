@@ -17,7 +17,6 @@ export default async (
   )
   res.setHeader('Content-Type', 'text/plain')
   res.write(`User-agent: *
-Allow: /
 Sitemap: ${host}/api/sitemap.xml
 `)
   res.end()
