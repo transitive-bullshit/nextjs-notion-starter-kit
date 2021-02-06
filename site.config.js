@@ -8,7 +8,7 @@ module.exports = {
   // basic site info (required)
   name: 'Ubiquity DAO Hub',
   domain: 'dao.ubq.fi',
-  author: 'Ubiquity DAO Contributors Hub',
+  author: 'Ubiquity DAO',
 
   // open graph metadata (optional)
   description: 'Ubiquity DAO Contributors Hub',
