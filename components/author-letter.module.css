@@ -1,0 +1,265 @@
+.letter {
+  --acid: #d6ff3f;
+  --ink: #f0eee6;
+  --muted-ink: rgb(240 238 230 / 58%);
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  scroll-margin-top: 0;
+  padding: clamp(104px, 14vw, 176px) 0 clamp(104px, 14vw, 176px);
+  color: var(--ink);
+}
+
+.letter::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 20%, rgb(214 255 63 / 5%), transparent 34%),
+    linear-gradient(
+      90deg,
+      transparent 0 49.95%,
+      rgb(240 238 230 / 3%) 50%,
+      transparent 50.05%
+    );
+  content: '';
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding-top: clamp(42px, 6vw, 72px);
+  border-top: 1px solid rgb(240 238 230 / 14%);
+  text-align: center;
+}
+
+.inner::before {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 64px;
+  height: 1px;
+  background: var(--acid);
+  content: '';
+  transform: translateX(-50%);
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--notion-font);
+}
+
+.avatarLink {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+}
+
+.avatarLink:focus-visible {
+  outline: 1px solid var(--acid);
+  outline-offset: 6px;
+}
+
+.avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(214 255 63 / 50%);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.kicker {
+  margin: 0;
+  color: rgb(240 238 230 / 72%);
+  font-size: 0.67rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 20ch;
+  margin: clamp(48px, 7vw, 80px) auto 0;
+  color: var(--ink);
+  font-family: var(--editorial-font);
+  font-size: clamp(3.65rem, 6.85vw, 7rem);
+  font-weight: 500;
+  letter-spacing: -0.052em;
+  line-height: 0.88;
+  text-wrap: balance;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 660px;
+  margin-top: clamp(46px, 6vw, 68px);
+}
+
+.body p {
+  margin: 0;
+  color: var(--muted-ink);
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.body .lead {
+  max-width: 56ch;
+}
+
+.body .lead + p {
+  max-width: 62ch;
+  margin-top: 26px;
+}
+
+.link {
+  border-bottom: 1px solid rgb(214 255 63 / 52%);
+  color: var(--ink);
+  transition:
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.aboutLink {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 34px;
+  padding-bottom: 5px;
+  font-family: var(--notion-font);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.link span {
+  color: var(--acid);
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.link:focus-visible {
+  outline: 1px solid var(--acid);
+  outline-offset: 7px;
+}
+
+.signature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 640px);
+  color: var(--ink);
+}
+
+.signatureArtwork {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.signatureStroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  vector-effect: non-scaling-stroke;
+}
+
+.firstName,
+.lastName {
+  stroke: var(--ink);
+  stroke-width: 2.1;
+}
+
+.flourish {
+  stroke: var(--acid);
+  stroke-width: 1.35;
+}
+
+.signature[data-signature-state='armed'] .signatureStroke {
+  stroke-dashoffset: 1;
+}
+
+.signature[data-signature-state='visible'] .firstName {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 900ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.signature[data-signature-state='visible'] .lastName {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 900ms cubic-bezier(0.77, 0, 0.175, 1) 520ms;
+}
+
+.signature[data-signature-state='visible'] .flourish {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 520ms cubic-bezier(0.77, 0, 0.175, 1) 1.25s;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    border-color: var(--acid);
+    color: var(--acid);
+  }
+
+  .link:hover span {
+    transform: translateX(3px);
+  }
+}
+
+@media (max-width: 640px) {
+  .letter {
+    padding: 96px 0 128px;
+  }
+
+  .inner {
+    padding-top: 40px;
+  }
+
+  .title {
+    margin-top: 44px;
+  }
+
+  .body {
+    margin-top: 38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .link span,
+  .signatureStroke {
+    transition: none !important;
+  }
+
+  .signatureStroke {
+    stroke-dashoffset: 0 !important;
+  }
+}

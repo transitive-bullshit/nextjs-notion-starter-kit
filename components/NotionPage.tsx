@@ -2,31 +2,42 @@
 
 import cs from 'classnames'
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 import Link from 'next/link'
-import { formatDate, getBlockTitle, getBlockValue } from 'notion-utils'
+import {
+  estimatePageReadTime,
+  formatDate,
+  getBlockTitle,
+  getBlockValue,
+  getPageProperty,
+  getSignedFileUrl,
+  // normalizeTitle,
+  parsePageId
+} from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
-import {
-  type NotionComponents,
-  NotionRenderer,
-  useNotionContext
-} from 'react-notion-x'
-import { Collection } from 'react-notion-x/third-party/collection'
-import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
-import { useSearchParam } from 'react-use'
+import { type NotionComponents, NotionRenderer } from 'react-notion-x'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
-import { useDarkMode } from '@/lib/use-dark-mode'
 
+import { ArticleMasthead } from './ArticleMasthead'
+import {
+  ArticleCardTextTransition,
+  ArticlePageLink,
+  ArticleTransitionImage,
+  ArticleTransitionProvider
+} from './ArticleViewTransitions'
+import { AuthorLetter } from './AuthorLetter'
 import { Footer } from './Footer'
-import { GitHubShareButton } from './GitHubShareButton'
 import { NotionPageHeader } from './NotionPageHeader'
 import { PageAside } from './PageAside'
+import { Page404 } from './Page404'
+import { MainContentTarget } from './SkipLink'
+import { SpecialPageShell } from './SpecialPageShell'
+import { TableOfContentsBottomState } from './TableOfContentsBottomState'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -43,19 +54,9 @@ const Code = dynamic(() =>
       // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-bash.js'),
       // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-c.js'),
-      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-cpp.js'),
       // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-csharp.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-docker.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-java.js'),
-      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-js-templates.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-coffeescript.js'),
       // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-diff.js'),
       // @ts-expect-error Ignore prisma types
@@ -63,39 +64,11 @@ const Code = dynamic(() =>
       // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-go.js'),
       // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-graphql.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-handlebars.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-less.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-makefile.js'),
-      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-markdown.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-objectivec.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-ocaml.js'),
       // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-python.js'),
       // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-reason.js'),
-      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-rust.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-sass.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-scss.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-solidity.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-sql.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-stylus.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-swift.js'),
-      // @ts-expect-error Ignore prisma types
-      import('prismjs/components/prism-wasm.js'),
       // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-yaml.js')
     ])
@@ -103,15 +76,6 @@ const Code = dynamic(() =>
   })
 )
 
-const Equation = dynamic(() =>
-  import('react-notion-x/third-party/equation').then((m) => m.Equation)
-)
-const Pdf = dynamic(
-  () => import('react-notion-x/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false
-  }
-)
 const Modal = dynamic(
   () =>
     import('react-notion-x/third-party/modal').then((m) => {
@@ -123,16 +87,13 @@ const Modal = dynamic(
   }
 )
 
-function Tweet({ id }: { id: string }) {
-  const { recordMap } = useNotionContext()
-  const tweet = (recordMap as types.ExtendedTweetRecordMap)?.tweets?.[id]
+const Collection = dynamic(
+  () =>
+    import('react-notion-x/third-party/collection').then((m) => m.Collection),
+  { ssr: false }
+)
 
-  return (
-    <React.Suspense fallback={<TweetSkeleton />}>
-      {tweet ? <EmbeddedTweet tweet={tweet} /> : <TweetNotFound />}
-    </React.Suspense>
-  )
-}
+const Tweet = dynamic(() => import('./NotionTweet').then((m) => m.NotionTweet))
 
 const propertyLastEditedTimeValue = (
   { block, pageHeader }: any,
@@ -165,61 +126,143 @@ const propertyDateValue = (
 }
 
 const propertyTextValue = (
-  { schema, pageHeader }: any,
+  { block, schema, pageHeader }: any,
   defaultFn: () => React.ReactNode
 ) => {
+  const content = defaultFn()
+
   if (pageHeader && schema?.name?.toLowerCase() === 'author') {
-    return <b>{defaultFn()}</b>
+    return <b>{content}</b>
   }
 
-  return defaultFn()
+  if (
+    !pageHeader &&
+    block?.type === 'page' &&
+    block.parent_table === 'collection' &&
+    schema?.name?.toLowerCase() === 'description'
+  ) {
+    return (
+      <ArticleCardTextTransition pageId={block.id} part='description'>
+        {content}
+      </ArticleCardTextTransition>
+    )
+  }
+
+  return content
 }
 
-const notionRendererComponents: Partial<NotionComponents> = {
-  nextImage: Image,
+const propertyTitleValue = (
+  { block, pageHeader }: any,
+  defaultFn: () => React.ReactNode
+) => {
+  const content = defaultFn()
+
+  if (
+    !pageHeader &&
+    block?.type === 'page' &&
+    block.parent_table === 'collection'
+  ) {
+    return (
+      <ArticleCardTextTransition pageId={block.id} part='title'>
+        {content}
+      </ArticleCardTextTransition>
+    )
+  }
+
+  return content
+}
+
+// const propertySelectValue = (
+//   { schema, value, key, pageHeader }: any,
+//   defaultFn: () => React.ReactNode
+// ) => {
+//   value = normalizeTitle(value)
+
+//   if (pageHeader && schema.type === 'multi_select' && value) {
+//     return (
+//       <Link href={`/tags/${value}`} key={key} legacyBehavior>
+//         <a>{defaultFn()}</a>
+//       </Link>
+//     )
+//   }
+
+//   return defaultFn()
+// }
+
+const HeroHeader = dynamic<{ className?: string }>(() =>
+  import('./HeroHeader').then((m) => m.HeroHeader)
+)
+
+const LandingSignature = dynamic(() =>
+  import('./LandingSignature').then((m) => m.LandingSignature)
+)
+
+const defaultNotionRendererComponents: Partial<NotionComponents> = {
+  nextImage: ArticleTransitionImage,
   nextLink: Link,
+  PageLink: ArticlePageLink,
   Code,
   Collection,
-  Equation,
-  Pdf,
   Modal,
   Tweet,
   Header: NotionPageHeader,
   propertyLastEditedTimeValue,
   propertyTextValue,
+  propertyTitleValue,
   propertyDateValue
+  // propertySelectValue
 }
 
+export type NotionPageProps = Required<
+  Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>
+> &
+  Pick<types.PageProps, 'error' | 'tagsPage' | 'propertyToFilterName'> & {
+    components?: Partial<NotionComponents>
+    isLiteMode?: boolean
+  }
+
 export function NotionPage({
+  components,
   site,
   recordMap,
-  pageId
-}: Required<Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>>) {
-  const lite = useSearchParam('lite')
-
-  // lite mode is for oembed
-  const isLiteMode = lite === 'true'
-
-  const { isDarkMode } = useDarkMode()
-
+  pageId,
+  error,
+  tagsPage,
+  propertyToFilterName,
+  isLiteMode = false
+}: NotionPageProps) {
+  const notionRendererComponents = React.useMemo(
+    () =>
+      components
+        ? { ...defaultNotionRendererComponents, ...components }
+        : defaultNotionRendererComponents,
+    [components]
+  )
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
-    if (lite) params.lite = lite
+    if (isLiteMode) params.lite = 'true'
 
     const searchParams = new URLSearchParams(params)
     return mapPageUrl(site, recordMap, searchParams)
-  }, [site, recordMap, lite])
+  }, [site, recordMap, isLiteMode])
 
   const keys = Object.keys(recordMap?.block || {})
   const block = getBlockValue(recordMap?.block?.[keys[0]!])!
 
-  // const isRootPage =
-  //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
+  const isRootPage =
+    parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
+  const isAboutPage =
+    parsePageId(block?.id) === parsePageId('8d0062776d0c4afca96eb1ace93a7538')
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
+  const name = block
+    ? getBlockTitle(block, recordMap) || site?.name || config.name
+    : site?.name || config.name
+  const title =
+    tagsPage && propertyToFilterName ? `${propertyToFilterName} ${name}` : name
 
   const pageAside = React.useMemo(
     () => (
@@ -228,9 +271,90 @@ export function NotionPage({
     [block, recordMap, isBlogPost]
   )
 
-  const title = getBlockTitle(block, recordMap) || site.name
+  const pageCover = React.useMemo(() => {
+    if (isLiteMode) return null
 
+    if (isAboutPage) {
+      return (
+        <HeroHeader className='notion-page-cover-wrapper notion-page-cover-hero' />
+      )
+    }
+
+    if (isBlogPost && block?.type === 'page') {
+      const pageBlock = block as types.PageBlock
+      const rawCoverUrl =
+        pageBlock.format?.page_cover || config.defaultPageCover
+      const signedCoverUrl = getSignedFileUrl(
+        rawCoverUrl,
+        pageBlock,
+        recordMap.signed_urls
+      )
+      const coverUrl =
+        mapImageUrl(signedCoverUrl, pageBlock) || '/page-cover.jpg'
+      const rawIcon = pageBlock.format?.page_icon
+      const iconIsImage = Boolean(
+        rawIcon &&
+        (rawIcon.includes('/') ||
+          rawIcon.includes(':') ||
+          rawIcon.startsWith('data:') ||
+          rawIcon.startsWith('blob:'))
+      )
+      const iconUrl = iconIsImage
+        ? mapImageUrl(
+            getSignedFileUrl(rawIcon, pageBlock, recordMap.signed_urls),
+            pageBlock
+          )
+        : undefined
+      const publishedTimestamp = getPageProperty<number>(
+        'Published',
+        pageBlock,
+        recordMap
+      )
+      const readTime = estimatePageReadTime(pageBlock, recordMap)
+      const tags = (
+        getPageProperty<string[]>('Tags', pageBlock, recordMap) || []
+      ).filter(Boolean)
+
+      return (
+        <ArticleMasthead
+          pageId={pageBlock.id}
+          title={title}
+          description={
+            getPageProperty<string>('Description', pageBlock, recordMap) || ''
+          }
+          iconEmoji={!iconIsImage ? rawIcon : undefined}
+          iconUrl={iconUrl}
+          published={
+            publishedTimestamp
+              ? formatDate(publishedTimestamp, { month: 'long' })
+              : 'Unpublished'
+          }
+          author={
+            getPageProperty<string>('Author', pageBlock, recordMap) ||
+            config.author
+          }
+          readingLength={`${Math.max(
+            1,
+            Math.ceil(readTime.totalReadTimeInMinutes)
+          )} min read`}
+          tags={tags}
+          coverUrl={coverUrl}
+          coverAlt=''
+          coverPosition={
+            pageBlock.format?.page_cover_position ??
+            config.defaultPageCoverPosition
+          }
+        />
+      )
+    }
+
+    return null
+  }, [block, isAboutPage, isBlogPost, isLiteMode, recordMap, title])
+
+  // for easier debugging
   React.useEffect(() => {
+    if (error || !site || !block || !recordMap) return
+
     console.log('notion page', {
       isDev: config.isDev,
       title,
@@ -239,40 +363,108 @@ export function NotionPage({
       recordMap
     })
 
-    // add important objects to the window global for easy debugging
     const g = window as any
     g.pageId = pageId
     g.recordMap = recordMap
     g.block = block
-  }, [block, pageId, recordMap, site.rootNotionPageId, title])
+  }, [block, error, pageId, recordMap, site, title])
+
+  if (error || !site || !block || !recordMap) {
+    return (
+      <SpecialPageShell sourceNotionPageId={pageId}>
+        <Page404 site={site} pageId={pageId} error={error} />
+      </SpecialPageShell>
+    )
+  }
 
   return (
     <>
       {isLiteMode && <BodyClassName className='notion-lite' />}
 
-      <NotionRenderer
-        bodyClassName={cs(pageId === site.rootNotionPageId && 'index-page')}
-        darkMode={isDarkMode}
-        components={notionRendererComponents}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : undefined}
-        pageAside={pageAside}
-        footer={<Footer />}
-      />
+      <TableOfContentsBottomState enabled={showTableOfContents} />
 
-      <GitHubShareButton />
+      <ArticleTransitionProvider
+        enabled={isRootPage && !isLiteMode}
+        recordMap={recordMap}
+      >
+        <NotionRenderer
+          bodyClassName={
+            isLiteMode
+              ? undefined
+              : cs(
+                  isRootPage && 'index-page landing-page',
+                  isBlogPost && 'article-page',
+                  !isRootPage && !isBlogPost && 'standard-page',
+                  isAboutPage && 'about-page',
+                  tagsPage && 'tags-page'
+                )
+          }
+          className={
+            isLiteMode
+              ? undefined
+              : cs(
+                  isRootPage && 'landing-notion',
+                  isBlogPost && 'article-notion',
+                  !isRootPage && !isBlogPost && 'standard-notion'
+                )
+          }
+          darkMode={true}
+          components={notionRendererComponents}
+          recordMap={recordMap}
+          rootPageId={site.rootNotionPageId}
+          rootDomain={site.domain}
+          fullPage={!isLiteMode}
+          previewImages={!!recordMap.preview_images}
+          showCollectionViewDropdown={false}
+          showTableOfContents={showTableOfContents}
+          minTableOfContentsItems={minTableOfContentsItems}
+          tableOfContentsTitle='On this page'
+          defaultPageIcon={undefined}
+          defaultPageCover={undefined}
+          defaultPageCoverPosition={config.defaultPageCoverPosition}
+          linkTableTitleProperties={false}
+          mapPageUrl={siteMapPageUrl}
+          mapImageUrl={mapImageUrl}
+          searchNotion={config.isSearchEnabled ? searchNotion : undefined}
+          disableHeader={false}
+          header={isRootPage ? <LandingSignature /> : undefined}
+          pageAside={isBlogPost ? pageAside : undefined}
+          pageHeader={
+            <>
+              <MainContentTarget />
+
+              {isRootPage ? (
+                <>
+                  <AuthorLetter />
+
+                  <header className='landing-writing-header'>
+                    <h2 id='writing'>Writing</h2>
+                  </header>
+                </>
+              ) : null}
+            </>
+          }
+          footer={
+            <>
+              {isBlogPost ? (
+                <nav
+                  className='article-end-navigation'
+                  aria-label='Article navigation'
+                >
+                  <Link href='/'>
+                    <span aria-hidden='true'>&larr;</span>
+                    Back home
+                  </Link>
+                </nav>
+              ) : null}
+
+              <Footer sourceNotionPageId={pageId} />
+            </>
+          }
+          pageTitle={tagsPage && propertyToFilterName ? title : undefined}
+          pageCover={pageCover}
+        />
+      </ArticleTransitionProvider>
     </>
   )
 }

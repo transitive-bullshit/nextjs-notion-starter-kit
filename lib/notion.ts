@@ -3,7 +3,7 @@ import {
   type SearchParams,
   type SearchResults
 } from 'notion-types'
-import { mergeRecordMaps } from 'notion-utils'
+import { getBlockValue, mergeRecordMaps, parsePageId } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
 
@@ -16,6 +16,34 @@ import { getTweetsMap } from './get-tweets'
 import { notion } from './notion-api'
 import { getPreviewImageMap } from './preview-images'
 
+function pruneNavigationLinkRecordMap(
+  recordMap: ExtendedRecordMap,
+  pageId: string
+): ExtendedRecordMap {
+  const blockId = parsePageId(pageId) ?? pageId
+  const blockRecord = recordMap.block[blockId]
+  if (!blockRecord) return recordMap
+
+  const block = getBlockValue(blockRecord)
+  const collectionId =
+    block?.parent_table === 'collection' ? block.parent_id : undefined
+  const collectionRecord = collectionId
+    ? recordMap.collection[collectionId]
+    : undefined
+
+  return {
+    block: { [blockId]: blockRecord },
+    collection:
+      collectionId && collectionRecord
+        ? { [collectionId]: collectionRecord }
+        : {},
+    collection_view: {},
+    notion_user: {},
+    collection_query: {},
+    signed_urls: {}
+  }
+}
+
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
     const navigationLinkPageIds = (navigationLinks || [])
@@ -25,13 +53,16 @@ const getNavigationLinkPages = pMemoize(
     if (navigationStyle !== 'default' && navigationLinkPageIds.length) {
       return pMap(
         navigationLinkPageIds,
-        async (navigationLinkPageId) =>
-          notion.getPage(navigationLinkPageId, {
+        async (navigationLinkPageId) => {
+          const recordMap = await notion.getPage(navigationLinkPageId, {
             chunkLimit: 1,
             fetchMissingBlocks: false,
             fetchCollections: false,
             signFileUrls: false
-          }),
+          })
+
+          return pruneNavigationLinkRecordMap(recordMap, navigationLinkPageId)
+        },
         {
           concurrency: 4
         }
@@ -43,14 +74,22 @@ const getNavigationLinkPages = pMemoize(
 )
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
-  let recordMap = await notion.getPage(pageId)
+  const recordMapPromise = notion.getPage(pageId)
+  const navigationLinkRecordMapsPromise =
+    navigationStyle !== 'default'
+      ? getNavigationLinkPages()
+      : Promise.resolve([])
+
+  const [initialRecordMap, navigationLinkRecordMaps] = await Promise.all([
+    recordMapPromise,
+    navigationLinkRecordMapsPromise
+  ])
+  let recordMap = initialRecordMap
 
   if (navigationStyle !== 'default') {
-    // ensure that any pages linked to in the custom navigation header have
-    // their block info fully resolved in the page record map so we know
-    // the page title, slug, etc.
-    const navigationLinkRecordMaps = await getNavigationLinkPages()
-
+    // Merge only the linked page record (and parent collection schema when
+    // needed) so URL generation has title/slug data without serializing the
+    // navigation page's content into every route.
     if (navigationLinkRecordMaps?.length) {
       recordMap = navigationLinkRecordMaps.reduce(
         (map, navigationLinkRecordMap) =>
@@ -60,12 +99,16 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     }
   }
 
+  const [previewImageMap] = await Promise.all([
+    isPreviewImageSupportEnabled
+      ? getPreviewImageMap(recordMap)
+      : Promise.resolve(undefined),
+    getTweetsMap(recordMap)
+  ])
+
   if (isPreviewImageSupportEnabled) {
-    const previewImageMap = await getPreviewImageMap(recordMap)
     ;(recordMap as any).preview_images = previewImageMap
   }
-
-  await getTweetsMap(recordMap)
 
   return recordMap
 }

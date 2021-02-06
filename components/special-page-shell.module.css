@@ -1,0 +1,20 @@
+.shell,
+.fallback {
+  display: flex;
+  width: 100%;
+  min-height: 100svh;
+  flex-direction: column;
+  color: #f0eee6;
+  background: #080908;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex: 1 0 auto;
+}
+
+.content > * {
+  min-width: 0;
+  flex: 1 1 auto;
+}

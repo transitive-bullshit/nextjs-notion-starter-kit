@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import { NotionPage } from '@/components/NotionPage'
 import { NotionPageRoute } from '@/components/NotionPageRoute'
 import { getPageData } from '@/lib/get-page-data'
 import { getSiteMap } from '@/lib/get-site-map'
@@ -12,7 +13,7 @@ interface DynamicPageProps {
   }>
 }
 
-export const revalidate = 10
+export const revalidate = 604_800
 export const dynamicParams = true
 
 export async function generateStaticParams() {
@@ -43,5 +44,5 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
   const { pageId } = await params
   const pageProps = await getPageData(pageId)
 
-  return <NotionPageRoute pageProps={pageProps} />
+  return <NotionPageRoute pageProps={pageProps} pageComponent={NotionPage} />
 }

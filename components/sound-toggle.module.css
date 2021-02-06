@@ -1,0 +1,75 @@
+.button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 1px solid rgb(240 238 230 / 16%);
+  border-radius: 50%;
+  outline: 0;
+  color: rgb(240 238 230 / 58%);
+  background: rgb(8 9 8 / 24%);
+  cursor: pointer;
+  place-items: center;
+  transition:
+    color 140ms cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 140ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 140ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.button svg {
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.speaker {
+  fill: currentColor;
+  stroke: none;
+}
+
+.waves,
+.slash {
+  transition: opacity 120ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.button[data-enabled='true'] {
+  border-color: rgb(214 255 63 / 34%);
+  color: #d6ff3f;
+}
+
+.button[data-enabled='true'] .slash,
+.button[data-enabled='false'] .waves {
+  opacity: 0;
+}
+
+.button[data-enabled='false'] .slash,
+.button[data-enabled='true'] .waves {
+  opacity: 1;
+}
+
+.button:focus-visible {
+  border-color: #d6ff3f;
+  box-shadow: 0 0 0 3px rgb(214 255 63 / 14%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    border-color: rgb(214 255 63 / 56%);
+    color: #d6ff3f;
+    background: rgb(214 255 63 / 7%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .waves,
+  .slash {
+    transition: none;
+  }
+}

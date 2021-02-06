@@ -5,24 +5,21 @@
 }
 
 .container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   display: flex;
+  width: 100%;
+  min-height: clamp(24rem, 68svh, 52rem);
+  flex: 1 1 auto;
   justify-content: center;
   align-items: center;
   padding: 2vmin;
 
   font-size: 16px;
   line-height: 1.5;
-  color: rgb(55, 53, 47);
-  caret-color: rgb(55, 53, 47);
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
-    'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
-  background-color: var(--bg-color);
+  color: inherit;
+  caret-color: currentColor;
+  font-family: inherit;
+  background-color: transparent;
 }
 
 .loadingIcon {
@@ -31,6 +28,24 @@
   width: 24px;
   height: 24px;
   color: rgba(55, 53, 47, 0.4);
+}
+
+.loadingStatus {
+  display: grid;
+  place-items: center;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
 }
 
 .main {
@@ -43,6 +58,34 @@
 .errorImage {
   max-width: 100%;
   width: 640px;
+}
+
+.recoveryLink {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  margin-top: 8px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.recoveryLink:hover {
+  color: #d6ff3f;
+}
+
+.recoveryLink:focus-visible {
+  outline: 2px solid #d6ff3f;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loadingIcon {
+    animation: none;
+  }
 }
 
 .footer {
@@ -159,32 +202,49 @@
 }
 
 .pageActions a {
-  cursor: pointer;
-  font-size: 24px;
   display: inline-flex;
   padding: 12px;
   margin-right: 1vw;
   border-radius: 50%;
   background: transparent;
-  transition: all 250ms ease-out;
+  cursor: pointer;
+  font-size: 24px;
+  transition:
+    color 250ms ease-out,
+    background-color 250ms ease-out;
 }
 
 .pageActions a:last-of-type {
   margin-right: 0;
 }
 
-.pageActions a:hover {
-  transition: all 50ms ease-out;
+.pageActions a:hover,
+.pageActions a:focus-visible {
+  transition-duration: 50ms;
 }
 
-.likeTweet:hover {
+.pageActions a:focus-visible {
+  outline: 2px solid #d6ff3f;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgb(214 255 63 / 14%);
+}
+
+.likeTweet:hover,
+.likeTweet:focus-visible {
   background: #f6e3e8;
   color: #e0265e;
 }
 
-.retweet:hover {
+.retweet:hover,
+.retweet:focus-visible {
   color: #19bf64;
   background: #e5f2e8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pageActions a {
+    transition: none;
+  }
 }
 
 @media (max-width: 1360px) {
