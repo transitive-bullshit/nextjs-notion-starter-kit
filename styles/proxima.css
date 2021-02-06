@@ -1,0 +1,40 @@
+
+@font-face {
+	font-family: 'Ubiquity Nova';
+	font-style: normal;
+	font-weight: 100;
+	src: url(/proxima/2B04A9_A_0.eot);
+	src: url(/proxima/2B04A9_A_0.eot?#iefix) format("embedded-opentype"), url(/proxima/2B04A9_A_0.woff) format("woff"), url(/proxima/2B04A9_A_0.ttf) format("truetype")
+}
+
+@font-face {
+	font-family: 'Ubiquity Nova';
+	font-style: normal;
+	font-weight: 200;
+	src: url(/proxima/2B04A9_B_0.eot);
+	src: url(/proxima/2B04A9_B_0.eot?#iefix) format("embedded-opentype"), url(/proxima/2B04A9_B_0.woff) format("woff"), url(/proxima/2B04A9_B_0.ttf) format("truetype")
+}
+
+@font-face {
+	font-family: 'Ubiquity Nova';
+	font-style: normal;
+	font-weight: 400;
+	src: url(/proxima/2B04A9_E_0.eot);
+	src: url(/proxima/2B04A9_E_0.eot?#iefix) format("embedded-opentype"), url(/proxima/2B04A9_E_0.woff) format("woff"), url(/proxima/2B04A9_E_0.ttf) format("truetype")
+}
+
+@font-face {
+	font-family: 'Ubiquity Nova';
+	font-style: italic;
+	font-weight: 400;
+	src: url(/proxima/2B04A9_C_0.eot);
+	src: url(/proxima/2B04A9_C_0.eot?#iefix) format("embedded-opentype"), url(/proxima/2B04A9_C_0.woff) format("woff"), url(/proxima/2B04A9_C_0.ttf) format("truetype")
+}
+
+@font-face {
+	font-family: 'Ubiquity Nova';
+	font-style: normal;
+	font-weight: 700;
+	src: url(/proxima/2B04A9_D_0.eot);
+	src: url(/proxima/2B04A9_D_0.eot?#iefix) format("embedded-opentype"), url(/proxima/2B04A9_D_0.woff) format("woff"), url(/proxima/2B04A9_D_0.ttf) format("truetype")
+}

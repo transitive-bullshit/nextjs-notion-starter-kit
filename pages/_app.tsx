@@ -22,6 +22,7 @@ import 'styles/notion.css'
 
 // global style overrides for Ubiquity
 import 'styles/ubiquity.css'
+import 'styles/proxima.css'
 
 // global style overrides for prism theme
 import 'styles/prism-theme.css'
