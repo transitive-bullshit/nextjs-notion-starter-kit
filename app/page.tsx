@@ -4,7 +4,7 @@ import { NotionPageRoute } from '@/components/NotionPageRoute'
 import { getPageData } from '@/lib/get-page-data'
 import { createPageMetadata } from '@/lib/page-metadata'
 
-export const revalidate = 10
+export const revalidate = 60
 
 export async function generateMetadata(): Promise<Metadata> {
   return createPageMetadata(await getPageData())

@@ -4,7 +4,14 @@ import cs from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import { formatDate, getBlockTitle, getBlockValue } from 'notion-utils'
+import {
+  formatDate,
+  getBlockTitle,
+  getBlockValue,
+  // getPageProperty,
+  // normalizeTitle,
+  parsePageId
+} from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
@@ -27,6 +34,7 @@ import { Footer } from './Footer'
 import { GitHubShareButton } from './GitHubShareButton'
 import { NotionPageHeader } from './NotionPageHeader'
 import { PageAside } from './PageAside'
+import { Page404 } from './Page404'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -103,15 +111,6 @@ const Code = dynamic(() =>
   })
 )
 
-const Equation = dynamic(() =>
-  import('react-notion-x/third-party/equation').then((m) => m.Equation)
-)
-const Pdf = dynamic(
-  () => import('react-notion-x/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false
-  }
-)
 const Modal = dynamic(
   () =>
     import('react-notion-x/third-party/modal').then((m) => {
@@ -175,26 +174,51 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+// const propertySelectValue = (
+//   { schema, value, key, pageHeader }: any,
+//   defaultFn: () => React.ReactNode
+// ) => {
+//   value = normalizeTitle(value)
+
+//   if (pageHeader && schema.type === 'multi_select' && value) {
+//     return (
+//       <Link href={`/tags/${value}`} key={key} legacyBehavior>
+//         <a>{defaultFn()}</a>
+//       </Link>
+//     )
+//   }
+
+//   return defaultFn()
+// }
+
+const HeroHeader = dynamic<{ className?: string }>(
+  () => import('./HeroHeader').then((m) => m.HeroHeader),
+  { ssr: false }
+)
+
 const notionRendererComponents: Partial<NotionComponents> = {
   nextImage: Image,
   nextLink: Link,
   Code,
   Collection,
-  Equation,
-  Pdf,
   Modal,
   Tweet,
   Header: NotionPageHeader,
   propertyLastEditedTimeValue,
   propertyTextValue,
   propertyDateValue
+  // propertySelectValue
 }
 
 export function NotionPage({
   site,
   recordMap,
-  pageId
-}: Required<Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>>) {
+  pageId,
+  error,
+  tagsPage,
+  propertyToFilterName
+}: Required<Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>> &
+  Pick<types.PageProps, 'error' | 'tagsPage' | 'propertyToFilterName'>) {
   const lite = useSearchParam('lite')
 
   // lite mode is for oembed
@@ -217,6 +241,8 @@ export function NotionPage({
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
+  const isBioPage =
+    parsePageId(block?.id) === parsePageId('8d0062776d0c4afca96eb1ace93a7538')
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
@@ -228,8 +254,31 @@ export function NotionPage({
     [block, recordMap, isBlogPost]
   )
 
-  const title = getBlockTitle(block, recordMap) || site.name
+  const pageCover = React.useMemo(() => {
+    if (isBioPage) {
+      if (config.isServer) {
+        return (
+          <div className='notion-page-cover-wrapper notion-page-cover-hero' />
+        )
+      } else {
+        return (
+          <HeroHeader className='notion-page-cover-wrapper notion-page-cover-hero' />
+        )
+      }
+    } else {
+      return null
+    }
+  }, [isBioPage])
 
+  if (error || !site || !block || !recordMap) {
+    return <Page404 site={site} pageId={pageId} error={error} />
+  }
+
+  const name = getBlockTitle(block, recordMap) || site.name
+  const title =
+    tagsPage && propertyToFilterName ? `${propertyToFilterName} ${name}` : name
+
+  // for easier debugging
   React.useEffect(() => {
     console.log('notion page', {
       isDev: config.isDev,
@@ -239,7 +288,6 @@ export function NotionPage({
       recordMap
     })
 
-    // add important objects to the window global for easy debugging
     const g = window as any
     g.pageId = pageId
     g.recordMap = recordMap
@@ -251,7 +299,10 @@ export function NotionPage({
       {isLiteMode && <BodyClassName className='notion-lite' />}
 
       <NotionRenderer
-        bodyClassName={cs(pageId === site.rootNotionPageId && 'index-page')}
+        bodyClassName={cs(
+          pageId === site.rootNotionPageId && 'index-page',
+          tagsPage && 'tags-page'
+        )}
         darkMode={isDarkMode}
         components={notionRendererComponents}
         recordMap={recordMap}
@@ -265,11 +316,14 @@ export function NotionPage({
         defaultPageIcon={config.defaultPageIcon}
         defaultPageCover={config.defaultPageCover}
         defaultPageCoverPosition={config.defaultPageCoverPosition}
+        linkTableTitleProperties={false}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : undefined}
         pageAside={pageAside}
         footer={<Footer />}
+        pageTitle={tagsPage && propertyToFilterName ? title : undefined}
+        pageCover={pageCover}
       />
 
       <GitHubShareButton />

@@ -14,6 +14,8 @@ export interface PageProps {
   recordMap?: ExtendedRecordMap
   pageId?: string
   error?: PageError
+  tagsPage?: boolean
+  propertyToFilterName?: string | null
 }
 
 export interface ExtendedTweetRecordMap extends ExtendedRecordMap {

@@ -11,6 +11,7 @@ minimumReleaseAge: 1440
 minimumReleaseAgeExclude:
   - '@fisch0920/config'
   - lqip-modern
+  - random
   - react-notion-x
   - notion-client
   - notion-types

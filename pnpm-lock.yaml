@@ -59,6 +59,12 @@ importers:
       prismjs:
         specifier: ^1.30.0
         version: 1.30.0
+      raf:
+        specifier: ^3.4.1
+        version: 3.4.1
+      random:
+        specifier: ^5.5.1
+        version: 5.5.1
       react:
         specifier: ^19.2.8
         version: 19.2.8
@@ -93,6 +99,9 @@ importers:
       '@types/prismjs':
         specifier: ^1.26.6
         version: 1.26.6
+      '@types/raf':
+        specifier: ^3.4.3
+        version: 3.4.3
       '@types/react':
         specifier: ^19.2.18
         version: 19.2.18
@@ -838,6 +847,9 @@ packages:
   '@types/prismjs@1.26.6':
     resolution: {integrity: sha512-vqlvI7qlMvcCBbVe0AKAb4f97//Hy0EBTaiW8AalRnG/xAN5zOiWWyrNqNXeq8+KAuvRewjCVY1+IPxk4RdNYw==}
 
+  '@types/raf@3.4.3':
+    resolution: {integrity: sha512-c4YAvMedbPZ5tEyxzQdMoOhhJ4RD3rngZIdwC2/qDN3d7JpEhB6fiBRKVY1lg5B7Wk+uPBjn5f39j1/2MY1oOw==}
+
   '@types/react-body-classname@1.1.10':
     resolution: {integrity: sha512-BS5V6xbn9m76WA13ied9xYXVacIf70/alT4AfPNiJmyAJy3LnmPCFSI31aS67DeVvekVLidXhmmk42Z0272N7g==}
 
@@ -1338,6 +1350,9 @@ packages:
     resolution: {integrity: sha512-DlOzet0HO7OEnmUmB6wWGJrrdvbyJKftI1bhMitK7O2N8W2gc757yyYBbINy9IDafXAV9wmKr9t7xsTaNKRG5Q==}
     engines: {node: '>=20.16.0 || >=22.3.0'}
 
+  performance-now@2.1.0:
+    resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -1363,6 +1378,13 @@ packages:
 
   prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+
+  raf@3.4.1:
+    resolution: {integrity: sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==}
+
+  random@5.5.1:
+    resolution: {integrity: sha512-2TIJKf/BGjy0FGeZaan2+a/vq37afbSyscquADMFC13KBjFmg+10T/TkACpP9GMHfbEruKYbHqq0rjCA9x8gNA==}
+    engines: {node: '>=20'}
 
   react-body-classname@1.3.1:
     resolution: {integrity: sha512-PxskbhmoV8kzIyspjiIc/smQkyyBOQHeUsrh1oj9CC5O1Kg/4gvHWPKsYGWEIq0X51TtCT941u/ulM1dTZ/bOw==}
@@ -2136,6 +2158,8 @@ snapshots:
 
   '@types/prismjs@1.26.6': {}
 
+  '@types/raf@3.4.3': {}
+
   '@types/react-body-classname@1.1.10':
     dependencies:
       '@types/react': 19.2.18
@@ -2566,6 +2590,8 @@ snapshots:
       '@napi-rs/canvas': 0.1.100
     optional: true
 
+  performance-now@2.1.0: {}
+
   picocolors@1.1.1: {}
 
   picomatch@4.0.5: {}
@@ -2589,6 +2615,12 @@ snapshots:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
+
+  raf@3.4.1:
+    dependencies:
+      performance-now: 2.1.0
+
+  random@5.5.1: {}
 
   react-body-classname@1.3.1(react@19.2.8):
     dependencies:
