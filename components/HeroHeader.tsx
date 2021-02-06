@@ -62,7 +62,6 @@ export class HeroHeader extends Component<{
     if (this._animation && random.float() < 0.15) {
       const w = this._animation.width
       const h = this._animation.height
-      const r = (w + h) / 6
 
       this._animation.config.splatRadius = random.float(
         minSplatRadius,
