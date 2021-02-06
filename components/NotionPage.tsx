@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
 import useDarkMode from 'use-dark-mode'
+import { PageBlock } from 'notion-types'
 
 // core notion renderer
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
@@ -126,7 +127,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 
-  const socialImage = config.api.renderSocialImage(pageId)
+  const socialImage =
+    mapNotionImageUrl(
+      (block as PageBlock).format?.page_cover || config.defaultPageCover,
+      block
+    ) || config.api.renderSocialImage(pageId)
+
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
 
