@@ -5,6 +5,9 @@ import random from 'random'
 
 import FluidAnimation from 'react-fluid-animation'
 
+const minSplatRadius = 0.01
+const maxSplatRadius = 0.03
+
 export class HeroHeader extends Component<{
   className?: string
 }> {
@@ -46,6 +49,10 @@ export class HeroHeader extends Component<{
 
   _reset() {
     if (this._animation) {
+      this._animation.config.splatRadius = random.float(
+        minSplatRadius,
+        maxSplatRadius
+      )
       this._animation.addRandomSplats(random.int(100, 180))
     }
   }
@@ -57,14 +64,10 @@ export class HeroHeader extends Component<{
       const h = this._animation.height
       const r = (w + h) / 6
 
-      const minSplatRadius = 0.01
-      const maxSplatRadius = 0.03
-
-      const s = random.float(minSplatRadius, maxSplatRadius)
-
-      // const a = 1.0 // Math.min( 1.0, Math.max(0, (Date.now() - this._time + 2000) / 20000))
-      // const s = a * maxSplatRadius + (1.0 - a) * minSplatRadius
-      this._animation.config.splatRadius = s
+      this._animation.config.splatRadius = random.float(
+        minSplatRadius,
+        maxSplatRadius
+      )
 
       const splats = []
       for (let i = 0; i < 1; ++i) {
