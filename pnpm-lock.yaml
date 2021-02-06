@@ -32,6 +32,9 @@ importers:
       ky:
         specifier: ^1.14.3
         version: 1.14.3
+      lodash.omit:
+        specifier: ^4.5.0
+        version: 4.5.0
       lqip-modern:
         specifier: ^2.2.1
         version: 2.2.1
@@ -59,6 +62,12 @@ importers:
       prismjs:
         specifier: ^1.30.0
         version: 1.30.0
+      raf:
+        specifier: ^3.4.1
+        version: 3.4.1
+      random:
+        specifier: ^5.4.0
+        version: 5.4.0
       react:
         specifier: ^19.2.4
         version: 19.2.4
@@ -84,12 +93,18 @@ importers:
       '@fisch0920/config':
         specifier: ^1.4.0
         version: 1.4.0(@typescript-eslint/parser@8.55.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)(prettier@3.8.1)(typescript@5.9.3)(zod@4.3.6)
+      '@types/lodash.omit':
+        specifier: ^4.5.9
+        version: 4.5.9
       '@types/node':
         specifier: ^25.2.3
         version: 25.2.3
       '@types/prismjs':
         specifier: ^1.26.5
         version: 1.26.5
+      '@types/raf':
+        specifier: ^3.4.3
+        version: 3.4.3
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -105,6 +120,9 @@ importers:
       npm-run-all2:
         specifier: ^8.0.4
         version: 8.0.4
+      omit:
+        specifier: link:@types/lodash/omit
+        version: link:@types/lodash/omit
       prettier:
         specifier: ^3.8.1
         version: 3.8.1
@@ -661,11 +679,20 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
+  '@types/lodash.omit@4.5.9':
+    resolution: {integrity: sha512-zuAVFLUPJMOzsw6yawshsYGgq2hWUHtsZgeXHZmSFhaQQFC6EQ021uDKHkSjOpNhSvtNSU9165/o3o/Q51GpTw==}
+
+  '@types/lodash@4.17.17':
+    resolution: {integrity: sha512-RRVJ+J3J+WmyOTqnz3PiBLA501eKwXl2noseKOrNo/6+XEHjTAxO4xHvxQB6QuNm+s4WRbn6rSiap8+EA+ykFQ==}
+
   '@types/node@25.2.3':
     resolution: {integrity: sha512-m0jEgYlYz+mDJZ2+F4v8D1AyQb+QzsNqRuI7xg1VQX/KlKS0qT9r1Mo16yo5F/MtifXFgaofIFsdFMox2SxIbQ==}
 
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
+
+  '@types/raf@3.4.3':
+    resolution: {integrity: sha512-c4YAvMedbPZ5tEyxzQdMoOhhJ4RD3rngZIdwC2/qDN3d7JpEhB6fiBRKVY1lg5B7Wk+uPBjn5f39j1/2MY1oOw==}
 
   '@types/react-body-classname@1.1.10':
     resolution: {integrity: sha512-BS5V6xbn9m76WA13ied9xYXVacIf70/alT4AfPNiJmyAJy3LnmPCFSI31aS67DeVvekVLidXhmmk42Z0272N7g==}
@@ -740,8 +767,8 @@ packages:
     peerDependencies:
       react: '>=16.8.0'
 
-  '@vitest/eslint-plugin@1.6.9':
-    resolution: {integrity: sha512-9WfPx1OwJ19QLCSRLkqVO7//1WcWnK3fE/3fJhKMAmDe8+9G4rB47xCNIIeCq3FdEzkIoLTfDlwDlPBaUTMhow==}
+  '@vitest/eslint-plugin@1.6.7':
+    resolution: {integrity: sha512-sd2QJirEscSQk3Pywtelbs7z8RQp1gyF5BfeZVtTHE8y3suyzbAA71NuT9z01uTRMHoCf5p6M2t2WYNJ7m5FlA==}
     engines: {node: '>=18'}
     peerDependencies:
       eslint: '>=8.57.0'
@@ -1663,6 +1690,10 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
+  lodash.omit@4.5.0:
+    resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}
+    deprecated: This package is deprecated. Use destructuring assignment syntax instead.
+
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -1924,6 +1955,9 @@ packages:
     resolution: {integrity: sha512-IHZsA4T7YElCKNNXtiLgqScw4zPd3pG9do8UrznC757gMd7UPeHSL2qwNNMJo4r79fl8oj1Xx+1nh2YkzdMpLQ==}
     engines: {node: '>=18'}
 
+  performance-now@2.1.0:
+    resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -1993,6 +2027,13 @@ packages:
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
+
+  raf@3.4.1:
+    resolution: {integrity: sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==}
+
+  random@5.4.0:
+    resolution: {integrity: sha512-Y147ufdzRqcQuBpKkoW7N3+B/SW4X6pF3ZfsNy+bF1r3i/I+j2zobnCp+9vN1nIJDjObI/174PCySTa3FECynQ==}
+    engines: {node: '>=18'}
 
   rc@1.2.8:
     resolution: {integrity: sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==}
@@ -2688,7 +2729,7 @@ snapshots:
     dependencies:
       '@eslint/js': 9.39.2
       '@total-typescript/ts-reset': 0.6.1
-      '@vitest/eslint-plugin': 1.6.9(eslint@9.39.2)(typescript@5.9.3)
+      '@vitest/eslint-plugin': 1.6.7(eslint@9.39.2)(typescript@5.9.3)
       eslint: 9.39.2
       eslint-config-prettier: 10.1.8(eslint@9.39.2)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.55.0(eslint@9.39.2)(typescript@5.9.3))(eslint@9.39.2)
@@ -2990,11 +3031,19 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
+  '@types/lodash.omit@4.5.9':
+    dependencies:
+      '@types/lodash': 4.17.17
+
+  '@types/lodash@4.17.17': {}
+
   '@types/node@25.2.3':
     dependencies:
       undici-types: 7.16.0
 
   '@types/prismjs@1.26.5': {}
+
+  '@types/raf@3.4.3': {}
 
   '@types/react-body-classname@1.1.10':
     dependencies:
@@ -3101,7 +3150,7 @@ snapshots:
     dependencies:
       react: 19.2.4
 
-  '@vitest/eslint-plugin@1.6.9(eslint@9.39.2)(typescript@5.9.3)':
+  '@vitest/eslint-plugin@1.6.7(eslint@9.39.2)(typescript@5.9.3)':
     dependencies:
       '@typescript-eslint/scope-manager': 8.55.0
       '@typescript-eslint/utils': 8.55.0(eslint@9.39.2)(typescript@5.9.3)
@@ -4166,6 +4215,8 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
+  lodash.omit@4.5.0: {}
+
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
@@ -4439,6 +4490,8 @@ snapshots:
       path2d: 0.2.2
     optional: true
 
+  performance-now@2.1.0: {}
+
   picocolors@1.1.1: {}
 
   picomatch@4.0.2: {}
@@ -4501,6 +4554,12 @@ snapshots:
     optional: true
 
   punycode@2.3.1: {}
+
+  raf@3.4.1:
+    dependencies:
+      performance-now: 2.1.0
+
+  random@5.4.0: {}
 
   rc@1.2.8:
     dependencies:

@@ -21,8 +21,21 @@
   line-height: 1.65;
 }
 
-.index-page {
+.index-page,
+.tags-page {
   --notion-max-width: 900px;
+}
+
+.tags-page .notion-collection-header {
+  display: none;
+}
+
+.tags-page .notion-gallery {
+  padding-top: 2em;
+}
+
+.tags-page .notion-gallery-grid {
+  padding-top: 4em;
 }
 
 .notion-text {
@@ -202,6 +215,14 @@
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
+.notion-page-cover-hero {
+  cursor: grab;
+}
+
+.notion-page-cover-hero:active {
+  cursor: grabbing;
+}
+
 @media only screen and (max-width: 1200px) {
   .notion-page-cover-wrapper,
   .notion-page-cover-wrapper span,
@@ -347,10 +368,22 @@
   background: none !important;
 }
 
+.notion-row {
+  overflow: unset;
+}
+
+.notion-block-f382a57807bc40779860eb079d0144f2 img.medium-zoom-image {
+  border-radius: 8px;
+  box-shadow: 4px 4px 24px rgb(0 0 0 / 21%);
+}
+.notion-block-f382a57807bc40779860eb079d0144f2 span {
+  overflow: visible !important;
+}
+
 /* if you don't want rounded page icon images, remove this */
 .notion-page-icon-hero.notion-page-icon-image {
   border-radius: 50%;
-  box-shadow: 0 8px 40px 0 rgb(0 0 0 / 21%);
+  box-shadow: 4px 4px 24px 0 rgb(0 0 0 / 21%);
 }
 .notion-page-icon-hero.notion-page-icon-image span,
 .notion-page-icon-hero.notion-page-icon-image img {
@@ -400,6 +433,47 @@
   color: var(--fg-color-2);
 }
 
-.notion-equation.notion-equation-block{
+.notion-equation.notion-equation-block {
   align-items: center;
+}
+
+.notion-block-dfc7f709ae3e42c69292f6543d5586f0 .notion-collection-header {
+  display: none;
+}
+
+.notion-block-dfc7f709ae3e42c69292f6543d5586f0
+  .notion-collection-column-title-icon {
+  display: none;
+}
+
+.notion-block-dfc7f709ae3e42c69292f6543d5586f0
+  .notion-table
+  .notion-page-icon-inline {
+  display: none;
+}
+
+.notion-block-dfc7f709ae3e42c69292f6543d5586f0 .notion-table {
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin: 1em 0;
+}
+
+.notion-block-dfc7f709ae3e42c69292f6543d5586f0 .notion-table-view {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+.notion-block-266ce1a8316f44ecbd36e3908ebdba78
+  .notion-page-icon-hero.notion-page-icon-image {
+  border-radius: unset;
+  box-shadow: none;
+}
+
+.notion-block-266ce1a8316f44ecbd36e3908ebdba78
+  .notion-page-icon-hero.notion-page-icon-image
+  img,
+.notion-block-266ce1a8316f44ecbd36e3908ebdba78
+  .notion-page-icon-hero.notion-page-icon-image
+  span {
+  border-radius: unset;
 }
