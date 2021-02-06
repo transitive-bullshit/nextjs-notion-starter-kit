@@ -35,3 +35,5 @@ img.lazy-image-preview, img.lazy-image-real { aspect-ratio: auto; }
 
 .notion-page-no-cover.notion-page-no-icon{padding-top:48px}
 .notion-h1, .notion-h2, .notion-h3, .notion-h4, .notion-h5, .notion-h6{padding-top:initial}
+.notion-page-icon-wrapper{text-align:right;display:block;}
+.notion-page-icon-wrapper span.notion-page-icon{width:100%;opacity:.25;padding:78px;text-align:right;margin:auto;max-width:initial}
