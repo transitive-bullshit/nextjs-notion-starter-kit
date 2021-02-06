@@ -14,6 +14,7 @@ export default async (
 
   const siteMaps = await getSiteMaps()
 
+  // cache sitemap for up to one hour
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600'
