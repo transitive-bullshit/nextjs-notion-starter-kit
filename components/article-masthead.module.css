@@ -1,0 +1,332 @@
+.masthead {
+  --masthead-acid: #d6ff3f;
+  --masthead-ink: #f0eee6;
+  --masthead-line: rgb(240 238 230 / 14%);
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.78fr);
+  gap: clamp(52px, 7vw, 112px);
+  align-items: center;
+  width: min(100%, 1320px);
+  /* min-height: calc(100svh - var(--site-header-height, 68px)); */
+  padding: clamp(48px, 5vh, 96px) clamp(18px, 4vw, 56px) 0;
+  margin: 0 auto;
+  color: var(--masthead-ink);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.topline {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--masthead-line);
+  color: rgb(240 238 230 / 54%);
+  font-family: var(--technical-font);
+  font-size: 0.59rem;
+  letter-spacing: 0.095em;
+  text-transform: uppercase;
+}
+
+.topline a {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  color: inherit;
+  transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.topline a span {
+  color: var(--masthead-acid);
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.topline a:focus-visible {
+  outline: 1px solid var(--masthead-acid);
+  outline-offset: 7px;
+}
+
+.titleBlock {
+  padding: clamp(44px, 6vh, 72px) 0;
+}
+
+.kicker {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0 0 21px;
+  color: var(--masthead-acid);
+  font-family: var(--technical-font);
+  font-size: 0.61rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.kicker::before {
+  width: 5px;
+  height: 5px;
+  flex: none;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 11px rgb(214 255 63 / 48%);
+  content: '';
+}
+
+.pageIcon {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  margin: -7px 2px -7px 0;
+  overflow: hidden;
+  border: 1px solid rgb(240 238 230 / 14%);
+  border-radius: 2px;
+  color: var(--masthead-ink);
+  font-family: var(--notion-font);
+  font-size: 1.05rem;
+  line-height: 1;
+  place-items: center;
+}
+
+.pageIcon[data-image='true'] {
+  background: #141612;
+}
+
+.pageIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.titleBlock h1 {
+  /* max-width: 9.25ch; */
+  margin: 0;
+  color: var(--masthead-ink);
+  font-family: var(--editorial-font);
+  font-size: clamp(3.5rem, 5vw, 6.9rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.description {
+  max-width: 49ch;
+  margin: 30px 0 0;
+  color: rgb(240 238 230 / 63%);
+  font-family: var(--notion-font);
+  font-size: clamp(0.98rem, 1.25vw, 1.1rem);
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+
+.metadata {
+  padding-top: 20px;
+  border-top: 1px solid var(--masthead-line);
+  font-family: var(--technical-font);
+}
+
+.metadata dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0;
+}
+
+.metadata dl > div {
+  min-width: 0;
+}
+
+.metadata dt {
+  margin-bottom: 7px;
+  color: rgb(240 238 230 / 39%);
+  font-size: 0.53rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.metadata dd {
+  margin: 0;
+  overflow: hidden;
+  color: rgb(240 238 230 / 72%);
+  font-size: 0.59rem;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 16px;
+  padding: 15px 0 0;
+  margin: 0;
+  color: rgb(240 238 230 / 46%);
+  font-size: 0.54rem;
+  letter-spacing: 0.075em;
+  line-height: 1.5;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.tags li {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 6px;
+  margin: -3px -6px;
+  border-radius: 1px;
+  transition:
+    color 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tags li:hover,
+.tags li:focus-visible,
+.tags li:active {
+  color: #080908;
+  background: var(--masthead-acid);
+}
+
+.tags li:focus-visible {
+  outline: 1px solid var(--masthead-acid);
+  outline-offset: 3px;
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #141612;
+  box-shadow:
+    0 0 0 1px rgb(240 238 230 / 10%),
+    0 28px 72px rgb(0 0 0 / 24%);
+}
+
+.hero::after {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border: 1px solid rgb(240 238 230 / 12%);
+  content: '';
+  pointer-events: none;
+}
+
+.heroImage {
+  z-index: 0;
+  display: block;
+  border-radius: 2px;
+  filter: grayscale(0.88) sepia(0.1) saturate(0.52) contrast(1.14)
+    brightness(0.76);
+  object-fit: cover;
+}
+
+.heroColorWash,
+.heroGrain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heroColorWash {
+  z-index: 1;
+  opacity: 0.24;
+  background:
+    linear-gradient(135deg, rgb(214 255 63 / 76%), rgb(53 67 28 / 36%)),
+    linear-gradient(180deg, transparent 42%, rgb(8 9 8 / 50%));
+  mix-blend-mode: color;
+}
+
+.heroGrain {
+  z-index: 2;
+  opacity: 0.28;
+  background-image: radial-gradient(
+    rgb(240 238 230 / 56%) 0.6px,
+    transparent 0.8px
+  );
+  background-size: 4px 4px;
+  mix-blend-mode: soft-light;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .topline a:hover {
+    color: var(--masthead-acid);
+  }
+
+  .topline a:hover span {
+    transform: translateX(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tags li {
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (max-width: 1040px) {
+  .masthead {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.85fr);
+    gap: clamp(36px, 5vw, 64px);
+  }
+
+  .titleBlock h1 {
+    font-size: clamp(3.5rem, 6.6vw, 5.5rem);
+  }
+}
+
+@media (max-width: 820px) {
+  .masthead {
+    display: flex;
+    min-height: auto;
+    flex-direction: column;
+    gap: clamp(42px, 8vw, 68px);
+    align-items: stretch;
+    padding-top: clamp(58px, 11vw, 88px);
+  }
+
+  .titleBlock {
+    margin: 0;
+  }
+
+  .titleBlock h1 {
+    text-align: center;
+    font-size: clamp(4.5rem, 13vw, 7rem);
+  }
+
+  .description {
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .masthead {
+    padding-right: 18px;
+    padding-bottom: 76px;
+    padding-left: 18px;
+  }
+
+  .titleBlock {
+    padding: 46px 0 42px;
+  }
+
+  .titleBlock h1 {
+    font-size: clamp(3.85rem, 17vw, 5.4rem);
+  }
+
+  .metadata dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .titleBlock h1 {
+    font-size: clamp(3.3rem, 16.5vw, 4.6rem);
+  }
+}

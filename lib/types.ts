@@ -14,6 +14,8 @@ export interface PageProps {
   recordMap?: ExtendedRecordMap
   pageId?: string
   error?: PageError
+  tagsPage?: boolean
+  propertyToFilterName?: string | null
 }
 
 export interface ExtendedTweetRecordMap extends ExtendedRecordMap {
@@ -63,6 +65,7 @@ export interface PageUrlOverridesInverseMap {
 export interface NotionPageInfo {
   pageId: string
   title: string
+  description?: string
   image?: string
   imageObjectPosition?: string
   author?: string

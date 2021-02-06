@@ -1,5 +1,5 @@
 // used for rendering equations (optional)
-import 'katex/dist/katex.min.css'
+// import 'katex/dist/katex.min.css'
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-coy.css'
 // core styles shared by all of react-notion-x (required)
@@ -12,11 +12,36 @@ import '@/styles/notion.css'
 import '@/styles/prism-theme.css'
 
 import type { Metadata, Viewport } from 'next'
+import { Cormorant_Garamond, JetBrains_Mono, Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
 
 import * as config from '@/lib/config'
+import { createSiteJsonLd, serializeJsonLd } from '@/lib/json-ld'
+import { siteIdentity } from '@/lib/site-identity'
+import { SkipLink } from '@/components/SkipLink'
 
 import { Providers } from './providers'
+
+const sans = Manrope({
+  preload: false,
+  subsets: ['latin'],
+  variable: '--font-sans'
+})
+
+const serif = Cormorant_Garamond({
+  preload: false,
+  subsets: ['latin'],
+  variable: '--font-serif',
+  weight: '500'
+})
+
+const mono = JetBrains_Mono({
+  preload: false,
+  subsets: ['latin'],
+  variable: '--font-mono'
+})
+
+const siteJsonLd = serializeJsonLd(createSiteJsonLd(siteIdentity))
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
@@ -27,7 +52,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     icon: [
       {
-        url: '/favicon.png',
+        url: '/favicon-32x32.png',
         type: 'image/png',
         sizes: '32x32'
       }
@@ -68,22 +93,18 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: [
-    {
-      media: '(prefers-color-scheme: light)',
-      color: '#fefffe'
-    },
-    {
-      media: '(prefers-color-scheme: dark)',
-      color: '#2d3439'
-    }
-  ]
+  themeColor: '#080908'
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang='en' suppressHydrationWarning>
-      <body>
+    <html lang={config.language} suppressHydrationWarning>
+      <body className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: siteJsonLd }}
+        />
+        <SkipLink />
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 
+import { LandingNotionPage } from '@/components/LandingNotionPage'
 import { NotionPageRoute } from '@/components/NotionPageRoute'
 import { getPageData } from '@/lib/get-page-data'
 import { createPageMetadata } from '@/lib/page-metadata'
 
-export const revalidate = 10
+export const revalidate = 604_800
 
 export async function generateMetadata(): Promise<Metadata> {
   return createPageMetadata(await getPageData())
@@ -13,5 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const pageProps = await getPageData()
 
-  return <NotionPageRoute pageProps={pageProps} />
+  return (
+    <NotionPageRoute pageProps={pageProps} pageComponent={LandingNotionPage} />
+  )
 }

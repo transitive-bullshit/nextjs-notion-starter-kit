@@ -1,3 +1,6 @@
+import Image from 'next/image'
+
+import { mainContentId } from './SkipLink'
 import styles from './styles.module.css'
 
 export function ErrorPage({
@@ -9,7 +12,7 @@ export function ErrorPage({
 }) {
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
+      <main className={styles.main} id={mainContentId} tabIndex={-1}>
         <h1>Error Loading Page</h1>
 
         {statusCode && <p>Error code: {statusCode}</p>}
@@ -20,7 +23,14 @@ export function ErrorPage({
           </button>
         )}
 
-        <img src='/error.png' alt='Error' className={styles.errorImage} />
+        <Image
+          src='/error.png'
+          alt=''
+          className={styles.errorImage}
+          width={912}
+          height={912}
+          sizes='(max-width: 640px) 100vw, 640px'
+        />
       </main>
     </div>
   )

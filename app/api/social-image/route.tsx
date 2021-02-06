@@ -1,4 +1,5 @@
-import ky from 'ky'
+import { Buffer } from 'node:buffer'
+
 import { ImageResponse } from 'next/og'
 import { type PageBlock } from 'notion-types'
 import {
@@ -6,6 +7,7 @@ import {
   getBlockTitle,
   getBlockValue,
   getPageProperty,
+  getSignedFileUrl,
   isUrl,
   parsePageId
 } from 'notion-utils'
@@ -14,7 +16,17 @@ import * as libConfig from '@/lib/config'
 import interSemiBoldFont from '@/lib/fonts/inter-semibold'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
+import {
+  createCachedImageLoader,
+  selectImageWithFallback,
+  selectSocialImageBackground
+} from '@/lib/social-image'
 import { type NotionPageInfo, type PageError } from '@/lib/types'
+
+const socialImageResponseHeaders = {
+  'Cache-Control': 'public, max-age=60',
+  'Vercel-CDN-Cache-Control': 'public, max-age=60, stale-while-revalidate=300'
+}
 
 export async function GET(request: Request) {
   console.log(request.url)
@@ -36,7 +48,6 @@ export async function GET(request: Request) {
   }
 
   const pageInfo = pageInfoOrError.data
-  console.log(pageInfo)
 
   return new ImageResponse(
     <div
@@ -59,7 +70,8 @@ export async function GET(request: Request) {
             position: 'absolute',
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            objectPosition: pageInfo.imageObjectPosition
           }}
         />
       )}
@@ -84,26 +96,63 @@ export async function GET(request: Request) {
             justifyContent: 'space-around',
             backgroundColor: '#fff',
             padding: 24,
+            paddingTop: 48,
+            paddingBottom: 48,
             alignItems: 'center',
             textAlign: 'center'
           }}
         >
-          {pageInfo.detail && (
-            <div style={{ fontSize: 32, opacity: 0 }}>{pageInfo.detail}</div>
-          )}
-
           <div
             style={{
               fontSize: 70,
               fontWeight: 700,
-              fontFamily: 'Inter'
+              fontFamily: 'Inter',
+              display: '-webkit-box',
+              WebkitLineClamp: 3,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+              // TODO: text-wrap 'balance' currently seems broken
+              // textWrap: 'balance',
+              // wordBreak: 'break-word'
             }}
           >
             {pageInfo.title}
           </div>
 
+          {/* {pageInfo.description && (
+            <div
+              style={{
+                fontSize: 24,
+                opacity: 0.8,
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+                // TODO: text-wrap 'balance' currently seems broken
+                // textWrap: 'balance',
+                // wordBreak: 'break-word'
+              }}
+            >
+              {pageInfo.description}
+            </div>
+          )} */}
+
           {pageInfo.detail && (
-            <div style={{ fontSize: 32, opacity: 0.6 }}>{pageInfo.detail}</div>
+            <div
+              style={{
+                fontSize: 24,
+                opacity: 0.6,
+                display: '-webkit-box',
+                WebkitLineClamp: 1,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textOverflow: 'clip'
+              }}
+            >
+              {pageInfo.detail}
+            </div>
           )}
         </div>
       </div>
@@ -134,6 +183,8 @@ export async function GET(request: Request) {
     {
       width: 1200,
       height: 630,
+      headers: socialImageResponseHeaders,
+      // debug: true,
       fonts: [
         {
           name: 'Inter',
@@ -190,40 +241,57 @@ async function getNotionPageInfo({
     ? `center ${(1 - imageCoverPosition) * 100}%`
     : undefined
 
-  const imageBlockUrl = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover,
-    block
+  const resolveImageUrl = (url: string | undefined) =>
+    mapImageUrl(getSignedFileUrl(url, block, recordMap.signed_urls), block)
+
+  const socialImageUrl = resolveImageUrl(
+    getPageProperty<string>('Social Image', block, recordMap)
   )
-  const imageFallbackUrl = mapImageUrl(libConfig.defaultPageCover, block)
+  const pageCoverUrl = resolveImageUrl((block as PageBlock).format?.page_cover)
+  const imageFallbackUrl = resolveImageUrl(libConfig.defaultPageCover)
 
   const blockIcon = getBlockIcon(block, recordMap)
-  const authorImageBlockUrl = mapImageUrl(
-    blockIcon && isUrl(blockIcon) ? blockIcon : undefined,
-    block
+  const authorImageBlockUrl = resolveImageUrl(
+    blockIcon && isUrl(blockIcon) ? blockIcon : undefined
   )
-  const authorImageFallbackUrl = mapImageUrl(libConfig.defaultPageIcon, block)
+  const authorImageFallbackUrl = resolveImageUrl(libConfig.defaultPageIcon)
+  const loadImage = createCachedImageLoader(fetchAndInlineImage)
   const [authorImage, image] = await Promise.all([
-    getCompatibleImageUrl(authorImageBlockUrl, authorImageFallbackUrl),
-    getCompatibleImageUrl(imageBlockUrl, imageFallbackUrl)
+    selectImageWithFallback(
+      [authorImageBlockUrl],
+      authorImageFallbackUrl,
+      loadImage
+    ),
+    selectSocialImageBackground(
+      {
+        socialImageUrl,
+        pageCoverUrl,
+        fallbackUrl: imageFallbackUrl
+      },
+      loadImage
+    )
   ])
 
   const author =
     getPageProperty<string>('Author', block, recordMap) || libConfig.author
+  const description =
+    getPageProperty<string>('Description', block, recordMap) ||
+    libConfig.description
 
   const publishedTime = getPageProperty<number>('Published', block, recordMap)
   const datePublished = publishedTime ? new Date(publishedTime) : undefined
   const date =
     isBlogPost && datePublished
-      ? `${datePublished.toLocaleString('en-US', {
+      ? `Published ${datePublished.toLocaleString('en-US', {
           month: 'long'
         })} ${datePublished.getFullYear()}`
       : undefined
-  const detail = date || author || libConfig.domain
+  const detail = date || (author ? `By ${author}` : libConfig.domain)
 
   const pageInfo: NotionPageInfo = {
     pageId,
     title,
+    description,
     image,
     imageObjectPosition,
     author,
@@ -237,38 +305,23 @@ async function getNotionPageInfo({
   }
 }
 
-async function isUrlReachable(
-  url: string | undefined | null
-): Promise<boolean> {
-  if (!url) {
-    return false
-  }
-
+async function fetchAndInlineImage(url: string): Promise<string | undefined> {
   try {
-    await ky.head(url)
-    return true
-  } catch {
-    return false
-  }
-}
-
-async function getCompatibleImageUrl(
-  url: string | undefined | null,
-  fallbackUrl: string | undefined | null
-): Promise<string | undefined> {
-  const image = (await isUrlReachable(url)) ? url : fallbackUrl
-
-  if (image) {
-    const imageUrl = new URL(image)
-
-    if (imageUrl.host === 'images.unsplash.com') {
-      if (!imageUrl.searchParams.has('w')) {
-        imageUrl.searchParams.set('w', '1200')
-        imageUrl.searchParams.set('fit', 'max')
-        return imageUrl.toString()
-      }
+    const response = await fetch(url, { cache: 'no-store' })
+    if (!response.ok) {
+      await response.body?.cancel()
+      return
     }
-  }
 
-  return image ?? undefined
+    const contentType = response.headers.get('content-type')?.split(';')[0]
+    if (!contentType?.startsWith('image/')) {
+      await response.body?.cancel()
+      return
+    }
+
+    const image = Buffer.from(await response.arrayBuffer()).toString('base64')
+    return `data:${contentType};base64,${image}`
+  } catch {
+    return
+  }
 }

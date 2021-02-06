@@ -2,12 +2,14 @@
 
 import * as Fathom from 'fathom-client'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { ThemeProvider, useTheme } from 'next-themes'
+import { ThemeProvider } from 'next-themes'
 import type PostHog from 'posthog-js-lite'
 import * as React from 'react'
 
 import { bootstrap } from '@/lib/bootstrap-client'
 import { fathomConfig, fathomId, posthogConfig, posthogId } from '@/lib/config'
+
+import { SoundProvider } from '@/components/SoundProvider'
 
 const themeClassNames = { dark: 'dark-mode', light: 'light-mode' }
 
@@ -15,48 +17,21 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
       attribute='class'
-      defaultTheme='system'
+      defaultTheme='dark'
       disableTransitionOnChange
-      enableSystem
+      enableSystem={false}
+      forcedTheme='dark'
       value={themeClassNames}
     >
-      <ThemeColor />
+      <SoundProvider>
+        <React.Suspense fallback={null}>
+          <Analytics />
+        </React.Suspense>
 
-      <React.Suspense fallback={null}>
-        <Analytics />
-      </React.Suspense>
-
-      {children}
+        {children}
+      </SoundProvider>
     </ThemeProvider>
   )
-}
-
-function ThemeColor() {
-  const { resolvedTheme } = useTheme()
-
-  React.useEffect(() => {
-    if (!resolvedTheme) {
-      return
-    }
-
-    const themeColorMetas = Array.from(
-      document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
-    )
-    const originalContent = themeColorMetas.map((meta) => meta.content)
-    const themeColor = resolvedTheme === 'dark' ? '#2d3439' : '#fefffe'
-
-    for (const meta of themeColorMetas) {
-      meta.content = themeColor
-    }
-
-    return () => {
-      for (const [index, meta] of themeColorMetas.entries()) {
-        meta.content = originalContent[index]!
-      }
-    }
-  }, [resolvedTheme])
-
-  return null
 }
 
 function Analytics() {
@@ -78,15 +53,21 @@ function Analytics() {
     const posthogApiKey = posthogId
 
     if (posthogApiKey) {
-      void import('posthog-js-lite').then(({ default: PostHogClient }) => {
-        if (isDisposed) {
-          return
-        }
+      void import('posthog-js-lite')
+        .then(({ default: PostHogClient }) => {
+          if (isDisposed) {
+            return
+          }
 
-        const posthog = new PostHogClient(posthogApiKey, posthogConfig)
-        posthog.capture('$pageview')
-        posthogRef.current = posthog
-      })
+          const posthog = new PostHogClient(posthogApiKey, posthogConfig)
+          posthog.capture('$pageview')
+          posthogRef.current = posthog
+        })
+        .catch((err: unknown) => {
+          if (!isDisposed) {
+            console.error('Failed to initialize PostHog', err)
+          }
+        })
     }
 
     return () => {

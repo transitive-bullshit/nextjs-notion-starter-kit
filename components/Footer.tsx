@@ -1,83 +1,196 @@
+'use client'
+
 import * as React from 'react'
 
 import * as config from '@/lib/config'
 import { GitHubIcon } from '@/lib/icons/github'
-import { LinkedInIcon } from '@/lib/icons/linkedin'
-import { MoonIcon } from '@/lib/icons/moon'
-import { SunIcon } from '@/lib/icons/sun'
-import { TwitterIcon } from '@/lib/icons/twitter'
-import { useDarkMode } from '@/lib/use-dark-mode'
 
-import styles from './styles.module.css'
+import { SoundToggle } from './SoundToggle'
+import landingStyles from './landing-footer.module.css'
 
-export function FooterImpl() {
-  const { hasMounted, isDarkMode, toggleDarkMode } = useDarkMode()
+interface FooterProps {
+  gitCommitSha?: string
+  sourceNotionPageId?: string
+}
+
+const sourceRepositoryUrl =
+  'https://github.com/transitive-bullshit/nextjs-notion-starter-kit'
+const fullGitCommitPattern = /^[0-9a-f]{40}$/i
+
+const timeFormatter = new Intl.DateTimeFormat('en-GB', {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hourCycle: 'h23'
+})
+
+function useLiveMetadata() {
+  const [time, setTime] = React.useState('--:--:--')
+  const [viewport, setViewport] = React.useState('--- × ---')
+  const [isReady, setIsReady] = React.useState(false)
+
+  React.useEffect(() => {
+    let resizeFrame: number | undefined
+
+    const updateTime = () => setTime(timeFormatter.format(new Date()))
+    const updateViewport = () => {
+      setViewport(`${window.innerWidth} × ${window.innerHeight}`)
+    }
+    const scheduleViewportUpdate = () => {
+      if (resizeFrame !== undefined) window.cancelAnimationFrame(resizeFrame)
+      resizeFrame = window.requestAnimationFrame(updateViewport)
+    }
+
+    updateTime()
+    updateViewport()
+    setIsReady(true)
+
+    const timer = window.setInterval(updateTime, 1000)
+    window.addEventListener('resize', scheduleViewportUpdate, {
+      passive: true
+    })
+
+    return () => {
+      window.clearInterval(timer)
+      window.removeEventListener('resize', scheduleViewportUpdate)
+      if (resizeFrame !== undefined) window.cancelAnimationFrame(resizeFrame)
+    }
+  }, [])
+
+  return { time, viewport, isReady }
+}
+
+export function FooterImpl({ gitCommitSha, sourceNotionPageId }: FooterProps) {
   const currentYear = new Date().getFullYear()
-
-  const onToggleDarkMode = React.useCallback(
-    (e: any) => {
-      e.preventDefault()
-      toggleDarkMode()
-    },
-    [toggleDarkMode]
+  const { time, viewport, isReady } = useLiveMetadata()
+  const candidateGitCommitSha =
+    gitCommitSha?.trim() || process.env.NEXT_PUBLIC_BUILD_GIT_SHA?.trim()
+  const resolvedGitCommitSha = fullGitCommitPattern.test(
+    candidateGitCommitSha ?? ''
   )
+    ? candidateGitCommitSha
+    : undefined
+  const gitCommitUrl = resolvedGitCommitSha
+    ? `${sourceRepositoryUrl}/commit/${encodeURIComponent(resolvedGitCommitSha)}`
+    : sourceRepositoryUrl
+  const shortGitCommitSha = resolvedGitCommitSha?.slice(0, 7)
+  const sourceNotionUrl = sourceNotionPageId
+    ? `https://www.notion.so/${sourceNotionPageId.replaceAll('-', '')}`
+    : undefined
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.copyright}>
-        Copyright {currentYear} {config.author}
-      </div>
+    <footer className={landingStyles.footer}>
+      <nav
+        className={landingStyles.primaryLinks}
+        aria-label='Project and social links'
+      >
+        <a
+          className={landingStyles.primaryLink}
+          href={sourceRepositoryUrl}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <span className={landingStyles.primaryLabel}>
+            <GitHubIcon />
+            GitHub
+          </span>
+          <span className={landingStyles.primaryHandle}>
+            nextjs-notion-starter-kit
+            <span aria-hidden='true'>↗</span>
+          </span>
+        </a>
 
-      <div className={styles.settings}>
-        {hasMounted && (
-          <a
-            className={styles.toggleDarkMode}
-            href='#'
-            role='button'
-            onClick={onToggleDarkMode}
-            title='Toggle dark mode'
-          >
-            {isDarkMode ? <MoonIcon /> : <SunIcon />}
-          </a>
-        )}
-      </div>
-
-      <div className={styles.social}>
         {config.twitter && (
           <a
-            className={styles.twitter}
+            className={landingStyles.primaryLink}
             href={`https://x.com/${config.twitter}`}
-            title={`X @${config.twitter}`}
+            aria-label={`Twitter @${config.twitter} — online`}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <TwitterIcon />
+            <span className={landingStyles.primaryLabel}>
+              <span className={landingStyles.statusDot} aria-hidden='true' />
+              Twitter
+            </span>
+            <span className={landingStyles.primaryHandle}>
+              @{config.twitter}
+              <span aria-hidden='true'>↗</span>
+            </span>
           </a>
         )}
+      </nav>
 
-        {config.github && (
-          <a
-            className={styles.github}
-            href={`https://github.com/${config.github}`}
-            title={`GitHub @${config.github}`}
-            target='_blank'
-            rel='noopener noreferrer'
+      <dl className={landingStyles.metadata} aria-label='Live page metadata'>
+        <div className={landingStyles.metadataItem}>
+          <dt>Build</dt>
+          <dd className={landingStyles.metadataLink}>
+            {shortGitCommitSha ? (
+              <a
+                href={gitCommitUrl}
+                title={`View commit ${resolvedGitCommitSha}`}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <code>{shortGitCommitSha}</code>
+                <span aria-hidden='true'>↗</span>
+              </a>
+            ) : (
+              <span>Local</span>
+            )}
+          </dd>
+        </div>
+        <div className={landingStyles.metadataItem}>
+          <dt>Local time</dt>
+          <dd
+            className={landingStyles.liveValue}
+            data-ready={isReady ? 'true' : 'false'}
           >
-            <GitHubIcon />
-          </a>
-        )}
+            <time>{time}</time>
+          </dd>
+        </div>
+        <div className={landingStyles.metadataItem}>
+          <dt>Viewport</dt>
+          <dd
+            className={landingStyles.liveValue}
+            data-ready={isReady ? 'true' : 'false'}
+          >
+            <output>{viewport}</output>
+          </dd>
+        </div>
+        <div className={landingStyles.metadataItem}>
+          <dt>Notion</dt>
+          <dd className={landingStyles.metadataLink}>
+            {sourceNotionUrl ? (
+              <a
+                href={sourceNotionUrl}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Public page
+                <span aria-hidden='true'>↗</span>
+              </a>
+            ) : (
+              <span>Unavailable</span>
+            )}
+          </dd>
+        </div>
+      </dl>
 
-        {config.linkedin && (
+      <div className={landingStyles.bottomLine}>
+        <p>© {currentYear} Travis Fischer</p>
+        <nav
+          className={landingStyles.utilityLinks}
+          aria-label='Footer utilities'
+        >
+          <SoundToggle />
           <a
-            className={styles.linkedin}
-            href={`https://www.linkedin.com/in/${config.linkedin}`}
-            title={`LinkedIn ${config.author}`}
+            href={sourceRepositoryUrl}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <LinkedInIcon />
+            Source code
           </a>
-        )}
+        </nav>
       </div>
     </footer>
   )

@@ -14,7 +14,8 @@ export function PageActions({ tweet }: { tweet: string }) {
         href={`https://x.com/intent/like?tweet_id=${tweet}`}
         target='_blank'
         rel='noopener noreferrer'
-        title='Like this post on Twitter'
+        aria-label='Like this post on X'
+        title='Like this post on X'
       >
         <LikeIcon />
       </a>
@@ -24,7 +25,8 @@ export function PageActions({ tweet }: { tweet: string }) {
         href={`https://x.com/intent/retweet?tweet_id=${tweet}`}
         target='_blank'
         rel='noopener noreferrer'
-        title='Retweet this post on Twitter'
+        aria-label='Repost this post on X'
+        title='Repost this post on X'
       >
         <RetweetIcon />
       </a>
