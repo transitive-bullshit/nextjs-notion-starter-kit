@@ -175,10 +175,12 @@ img.lazy-image-real {
 .notion-page-icon-wrapper span.notion-page-icon {
   width: 100%;
   opacity: 0.25;
-  padding: 78px;
-  text-align: right;
   margin: auto;
-  max-width: initial;
+  filter: grayscale(1);
+  text-align: right;
+  max-width: 640px;
+  padding: 78px;
+
 }
 
 .notion {
@@ -189,4 +191,10 @@ img.lazy-image-real {
 .notion-page-content{
   max-width: 640px;
   margin: 0 auto;
+}
+
+.notion-aside{
+  right:0;
+  width:calc((100vw - 640px)/2);
+  position:fixed;
 }
