@@ -15,7 +15,7 @@ import { Tweet, Twitter } from 'react-static-tweets'
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
 
 // utils
-import { getBlockTitle } from 'notion-utils'
+import { getBlockTitle, parsePageId } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
 import { getPageDescription } from 'lib/get-page-description'
@@ -35,6 +35,7 @@ import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
+import { HeroHeader } from './HeroHeader'
 
 import styles from './styles.module.css'
 
@@ -120,10 +121,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  // const isRootPage =
-  //   parsePageId(block.id) === parsePageId(site.rootNotionPageId)
+  const isRootPage =
+    parsePageId(block.id) === parsePageId(site.rootNotionPageId)
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
+  const isBioPage =
+    parsePageId(block.id) === parsePageId('8d0062776d0c4afca96eb1ace93a7538')
+
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 
@@ -138,6 +142,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   let comments: React.ReactNode = null
   let pageAside: React.ReactChild = null
+  let pageCover: React.ReactChild = null
 
   // only display comments and page actions on blog post pages
   if (isBlogPost) {
@@ -158,6 +163,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
   } else {
     pageAside = <PageSocial />
+  }
+
+  if (isRootPage || isBioPage) {
+    pageCover = <HeroHeader className='notion-page-cover' />
   }
 
   return (
@@ -276,6 +285,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
             toggleDarkMode={darkMode.toggle}
           />
         }
+        pageCover={pageCover}
       />
 
       <GitHubShareButton />
