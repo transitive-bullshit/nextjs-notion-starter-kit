@@ -145,9 +145,10 @@ details.notion-toggle > div {
 details.notion-toggle > summary {
   margin-bottom: 4px;
 }
-html {
+body {
   background: #101010;
 }
+
 img {
   max-width: 75vw !important;
   object-fit: cover;
@@ -210,4 +211,45 @@ img.lazy-image-real {
   border-width: 2px;
   border-image: none;
   border-image-slice: 0;
+}
+
+.notion-collection-column-title {
+  display: initial !important;
+}
+
+.notion-collection-column-title > svg {
+  display: none;
+}
+
+.notion-collection-column-title-body {
+  padding: 8px;
+}
+
+.notion-quote {
+  background: #f8f8f8;
+  border-radius: 0;
+  border-left: 2px solid #808080;
+  padding: 8px 20px;
+  margin: 8px auto;
+}
+
+.dark-mode .notion-quote {
+  background: #181818 !important;
+  border-radius: 0;
+  border-left: 2px solid #808080;
+  padding: 8px 20px;
+  margin: 8px auto;
+}
+
+.katex-html {
+  display: none;
+}
+
+.notion-equation {
+  cursor: initial;
+}
+.notion-equation:hover,
+.notion-equation:focus,
+.notion-equation:active {
+  background-color: initial;
 }
