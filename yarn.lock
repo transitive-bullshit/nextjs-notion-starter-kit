@@ -4110,10 +4110,10 @@ react-modal@^3.11.2:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^4.2.15:
-  version "4.2.15"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.2.15.tgz#b1d53288c1dc46744ee7850bae35c293d3bc3c36"
-  integrity sha512-hdg8qiF3PDI8Sg/FiRexNbwEZSPADwFJTRg50jdqiCjyqgh9TqnKeabJNQ1Vh4sfEGKAsLCwQXsJwEvdB7j2Yg==
+react-notion-x@^4.2.16:
+  version "4.2.16"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.2.16.tgz#ed47984fdfb42ce011bd64258cad183f6ba9aac9"
+  integrity sha512-7kIXf1cKariXj6+eyYX4Mv7D76Tm5nLjWlcbTY97/9TcfAOlyCz4LwC5KK2XF7DzZLtC0qgC7cPXxroPqiuj4A==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     date-fns "^2.15.0"
