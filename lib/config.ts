@@ -7,6 +7,7 @@
 
 import { parsePageId } from 'notion-utils'
 import { getSiteConfig, getEnv } from './get-config-value'
+import { PageUrlOverridesMap, PageUrlOverridesInverseMap } from './types'
 
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),
@@ -22,6 +23,15 @@ export const rootNotionSpaceId: string | null = parsePageId(
   getSiteConfig('rootNotionSpaceId', null),
   { uuid: true }
 )
+
+export const pageUrlOverrides = cleanPageUrlOverrides(
+  getSiteConfig('pageUrlOverrides', {}) || {}
+)
+
+export const inversePageUrlOverrides = invertPageUrlOverrides(pageUrlOverrides)
+
+console.log('pageUrlOverrides', pageUrlOverrides)
+console.log('inversePageUrlOverrides', inversePageUrlOverrides)
 
 // general site config
 export const name: string = getSiteConfig('name')
@@ -145,4 +155,45 @@ function getGoogleApplicationCredentials() {
 
     throw err
   }
+}
+
+function cleanPageUrlOverrides(
+  pageUrlOverrides: PageUrlOverridesMap
+): PageUrlOverridesMap {
+  return Object.keys(pageUrlOverrides).reduce((acc, pageId) => {
+    const uuid = parsePageId(pageId, { uuid: false })
+    const uri = pageUrlOverrides[pageId]
+
+    if (!uuid) {
+      throw new Error(`Invalid pageUrlOverrides page id "${pageId}"`)
+    }
+
+    if (!uri) {
+      throw new Error(`Missing pageUrlOverrides value for page "${pageId}"`)
+    }
+
+    if (!uri.startsWith('/')) {
+      throw new Error(
+        `Invalid pageUrlOverrides value for page "${pageId}": value "${uri}" should be a relative URI that starts with "/"`
+      )
+    }
+
+    const path = uri.slice(1)
+
+    return {
+      ...acc,
+      [uuid]: path
+    }
+  }, {})
+}
+
+function invertPageUrlOverrides(
+  pageUrlOverrides: PageUrlOverridesMap
+): PageUrlOverridesInverseMap {
+  return Object.keys(pageUrlOverrides).reduce((acc, pageId) => {
+    return {
+      ...acc,
+      [pageUrlOverrides[pageId]]: pageId
+    }
+  }, {})
 }

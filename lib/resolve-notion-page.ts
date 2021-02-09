@@ -1,6 +1,7 @@
+import { parsePageId } from 'notion-utils'
 import * as acl from './acl'
 import * as types from './types'
-import { parsePageId } from 'notion-utils'
+import { inversePageUrlOverrides } from './config'
 import { getPage } from './notion'
 import { getSiteMaps } from './get-site-maps'
 import { getSiteForDomain } from './get-site-for-domain'
@@ -12,6 +13,14 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
   if (rawPageId && rawPageId !== 'index') {
     pageId = parsePageId(rawPageId)
+
+    if (!pageId) {
+      const override = inversePageUrlOverrides[rawPageId]
+
+      if (override) {
+        pageId = parsePageId(override)
+      }
+    }
 
     if (pageId) {
       const resources = await Promise.all([
