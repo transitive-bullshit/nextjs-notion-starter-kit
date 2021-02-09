@@ -47,8 +47,5 @@ module.exports = {
   //   '067dd719a912471ea9a3ac10710e7fdf': '/foo',
   //   '0be6efce9daf42688f65c76b89f8eb27': '/bar'
   // }
-  pageUrlOverrides: {
-    '067dd719a912471ea9a3ac10710e7fdf': '/foo',
-    '0be6efce9daf42688f65c76b89f8eb27': '/bar'
-  }
+  pageUrlOverrides: null
 }
