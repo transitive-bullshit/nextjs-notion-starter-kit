@@ -8,6 +8,14 @@ export const getStaticProps = async (context) => {
   const rawPageId = context.params.pageId as string
 
   try {
+    if (rawPageId === 'sitemap.xml' || rawPageId === 'robots.txt') {
+      return {
+        redirect: {
+          destination: `/api/${rawPageId}`
+        }
+      }
+    }
+
     const props = await resolveNotionPage(domain, rawPageId)
 
     return { props, revalidate: 10 }
@@ -17,15 +25,6 @@ export const getStaticProps = async (context) => {
     // we don't want to publish the error version of this page, so
     // let next.js know explicitly that incremental SSG failed
     throw err
-
-    // return {
-    //   props: {
-    //     error: {
-    //       statusCode: err.statusCode || 500,
-    //       message: err.message
-    //     }
-    //   }
-    // }
   }
 }
 

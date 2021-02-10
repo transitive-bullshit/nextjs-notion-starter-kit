@@ -42,7 +42,7 @@ The site is then deployed to [Vercel](http://vercel.com).
 2. Change a few values in [site.config.js](./site.config.js)
 3. `npm install`
 4. `npm run dev` to test locally
-5. `run run deploy` to deploy to vercel 💪
+5. `npm run deploy` to deploy to vercel 💪
 
 I tried to make configuration as easy as possible.
 
