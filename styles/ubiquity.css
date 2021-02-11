@@ -241,10 +241,6 @@ img.lazy-image-real {
   margin: 8px auto;
 }
 
-.katex-html {
-  display: none;
-}
-
 .notion-equation {
   cursor: initial;
 }
@@ -259,6 +255,14 @@ img.lazy-image-real {
   filter: invert(1);
 }
 
-.notion-aside-table-of-contents-header{
-  width:100%;
+.notion-aside-table-of-contents-header {
+  display: none;
+}
+
+.lazy-image-wrapper img {
+  top: var(--header);
+}
+
+.notion-aside {
+  top: calc((3 * var(--header))+64px);
 }
