@@ -254,6 +254,9 @@ img.lazy-image-real {
 .dark-mode img {
   filter: invert(1);
 }
+.dark-mode img[src*=unsplash] {
+  filter: invert(0);
+}
 
 .notion-aside-table-of-contents-header {
   display: none;
