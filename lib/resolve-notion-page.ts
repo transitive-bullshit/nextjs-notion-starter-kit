@@ -3,7 +3,7 @@ import { ExtendedRecordMap } from 'notion-types'
 
 import * as acl from './acl'
 import * as types from './types'
-import { pageUrlOverrides } from './config'
+import { pageUrlOverrides, pageUrlAdditions } from './config'
 import { getPage } from './notion'
 import { getSiteMaps } from './get-site-maps'
 import { getSiteForDomain } from './get-site-for-domain'
@@ -17,7 +17,10 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     pageId = parsePageId(rawPageId)
 
     if (!pageId) {
-      const override = pageUrlOverrides[rawPageId]
+      // check if the site configuration provides an override of a fallback for
+      // the page's URI
+      const override =
+        pageUrlOverrides[rawPageId] || pageUrlAdditions[rawPageId]
 
       if (override) {
         pageId = parsePageId(override)

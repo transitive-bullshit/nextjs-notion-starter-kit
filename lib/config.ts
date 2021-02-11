@@ -30,7 +30,9 @@ export const pageUrlOverrides = cleanPageUrlOverrides(
 
 export const inversePageUrlOverrides = invertPageUrlOverrides(pageUrlOverrides)
 
-// export const inversePageUrlAdditions = invertPageUrlOverrides(pageUrlOverrides)
+export const pageUrlAdditions = cleanPageUrlOverrides(
+  getSiteConfig('pageUrlAdditions', {}) || {}
+)
 
 // general site config
 export const name: string = getSiteConfig('name')
