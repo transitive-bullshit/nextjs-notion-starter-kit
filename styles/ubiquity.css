@@ -254,3 +254,11 @@ img.lazy-image-real {
   background-color: initial;
 }
 /* test push */
+
+.dark-mode img {
+  filter: invert(1);
+}
+
+.notion-aside-table-of-contents-header{
+  width:100%;
+}

@@ -15,7 +15,7 @@ import 'prismjs/themes/prism-coy.css'
 // import 'rc-dropdown/assets/index.css'
 
 // used for rendering equations (optional)
-// import 'katex/dist/katex.min.css'
+import 'katex/dist/katex.min.css'
 
 // global style overrides for notion
 import 'styles/notion.css'
