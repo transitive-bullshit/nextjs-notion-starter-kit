@@ -266,3 +266,7 @@ img.lazy-image-real {
 .notion-aside {
   top: calc((3 * var(--header))+64px);
 }
+
+.notion-h {
+  font-weight: 400;
+}
