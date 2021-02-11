@@ -30,8 +30,7 @@ export const pageUrlOverrides = cleanPageUrlOverrides(
 
 export const inversePageUrlOverrides = invertPageUrlOverrides(pageUrlOverrides)
 
-console.log('pageUrlOverrides', pageUrlOverrides)
-console.log('inversePageUrlOverrides', inversePageUrlOverrides)
+// export const inversePageUrlAdditions = invertPageUrlOverrides(pageUrlOverrides)
 
 // general site config
 export const name: string = getSiteConfig('name')
@@ -160,9 +159,9 @@ function getGoogleApplicationCredentials() {
 function cleanPageUrlOverrides(
   pageUrlOverrides: PageUrlOverridesMap
 ): PageUrlOverridesMap {
-  return Object.keys(pageUrlOverrides).reduce((acc, pageId) => {
+  return Object.keys(pageUrlOverrides).reduce((acc, uri) => {
+    const pageId = pageUrlOverrides[uri]
     const uuid = parsePageId(pageId, { uuid: false })
-    const uri = pageUrlOverrides[pageId]
 
     if (!uuid) {
       throw new Error(`Invalid pageUrlOverrides page id "${pageId}"`)
@@ -182,7 +181,7 @@ function cleanPageUrlOverrides(
 
     return {
       ...acc,
-      [uuid]: path
+      [path]: uuid
     }
   }, {})
 }
@@ -190,10 +189,12 @@ function cleanPageUrlOverrides(
 function invertPageUrlOverrides(
   pageUrlOverrides: PageUrlOverridesMap
 ): PageUrlOverridesInverseMap {
-  return Object.keys(pageUrlOverrides).reduce((acc, pageId) => {
+  return Object.keys(pageUrlOverrides).reduce((acc, uri) => {
+    const pageId = pageUrlOverrides[uri]
+
     return {
       ...acc,
-      [pageUrlOverrides[pageId]]: pageId
+      [pageId]: uri
     }
   }, {})
 }
