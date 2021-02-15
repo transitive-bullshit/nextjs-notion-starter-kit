@@ -15,8 +15,8 @@
     "start": "next start",
     "deploy": "vercel --prod",
     "deps": "run-s deps:*",
-    "deps:update": "[ -z $GITHUB_ACTIONS ] && yarn add notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:update on CI'",
-    "deps:link": "[ -z $GITHUB_ACTIONS ] && yarn link notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:link on CI'",
+    "deps:update": "[ -z $GITHUB_ACTIONS ] && yarn add notion-client notion-types notion-utils react-notion-x static-tweets react-static-tweets || echo 'Skipping deps:update on CI'",
+    "deps:link": "[ -z $GITHUB_ACTIONS ] && yarn link notion-client notion-types notion-utils react-notion-x static-tweets react-static-tweets || echo 'Skipping deps:link on CI'",
     "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
@@ -47,7 +47,9 @@
     "react-dom": "17.0.1",
     "react-icons": "^4.1.0",
     "react-notion-x": "^4.2.17",
+    "react-static-tweets": "^0.2.3",
     "react-use": "^15.3.3",
+    "static-tweets": "^0.2.1",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
