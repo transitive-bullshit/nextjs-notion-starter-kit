@@ -2,10 +2,10 @@ import { NotionAPI } from 'notion-client'
 import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
 import { getPreviewImages } from './get-preview-images'
 import { mapNotionImageUrl } from './map-image-url'
-import { fetchTweetAst, getTweetAst } from 'static-tweets'
+import { fetchTweetAst } from 'static-tweets'
 import pMap from 'p-map'
 
-const notion = new NotionAPI({
+export const notion = new NotionAPI({
   apiBaseUrl: process.env.NOTION_API_BASE_URL
 })
 
@@ -63,6 +63,8 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
           }
         }
       }
+
+      return null
     })
     .filter(Boolean)
 
@@ -83,13 +85,16 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     }
   )
 
-  const tweetAstMap = tweetAsts.filter(Boolean).reduce(
-    (acc, t) => ({
-      ...acc,
-      [t.tweetId]: t.tweetAst
-    }),
-    {}
-  )
+  const tweetAstMap = tweetAsts.reduce((acc, { tweetId, tweetAst }) => {
+    if (tweetAst) {
+      return {
+        ...acc,
+        [tweetId]: tweetAst
+      }
+    } else {
+      return acc
+    }
+  }, {})
 
   ;(recordMap as any).tweetAstMap = tweetAstMap
 
