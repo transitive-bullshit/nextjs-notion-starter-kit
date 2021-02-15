@@ -23,6 +23,9 @@ import 'styles/notion.css'
 // global style overrides for prism theme
 import 'styles/prism-theme.css'
 
+// core styles for static tweet renderer
+import 'react-static-tweets/styles.css'
+
 // here we're bringing in any languages we want to support for
 // syntax highlighting via Notion's Code block
 import 'prismjs'
