@@ -254,12 +254,16 @@ img.lazy-image-real {
 .dark-mode img {
   filter: invert(1);
 }
-.dark-mode img[src*=unsplash] {
+.dark-mode img[src*='unsplash'] {
   filter: invert(0);
 }
 
 .notion-aside-table-of-contents-header {
   display: none;
+}
+
+.lazy-image-wrapper {
+  overflow: initial;
 }
 
 .lazy-image-wrapper img {
