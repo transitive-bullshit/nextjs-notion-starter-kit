@@ -4663,10 +4663,10 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
   integrity sha512-2FoTQzRNTncBVtnzxFOk2mCpcfxQpenBMbk5kSVBg5UcPqV9fRbgY2zhb7GTWWOlpFmAxhClBDlIq8Rsubz1yQ==
 
-react-static-tweets@^0.2.4:
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/react-static-tweets/-/react-static-tweets-0.2.4.tgz#469ad679b5b616d5f225b788ae361f002c5351ae"
-  integrity sha512-oX8hIMnqeuWh+gHc3bVSadAzLqCvM1KBjDyuVWYTos5ejx6QIwK9mxv+63tztFQsB4kX4KEtAWLXprCLohRIWg==
+react-static-tweets@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/react-static-tweets/-/react-static-tweets-0.2.6.tgz#4fbc1b4fc30d49dea5603a6305b8fc179855b219"
+  integrity sha512-4mGpkkAaxu+GiMcZViaKdgr/Vv+5uGbjqz5oBHmgQmLldfCfoy7usYmUfAl6flKE4l5oazqB/wFKLF1TmngxZQ==
   dependencies:
     classnames "^2.2.6"
     styled-jsx "^3.4.2"
