@@ -7,24 +7,24 @@ import 'react-notion-x/src/styles.css'
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-coy.css'
 
-// this is better for dark mode
+// this might be better for dark mode
 // import 'prismjs/themes/prism-okaidia.css'
 
-// used for collection views (optional)
+// used for collection views selector (optional)
 // TODO: re-add if we enable collection view dropdowns
 // import 'rc-dropdown/assets/index.css'
 
 // used for rendering equations (optional)
 // import 'katex/dist/katex.min.css'
 
+// core styles for static tweet renderer (optional)
+import 'react-static-tweets/styles.css'
+
 // global style overrides for notion
 import 'styles/notion.css'
 
-// global style overrides for prism theme
+// global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
-
-// core styles for static tweet renderer
-import 'react-static-tweets/styles.css'
 
 // here we're bringing in any languages we want to support for
 // syntax highlighting via Notion's Code block
