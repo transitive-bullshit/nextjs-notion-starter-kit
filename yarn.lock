@@ -4617,10 +4617,10 @@ react-modal@^3.11.2:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^4.2.18:
-  version "4.2.18"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.2.18.tgz#08fb8654176293764440174be25e0a6afa72d225"
-  integrity sha512-k7YZahSWZ5XxK8kXNRYHAl5wC6T6dB94Pik4mEdOL3xSq4V4cuPLEMGncp04RkAbYUuv4eU3tWW7Sxr3Ys34nw==
+react-notion-x@^4.2.19:
+  version "4.2.19"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.2.19.tgz#66e4345f1adc1801a1ca508275ed280734c0c3e3"
+  integrity sha512-z8qpKU5NdAzHa1o6PswgZE3bb1R7c5IYOATRrbnSRcHJL/IhtDpJR7I7xNjAGecj00FrTUfqVFLoCfT2VtRtmA==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     date-fns "^2.15.0"
@@ -5257,10 +5257,10 @@ state-toggle@^1.0.0:
   resolved "https://registry.yarnpkg.com/state-toggle/-/state-toggle-1.0.3.tgz#e123b16a88e143139b09c6852221bc9815917dfe"
   integrity sha512-d/5Z4/2iiCnHw6Xzghyhb+GcmF89bxwgXG60wjIiZaxnymbyOmI8Hk4VqHXiVVp6u2ysaskFfXg3ekCj4WNftQ==
 
-static-tweets@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/static-tweets/-/static-tweets-0.2.1.tgz#63a105ddbb38cda00b96a802e201270fe8ab0726"
-  integrity sha512-AA41XTeMJkKNrcs9zecxInWK6Tj7xNXNzl0Z5GEeAOIM/nHgRc6FIRnG89RuYeNwf3QAw/x2/0Bey4rLyBLdZw==
+static-tweets@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/static-tweets/-/static-tweets-0.2.7.tgz#6f855c51d8e35eb9d11f4c7fb8f21295acc46c15"
+  integrity sha512-ZNgRec3e1A6nDB76IkXJQjyKgrdCTgUPvWanUmZ1i86TzsskmIpzAsFJrdZCvD9SBm/zdjap1kfzDzN+EwHNoQ==
   dependencies:
     "@mapbox/rehype-prism" "^0.5.0"
     "@vercel/fetch" "^6.1.0"
