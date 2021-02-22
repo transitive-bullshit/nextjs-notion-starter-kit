@@ -9,6 +9,8 @@ import BodyClassName from 'react-body-classname'
 import useDarkMode from 'use-dark-mode'
 import { PageBlock } from 'notion-types'
 
+import { Tweet, Twitter } from 'react-static-tweets'
+
 // core notion renderer
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
 
@@ -57,12 +59,9 @@ const Equation = dynamic(() =>
   import('react-notion-x').then((notion) => notion.Equation)
 )
 
-const Tweet = dynamic(
-  () => import('react-notion-x').then((notion) => notion.Tweet),
-  {
-    ssr: false
-  }
-)
+// we're now using a much lighter-weight tweet renderer react-static-tweets
+// instead of the official iframe-based embed widget from twitter
+// const Tweet = dynamic(() => import('react-tweet-embed'))
 
 const Modal = dynamic(
   () => import('react-notion-x').then((notion) => notion.Modal),
@@ -109,8 +108,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
   })
 
   if (!config.isServer) {
-    // add important objects global window for easy debugging
+    // add important objects to the window global for easy debugging
     const g = window as any
+    g.pageId = pageId
     g.recordMap = recordMap
     g.block = block
   }
@@ -161,7 +161,15 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
   return (
-    <>
+    <Twitter.Provider
+      value={{
+        tweetAstMap: (recordMap as any).tweetAstMap || {},
+        swrOptions: {
+          fetcher: (id) =>
+            fetch(`/api/get-tweet-ast/${id}`).then((r) => r.json())
+        }
+      }}
+    >
       <PageHead site={site} />
 
       <Head>
@@ -273,6 +281,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       {/* <GitHubShareButton /> */}
 
       <CustomHtml site={site} />
-    </>
+    </Twitter.Provider>
   )
 }

@@ -1,7 +1,9 @@
 import { parsePageId } from 'notion-utils'
+import { ExtendedRecordMap } from 'notion-types'
+
 import * as acl from './acl'
 import * as types from './types'
-import { inversePageUrlOverrides } from './config'
+import { pageUrlOverrides, pageUrlAdditions } from './config'
 import { getPage } from './notion'
 import { getSiteMaps } from './get-site-maps'
 import { getSiteForDomain } from './get-site-for-domain'
@@ -9,13 +11,16 @@ import { getSiteForDomain } from './get-site-for-domain'
 export async function resolveNotionPage(domain: string, rawPageId?: string) {
   let site: types.Site
   let pageId: string
-  let recordMap: types.ExtendedRecordMap
+  let recordMap: ExtendedRecordMap
 
   if (rawPageId && rawPageId !== 'index') {
     pageId = parsePageId(rawPageId)
 
     if (!pageId) {
-      const override = inversePageUrlOverrides[rawPageId]
+      // check if the site configuration provides an override of a fallback for
+      // the page's URI
+      const override =
+        pageUrlOverrides[rawPageId] || pageUrlAdditions[rawPageId]
 
       if (override) {
         pageId = parsePageId(override)
@@ -39,7 +44,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
 
       if (pageId) {
         // TODO: we're not re-using the site from siteMaps because it is
-        // cachd aggressively
+        // cached aggressively
         // site = await getSiteForDomain(domain)
         // recordMap = siteMap.pageMap[pageId]
 

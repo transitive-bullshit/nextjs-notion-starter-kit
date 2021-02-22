@@ -24,14 +24,17 @@ export const rootNotionSpaceId: string | null = parsePageId(
   { uuid: true }
 )
 
-export const pageUrlOverrides = cleanPageUrlOverrides(
-  getSiteConfig('pageUrlOverrides', {}) || {}
+export const pageUrlOverrides = cleanPageUrlMap(
+  getSiteConfig('pageUrlOverrides', {}) || {},
+  'pageUrlOverrides'
 )
 
 export const inversePageUrlOverrides = invertPageUrlOverrides(pageUrlOverrides)
 
-console.log('pageUrlOverrides', pageUrlOverrides)
-console.log('inversePageUrlOverrides', inversePageUrlOverrides)
+export const pageUrlAdditions = cleanPageUrlMap(
+  getSiteConfig('pageUrlAdditions', {}) || {},
+  'pageUrlAdditions'
+)
 
 // general site config
 export const name: string = getSiteConfig('name')
@@ -157,24 +160,25 @@ function getGoogleApplicationCredentials() {
   }
 }
 
-function cleanPageUrlOverrides(
-  pageUrlOverrides: PageUrlOverridesMap
+function cleanPageUrlMap(
+  pageUrlMap: PageUrlOverridesMap,
+  label: string
 ): PageUrlOverridesMap {
-  return Object.keys(pageUrlOverrides).reduce((acc, pageId) => {
+  return Object.keys(pageUrlMap).reduce((acc, uri) => {
+    const pageId = pageUrlMap[uri]
     const uuid = parsePageId(pageId, { uuid: false })
-    const uri = pageUrlOverrides[pageId]
 
     if (!uuid) {
-      throw new Error(`Invalid pageUrlOverrides page id "${pageId}"`)
+      throw new Error(`Invalid ${label} page id "${pageId}"`)
     }
 
     if (!uri) {
-      throw new Error(`Missing pageUrlOverrides value for page "${pageId}"`)
+      throw new Error(`Missing ${label} value for page "${pageId}"`)
     }
 
     if (!uri.startsWith('/')) {
       throw new Error(
-        `Invalid pageUrlOverrides value for page "${pageId}": value "${uri}" should be a relative URI that starts with "/"`
+        `Invalid ${label} value for page "${pageId}": value "${uri}" should be a relative URI that starts with "/"`
       )
     }
 
@@ -182,7 +186,7 @@ function cleanPageUrlOverrides(
 
     return {
       ...acc,
-      [uuid]: path
+      [path]: uuid
     }
   }, {})
 }
@@ -190,10 +194,12 @@ function cleanPageUrlOverrides(
 function invertPageUrlOverrides(
   pageUrlOverrides: PageUrlOverridesMap
 ): PageUrlOverridesInverseMap {
-  return Object.keys(pageUrlOverrides).reduce((acc, pageId) => {
+  return Object.keys(pageUrlOverrides).reduce((acc, uri) => {
+    const pageId = pageUrlOverrides[uri]
+
     return {
       ...acc,
-      [pageUrlOverrides[pageId]]: pageId
+      [pageId]: uri
     }
   }, {})
 }
