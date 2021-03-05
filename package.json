@@ -10,6 +10,7 @@
     "node": ">=10"
   },
   "scripts": {
+    "sync-travis": "git fetch source",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
