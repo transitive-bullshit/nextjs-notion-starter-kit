@@ -11,6 +11,7 @@ export const Footer: React.FC<{
   isDarkMode: boolean
   toggleDarkMode: () => void
 }> = ({ isDarkMode, toggleDarkMode }) => {
+  const [hasMounted, setHasMounted] = React.useState(false)
   const toggleDarkModeCb = React.useCallback(
     (e) => {
       e.preventDefault()
@@ -18,6 +19,14 @@ export const Footer: React.FC<{
     },
     [toggleDarkMode]
   )
+
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  if (!hasMounted) {
+    return null
+  }
 
   return (
     <footer className={styles.footer}>
