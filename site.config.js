@@ -1,6 +1,6 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: 'WiKi-1f638fca980e4a62a5dcec1283bb672d',
+  rootNotionPageId: '1f638fca980e4a62a5dcec1283bb672d',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'ULTRAFUNS',
-  domain: 'ultrafuns,com',
+  domain: 'ultrafuns.com',
   author: 'Logan Wang',
 
   // open graph metadata (optional)
@@ -18,7 +18,7 @@ module.exports = {
 
   // social usernames (optional)
   twitter: 'LiuG_W',
-  github: 'LoganWang3407',
+  github: 'LoganWang0407',
   linkedin: 'LiuGen',
 
   // default notion icon and cover images for site-wide consistency (optional)
