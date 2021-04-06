@@ -12,12 +12,12 @@ module.exports = {
   author: 'zhimiao li',
 
   // open graph metadata (optional)
-  description: 'Example site description',
-  socialImageTitle: 'Transitive Bullshit',
-  socialImageSubtitle: 'Hello World! 👋',
+  description: '笔记、博客和其他记录',
+  socialImageTitle: 'lizhimiao的博客',
+  socialImageSubtitle: '👋',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
+  twitter: '_lizhimiao',
   github: 'zhimiaoli',
   linkedin: 'lizhimiao',
 
@@ -32,7 +32,7 @@ module.exports = {
   imageCDNHost: null,
 
   // Utteranc.es comments via GitHub issue comments (optional)
-  utterancesGitHubRepo: null,
+  utterancesGitHubRepo: "https://github.com/zhimiaoli/lizhimiao-dot-com-comment",
 
   // whether or not to enable support for LQIP preview images (optional)
   // NOTE: this requires you to set up Google Firebase and add the environment
@@ -47,5 +47,9 @@ module.exports = {
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
-  pageUrlOverrides: null
+  pageUrlOverrides: 
+  {
+    '/notion-as-blog': '2ac48272b7644cb0b0f8d19a104ddf05',
+    '/refers': '68892ddbd87341a5940b08fe9f3d079f'
+  }
 }
