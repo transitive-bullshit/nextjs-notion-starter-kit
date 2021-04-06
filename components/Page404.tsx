@@ -6,11 +6,11 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
 export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
-  const title = site?.name || 'Notion Page Not Found'
+  const title = site?.name ? `${site.name} Page Not Found` : 'Page Not Found'
 
   return (
     <>
-      <PageHead site={site} />
+      <PageHead />
 
       <Head>
         <meta property='og:site_name' content={title} />

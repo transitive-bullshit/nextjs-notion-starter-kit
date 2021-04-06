@@ -170,7 +170,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       }}
     >
-      <PageHead site={site} />
+      <PageHead />
 
       <Head>
         <meta property='og:title' content={title} />
