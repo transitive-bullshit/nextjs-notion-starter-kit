@@ -12,12 +12,28 @@ export const getAllPages = pMemoize(getAllPagesImpl, { maxAge: 60000 * 5 })
 
 export async function getAllPagesImpl(
   rootNotionPageId: string,
-  rootNotionSpaceId: string
-): Promise<Partial<types.SiteMap>> {
+  rootNotionSpaceId: string,
+  {
+    concurrency = 4,
+    pageConcurrency = 3,
+    full = false
+  }: {
+    concurrency?: number
+    pageConcurrency?: number
+    full?: boolean
+  } = {}
+): Promise<types.PartialSiteMap> {
   const pageMap = await getAllPagesInSpace(
     rootNotionPageId,
     rootNotionSpaceId,
-    notion.getPage.bind(notion)
+    (pageId: string) =>
+      notion.getPage(pageId, {
+        signFileUrls: full,
+        concurrency: pageConcurrency
+      }),
+    {
+      concurrency
+    }
   )
 
   const canonicalPageMap = Object.keys(pageMap).reduce(

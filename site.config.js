@@ -39,6 +39,11 @@ module.exports = {
   // variables specified in .env.example
   isPreviewImageSupportEnabled: false,
 
+  // whether or not to include notion IDs as suffixes in URLs
+  // NOTE: this will make incremental SSG much faster with the downside of
+  // having less pretty URLs
+  includeNotionIdInUrls: false,
+
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
   // example:

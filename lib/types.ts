@@ -50,6 +50,11 @@ export interface SiteMap {
   canonicalPageMap: CanonicalPageMap
 }
 
+export interface PartialSiteMap {
+  pageMap: PageMap
+  canonicalPageMap: CanonicalPageMap
+}
+
 export interface CanonicalPageMap {
   [canonicalPageId: string]: string
 }

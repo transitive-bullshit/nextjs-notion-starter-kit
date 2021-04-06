@@ -5,7 +5,7 @@ import * as acl from './acl'
 import * as types from './types'
 import { pageUrlOverrides, pageUrlAdditions } from './config'
 import { getPage } from './notion'
-import { getSiteMaps } from './get-site-maps'
+import { getSiteMap } from './get-site-map'
 import { getSiteForDomain } from './get-site-for-domain'
 
 export async function resolveNotionPage(domain: string, rawPageId?: string) {
@@ -37,10 +37,9 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
       recordMap = resources[1]
     } else {
       // handle mapping of user-friendly canonical page paths to Notion page IDs
-      // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
-      const siteMaps = await getSiteMaps()
-      const siteMap = siteMaps[0]
-      pageId = siteMap.canonicalPageMap[rawPageId]
+      // e.g., /foo versus /71201624b204481f862630ea25ce62fe
+      const siteMap = await getSiteMap()
+      pageId = siteMap?.canonicalPageMap?.[rawPageId]
 
       if (pageId) {
         // TODO: we're not re-using the site from siteMaps because it is

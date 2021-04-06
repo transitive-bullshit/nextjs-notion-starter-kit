@@ -28,22 +28,28 @@ export async function getPreviewImages(
   }
 
   const imageDocs = await db.db.getAll(...imageDocRefs)
-  const results = await pMap(imageDocs, async (model, index) => {
-    if (model.exists) {
-      return model.data() as types.PreviewImage
-    } else {
-      const json = {
-        url: images[index],
-        id: model.id
-      }
-      console.log('createPreviewImage server-side', json)
+  const results = await pMap(
+    imageDocs,
+    async (model, index) => {
+      if (model.exists) {
+        return model.data() as types.PreviewImage
+      } else {
+        const json = {
+          url: images[index],
+          id: model.id
+        }
+        console.log('createPreviewImage server-side', json)
 
-      // TODO: should we fire and forget here to speed up builds?
-      return got
-        .post(api.createPreviewImage, { json })
-        .json() as Promise<types.PreviewImage>
+        // TODO: should we fire and forget here to speed up builds?
+        return got
+          .post(api.createPreviewImage, { json })
+          .json() as Promise<types.PreviewImage>
+      }
+    },
+    {
+      concurrency: 16
     }
-  })
+  )
 
   return results
     .filter(Boolean)
