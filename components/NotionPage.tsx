@@ -26,7 +26,6 @@ import * as config from 'lib/config'
 
 // components
 import { CustomFont } from './CustomFont'
-import { CustomHtml } from './CustomHtml'
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
@@ -279,8 +278,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       />
 
       <GitHubShareButton />
-
-      <CustomHtml site={site} />
     </TwitterContextProvider>
   )
 }
