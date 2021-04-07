@@ -4636,10 +4636,10 @@ react-modal@^3.11.2:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.4.0.tgz#d76ce2df744a73f3de30b7cd9fd9cc37e2cb44d6"
-  integrity sha512-hEY/fyfihvSH+pakJzDaLBd3PEu1G4QWrawo4aJAgZWdJ6c5Uaky+GDjbLsxCVWjbdgTVMsOPy9EC8uFQYJQqA==
+react-notion-x@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.5.0.tgz#dffa7bdee3b9d5d442a9e845c897413a551eadf5"
+  integrity sha512-/rnH/a9XZuMv9Gz/QiPl+Q+1zLQUAyJ+arzOfxXh01mPIphb+k4QXXUiDfs1gAfTSXNmaDLtuNdpQNM7DvBgOg==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     date-fns "^2.15.0"
@@ -4682,13 +4682,13 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
   integrity sha512-2FoTQzRNTncBVtnzxFOk2mCpcfxQpenBMbk5kSVBg5UcPqV9fRbgY2zhb7GTWWOlpFmAxhClBDlIq8Rsubz1yQ==
 
-react-static-tweets@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/react-static-tweets/-/react-static-tweets-0.5.1.tgz#4628d7c3a7fa29aa1cf8ab74e5cce3812a1e8286"
-  integrity sha512-b0Rel4S5YKjHYBc7+RKsPewC1GK+eSFFoZe4kxXKeb/K1TCrTsWdlJ6pKpPmsSRX7A8x7JlAC/VOs3MXFG6rlg==
+react-static-tweets@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/react-static-tweets/-/react-static-tweets-0.5.3.tgz#c147fc8756caa65bdaf750d460956be72a955ff5"
+  integrity sha512-JDF3NaXUiw2MzETHn3iQSggDVGy0Dph0YfFpKjmO4TvzauIecah47xXYRP10RhTZ3nsXc90hr7FKDHH95Qp05w==
   dependencies:
     classnames "^2.2.6"
-    swr "^0.5.5"
+    swr "^1.0.0-beta.5"
 
 react-universal-interface@^0.6.2:
   version "0.6.2"
@@ -5259,10 +5259,10 @@ state-toggle@^1.0.0:
   resolved "https://registry.yarnpkg.com/state-toggle/-/state-toggle-1.0.3.tgz#e123b16a88e143139b09c6852221bc9815917dfe"
   integrity sha512-d/5Z4/2iiCnHw6Xzghyhb+GcmF89bxwgXG60wjIiZaxnymbyOmI8Hk4VqHXiVVp6u2ysaskFfXg3ekCj4WNftQ==
 
-static-tweets@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/static-tweets/-/static-tweets-0.5.1.tgz#d840d47effe5908cb87fe6257cbe466fd0a32b9e"
-  integrity sha512-iczmufiZWIXu5zBAUEYN3DSRjqsTYO5jwx007Ak9WYkdttlrSAvi1gSdGH0b7ONC4Y3pw+yuBBtZWuFIwN30kg==
+static-tweets@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/static-tweets/-/static-tweets-0.5.3.tgz#ca65630a8cc6c84a5fa98368bafc85685eb2dcf2"
+  integrity sha512-uGjAK8iaA7lL9OngkeRIM4Dh2J8J9IUeEPmQexiwfY5ao1dU88j/HGIfqrj/HglgU9n1SuWSVoFwXWmC1Vpf2A==
   dependencies:
     "@mapbox/rehype-prism" "^0.5.0"
     "@vercel/fetch" "^6.1.0"
@@ -5531,10 +5531,10 @@ supports-color@^8.0.0:
   dependencies:
     has-flag "^4.0.0"
 
-swr@^0.5.5:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-0.5.5.tgz#c72c1615765f33570a16bbb13699e3ac87eaaa3a"
-  integrity sha512-u4mUorK9Ipt+6LEITvWRWiRWAQjAysI6cHxbMmMV1dIdDzxMnswWo1CyGoyBHXX91CchxcuoqgFZ/ycx+YfhCA==
+swr@^1.0.0-beta.5:
+  version "1.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.0.0-beta.5.tgz#9087a4330934b71f73761ab7004a5a3ffc5c10c1"
+  integrity sha512-Iz4Q9vXDNN8TDTsF8iZol19usiGy2FCrTUva9VaW2cLoLo5YCfhMmgTh3pX32mNDL+p6lU4nNb67UA8/ScQbtQ==
   dependencies:
     dequal "2.0.2"
 
