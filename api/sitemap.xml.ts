@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import { SiteMap } from '../lib/types'
 import { host } from '../lib/config'
-import { getSiteMaps } from '../lib/get-site-maps'
+import { getSiteMap } from '../lib/get-site-map'
 
 export default async (
   req: NextApiRequest,
@@ -12,7 +12,7 @@ export default async (
     return res.status(405).send({ error: 'method not allowed' })
   }
 
-  const siteMaps = await getSiteMaps()
+  const siteMap = await getSiteMap()
 
   // cache sitemap for up to one hour
   res.setHeader(
@@ -20,7 +20,7 @@ export default async (
     'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600'
   )
   res.setHeader('Content-Type', 'text/xml')
-  res.write(createSitemap(siteMaps[0]))
+  res.write(createSitemap(siteMap))
   res.end()
 }
 

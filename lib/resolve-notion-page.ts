@@ -5,22 +5,22 @@ import * as acl from './acl'
 import * as types from './types'
 import { pageUrlOverrides, pageUrlAdditions } from './config'
 import { getPage } from './notion'
-import { getSiteMaps } from './get-site-maps'
+import { getSiteMap } from './get-site-map'
 import { getSiteForDomain } from './get-site-for-domain'
 
-export async function resolveNotionPage(domain: string, rawPageId?: string) {
-  let site: types.Site
+export async function resolveNotionPage(domain: string, rawPageUri?: string) {
   let pageId: string
+  let site: types.Site
   let recordMap: ExtendedRecordMap
 
-  if (rawPageId && rawPageId !== 'index') {
-    pageId = parsePageId(rawPageId)
+  if (rawPageUri && rawPageUri !== 'index') {
+    pageId = parsePageId(rawPageUri)
 
     if (!pageId) {
       // check if the site configuration provides an override of a fallback for
       // the page's URI
       const override =
-        pageUrlOverrides[rawPageId] || pageUrlAdditions[rawPageId]
+        pageUrlOverrides[rawPageUri] || pageUrlAdditions[rawPageUri]
 
       if (override) {
         pageId = parsePageId(override)
@@ -37,10 +37,9 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
       recordMap = resources[1]
     } else {
       // handle mapping of user-friendly canonical page paths to Notion page IDs
-      // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
-      const siteMaps = await getSiteMaps()
-      const siteMap = siteMaps[0]
-      pageId = siteMap.canonicalPageMap[rawPageId]
+      // e.g., /foo versus /71201624b204481f862630ea25ce62fe
+      const siteMap = await getSiteMap()
+      pageId = siteMap?.canonicalPageMap?.[rawPageUri]
 
       if (pageId) {
         // TODO: we're not re-using the site from siteMaps because it is
@@ -58,13 +57,14 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
       } else {
         return {
           error: {
-            message: `Not found "${rawPageId}"`,
+            message: `Not found "${rawPageUri}"`,
             statusCode: 404
           }
         }
       }
     }
   } else {
+    // resolve the site's home page
     site = await getSiteForDomain(domain)
     pageId = site.rootNotionPageId
 

@@ -30,6 +30,7 @@
     "chrome-aws-lambda": "^5.5.0",
     "classnames": "^2.2.6",
     "dangerously-set-html-content": "^1.0.8",
+    "fast-json-stable-stringify": "^2.1.0",
     "fathom-client": "^3.0.0",
     "got": "^11.8.1",
     "isomorphic-unfetch": "^3.1.0",
