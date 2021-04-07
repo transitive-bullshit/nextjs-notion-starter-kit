@@ -56,6 +56,7 @@ export interface PartialSiteMap {
 }
 
 export interface CanonicalPageMap {
+  // inverse page mapping from canonial path to page id
   [canonicalPageId: string]: string
 }
 
