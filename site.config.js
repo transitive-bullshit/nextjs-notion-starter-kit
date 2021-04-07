@@ -50,6 +50,9 @@ module.exports = {
   pageUrlOverrides: 
   {
     '/notion-as-blog': '2ac48272b7644cb0b0f8d19a104ddf05',
-    '/refers': '68892ddbd87341a5940b08fe9f3d079f'
+    '/refers': '68892ddbd87341a5940b08fe9f3d079f',
+    '/digital-noting-tools-i-use': '7a26482a6a774a8dbd4872d9023b3957',
+    '/about': '0da3484664b44dcaa555509e3eb927f1',
+    '/archive': '299f3286fd3643ddbf6f4489b4813e81'
   }
 }
