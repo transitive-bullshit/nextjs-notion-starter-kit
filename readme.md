@@ -143,17 +143,6 @@ The actual work happens in the [create-preview-image](./api/create-preview-image
 
 Open Graph images like this one will be generated for each page of your site automatically based each page's content.
 
-By default, it takes into account:
-
-- cover image (falling back to a default site-wide cover image)
-- page icon (falling back to a default site-wide icon)
-- page title
-- page subtitle (optional; pulled from the "Description" property of collection pages)
-
-This feature works by rendering some custom HTML to a [Puppeteer](https://pptr.dev) instance in this [serverless function](./api/render-social-image/[pageId].ts) that takes in the page ID as input.
-
-Here's an example of a social image URL in production: [/api/render-social-image/71201624b204481f862630ea25ce62fe](https://transitivebullsh.it/api/render-social-image/71201624b204481f862630ea25ce62fe)
-
 Note that you shouldn't have to do anything extra to enable this feature as long as you're deploying to Vercel.
 
 ### Automatic Table of Contents
