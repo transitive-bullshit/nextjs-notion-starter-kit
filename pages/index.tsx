@@ -20,3 +20,14 @@ export const getStaticProps = async () => {
 export default function NotionDomainPage(props) {
   return <NotionPage {...props} />
 }
+
+<div id="cusdis"
+  data-host="https://cusdis.com"
+  data-app-id="4f0b0ab0-7736-42d1-9436-e6f1a5b7e199"
+  data-page-id="{{ PAGE_ID }}"
+  data-page-url="{{ PAGE_URL }}"
+  data-page-title="{{ PAGE_TITLE }}"
+>
+<script async src="https://cusdis.com/js/cusdis.es.js"></script>
+
+
