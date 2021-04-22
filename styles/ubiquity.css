@@ -334,7 +334,7 @@ img.lazy-image-real {
 }
 
 .lazy-image-wrapper img {
-    top: var(--header);
+    /* top: var(--header); */
 }
 
 .notion-aside {
