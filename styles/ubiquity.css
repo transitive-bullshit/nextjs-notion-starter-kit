@@ -337,10 +337,14 @@ img.lazy-image-real {
     font-weight: 400;
 }
 
-#__next>div>div.notion-frame>header>div>div.breadcrumbs>a:nth-child(1)>span::after {
-    /* content: 'UBIQUITY'; */
-    /* position: relative; */
-    /* color: #fff; */
+.notion-header .spacer {
+    /* background-color: red; */
+    color: transparent;
+}
+
+.notion-header .spacer::before {
+    content: '·';
+    color: var(--fg-color-2);
 }
 
 #__next>div>div.notion-frame>header>div>div.breadcrumbs>a:nth-child(1)>span {
@@ -358,7 +362,7 @@ img.lazy-image-real {
     background-repeat: no-repeat;
     background-size: contain;
     color: #000;
-    opacity: 0.66;
+    opacity: 0.5;
 }
 
 body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>a:nth-child(1) {
@@ -367,9 +371,16 @@ body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>a:nth-chi
     background-repeat: no-repeat;
     background-size: contain;
     color: #fff;
-    opacity: 0.66;
+    opacity: 0.5;
 }
 
 body #__next>div>div.notion-frame>header>div>div.breadcrumbs>a:nth-child(1):hover {
     opacity: 1;
+}
+
+@media screen and (orientation: portrait) {
+    #__next>div>div.notion-frame>header>div>div.breadcrumbs>a:nth-child(1)>span {
+        width: 18px;
+        color: transparent;
+    }
 }
