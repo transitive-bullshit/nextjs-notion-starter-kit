@@ -20,7 +20,7 @@
 }
 
 .dark-mode .notion-app {
-    background: linear-gradient(0deg, #06061a, #06061a80)
+    background: linear-gradient(0deg, #06061a, #06061a80);
 }
 
 .notion-app {
@@ -357,11 +357,12 @@ img.lazy-image-real {
 
 #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
     height: 16px;
-    width: 158px;
+    width: auto;
     text-align: right;
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 3px;
+    padding-left: 26px;
 }
 
 #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1) {
