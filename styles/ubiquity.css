@@ -20,7 +20,7 @@
 }
 
 .dark-mode .notion-app {
-    background: linear-gradient(0deg, #06061a, #06061a40)
+    background: linear-gradient(0deg, #06061a, #06061a80)
 }
 
 .notion-app {
@@ -84,6 +84,10 @@
     max-width: initial;
     width: 100vw;
     margin-top: calc(2 * var(--header)) !important;
+}
+
+.dark-mode .notion-page {
+    box-shadow: 0 0 96px 0 #ffffff10;
 }
 
 
@@ -353,7 +357,7 @@ img.lazy-image-real {
 
 #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
     height: 16px;
-    width: 112px;
+    width: 158px;
     text-align: right;
     display: inline-block;
     text-transform: uppercase;
