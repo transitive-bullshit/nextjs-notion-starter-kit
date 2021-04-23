@@ -359,8 +359,11 @@ body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-chi
 .notion-header .breadcrumb:not(.active):hover {
     background: initial;
     opacity: 1;
-    color: #00ffff;
     filter: drop-shadow(0 0 16px #fff);
+}
+
+.dark-mode .notion-header .breadcrumb:not(.active):hover {
+    color: #00ffff;
 }
 
 @media screen and (orientation: portrait) {
