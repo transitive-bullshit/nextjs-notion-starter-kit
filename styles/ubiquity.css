@@ -40,7 +40,6 @@
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     top: 0;
-    /* background: #ffffff80; */
 }
 
 .notion-frame {
@@ -62,7 +61,6 @@
 
 .notion-page {
     box-shadow: 0 0 96px 0 #00000010;
-    /* border-radius: 8px; */
     max-width: initial;
     width: 100vw;
     margin-top: calc(2 * var(--header)) !important;
@@ -71,24 +69,6 @@
 .dark-mode .notion-page {
     box-shadow: 0 0 96px 0 #ffffff10;
 }
-
-
-/* .notion-page-no-cover { */
-
-
-/* margin-top: calc(1px + var(--header)) !important; */
-
-
-/* } */
-
-
-/* .notion-page-offset { */
-
-
-/* margin-top: calc(1px + var(--header)); */
-
-
-/* } */
 
 .notion-page-scroller {
     overflow: visible;
@@ -111,10 +91,8 @@
     .notion-page {
         left: 0;
         padding: 48px;
-        /* max-width: 1280px; */
     }
     details.notion-toggle {
-        /* background: #ffffff80; */
         position: fixed;
         top: 0;
         top: var(--header);
@@ -128,30 +106,20 @@
     }
     .notion-page {
         min-height: calc(100% - calc(2 * var(--header)));
-        /* background: #fff; */
-        /* margin-left: calc(6.25vw * 4); */
-        /* width: 75vw; */
-        /* height: auto; */
-        /* display: block; */
     }
 }
 
 @media (orientation: portrait) {
     .notion-page {
         padding: 48px;
-        /* width: 75vw; */
         min-width: 320px;
     }
 }
 
 @media (orientation: landscape) and (max-width: 960px) {
     details.notion-toggle {
-        /* width: auto; */
-        /* margin: 0; */
-        /* background: black; */
         width: 25vw;
         margin: 0;
-        /* padding: 0; */
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -162,17 +130,10 @@
 @media (max-width: 960px) {
     .notion-page {
         padding: 16px;
-        /* width: 75vw; */
         width: 100%;
         min-width: 320px;
-        /* max-width: 75vw; */
-        /* background: red; */
-        /* margin: 0; */
     }
 }
-
-
-/* .notion-header{background:initial} */
 
 body {
     overflow-y: initial;
@@ -229,7 +190,6 @@ img.lazy-image-real {
 }
 
 .notion {
-    /* letter-spacing: -0.25px; */
     text-rendering: optimizeSpeed;
 }
 
@@ -296,9 +256,6 @@ img.lazy-image-real {
     background-color: initial;
 }
 
-
-/* test push */
-
 .dark-mode img {
     filter: invert(1);
 }
@@ -315,9 +272,7 @@ img.lazy-image-real {
     overflow: initial;
 }
 
-.lazy-image-wrapper img {
-    /* top: var(--header); */
-}
+.lazy-image-wrapper img {}
 
 .notion-aside {
     top: calc((3 * var(--header))+64px);
@@ -328,7 +283,6 @@ img.lazy-image-real {
 }
 
 .notion-header .spacer {
-    /* background-color: red; */
     color: transparent;
 }
 
@@ -374,7 +328,6 @@ img.lazy-image-real {
 }
 
 #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1) {
-    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' fill='%23808080' /%3E%3C/svg%3E"); */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' /%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: contain;
@@ -383,7 +336,6 @@ img.lazy-image-real {
 }
 
 body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1) {
-    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' fill='%239E9E9E' /%3E%3C/svg%3E"); */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' fill='%23FFF' /%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: contain;
@@ -410,9 +362,6 @@ body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-chi
     color: #00ffff;
     filter: drop-shadow(0 0 16px #fff);
 }
-
-
-/* #__next>div>div.notion-frame>header>div>div.breadcrumbs>div>span {} */
 
 @media screen and (orientation: portrait) {
     #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
