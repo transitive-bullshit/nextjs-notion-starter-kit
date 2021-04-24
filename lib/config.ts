@@ -76,6 +76,12 @@ export const utterancesGitHubRepo: string | null = getSiteConfig(
   null
 )
 
+// Optional Cusdis widget https://cusdis.com
+ export const cusdis = getSiteConfig(
+   'cusdis',
+   null
+ )
+
 // Optional image CDN host to proxy all image requests through
 export const imageCDNHost: string | null = getSiteConfig('imageCDNHost', null)
 
