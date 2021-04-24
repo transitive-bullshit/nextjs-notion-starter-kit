@@ -160,9 +160,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
           attrs={{
             host: config.cusdis.host || 'https://cusdis.com',
             appId: config.cusdis.appId,
-            pageId: site.name,
-            pageTitle: site.name,
-            pageUrl: site.domain
+            pageId: pageId,
+            pageTitle: title,
+            pageUrl: typeof location !== undefined ? location.href : undefined
           }}
         ></ReactCusdis>
       )
