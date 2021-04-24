@@ -162,7 +162,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
             appId: config.cusdis.appId,
             pageId: pageId,
             pageTitle: title,
-            pageUrl: typeof location !== undefined ? location.href : undefined
+            pageUrl: typeof location !== 'undefined' ? location.href : undefined
           }}
         ></ReactCusdis>
       )
