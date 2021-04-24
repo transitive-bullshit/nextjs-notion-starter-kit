@@ -35,7 +35,9 @@ module.exports = {
   utterancesGitHubRepo: null,
   
   // Cusdis comment widget (optional)
-   cusdis: null,
+   cusdis:{
+  appId: '4f0b0ab0-7736-42d1-9436-e6f1a5b7e199' // your website id
+},,
 
   // whether or not to enable support for LQIP preview images (optional)
   // NOTE: this requires you to set up Google Firebase and add the environment
@@ -52,6 +54,4 @@ module.exports = {
   // }
   pageUrlOverrides: null
 }
-cusdis: {
-  appId: '4f0b0ab0-7736-42d1-9436-e6f1a5b7e199' // your website id
-},
+
