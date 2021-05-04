@@ -157,7 +157,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
            style={{
              width: "100%"
            }}
+           lang={config.cusdis.lang}
            attrs={{
+             ...config.cusdis,
              host: config.cusdis.host || 'https://cusdis.com',
              appId: config.cusdis.appId,
              pageId: pageId,
