@@ -372,3 +372,23 @@ body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-chi
         color: transparent;
     }
 }
+
+.notion-page-title-text {
+    top: 2px;
+    border-bottom: none;
+}
+
+
+/* notion-page-title-icon  */
+
+.notion-page-icon {
+    filter: grayscale(1);
+}
+
+:hover>.notion-page-icon {
+    filter: grayscale(0);
+}
+
+:root {
+    --select-color-0: #00ffff;
+}
