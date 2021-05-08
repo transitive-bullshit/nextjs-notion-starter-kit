@@ -7,13 +7,13 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Co Box',
+  name: "Co's Box",
   domain: 'https://www.notion.so/Co-s-Blog-a70321a892c24d9ca05f0c51b80b9934',
   author: 'Coraline',
 
   // open graph metadata (optional)
-  description: 'Example site description',
-  socialImageTitle: 'Transitive Bullshit',
+  description: 'Music/Film/Photograph/Thoughts/Datavis',
+  socialImageTitle: 'Welcome To My Little Box Of Daily Life',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
