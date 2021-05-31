@@ -282,6 +282,11 @@ img.lazy-image-real {
     background-color: #ffffff80;
 }
 
+.dark-mode .notion-page-cover img {
+    /* filter: invert(1); */
+    background-color: transparent;
+}
+
 .dark-mode img[src*='unsplash'] {
     /* filter: invert(0); */
 }
