@@ -355,10 +355,10 @@ img.lazy-image-real {
     background-size: contain;
     color: #000;
     opacity: 0.5;
+    transition: none;
 }
 
 body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1) {
-    transition: 0;
     background-image: var(--ubiquity-logo-white);
     background-repeat: no-repeat;
     background-size: contain;
