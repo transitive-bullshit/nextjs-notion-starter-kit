@@ -399,20 +399,25 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
 }
 
 .notion-page-link {
-    /* opacity: 0.5; */
     height: 24px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23FFFFFF'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M19,9h-2v6.59L5.41,4L4,5.41L15.59,17H9v2h10V9z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M19,9h-2v6.59L5.41,4L4,5.41L15.59,17H9v2h10V9z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    /* text-indent: 0; */
-    /* transition: .125s all ease */
+}
+
+.dark-mode .notion-page-link {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23FFFFFF'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M19,9h-2v6.59L5.41,4L4,5.41L15.59,17H9v2h10V9z'/%3E%3C/svg%3E");
 }
 
 .notion-page-link:hover {
-    opacity: 1;
-    /* text-indent: 4px; */
+    background-color: #80808040;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M19,9h-2v6.59L5.41,4L4,5.41L15.59,17H9v2h10V9z'/%3E%3C/svg%3E");
+}
+
+.dark-mode .notion-page-link:hover {
+    background-color: #80808040;
     background-repeat: no-repeat;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23FFFFFF'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M19,9h-2v6.59L5.41,4L4,5.41L15.59,17H9v2h10V9z'/%3E%3C/svg%3E");
-    background-color: #80808040
 }
 
 .notion-page-cover {
