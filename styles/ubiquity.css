@@ -549,7 +549,7 @@ div.notion-page-content a.notion-page-link::after {
         width: 100%
     }
     .notion-page {
-        padding: 48px;
+        /* padding: 48px; */
         min-width: 320px;
     }
     #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
