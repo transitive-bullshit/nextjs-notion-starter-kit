@@ -560,13 +560,13 @@ div.notion-page-content a.notion-page-link::after {
 
 @media (min-width: 480px) {
     .notion-page-link {
-        width: calc(50% - 8px);
+        width: calc(50% - 16px);
     }
 }
 
 @media (min-width: 640px) {
     .notion-page-link {
-        width: calc(33% - 12px);
+        width: calc(33% - 24px);
     }
 }
 
