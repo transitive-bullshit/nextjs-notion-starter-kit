@@ -546,7 +546,7 @@ div.notion-page-content a.notion-page-link::after {
 
 @media (orientation: portrait) {
     .notion-page-link {
-        width: calc(50% - 8px);
+        width: 100%
     }
     .notion-page {
         padding: 48px;
@@ -558,6 +558,18 @@ div.notion-page-content a.notion-page-link::after {
     }
 }
 
+@media (min-width: 480px) {
+    .notion-page-link {
+        width: calc(50% - 8px);
+    }
+}
+
+@media (min-width: 640px) {
+    .notion-page-link {
+        width: calc(33% - 12px);
+    }
+}
+
 .notion-block-ff1a3cae900941e49cc4d4458cc2867d img.lazy-image-real {
-    /* object-position: right !important; */
+    object-position: right !important;
 }
