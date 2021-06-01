@@ -414,7 +414,6 @@ body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-chi
     text-rendering: geometricprecision;
     -webkit-font-smoothing: subpixel-antialiased;
     font-weight: 600;
-    color: #404040;
     word-wrap: break-word;
     font-size: 12px;
 }
@@ -458,6 +457,16 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
 }
 
 .notion-page-link {
+    background-color: #80808010;
+    color: #404040;
+}
+
+.dark-mode .notion-page-link {
+    background-color: #80808040;
+    color: #fff;
+}
+
+.notion-page-link {
     height: 72px;
     width: 192px;
     background-image: var(--southeast-arrow-url);
@@ -468,7 +477,6 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
     text-align: right;
     padding: 16px;
     line-height: 1;
-    background-color: #f8f8f8;
     margin: 4px;
     /* max-width: 96px; */
     overflow: hidden;
@@ -516,7 +524,7 @@ div.notion-page-content a.notion-page-link::after {
 }
 
 .dark-mode .notion-page-link:hover {
-    background-color: #80808040;
+    background-color: #ffffff40;
     background-repeat: no-repeat;
     background-image: var(--southeast-arrow-url);
 }
