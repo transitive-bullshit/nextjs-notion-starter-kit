@@ -76,7 +76,7 @@
     box-shadow: 0 0 96px 0 #00000010;
     max-width: initial;
     width: 100vw;
-    line-height: 1.5
+    line-height: 1.5;
 }
 
 .notion-page-has-cover {
@@ -128,13 +128,6 @@
     }
     .notion-page {
         min-height: calc(100% - calc(2 * var(--header)));
-    }
-}
-
-@media (orientation: portrait) {
-    .notion-page {
-        padding: 48px;
-        min-width: 320px;
     }
 }
 
@@ -409,13 +402,6 @@ body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-chi
     color: #00ffff;
 }
 
-@media screen and (orientation: portrait) {
-    #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
-        width: 18px;
-        color: transparent;
-    }
-}
-
 .notion-page-title-text {
     position: relative;
     top: 0;
@@ -466,6 +452,7 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
 
 .notion-page-content-inner {
     display: block;
+    text-align: left;
     /* flex-direction: initial; */
     /* align-items: initial; */
 }
@@ -499,23 +486,23 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
     letter-spacing: 1px;
     /* font-size: 32px; */
     /* text-align: right; */
-    opacity: .75;
+    opacity: 0.75;
     padding-left: 48px;
     vertical-align: top;
 }
 
 div.notion-page-content a.notion-page-link::before {
-    content: "";
+    content: '';
     display: table;
 }
 
 div.notion-page-content a.notion-page-link::after {
-    content: "";
+    content: '';
     display: table;
 }
 
 div.notion-page-content a.notion-page-link::after {
-    clear: both
+    clear: both;
 }
 
 .notion-page-link>.notion-page-title {
@@ -534,7 +521,7 @@ div.notion-page-content a.notion-page-link::after {
     background-color: #80808040;
     background-repeat: no-repeat;
     /* background-image: var(--southeast-arrow-url); */
-    background-position: 12px
+    background-position: 12px;
 }
 
 .dark-mode .notion-page-link:hover {
@@ -555,4 +542,18 @@ div.notion-page-content a.notion-page-link::after {
 .lazy-image-preview {
     -webkit-transform: initial;
     transform: initial;
+}
+
+@media (orientation: portrait) {
+    .notion-page-content-inner {
+        text-align: center;
+    }
+    .notion-page {
+        padding: 48px;
+        min-width: 320px;
+    }
+    #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
+        width: 18px;
+        color: transparent;
+    }
 }
