@@ -106,8 +106,7 @@ export const apiBaseUrl = `${host}/api`
 
 export const api = {
   createPreviewImage: `${apiBaseUrl}/create-preview-image`,
-  searchNotion: `${apiBaseUrl}/search-notion`,
-  renderSocialImage: (pageId) => `${apiBaseUrl}/render-social-image/${pageId}`
+  searchNotion: `${apiBaseUrl}/search-notion`
 }
 
 // ----------------------------------------------------------------------------
