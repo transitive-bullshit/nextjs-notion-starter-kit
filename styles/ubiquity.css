@@ -248,6 +248,20 @@ img.lazy-image-real {
     display: none;
 }
 
+img.notion-page-icon,
+svg.notion-page-icon {
+    display: block;
+    object-fit: fill;
+    border-radius: 3px;
+    background-image: var(--southeast-arrow-url);
+    max-width: 24px;
+    max-height: 24px;
+    top: 24px;
+    left: 12px;
+    position: absolute;
+    margin: 0;
+}
+
 .notion-collection-column-title-body {
     padding: 8px;
 }
@@ -469,7 +483,7 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
 .notion-page-link {
     height: 72px;
     width: 192px;
-    background-image: var(--southeast-arrow-url);
+    /* background-image: var(--southeast-arrow-url); */
     background-repeat: no-repeat;
     background-position: 12px;
     display: inline-table;
@@ -486,7 +500,7 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
     /* font-size: 32px; */
     /* text-align: right; */
     opacity: .75;
-    padding-left: 64px;
+    padding-left: 48px;
     vertical-align: top;
 }
 
@@ -513,13 +527,13 @@ div.notion-page-content a.notion-page-link::after {
 }
 
 .dark-mode .notion-page-link {
-    background-image: var(--southeast-arrow-url);
+    /* background-image: var(--southeast-arrow-url); */
 }
 
 .notion-page-link:hover {
     background-color: #80808040;
     background-repeat: no-repeat;
-    background-image: var(--southeast-arrow-url);
+    /* background-image: var(--southeast-arrow-url); */
     background-position: 12px
 }
 
