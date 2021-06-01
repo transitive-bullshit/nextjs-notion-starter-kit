@@ -546,7 +546,7 @@ div.notion-page-content a.notion-page-link::after {
 
 @media (orientation: portrait) {
     .notion-page-link {
-        width: 100%
+        width: calc(100% - 8px);
     }
     .notion-page {
         /* padding: 48px; */
