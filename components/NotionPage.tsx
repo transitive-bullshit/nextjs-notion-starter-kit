@@ -15,7 +15,7 @@ import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
 
 // utils
-import { getBlockTitle } from 'notion-utils'
+import { getBlockTitle, parsePageId } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
 import { getPageDescription } from 'lib/get-page-description'
@@ -119,8 +119,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  // const isRootPage =
-  //   parsePageId(block.id) === parsePageId(site.rootNotionPageId)
+  const isRootPage =
+    parsePageId(block.id) === parsePageId(site.rootNotionPageId)
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
   const showTableOfContents = true // !!isBlogPost
@@ -136,6 +136,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   let comments: React.ReactNode = null
   let pageAside: React.ReactChild = null
+  let pageCover: React.ReactChild = null
 
   // only display comments and page actions on blog post pages
   if (isBlogPost) {
@@ -156,6 +157,23 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
   } else {
     // pageAside = <PageSocial />
+  }
+  if (isRootPage) {
+    const poster =
+      'https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252Fbb144e8e-3a57-4e68-b2b9-6a80dbff07d0%252FGroup_3.png%3Ftable%3Dblock%26id%3Dff1a3cae-9009-41e4-9cc4-d4458cc2867d%26cache%3Dv2'
+    const heroVideo = '/hero.mkv'
+    pageCover = (
+      <video
+        className='notion-page-cover'
+        autoPlay
+        controls={false}
+        loop
+        muted
+        playsInline
+        poster={poster}
+        src={heroVideo}
+      />
+    )
   }
 
   return (
@@ -274,9 +292,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
             toggleDarkMode={darkMode.toggle}
           />
         }
+        pageCover={pageCover}
       />
       {/* <CustomHtml site={site} /> */}
     </TwitterContextProvider>
-
   )
 }
