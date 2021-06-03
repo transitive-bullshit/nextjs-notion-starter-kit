@@ -556,6 +556,11 @@ div.notion-page-content a.notion-page-link::after {
         width: 18px;
         color: transparent;
     }
+    /* .notion .notion-app .notion-block-ff1a3cae900941e49cc4d4458cc2867d */
+    #__next>div.notion-block-ff1a3cae900941e49cc4d4458cc2867d>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
+        color: inherit;
+        width: inherit;
+    }
 }
 
 @media (min-width: 480px) {
