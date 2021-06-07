@@ -34,7 +34,7 @@ import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
-
+import { ReactCusdis } from 'react-cusdis'
 import styles from './styles.module.css'
 
 // const Code = dynamic(() =>
@@ -147,6 +147,26 @@ export const NotionPage: React.FC<types.PageProps> = ({
           issueTerm='title'
           theme={darkMode.value ? 'photon-dark' : 'github-light'}
         />
+      )
+    } else if (config.cusdis) {
+      if (!config.cusdis.appId) {
+        console.warn('[cusdis]', 'appId is required')
+      }
+      comments = (
+        <ReactCusdis
+          style={{
+            width: "100%"
+          }}
+          lang={config.cusdis.lang}
+          attrs={{
+            ...config.cusdis,
+            host: config.cusdis.host || 'https://cusdis.com',
+            appId: config.cusdis.appId,
+            pageId: pageId,
+            pageTitle: title,
+            pageUrl: typeof location !== 'undefined' ? location.href : undefined
+          }}
+        ></ReactCusdis>
       )
     }
 
