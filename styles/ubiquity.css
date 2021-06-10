@@ -578,3 +578,14 @@ div.notion-page-content a.notion-page-link::after {
 .notion-block-ff1a3cae900941e49cc4d4458cc2867d img.lazy-image-real {
     object-position: right !important;
 }
+
+.notion-table {
+    width: initial;
+    max-width: initial;
+}
+
+.notion-table-view,
+.notion-collection-header {
+    padding-left: initial !important;
+    padding-right: initial !important;
+}
