@@ -47,8 +47,8 @@
   gap: 16px;
   border-top: 1px solid rgb(77, 81, 83); 
   padding-top: 16px; padding-bottom: 4px;
-  grid-gap: 6vmin;
-  gap: 6vmin;
+  grid-gap: 3vmin;
+  gap: 3vmin;
 }
 
 .notion-gallery-grid .notion-page-icon {
@@ -79,6 +79,7 @@
   border-radius: 6px;
   box-shadow: none;
   background: rgb(135 131 120 / 15%);
+  box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px, rgb(15 15 15 / 10%) 0px 2px 4px;
 }
 
 .notion-collection-card-cover img {
