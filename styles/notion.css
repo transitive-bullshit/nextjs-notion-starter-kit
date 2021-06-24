@@ -56,8 +56,14 @@
 }
 
 .notion-gallery-grid .notion-page-title-text {
-  font-size: 2em;
-  white-space: unset;
+  white-space: nowrap;
+  word-break: break-word;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 21px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .notion-gallery-grid .notion-collection-card-property {
@@ -72,10 +78,11 @@
 .notion-collection-card {
   border-radius: 6px;
   box-shadow: none;
+  background: rgb(135 131 120 / 15%);
 }
 
 .notion-collection-card-cover img {
-  border-radius: 6px;
+  border-radius: 6px 6px 0px 0px;
 }
 
 .notion-collection-card {
@@ -180,7 +187,7 @@
 
 .notion-page-cover {
   max-width: 1200px;
-  border-radius: 24px;
+  border-radius: 6px;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
