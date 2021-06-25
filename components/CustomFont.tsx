@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import * as React from 'react'
 import * as types from '../lib/types'
-import { Script } from 'next/document'
+import  Script from 'next/document'
 
 export const CustomFont: React.FC<{ site: types.Site }> = ({ site }) => {
   // if (!site.fontFamily) {
