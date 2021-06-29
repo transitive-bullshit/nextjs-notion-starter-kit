@@ -6,7 +6,7 @@ View it live: https://lizhimiao.com
   
  
 ## TODO
-- [ ] Google Analytics.
+- [x] Google Analytics.
 - [x] typekit font.
 - [x] front-page notion's default gallery-style table view.
 - [x] remove sidebar social links.

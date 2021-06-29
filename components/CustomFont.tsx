@@ -31,14 +31,11 @@ export const CustomFont: React.FC<{ site: types.Site }> = ({ site }) => {
         </script>
 
         <style>{`
-          .notion.notion-app {
-            font-family: 'source-han-serif-sc', -apple-system, BlinkMacSystemFont,
-              'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif,
-              'Segoe UI Emoji', 'Segoe UI Symbol';
-          }
           .notion-text {
-            font-family: 'source-han-serif-sc', -apple-system, BlinkMacSystemFont,sans-serif;
+            font-family: 'source-han-serif-sc', -apple-system, BlinkMacSystemFont,serif;
         }
+          .notion-title, b, .notion-page-title-text {
+            font-family:  "source-han-sans-simplified-c",sans-serif;
           }
         `}</style>
       </Head>
