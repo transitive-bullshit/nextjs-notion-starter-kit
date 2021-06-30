@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: '混沌龙猫BBP',
-  domain: 'bbp.ilongmao.top',
+  domain: 'www.ilongmao.top',
   author: 'Freeman Long',
 
   // open graph metadata (optional)
