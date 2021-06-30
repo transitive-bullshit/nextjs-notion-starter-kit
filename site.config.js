@@ -17,7 +17,7 @@ module.exports = {
   socialImageSubtitle: '混沌龙猫BBP',
 
   // social usernames (optional)
-  twitter: 'goldyard',
+  twitter: 'chaoslong',
   github: 'ilongmao',
   linkedin: 'goldyard',
 
