@@ -4,6 +4,7 @@ import styles from './styles.module.css'
 
 export const GitHubShareButton: React.FC = () => {
   return (
+    /*
     <a
       href='https://github.com/ilongmao/nextjs-notion-starter-kit'
       target='_blank'
@@ -43,6 +44,6 @@ export const GitHubShareButton: React.FC = () => {
           className={styles.octoBody}
         />
       </svg>
-    </a>
+    </a> */
   )
 }
