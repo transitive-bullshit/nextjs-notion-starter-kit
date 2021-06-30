@@ -19,7 +19,7 @@ module.exports = {
   // social usernames (optional)
   twitter: 'chaoslong',
   github: 'ilongmao',
-  linkedin: 'goldyard',
+  linkedin: 'freeman-long-57b29b56',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
