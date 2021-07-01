@@ -23,11 +23,12 @@ export const CustomFont: React.FC<{ site: types.Site }> = ({ site }) => {
       <Head>
 
         <style>{`
-          .notion-text {
+          .notion-text,.notion-quote,.notion-list {
             font-family: 'source-han-serif-sc', -apple-system, BlinkMacSystemFont,serif;
         }
-          .notion-title, b, .notion-page-title-text {
+          .notion-title, b, .notion-page-title-text,.notion-callout-text {
             font-family:  "source-han-sans-simplified-c",sans-serif;
+            font-weight:500;
           }
         `}</style>
       </Head>
