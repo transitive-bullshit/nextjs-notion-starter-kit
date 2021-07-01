@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'lizhimiao的博客',
-  domain: 'blog.lizhimiao.com',
+  domain: 'lizhimiao.com',
   author: 'zhimiao li',
 
   // open graph metadata (optional)

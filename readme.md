@@ -10,4 +10,5 @@ View it live: https://lizhimiao.com
 - [x] typekit font.
 - [x] front-page notion's default gallery-style table view.
 - [x] remove sidebar social links.
+- [ ] 不蒜子
   
