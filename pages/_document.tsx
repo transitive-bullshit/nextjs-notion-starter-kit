@@ -35,6 +35,8 @@ export default class MyDocument extends Document {
             />
 
             <link rel='manifest' href='/manifest.json' />
+
+
           </Head>
 
           <body>
@@ -43,6 +45,20 @@ export default class MyDocument extends Document {
             <Main />
 
             <NextScript />
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-147733158-1"></script>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', ''UA-147733158-1'', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
           </body>
         </Html>
       </IconContext.Provider>
