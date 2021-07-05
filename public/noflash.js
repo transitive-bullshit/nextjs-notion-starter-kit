@@ -39,4 +39,16 @@
     var isDarkMode = document.body.classList.contains(classNameDark)
     localStorage.setItem(storageKey, JSON.stringify(isDarkMode))
   }
+  function resizeCover(){
+    var imgs = document.querySelectorAll("div.notion-collection-card-cover>img[src*='https://images.unsplash.com']");
+    imgs.forEach(function(item) {
+        item.src=item.src+"&fit=clip&w=640";
+    })
+    var imgs = document.querySelectorAll("img.notion-page-cover[src*='https://images.unsplash.com']");
+    imgs.forEach(function(item) {
+        item.src=item.src +"&fit=clip&w=1200";
+    })
+}
+  resizeCover();
+
 })()
