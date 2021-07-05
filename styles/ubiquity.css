@@ -400,7 +400,7 @@ body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-chi
     text-rendering: geometricprecision;
     -webkit-font-smoothing: subpixel-antialiased;
     font-weight: 600;
-    word-wrap: break-word;
+    /* word-wrap: break-word; */
     font-size: 12px;
 }
 
@@ -565,6 +565,7 @@ div.notion-page-content a.notion-page-link::after {
 .notion-table {
     width: initial;
     max-width: initial;
+    overflow: initial;
 }
 
 .notion-table-view,
@@ -579,4 +580,13 @@ div.notion-page-content a.notion-page-link::after {
 
 .notion-page-has-cover.notion-page-has-text-icon {
     padding-top: calc(64px + var(--header))
+}
+
+.notion-table-cell.notion-table-cell-title a.notion-page-link {
+    width: 100%;
+    padding-left: calc(15% - 12px);
+}
+
+.notion-table-cell {
+    word-break: initial;
 }
