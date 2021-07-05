@@ -51,11 +51,10 @@ export default function App({ Component, pageProps }) {
 
   React.useEffect(() => {
       function onRouteChangeComplete() {
-        resize.resizeCover()
-        ga.bsz()
-        ga.pageview()
+        resize.resizeCover();
+        ga.bsz();
+        ga.pageview();
       }
-
       router.events.on('routeChangeComplete', onRouteChangeComplete)
 
       return () => {
