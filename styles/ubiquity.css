@@ -519,7 +519,7 @@ div.notion-page-content a.notion-page-link::after {
     height: 56.25vh;
     min-height: initial;
     max-height: initial;
-    top: var(--header)
+    top: var(--header);
 }
 
 .lazy-image-preview {
@@ -575,11 +575,11 @@ div.notion-page-content a.notion-page-link::after {
 }
 
 .notion-page-has-cover.notion-page-no-icon {
-    padding-top: calc(48px + var(--header))
+    padding-top: calc(48px + var(--header));
 }
 
 .notion-page-has-cover.notion-page-has-text-icon {
-    padding-top: calc(64px + var(--header))
+    padding-top: calc(64px + var(--header));
 }
 
 .notion-table-cell.notion-table-cell-title a.notion-page-link {
@@ -589,4 +589,9 @@ div.notion-page-content a.notion-page-link::after {
 
 .notion-table-cell {
     word-break: initial;
+}
+
+.notion-viewport {
+    -webkit-mask-image: linear-gradient( to right, #00000080, #00000000, #00000000, #00000000, #00000080);
+    background-image: url(//ubq.fi/image/grid-1.png);
 }
