@@ -7,13 +7,13 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Leon的空间',
+  name: 'Leon‘s Zone',
   domain: 'https://www.notion.so/leonkuo/Leon-s-Space-4145fe77597a4933b0d8bee2afbaf2f6',
   author: 'Leon',
 
   // open graph metadata (optional)
   description: '折腾，永不停息！',
-  socialImageTitle: '折腾过的软件和硬件',
+  socialImageTitle: 'Transitive Bullshit',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
@@ -32,7 +32,7 @@ module.exports = {
   imageCDNHost: null,
 
   // Utteranc.es comments via GitHub issue comments (optional)
-  utterancesGitHubRepo: null,
+  utterancesGitHubRepo: ‘https://github.com/skefy/nextjs-notion-starter-kit/issues’,
 
   // whether or not to enable support for LQIP preview images (optional)
   // NOTE: this requires you to set up Google Firebase and add the environment
