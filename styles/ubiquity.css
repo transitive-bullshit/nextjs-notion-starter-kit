@@ -1,66 +1,66 @@
 :root {
-    --header: 54px;
-    --southeast-arrow-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23808080'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M19,9h-2v6.59L5.41,4L4,5.41L15.59,17H9v2h10V9z'/%3E%3C/svg%3E");
-    --ubiquity-logo-black: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' /%3E%3C/svg%3E");
-    --ubiquity-logo-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' fill='%23FFF' /%3E%3C/svg%3E");
-    --ubiquity-logo-cyan: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' fill='%230FF'  /%3E%3C/svg%3E");
-    --select-color-0: #00ffff;
+  --header: 54px;
+  --southeast-arrow-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23808080'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M19,9h-2v6.59L5.41,4L4,5.41L15.59,17H9v2h10V9z'/%3E%3C/svg%3E");
+  --ubiquity-logo-black: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' /%3E%3C/svg%3E");
+  --ubiquity-logo-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' fill='%23FFF' /%3E%3C/svg%3E");
+  --ubiquity-logo-cyan: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 91.57 104.19'%3E%3Cpath d='M43.28.67 2.5 24.22A5 5 0 0 0 0 28.55v47.09A5 5 0 0 0 2.5 80l40.78 23.55a5 5 0 0 0 5 0L89.07 80a5 5 0 0 0 2.5-4.33V28.55a5 5 0 0 0-2.5-4.33L48.28.67a5 5 0 0 0-5 0zm36.31 25a2 2 0 0 1 0 3.46l-6 3.48c-2.72 1.57-4.11 4.09-5.34 6.3-.18.33-.36.66-.55 1-3 5.24-4.4 10.74-5.64 15.6C59.71 64.76 58 70.1 50.19 72.09a17.76 17.76 0 0 1-8.81 0c-7.81-2-9.53-7.33-11.89-16.59-1.24-4.86-2.64-10.36-5.65-15.6l-.54-1c-1.23-2.21-2.62-4.73-5.34-6.3l-6-3.47a2 2 0 0 1 0-3.47L43.28 7.6a5 5 0 0 1 5 0zM43.28 96.59 8.5 76.51A5 5 0 0 1 6 72.18v-36.1a2 2 0 0 1 3-1.73l6 3.46c1.29.74 2.13 2.25 3.09 4l.6 1c2.59 4.54 3.84 9.41 5 14.11 2.25 8.84 4.58 18 16.25 20.93a23.85 23.85 0 0 0 11.71 0C63.3 75 65.63 65.82 67.89 57c1.2-4.7 2.44-9.57 5-14.1l.59-1.06c1-1.76 1.81-3.27 3.1-4l5.94-3.45a2 2 0 0 1 3 1.73v36.1a5 5 0 0 1-2.5 4.33L48.28 96.59a5 5 0 0 1-5 0z' fill='%230FF'  /%3E%3C/svg%3E");
+  --select-color-0: #00ffff;
 }
 
 .dark-mode .notion-table-of-contents-active-item {
-    color: var(--select-color-0) !important;
+  color: var(--select-color-0) !important;
 }
 
 .notion-table-of-contents-active-item {
-    color: #000 !important;
+  color: #000 !important;
 }
 
-.dark-mode .notion-frame>header {
-    background: #00000080;
+.dark-mode .notion-frame > header {
+  background: #00000080;
 }
 
 .dark-mode .notion-h-title {
-    color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 .dark-mode {
-    --bg-color: #06061a;
-    --fg-color: #e0e0e0;
+  --bg-color: #06061a;
+  --fg-color: #e0e0e0;
 }
 
 .dark-mode .notion-app {
-    background: linear-gradient(0deg, #06061a, #06061a80);
+  background: linear-gradient(0deg, #06061a, #06061a80);
 }
 
 .notion-app {
-    overflow: initial;
+  overflow: initial;
 }
 
 .notion-asset-wrapper-image {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .notion-cursor-listener {
-    padding: 0;
+  padding: 0;
 }
 
-.notion-frame>header {
-    background: #ffffffbf;
+.notion-frame > header {
+  background: #ffffffbf;
 }
 
-.notion-frame>header {
-    position: fixed;
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    top: 0;
+.notion-frame > header {
+  position: fixed;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  top: 0;
 }
 
 .notion-frame {
-    padding: 0;
+  padding: 0;
 }
 
 .notion-h-title {
-    color: #202020;
+  color: #202020;
 }
 
 .notion-h1,
@@ -69,107 +69,107 @@
 .notion-h4,
 .notion-h5,
 .notion-h6 {
-    padding-top: var(--header);
+  padding-top: var(--header);
 }
 
 .notion-page {
-    box-shadow: 0 0 96px 0 #00000010;
-    max-width: initial;
-    width: 100vw;
-    line-height: 1.5;
+  box-shadow: 0 0 96px 0 #00000010;
+  max-width: initial;
+  width: 100vw;
+  line-height: 1.5;
 }
 
 .notion-page-no-cover {
-    /*  */
-    margin-top: calc(2 * var(--header)) !important;
+  /*  */
+  margin-top: calc(2 * var(--header)) !important;
 }
 
 .dark-mode .notion-page {
-    box-shadow: 0 0 96px 0 #ffffff10;
+  box-shadow: 0 0 96px 0 #ffffff10;
 }
 
 .notion-table-of-contents {
-    margin: 0;
+  margin: 0;
 }
 
 .notion-title {
-    display: none;
+  display: none;
 }
 
 .notion {
-    font-family: 'Ubiquity Nova', 'Proxima Nova', Avenir, sans-serif;
+  font-family: 'Ubiquity Nova', 'Proxima Nova', Avenir, sans-serif;
 }
 
 @media (orientation: landscape) {
-    details.notion-toggle,
-    .notion-page {
-        left: 0;
-        padding: 48px;
-    }
-    details.notion-toggle {
-        position: fixed;
-        top: 0;
-        top: var(--header);
-        box-shadow: -96px 0 96px 0 #00000018;
-        margin-left: 6.25vw;
-        width: 18.75vw;
-        height: calc(100% - var(--header));
-        transform: translateY(25%);
-        max-height: calc(100vh - var(--header));
-        overflow: scroll;
-    }
-    .notion-page {
-        min-height: calc(100% - calc(2 * var(--header)));
-    }
+  details.notion-toggle,
+  .notion-page {
+    left: 0;
+    padding: 48px;
+  }
+  details.notion-toggle {
+    position: fixed;
+    top: 0;
+    top: var(--header);
+    box-shadow: -96px 0 96px 0 #00000018;
+    margin-left: 6.25vw;
+    width: 18.75vw;
+    height: calc(100% - var(--header));
+    transform: translateY(25%);
+    max-height: calc(100vh - var(--header));
+    overflow: scroll;
+  }
+  .notion-page {
+    min-height: calc(100% - calc(2 * var(--header)));
+  }
 }
 
 @media (orientation: landscape) and (max-width: 960px) {
-    details.notion-toggle {
-        width: 25vw;
-        margin: 0;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        padding-right: 0;
-    }
+  details.notion-toggle {
+    width: 25vw;
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 0;
+  }
 }
 
 @media (max-width: 960px) {
-    .notion-page {
-        padding: 16px;
-        width: 100%;
-        min-width: 320px;
-    }
+  .notion-page {
+    padding: 16px;
+    width: 100%;
+    min-width: 320px;
+  }
 }
 
 body {
-    overflow-y: initial;
+  overflow-y: initial;
 }
 
-details.notion-toggle>div {
-    margin-left: 0;
+details.notion-toggle > div {
+  margin-left: 0;
 }
 
-details.notion-toggle>summary {
-    margin-bottom: 4px;
+details.notion-toggle > summary {
+  margin-bottom: 4px;
 }
 
 body {
-    background: #101010;
+  background: #101010;
 }
 
 img {
-    max-width: 75vw !important;
-    object-fit: cover;
+  max-width: 75vw !important;
+  object-fit: cover;
 }
 
 img.lazy-image-preview,
 img.lazy-image-real {
-    aspect-ratio: auto;
+  aspect-ratio: auto;
 }
 
 .notion-page-no-cover.notion-page-no-icon {
-    padding-top: 48px;
+  padding-top: 48px;
 }
 
 .notion-h1,
@@ -178,420 +178,525 @@ img.lazy-image-real {
 .notion-h4,
 .notion-h5,
 .notion-h6 {
-    padding-top: initial;
+  padding-top: initial;
 }
 
 .notion-page-icon-wrapper {
-    text-align: right;
-    display: block;
+  text-align: right;
+  display: block;
 }
 
 .notion-page-icon-wrapper span.notion-page-icon {
-    width: 100%;
-    opacity: 0.25;
-    margin: auto;
-    filter: grayscale(1);
-    text-align: right;
-    max-width: 640px;
-    padding: 78px;
+  width: 100%;
+  opacity: 0.25;
+  margin: auto;
+  filter: grayscale(1);
+  text-align: right;
+  max-width: 640px;
+  padding: 78px;
 }
 
 .notion {
-    text-rendering: optimizeSpeed;
+  text-rendering: optimizeSpeed;
 }
 
 .notion-page-content {
-    max-width: 640px;
-    margin: 0 auto;
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .notion-aside {
-    right: 0;
-    width: calc((100vw - 640px) / 2);
-    position: fixed;
+  right: 0;
+  width: calc((100vw - 640px) / 2);
+  position: fixed;
 }
 
 .dark-mode .notion-table-of-contents-item-body {
-    border-bottom-color: #404040;
+  border-bottom-color: #404040;
 }
 
 .dark-mode .notion-table div {
-    border-color: #202020;
+  border-color: #202020;
 }
 
 .notion-link:hover {
-    border-width: 2px;
-    border-image: none;
-    border-image-slice: 0;
+  border-width: 2px;
+  border-image: none;
+  border-image-slice: 0;
 }
 
 .notion-collection-column-title {
-    display: initial !important;
+  display: initial !important;
 }
 
-.notion-collection-column-title>svg {
-    display: none;
+.notion-collection-column-title > svg {
+  display: none;
 }
 
 img.notion-page-icon,
 svg.notion-page-icon {
-    display: block;
-    object-fit: fill;
-    border-radius: 3px;
-    background-image: var(--southeast-arrow-url);
-    max-width: 24px;
-    max-height: 24px;
-    top: 24px;
-    left: 12px;
-    position: absolute;
-    margin: 0;
+  display: block;
+  object-fit: fill;
+  border-radius: 3px;
+  background-image: var(--southeast-arrow-url);
+  max-width: 24px;
+  max-height: 24px;
+  top: 24px;
+  left: 12px;
+  position: absolute;
+  margin: 0;
 }
 
 .notion-collection-column-title-body {
-    padding: 8px;
+  padding: 8px;
 }
 
 .notion-quote {
-    background: #f8f8f8;
-    border-radius: 0;
-    border-left: 2px solid #808080;
-    padding: 8px 20px;
-    margin: 8px auto;
+  background: #f8f8f8;
+  border-radius: 0;
+  border-left: 2px solid #808080;
+  padding: 8px 20px;
+  margin: 8px auto;
 }
 
 .dark-mode .notion-quote {
-    background: #181818 !important;
-    border-radius: 0;
-    border-left: 2px solid #808080;
-    padding: 8px 20px;
-    margin: 8px auto;
+  background: #181818 !important;
+  border-radius: 0;
+  border-left: 2px solid #808080;
+  padding: 8px 20px;
+  margin: 8px auto;
 }
 
 .notion-equation {
-    cursor: initial;
+  cursor: initial;
 }
 
 .notion-equation:hover,
 .notion-equation:focus,
 .notion-equation:active {
-    background-color: initial;
+  background-color: initial;
 }
 
 .dark-mode img {
-    /* filter: invert(1); */
-    background-color: #ffffff80;
+  /* filter: invert(1); */
+  background-color: #ffffff80;
 }
 
 .dark-mode .notion-page-cover img {
-    /* filter: invert(1); */
-    background-color: transparent;
+  /* filter: invert(1); */
+  background-color: transparent;
 }
 
 .notion-aside-table-of-contents-header {
-    display: none;
+  display: none;
 }
 
 .lazy-image-wrapper {
-    overflow: initial;
+  overflow: initial;
 }
 
 .notion-aside {
-    top: calc((3 * var(--header))+64px);
+  top: calc((3 * var(--header))+64px);
 }
 
 .notion-h {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 .notion-header .spacer {
-    color: transparent;
+  color: transparent;
 }
 
 .notion-header .spacer::before {
-    content: '·';
-    color: var(--fg-color-2);
+  content: '·';
+  color: var(--fg-color-2);
 }
 
 .notion-header .breadcrumb {
-    color: #000;
-    opacity: 0.5;
+  color: #000;
+  opacity: 0.5;
 }
 
 .notion-header .breadcrumb.active {
-    color: inherit;
-    opacity: 1;
+  color: inherit;
+  opacity: 1;
 }
 
 .notion-header .breadcrumbs * {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .dark-mode .notion-header .breadcrumb {
-    color: #fff;
-    opacity: 0.5;
+  color: #fff;
+  opacity: 0.5;
 }
 
 .dark-mode .notion-header .breadcrumb.active {
-    opacity: 1;
+  opacity: 1;
 }
 
-#__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
-    height: 16px;
-    width: auto;
-    text-align: right;
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    padding-left: 26px;
-    text-rendering: optimizeLegibility;
+#__next
+  > div
+  > div.notion-frame
+  > header
+  > div
+  > div.breadcrumbs
+  > *:nth-child(1)
+  > span {
+  height: 16px;
+  width: auto;
+  text-align: right;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding-left: 26px;
+  text-rendering: optimizeLegibility;
 }
 
-#__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1) {
-    background-image: var(--ubiquity-logo-black);
-    background-repeat: no-repeat;
-    background-size: contain;
-    color: #000;
-    opacity: 0.5;
-    transition: none;
+#__next
+  > div
+  > div.notion-frame
+  > header
+  > div
+  > div.breadcrumbs
+  > *:nth-child(1) {
+  background-image: var(--ubiquity-logo-black);
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #000;
+  opacity: 0.5;
+  transition: none;
 }
 
-body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1) {
-    background-image: var(--ubiquity-logo-white);
-    background-repeat: no-repeat;
-    background-size: contain;
-    color: #fff;
-    opacity: 0.5;
+body.dark-mode
+  #__next
+  > div
+  > div.notion-frame
+  > header
+  > div
+  > div.breadcrumbs
+  > *:nth-child(1) {
+  background-image: var(--ubiquity-logo-white);
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #fff;
+  opacity: 0.5;
 }
 
-body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1):hover {
-    background-image: var(--ubiquity-logo-cyan);
-    filter: drop-shadow(0 0 16px #fff);
+body.dark-mode
+  #__next
+  > div
+  > div.notion-frame
+  > header
+  > div
+  > div.breadcrumbs
+  > *:nth-child(1):hover {
+  background-image: var(--ubiquity-logo-cyan);
+  filter: drop-shadow(0 0 16px #fff);
 }
 
-body #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1):hover {
-    opacity: 1;
+body
+  #__next
+  > div
+  > div.notion-frame
+  > header
+  > div
+  > div.breadcrumbs
+  > *:nth-child(1):hover {
+  opacity: 1;
 }
 
-body.dark-mode #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1):hover {
-    color: #00ffff;
+body.dark-mode
+  #__next
+  > div
+  > div.notion-frame
+  > header
+  > div
+  > div.breadcrumbs
+  > *:nth-child(1):hover {
+  color: #00ffff;
 }
 
 .notion-header .breadcrumb:not(.active):hover {
-    background: initial;
-    opacity: 1;
-    filter: drop-shadow(0 0 16px #fff);
+  background: initial;
+  opacity: 1;
+  filter: drop-shadow(0 0 16px #fff);
 }
 
 .dark-mode .notion-header .breadcrumb:not(.active):hover {
-    color: #00ffff;
+  color: #00ffff;
 }
 
 .notion-page-title-text {
-    position: relative;
-    top: 0;
-    border-bottom: none;
-    line-height: 1;
-    white-space: break-spaces;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: normal;
-    text-rendering: geometricprecision;
-    -webkit-font-smoothing: subpixel-antialiased;
-    font-weight: 600;
-    /* word-wrap: break-word; */
-    font-size: 12px;
+  position: relative;
+  top: 0;
+  border-bottom: none;
+  line-height: 1;
+  white-space: break-spaces;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: normal;
+  text-rendering: geometricprecision;
+  -webkit-font-smoothing: subpixel-antialiased;
+  font-weight: 600;
+  /* word-wrap: break-word; */
+  font-size: 12px;
 }
-
 
 /* notion-page-title-icon  */
 
-.notion-page-content .notion-page-link span.notion-page-title-icon.notion-page-icon {
-    -webkit-filter: grayscale(1);
-    filter: grayscale(1);
-    height: 24px;
-    width: 24px;
-    border-radius: 0;
-    margin: 0;
-    display: block;
-    font-size: 24px;
-    position: absolute;
-    top: 24px;
-    left: 12px;
-    position: absolute;
-    /* top: 0; */
-    /* left: 0; */
+.notion-page-content
+  .notion-page-link
+  span.notion-page-title-icon.notion-page-icon {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  height: 24px;
+  width: 24px;
+  border-radius: 0;
+  margin: 0;
+  display: block;
+  font-size: 24px;
+  position: absolute;
+  top: 24px;
+  left: 12px;
+  position: absolute;
+  /* top: 0; */
+  /* left: 0; */
 }
 
 .notion-page-icon {
-    filter: grayscale(1);
+  filter: grayscale(1);
 }
 
-:hover>.notion-page-icon {
-    filter: grayscale(0);
+:hover > .notion-page-icon {
+  filter: grayscale(0);
 }
 
 path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V27z M8,17h14v-2H8V17z M8,21h14v-2H8V21z M8,25h14v-2H8V25z'] {
-    display: none;
+  display: none;
 }
 
 .notion-page-content-inner {
-    display: block;
-    text-align: left;
-    /* flex-direction: initial; */
-    /* align-items: initial; */
+  display: block;
+  text-align: left;
+  /* flex-direction: initial; */
+  /* align-items: initial; */
 }
 
 .notion-page-link {
-    background-color: #80808010;
-    color: #404040;
+  background-color: #80808010;
+  color: #404040;
 }
 
 .dark-mode .notion-page-link {
-    background-color: #80808040;
-    color: #fff;
+  background-color: #80808040;
+  color: #fff;
 }
 
 .notion-page-link {
-    height: 72px;
-    width: 192px;
-    /* background-image: var(--southeast-arrow-url); */
-    background-repeat: no-repeat;
-    background-position: 12px;
-    display: inline-table;
-    position: relative;
-    text-align: right;
-    padding: 16px;
-    line-height: 1;
-    margin: 4px;
-    /* max-width: 96px; */
-    overflow: hidden;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    /* font-size: 32px; */
-    /* text-align: right; */
-    opacity: 0.75;
-    padding-left: 48px;
-    vertical-align: top;
+  height: 72px;
+  width: 192px;
+  /* background-image: var(--southeast-arrow-url); */
+  background-repeat: no-repeat;
+  background-position: 12px;
+  display: inline-table;
+  position: relative;
+  text-align: right;
+  padding: 16px;
+  line-height: 1;
+  margin: 4px;
+  /* max-width: 96px; */
+  overflow: hidden;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  /* font-size: 32px; */
+  /* text-align: right; */
+  opacity: 0.75;
+  padding-left: 48px;
+  vertical-align: top;
 }
 
 div.notion-page-content a.notion-page-link::before {
-    content: '';
-    display: table;
+  content: '';
+  display: table;
 }
 
 div.notion-page-content a.notion-page-link::after {
-    content: '';
-    display: table;
+  content: '';
+  display: table;
 }
 
 div.notion-page-content a.notion-page-link::after {
-    clear: both;
+  clear: both;
 }
 
-.notion-page-link>.notion-page-title {
-    display: table-cell;
-    height: 100%;
-    vertical-align: middle;
-    max-width: 192px;
-    line-height: 1;
+.notion-page-link > .notion-page-title {
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
+  max-width: 192px;
+  line-height: 1;
 }
 
 .notion-page-link:hover {
-    background-color: #80808040;
-    background-repeat: no-repeat;
-    /* background-image: var(--southeast-arrow-url); */
-    background-position: 12px;
+  background-color: #80808040;
+  background-repeat: no-repeat;
+  /* background-image: var(--southeast-arrow-url); */
+  background-position: 12px;
 }
 
 .dark-mode .notion-page-link:hover {
-    background-color: #ffffff40;
-    background-repeat: no-repeat;
-    background-image: var(--southeast-arrow-url);
+  background-color: #ffffff40;
+  background-repeat: no-repeat;
+  background-image: var(--southeast-arrow-url);
 }
 
 .notion-page-cover {
-    max-width: initial;
-    border-radius: initial;
-    box-shadow: initial;
-    height: 56.25vh;
-    min-height: initial;
-    max-height: initial;
-    top: var(--header);
+  max-width: initial;
+  border-radius: initial;
+  box-shadow: initial;
+  height: 56.25vh;
+  min-height: initial;
+  max-height: initial;
+  top: var(--header);
 }
 
 .lazy-image-preview {
-    -webkit-transform: initial;
-    transform: initial;
+  -webkit-transform: initial;
+  transform: initial;
 }
 
 @media (orientation: portrait) {
-    .notion-page-link {
-        width: calc(100% - 8px);
-    }
-    .notion-page {
-        /* padding: 48px; */
-        min-width: 320px;
-    }
-    #__next>div>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
-        width: 18px;
-        color: transparent;
-    }
-    /* .notion .notion-app .notion-block-ff1a3cae900941e49cc4d4458cc2867d */
-    #__next>div.notion-block-ff1a3cae900941e49cc4d4458cc2867d>div.notion-frame>header>div>div.breadcrumbs>*:nth-child(1)>span {
-        color: inherit;
-        width: inherit;
-    }
+  .notion-page-link {
+    width: calc(100% - 8px);
+  }
+  .notion-page {
+    /* padding: 48px; */
+    min-width: 320px;
+  }
+  #__next
+    > div
+    > div.notion-frame
+    > header
+    > div
+    > div.breadcrumbs
+    > *:nth-child(1)
+    > span {
+    width: 18px;
+    color: transparent;
+  }
+  /* .notion .notion-app .notion-block-ff1a3cae900941e49cc4d4458cc2867d */
+  #__next
+    > div.notion-block-ff1a3cae900941e49cc4d4458cc2867d
+    > div.notion-frame
+    > header
+    > div
+    > div.breadcrumbs
+    > *:nth-child(1)
+    > span {
+    color: inherit;
+    width: inherit;
+  }
 }
 
 @media (min-width: 480px) {
-    .notion-page-link {
-        width: calc(50% - 16px);
-    }
+  .notion-page-link {
+    width: calc(50% - 16px);
+  }
 }
 
 @media (min-width: 640px) {
-    .notion-page-link {
-        width: calc(33% - 24px);
-    }
+  .notion-page-link {
+    width: calc(33% - 24px);
+  }
 }
 
 .notion-block-ff1a3cae900941e49cc4d4458cc2867d img.lazy-image-real {
-    object-position: right !important;
+  object-position: right !important;
 }
 
 .notion-table {
-    width: initial;
-    max-width: initial;
-    overflow: initial;
+  width: initial;
+  max-width: initial;
+  overflow: initial;
 }
 
 .notion-table-view,
 .notion-collection-header {
-    padding-left: initial !important;
-    padding-right: initial !important;
+  padding-left: initial !important;
+  padding-right: initial !important;
 }
 
 .notion-page-has-cover.notion-page-no-icon {
-    padding-top: calc(48px + var(--header));
+  padding-top: calc(48px + var(--header));
 }
 
 .notion-page-has-cover.notion-page-has-text-icon {
-    padding-top: calc(64px + var(--header));
+  padding-top: calc(64px + var(--header));
 }
 
 .notion-table-cell.notion-table-cell-title a.notion-page-link {
-    width: 100%;
-    padding-left: calc(15% - 12px);
+  width: 100%;
+  padding-left: calc(15% - 12px);
 }
 
 .notion-table-cell {
-    word-break: initial;
+  word-break: initial;
 }
 
 .notion-viewport {
-    -webkit-mask-image: linear-gradient( to right, #00000080, #00000000, #00000000, #00000000, #00000080);
-    background-image: url(//ubq.fi/image/grid-1.png);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #00000080,
+    #00000000,
+    #00000000,
+    #00000000,
+    #00000080
+  );
+  background-image: url(//ubq.fi/image/grid-1.png);
+}
+
+#__next > div > div.notion-frame > header > div > div.breadcrumbs > div > img {
+  background: transparent;
+}
+#__next
+  > div
+  > div.notion-frame
+  > header
+  > div
+  > div.breadcrumbs
+  > div
+  > img
+  + span {
+  margin-left: 16px;
+}
+#__next
+  > div
+  > div.notion-frame
+  > div
+  > main
+  > div.notion-page-content
+  > article
+  > a.notion-page-link
+  > span
+  > img {
+  background: transparent;
+}
+#__next
+  > div
+  > div.notion-frame
+  > div
+  > main
+  > div.notion-page-icon-wrapper
+  > img {
+  background: transparent;
+  opacity: 0.5;
+  margin: 0 auto;
+}
+.notion-page-icon-wrapper img.notion-page-icon {
+  border-radius: initial;
+  box-shadow: initial;
 }
