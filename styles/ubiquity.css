@@ -551,7 +551,7 @@ div.notion-page-content a.notion-page-link::after {
 .dark-mode .notion-page-link:hover {
   background-color: #ffffff40;
   background-repeat: no-repeat;
-  background-image: var(--southeast-arrow-url);
+  /* background-image: var(--southeast-arrow-url); */
 }
 
 .notion-page-cover {
