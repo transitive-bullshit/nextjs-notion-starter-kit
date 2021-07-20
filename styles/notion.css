@@ -40,7 +40,7 @@
 }
 
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(720px, 1fr));
   grid-gap: 6vmin;
   gap: 6vmin;
 }
@@ -64,8 +64,9 @@
 }
 
 .notion-collection-card {
-  border-radius: 16px;
-  box-shadow: none;
+  border-radius: 8px;
+  /*box-shadow: none;*/
+  @apply shadow-sm;
 }
 
 .notion-collection-card-cover img {
