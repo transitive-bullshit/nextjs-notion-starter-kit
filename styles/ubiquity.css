@@ -682,3 +682,15 @@ div.notion-page-content a.notion-page-link::after {
   border-radius: initial;
   box-shadow: initial;
 }
+
+span.notion-page-link {
+  width: 100%;
+}
+.notion-collection-card {
+  border: 1px solid #80808040;
+  border-radius: 4px;
+}
+
+.notion-h {
+  display: block;
+}
