@@ -77,6 +77,7 @@
 }
 
 .notion-collection-card-cover {
+  height: 400px;
   border-radius: 16px;
   overflow: visible;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
