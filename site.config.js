@@ -7,18 +7,18 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Transitive Bullshit',
-  domain: 'transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'yoshixj blog',
+  domain: 'yoshixj.com',
+  author: 'yoshixj',
 
   // open graph metadata (optional)
-  description: 'Example site description',
-  socialImageTitle: 'Transitive Bullshit',
+  description: 'this is yoshixj blog',
+  socialImageTitle: 'yoshixj blog',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
+  twitter: 'yoshixj',
+  github: 'yoshixj',
   linkedin: 'fisch2',
 
   // default notion icon and cover images for site-wide consistency (optional)
