@@ -89,10 +89,6 @@
   color: #2795e9;
 }
 
-.twitter:hover {
-  color: #2795e9;
-}
-
 .github:hover {
   color: #c9510c;
 }
@@ -164,16 +160,6 @@
 
 .pageActions a:hover {
   transition: all 50ms ease-out;
-}
-
-.likeTweet:hover {
-  background: #f6e3e8;
-  color: #e0265e;
-}
-
-.retweet:hover {
-  color: #19bf64;
-  background: #e5f2e8;
 }
 
 @media (max-width: 1360px) {
