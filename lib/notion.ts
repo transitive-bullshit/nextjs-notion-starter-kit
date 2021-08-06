@@ -2,7 +2,7 @@ import { NotionAPI } from 'notion-client'
 import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
 import { getPreviewImages } from './get-preview-images'
 import { mapNotionImageUrl } from './map-image-url'
-import { fetchTweetAst } from 'static-tweets'
+// import { fetchTweetAst } from 'static-tweets'
 import pMap from 'p-map'
 
 export const notion = new NotionAPI({
@@ -68,35 +68,35 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     })
     .filter(Boolean)
 
-  const tweetAsts = await pMap(
-    tweetIds,
-    async (tweetId) => {
-      try {
-        return {
-          tweetId,
-          tweetAst: await fetchTweetAst(tweetId)
-        }
-      } catch (err) {
-        console.error('error fetching tweet info', tweetId, err)
-      }
-    },
-    {
-      concurrency: 4
-    }
-  )
+  // const tweetAsts = await pMap(
+  //   tweetIds,
+  //   async (tweetId) => {
+  //     try {
+  //       return {
+  //         tweetId,
+  //         tweetAst: await fetchTweetAst(tweetId)
+  //       }
+  //     } catch (err) {
+  //       console.error('error fetching tweet info', tweetId, err)
+  //     }
+  //   },
+  //   {
+  //     concurrency: 4
+  //   }
+  // )
 
-  const tweetAstMap = tweetAsts.reduce((acc, { tweetId, tweetAst }) => {
-    if (tweetAst) {
-      return {
-        ...acc,
-        [tweetId]: tweetAst
-      }
-    } else {
-      return acc
-    }
-  }, {})
+  // const tweetAstMap = tweetAsts.reduce((acc, { tweetId, tweetAst }) => {
+  //   if (tweetAst) {
+  //     return {
+  //       ...acc,
+  //       [tweetId]: tweetAst
+  //     }
+  //   } else {
+  //     return acc
+  //   }
+  // }, {})
 
-  ;(recordMap as any).tweetAstMap = tweetAstMap
+  // ;(recordMap as any).tweetAstMap = tweetAstMap
 
   return recordMap
 }

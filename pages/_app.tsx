@@ -18,7 +18,7 @@ import 'prismjs/themes/prism-coy.css'
 import 'katex/dist/katex.min.css'
 
 // core styles for static tweet renderer (optional)
-import 'react-static-tweets/styles.css'
+// import 'react-static-tweets/styles.css'
 
 // global style overrides for notion
 import 'styles/notion.css'

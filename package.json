@@ -47,7 +47,6 @@
     "react-notion-x": "^4.6.5",
     "react-static-tweets": "^0.5.3",
     "react-use": "^17.2.4",
-    "static-tweets": "^0.5.3",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
