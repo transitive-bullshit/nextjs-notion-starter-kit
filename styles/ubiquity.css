@@ -33,7 +33,6 @@
 }
 
 .notion-app {
-  overflow: initial;
 }
 
 .notion-asset-wrapper-image {
@@ -601,8 +600,6 @@ div.notion-page-content a.notion-page-link::after {
 }
 
 .notion-table {
-  width: initial;
-  max-width: initial;
   overflow: initial;
 }
 
