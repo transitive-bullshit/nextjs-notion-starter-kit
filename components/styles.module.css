@@ -86,19 +86,23 @@
 }
 
 .toggleDarkMode:hover {
-  color: #2795e9;
+  color: #ffffff;
+}
+
+.discord:hover {
+  color: #ffffff;
 }
 
 .twitter:hover {
-  color: #2795e9;
+  color: #ffffff;
 }
 
 .github:hover {
-  color: #c9510c;
+  color: #ffffff;
 }
 
 .linkedin:hover {
-  color: #0077b5;
+  color: #ffffff;
 }
 
 .comments {

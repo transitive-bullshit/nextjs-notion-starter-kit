@@ -72,46 +72,53 @@
   fill: var(--fg-color);
 }
 
+.discord .actionBgPane {
+  /* background: #3b5998; */
+}
+.discord:hover {
+  /* border-color: #3b5998; */
+}
+
 .facebook .actionBgPane {
-  background: #3b5998;
+  /* background: #3b5998; */
 }
 .facebook:hover {
-  border-color: #3b5998;
+  /* border-color: #3b5998; */
 }
 
 .twitter .actionBgPane {
-  background: #2795e9;
+  /* background: #2795e9; */
 }
 .twitter:hover {
-  border-color: #2795e9;
+  /* border-color: #2795e9; */
 }
 
 .linkedin .actionBgPane {
-  background: #0077b5;
+  /* background: #0077b5; */
 }
 .linkedin:hover {
-  border-color: #0077b5;
+  /* border-color: #0077b5; */
 }
 
 .github .actionBgPane {
-  background: #c9510c;
+  /* background: #c9510c; */
 }
 .github:hover {
-  border-color: #c9510c;
+  /* border-color: #c9510c; */
 }
 
 .medium .actionBgPane {
-  background: #00ab6c;
+  /* background: #00ab6c; */
 }
 .medium:hover {
-  border-color: #00ab6c;
+  /* border-color: #00ab6c; */
 }
 
 .email .actionBgPane {
-  background: #777;
+  /* background: #777; */
 }
 .email:hover {
-  border-color: #777;
+  /* border-color: #777; */
 }
 
 @media only screen and (max-width: 768px) {
