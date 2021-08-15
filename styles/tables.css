@@ -1,4 +1,4 @@
 .notion-collection-column-title-body{display:inline-block}
 .notion-collection-column-title{display:initial !important; line-height: 1; font-size: 12px; text-transform: uppercase; letter-spacing: 2px;}
 .notion-table-header{position:relative;}
-.notion-table{ min-width: 0; width: 100vw; BACKGROUND: RED}
+.notion-table{ min-width: 0; width: 100vw;}
