@@ -10,9 +10,13 @@
 .dark-mode .notion-table-of-contents-active-item {
   color: var(--select-color-0) !important;
 }
-
 .notion-table-of-contents-active-item {
   color: #000 !important;
+}
+.notion-collection-column-title {
+  height: 12px;
+  vertical-align: middle;
+  height: 100%;
 }
 
 .dark-mode .notion-frame > header {
@@ -183,10 +187,18 @@ img.lazy-image-real {
 .notion-h6 {
   padding-top: initial;
 }
+.notion-page-no-cover.notion-page-has-image-icon {
+  padding-top: 0;
+}
+.notion-page-has-cover .notion-page-icon-wrapper img.notion-page-icon {
+  top: auto;
+}
 
 .notion-page-icon-wrapper {
   text-align: right;
   display: block;
+  position: relative;
+  margin: var(--header) auto;
 }
 
 .notion-page-icon-wrapper span.notion-page-icon {
@@ -298,6 +310,7 @@ svg.notion-page-icon {
 }
 
 .notion-header .breadcrumb {
+  padding: 4px 6px 4px 2px;
   color: #000;
   opacity: 0.5;
 }
