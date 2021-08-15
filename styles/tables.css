@@ -1,11 +1,26 @@
-.notion-collection-column-title-body{    display: inline-block;
-    height: auto;
-    vertical-align: middle;
+.notion-collection-column-title-body {
+  display: inline-block;
+  height: auto;
+  vertical-align: middle;
 }
-.notion-collection-column-title{display:initial !important; line-height: 1; font-size: 12px; text-transform: uppercase; letter-spacing: 2px;}
-.notion-table-header{position:relative;}
-.notion-table{ min-width: 0; width: 100vw;}
+.notion-collection-column-title {
+  display: initial !important;
+  line-height: 1;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.notion-table-header {
+  position: relative;
+}
+.notion-table {
+  min-width: 0;
+  width: 100vw;
+}
 .notion-collection-column-title-icon {
-    height: 100%;
-    vertical-align: middle;
+  height: 100%;
+  vertical-align: middle;
+}
+.notion-table-header-placeholder {
+  height: 0;
 }
