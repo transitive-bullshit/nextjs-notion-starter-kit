@@ -544,7 +544,7 @@ div.notion-page-content a.notion-page-link::after {
   height: 56.25vh;
   min-height: initial;
   max-height: initial;
-  top: var(--header);
+  margin-top: var(--header);
 }
 
 .lazy-image-preview {
