@@ -695,3 +695,38 @@ span.notion-page-link {
 .notion-h {
   display: block;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.75;
+  }
+}
+
+.notion-page-link:nth-child(1) { animation: 0.1s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(2) { animation: 0.2s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(3) { animation: 0.3s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(4) { animation: 0.4s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(5) { animation: 0.5s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(6) { animation: 0.6s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(7) { animation: 0.7s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(8) { animation: 0.8s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(9) { animation: 0.9s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(10) { animation: 1.0s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(11) { animation: 1.1s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(12) { animation: 1.2s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(13) { animation: 1.3s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(14) { animation: 1.4s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(15) { animation: 1.5s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(16) { animation: 1.6s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(17) { animation: 1.7s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(18) { animation: 1.8s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(19) { animation: 1.9s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(20) { animation: 2.0s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(21) { animation: 2.1s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(22) { animation: 2.2s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(23) { animation: 2.3s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(24) { animation: 2.4s ease-in-out 0s 1 fadeIn; }
+.notion-page-link:nth-child(25) { animation: 2.5s ease-in-out 0s 1 fadeIn; }
