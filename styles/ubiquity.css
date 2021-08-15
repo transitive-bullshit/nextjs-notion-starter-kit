@@ -709,6 +709,7 @@ footer {
   background-image: url(//ubq.fi/image/grid-1.png);
   height: calc(100vh - calc(2 * var(--header)));
   width: 100vw;
+  pointer-events: none;
 }
 
 video.notion-page-cover {
