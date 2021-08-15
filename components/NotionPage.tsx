@@ -164,16 +164,19 @@ export const NotionPage: React.FC<types.PageProps> = ({
       'https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252Fbb144e8e-3a57-4e68-b2b9-6a80dbff07d0%252FGroup_3.png%3Ftable%3Dblock%26id%3Dff1a3cae-9009-41e4-9cc4-d4458cc2867d%26cache%3Dv2'
     const heroVideo = '/hero.mp4'
     pageCover = (
-      <video
-        className='notion-page-cover'
-        autoPlay
-        controls={false}
-        loop
-        muted
-        playsInline
-        poster={poster}
-        src={heroVideo}
-      />
+      <>
+        <div className='notion-page-cover-background'></div>
+        <video
+          className='notion-page-cover'
+          autoPlay
+          controls={false}
+          loop
+          muted
+          playsInline
+          poster={poster}
+          src={heroVideo}
+        />
+      </>
     )
   }
 
