@@ -25,11 +25,12 @@
 
 .dark-mode {
   --bg-color: #06061a;
+  background-color: var(--bg-color);
   --fg-color: #e0e0e0;
 }
 
 .dark-mode .notion-app {
-  background: linear-gradient(0deg, #06061a, #06061a80);
+  /* background: linear-gradient(0deg, #06061aff, #06061a00); */
 }
 
 .notion-app {
@@ -153,7 +154,7 @@ details.notion-toggle > summary {
 }
 
 body {
-  background: #101010;
+  /* background: #101010; */
 }
 
 img {
@@ -464,17 +465,14 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
   text-align: left;
 }
 
-.notion-page-link {
-  background-color: #80808010;
-  color: #404040;
-}
-
 .dark-mode .notion-page-link {
   background-color: #80808040;
   color: #fff;
 }
 
 .notion-page-link {
+  background-color: #fff;
+  color: #404040;
   height: auto;
   width: 192px;
   background-repeat: no-repeat;
@@ -489,12 +487,16 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  opacity: 0.75;
+  opacity: 0.66;
   padding-left: 48px;
   vertical-align: top;
   width: calc(50% - 8px);
+  box-shadow: 0 0 48px #00000010;
 }
 
+.notion-page-link:hover {
+  opacity: 1;
+}
 div.notion-page-content a.notion-page-link::before {
   content: '';
   display: table;
@@ -515,7 +517,7 @@ div.notion-page-content a.notion-page-link::after {
 }
 
 .notion-page-link:hover {
-  background-color: #80808040;
+  background-color: #ffffff;
   background-repeat: no-repeat;
   background-position: 12px;
 }
@@ -599,7 +601,7 @@ div.notion-page-content a.notion-page-link::after {
 
 .notion-page-has-cover.notion-page-has-text-icon {
   margin-top: calc(var(--header));
-  position: absolute;
+  /* position: absolute; */
 }
 
 .notion-table-cell.notion-table-cell-title a.notion-page-link {
@@ -677,11 +679,28 @@ span.notion-page-link {
     opacity: 0;
   }
   100% {
-    opacity: 0.75;
+    opacity: 0.66;
   }
 }
+
+.notion-page-cover.lazy-image-wrapper {
+  padding: 0 !important;
+  width: 100%;
+  padding-bottom: 66.6667%;
+  height: calc(100vh - (1 * var(--header)));
+  filter: blur(8px) opacity(0.0625);
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  pointer-events: none;
+}
+
+footer {
+  height: var(--header);
+}
+
 .notion-page-cover-background {
-  position: absolute;
+  position: fixed;
   -webkit-mask-image: radial-gradient(#ffffff80, #ffffff00);
   background-image: url(//ubq.fi/image/grid-1.png);
   height: calc(100vh - calc(2 * var(--header)));
@@ -689,6 +708,8 @@ span.notion-page-link {
 }
 
 video.notion-page-cover {
+  position: fixed;
+  pointer-events: none;
   filter: invert(1) grayscale(0.25) brightness(1) contrast(1.25) blur(8px)
     opacity(0.25) hue-rotate(180deg);
   animation: 20s ease-in-out 0s 1 fadeIn;
