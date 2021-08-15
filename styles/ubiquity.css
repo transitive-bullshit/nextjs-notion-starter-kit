@@ -239,7 +239,7 @@ svg.notion-page-icon {
   background-image: var(--southeast-arrow-url);
   max-width: 24px;
   max-height: 24px;
-  top: 24px;
+  top: 12px;
   left: 12px;
   position: absolute;
   margin: 0;
@@ -438,6 +438,12 @@ body.dark-mode
   -webkit-font-smoothing: subpixel-antialiased;
   font-weight: 600;
   font-size: 12px;
+  display: inline-block;
+  max-height: 36px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .notion-page-content
@@ -452,7 +458,7 @@ body.dark-mode
   display: block;
   font-size: 24px;
   position: absolute;
-  top: 24px;
+  top: 12px;
   left: 12px;
   position: absolute;
 }
@@ -485,7 +491,7 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
 }
 
 .notion-page-link {
-  height: 72px;
+  /* height: 72px; */
   width: 192px;
   background-repeat: no-repeat;
   background-position: 12px;
@@ -502,6 +508,7 @@ path[d='M16,1H4v28h22V11L16,1z M16,3.828L23.172,11H16V3.828z M24,27H6V3h8v10h10V
   opacity: 0.75;
   padding-left: 48px;
   vertical-align: top;
+  width: calc(50% - 8px) !important;
 }
 
 div.notion-page-content a.notion-page-link::before {
@@ -519,9 +526,6 @@ div.notion-page-content a.notion-page-link::after {
 }
 
 .notion-page-link > .notion-page-title {
-  display: table-cell;
-  height: 100%;
-  vertical-align: middle;
   max-width: 192px;
   line-height: 1;
 }
@@ -614,7 +618,7 @@ div.notion-page-content a.notion-page-link::after {
 }
 
 .notion-page-has-cover.notion-page-has-text-icon {
-  padding-top: calc(64px + var(--header));
+  padding-top: calc(var(--header));
 }
 
 .notion-table-cell.notion-table-cell-title a.notion-page-link {
