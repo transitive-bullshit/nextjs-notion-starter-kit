@@ -32,7 +32,9 @@
 .dark-mode .notion-app {
   /* background: linear-gradient(0deg, #06061aff, #06061a00); */
 }
-
+.notion-callout {
+  border: none;
+}
 .notion-app {
 }
 
@@ -60,7 +62,9 @@
 }
 
 .notion-h-title {
-  color: #202020;
+  color: #404040;
+  /* letter-spacing: 2px; */
+  text-rendering: geometricPrecision;
 }
 
 .notion-h1,
