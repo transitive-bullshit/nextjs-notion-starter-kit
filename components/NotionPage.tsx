@@ -110,43 +110,38 @@ export const NotionPage: React.FC<types.PageProps> = ({
   Object.entries(code.props.recordMap.block).map(([id, value]) => {
     console.log(id, '=', value)
 
-    if(value.value.type === 'code' && value.value.properties.language[0][0] === 'BASIC') {
+    let current_value: any = (value as any).value;
+    if(current_value.type === 'code' && current_value.properties.language[0][0] === 'BASIC') {
       console.log('converting...');
 
-      console.log(value.value.properties.language);
+      console.log(current_value.properties.language);
       
 
-      value.value.type = 'embed';
-      const embed_size = value.value.properties.caption[0][0].split(',');
-      Object.assign(value.value, {
+      current_value.type = 'embed';
+      const embed_size = current_value.properties.caption[0][0].split(',');
+      Object.assign(current_value, {
         format: {
           block_width: Number(embed_size[0]),
           block_height: Number(embed_size[1]),
         }
       })
-      value.value.properties.title.unshift(['data:text/html;charset=utf-8,']);
-      value.value.properties = { source: [[value.value.properties.title.join('')]] };
+      current_value.properties.title.unshift(['data:text/html;charset=utf-8,']);
+      current_value.properties = { source: [[current_value.properties.title.join('')]] };
       
       console.log('(after)', id, '=', value)
     }
 
-    if(value.value.type === 'code' && value.value.properties.language[0][0] === 'Visual Basic') {
+    if(current_value.type === 'code' && current_value.properties.language[0][0] === 'Visual Basic') {
       console.log('converting...');
 
-      head_html += value.value.properties.title.join();
-      value.value.type = 'untype';
+      head_html += current_value.properties.title.join();
+      current_value.type = 'untype';
     }
-    if(value.value.type === 'embed' && value.value.properties !== undefined) {
-      console.log('embed properties = ', value.value.properties);
+    if(current_value.type === 'embed' && current_value.properties !== undefined) {
+      console.log('embed properties = ', current_value.properties);
       
     }
 })
-
-  for (let index = 0; index < head_html.length; index++) {
-    const element = head_html[index];
-    console.log(element, " = ", Number(element));
-    
-  }
 
   // console.log('notion page', {
   //   isDev: config.isDev,
