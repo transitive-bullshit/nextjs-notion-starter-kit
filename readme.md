@@ -10,6 +10,8 @@
 
 [![Build Status](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit.svg?branch=main)](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 
+[EN](readme.md) | [中文](readme-zh.md)
+
 ## Intro
 
 This repo is what I use to power my personal blog / portfolio site [transitivebullsh.it](https://transitivebullsh.it).
