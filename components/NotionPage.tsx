@@ -97,15 +97,66 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
   const title = getBlockTitle(block, recordMap) || site.name
+  let   head_html = "";
+  let code: React.ReactChild = (
+    <NotionRenderer 
+      recordMap={recordMap}
+      components={{
+        code: Code,
+      }}
+    />
+  )
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    isRootPage: pageId === site.rootNotionPageId,
-    recordMap
-  })
+  Object.entries(code.props.recordMap.block).map(([id, value]) => {
+    console.log(id, '=', value)
+
+    if(value.value.type === 'code' && value.value.properties.language[0][0] === 'BASIC') {
+      console.log('converting...');
+
+      console.log(value.value.properties.language);
+      
+
+      value.value.type = 'embed';
+      const embed_size = value.value.properties.caption[0][0].split(',');
+      Object.assign(value.value, {
+        format: {
+          block_width: Number(embed_size[0]),
+          block_height: Number(embed_size[1]),
+        }
+      })
+      value.value.properties.title.unshift(['data:text/html;charset=utf-8,']);
+      value.value.properties = { source: [[value.value.properties.title.join('')]] };
+      
+      console.log('(after)', id, '=', value)
+    }
+
+    if(value.value.type === 'code' && value.value.properties.language[0][0] === 'Visual Basic') {
+      console.log('converting...');
+
+      head_html += value.value.properties.title.join();
+      value.value.type = 'untype';
+    }
+    if(value.value.type === 'embed' && value.value.properties !== undefined) {
+      console.log('embed properties = ', value.value.properties);
+      
+    }
+})
+
+  for (let index = 0; index < head_html.length; index++) {
+    const element = head_html[index];
+    console.log(element, " = ", Number(element));
+    
+  }
+
+  // console.log('notion page', {
+  //   isDev: config.isDev,
+  //   title,
+  //   pageId,
+  //   rootNotionPageId: site.rootNotionPageId,
+  //   isRootPage: pageId === site.rootNotionPageId,
+  //   recordMap,
+  //   code: (code.props.recordMap),
+  // })
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
@@ -214,7 +265,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
         <title>{title}</title>
       </Head>
-
+      <div id = 'head_html' dangerouslySetInnerHTML={ {__html: head_html} }/>
       <CustomFont site={site} />
 
       {isLiteMode && <BodyClassName className='notion-lite' />}
@@ -280,8 +331,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
           />
         }
       />
-
-
     </TwitterContextProvider>
   )
 }
