@@ -32,7 +32,7 @@ import { PageHead } from './PageHead'
 import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
-import { GitHubShareButton } from './GitHubShareButton'
+// import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
@@ -103,6 +103,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     title,
     pageId,
     rootNotionPageId: site.rootNotionPageId,
+    isRootPage: pageId === site.rootNotionPageId,
     recordMap
   })
 
@@ -119,8 +120,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  // const isRootPage =
-  //   parsePageId(block.id) === parsePageId(site.rootNotionPageId)
+  const isRootPage =
+    pageId === site.rootNotionPageId
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
   const showTableOfContents = !!isBlogPost
@@ -176,6 +177,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
         <meta name='twitter:title' content={title} />
         <meta property='twitter:domain' content={site.domain} />
+
+        {isRootPage && (
+          <link rel="stylesheet" href="/main_background.css"/>
+        )}
 
         {config.twitter && (
           <meta name='twitter:creator' content={`@${config.twitter}`} />
@@ -276,7 +281,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       />
 
-      <GitHubShareButton />
+
     </TwitterContextProvider>
   )
 }
