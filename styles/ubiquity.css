@@ -325,6 +325,16 @@ svg.notion-page-icon {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+#__next
+  > div
+  > div.notion-frame
+  > header
+  > div
+  > div.breadcrumbs
+  > :first-child
+  > span {
+  padding-left: 29px !important;
+}
 
 .dark-mode .notion-header .breadcrumb {
   color: #fff;
