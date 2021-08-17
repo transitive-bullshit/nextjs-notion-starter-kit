@@ -19,6 +19,9 @@ jobs:
       - run: npm install
       - name: Install yarn
         uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+      - run: yarn
       - run: yarn build
       - run: yarn export
         env:
