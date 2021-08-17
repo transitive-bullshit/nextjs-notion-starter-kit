@@ -47,7 +47,7 @@ export async function getStaticPaths() {
       }))
     ),
     // paths: [],
-    fallback: true
+    fallback: isDev
   }
 
   console.log(ret.paths)
