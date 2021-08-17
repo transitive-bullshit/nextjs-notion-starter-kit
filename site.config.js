@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'ounols',
-  domain: 'ounols.github.io/nextjs-ounols-page/',
+  domain: 'ounols.undo.it',
   author: 'ounols',
 
   // open graph metadata (optional)
