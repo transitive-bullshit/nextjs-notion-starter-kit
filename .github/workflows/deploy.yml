@@ -17,8 +17,10 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - run: npm run build
-      - run: npm run export
+      - name: Install yarn
+        uses: borales/actions-yarn@v2.3.0
+      - run: yarn build
+      - run: yarn export
         env:
           CI: true
           DEPLOY_TARGET: gh-pages
