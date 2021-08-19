@@ -12,7 +12,7 @@ filename="${fullname%.*}"
 
 for size in $*
 do
-convert $fullname -resize $size $filename$size.$extension
+convert "$fullname" -filter point -resize "$size" "$filename""$size"."$extension"
 done
 
 # ./resizer.sh ob-000000.png 16x16 32x32 48x48 128x128
