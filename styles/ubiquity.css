@@ -743,7 +743,7 @@ video.notion-page-cover {
   animation: 20s ease-in-out 0s 1 fadeIn;
   height: calc(100vh - calc(2 * var(--header)));
   width: 100vw;
-  object-fit: contain;
+  object-fit: cover;
   -webkit-mask-image: radial-gradient(#000000FF, #00000000);
 }
 .dark-mode video.notion-page-cover {
