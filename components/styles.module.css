@@ -210,3 +210,9 @@
     animation: octocat-wave 560ms ease-in-out;
   }
 }
+
+.header_animation {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}

@@ -32,6 +32,7 @@ import { PageHead } from './PageHead'
 import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
+import { RainEffect } from './RainEffect'
 // import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
 
@@ -110,7 +111,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
   Object.entries(code.props.recordMap.block).map(([id, value]) => {
     console.log(id, '=', value)
 
-    let current_value: any = (value as any).value;
+    let current_value: any = (value as any);
+    console.log('(before)', id, '=', current_value)
+    if(current_value.role === 'none') return;
+    if(current_value.value != undefined) {
+      current_value = current_value.value;
+    }
+    
     if(current_value.type === 'code' && current_value.properties.language[0][0] === 'BASIC') {
       console.log('converting...');
 
@@ -128,13 +135,15 @@ export const NotionPage: React.FC<types.PageProps> = ({
       current_value.properties.title.unshift(['data:text/html;charset=utf-8,']);
       current_value.properties = { source: [[current_value.properties.title.join('')]] };
       
-      console.log('(after)', id, '=', value)
+      console.log('(after)', id, '=', current_value)
     }
 
     if(current_value.type === 'code' && current_value.properties.language[0][0] === 'Visual Basic') {
       console.log('converting...');
 
       head_html += current_value.properties.title.join();
+      console.log("head_html = ", head_html);
+      
       current_value.type = 'untype';
     }
     if(current_value.type === 'embed' && current_value.properties !== undefined) {
@@ -258,8 +267,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
           </>
         )}
 
+
         <title>{title}</title>
       </Head>
+      <RainEffect />
       <div id = 'head_html' dangerouslySetInnerHTML={ {__html: head_html} }/>
       <CustomFont site={site} />
 
@@ -327,5 +338,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       />
     </TwitterContextProvider>
+    
   )
 }
