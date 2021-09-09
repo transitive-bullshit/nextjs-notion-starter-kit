@@ -20,8 +20,7 @@
         "standard",
         "standard-react",
         "plugin:prettier/recommended",
-        "prettier/standard",
-        "prettier/react"
+        "prettier"
       ],
       "env": { "node": true },
       "rules": {
@@ -43,8 +42,7 @@
         "standard",
         "standard-react",
         "plugin:prettier/recommended",
-        "prettier/standard",
-        "prettier/react"
+        "prettier"
       ],
       "env": { "browser": true, "node": true },
       "rules": {
