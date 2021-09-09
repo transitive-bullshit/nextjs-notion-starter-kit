@@ -10,6 +10,12 @@
 .notion {
   --notion-max-width: 720px;
   --notion-header-height: 54px;
+  @apply bg-gray-100;
+  font-family: var(--base-font-family);
+}
+
+.dark-mode .notion {
+  @apply bg-black;
 }
 
 .notion-page {
@@ -57,6 +63,7 @@
 .notion-gallery-grid .notion-collection-card-property {
   white-space: unset;
   text-overflow: unset;
+  margin-top: 2em;
 }
 
 .notion-gallery-grid .notion-property-text {
@@ -64,33 +71,63 @@
 }
 
 .notion-collection-card {
-  border-radius: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 0px 0px 0px 0px;
   /*box-shadow: none;*/
-  @apply shadow-sm;
+  /*@apply nm-flat-white;*/
 }
 
 .notion-collection-card-cover img {
-  border-radius: 16px;
+  border-radius: 4px 4px 0px 0px;
 }
 
 .notion-collection-card {
   overflow: visible;
+  @apply bg-white transition-all duration-500 ease-in-out;
+}
+
+.dark-mode .notion-collection-card-body {
+  @apply bg-blue-800;
+}
+
+.dark-mode .notion-collection-card-cover .notion-collection-card-cover-empty {
+  @apply bg-gray-700;
 }
 
 .notion-collection-card-cover {
-  border-radius: 16px;
-  overflow: visible;
-  box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+  border-radius: 5px 5px 0px 0px ;
+  overflow: hidden;
+  @apply bg-white transition-all duration-500 ease-in-out;
+  /*box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);*/
+}
+
+.notion-collection-card-cover .notion-collection-card-cover-empty {
+  @apply bg-white;
+}
+
+.notion-collection-card:hover .notion-collection-card-cover {
 }
 
 .notion-collection-card-cover {
   border-bottom: 0 none;
-  transition: filter 150ms linear;
   filter: none;
 }
 
+.notion-collection-card:hover {
+  background: none;
+  @apply bg-white dark:bg-blue-700;
+  /*@apply nm-flat-white-lg;*/
+}
+
+.notion-collection-card:focus {
+}
 .notion-collection-card:hover .notion-collection-card-cover {
-  filter: brightness(120%);
+  /*filter: brightness(120%);*/
+}
+
+.notion-collection-card .notion {
+  margin-top: 10px;
 }
 
 /* only target safari */
@@ -319,13 +356,13 @@
 }
 
 .notion-header {
-  background: hsla(0, 0%, 100%, 0.8);
+  background: hsla(0, 0%, 100%, 0.2);
   backdrop-filter: saturate(180%) blur(16px);
 }
 
 .dark-mode .notion-header {
   background: transparent;
-  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.2);
   backdrop-filter: saturate(180%) blur(8px);
 }
 

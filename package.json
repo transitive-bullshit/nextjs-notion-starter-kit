@@ -51,6 +51,7 @@
     "react-use": "^17.2.4",
     "static-tweets": "^0.5.3",
     "tailwindcss": "^2.2.4",
+    "tailwindcss-neumorphism": "^0.1.0",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {

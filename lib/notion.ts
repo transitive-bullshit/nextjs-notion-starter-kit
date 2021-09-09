@@ -3,6 +3,7 @@ import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
 import { getPreviewImages } from './get-preview-images'
 import { mapNotionImageUrl } from './map-image-url'
 import { fetchTweetAst } from 'static-tweets'
+import { getPageProperty } from 'notion-utils'
 import pMap from 'p-map'
 
 export const notion = new NotionAPI({
@@ -11,7 +12,15 @@ export const notion = new NotionAPI({
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   const recordMap = await notion.getPage(pageId)
+  //console.log('recordMap => ', JSON.stringify(recordMap))
   const blockIds = Object.keys(recordMap.block)
+
+  if (recordMap.block[pageId]) {
+    console.log(
+      'getPageProperty',
+      getPageProperty('title', recordMap.block[pageId]?.value, recordMap)
+    )
+  }
 
   const imageUrls: string[] = blockIds
     .map((blockId) => {

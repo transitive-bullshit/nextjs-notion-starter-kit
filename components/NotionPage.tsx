@@ -15,7 +15,7 @@ import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
 
 // utils
-import { getBlockTitle } from 'notion-utils'
+import { getBlockTitle, getPageProperty } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapNotionImageUrl } from 'lib/map-image-url'
 import { getPageDescription } from 'lib/get-page-description'
@@ -98,13 +98,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const title = getBlockTitle(block, recordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+  //console.log('notion page', {
+    //isDev: config.isDev,
+    //title,
+    //pageId,
+    //block,
+    //rootNotionPageId: site.rootNotionPageId,
+    //recordMap: recordMap,
+  //})
+
+  console.log('getPageProperty: ', getPageProperty('Tags', block, recordMap))
+  console.log('getPageProperty: ', getPageProperty('lCLt', block, recordMap))
+  console.log('getPageProperty: ', getPageProperty('SlugName', block, recordMap))
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
@@ -115,6 +120,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
   const siteMapPageUrl = mapPageUrl(site, recordMap, searchParams)
+
+  console.log("siteMapPageUrl: ", siteMapPageUrl)
 
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
@@ -276,7 +283,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       />
 
-      <GitHubShareButton />
     </TwitterContextProvider>
   )
 }

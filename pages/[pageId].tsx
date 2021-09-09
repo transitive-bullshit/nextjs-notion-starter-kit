@@ -4,8 +4,8 @@ import { getSiteMaps } from 'lib/get-site-maps'
 import { resolveNotionPage } from 'lib/resolve-notion-page'
 import { NotionPage } from 'components'
 
-export const getStaticProps = async (context) => {
-  const rawPageId = context.params.pageId as string
+export const getStaticProps = async ({ params }) => {
+  const rawPageId = params.pageId as string
 
   try {
     if (rawPageId === 'sitemap.xml' || rawPageId === 'robots.txt') {
@@ -17,6 +17,8 @@ export const getStaticProps = async (context) => {
     }
 
     const props = await resolveNotionPage(domain, rawPageId)
+
+    //console.log('props == ', props)
 
     return { props, revalidate: 10 }
   } catch (err) {

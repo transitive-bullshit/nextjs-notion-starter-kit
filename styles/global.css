@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --base-font-family: Roboto Slab, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica, Arial, pingfang sc, source han sans sc, noto sans cjk sc,
+    sarasa gothic sc, microsoft yahei, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji;
+  --title-font-family: noto sans, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica, Arial, Source Han Sans SC, Noto Sans CJK SC, Sarasa Gothic SC,
+    Microsoft YaHei, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  --monospace-font-family: Fira Code, SF Mono, Consolas, Monaco, Ubuntu Mono,
+    monospace;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,15 +25,13 @@ a {
 
 body,
 html {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--base-font-family);
 }
 
 body {
-  overflow-x: hidden;
+  font-family: var(--base-font-family);
 }
+
 
 .utterances {
   max-width: 100% !important;

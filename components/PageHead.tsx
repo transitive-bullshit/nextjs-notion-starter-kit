@@ -14,6 +14,11 @@ export const PageHead: React.FC<types.PageProps> = ({ site }) => {
         content='width=device-width, initial-scale=1, shrink-to-fit=no'
       />
 
+      <link
+        href='https://fonts.googleapis.com/css2?family=Fira+Code&family=Noto+Sans+SC:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap'
+        rel='stylesheet'
+      />
+
       {site?.description && (
         <>
           <meta name='description' content={site.description} />
