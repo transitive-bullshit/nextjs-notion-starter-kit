@@ -80,6 +80,8 @@ export const Footer: React.FC<{
 
 
 <div className="bsz"><span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span></div>
+      <br>
+        <div className="beian"><a href="https://beian.miit.gov.cn/">粤ICP备18035644号-1</a></div>
     </footer>
   )
 }
