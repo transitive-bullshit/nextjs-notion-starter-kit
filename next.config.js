@@ -10,17 +10,5 @@ module.exports = withBundleAnalyzer({
   },
   future: {
     webpack5: true
-  },
-  async headers() {
-    return [
-        {
-          source: '/countdown',
-          headers: [
-            {
-              key: 'X-Frame-Options',
-              value:
-                "SAMEORIGIN",
-            }
-          ]
-        }]}
+  }
 })
