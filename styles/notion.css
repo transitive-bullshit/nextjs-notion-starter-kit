@@ -110,6 +110,7 @@
 .notion-h1,
 .notion-h2,
 .notion-h3 {
+  align-self: center;
   margin-bottom: 0.25em;
 }
 
@@ -157,6 +158,7 @@
 .notion-title {
   display: block;
   text-align: center;
+  font-family: Kabel;
 }
 
 .notion-collection-column-title {
@@ -332,3 +334,4 @@
   border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
   border-image-slice: 1;
 }
+
