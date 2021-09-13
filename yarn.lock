@@ -1322,7 +1322,7 @@
   "resolved" "https://registry.npmjs.org/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz"
   "version" "3.0.1"
 
-"date-fns@^2.15.0", "date-fns@^2.21.1", "date-fns@>=2":
+"date-fns@^2.15.0", "date-fns@^2.21.1":
   "integrity" "sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA=="
   "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.23.0.tgz"
   "version" "2.23.0"
@@ -1405,11 +1405,6 @@
   "integrity" "sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak="
   "resolved" "https://registry.npmjs.org/depd/-/depd-1.1.2.tgz"
   "version" "1.1.2"
-
-"dequal@2.0.2":
-  "integrity" "sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug=="
-  "resolved" "https://registry.npmjs.org/dequal/-/dequal-2.0.2.tgz"
-  "version" "2.0.2"
 
 "des.js@^1.0.0":
   "integrity" "sha512-Q0I4pfFrv2VPd34/vfLrFOoRmlYj3OV50i7fskps1jZWK1kApMWWT9G6RRUeYedLcBDIhnSDaUvJMb3AhUlaEA=="
@@ -2038,11 +2033,6 @@
   "integrity" "sha1-FQStJSMVjKpA20onh8sBQRmU6k8="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
-
-"fsevents@~2.3.1":
-  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
-  "version" "2.3.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
@@ -3083,7 +3073,7 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
-"next@^10.0.6", "next@^10.2.0":
+"next@^10.2.0":
   "integrity" "sha512-dkM1mIfnORtGyzw/Yme8RdqNxlCMZyi4Lqj56F01/yHbe1ZtOaJ0cyqqRB4RGiPhjGGh0319f8ddjDyO1605Ow=="
   "resolved" "https://registry.npmjs.org/next/-/next-10.2.3.tgz"
   "version" "10.2.3"
@@ -3247,10 +3237,10 @@
   "resolved" "https://registry.npmjs.org/notion-types/-/notion-types-4.8.2.tgz"
   "version" "4.8.2"
 
-"notion-utils@^4.6.4", "notion-utils@^4.8.2":
-  "integrity" "sha512-5IkeukBVIOpRODC06qT/19MJGG9HPN6T4wWDMaVl0pXogjN9gALnOSHsF8ljxgJQxX83OT2vAjD/rVNpU+uyaw=="
-  "resolved" "https://registry.npmjs.org/notion-utils/-/notion-utils-4.8.2.tgz"
-  "version" "4.8.2"
+"notion-utils@^4.6.4", "notion-utils@^4.8.2", "notion-utils@^4.8.6":
+  "integrity" "sha512-FM//qr5la71mnU1Sw5elfKbcbsBtDNi8wdtBeFGVXCLm0UYpNEAqfSAgf35EfuJ3AeMghCC8ge5ML+9bBpceUQ=="
+  "resolved" "https://registry.npmjs.org/notion-utils/-/notion-utils-4.8.6.tgz"
+  "version" "4.8.6"
   dependencies:
     "notion-types" "^4.8.2"
     "p-queue" "^6.6.1"
@@ -3948,10 +3938,10 @@
     "react-lifecycles-compat" "^3.0.0"
     "warning" "^4.0.3"
 
-"react-notion-x@^4.6.5":
-  "integrity" "sha512-eH7g3X7VkvfklWk+1MqH3dFv3JGJu7JtdKMKUvlF6r/oPGsg8qyqoAalPD8IMdtheC5M3prYC7wfc/p8LJQiUg=="
-  "resolved" "https://registry.npmjs.org/react-notion-x/-/react-notion-x-4.8.2.tgz"
-  "version" "4.8.2"
+"react-notion-x@^4.8.8":
+  "integrity" "sha512-y5RbB6H6I1YSDdxVs1Me25ptD76WCNearTnvDIigGNQ39Zj+hN4I59XSElw3x4W16co2bosec39ePNYA8VyVcw=="
+  "resolved" "https://registry.npmjs.org/react-notion-x/-/react-notion-x-4.8.8.tgz"
+  "version" "4.8.8"
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     "date-fns" "^2.15.0"
@@ -3961,7 +3951,7 @@
     "lodash.throttle" "^4.1.1"
     "medium-zoom" "^1.0.6"
     "notion-types" "^4.8.2"
-    "notion-utils" "^4.8.2"
+    "notion-utils" "^4.8.6"
     "prismjs" "^1.20.0"
     "rc-dropdown" "^3.1.2"
     "rc-menu" "^8.5.2"
@@ -3994,14 +3984,6 @@
   "resolved" "https://registry.npmjs.org/react-side-effect/-/react-side-effect-2.1.1.tgz"
   "version" "2.1.1"
 
-"react-static-tweets@0.5.3":
-  "integrity" "sha512-JDF3NaXUiw2MzETHn3iQSggDVGy0Dph0YfFpKjmO4TvzauIecah47xXYRP10RhTZ3nsXc90hr7FKDHH95Qp05w=="
-  "resolved" "https://registry.npmjs.org/react-static-tweets/-/react-static-tweets-0.5.3.tgz"
-  "version" "0.5.3"
-  dependencies:
-    "classnames" "^2.2.6"
-    "swr" "^1.0.0-beta.5"
-
 "react-universal-interface@^0.6.2":
   "integrity" "sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw=="
   "resolved" "https://registry.npmjs.org/react-universal-interface/-/react-universal-interface-0.6.2.tgz"
@@ -4027,7 +4009,7 @@
     "ts-easing" "^0.2.0"
     "tslib" "^2.1.0"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16 || ^17", "react@^15 || ^16", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.11.0 || ^17.0.0", "react@^16.3.0", "react@^16.3.0 || ^17.0.0", "react@^16.6.0 || ^17", "react@^16.8.0", "react@^16.8.0  || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.9.0 || ^17", "react@^17.0.2", "react@>= 15", "react@>=16", "react@>=16.8", "react@>=16.8.1", "react@>=16.9.0", "react@15.x.x || 16.x.x || 17.x.x", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16 || ^17", "react@^15 || ^16", "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.3.0", "react@^16.3.0 || ^17.0.0", "react@^16.6.0 || ^17", "react@^16.8.0", "react@^16.8.0  || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.9.0 || ^17", "react@^17.0.2", "react@>= 15", "react@>=16", "react@>=16.8", "react@>=16.8.1", "react@>=16.9.0", "react@15.x.x || 16.x.x || 17.x.x", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -4731,13 +4713,6 @@
   "version" "8.1.1"
   dependencies:
     "has-flag" "^4.0.0"
-
-"swr@^1.0.0-beta.5":
-  "integrity" "sha512-0cF1j6RVYqa78Lq0L5hqK+vwjZtEXsWtB3Co2ZJmxKC9lY5+/Xq8XMGpe2+JYO140wRGfcrPKUEDIUQuS6wgoQ=="
-  "resolved" "https://registry.npmjs.org/swr/-/swr-1.0.0-beta.9.tgz"
-  "version" "1.0.0-beta.9"
-  dependencies:
-    "dequal" "2.0.2"
 
 "table@^6.0.9":
   "integrity" "sha512-ZGum47Yi6KOOFDE8m223td53ath2enHcYLgOCjGr5ngu8bdIARQk6mN/wRMv4yMRcHnCSnHbCEha4sobQx5yWg=="

@@ -157,18 +157,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   } else {
     pageAside = <PageSocial />
   }
-
   return (
-    <div>{
-    /*<TwitterContextProvider
-      value={{
-        tweetAstMap: (recordMap as any).tweetAstMap || {},
-        swrOptions: {
-          fetcher: (id) =>
-            fetch(`/api/get-tweet-ast/${id}`).then((r) => r.json())
-        }
-      }}
-    >*/}
+    <div>
       <PageHead site={site} />
 
       <Head>
@@ -214,71 +204,96 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <CustomFont site={site} />
 
       {isLiteMode && <BodyClassName className='notion-lite' />}
-
-      <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
-        )}
-        components={{
-          pageLink: ({
-            href,
-            as,
-            passHref,
-            prefetch,
-            replace,
-            scroll,
-            shallow,
-            locale,
-            ...props
-          }) => (
-            <Link
-              href={href}
-              as={as}
-              passHref={passHref}
-              prefetch={prefetch}
-              replace={replace}
-              scroll={scroll}
-              shallow={shallow}
-              locale={locale}
-            >
-              <a {...props} />
-            </Link>
-          ),
-          code: Code,
-          collection: Collection,
-          collectionRow: CollectionRow,
-          //tweet: Tweet,
-          modal: Modal,
-          pdf: Pdf,
-          equation: Equation
-        }}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        fullPage={!isLiteMode}
-        darkMode={darkMode.value}
-        previewImages={site.previewImages !== false}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapNotionImageUrl}
-        searchNotion={searchNotion}
-        pageFooter={comments}
-        pageAside={pageAside}
-        footer={
-          <Footer
-            isDarkMode={darkMode.value}
-            toggleDarkMode={darkMode.toggle}
+          <NotionRenderer
+            bodyClassName={cs(
+              styles.notion,
+              pageId === site.rootNotionPageId && 'index-page'
+            )}
+            components={{
+              pageLink: ({
+                href,
+                as,
+                passHref,
+                prefetch,
+                replace,
+                scroll,
+                shallow,
+                locale,
+                ...props
+              }) => (
+                <Link
+                  href={href}
+                  as={as}
+                  passHref={passHref}
+                  prefetch={prefetch}
+                  replace={replace}
+                  scroll={scroll}
+                  shallow={shallow}
+                  locale={locale}
+                >
+                  <a {...props} />
+                </Link>
+              ),
+              code: Code,
+              collection: Collection,
+              collectionRow: CollectionRow,
+              //tweet: Tweet,
+              modal: Modal,
+              pdf: Pdf,
+              equation: Equation
+            }}
+            recordMap={recordMap}
+            rootPageId={site.rootNotionPageId}
+            fullPage={!isLiteMode}
+            darkMode={darkMode.value}
+            previewImages={site.previewImages !== false}
+            showCollectionViewDropdown={false}
+            showTableOfContents={showTableOfContents}
+            minTableOfContentsItems={minTableOfContentsItems}
+            defaultPageIcon={config.defaultPageIcon}
+            defaultPageCover={config.defaultPageCover}
+            defaultPageCoverPosition={config.defaultPageCoverPosition}
+            mapPageUrl={siteMapPageUrl}
+            mapImageUrl={mapNotionImageUrl}
+            searchNotion={searchNotion}
+            pageFooter={comments}
+            pageAside={pageAside}
+            pageHeader={
+              <div className='navbar'>
+                <div className='nav-header navbar-contents'>
+                  <div className='navbar-contents'>
+                    <a href='/header'>
+                      {' '}
+                      <span>About</span>
+                    </a>
+                    <a href="/">
+                    <img
+                      style={{
+                        zIndex: 500,
+                        height: '200%',
+                        transform: "translate(0%, -50%)",
+                      }}
+                      src='/ScorpionSquare.png'
+                    ></img></a>
+                    <a href='/header'>
+                      {' '}
+                      <span >About</span>
+                    </a>
+                    
+                  </div>
+                </div>
+              </div>
+            }
+            footer={
+              <Footer
+                isDarkMode={darkMode.value}
+                toggleDarkMode={darkMode.toggle}
+              />
+            }
           />
-        }
-      />
 
-      <GitHubShareButton />
-    {/*</TwitterContextProvider>*/}
-    </div>
+          <GitHubShareButton />
+          {/*</TwitterContextProvider>*/}
+        </div>
   )
 }

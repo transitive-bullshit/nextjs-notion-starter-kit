@@ -10,6 +10,7 @@
 .notion {
   --notion-max-width: 720px;
   --notion-header-height: 54px;
+  font-family: AkzidenzGrotesk
 }
 
 .notion-page {
@@ -35,7 +36,6 @@
 }
 
 .notion-header .nav-header {
-  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -321,13 +321,13 @@
 
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
-  backdrop-filter: saturate(180%) blur(16px);
+  position:fixed;
+  top:0;
+  z-index: 200;
 }
 
 .dark-mode .notion-header {
-  background: transparent;
-  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
-  backdrop-filter: saturate(180%) blur(8px);
+  background-color: #000000BB;
 }
 
 .notion-bookmark:hover {
@@ -335,3 +335,49 @@
   border-image-slice: 1;
 }
 
+.notion-page-scroller {
+  margin-top:calc(2*var(--notion-header-height))
+}
+
+.navbar{
+  position:fixed;
+  top:calc(var(--notion-header-height));
+  left:0;
+}
+
+.navbar .nav-header {
+  height:var(--notion-header-height);
+}
+
+.navbar {
+  background: hsla(0, 0%, 100%, 0.8);
+  z-index: 200;
+  width:100%;
+  height:var(--notion-header-height);
+}
+
+.dark-mode .navbar {
+  background: #000000BB;
+}
+
+.navbar-contents {
+  height: 100%;
+  width:100%;
+  display:flex;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.notion-header .breadcrumbs {
+  max-width: 45vw;
+}
+
+.notion-header .breadcrumbs .breadcrumb {
+  min-width: 3em;
+}
+
+.notion-header .breadcrumbs .breadcrumb span {
+  width:100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
