@@ -5,9 +5,9 @@ import WreathCountdown from "./wreath-countdown"
 
 var HomepageCarousel = () => {
         return (
-            <Carousel>
+            <Carousel style={{height:"100%", aspectRatio: 1}}>
                 <div>
-                    <WreathCountdown></WreathCountdown>
+                    <WreathCountdown ></WreathCountdown>
                 </div>
                 <div><img src="/ScorpionSquare.jpg"></img></div>
                 
