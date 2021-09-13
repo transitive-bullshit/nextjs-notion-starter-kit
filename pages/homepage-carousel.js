@@ -6,7 +6,7 @@ import WreathCountdown from "./wreath-countdown"
 var HomepageCarousel = () => {
         return (
             <div style={{height:"100%", width:"100%"}}>
-            <Carousel >
+            <Carousel showThumbs={false}>
                 <div>
                     <WreathCountdown ></WreathCountdown>
                 </div>
