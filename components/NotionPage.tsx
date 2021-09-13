@@ -270,8 +270,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                     <img
                       style={{
                         zIndex: 500,
-                        height: '200%',
-                        width:"auto",
+                        width:"calc(2*var(--notion-header-height))",
                         transform: "translate(0%, -50%)",
                       }}
                       src='/ScorpionSquare.png'
