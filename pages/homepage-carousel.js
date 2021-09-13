@@ -9,6 +9,7 @@ var HomepageCarousel = () => {
                 <div>
                     <WreathCountdown></WreathCountdown>
                 </div>
+                <div><img src="/ScorpionSquare.jpg"></img></div>
                 
             </Carousel>
         );
