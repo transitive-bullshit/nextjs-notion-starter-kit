@@ -8,8 +8,7 @@ const WreathCountdown = () => {
       <div style={{display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          width: '100%',
-          aspectRatio: "4 /3",
+          width:'100vw',
           backgroundImage: `url('/wreath.jpg')`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
@@ -24,7 +23,8 @@ const WreathCountdown = () => {
             textAlign: 'center',
             backgroundColor: '#99cc33',
             borderRadius: '3px',
-            padding: '5px'
+            padding: '5px',
+            margin: '50px'
           }}
         >
           <Countdown date={Date.UTC(2021, 11, 8, 11, 59, 59)}></Countdown>
