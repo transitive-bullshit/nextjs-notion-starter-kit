@@ -271,6 +271,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                       style={{
                         zIndex: 500,
                         height: '200%',
+                        width:"auto";
                         transform: "translate(0%, -50%)",
                       }}
                       src='/ScorpionSquare.png'
