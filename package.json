@@ -27,9 +27,9 @@
   },
   "dependencies": {
     "@google-cloud/firestore": "^4.10.1",
+    "babel-plugin-transform-imports": "^2.0.0",
     "classnames": "^2.3.1",
     "date-fns": "^2.21.1",
-    "fathom-client": "^3.0.0",
     "got": "^11.8.2",
     "isomorphic-unfetch": "^3.1.0",
     "lqip-modern": "^1.2.0",

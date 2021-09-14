@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import cs from 'classnames'
 import { useRouter } from 'next/router'
@@ -34,9 +35,9 @@ import { PageSocial } from './PageSocial'
 
 import styles from './styles.module.css'
 
-const Code = dynamic(() =>
-  import('react-notion-x').then((notion) => notion.Code)
-)
+// const Code = dynamic(() =>
+//   import('react-notion-x').then((notion) => notion.Code)
+// )
 
 const Collection = dynamic(() =>
   import('react-notion-x').then((notion) => notion.Collection)
@@ -46,11 +47,11 @@ const CollectionRow = dynamic(
   () => import('react-notion-x').then((notion) => notion.CollectionRow),
 )
 
-const Pdf = dynamic(() => import('react-notion-x').then((notion) => notion.Pdf))
+// const Pdf = dynamic(() => import('react-notion-x').then((notion) => notion.Pdf))
 
-const Equation = dynamic(() =>
-  import('react-notion-x').then((notion) => notion.Equation)
-)
+// const Equation = dynamic(() =>
+//   import('react-notion-x').then((notion) => notion.Equation)
+// )
 
 // we're now using a much lighter-weight tweet renderer react-static-tweets
 // instead of the official iframe-based embed widget from twitter
@@ -128,7 +129,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
 
-  let comments: React.ReactNode = null
   let pageAside: React.ReactChild = null
 
   // only display comments and page actions on blog post pages
@@ -218,13 +218,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
                   <a {...props} />
                 </Link>
               ),
-              code: Code,
               collection: Collection,
               collectionRow: CollectionRow,
               //tweet: Tweet,
               modal: Modal,
-              pdf: Pdf,
-              equation: Equation
+              // pdf: Pdf,
+              // equation: Equation
             }}
             recordMap={recordMap}
             rootPageId={site.rootNotionPageId}
@@ -249,23 +248,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
                       {' '}
                       <span>About</span>
                     </a>
-                    <a href="/">
-                    <img
-                      style={{
-                        zIndex: 500,
-                        width:"calc(2*var(--notion-header-height))",
-                        transform: "translate(0%, -50%)",
-                        height:"calc(2*var(--notion-header-height))"
-                      }}
+                    <a href="/" className="header-nomad-image">
+                    <Image
                       src='/Scorpion.svg'
                       alt='NOMAD Home'
-                    ></img></a>
+                      width={108*863/813}
+                      height={108}
+                    ></Image></a>
                     <a href='/blog'>
                       {' '}
                       <span >Blog</span>
                     </a>
-                    
-                  </div>
+                    </div>
                 </div>
               </div>
             }
@@ -276,7 +270,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
               />
             }
           />
-          {/*</TwitterContextProvider>*/}
         </div>
   )
 }

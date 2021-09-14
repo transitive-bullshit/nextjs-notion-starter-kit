@@ -30,9 +30,6 @@ body {
   overflow-x: hidden;
 }
 
-.utterances {
-  max-width: 100% !important;
-}
 
 .static-tweet blockquote {
   margin: 0;
@@ -42,6 +39,11 @@ body {
   margin-inline-end: 0;
 }
 
+.header-nomad-image {
+  display: inline;
+  height:200%;
+  transform: translate(0%, -50%);
+}
 .static-tweet-emoji {
   height: 1.2em !important;
   width: 1.2em !important;

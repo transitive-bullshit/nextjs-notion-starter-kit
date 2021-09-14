@@ -23,8 +23,6 @@ export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
           <h1>Error Loading Page</h1>
 
           {statusCode && <p>Error code: {statusCode}</p>}
-
-          <img src='/error.png' alt='Error' className={styles.errorImage} />
         </main>
       </div>
     </>

@@ -73,11 +73,6 @@ export const defaultPageCoverPosition: number = getSiteConfig(
   0.5
 )
 
-// Optional utteranc.es comments via GitHub issue comments
-export const utterancesGitHubRepo: string | null = getSiteConfig(
-  'utterancesGitHubRepo',
-  null
-)
 
 // Optional image CDN host to proxy all image requests through
 export const imageCDNHost: string | null = getSiteConfig('imageCDNHost', null)

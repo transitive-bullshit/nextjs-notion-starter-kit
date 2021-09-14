@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import * as React from 'react'
 import * as types from '../lib/types'
 
 export const CustomFont: React.FC<{ site: types.Site }> = ({ site }) => {

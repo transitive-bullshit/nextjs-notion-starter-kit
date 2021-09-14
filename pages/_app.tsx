@@ -7,7 +7,7 @@ import 'react-notion-x/src/styles.css'
 import 'styles/wreath-countdown.css'
 
 // used for code syntax highlighting (optional)
-import 'prismjs/themes/prism-coy.css'
+//import 'prismjs/themes/prism-coy.css'
 
 // this might be better for dark mode
 // import 'prismjs/themes/prism-okaidia.css'
@@ -26,47 +26,29 @@ import 'katex/dist/katex.min.css'
 import 'styles/notion.css'
 
 // global style overrides for prism theme (optional)
-import 'styles/prism-theme.css'
+//import 'styles/prism-theme.css'
 
 import "styles/carousel.css"
 
 // here we're bringing in any languages we want to support for
 // syntax highlighting via Notion's Code block
-import 'prismjs'
-import 'prismjs/components/prism-markup'
-import 'prismjs/components/prism-javascript'
-import 'prismjs/components/prism-typescript'
-import 'prismjs/components/prism-bash'
+// import 'prismjs'
+// import 'prismjs/components/prism-markup'
+// import 'prismjs/components/prism-javascript'
+// import 'prismjs/components/prism-typescript'
+// import 'prismjs/components/prism-bash'
 
 
 import React from 'react'
-import { useRouter } from 'next/router'
 import { bootstrap } from 'lib/bootstrap-client'
-import { fathomId, fathomConfig } from 'lib/config'
-import * as Fathom from 'fathom-client'
+
 
 if (typeof window !== 'undefined') {
   bootstrap()
 }
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter()
 
-  React.useEffect(() => {
-    if (fathomId) {
-      Fathom.load(fathomId, fathomConfig)
-
-      function onRouteChangeComplete() {
-        Fathom.trackPageview()
-      }
-
-      router.events.on('routeChangeComplete', onRouteChangeComplete)
-
-      return () => {
-        router.events.off('routeChangeComplete', onRouteChangeComplete)
-      }
-    }
-  }, [])
 
   return <Component {...pageProps} />
 }

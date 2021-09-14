@@ -1,0 +1,11 @@
+{
+    "presets": ["next/babel"],
+    "plugins": [
+      ["transform-imports", {
+        "lodash": {
+          "transform": "lodash/${member}",
+          "preventFullImport": true
+        }
+      }]
+    ]
+  }
