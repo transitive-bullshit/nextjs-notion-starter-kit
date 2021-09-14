@@ -1,4 +1,3 @@
-import Countdown from 'react-countdown'
 const BeachBlitzCarousel = (props) => {
   return (
     <a

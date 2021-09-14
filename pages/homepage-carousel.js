@@ -6,6 +6,7 @@ import BeachBlitzCarousel from "./beach-blitz-carousel"
 
 var HomepageCarousel = () => {
         return (
+            <React.Lazy>
             <div style={{height:"100%", width:"100%"}}>
             <Carousel showThumbs={false}>
                 <div>
@@ -13,7 +14,7 @@ var HomepageCarousel = () => {
                 </div>
                 <div><BeachBlitzCarousel></BeachBlitzCarousel></div>
                 
-            </Carousel></div>
+            </Carousel></div></React.Lazy>
         );
     }
 ;

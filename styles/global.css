@@ -1,11 +1,13 @@
 @font-face {
   font-family: Kabel;
   src: url("/fonts/KabelLTStd-Light.otf");
+  font-display: swap;
 }
 
 @font-face {
   font-family: AkzidenzGrotesk;
   src: url("/fonts/AkzidenzGrotesk-Regular.otf");
+  font-display: swap;
 }
 * {
   box-sizing: border-box;
