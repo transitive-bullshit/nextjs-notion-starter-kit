@@ -1,16 +1,19 @@
 import React from "react"
 import {Carousel} from "react-responsive-carousel"
 import WreathCountdown from "./wreath-countdown"
+import BeachBlitzCarousel from "./beach-blitz-carousel"
 
 
 var HomepageCarousel = () => {
         return (
-            <Carousel>
+            <div style={{height:"100%", width:"100%"}}>
+            <Carousel showThumbs={false}>
                 <div>
-                    <WreathCountdown></WreathCountdown>
+                    <WreathCountdown ></WreathCountdown>
                 </div>
+                <div><BeachBlitzCarousel></BeachBlitzCarousel></div>
                 
-            </Carousel>
+            </Carousel></div>
         );
     }
 ;
