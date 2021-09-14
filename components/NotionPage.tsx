@@ -12,7 +12,7 @@ import { PageBlock } from 'notion-types'
 //import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 
 // core notion renderer
-import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
+import { NotionRenderer} from 'react-notion-x'
 
 // utils
 import { getBlockTitle } from 'notion-utils'
@@ -29,28 +29,22 @@ import { CustomFont } from './CustomFont'
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
-import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
-import { GitHubShareButton } from './GitHubShareButton'
-import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
 
-// const Code = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Code)
-// )
-//
-// const Collection = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Collection)
-// )
-//
-// const CollectionRow = dynamic(
-//   () => import('react-notion-x').then((notion) => notion.CollectionRow),
-//   {
-//     ssr: false
-//   }
-// )
+const Code = dynamic(() =>
+  import('react-notion-x').then((notion) => notion.Code)
+)
+
+const Collection = dynamic(() =>
+  import('react-notion-x').then((notion) => notion.Collection)
+)
+
+const CollectionRow = dynamic(
+  () => import('react-notion-x').then((notion) => notion.CollectionRow),
+)
 
 const Pdf = dynamic(() => import('react-notion-x').then((notion) => notion.Pdf))
 
@@ -139,16 +133,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // only display comments and page actions on blog post pages
   if (isBlogPost) {
-    if (config.utterancesGitHubRepo) {
-      comments = (
-        <ReactUtterances
-          repo={config.utterancesGitHubRepo}
-          issueMap='issue-term'
-          issueTerm='title'
-          theme={darkMode.value ? 'photon-dark' : 'github-light'}
-        />
-      )
-    }
 
     // const tweet = getPageTweet(block, recordMap)
     // if (tweet) {
@@ -256,7 +240,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
             mapPageUrl={siteMapPageUrl}
             mapImageUrl={mapNotionImageUrl}
             searchNotion={searchNotion}
-            pageFooter={comments}
             pageAside={pageAside}
             pageHeader={
               <div className='navbar'>
@@ -274,6 +257,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                         transform: "translate(0%, -50%)",
                       }}
                       src='/Scorpion.svg'
+                      alt='NOMAD Home'
                     ></img></a>
                     <a href='/blog'>
                       {' '}
