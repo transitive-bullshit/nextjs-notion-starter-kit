@@ -9,6 +9,7 @@
   "engines": {
     "node": ">=10"
   },
+  "sideEffects": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
