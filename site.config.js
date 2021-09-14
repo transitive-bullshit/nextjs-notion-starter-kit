@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'NOMAD 6995',
-  domain: 'https://nextjs-notion-starter-kit-sepia-eight.vercel.app',
+  domain: 'nextjs-notion-starter-kit-sepia-eight.vercel.app',
   author: 'Jeremiah Shue',
 
   // open graph metadata (optional)
