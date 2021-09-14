@@ -1,5 +1,5 @@
 import Countdown from 'react-countdown'
-const WreathCountdown = () => {
+const WreathCountdown = (props) => {
   return (
     <a
       href='https://sherwoodfundraiser.com/frc6995nomad/products'
@@ -9,6 +9,7 @@ const WreathCountdown = () => {
           alignItems: 'center',
           justifyContent: 'center',
           width:'100vw',
+          height:'100vh',
           backgroundImage: `url('/wreath.jpg')`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',

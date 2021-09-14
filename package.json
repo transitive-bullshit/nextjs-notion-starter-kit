@@ -47,6 +47,7 @@
     "react-icons": "^4.2.0",
     "react-notion-x": "^4.8.8",
     "react-responsive-carousel": "^3.2.21",
+    "react-responsive-embed": "^2.1.0",
     "react-use": "^17.2.4",
     "use-dark-mode": "^2.3.1"
   },
