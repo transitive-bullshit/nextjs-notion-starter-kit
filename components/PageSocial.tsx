@@ -48,6 +48,17 @@ const socialLinks: SocialLink[] = [
     )
   },
 
+  config.thebluealliance && {
+    name: 'thebluealliance',
+    href: `https://thebluealliance.com/${config.thebluealliance}`,
+    title: `Blue Alliance ${config.thebluealliance}`,
+    icon: (
+      <img style={{height:"50%", width:"50%"}} src="https://www.thebluealliance.com/images/tba_lamp.svg">
+      
+      </img>
+    )
+  },
+
   config.github && {
     name: 'github',
     href: `https://github.com/${config.github}`,

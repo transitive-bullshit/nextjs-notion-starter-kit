@@ -20,6 +20,7 @@ module.exports = {
   github: 'frc6995',
   instagram: 'frc6995nomad',
   facebook: 'frc6995nomad',
+  thebluealliance: 'frc6995',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
@@ -48,6 +49,7 @@ module.exports = {
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
   pageUrlOverrides: {
-    '/about': 'b7f41ae066b2497e925db1ba43b926a1'
+    '/about': 'b7f41ae066b2497e925db1ba43b926a1',
+    '/blog': '92bf62fe3edc4641ab25eefb45da6cbb'
   }
 }

@@ -273,11 +273,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
                         width:"calc(2*var(--notion-header-height))",
                         transform: "translate(0%, -50%)",
                       }}
-                      src='/ScorpionSquare.png'
+                      src='/Scorpion.svg'
                     ></img></a>
-                    <a href='/bout'>
+                    <a href='/blog'>
                       {' '}
-                      <span >About</span>
+                      <span >Blog</span>
                     </a>
                     
                   </div>
