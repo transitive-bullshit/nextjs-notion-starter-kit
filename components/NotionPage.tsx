@@ -262,7 +262,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
               <div className='navbar'>
                 <div className='nav-header navbar-contents'>
                   <div className='navbar-contents'>
-                    <a href='/header'>
+                    <a href='/about'>
                       {' '}
                       <span>About</span>
                     </a>
@@ -275,7 +275,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
                       }}
                       src='/ScorpionSquare.png'
                     ></img></a>
-                    <a href='/header'>
+                    <a href='/bout'>
                       {' '}
                       <span >About</span>
                     </a>
