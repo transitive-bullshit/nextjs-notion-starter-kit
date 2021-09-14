@@ -1,6 +1,7 @@
 import React from "react"
 import {Carousel} from "react-responsive-carousel"
 import WreathCountdown from "./wreath-countdown"
+import BeachBlitzCarousel from "./beach-blitz-carousel"
 
 
 var HomepageCarousel = () => {
@@ -10,7 +11,7 @@ var HomepageCarousel = () => {
                 <div>
                     <WreathCountdown ></WreathCountdown>
                 </div>
-                <div><img src="/ScorpionSquare.jpg"></img></div>
+                <div><BeachBlitzCarousel></BeachBlitzCarousel></div>
                 
             </Carousel></div>
         );
