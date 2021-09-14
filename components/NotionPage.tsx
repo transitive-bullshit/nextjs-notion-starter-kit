@@ -57,10 +57,10 @@ const CollectionRow = dynamic(
 // instead of the official iframe-based embed widget from twitter
 // const Tweet = dynamic(() => import('react-tweet-embed'))
 
-const Modal = dynamic(
-  () => import('react-notion-x').then((notion) => notion.Modal),
-  { ssr: false }
-)
+// const Modal = dynamic(
+//   () => import('react-notion-x').then((notion) => notion.Modal),
+//   { ssr: false }
+// )
 
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
@@ -221,7 +221,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
               collection: Collection,
               collectionRow: CollectionRow,
               //tweet: Tweet,
-              modal: Modal,
+              //modal: Modal,
               // pdf: Pdf,
               // equation: Equation
             }}
