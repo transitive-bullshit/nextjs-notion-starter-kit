@@ -1,10 +1,10 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: '6fb53b9d98e54848981b3566d4db21b9',
+  rootNotionPageId: '5359641e17344c3fb2d57374094896f3',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: null,
+  rootNotionSpaceId: '5adb8a9b-7746-40fb-af87-7b848a9573bc',
 
   // basic site info (required)
   name: 'NOMAD 6995',
@@ -12,8 +12,8 @@ module.exports = {
   author: 'Jeremiah Shue',
 
   // open graph metadata (optional)
-  description: 'Example site description',
-  socialImageTitle: 'Transitive Bullshit',
+  description: 'A community FIRST Robotics team',
+  socialImageTitle: 'NOMAD 6995',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
@@ -47,5 +47,7 @@ module.exports = {
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
-  pageUrlOverrides: null
+  pageUrlOverrides: {
+    '/about': 'b7f41ae066b2497e925db1ba43b926a1'
+  }
 }
