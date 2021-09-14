@@ -50,6 +50,6 @@ module.exports = {
   // }
   pageUrlOverrides: {
     '/about': 'b7f41ae066b2497e925db1ba43b926a1',
-    '/blog': '92bf62fe3edc4641ab25eefb45da6cbb'
+    '/blog': '2a989c111df447089cfbccf630f5410a'
   }
 }

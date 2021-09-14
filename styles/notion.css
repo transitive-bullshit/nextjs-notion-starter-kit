@@ -319,6 +319,10 @@
   box-shadow: 0 8px 40px 0 rgb(0 0 0 / 21%);
 }
 
+.notion-page-title-icon {
+  display:none !important;
+}
+
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
   position:fixed;
