@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "help": "next build --help",
     "start": "next start",
     "deploy": "vercel --prod",
     "deps": "run-s deps:*",

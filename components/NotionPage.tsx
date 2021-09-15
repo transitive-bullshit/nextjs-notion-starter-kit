@@ -40,7 +40,7 @@ import styles from './styles.module.css'
 // )
 
 const Collection = dynamic(() =>
-  import('react-notion-x').then((notion) => notion.Collection)
+  import('react-notion-x').then((notion) => {return notion.Collection})
 )
 
 const CollectionRow = dynamic(
@@ -267,7 +267,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
               <Footer
                 isDarkMode={darkMode.value}
                 toggleDarkMode={darkMode.toggle}
-              />
+            />
             }
           />
         </div>
