@@ -32,7 +32,9 @@ export default class MyDocument extends Document {
               sizes='16x16'
               href='/favicon-16x16.png'
             />
-            <meta httpEquiv='Content-Security-Policy' content={`object-src none; script-src 'self' nonce-${generatedNonce}; style-src 'self' 'nonce-${generatedNonce}'`} />
+            <meta httpEquiv='Content-Security-Policy' content={
+              `object-src none; script-src 'self' 'nonce-${generatedNonce}' 'strict-dynamic'; style-src 'self' 'nonce-${generatedNonce}' 'strict-dynamic'`
+              } />
             <link rel='manifest' href='/manifest.json' />
             <link rel='stylesheet' href='/styles/styles.css' nonce={generatedNonce}></link>
             <link rel='stylesheet' href='/styles/notion.css' nonce={generatedNonce}></link>
