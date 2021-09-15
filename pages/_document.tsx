@@ -1,11 +1,13 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-
+import {NextStrictCSP} from 'next-strict-csp';
+const HeadCSP = NextStrictCSP;
 export default class MyDocument extends Document {
   render() {
     return (
         <Html lang='en'>
+          <HeadCSP>
           <Head>
             <link rel='shortcut icon' href='/favicon.png' />
 
@@ -35,6 +37,7 @@ export default class MyDocument extends Document {
 
             <link rel='manifest' href='/manifest.json' />
           </Head>
+          </HeadCSP>
 
           <body>
 

@@ -254,7 +254,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
                       alt='NOMAD Home'
                       width={108*863/813}
                       height={108}
-                    ></Image></a>
+                    ></Image>
+                    </a>
                     <a href='/blog'>
                       {' '}
                       <span >Blog</span>
