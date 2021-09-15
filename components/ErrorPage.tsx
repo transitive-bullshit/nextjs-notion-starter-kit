@@ -2,8 +2,6 @@ import React from 'react'
 import Head from 'next/head'
 import { PageHead } from './PageHead'
 
-import styles from './styles.module.css'
-
 export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
   const title = 'Error'
 
@@ -18,8 +16,8 @@ export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
         <title>{title}</title>
       </Head>
 
-      <div className={styles.container}>
-        <main className={styles.main}>
+      <div className={"container"}>
+        <main className={"main"}>
           <h1>Error Loading Page</h1>
 
           {statusCode && <p>Error code: {statusCode}</p>}

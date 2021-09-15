@@ -33,8 +33,6 @@ import { PageHead } from './PageHead'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 
-import styles from './styles.module.css'
-
 // const Code = dynamic(() =>
 //   import('react-notion-x').then((notion) => notion.Code)
 // )
@@ -93,13 +91,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const title = getBlockTitle(block, recordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+  // console.log('notion page', {
+  //   isDev: config.isDev,
+  //   title,
+  //   pageId,
+  //   rootNotionPageId: site.rootNotionPageId,
+  //   recordMap
+  // })
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
@@ -190,7 +188,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       {isLiteMode && <BodyClassName className='notion-lite' />}
           <NotionRenderer
             bodyClassName={cs(
-              styles.notion,
+              "notion",
               pageId === site.rootNotionPageId && 'index-page'
             )}
             components={{
@@ -249,12 +247,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
                       <span>About</span>
                     </a>
                     <a href="/" className="header-nomad-image">
-                    <Image
+                    <img
                       src='/Scorpion.svg'
                       alt='NOMAD Home'
-                      width={108*863/813}
-                      height={108}
-                    ></Image>
+                      width="auto"
+                      height="100%"
+                    ></img>
                     </a>
                     <a href='/blog'>
                       {' '}

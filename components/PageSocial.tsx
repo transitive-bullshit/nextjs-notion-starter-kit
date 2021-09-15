@@ -3,8 +3,6 @@ import cs from 'classnames'
 
 import * as config from 'lib/config'
 
-import styles from './PageSocial.module.css'
-
 interface SocialLink {
   name: string
   title: string
@@ -43,9 +41,10 @@ const socialLinks: SocialLink[] = [
     href: `https://thebluealliance.com/${config.thebluealliance}`,
     title: `Blue Alliance ${config.thebluealliance}`,
     icon: (
-      <img style={{height:"50%", width:"50%"}} src="https://www.thebluealliance.com/images/tba_lamp.svg">
+      <svg>
+        <img width="50%" height="50%" src="https://www.thebluealliance.com/images/tba_lamp.svg"/>
       
-      </img>
+      </svg>
     )
   },
 
@@ -63,21 +62,21 @@ const socialLinks: SocialLink[] = [
 
 export const PageSocial: React.FC = () => {
   return (
-    <div className={styles.pageSocial}>
+    <div className={"pageSocial"}>
       {socialLinks.map((action) => (
         <a
-          className={cs(styles.action, styles[action.name])}
+          className={cs("action", action.name)}
           href={action.href}
           key={action.name}
           title={action.title}
           target='_blank'
           rel='noopener noreferrer'
         >
-          <div className={styles.actionBg}>
-            <div className={styles.actionBgPane} />
+          <div className={"actionBg"}>
+            <div className={"actionBgPane"} />
           </div>
 
-          <div className={styles.actionBg}>{action.icon}</div>
+          <div className={"actionBg"}>{action.icon}</div>
         </a>
       ))}
     </div>

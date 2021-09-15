@@ -1,0 +1,306 @@
+@font-face {
+  font-family: Kabel;
+  src: url("/fonts/KabelLTStd-Light.otf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: AkzidenzGrotesk;
+  src: url("/fonts/AkzidenzGrotesk-Regular.otf");
+  font-display: swap;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2vmin;
+
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(55, 53, 47);
+  caret-color: rgb(55, 53, 47);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.loadingIcon {
+  animation: spinner 0.6s linear infinite;
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: rgba(55, 53, 47, 0.4);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorImage {
+  max-width: 100%;
+  width: 640px;
+}
+
+.footer {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto auto 0;
+  padding: 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright {
+  font-size: 80%;
+  padding: 0.5em;
+}
+
+.settings,
+.social {
+  user-select: none;
+}
+
+.settings a,
+.social a {
+  cursor: pointer;
+  font-size: 2em;
+  display: inline-flex;
+  padding: 0.25em;
+  margin-right: 1vw;
+  transition: color 250ms ease-out;
+}
+
+.settings a:last-of-type,
+.social a:last-of-type {
+  margin-right: 0;
+}
+
+.settings a:hover,
+.social a:hover {
+  transition: color 50ms ease-out;
+}
+
+.toggleDarkMode:hover {
+  color: #2795e9;
+}
+
+
+.github:hover {
+  color: #c9510c;
+}
+
+.linkedin:hover {
+  color: #0077b5;
+}
+
+.comments {
+  width: 100%;
+  margin-top: 2em;
+  border-top: 1px solid var(--fg-color-0);
+}
+
+
+@media only screen and (max-width: 566px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer > div {
+    margin-top: 1em;
+  }
+
+  .footer .settings {
+    order: 1;
+  }
+  .footer .social {
+    order: 2;
+  }
+  .footer .copyright {
+    order: 3;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  font-family: AkzidenzGrotesk, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-display: swap;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+.static-tweet blockquote {
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+.header-nomad-image {
+  display: inline;
+  height:200%;
+  transform: translate(0%, -50%);
+}
+
+.header-nomad-image img {
+ height:100%;
+}
+.static-tweet-emoji {
+  height: 1.2em !important;
+  width: 1.2em !important;
+}
+
+.pageSocial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--fg-color);
+}
+
+.action {
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid var(--fg-color-6);
+  transition: all 300ms ease-out;
+  width: 3.5em;
+  height: 3.5em;
+  margin: 0 0 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none !important;
+  user-select: none;
+  cursor: pointer;
+}
+
+.action:last-child {
+  margin-bottom: 0;
+}
+
+.actionBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionBg svg {
+  width: 50%;
+  height: 50%;
+  fill: var(--fg-color-6);
+}
+
+.actionBgPane {
+  transition: all 300ms ease-out;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+}
+
+.action:hover {
+  transition: all 100ms ease-out;
+}
+
+.action:hover .actionBgPane {
+  width: 100%;
+  height: 100%;
+  transition: all 100ms ease-out;
+}
+
+.action:hover svg {
+  transition: fill 100ms ease-out;
+  fill: var(--bg-color);
+}
+
+:global(.dark-mode) .action:hover svg {
+  fill: var(--fg-color);
+}
+
+.facebook .actionBgPane {
+  background: #3b5998;
+}
+.facebook:hover {
+  border-color: #3b5998;
+}
+
+
+.linkedin .actionBgPane {
+  background: #0077b5;
+}
+.linkedin:hover {
+  border-color: #0077b5;
+}
+
+.github .actionBgPane {
+  background: #c9510c;
+}
+.github:hover {
+  border-color: #c9510c;
+}
+
+.medium .actionBgPane {
+  background: #00ab6c;
+}
+.medium:hover {
+  border-color: #00ab6c;
+}
+
+.email .actionBgPane {
+  background: #777;
+}
+.email:hover {
+  border-color: #777;
+}
+
+@media only screen and (max-width: 768px) {
+  .links {
+    position: relative;
+    left: 0.5em;
+    flex-wrap: wrap;
+  }
+
+  .action:last-child {
+    margin-right: 1em;
+  }
+}
+
+

@@ -3,7 +3,6 @@ import * as React from 'react'
 import * as types from 'lib/types'
 import { PageHead } from './PageHead'
 
-import styles from './styles.module.css'
 
 export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
   const title = site?.name || 'Notion Page Not Found'
@@ -19,8 +18,8 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
         <title>{title}</title>
       </Head>
 
-      <div className={styles.container}>
-        <main className={styles.main}>
+      <div className={"container"}>
+        <main className={"main"}>
           <h1>Page Not Found</h1>
 
           {error ? (
@@ -36,7 +35,7 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
           <img
             src='/404.png'
             alt='404 Not Found'
-            className={styles.errorImage}
+            className={"errorImage"}
           />
         </main>
       </div>
