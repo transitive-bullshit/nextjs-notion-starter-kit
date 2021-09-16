@@ -25,13 +25,21 @@ module.exports = withBundleAnalyzer({
     config.optimization.sideEffects = true;
     config.optimization.providedExports = true;
     config.optimization.usedExports = true;
-    config.plugins.push(
-      new webpack.NormalModuleReplacementPlugin(
-      /react-notion-x$/,
-      function(resource) {
-        resource.request = resource.request.replace(/react-notion-x/, "lib/react-notion-x-index")
-      }
-    ));
+    config.resolve.modules = require("./package.json")._moduleDirectories || {}
+    // config.plugins.push(
+    //   new webpack.NormalModuleReplacementPlugin(
+    //   /react-notion-x$/,
+    //   function(resource) {
+    //     resource.request = resource.request.replace(/react-notion-x/, "lib/react-notion-x-index")
+    //   }
+    // ));
+    // config.plugins.push(
+    //   new webpack.NormalModuleReplacementPlugin(
+    //   /react-notion-x\/$/,
+    //   function(resource) {
+    //     resource.request = resource.request.replace(/react-notion-x/, "lib/react-notion-x-index")
+    //   }
+    // ));
     return config
   },
 })
