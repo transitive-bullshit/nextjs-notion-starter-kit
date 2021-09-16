@@ -5,7 +5,6 @@ const crypto = require('crypto');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = withBundleAnalyzer({
   serverRuntimeConfig:{
@@ -25,21 +24,8 @@ module.exports = withBundleAnalyzer({
     config.optimization.sideEffects = true;
     config.optimization.providedExports = true;
     config.optimization.usedExports = true;
-    config.resolve.modules = require("./package.json")._moduleDirectories || {}
-    // config.plugins.push(
-    //   new webpack.NormalModuleReplacementPlugin(
-    //   /react-notion-x$/,
-    //   function(resource) {
-    //     resource.request = resource.request.replace(/react-notion-x/, "lib/react-notion-x-index")
-    //   }
-    // ));
-    // config.plugins.push(
-    //   new webpack.NormalModuleReplacementPlugin(
-    //   /react-notion-x\/$/,
-    //   function(resource) {
-    //     resource.request = resource.request.replace(/react-notion-x/, "lib/react-notion-x-index")
-    //   }
-    // ));
+    console.log(config.entry);
     return config
   },
+
 })

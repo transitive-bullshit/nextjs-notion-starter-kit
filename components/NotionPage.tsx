@@ -7,13 +7,12 @@ import cs from 'classnames'
 import { useRouter } from 'next/router'
 import { useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
-import useDarkMode from 'use-dark-mode'
 import { PageBlock } from 'notion-types'
 
 //import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 
 // core notion renderer
-import { NotionRenderer} from 'react-notion-x'
+const NotionRenderer = dynamic( () => import('react-notion-x/build/esm/renderer').then((renderer) => renderer.NotionRenderer));
 
 // utils
 import { getBlockTitle } from 'notion-utils'
@@ -33,16 +32,16 @@ import { PageHead } from './PageHead'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 
-// const Code = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Code)
-// )
+const Code = dynamic(() =>
+  import('react-notion-x/build/esm/components/code').then((code)=>code.Code)
+)
 
 const Collection = dynamic(() =>
-  import('react-notion-x').then((notion) => {return notion.Collection})
+  import('react-notion-x/build/esm/components/collection').then((notion) => {return notion.Collection})
 )
 
 const CollectionRow = dynamic(
-  () => import('react-notion-x').then((notion) => notion.CollectionRow),
+  () => import('react-notion-x/build/esm/components/collection-row').then((notion) => {return notion.CollectionRow}),
 )
 
 // const Pdf = dynamic(() => import('react-notion-x').then((notion) => notion.Pdf))
@@ -76,8 +75,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const isLiteMode = lite === 'true'
   const searchParams = new URLSearchParams(params)
 
-  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
-
+  const darkMode = true;
   if (router.isFallback) {
     return <Loading />
   }
@@ -226,7 +224,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
             recordMap={recordMap}
             rootPageId={site.rootNotionPageId}
             fullPage={!isLiteMode}
-            darkMode={darkMode.value}
+            darkMode={darkMode}
             previewImages={site.previewImages !== false}
             showCollectionViewDropdown={false}
             showTableOfContents={showTableOfContents}
@@ -264,8 +262,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
             }
             footer={
               <Footer
-                isDarkMode={darkMode.value}
-                toggleDarkMode={darkMode.toggle}
+                isDarkMode={darkMode}
+                toggleDarkMode={()=>{}}
             />
             }
           />

@@ -1,8 +1,6 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import nextConfig from "../next.config";
-import {NextStrictCSP} from 'next-strict-csp';
-const HeadCSP = NextStrictCSP;
 
 export default class MyDocument extends Document {
   render() {
