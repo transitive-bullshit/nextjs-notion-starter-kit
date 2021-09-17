@@ -1,0 +1,86 @@
+diff --git a/node_modules/react-notion-x/build/cjs/block.js b/node_modules/react-notion-x/build/cjs/block.js
+index b6a6f84..c3635b8 100644
+--- a/node_modules/react-notion-x/build/cjs/block.js
++++ b/node_modules/react-notion-x/build/cjs/block.js
+@@ -112,9 +112,7 @@ var Block = function (props) {
+                         react_1["default"].createElement("div", { className: 'notion-frame' },
+                             react_1["default"].createElement(page_header_1.PageHeader, null),
+                             react_1["default"].createElement("div", { className: 'notion-page-scroller' },
+-                                hasPageCover ? (pageCover ? (pageCover) : (react_1["default"].createElement(lazy_image_1.LazyImage, { src: mapImageUrl(page_cover, block), alt: notion_utils_1.getTextContent(properties_1 === null || properties_1 === void 0 ? void 0 : properties_1.title), className: 'notion-page-cover', style: {
+-                                        objectPosition: "center " + coverPosition + "%"
+-                                    } }))) : null,
++                                hasPageCover ? (pageCover ? (pageCover) : (react_1["default"].createElement(lazy_image_1.LazyImage, { src: mapImageUrl(page_cover, block), alt: notion_utils_1.getTextContent(properties_1 === null || properties_1 === void 0 ? void 0 : properties_1.title), className: 'notion-page-cover'}))) : null,
+                                 react_1["default"].createElement("main", { className: utils_1.cs('notion-page', hasPageCover
+                                         ? 'notion-page-has-cover'
+                                         : 'notion-page-no-cover', page_icon
+diff --git a/node_modules/react-notion-x/build/cjs/renderer.js b/node_modules/react-notion-x/build/cjs/renderer.js
+index 56db550..a4d32b6 100644
+--- a/node_modules/react-notion-x/build/cjs/renderer.js
++++ b/node_modules/react-notion-x/build/cjs/renderer.js
+@@ -27,17 +27,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ exports.__esModule = true;
+ exports.NotionBlockRenderer = exports.NotionRenderer = void 0;
+ var react_1 = __importDefault(require("react"));
+-var medium_zoom_1 = __importDefault(require("medium-zoom"));
+ var block_1 = require("./block");
+ var context_1 = require("./context");
+ var NotionRenderer = function (_a) {
+     var components = _a.components, recordMap = _a.recordMap, mapPageUrl = _a.mapPageUrl, mapImageUrl = _a.mapImageUrl, searchNotion = _a.searchNotion, fullPage = _a.fullPage, rootPageId = _a.rootPageId, darkMode = _a.darkMode, previewImages = _a.previewImages, showCollectionViewDropdown = _a.showCollectionViewDropdown, showTableOfContents = _a.showTableOfContents, minTableOfContentsItems = _a.minTableOfContentsItems, defaultPageIcon = _a.defaultPageIcon, defaultPageCover = _a.defaultPageCover, defaultPageCoverPosition = _a.defaultPageCoverPosition, rest = __rest(_a, ["components", "recordMap", "mapPageUrl", "mapImageUrl", "searchNotion", "fullPage", "rootPageId", "darkMode", "previewImages", "showCollectionViewDropdown", "showTableOfContents", "minTableOfContentsItems", "defaultPageIcon", "defaultPageCover", "defaultPageCoverPosition"]);
+-    var zoom = typeof window !== 'undefined' &&
+-        medium_zoom_1["default"]({
+-            container: '.notion-viewport',
+-            background: 'rgba(0, 0, 0, 0.8)',
+-            margin: getMediumZoomMargin()
+-        });
++    var zoom = false;
+     return (react_1["default"].createElement(context_1.NotionContextProvider, { components: components, recordMap: recordMap, mapPageUrl: mapPageUrl, mapImageUrl: mapImageUrl, searchNotion: searchNotion, fullPage: fullPage, rootPageId: rootPageId, darkMode: darkMode, previewImages: previewImages, showCollectionViewDropdown: showCollectionViewDropdown, showTableOfContents: showTableOfContents, minTableOfContentsItems: minTableOfContentsItems, defaultPageIcon: defaultPageIcon, defaultPageCover: defaultPageCover, defaultPageCoverPosition: defaultPageCoverPosition, zoom: zoom },
+         react_1["default"].createElement(exports.NotionBlockRenderer, __assign({}, rest))));
+ };
+diff --git a/node_modules/react-notion-x/build/esm/renderer.js b/node_modules/react-notion-x/build/esm/renderer.js
+index 3ed57d8..a8eb0fe 100644
+--- a/node_modules/react-notion-x/build/esm/renderer.js
++++ b/node_modules/react-notion-x/build/esm/renderer.js
+@@ -21,17 +21,11 @@ var __rest = (this && this.__rest) || function (s, e) {
+     return t;
+ };
+ import React from 'react';
+-import mediumZoom from 'medium-zoom';
+ import { Block } from './block';
+ import { useNotionContext, NotionContextProvider } from './context';
+ export var NotionRenderer = function (_a) {
+     var components = _a.components, recordMap = _a.recordMap, mapPageUrl = _a.mapPageUrl, mapImageUrl = _a.mapImageUrl, searchNotion = _a.searchNotion, fullPage = _a.fullPage, rootPageId = _a.rootPageId, darkMode = _a.darkMode, previewImages = _a.previewImages, showCollectionViewDropdown = _a.showCollectionViewDropdown, showTableOfContents = _a.showTableOfContents, minTableOfContentsItems = _a.minTableOfContentsItems, defaultPageIcon = _a.defaultPageIcon, defaultPageCover = _a.defaultPageCover, defaultPageCoverPosition = _a.defaultPageCoverPosition, rest = __rest(_a, ["components", "recordMap", "mapPageUrl", "mapImageUrl", "searchNotion", "fullPage", "rootPageId", "darkMode", "previewImages", "showCollectionViewDropdown", "showTableOfContents", "minTableOfContentsItems", "defaultPageIcon", "defaultPageCover", "defaultPageCoverPosition"]);
+-    var zoom = typeof window !== 'undefined' &&
+-        mediumZoom({
+-            container: '.notion-viewport',
+-            background: 'rgba(0, 0, 0, 0.8)',
+-            margin: getMediumZoomMargin()
+-        });
++    var zoom = false;
+     return (React.createElement(NotionContextProvider, { components: components, recordMap: recordMap, mapPageUrl: mapPageUrl, mapImageUrl: mapImageUrl, searchNotion: searchNotion, fullPage: fullPage, rootPageId: rootPageId, darkMode: darkMode, previewImages: previewImages, showCollectionViewDropdown: showCollectionViewDropdown, showTableOfContents: showTableOfContents, minTableOfContentsItems: minTableOfContentsItems, defaultPageIcon: defaultPageIcon, defaultPageCover: defaultPageCover, defaultPageCoverPosition: defaultPageCoverPosition, zoom: zoom },
+         React.createElement(NotionBlockRenderer, __assign({}, rest))));
+ };
+diff --git a/node_modules/react-notion-x/src/renderer.tsx b/node_modules/react-notion-x/src/renderer.tsx
+index 4353c49..2844245 100644
+--- a/node_modules/react-notion-x/src/renderer.tsx
++++ b/node_modules/react-notion-x/src/renderer.tsx
+@@ -1,5 +1,4 @@
+ import React from 'react'
+-import mediumZoom from 'medium-zoom'
+ import { ExtendedRecordMap } from 'notion-types'
+ 
+ import {
+@@ -74,13 +73,7 @@ export const NotionRenderer: React.FC<NotionRendererProps> = ({
+   defaultPageCoverPosition,
+   ...rest
+ }) => {
+-  const zoom =
+-    typeof window !== 'undefined' &&
+-    mediumZoom({
+-      container: '.notion-viewport',
+-      background: 'rgba(0, 0, 0, 0.8)',
+-      margin: getMediumZoomMargin()
+-    })
++  const zoom = false;
+ 
+   return (
+     <NotionContextProvider

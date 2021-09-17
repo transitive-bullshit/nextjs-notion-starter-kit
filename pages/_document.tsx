@@ -1,15 +1,19 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import nextConfig from "../next.config";
-
+import crypto from 'crypto';
+const cspHashOf = (text) => {
+  const hash = crypto.createHash('sha256')
+  hash.update(text)
+  return `'sha256-${hash.digest('base64')}'`
+}
 export default class MyDocument extends Document {
   render() {
-    console.log(nextConfig)
     const generatedNonce = nextConfig.serverRuntimeConfig.nonceGenerator();
-    console.log(generatedNonce);
+
     return (
         <Html lang='en'>
-          <Head nonce={generatedNonce}>
+          <Head>
             <link rel='shortcut icon' href='/favicon.png' />
 
             <link
@@ -31,7 +35,8 @@ export default class MyDocument extends Document {
               href='/favicon-16x16.png'
             />
             <meta httpEquiv='Content-Security-Policy' content={
-              `object-src none; script-src 'self' 'nonce-${generatedNonce}' 'strict-dynamic'; style-src 'self' 'nonce-${generatedNonce}' 'strict-dynamic'`
+              `object-src 'none'; base-uri 'none'; script-src 'self' 'unsafe-inline' 'nonce-${generatedNonce}' ${cspHashOf(
+                NextScript.getInlineScriptSource(this.props))} 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-PjBkwE8xcYZAp+HsnzzOVNqa/Ra+/v1Fnx6f0PW6ic4='; style-src 'self' 'unsafe-inline'`
               } />
             <link rel='manifest' href='/manifest.json' />
             <link rel='stylesheet' href='/styles/styles.css' nonce={generatedNonce}></link>
@@ -45,7 +50,7 @@ export default class MyDocument extends Document {
 
             <Main />
 
-            <NextScript  nonce={generatedNonce}/>
+            <NextScript/>
           </body>
         </Html>
     )

@@ -11,7 +11,7 @@
   },
   "sideEffects": false,
   "scripts": {
-    "postinstall": "patch-package",
+    "postinstall": "",
     "dev": "next dev",
     "build": "cross-env NODE_OPTIONS=\"--require esm\" next build",
     "help": "next build --help",
@@ -34,6 +34,7 @@
     "@babel/preset-react": "^7.14.5",
     "@google-cloud/firestore": "^4.10.1",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-react-remove-properties": "^0.3.0",
     "babel-plugin-transform-imports": "^2.0.0",
     "classnames": "^2.3.1",
     "css-loader": "^6.2.0",

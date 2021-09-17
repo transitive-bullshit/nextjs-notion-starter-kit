@@ -6,7 +6,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
 
-module.exports = withBundleAnalyzer({
+module.exports = withBundleAnalyzer(({
   serverRuntimeConfig:{
   nonceGenerator: () => {
     const hash = crypto.createHash('sha256');
@@ -18,14 +18,6 @@ module.exports = withBundleAnalyzer({
   },
   future: {
     webpack5: true
-  },
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // Important: return the modified config
-    config.optimization.sideEffects = true;
-    config.optimization.providedExports = true;
-    config.optimization.usedExports = true;
-    console.log(config.entry);
-    return config
-  },
+  }
 
-})
+}))

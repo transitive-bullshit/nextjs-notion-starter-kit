@@ -25,7 +25,6 @@ import * as types from 'lib/types'
 import * as config from 'lib/config'
 
 // components
-import { CustomFont } from './CustomFont'
 import { Loading } from './Loading'
 import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
@@ -46,9 +45,9 @@ const CollectionRow = dynamic(
 
 // const Pdf = dynamic(() => import('react-notion-x').then((notion) => notion.Pdf))
 
-// const Equation = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Equation)
-// )
+const Equation = dynamic(() =>
+  import('@matejmazur/react-katex')
+)
 
 // we're now using a much lighter-weight tweet renderer react-static-tweets
 // instead of the official iframe-based embed widget from twitter
@@ -181,8 +180,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         <title>{title}</title>
       </Head>
 
-      <CustomFont site={site} />
-
       {isLiteMode && <BodyClassName className='notion-lite' />}
           <NotionRenderer
             bodyClassName={cs(
@@ -214,12 +211,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
                   <a {...props} />
                 </Link>
               ),
+              code: Code,
               collection: Collection,
               collectionRow: CollectionRow,
               //tweet: Tweet,
               //modal: Modal,
               // pdf: Pdf,
-              // equation: Equation
+              equation: Equation
             }}
             recordMap={recordMap}
             rootPageId={site.rootNotionPageId}
