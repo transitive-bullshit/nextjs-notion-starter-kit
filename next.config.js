@@ -18,6 +18,24 @@ module.exports = withBundleAnalyzer(({
   },
   future: {
     webpack5: true
+  },
+  compress:true,
+  headers: async () => {
+    return [
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'x-robots-tag',
+            value: 'all',
+          },
+          {
+            key: 'x-frame-options',
+            value: 'sameorigin',
+          },
+        ],
+      },
+    ]
   }
 
 }))
