@@ -1,6 +1,6 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: 'Xue-s-Verfiy-24d357d07f8345ebb9d53c5251b5b3a7',
+  rootNotionPageId: 'Xue-s-Verify-24d357d07f8345ebb9d53c5251b5b3a7',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -8,11 +8,11 @@ module.exports = {
 
   // basic site info (required)
   name: 'xue',
-  domain: 'https://www.notion.so/rxuejun/Xue-s-Verfiy-24d357d07f8345ebb9d53c5251b5b3a7',
+  domain: 'https://www.notion.so/rxuejun/Xue-s-Verify-24d357d07f8345ebb9d53c5251b5b3a7',
   author: 'xuejun',
 
   // open graph metadata (optional)
-  description: 'verfiy',
+  description: 'verify',
   socialImageTitle: 'xuejun',
   socialImageSubtitle: 'Hello World! 👋',
 
