@@ -1,24 +1,24 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: 'Rayburn-s-blog-9eb83679d4594eb383fb74688493fe5d',
+  rootNotionPageId: 'Xue-s-Verfiy-24d357d07f8345ebb9d53c5251b5b3a7',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Rayburn',
-  domain: 'https://www.notion.so/rxuejun/Rayburn-s-blog-9eb83679d4594eb383fb74688493fe5d',
-  author: 'Alanrayburn',
+  name: 'xue',
+  domain: 'https://www.notion.so/rxuejun/Xue-s-Verfiy-24d357d07f8345ebb9d53c5251b5b3a7',
+  author: 'xuejun',
 
   // open graph metadata (optional)
   description: 'verfiy',
-  socialImageTitle: 'Rayburn',
+  socialImageTitle: 'xuejun',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
   //twitter: 'alanrayburn1',
-  github: 'alanrayburn',
+  //github: 'alanrayburn',
   
 
   // default notion icon and cover images for site-wide consistency (optional)
