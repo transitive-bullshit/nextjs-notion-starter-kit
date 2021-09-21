@@ -1,23 +1,23 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: 'Alanrayburn-s-Blog-9e9cdb39016c4a30a14009db6b529a49',
+  rootNotionPageId: 'Rayburn-s-blog-9eb83679d4594eb383fb74688493fe5d',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'On The Way',
-  domain: 'https://onyx-astronomy-3cf.notion.site/Alanrayburn-s-Blog-9e9cdb39016c4a30a14009db6b529a49',
+  name: 'Rayburn',
+  domain: 'https://www.notion.so/rxuejun/Rayburn-s-blog-9eb83679d4594eb383fb74688493fe5d',
   author: 'Alanrayburn',
 
   // open graph metadata (optional)
-  description: 'Example site description',
-  socialImageTitle: 'Transitive Bullshit',
+  description: 'verfiy',
+  socialImageTitle: 'Rayburn',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
-  twitter: 'alanrayburn1',
+  //twitter: 'alanrayburn1',
   github: 'alanrayburn',
   
 
