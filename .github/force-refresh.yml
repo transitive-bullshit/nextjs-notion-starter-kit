@@ -1,0 +1,12 @@
+name: timed-redeploy
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Vercel API
+        run: |
+          curl --request GET \
+          --url 'https://api.vercel.com/v1/integrations/deploy/prj_n7ExleLV5hTjyG4OgiKMSZnYNeBm/qItVxY5Mzw' \
