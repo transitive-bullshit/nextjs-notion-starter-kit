@@ -22,6 +22,7 @@ import 'react-static-tweets/styles.css'
 
 // global style overrides for notion
 import 'styles/notion.css'
+import 'styles/notion_yoshixj.css'
 
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
