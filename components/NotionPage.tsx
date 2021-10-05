@@ -107,9 +107,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
     //recordMap: recordMap,
   //})
 
-  console.log('getPageProperty: ', getPageProperty('Tags', block, recordMap))
-  console.log('getPageProperty: ', getPageProperty('lCLt', block, recordMap))
-  console.log('getPageProperty: ', getPageProperty('SlugName', block, recordMap))
+  //console.log('getPageProperty: ', getPageProperty('Tags', block, recordMap))
+  //console.log('getPageProperty: ', getPageProperty('lCLt', block, recordMap))
+  //console.log('getPageProperty: ', getPageProperty('SlugName', block, recordMap))
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
