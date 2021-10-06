@@ -740,7 +740,7 @@ video.notion-page-cover {
   pointer-events: none;
   filter: invert(1) grayscale(0.25) brightness(1) contrast(1.25) blur(8px)
     opacity(0.3) hue-rotate(180deg);
-  animation: 20s ease-in-out 0s 1 fadeIn;
+  animation: 5s ease-in-out 0s 1 fadeIn;
   height: calc(100vh - calc(2 * var(--header)));
   width: 100vw;
   object-fit: cover;
@@ -749,7 +749,7 @@ video.notion-page-cover {
 .dark-mode video.notion-page-cover {
   filter: invert(0) grayscale(0.25) brightness(1) contrast(1.25) blur(8px)
     opacity(0.3);
-  animation: 20s ease-in-out 0s 1 fadeIn;
+  animation: 5s ease-in-out 0s 1 fadeIn;
 }
 
 @media (orientation: portrait) {
