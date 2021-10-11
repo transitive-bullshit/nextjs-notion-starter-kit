@@ -1,14 +1,14 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: 'cfbe9193a2f54783bc4d7522cd2c775c',
+  rootNotionPageId: '886ed8b3a6d44e5db6de7c96910daa45',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'daohang',
-  domain: 'https://daveefang.notion.site/cfbe9193a2f54783bc4d7522cd2c775c',
+  name: 'China Dairy',
+  domain: 'https://fangdavee.notion.site/886ed8b3a6d44e5db6de7c96910daa45',
   author: 'Fang',
 
   // open graph metadata (optional)
