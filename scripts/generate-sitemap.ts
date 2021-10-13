@@ -2,8 +2,10 @@
 import sitemap from 'nextjs-sitemap-generator';
 import { domain } from 'lib/config';
 
+const url = domain.startsWith('http') ? domain : 'https://' + domain
+
 sitemap({
-  baseUrl: domain,
+  baseUrl: url,
   ignoredPaths: ['[fallback]'],
   extraPaths: [''],
   pagesDirectory: '.next/server/pages/',
