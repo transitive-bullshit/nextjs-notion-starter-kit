@@ -8,13 +8,13 @@ module.exports = {
 
   // basic site info (required)
   name: 'China Dairy',
-  domain: 'https://fangdavee.notion.site/e0ccde55856a43c1a7dc43ccde2706db',
+  domain: 'https://fangdw.notion.site/e0ccde55856a43c1a7dc43ccde2706db',
   author: 'Fang',
 
   // open graph metadata (optional)
-  description: 'Example site description',
-  socialImageTitle: 'COW',
-  socialImageSubtitle: 'Hello World! 👋',
+  description: 'China Dairy',
+  socialImageTitle: 'China Dairy',
+  socialImageSubtitle: 'Hello World! 🐮',
 
   // social usernames (optional)
   twitter: 'Davee_fang',
