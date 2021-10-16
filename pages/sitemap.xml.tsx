@@ -1,15 +1,15 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import { GetServerSideProps } from 'next'
+import { SiteMap } from 'lib/types'
+import { host } from 'lib/config'
+import { getSiteMaps } from 'lib/get-site-maps'
 
-import { SiteMap } from '../lib/types'
-import { host } from '../lib/config'
-import { getSiteMaps } from '../lib/get-site-maps'
-
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   if (req.method !== 'GET') {
-    return res.status(405).send({ error: 'method not allowed' })
+    res.statusCode = 405
+    res.write({ error: 'method not allowed' })
+    return {
+      props: {}
+    }
   }
 
   const siteMaps = await getSiteMaps()
@@ -22,6 +22,10 @@ export default async (
   res.setHeader('Content-Type', 'text/xml')
   res.write(createSitemap(siteMaps[0]))
   res.end()
+
+  return {
+    props: {}
+  }
 }
 
 const createSitemap = (
@@ -47,3 +51,7 @@ const createSitemap = (
         .join('')}
     </urlset>
     `
+
+const SiteMapXml: React.FC = () => null
+
+export default SiteMapXml
