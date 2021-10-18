@@ -6,7 +6,8 @@ import { getSiteMaps } from 'lib/get-site-maps'
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   if (req.method !== 'GET') {
     res.statusCode = 405
-    res.write({ error: 'method not allowed' })
+    res.setHeader("Content-Type", "application/json")
+    res.write(JSON.stringify({ error: "method not allowed" }))
     res.end()
     return {
       props: {}
