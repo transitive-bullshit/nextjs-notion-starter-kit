@@ -1,7 +1,7 @@
 /**
  * This file contains site-specifc style overrides for Notion elements from
  * react-notion-x.
- * 
+ *
  * react-notion-x's goal is to match styling as close as possible to Notion,
  * whereas our goal with this site is to adjust Notion's styling in a few key
  * places to add some flare.
@@ -33,6 +33,13 @@
   margin-top: 1em;
   margin-bottom: 1em;
 }
+
+/* <-- Fix embedded video's size overflows its container */
+.notion-asset-wrapper-video > div,
+.notion-asset-wrapper-video video {
+  width: 100% !important;
+}
+/* Fix embedded video's size overflows its container --> */
 
 .notion-header .nav-header {
   max-width: 1100px;
