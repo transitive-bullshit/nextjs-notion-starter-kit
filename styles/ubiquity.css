@@ -43,7 +43,7 @@
 }
 
 .notion-asset-wrapper-image {
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .notion-cursor-listener {
