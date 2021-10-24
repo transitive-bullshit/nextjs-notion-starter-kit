@@ -173,9 +173,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
           loop
           muted
           playsInline
-          poster={poster}
-          src={heroVideo}
-        />
+          // poster={poster}
+          // src={heroVideo}
+        >
+          <source src={heroVideo} type='video/mp4' />
+          <img src={poster}/>
+        </video>
       </>
     )
   }
