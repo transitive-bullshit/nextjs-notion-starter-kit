@@ -647,7 +647,7 @@ div.notion-page-content a.notion-page-link::after {
   background-image: url(//ubq.fi/image/grid-1.png);
 }
 
-#__next > div > div.notion-frame > header > div > div.breadcrumbs > div > img {
+#__next > div > div.notion-frame > header > div > div.breadcrumbs > * > img {
   background: transparent;
 }
 #__next
@@ -656,7 +656,7 @@ div.notion-page-content a.notion-page-link::after {
   > header
   > div
   > div.breadcrumbs
-  > div
+  > *
   > img
   + span {
   margin-left: 16px;
