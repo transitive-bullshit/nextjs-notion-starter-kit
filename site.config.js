@@ -1,6 +1,6 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: 'e0ccde55856a43c1a7dc43ccde2706db',
+  rootNotionPageId: 'dc27eb999bc3413fb1acc31251e1888b',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'China Dairy',
-  domain: 'https://fangdw.notion.site/e0ccde55856a43c1a7dc43ccde2706db',
+  domain: 'https://www.notion.so/fangd/dc27eb999bc3413fb1acc31251e1888b',
   author: 'Fang',
 
   // open graph metadata (optional)
