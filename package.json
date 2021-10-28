@@ -1,10 +1,10 @@
 {
-  "name": "nextjs-notion-starter-kit",
+  "name": "tisuela",
   "version": "0.1.0",
   "private": true,
-  "description": "The perfect starter kit for building beautiful websites with Next.js and Notion.",
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "transitive-bullshit/nextjs-notion-starter-kit",
+  "description": "Nathaniel Louis Tisuela's personal website",
+  "author": "Travis Fischer and Nathaniel Louis Tisuela",
+  "repository": "tisueka/tisuela",
   "license": "MIT",
   "engines": {
     "node": ">=10"
