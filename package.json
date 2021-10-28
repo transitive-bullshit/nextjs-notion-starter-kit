@@ -4,7 +4,7 @@
   "private": true,
   "description": "Nathaniel Louis Tisuela's personal website",
   "author": "Travis Fischer and Nathaniel Louis Tisuela",
-  "repository": "tisueka/tisuela",
+  "repository": "tisuela/tisuela",
   "license": "MIT",
   "engines": {
     "node": ">=10"
