@@ -1,5 +1,5 @@
 module.exports = {
-  // where it all starts -- the site's root Notion page (required)
+  // notion root page
   rootNotionPageId: '898a0e4211f1493d9b35a138aad12912',
 
   // if you want to restrict pages to a single notion workspace (optional)
@@ -8,17 +8,17 @@ module.exports = {
 
   // basic site info (required)
   name: 'Nathaniel Louis Tisuela',
-  domain: 'tisuela.com',
+  domain: 'www.tisuela.com',
   author: 'Nathaniel Louis Tisuela',
 
   // open graph metadata (optional)
-  description: 'Example site description',
+  description: 'About Nathan!',
   socialImageTitle: 'Tisuela',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
   twitter: 'ntisuela',
-  github: 'nananananate',
+  github: 'tisuela',
   linkedin: 'tisuela',
 
   // default notion icon and cover images for site-wide consistency (optional)
