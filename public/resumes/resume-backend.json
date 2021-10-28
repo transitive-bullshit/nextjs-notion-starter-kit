@@ -1,0 +1,139 @@
+{
+  "basics": {
+    "label": "Software Developer",
+    "email": "ntisuela@uci.edu",
+    "phone": "(916)-601-5371",
+    "website": "http://tisuela.com",
+    "name": "Nathaniel Louis Tisuela",
+    "summary": "",
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "tisuela",
+        "url": "https://www.linkedin.com/in/tisuela"
+      },
+      {
+        "network": "Github",
+        "username": "nananananate",
+        "url": "https://github.com/nananananate"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "StartSmart",
+      "website": "https://startsmart.co/",
+      "position": "Technical Lead",
+      "startDate": "2020-10-1",
+      "summary": " Leading back-end development and DevOps in a team of 7 developers",
+      "highlights": [
+        "Migrated to an AWS Stack of RDS, Elastic Beanstalk, S3, and Amplify, reducing cloud maintenance by 100%",
+        "Implemented CI/CD pipelines to automate testing, code scanning, and deployment to AWS services, making DevOps 2 times more efficient",
+        "Spearheaded migration from a monolithic web application to a Django REST back-end and a React front-end, increasing concurrent development 3-fold",
+        "Dockerized applications, vastly improving the efficiency of local development by automatically installing dependencies"
+      ]
+    },
+    {
+      "company": "UCI ICS Student Council",
+      "website": "https://github.com/icssc-projects",
+      "position": "Projects Committee Member",
+      "startDate": "2020-8-1",
+      "summary": " Currently part of a team of 4 other developers for a Web API for UCI course discovery using Express.js",
+      "highlights": [
+        "Implemented GraphQL which simplifies all our REST endpoints into 1 endpoint, making complex queries up to 500% more efficient",
+        "Created CI/CD pipelines to automated documentation building and testing",
+        "Identified SQL vulnerabilities"
+      ]
+    },
+    {
+      "company": "Advanced Power and Energy Program",
+      "website": "http://apep.uci.edu",
+      "position": "Computer Network Technician",
+      "startDate": "2018-10-31",
+      "summary": "Maintained, troubleshooted, and deployed over 100 machines.",
+      "highlights": [
+        "Inspected and repaired XML documents to recover research, saving 3 weeks of work for students",
+        "Wrote powershell scripts to create technical reports and deploy for over 100 machines. This automation makes weekly tasks 3 times faster.",
+        "Authored easy-to-follow guides to teach new softwares to over 100 users.",
+        "Debugged Python software to resume monitoring of utilities in dozens of on-campus facilities."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "UC Irvine",
+      "gpa": "",
+      "courses": [
+        "Data Structure Implementation and Analysis",
+        "Principles in System Design",
+        "Design and Analysis of Algorithms",
+        "Databases and Web Applications"
+      ],
+      "startDate": "2017-12-31",
+      "endDate": "2021-06",
+      "area": "Computer Science",
+      "studyType": "Bachelor's degree"
+    }
+  ],
+  "skills": [
+    {
+      "name": "OO Languages",
+      "level": "Master",
+      "keywords": [
+        "Python",
+        "Java",
+        "C++",
+        "C"
+      ]
+    },
+    {
+      "name": "Web Development",
+      "level": "Master",
+      "keywords": [
+        "GraphQL",
+        "REST",
+        "Flask",
+        "Django",
+        "React",
+        "Express.js"
+      ]
+    },
+    {
+      "name": "AWS",
+      "level": "Master",
+      "keywords": [
+        "EC2",
+        "RDS",
+        "Elastic Beanstalk",
+        "Amplify",
+        "S3"
+      ]
+    },
+    {
+      "name": "DevOps",
+      "level": "Master",
+      "keywords": [
+        "Github Actions",
+        "Gitlab Pipelines",
+        "Gitlab Runners",
+        "Docker"
+      ]
+    },
+    {
+      "name": "Databases",
+      "level": "Master",
+      "keywords": [
+        "MongoDB",
+        "PostgreSQL",
+        "Firebase"
+      ]
+    }
+  ],
+  "references": 0,
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    }
+  ]
+}

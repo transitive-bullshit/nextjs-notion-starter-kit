@@ -1,0 +1,182 @@
+name: 'Nathaniel Louis Tisuela'
+info:
+  label: 'Software Developer'
+  brief: ""
+contact:
+  email: ntisuela@uci.edu
+  phone: (916)-601-5371
+  website: 'http://tisuela.com'
+meta:
+  format: FRESH@^1.0.0-beta
+  modified: '2020-09-16T18:52:48.879Z'
+location:
+  city: ""
+  region: ""
+  country: US
+  code: ""
+  address: 'Irvine, California'
+employment:
+  history:
+    -
+      position: 'Technical Lead'
+      employer: StartSmart
+      url: 'https://startsmart.co/'
+      summary: ' Leading back-end development and DevOps in a team of 7 developers'
+      start: '2020-10-1'
+      keywords:
+        - Django
+        - AWS
+        - React
+        - DevOps
+        - CI/CD
+        - Docker
+      highlights:
+        - 'Migrated to an AWS Stack of RDS, Elastic Beanstalk, S3, and Amplify, reducing cloud maintenance by 100%'
+        - 'Implemented CI/CD pipelines to automate testing, code scanning, and deployment to AWS services, making DevOps 2 times more efficient'
+        - 'Spearheaded migration from a monolithic web application to a Django REST back-end and a React front-end, increasing concurrent development 3-fold'
+        - 'Dockerized applications, vastly improving the efficiency of local development by automatically installing dependencies'
+    -
+      position: 'Projects Committee Member'
+      employer: 'UCI ICS Student Council'
+      url: 'https://github.com/icssc-projects'
+      summary: ' Currently part of a team of 4 other developers for a Web API for UCI course discovery using Express.js'
+      start: '2020-8-1'
+      keywords:
+        - Express
+        - GraphQL
+        - CI/CD
+        - REST
+        - SQL
+      highlights:
+        - 'Implemented GraphQL which simplifies all our REST endpoints into 1 endpoint, making complex queries up to 500% more efficient'
+        - 'Created CI/CD pipelines to automated documentation building and testing'
+        - 'Identified SQL vulnerabilities'
+    -
+      employer: 'Advanced Power and Energy Program'
+      url: 'http://apep.uci.edu'
+      position: 'Computer Network Technician'
+      summary: 'Maintained, troubleshooted, and deployed over 100 machines.'
+      start: '2018-10-31'
+      keywords:
+        - Python
+        - SQL
+        - Powershell
+        - XML
+      highlights:
+        - 'Inspected and repaired XML documents to recover research, saving 3 weeks of work for students'
+        - 'Wrote powershell scripts to create technical reports and deploy for over 100 machines. This automation makes weekly tasks 3 times faster.'
+        - 'Authored easy-to-follow guides to teach new softwares to over 100 users.'
+        - 'Debugged Python software to resume monitoring of utilities in dozens of on-campus facilities.'
+education:
+  level: B.S.
+  degree: 'Computer Science'
+  history:
+    -
+      institution: 'UC Irvine'
+      start: '2017-12-31'
+      end: 2021-06
+      grade: ""
+      curriculum:
+        - 'Data Structure Implementation and Analysis'
+        - 'Principles in System Design'
+        - 'Design and Analysis of Algorithms'
+        - 'Databases and Web Applications'
+      summary: 'B.S. in Computer Science'
+      area: 'Computer Science'
+      studyType: 'Bachelor''s degree'
+service: {}
+skills:
+  sets:
+    -
+      name: 'OO Languages'
+      level: Master
+      skills:
+        - Python
+        - Java
+        - C++
+        - C
+    -
+      name: 'Web Development'
+      level: Master
+      skills:
+        - GraphQL
+        - REST
+        - Flask
+        - Django
+        - React
+        - Express.js
+    -
+      name: AWS
+      level: Master
+      skills:
+        - EC2
+        - RDS
+        - 'Elastic Beanstalk'
+        - Amplify
+        - S3
+    -
+      name: DevOps
+      level: Master
+      skills:
+        - 'Github Actions'
+        - 'Gitlab Pipelines'
+        - 'Gitlab Runners'
+        - Docker
+    -
+      name: Databases
+      level: Master
+      skills:
+        - MongoDB
+        - PostgreSQL
+        - Firebase
+projects:
+  -
+    title: CourseCake
+    category: 'Web API'
+    role: Creator
+    url: 'https://docs.coursecake.tisuela.com'
+    start: 2020-07
+    end: 2020-09
+    repo: 'https://github.com/nananananate/CourseCake'
+    description: 'A Web and Python API for course discovery across universities.'
+    summary: 'Created a Web/Python API for developing course discovery apps.'
+    keywords:
+      - Python
+      - FastAPI
+      - GraphQL
+      - REST
+      - SQLAlchemy
+    highlights:
+      - 'Recruited and directed collaboration with other student developers from 3 other universities.'
+      - 'Launched CourseCake to become the most active cross-campus API supporting GraphQL and REST endpoints, cataloguing thousands of classes.'
+      - 'Designed sensible schemas to model course discovery based on existing course discovery tools.'
+      - 'Deployed using GCP'
+affiliation:
+  history:
+    -
+      organization: 'Acts College Ministry'
+      start: '2019-09-01'
+      category: club
+      role: President
+      url: 'https://campusgroups.uci.edu/actscollege'
+      summary: 'Delegated event planning and led weekly meetings as first president of Acts @ UCI.'
+      highlights:
+        - 'With the help of the board, Acts saw membership increase by 200%.'
+        - 'Conducted migration to remote meetings and activities due to COVID-19 (maintained majority member retention) through close teamwork with the board and sister clubs.'
+        - 'Coordinated large group events with a team of 6 members, averaging 2 large group events a month both before and after COVID-19'
+social:
+  -
+    label: LinkedIn
+    network: LinkedIn
+    url: 'https://www.linkedin.com/in/tisuela'
+    user: tisuela
+  -
+    label: Github
+    network: Github
+    url: 'https://github.com/nananananate'
+    user: nananananate
+testimonials: []
+languages:
+  -
+    language: English
+    fluency: 'Native speaker'
