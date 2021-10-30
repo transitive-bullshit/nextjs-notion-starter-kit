@@ -7,9 +7,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   images: {
     domains: ['pbs.twimg.com']
-  },
-  future: {
-    webpack5: true
   }
 })
 

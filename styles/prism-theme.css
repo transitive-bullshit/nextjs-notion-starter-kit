@@ -21,6 +21,19 @@
 .dark-mode .notion code {
   color: rgba(229, 231, 235, 1);
 }
+
+.dark-mode .notion .notion-inline-code {
+  background: rgb(71,76,80) !important;
+  color: #ff4081;
+  padding: .2em .4em !important;
+}
+
+.light-mode .notion .notion-inline-code {
+  color: #ff4081;
+  background: rgba(55,53,47, .1) !important;
+  padding: .2em .4em !important;
+}
+
 .token.cdata,
 .token.doctype,
 .token.prolog {
