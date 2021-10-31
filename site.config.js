@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'Krutarth',
-  domain: 'bsk-club.vercel.app',
+  domain: 'nextjs-notion-starter-kit-two-delta.vercel.app',
   author: 'Krutarth',
 
   // open graph metadata (optional)
