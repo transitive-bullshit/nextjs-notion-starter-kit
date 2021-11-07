@@ -37,12 +37,14 @@ export async function getSiteMaps(): Promise<types.SiteMap[]> {
 
 export async function getOnlyUrlOverriddenSiteMaps(): Promise<types.SiteMap[]> {
   return (await getSiteMaps()).map(sm => {
-    sm.canonicalPageMap = Object.entries(sm.canonicalPageMap).reduce((acc, [cp_name, cp_value]) => {
-      if (config.pageUrlOverrides[cp_name]) {
-        acc[cp_name] = cp_value
-      }
-      return acc
-    }, {})
-    return sm
+    return {
+      ...sm,
+      canonicalPageMap: Object.entries(sm.canonicalPageMap).reduce((acc, [cp_name, cp_value]) => {
+        if (config.pageUrlOverrides[cp_name]) {
+          acc[cp_name] = cp_value
+        }
+        return acc
+      }, {})
+    }
   })
 }
