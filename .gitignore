@@ -21,7 +21,6 @@
 
 # ide
 .idea
-.vscode
 
 # debug
 npm-debug.log*
