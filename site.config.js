@@ -52,5 +52,8 @@ module.exports = {
   // if you want to generate sitemap.xml only with url overrided
   // by `pageUrlOverrides` prop, that will make SEO robots only to
   // index pages that urls have been overridden
-  sitemapOnlyPageUrlOverridden: false
+  sitemapOnlyPageUrlOverridden: false,
+
+  // make pages `sitemap.xml` and `robots.txt` without `/api` prefix
+  removeApiPrefixFromSitemapAndRobotsTxtPages: false
 }
