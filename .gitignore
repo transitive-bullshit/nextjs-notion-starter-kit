@@ -19,6 +19,10 @@
 .DS_Store
 *.pem
 
+# ide
+.idea
+.vscode
+
 # debug
 npm-debug.log*
 yarn-debug.log*
