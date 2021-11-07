@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaTwitter, FaGithub, FaLinkedin, FaTelegram } from 'react-icons/fa'
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
 import * as config from 'lib/config'
 
@@ -76,6 +76,20 @@ export const Footer: React.FC<{
             <FaLinkedin />
           </a>
         )}
+
+        {
+          config.telegram && (
+            <a
+              className={styles.twitter}
+              href={`https://t.me/${config.telegram}`}
+              title={`Telegram @${config.telegram}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaTelegram />
+            </a>
+          )
+        }
       </div>
     </footer>
   )
