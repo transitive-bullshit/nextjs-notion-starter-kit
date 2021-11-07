@@ -1,8 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import { SiteMap } from '../lib/types'
-import { host } from '../lib/config'
-import { getSiteMaps } from '../lib/get-site-maps'
+import { host, sitemapOnlyPageUrlOverridden } from '../lib/config'
+import { getOnlyUrlOverriddenSiteMaps, getSiteMaps } from '../lib/get-site-maps'
+import * as config  from '../lib/config'
+import * as types from '../lib/types'
 
 export default async (
   req: NextApiRequest,
@@ -12,7 +14,12 @@ export default async (
     return res.status(405).send({ error: 'method not allowed' })
   }
 
-  const siteMaps = await getSiteMaps()
+  let siteMaps: types.SiteMap[]
+  if (sitemapOnlyPageUrlOverridden) {
+    siteMaps = await getOnlyUrlOverriddenSiteMaps()
+  } else {
+    siteMaps = await getSiteMaps()
+  }
 
   // cache sitemap for up to one hour
   res.setHeader(
