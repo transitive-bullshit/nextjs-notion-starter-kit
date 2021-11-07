@@ -18,6 +18,7 @@ export const PageHead: React.FC<types.PageProps> = ({ site }) => {
         <>
           <meta name='description' content={site.description} />
           <meta property='og:description' content={site.description} />
+          <meta name='twitter:description' content={site.description} />
         </>
       )}
 

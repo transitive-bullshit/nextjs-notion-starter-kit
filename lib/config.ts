@@ -36,6 +36,8 @@ export const pageUrlAdditions = cleanPageUrlMap(
   'pageUrlAdditions'
 )
 
+export const pageDescriptionOverrides = getSiteConfig('pageDescriptionOverrides', {}) || {}
+
 // general site config
 export const name: string = getSiteConfig('name')
 export const author: string = getSiteConfig('author')

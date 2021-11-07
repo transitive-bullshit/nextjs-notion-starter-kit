@@ -173,7 +173,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       }}
     >
-      <PageHead site={site} />
+      <PageHead site={site && {...site, description: socialDescription}} />
 
       <Head>
         <meta property='og:title' content={title} />
@@ -184,14 +184,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
         {config.twitter && (
           <meta name='twitter:creator' content={`@${config.twitter}`} />
-        )}
-
-        {socialDescription && (
-          <>
-            <meta name='description' content={socialDescription} />
-            <meta property='og:description' content={socialDescription} />
-            <meta name='twitter:description' content={socialDescription} />
-          </>
         )}
 
         {socialImage ? (
