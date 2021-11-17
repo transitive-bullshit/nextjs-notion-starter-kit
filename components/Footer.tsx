@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FaTwitter, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { FaTwitter, FaGithub, FaLinkedin, FaEnvelope, FaBook } from 'react-icons/fa'
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
 import * as config from 'lib/config'
 
@@ -41,6 +41,18 @@ export const Footer: React.FC<{
       ) : null}
 
       <div className={styles.social}>
+        {config.blog && (
+          <a
+            className={styles.blog}
+            href={`${config.blog}`}
+            title={`Blog`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaBook />
+          </a>
+        )}
+
         {config.twitter && (
           <a
             className={styles.twitter}

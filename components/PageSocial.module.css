@@ -114,6 +114,13 @@
   border-color: #777;
 }
 
+.blog .actionBgPane {
+  background: #2795e9;
+}
+.blog:hover {
+  border-color: #2795e9;
+}
+
 @media only screen and (max-width: 768px) {
   .links {
     position: relative;
