@@ -14,9 +14,6 @@
     document.body.classList.remove(darkMode ? classNameLight : classNameDark)
   }
 
-  var preferDarkQuery = '(prefers-color-scheme: dark)'
-  var mql = window.matchMedia(preferDarkQuery)
-  var supportsColorSchemeQuery = mql.media === preferDarkQuery
   var localStorageTheme = null
   try {
     localStorageTheme = localStorage.getItem(storageKey)
@@ -30,13 +27,9 @@
   if (localStorageExists) {
     // source of truth from localStorage
     setClassOnDocumentBody(localStorageTheme)
-  } else if (supportsColorSchemeQuery) {
-    // source of truth from system
-    setClassOnDocumentBody(mql.matches)
-    localStorage.setItem(storageKey, mql.matches)
   } else {
-    // source of truth from document.body
-    var isDarkMode = document.body.classList.contains(classNameDark)
-    localStorage.setItem(storageKey, JSON.stringify(isDarkMode))
+    // set dark mode as a default
+    setClassOnDocumentBody(true)
+    localStorage.setItem(storageKey, JSON.stringify(true))
   }
 })()
