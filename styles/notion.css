@@ -13,12 +13,11 @@
 }
 
 .notion-page {
+  padding-left: 0px;
+  padding-right: 0px;
+
   padding-bottom: calc(max(5vh, 32px)) !important;
   line-height: 1.65;
-}
-
-.index-page {
-  --notion-max-width: 900px;
 }
 
 .notion-text {
@@ -125,20 +124,20 @@
 }
 
 .notion-hr {
-  margin: 2em 0;
+  margin: 1em 0;
 }
 
 @media only screen and (max-width: 920px) {
   .index-page.notion-page {
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 9vw;
+    padding-right: 9vw;
   }
 }
 
 @media only screen and (max-width: 720px) {
   .notion-page {
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 9vw;
+    padding-right: 9vw;
   }
 }
 
@@ -338,4 +337,10 @@
 .notion-bookmark:hover {
   border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
   border-image-slice: 1;
+}
+
+@media (max-width: 640px) {
+  .notion-bookmark-image {
+    display: block;
+  }
 }
