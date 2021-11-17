@@ -46,6 +46,8 @@ export const description: string = getSiteConfig('description', 'Notion Blog')
 export const twitter: string | null = getSiteConfig('twitter', null)
 export const github: string | null = getSiteConfig('github', null)
 export const linkedin: string | null = getSiteConfig('linkedin', null)
+export const email: string | null = getSiteConfig('email', null)
+export const blog: string | null = getSiteConfig('blog', null)
 
 export const socialImageTitle: string | null = getSiteConfig(
   'socialImageTitle',
