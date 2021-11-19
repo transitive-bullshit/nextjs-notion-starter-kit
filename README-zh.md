@@ -25,7 +25,7 @@
 - 配置简单 ([只有一个配置文件](./site.config.js)) 💪
 - 通过以下方式对 Notion 内容提供强有力的支持 [react-notion-x](https://github.com/NotionX/react-notion-x)
 - Next.js / TS / React / Notion
-- 极好的页面速度
+- 极快的页面速度
 - 性感的 LQIP 图片预览
 - 嵌入式的 GitHub 评论
 - 自动展开图像
