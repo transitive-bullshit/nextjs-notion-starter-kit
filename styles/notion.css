@@ -12,6 +12,10 @@
   --notion-header-height: 54px;
 }
 
+.notion > * {
+  padding: 0;
+}
+
 .notion-page {
   padding-left: 0px;
   padding-right: 0px;
