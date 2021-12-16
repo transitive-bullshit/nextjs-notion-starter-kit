@@ -224,6 +224,9 @@ img.lazy-image-real {
   right: 0;
   width: calc((100vw - 640px) / 2);
   position: fixed;
+  display: block !important;
+  -webkit-mask-image: linear-gradient(90deg, black, transparent);
+  top: calc((3 * var(--header))+64px);
 }
 
 .dark-mode .notion-table-of-contents-item-body {
@@ -290,10 +293,6 @@ svg.notion-page-icon {
 
 .lazy-image-wrapper {
   overflow: initial;
-}
-
-.notion-aside {
-  top: calc((3 * var(--header))+64px);
 }
 
 .notion-h {
@@ -744,7 +743,7 @@ video.notion-page-cover {
   height: calc(100vh - calc(2 * var(--header)));
   width: 100vw;
   object-fit: cover;
-  -webkit-mask-image: radial-gradient(#000000FF, #00000000);
+  -webkit-mask-image: radial-gradient(#000000ff, #00000000);
 }
 .dark-mode video.notion-page-cover {
   filter: invert(0) grayscale(0.25) brightness(1) contrast(1.25) blur(8px)
