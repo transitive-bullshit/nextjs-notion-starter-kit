@@ -848,10 +848,10 @@ video.notion-page-cover {
 svg.notion-page-icon {
   margin-right: 8px;
 }
-.dark-mode .resultsPane .notion-search .result {
+.dark-mode .resultsPane .result {
   color: #000;
 }
-.resultsPane .notion-search .result {
+.resultsPane .result {
   padding-left: 24px;
   padding-right: 48px;
   width: 100%;
@@ -859,7 +859,7 @@ svg.notion-page-icon {
   margin: auto;
 }
 
-.resultsPane .notion-search .result .notion-page-link > .notion-page-title {
+.resultsPane .result .notion-page-link > .notion-page-title {
   max-width: none;
   width: 100%;
   text-align: left;
