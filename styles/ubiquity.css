@@ -840,17 +840,17 @@ video.notion-page-cover {
   animation: 2.5s ease-in-out 0s 1 fadeIn;
 }
 
-img.notion-page-icon {
+.resultsPane img.notion-page-icon {
   background-color: #fff;
 }
-img.notion-page-icon, svg.notion-page-icon {
-  margin-right: 8px
+.resultsPane img.notion-page-icon,
+svg.notion-page-icon {
+  margin-right: 8px;
 }
-.dark-mode .notion-search .result {
+.resultsPane .dark-mode .notion-search .result {
   color: #000;
 }
-.notion-search .result {
-
+.resultsPane .notion-search .result {
   padding-left: 24px;
   padding-right: 48px;
   width: 100%;
@@ -858,7 +858,7 @@ img.notion-page-icon, svg.notion-page-icon {
   margin: auto;
 }
 
-.notion-search .result .notion-page-link > .notion-page-title {
+.resultsPane .notion-search .result .notion-page-link > .notion-page-title {
   max-width: none;
   width: 100%;
   text-align: left;
