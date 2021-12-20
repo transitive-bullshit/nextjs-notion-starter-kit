@@ -847,7 +847,7 @@ video.notion-page-cover {
 svg.notion-page-icon {
   margin-right: 8px;
 }
-.resultsPane .dark-mode .notion-search .result {
+.dark-mode .resultsPane .notion-search .result {
   color: #000;
 }
 .resultsPane .notion-search .result {
