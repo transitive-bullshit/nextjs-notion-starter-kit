@@ -844,13 +844,14 @@ video.notion-page-cover {
 svg.notion-page-icon {
   background-color: #fff;
 }
-.dark-mode .notion-search .result{
+.dark-mode .notion-search .result {
   color: #000;
 }
 .notion-search .result {
   padding-left: 48px;
   padding-right: 48px;
   width: 100%;
+  max-width: none;
   margin: auto;
 }
 
