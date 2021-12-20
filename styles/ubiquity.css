@@ -169,9 +169,11 @@ img {
   max-width: 75vw !important;
   object-fit: cover;
 }
-
+body.light-mode
 img.lazy-image-preview,
+body.light-mode
 img.lazy-image-real {
+  filter: grayscale(1);
   aspect-ratio: auto;
 }
 
@@ -242,7 +244,7 @@ img.lazy-image-real {
 img.notion-page-icon,
 svg.notion-page-icon {
   display: block;
-  object-fit: fill;
+  object-fit: contain;
   border-radius: 3px;
   background-image: var(--southeast-arrow-url);
   max-width: 24px;
@@ -601,7 +603,9 @@ div.notion-page-content a.notion-page-link::after {
 
 @media (min-width: 480px) {
   .notion-page-link {
-    width: calc(50% - 16px);
+    /* width: calc(50% - 16px); */
+    width: 100%;
+    max-width: 300px
   }
 }
 
