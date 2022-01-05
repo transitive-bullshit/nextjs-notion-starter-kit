@@ -83,7 +83,7 @@ export const Footer: React.FC<{
           href={`https://beian.miit.gov.cn/`}
           target='_blank' 
         >
-          浙ICP备2021036882号
+          <div className={styles.copyright}>Copyright 2022 {config.author}</div> 
         </a>
       </div>
     </footer>
