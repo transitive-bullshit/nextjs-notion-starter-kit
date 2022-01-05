@@ -77,6 +77,19 @@ export const Footer: React.FC<{
           </a>
         )}
       </div>
+
+      <div className={styles.copyright}>
+        {config.beian && (
+          <a
+            className={styles.beian}
+            href={`https://beian.miit.gov.cn/`}
+            title={`备案`}
+            target='_blank'           
+          >
+            <{config.author} />
+          </a>
+        )}
+      </div>
     </footer>
   )
 }

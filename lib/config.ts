@@ -40,6 +40,7 @@ export const pageUrlAdditions = cleanPageUrlMap(
 export const name: string = getSiteConfig('name')
 export const author: string = getSiteConfig('author')
 export const domain: string = getSiteConfig('domain')
+export const beian: string = getSiteConfig('beian')
 export const description: string = getSiteConfig('description', 'Notion Blog')
 
 // social accounts
