@@ -80,9 +80,7 @@ export const Footer: React.FC<{
 
       <div className={styles.copyright}>
         <a
-          className={styles.beian}
           href={`https://beian.miit.gov.cn/`}
-          title={`备案`}
           target='_blank' 
         >
           浙ICP备2021036882号
