@@ -79,11 +79,11 @@ export const Footer: React.FC<{
       </div>
       <div className={styles.copyright}>
         <a
-            className={styles.beian}
-            href={`https://beian.miit.gov.cn/`}
-            title={`备案`}
-            target='_blank' 
-            >
+          className={styles.beian}
+          href={`https://beian.miit.gov.cn/`}
+          title={`备案`}
+          target='_blank' 
+        >
         </a>
       </div>
     </footer>
