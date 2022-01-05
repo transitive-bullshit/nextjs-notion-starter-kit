@@ -86,7 +86,7 @@ export const Footer: React.FC<{
             title={`备案`}
             target='_blank'           
           >
-            <{config.author} />
+          
           </a>
         )}
       </div>
