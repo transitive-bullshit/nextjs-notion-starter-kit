@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: '云中辞',
-  domain: 'notion.cinas.cn',
+  domain: 'cinas.cn',
   author: '云中辞',
   beian: '浙ICP备2021036882号',
 
