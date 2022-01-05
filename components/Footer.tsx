@@ -83,7 +83,7 @@ export const Footer: React.FC<{
           href={`https://beian.miit.gov.cn/`}
           target='_blank' 
         >
-          <div className={styles.copyright}>备案 {config.beian}</div> 
+          <div>{config.beian}</div> 
         </a>
       </div>
     </footer>
