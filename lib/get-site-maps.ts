@@ -11,20 +11,11 @@ export async function getSiteMaps(): Promise<types.SiteMap[]> {
     sites,
     async (site, index) => {
       try {
-        console.log(
-          'getSiteMap',
-          `${index + 1}/${sites.length}`,
-          `(${(((index + 1) / sites.length) * 100) | 0}%)`,
-          site
-        )
-
         return {
           site,
           ...(await getAllPages(site.rootNotionPageId, site.rootNotionSpaceId))
         } as types.SiteMap
-      } catch (err) {
-        console.warn('site build error', index, site, err)
-      }
+      } catch (err) {}
     },
     {
       concurrency: 4
