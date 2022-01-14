@@ -876,6 +876,8 @@ video.notion-page-cover {
 .resultsPane .result {
   padding-left: 48px;
   opacity: 1;
+  max-width: 100%;
+  margin: 0;
 }
 
 .resultsPane .notion-page-link > .notion-page-title {
