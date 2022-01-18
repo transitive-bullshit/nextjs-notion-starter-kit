@@ -50,6 +50,6 @@ module.exports = {
   // }
   pageUrlOverrides: {
     '/about': '4ad902385c35468e9d5a1aa5dcec7f96',
-    '/note1': 'b807350e2ebe4a81810eba83e575a11c',
+    '/note': 'b807350e2ebe4a81810eba83e575a11c',
   }
 }
