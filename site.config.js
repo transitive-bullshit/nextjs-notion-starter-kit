@@ -4,7 +4,7 @@ module.exports = {
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: null,
+  rootNotionSpaceId: d2795493-807f-49f4-b577-22c42b882a79,
 
   // basic site info (required)
   name: '云中辞',
@@ -48,5 +48,8 @@ module.exports = {
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
-  pageUrlOverrides: null
+  pageUrlOverrides:
+  {
+    '/about': '4ad902385c35468e9d5a1aa5dcec7f96',   
+  }
 }
