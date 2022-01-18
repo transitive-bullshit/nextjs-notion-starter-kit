@@ -2,7 +2,7 @@ module.exports = {
   // 一切从这里开始——站点的根 Notion 页面（必需）
   rootNotionPageId: '666ffb1cba6b44f282bb88c17b35d7c1',
 
-  // 如果要将页面限制为单个概念工作区（可选）
+  // 如果要将页面限制为单个Notion工作区（可选）
   // （这应该是一个概念 ID；请参阅文档了解如何提取它）
   rootNotionSpaceId: "d2795493-807f-49f4-b577-22c42b882a79",
 
@@ -22,7 +22,7 @@ module.exports = {
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
   
-  // 默认notion 图标和 封面图像 （可选）
+  // 默认Notion 图标和 封面图像 （可选）
   // 特定页面的值将覆盖这些站点的默认值
   defaultPageIcon: null,
   defaultPageCover: null,
@@ -40,7 +40,7 @@ module.exports = {
   // .env.example 中指定的变量
   isPreviewImageSupportEnabled: false,
 
-  // notion 页面 ID 到 URL 路径的映射（可选）
+  // Notion 页面 ID 到 URL 路径的映射（可选）
   // 此处定义的任何页面都将覆盖其默认 URL 路径
   // 例子：
   //
