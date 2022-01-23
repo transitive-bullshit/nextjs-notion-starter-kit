@@ -9,9 +9,6 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
   images: {
     domains: ['pbs.twimg.com']
   },
-  future: {
-    webpack5: true
-  },
   webpack: (config, { isServer, dev }) => {
     if (isServer && !dev) {
       const originalEntry = config.entry
@@ -25,5 +22,5 @@ module.exports = withPlugins([[withBundleAnalyzer]], {
       }
     }
     return config
-  }
+  },
 })
