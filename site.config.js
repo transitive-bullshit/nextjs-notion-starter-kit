@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'Laterbuy',
-  domain: 'Laterbuy',
+  domain: 'laterbuy-blog.vercel.app',
   author: 'Laterbuy',
 
   // open graph metadata (optional)
@@ -32,7 +32,7 @@ module.exports = {
   imageCDNHost: null,
 
   // Utteranc.es comments via GitHub issue comments (optional)
-  utterancesGitHubRepo: null,
+  utterancesGitHubRepo: 'laterbuy/nextjs-notion-starter-kit',
 
   // whether or not to enable support for LQIP preview images (optional)
   // NOTE: this requires you to set up Google Firebase and add the environment
