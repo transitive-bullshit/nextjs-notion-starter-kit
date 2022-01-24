@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'AC-Ring',
-  domain: 'acring.cn',
+  domain: 'blog.acring.cn',
   author: 'Liu Zhen',
 
   // open graph metadata (optional)
