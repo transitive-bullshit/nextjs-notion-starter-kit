@@ -27,7 +27,8 @@ export function getCanonicalPageId(
 
     const block = recordMap.block[pageId]?.value
     if (block) {
-      //console.log(block, recordMap)
+      // console.log('Private', getPageProperty('Private', block, recordMap))
+
       let slugName = getPageProperty('SlugName', block, recordMap)
       if (slugName) {
         ret = slugName
