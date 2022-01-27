@@ -52,7 +52,7 @@
   margin: 0 auto;
 }
 
-.notion-page-content .notion-page-content-has-aside
+.notion-page-content .notion-page-content-has-aside{
   flex-direction: column !important;
 }
 
