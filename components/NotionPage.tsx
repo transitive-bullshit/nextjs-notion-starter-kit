@@ -126,7 +126,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const siteMapPageUrl = mapPageUrl(site, recordMap, searchParams)
 
-  console.log("siteMapPageUrl: ", siteMapPageUrl)
+  // console.log("siteMapPageUrl: ", siteMapPageUrl)
 
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)

@@ -52,8 +52,8 @@
   margin: 0 auto;
 }
 
-.notion-page-content .notion-page-content-has-aside {
-  flex-direction: column;
+.notion-page-content .notion-page-content-has-aside
+  flex-direction: column !important;
 }
 
 .notion-gallery-grid {

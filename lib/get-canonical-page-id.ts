@@ -34,7 +34,7 @@ export function getCanonicalPageId(
       }
     }
 
-    console.log('getCanonicalPageId>getCanonicalPageId', ret)
+    // console.log('getCanonicalPageId>getCanonicalPageId', ret)
     return ret
   }
 }
