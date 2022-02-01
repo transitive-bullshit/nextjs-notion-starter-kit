@@ -11,6 +11,9 @@ module.exports = {
   domain: 'blog.acring.cn',
   author: 'Liu Zhen',
 
+  // if you want to hide the github repo, set '' (optional)
+  repoUrl: 'https://github.com/acring/nextjs-notion-starter-kit',
+
   // open graph metadata (optional)
   description: 'An awesome dreamer of the world.',
   socialImageTitle: 'ACRing',
