@@ -62,7 +62,7 @@
 }
 
 .notion-gallery-grid .notion-collection-card-property {
-  white-space: unset;
+/*   white-space: unset; */
   text-overflow: unset;
 }
 
@@ -112,6 +112,8 @@
 .notion-quote {
   padding: 0.2em 0.75em;
   font-size: 1.1em;
+  border-left: 4px solid #0b7e04!important;
+  
 }
 
 .notion-h1,
