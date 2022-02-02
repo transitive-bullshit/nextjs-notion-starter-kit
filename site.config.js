@@ -12,7 +12,7 @@ module.exports = {
   author: 'Herman Baiatian',
 
   // open graph metadata (optional)
-  description: 'Everything about Product Ownership, Management and Business Analysis',
+  description: 'Everything about Product Ownership, Management and Business Analysis!',
   socialImageTitle: 'Pownery.com',
   socialImageSubtitle: 'Hey, POs👋',
 
