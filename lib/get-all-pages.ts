@@ -29,13 +29,10 @@ export async function getAllPagesImpl(
         throw new Error(`Error loading page "${pageId}"`)
       }
 
-      //console.log("recordMap", pageId, recordMap)
-
       let canonicalPageId = getCanonicalPageId(pageId, recordMap, {
         uuid
       })
 
-      console.group('get slug')
       const block = recordMap.block[pageId]?.value
 
       // Skip the private page.
@@ -43,23 +40,17 @@ export async function getAllPagesImpl(
       // if (block) {
       //   // get page property 'Private'
       //   const privatePage = getPageProperty('Private', block, recordMap)
-      //   console.log('privatePage', privatePage)
       //   // if private, skip
       //   if (privatePage === 'Yes') {
-      //     console.log('private', privatePage, pageId)
-      //     console.log('map', map)
       //     // TODO: try to remove this page from the map.
       //     delete map[pageId];
-      //     console.groupEnd()
       //     return map
       //   }
       // }
 
       // Insert SlugName instead of PageId.
       if (block) {
-        //console.log(block, recordMap)
         let slugName = getPageProperty('SlugName', block, recordMap)
-        console.log('SlugName', slugName)
 
         if (slugName) {
           canonicalPageId = slugName

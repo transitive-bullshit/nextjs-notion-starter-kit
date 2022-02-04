@@ -9,7 +9,6 @@ export function getPagePropertyExtend(
   recordMap: types.ExtendedRecordMap
 ): string | null {
   console.group('getPagePropertyExtend')
-  console.log('property', propertyName)
   if (!block.properties) {
     // TODO: check parent page?
     console.groupEnd()

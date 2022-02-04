@@ -12,15 +12,7 @@ export const notion = new NotionAPI({
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   const recordMap = await notion.getPage(pageId)
-  //console.log('recordMap => ', JSON.stringify(recordMap))
   const blockIds = Object.keys(recordMap.block)
-
-  if (recordMap.block[pageId]) {
-    console.log(
-      'getPageProperty',
-      getPageProperty('title', recordMap.block[pageId]?.value, recordMap)
-    )
-  }
 
   const imageUrls: string[] = blockIds
     .map((blockId) => {
