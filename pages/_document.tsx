@@ -1,6 +1,8 @@
 import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 import { IconContext } from 'react-icons'
+import { googleAnalyticsID } from 'lib/config'
 
 export default class MyDocument extends Document {
   render() {
@@ -39,6 +41,26 @@ export default class MyDocument extends Document {
 
           <body>
             <script src='noflash.js' />
+
+            // Google Analytics
+            {
+              googleAnalyticsID && (
+                <>
+                  <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+          window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+          ga('create', '${googleAnalyticsID}', 'auto');
+          ga('send', 'pageview');
+        `}
+                  </Script>
+                  <Script
+                    src="https://www.google-analytics.com/analytics.js"
+                    strategy="afterInteractive"
+                  />
+                </>
+              )
+
+            }
 
             <Main />
 

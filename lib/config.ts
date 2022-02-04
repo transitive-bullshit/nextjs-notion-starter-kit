@@ -119,6 +119,8 @@ export const fathomConfig = fathomId
     }
   : undefined
 
+export const googleAnalyticsID = isDev ? null : process.env.GA_ID
+
 const defaultEnvValueForPreviewImageSupport =
   isPreviewImageSupportEnabled && isServer ? undefined : null
 
