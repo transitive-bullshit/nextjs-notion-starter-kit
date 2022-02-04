@@ -52,16 +52,11 @@
   margin: 0 auto;
 }
 
-/* .notion-page-content .notion-page-content-has-aside{ */
-/*   flex-direction: column !important; */
-/* } */
-/**/
-/* .notion-page-content-has-aside { */
-/*   flex-direction: column !important; */
-/* } */
-/**/
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(720px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(720, 1fr)); */
+
+  /* only one column in a row. */
+  grid-template-columns: 1fr;
   grid-gap: 6vmin;
   gap: 6vmin;
 }
