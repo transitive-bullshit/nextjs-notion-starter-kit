@@ -36,8 +36,9 @@ import 'prismjs/components/prism-bash'
 
 import React from 'react'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 import { bootstrap } from 'lib/bootstrap-client'
-import { fathomId, fathomConfig } from 'lib/config'
+import { fathomId, fathomConfig, googleAnalyticsID } from 'lib/config'
 import * as Fathom from 'fathom-client'
 
 if (typeof window !== 'undefined') {
@@ -63,5 +64,28 @@ export default function App({ Component, pageProps }) {
     }
   }, [])
 
-  return <Component {...pageProps} />
+  return (
+    // Google Analytics support.
+    <>
+      {
+        googleAnalyticsID && <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsID}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${googleAnalyticsID}');
+        `}
+          </Script>
+        </>
+      }
+      < Component {...pageProps} />
+    </>
+
+  )
 }
