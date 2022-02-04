@@ -9,6 +9,8 @@ import { getCanonicalPageId } from './get-canonical-page-id'
 const uuid = !!includeNotionIdInUrls
 
 export const getAllPages = pMemoize(getAllPagesImpl, { maxAge: 60000 * 5 })
+// For testing use.
+// export const getAllPages = pMemoize(getAllPagesImpl, { maxAge: 1000 })
 
 export async function getAllPagesImpl(
   rootNotionPageId: string,
@@ -35,10 +37,25 @@ export async function getAllPagesImpl(
 
       console.group('get slug')
       const block = recordMap.block[pageId]?.value
-      //console.log('block', canonicalPageId, block)
-      if (canonicalPageId == '2020-10-11-why-reimplement-new-blog') {
-        console.log('block', JSON.stringify(recordMap, null, 2))
-      }
+
+      // Skip the private page.
+      // UPDATE: Comment out this block of code, use `Share` directly in Notion.
+      // if (block) {
+      //   // get page property 'Private'
+      //   const privatePage = getPageProperty('Private', block, recordMap)
+      //   console.log('privatePage', privatePage)
+      //   // if private, skip
+      //   if (privatePage === 'Yes') {
+      //     console.log('private', privatePage, pageId)
+      //     console.log('map', map)
+      //     // TODO: try to remove this page from the map.
+      //     delete map[pageId];
+      //     console.groupEnd()
+      //     return map
+      //   }
+      // }
+
+      // Insert SlugName instead of PageId.
       if (block) {
         //console.log(block, recordMap)
         let slugName = getPageProperty('SlugName', block, recordMap)
