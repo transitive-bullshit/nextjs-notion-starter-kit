@@ -57,6 +57,8 @@
 
   /* only one column in a row. */
   grid-template-columns: 1fr;
+  /* remove padding below the card */
+  grid-auto-rows: auto;
   grid-gap: 6vmin;
   gap: 6vmin;
 }
