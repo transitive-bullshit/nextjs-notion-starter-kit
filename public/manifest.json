@@ -1,6 +1,6 @@
 {
-  "name": "Transitive Bullshit",
-  "short_name": "Transitive BS",
+  "name": "Herman Baiatian",
+  "short_name": "Herman B",
   "icons": [
     {
       "src": "/favicon-16x16.png",
@@ -11,11 +11,6 @@
       "src": "/favicon-32x32.png",
       "type": "image/png",
       "sizes": "32x32"
-    },
-    {
-      "src": "/favicon-96x96.png",
-      "type": "image/png",
-      "sizes": "96x96"
     },
     {
       "src": "/apple-touch-icon.png",
