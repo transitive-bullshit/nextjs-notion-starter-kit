@@ -1,10 +1,10 @@
 {
-  "name": "nextjs-notion-starter-kit",
+  "name": "leothesen.com",
   "version": "0.1.0",
   "private": true,
-  "description": "The perfect starter kit for building beautiful websites with Next.js and Notion.",
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "transitive-bullshit/nextjs-notion-starter-kit",
+  "description": "Personal website of Leo Thesen.",
+  "author": "Leo Thesen <leothesen@gmail.com>",
+  "repository": "https://github.com/leothesen/leothesen.com",
   "license": "MIT",
   "engines": {
     "node": ">=10"
