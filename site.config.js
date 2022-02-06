@@ -7,16 +7,16 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'AC-Ring',
+  name: 'Acring',
   domain: 'blog.acring.cn',
-  author: 'Liu Zhen',
+  author: 'Acring',
 
   // if you want to hide the github repo, set '' (optional)
   repoUrl: 'https://github.com/acring/nextjs-notion-starter-kit',
 
   // open graph metadata (optional)
   description: 'An awesome dreamer of the world.',
-  socialImageTitle: 'ACRing',
+  socialImageTitle: 'Acring',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
