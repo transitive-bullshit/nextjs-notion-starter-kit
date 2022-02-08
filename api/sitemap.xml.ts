@@ -45,7 +45,7 @@ const createSitemap = (
             <url>
               <loc>${host}/${canonicalPagePath}</loc>
 ${siteMap.canonicalPageMap[canonicalPagePath].lastEditedTime ? `
-              <lastmod>${siteMap.canonicalPageMap[canonicalPagePath].lastEditedTime}</lastmod>` : ""
+              <lastmod>${siteMap.canonicalPageMap[canonicalPagePath].lastEditedTime.toISOString()}</lastmod>` : ""
         }
             </url>
           `.trim()
