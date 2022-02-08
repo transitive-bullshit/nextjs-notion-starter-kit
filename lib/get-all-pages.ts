@@ -5,6 +5,7 @@ import * as types from './types'
 import { includeNotionIdInUrls } from './config'
 import { notion } from './notion'
 import { getCanonicalPageId } from './get-canonical-page-id'
+import { getPagePropertyExtend } from './get-page-property'
 
 const uuid = !!includeNotionIdInUrls
 
@@ -35,18 +36,10 @@ export async function getAllPagesImpl(
 
       const block = recordMap.block[pageId]?.value
 
-      // Skip the private page.
-      // UPDATE: Comment out this block of code, use `Share` directly in Notion.
-      // if (block) {
-      //   // get page property 'Private'
-      //   const privatePage = getPageProperty('Private', block, recordMap)
-      //   // if private, skip
-      //   if (privatePage === 'Yes') {
-      //     // TODO: try to remove this page from the map.
-      //     delete map[pageId];
-      //     return map
-      //   }
-      // }
+      // Get Last Edited Time
+      const lastEditedTime = block?.last_edited_time ? new Date(block.last_edited_time) : null
+      // Get Created Time
+      const createdTime = block?.created_time ? new Date(block.created_time) : null
 
       // Insert SlugName instead of PageId.
       if (block) {
@@ -57,7 +50,20 @@ export async function getAllPagesImpl(
         }
       }
 
+      const canonicalPageData: types.CanonicalPageData = {
+        id: pageId,
+        lastEditedTime,
+        createdTime
+      }
+
+      console.log(canonicalPageData)
+
       console.groupEnd()
+
+      if (block) {
+        let lastmod = getPagePropertyExtend('Updated', block, recordMap)
+        console.log(`lastmod: ${lastmod}`)
+      }
 
       if (map[canonicalPageId]) {
         console.error(
@@ -71,7 +77,7 @@ export async function getAllPagesImpl(
       } else {
         return {
           ...map,
-          [canonicalPageId]: pageId
+          [canonicalPageId]: canonicalPageData
         }
       }
     },

@@ -28,7 +28,9 @@ export function getPagePropertyExtend(
       const propertyValue = block.properties[propertyId]
       const ret = getTextContent(propertyValue)
       console.log('text', ret, JSON.stringify(propertyValue))
-
+      console.log('properties', JSON.stringify(block.properties))
+      console.log('block', JSON.stringify(block))
+      
       try {
         const value = propertyValue[0][1][0][1]['start_date']
         if (value) {
@@ -38,6 +40,7 @@ export function getPagePropertyExtend(
         }
       } catch (e) {
         console.log(e)
+        console.log(propertyValue)
       } finally {
       }
 

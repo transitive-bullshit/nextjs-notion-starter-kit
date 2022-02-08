@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { SiteMap } from '../lib/types'
 import { host } from '../lib/config'
 import { getSiteMaps } from '../lib/get-site-maps'
+import { getPagePropertyExtend } from '../lib/get-page-property'
 
 export default async (
   req: NextApiRequest,
@@ -19,6 +20,8 @@ export default async (
     'Cache-Control',
     'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600'
   )
+
+
   res.setHeader('Content-Type', 'text/xml')
   res.write(createSitemap(siteMaps[0]))
   res.end()
@@ -37,13 +40,16 @@ const createSitemap = (
       </url>
 
       ${Object.keys(siteMap.canonicalPageMap)
-        .map((canonicalPagePath) =>
-          `
+    .map((canonicalPagePath) =>
+      `
             <url>
               <loc>${host}/${canonicalPagePath}</loc>
+${siteMap.canonicalPageMap[canonicalPagePath].lastEditedTime ? `
+              <lastmod>${siteMap.canonicalPageMap[canonicalPagePath].lastEditedTime}</lastmod>` : ""
+        }
             </url>
           `.trim()
-        )
-        .join('')}
+    )
+    .join('')}
     </urlset>
     `
