@@ -40,7 +40,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
       // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
       const siteMaps = await getSiteMaps()
       const siteMap = siteMaps[0]
-      pageId = siteMap?.canonicalPageMap[rawPageId].id
+      pageId = siteMap?.canonicalPageMap[rawPageId]?.pageID
 
       if (pageId) {
         // TODO: we're not re-using the site from siteMaps because it is

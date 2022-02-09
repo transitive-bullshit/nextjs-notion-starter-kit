@@ -1,11 +1,10 @@
 import pMemoize from 'p-memoize'
-import { getAllPagesInSpace, getPageProperty } from 'notion-utils'
+import { getAllPagesInSpace, getPageProperty, getBlockTitle } from 'notion-utils'
 
 import * as types from './types'
 import { includeNotionIdInUrls } from './config'
 import { notion } from './notion'
 import { getCanonicalPageId } from './get-canonical-page-id'
-import { getPagePropertyExtend } from './get-page-property'
 
 const uuid = !!includeNotionIdInUrls
 
@@ -36,6 +35,9 @@ export async function getAllPagesImpl(
 
       const block = recordMap.block[pageId]?.value
 
+      // Get Page Title
+      const title = getBlockTitle(block, recordMap)
+
       // Get Last Edited Time
       const lastEditedTime = block?.last_edited_time ? new Date(block.last_edited_time) : null
       // Get Created Time
@@ -51,19 +53,15 @@ export async function getAllPagesImpl(
       }
 
       const canonicalPageData: types.CanonicalPageData = {
-        id: pageId,
+        pageID: pageId,
         lastEditedTime,
-        createdTime
+        createdTime,
+        title,
       }
 
       console.log(canonicalPageData)
 
       console.groupEnd()
-
-      if (block) {
-        let lastmod = getPagePropertyExtend('Updated', block, recordMap)
-        console.log(`lastmod: ${lastmod}`)
-      }
 
       if (map[canonicalPageId]) {
         console.error(

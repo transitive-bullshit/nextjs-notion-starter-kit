@@ -3,7 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { SiteMap } from '../lib/types'
 import { host } from '../lib/config'
 import { getSiteMaps } from '../lib/get-site-maps'
-import { getPagePropertyExtend } from '../lib/get-page-property'
 
 export default async (
   req: NextApiRequest,

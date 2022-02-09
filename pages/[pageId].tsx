@@ -4,8 +4,11 @@ import { getSiteMaps } from 'lib/get-site-maps'
 import { resolveNotionPage } from 'lib/resolve-notion-page'
 import { NotionPage } from 'components'
 
+// Get page props from pageId.
 export const getStaticProps = async ({ params }) => {
   const rawPageId = params.pageId as string
+
+  console.log('rawPageId', rawPageId)
 
   try {
     if (rawPageId === 'sitemap.xml' || rawPageId === 'robots.txt') {
@@ -30,6 +33,7 @@ export const getStaticProps = async ({ params }) => {
   }
 }
 
+// Get the page data from the props.
 export async function getStaticPaths() {
   if (isDev) {
     return {
@@ -48,11 +52,9 @@ export async function getStaticPaths() {
         }
       }))
     ),
-    // paths: [],
     fallback: true
   }
 
-  console.log(ret.paths)
   return ret
 }
 
