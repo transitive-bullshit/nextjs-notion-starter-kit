@@ -9,7 +9,17 @@ import { parsePageId } from 'notion-utils'
 import { getSiteConfig, getEnv } from './get-config-value'
 import { PageUrlOverridesMap, PageUrlOverridesInverseMap } from './types'
 
-export const rootNotionPageId: string = parsePageId(
+export const isDev =
+  process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
+
+// Root Notion page for local test. (Optional)
+const rootNotionTestPageID = parsePageId(
+  getSiteConfig('rootNotionTestPageId'),
+  { uuid: false }
+)
+
+// If it's in dev and rootNotionPageTestID is set, use that as the root page.
+export const rootNotionPageId: string = (isDev && rootNotionTestPageID) ? rootNotionTestPageID : parsePageId(
   getSiteConfig('rootNotionPageId'),
   { uuid: false }
 )
@@ -86,9 +96,6 @@ export const isPreviewImageSupportEnabled: boolean = getSiteConfig(
   false
 )
 
-export const isDev =
-  process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
-
 // where it all starts -- the site's root Notion page
 export const includeNotionIdInUrls: boolean = getSiteConfig(
   'includeNotionIdInUrls',
@@ -115,8 +122,8 @@ export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
 
 export const fathomConfig = fathomId
   ? {
-      excludedDomains: ['localhost', 'localhost:3000']
-    }
+    excludedDomains: ['localhost', 'localhost:3000']
+  }
   : undefined
 
 export const googleAnalyticsID = isDev ? null : process.env.NEXT_PUBLIC_GA_ID
@@ -204,3 +211,11 @@ function invertPageUrlOverrides(
     }
   }, {})
 }
+
+// Metadata overrides
+
+// Override CreatedTime 
+export const overrideCreatedTime = getSiteConfig('OverrideCreatedTime', null)
+
+// Override LastEditedTime
+export const overrideLastEditedTime = getSiteConfig('OverrideLastEditedTime', null)

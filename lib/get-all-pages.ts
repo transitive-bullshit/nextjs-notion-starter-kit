@@ -2,9 +2,10 @@ import pMemoize from 'p-memoize'
 import { getAllPagesInSpace, getPageProperty, getBlockTitle } from 'notion-utils'
 
 import * as types from './types'
-import { includeNotionIdInUrls } from './config'
+import { includeNotionIdInUrls, overrideCreatedTime, overrideLastEditedTime } from './config'
 import { notion } from './notion'
 import { getCanonicalPageId } from './get-canonical-page-id'
+import { getPagePropertyExtend } from './get-page-property'
 
 const uuid = !!includeNotionIdInUrls
 
@@ -39,9 +40,42 @@ export async function getAllPagesImpl(
       const title = getBlockTitle(block, recordMap)
 
       // Get Last Edited Time
-      const lastEditedTime = block?.last_edited_time ? new Date(block.last_edited_time) : null
+      let lastEditedTime: Date | null = null;
+      if (overrideLastEditedTime) {
+        let timestamp = "";
+        try {
+          timestamp = getPagePropertyExtend(overrideLastEditedTime, block, recordMap);
+        } catch (e) {
+          console.error(e);
+        }
+        lastEditedTime = new Date(timestamp);
+        // If it's invalidDate, set to null
+        if (isNaN(lastEditedTime.getTime())) {
+          console.log('overrideLastEditedTime:', overrideLastEditedTime, '. Invalid lastEditedTime: ', lastEditedTime);
+          lastEditedTime = null;
+        }
+      }
+      if (!lastEditedTime)
+        lastEditedTime = block?.last_edited_time ? new Date(block.last_edited_time) : null
+
       // Get Created Time
-      const createdTime = block?.created_time ? new Date(block.created_time) : null
+      let createdTime: Date | null = null;
+      if (overrideCreatedTime) {
+        let timestamp = "";
+        try {
+          timestamp = getPagePropertyExtend(overrideCreatedTime, block, recordMap);
+        } catch (e) {
+          console.error(e);
+        }
+        createdTime = new Date(timestamp);
+        // If it's invalidDate, set to null
+        if (isNaN(createdTime.getTime())) {
+          console.log('OverrideCreatedTime:', overrideCreatedTime, '. Invalid createdTime: ', createdTime);
+          createdTime = null;
+        }
+      }
+      if (!createdTime)
+        createdTime = block?.created_time ? new Date(block.created_time) : null
 
       // Insert SlugName instead of PageId.
       if (block) {

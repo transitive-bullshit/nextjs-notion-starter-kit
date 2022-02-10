@@ -1,7 +1,11 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
   rootNotionPageId: '616010038b314232972ce9f23ccecc97',
-  // rootNotionPageId: '6f55bc87f5ea429cb9711b67ac00ea90', // for test use
+
+  // It's will be used as the root page when running `yarn dev`. (optional)
+  // If you are suffering from the slow loading or compiling speed, set this to a smaller page.
+  // Just leave `null` if you don't want to use it.
+  rootNotionTestPageId: '6f55bc87f5ea429cb9711b67ac00ea90',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -48,5 +52,19 @@ module.exports = {
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
-  pageUrlOverrides: null
+  pageUrlOverrides: null,
+
+  // Optional: Normally, the page contain it's metadata 
+  // like `CreatedTime`, `LastEditedTime`.
+  // These metadata cannot be changed by the user.
+  // If you want to override this with a page property (so that 
+  // you can custom it's value), specify it's name here.
+  //
+  // This should align with the property name in Notion.
+  // And the data type should be `Date` or `String`.
+  // Any invalid data type will be ignored and fallback to default metadata.
+  //
+  // These metadata will be used when generating RSS, Sitemap, etc.
+  OverrideCreatedTime: "Created",
+  OverrideLastEditedTime: null,
 }
