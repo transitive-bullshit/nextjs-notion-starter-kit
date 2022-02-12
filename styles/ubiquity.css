@@ -34,7 +34,6 @@
 }
 
 .dark-mode .notion-app {
-  /* background: linear-gradient(0deg, #06061aff, #06061a00); */
 }
 .notion-callout {
   border: none;
@@ -43,7 +42,6 @@
 }
 
 .notion-asset-wrapper-image {
-  /* pointer-events: none; */
 }
 
 .notion-cursor-listener {
@@ -67,7 +65,6 @@
 
 .notion-h-title {
   color: #404040;
-  /* letter-spacing: 2px; */
   text-rendering: geometricPrecision;
 }
 
@@ -165,7 +162,6 @@ details.notion-toggle > summary {
 }
 
 body {
-  /* background: #101010; */
 }
 
 img {
@@ -229,26 +225,29 @@ body.light-mode img {
 .notion-aside {
   position: fixed;
   display: block !important;
-  -webkit-mask-image: linear-gradient(180deg, black, transparent);
-  /* left: calc(100vw - 80px); */
-  top: calc((3 * var(--header)) 64px);
-  /* background: #000; */
+  -webkit-mask-image: linear-gradient(to bottom, black 0 50%, transparent 100%);
   top: 54px;
   padding: 8px 16px;
   border-radius: 4px;
-  /* transition: 0.125s left cubic-bezier(0, 1, 1, 1); */
   left: calc(100vw - 320px);
   right: 0;
   height: calc(100vh - 52px);
-  /* background: red; */
 }
 .notion-aside-table-of-contents {
+  display: block;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  align-items: center;
+  min-width: 222px;
+  overflow: auto;
   -webkit-mask-image: -webkit-linear-gradient(left, black, transparent);
-  height: calc(100vh - 52px);
-  padding-bottom: 96px;
+  height: 100%;
 }
 .notion-aside:hover {
-  /* left: calc(100vw - 320px); */
 }
 .notion-table-of-contents-item {
   opacity: 0.75;
@@ -640,7 +639,6 @@ div.notion-page-content a.notion-page-link::after {
 
 @media (min-width: 480px) {
   .notion-page-link {
-    /* width: calc(50% - 16px); */
     width: 100%;
     max-width: 300px;
   }
@@ -648,7 +646,6 @@ div.notion-page-content a.notion-page-link::after {
 
 @media (min-width: 640px) {
   .notion-page-link {
-    /* width: calc(33% - 24px); */
   }
 }
 
@@ -669,7 +666,6 @@ div.notion-page-content a.notion-page-link::after {
 
 .notion-page-has-cover.notion-page-has-text-icon {
   margin-top: calc(var(--header));
-  /* position: absolute; */
 }
 
 .notion-table-cell.notion-table-cell-title a.notion-page-link {
@@ -893,7 +889,6 @@ video.notion-page-cover {
   background: #fff;
   background-repeat: no-repeat;
   background-position: 12px;
-  /*   background-size: cover; */
 }
 
 .dark-mode .resultsPane .result {
