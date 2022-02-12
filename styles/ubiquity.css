@@ -226,12 +226,12 @@ body.light-mode img {
   position: fixed;
   display: block !important;
   -webkit-mask-image: linear-gradient(to bottom, black 0 50%, transparent 100%);
-  top: 54px;
+  top: var(--header);
   padding: 8px 16px;
   border-radius: 4px;
   left: calc(100vw - 320px);
   right: 0;
-  height: calc(100vh - 52px);
+  height: calc(100vh - var(--header));
 }
 .notion-aside-table-of-contents {
   display: block;
