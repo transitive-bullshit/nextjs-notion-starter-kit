@@ -224,12 +224,13 @@ body.light-mode img {
 
 .notion-aside {
   position: fixed;
-  display: block !important;
+  display: none;
+  /* display: block !important; */
   -webkit-mask-image: linear-gradient(to bottom, black 0 50%, transparent 100%);
   top: var(--header);
-  padding: 8px 16px;
+  /* padding: 8px 16px; */
   border-radius: 4px;
-  left: calc(100vw - 320px);
+  /* left: calc(100vw - 320px); */
   right: 0;
   height: calc(100vh - var(--header));
 }
@@ -250,7 +251,7 @@ body.light-mode img {
 .notion-aside:hover {
 }
 .notion-table-of-contents-item {
-  opacity: 0.75;
+  opacity: 0.5;
 }
 .notion-table-of-contents-item:hover {
   background: transparent;
@@ -927,4 +928,10 @@ video.notion-page-cover {
 .light-mode .notion.notion .notion-inline-code {
   color: #000;
   background: #fff !important;
+}
+
+@media (min-width: 1000px) {
+  .notion-aside.notion-aside {
+    display: block;
+  }
 }
