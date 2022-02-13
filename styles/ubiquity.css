@@ -171,7 +171,7 @@ img {
 body.light-mode img.lazy-image-preview,
 body.light-mode img.lazy-image-real,
 body.light-mode img {
-  filter: grayscale(1);
+  filter: grayscale(1) blur(8px) opacity(0.0625);
   aspect-ratio: auto;
 }
 
