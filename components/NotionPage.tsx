@@ -160,7 +160,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       pageAside = <PageActions tweet={tweet} />
     }
   } else {
-    pageAside = <PageSocial />
+    // pageAside = <PageSocial />
   }
 
   return (
