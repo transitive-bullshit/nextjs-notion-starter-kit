@@ -1,7 +1,7 @@
 name: daily-redeploy
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 */6 * * *"
 jobs:
   cron:
     runs-on: ubuntu-latest
