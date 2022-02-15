@@ -167,7 +167,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   if (isRootPage) {
     // const poster =
     // 'https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252Fbb144e8e-3a57-4e68-b2b9-6a80dbff07d0%252FGroup_3.png%3Ftable%3Dblock%26id%3Dff1a3cae-9009-41e4-9cc4-d4458cc2867d%26cache%3Dv2'
-    const heroVideo = '/hero.mp4'
+    const heroVideo =
+      'https://storageapi.fleek.co/2e62e11d-d4be-4c6f-a2bb-b159c83a0d95-bucket/ubq.fi/hero.mp4'
     pageCover = (
       <>
         <div className='notion-page-cover-background'></div>
