@@ -34,6 +34,7 @@ import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
+const ReactGiscus = dynamic(() => import('./ReactGiscus'))
 
 import styles from './styles.module.css'
 
@@ -136,7 +137,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // only display comments and page actions on blog post pages
   if (isBlogPost) {
-    if (config.utterancesGitHubRepo) {
+    if (config.giscusConfig.valid()) {
+      comments = (
+        <ReactGiscus darkMode={darkMode.value} />
+      )
+
+    } else if (config.utterancesGitHubRepo) {
       comments = (
         <ReactUtterances
           repo={config.utterancesGitHubRepo}

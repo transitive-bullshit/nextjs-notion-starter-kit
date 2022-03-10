@@ -106,6 +106,11 @@
     postcss "7.0.32"
     purgecss "^2.3.0"
 
+"@giscus/react@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.npmmirror.com/@giscus/react/-/react-1.1.2.tgz#c97f06aab1272c0fbe567c69ebffe3bad7206e7a"
+  integrity sha512-htSAAiTtoHTRE8GqSSkWmT+Iq7LJhtqSmr+HjEC1cXlNd1WeLVZXjnuiIj7+L8DOUnAdfh+1FClN304FVxIcsQ==
+
 "@google-cloud/firestore@^4.10.1":
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/@google-cloud/firestore/-/firestore-4.10.1.tgz#674c7871558b1666dce3a624faa96c266214eabf"

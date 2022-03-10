@@ -36,6 +36,20 @@ module.exports = {
   // NOTE: this requires you to set up an external image proxy
   imageCDNHost: null,
 
+  // Giscus comments via Github Discusstion (optional, priority over Utterances)
+  //
+  // To generate the following configs, visit https://giscus.app/.
+  giscusGithubConfig: {
+    repo: 'fky2015/nexon',
+    repoId: 'MDEwOlJlcG9zaXRvcnkzNzkxNDQ0NTQ=',
+    category: 'Comments',
+    categoryId: 'DIC_kwDOFplJBs4COB_h',
+    mapping: 'title',
+    reactionsEnabled: '1',
+    theme: 'light',
+    term: null,
+  },
+
   // Utteranc.es comments via GitHub issue comments (optional)
   utterancesGitHubRepo: 'fky2015/utterances-store',
 

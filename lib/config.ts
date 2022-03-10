@@ -8,6 +8,7 @@
 import { parsePageId } from 'notion-utils'
 import { getSiteConfig, getEnv } from './get-config-value'
 import { PageUrlOverridesMap, PageUrlOverridesInverseMap } from './types'
+import { GiscusProps, Repo } from '@giscus/react'
 
 export const isDev =
   process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
@@ -219,3 +220,22 @@ export const overrideCreatedTime = getSiteConfig('OverrideCreatedTime', null)
 
 // Override LastEditedTime
 export const overrideLastEditedTime = getSiteConfig('OverrideLastEditedTime', null)
+
+
+class GiscusConfig {
+  props: GiscusProps
+
+  constructor(props: GiscusProps) {
+    this.props = props
+  }
+
+  valid() {
+    return !!this.props.repo && !!this.props.repoId && !!this.props.mapping
+  }
+  config() {
+    return this.props
+  }
+}
+
+export const giscusConfig = new GiscusConfig(getSiteConfig('giscusGithubConfig'))
+

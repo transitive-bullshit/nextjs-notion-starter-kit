@@ -103,6 +103,7 @@
   width: 100%;
   margin-top: 2em;
   border-top: 1px solid var(--fg-color-0);
+  padding: 1px;
 }
 
 .utterances {
