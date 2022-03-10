@@ -3732,11 +3732,7 @@ normalize-url@^4.1.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.5.0.tgz#453354087e6ca96957bd8f5baf753f5982142129"
   integrity sha512-2s47yzUxdexf1OhyRi4Em83iQk0aPvwTddtFz4hnSSw9dCEsLEGf6SwIO8ss/19S9iBb5sJaOuTvTGDeZI00BQ==
 
-<<<<<<< HEAD
 notion-client@^4.16.1:
-=======
-notion-client@^4.14.1:
->>>>>>> 73b8cc2546e07f70d34697e4c81e67667aaf05aa
   version "4.16.1"
   resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-4.16.1.tgz#ce9407ec5e8a20cdc8e5da824a6382e34998ffa0"
   integrity sha512-ckJRgV+yfXFmz8WEh4gb6xBiJbrUdqFGQD56APoK+ypPotGC/rlSV/0sUd5cZmAWlj4ORh5wanszsdxC4y4Xyw==
@@ -3746,20 +3742,12 @@ notion-client@^4.14.1:
     notion-utils "^4.16.0"
     p-map "^4.0.0"
 
-<<<<<<< HEAD
 notion-types@^4.16.0:
-=======
-notion-types@^4.14.1, notion-types@^4.16.0:
->>>>>>> 73b8cc2546e07f70d34697e4c81e67667aaf05aa
   version "4.16.0"
   resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-4.16.0.tgz#617df1996b47678d02917d968fea2a2fc3208add"
   integrity sha512-guqtW8JdoIBnTyIO79gmqQzAe3SDeHX2hxf/kYMYlSpuzu7km2HUDMUVWmPmQRsAAMVF2atueZdH5INuG59kAg==
 
-<<<<<<< HEAD
 notion-utils@^4.16.0:
-=======
-notion-utils@^4.14.1, notion-utils@^4.16.0:
->>>>>>> 73b8cc2546e07f70d34697e4c81e67667aaf05aa
   version "4.16.0"
   resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-4.16.0.tgz#3f022ebc9f3235edd106b51b6f45a53886d6f6fe"
   integrity sha512-+jhUEIQjnTfKjXvY9CZAEotea5+pjo3V/yIi2PrqQuXiQfL28Dn09VnVNQ5fWTEtyoQEENkyNmMoBI0Nzn4Xiw==
@@ -4543,11 +4531,7 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-<<<<<<< HEAD
 react-notion-x@^4.16.2:
-=======
-react-notion-x@^4.14.2:
->>>>>>> 73b8cc2546e07f70d34697e4c81e67667aaf05aa
   version "4.16.2"
   resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.16.2.tgz#e4e1fcb8fab53ca47f4ea7267fda763cdba904d3"
   integrity sha512-/OzKlLEmkJVUpWtvjGBJX4NEYLWCGsXyyGPsK2mJbYITwTHESSOBdluLQ+COd12sssfOkgV7tnn/YBp5i0LACA==
