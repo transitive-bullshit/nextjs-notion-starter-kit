@@ -7,8 +7,8 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '卢东东博客',
-  domain: 'ludongdong.com',
+  name: '卢东东 x Joy.Lu',
+  domain: 'xjoylu.com',
   author: '卢东东',
 
   // open graph metadata (optional)
@@ -18,7 +18,9 @@ module.exports = {
 
   // social usernames (optional)
   github: 'xjoylu',
-
+  twitter:'xjoylu',
+  linkedin:'',
+  
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
   defaultPageIcon: null,
