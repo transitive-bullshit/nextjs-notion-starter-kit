@@ -11,7 +11,7 @@ export const getStaticProps = async ({ params }) => {
   console.log('rawPageId', rawPageId)
 
   try {
-    if (rawPageId === 'sitemap.xml' || rawPageId === 'robots.txt') {
+    if (rawPageId === 'sitemap.xml' || rawPageId === 'robots.txt' || rawPageId === 'feed.xml') {
       return {
         redirect: {
           destination: `/api/${rawPageId}`
