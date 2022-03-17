@@ -36,7 +36,7 @@ module.exports = {
   // NOTE: this requires you to set up an external image proxy
   imageCDNHost: null,
 
-  // Giscus comments via Github Discusstion (optional, priority over Utterances)
+  // Giscus comments via Github Discusstion (optional, has a priority over Utterances)
   //
   // To generate the following configs, visit https://giscus.app/.
   giscusGithubConfig: {
