@@ -7,14 +7,14 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Transitive Bullshit',
-  domain: 'transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: '島島阿學',
+  domain: 'article.daoedu.tw',
+  author: '島島阿學學習社群',
 
   // open graph metadata (optional)
-  description: 'Example site description',
-  socialImageTitle: 'Transitive Bullshit',
-  socialImageSubtitle: 'Hello World! 👋',
+  description: '島島阿學',
+  socialImageTitle: '島島阿學',
+  socialImageSubtitle: '島島阿學 👋',
 
   // social usernames (optional)
   twitter: 'transitive_bs',
