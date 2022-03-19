@@ -53,7 +53,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^11.1.2",
     "@types/classnames": "^2.3.1",
-    "@types/node": "^12.20.0 || ^14.13.1 || >=16.0.0",
+    "@types/node": "^16.11.2",
     "@types/node-fetch": "^3.0.3",
     "@types/react": "^17.0.31",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
