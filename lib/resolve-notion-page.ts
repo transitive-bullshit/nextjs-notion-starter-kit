@@ -68,7 +68,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     site = await getSiteForDomain(domain)
     pageId = site.rootNotionPageId
 
-    console.log(site)
+    // console.log(site)
     recordMap = await getPage(pageId)
   }
 
