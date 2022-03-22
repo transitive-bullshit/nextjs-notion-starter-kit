@@ -5,7 +5,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
+  reactStrictMode: false,
   images: {
-    domains: ['pbs.twimg.com']
+    domains: ['pbs.twimg.com'],
+    loader: 'akamai',
+    path: '/'
   }
 })
