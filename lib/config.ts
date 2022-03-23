@@ -73,9 +73,6 @@ export const defaultPageCoverPosition: number = getSiteConfig(
   0.5
 )
 
-// Optional image CDN host to proxy all image requests through
-export const imageCDNHost: string | null = getSiteConfig('imageCDNHost', null)
-
 // Optional whether or not to enable support for LQIP preview images
 export const isPreviewImageSupportEnabled: boolean = getSiteConfig(
   'isPreviewImageSupportEnabled',
@@ -92,6 +89,23 @@ export const isTweetEmbedSupportEnabled: boolean = getSiteConfig(
 export const includeNotionIdInUrls: boolean = getSiteConfig(
   'includeNotionIdInUrls',
   !!isDev
+)
+
+// ----------------------------------------------------------------------------
+
+// Optional redis instance for persisting preview images
+// (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
+// we recommend that you store these in a local `.env` file
+export const redisHost: string | null = getEnv('REDIS_HOST', null)
+export const redisPassword: string | null = getEnv('REDIS_PASSWORD', null)
+export const redisUser: string = getEnv('REDIS_USER', 'default')
+export const redisUrl = getEnv(
+  'REDIS_URL',
+  `redis://${redisUser}:${redisPassword}@${redisHost}`
+)
+export const redisNamespace: string | null = getEnv(
+  'REDIS_NAMESPACE',
+  'preview-images'
 )
 
 // ----------------------------------------------------------------------------

@@ -85,7 +85,6 @@
 
 .notion-collection-card-cover {
   border-radius: 16px;
-  overflow: visible;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
@@ -179,14 +178,21 @@
   padding: 0;
 }
 
-.notion-page-cover {
-  max-width: 1200px;
+.notion-page-cover-wrapper,
+.notion-page-cover-wrapper span,
+.notion-page-cover-wrapper img {
+  max-width: 1200px !important;
   border-radius: 24px;
+}
+
+.notion-page-cover-wrapper {
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
 @media only screen and (max-width: 1200px) {
-  .notion-page-cover {
+  .notion-page-cover-wrapper,
+  .notion-page-cover-wrapper span,
+  .notion-page-cover-wrapper img {
     border-radius: 0;
   }
 }

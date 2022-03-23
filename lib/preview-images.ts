@@ -2,9 +2,10 @@ import got from 'got'
 import lqip from 'lqip-modern'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
-
 import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types'
-import { mapNotionImageUrl } from './map-image-url'
+
+import { db } from './db'
+import { mapImageUrl } from './map-image-url'
 
 // NOTE: this is just an example of how to pre-compute preview images.
 // Depending on how many images you're working with, this can potentially be
@@ -46,7 +47,7 @@ export async function getPreviewImageMap(
       return null
     })
     .filter(Boolean)
-    .map(({ block, url }) => mapNotionImageUrl(url, block))
+    .map(({ block, url }) => mapImageUrl(url, block))
     .filter(Boolean)
 
   const urls = Array.from(new Set(imageUrls))
@@ -60,16 +61,26 @@ export async function getPreviewImageMap(
 }
 
 async function createPreviewImage(url: string): Promise<PreviewImage | null> {
+  const cacheKey = url
+
   try {
+    const cachedPreviewImage = await db.get(cacheKey)
+    if (cachedPreviewImage) {
+      return cachedPreviewImage
+    }
+
     const { body } = await got(url, { responseType: 'buffer' })
     const result = await lqip(body)
     console.log('lqip', result.metadata)
 
-    return {
+    const previewImage = {
       originalWidth: result.metadata.originalWidth,
       originalHeight: result.metadata.originalHeight,
       dataURIBase64: result.metadata.dataURIBase64
     }
+
+    await db.set(cacheKey, previewImage)
+    return previewImage
   } catch (err) {
     console.warn('error creating preview image', url, err)
     return null
