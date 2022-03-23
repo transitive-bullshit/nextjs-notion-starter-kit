@@ -48,7 +48,6 @@ export const mapImageUrl = (imageUrl: string) => {
   }
 
   if (imageCDNHost) {
-    // Our proxy uses Cloudflare's global CDN to cache these image assets
     return `${imageCDNHost}/${encodeURIComponent(imageUrl)}`
   } else {
     return imageUrl

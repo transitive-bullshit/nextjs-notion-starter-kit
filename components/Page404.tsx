@@ -28,7 +28,8 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
           ) : (
             pageId && (
               <p>
-                Make sure that Notion page "{pageId}" is publicly accessible.
+                Make sure that Notion page &quot;{pageId}&quot; is publicly
+                accessible.
               </p>
             )
           )}

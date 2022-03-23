@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -33,9 +34,12 @@ import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 import { GitHubShareButton } from './GitHubShareButton'
-import { ReactUtterances } from './ReactUtterances'
 
 import styles from './styles.module.css'
+
+// -----------------------------------------------------------------------------
+// dynamic imports for optional components
+// -----------------------------------------------------------------------------
 
 // const Code = dynamic(() =>
 //   import('react-notion-x').then((notion) => notion.Code)
@@ -51,21 +55,15 @@ import styles from './styles.module.css'
 //     ssr: false
 //   }
 // )
-
-// TODO: PDF support via "react-pdf" package has numerous troubles building
-// with next.js
+//
 // const Pdf = dynamic(
-//   () => import('react-notion-x').then((notion) => notion.Pdf),
+//   () => import('react-notion-x').then((notion) => (notion as any).Pdf),
 //   { ssr: false }
 // )
-
-const Equation = dynamic(() =>
-  import('react-notion-x').then((notion) => notion.Equation)
-)
-
-// we're now using a much lighter-weight tweet renderer react-static-tweets
-// instead of the official iframe-based embed widget from twitter
-// const Tweet = dynamic(() => import('react-tweet-embed'))
+//
+// const Equation = dynamic(() =>
+//   import('react-notion-x').then((notion) => notion.Equation)
+// )
 
 const Modal = dynamic(
   () => import('react-notion-x').then((notion) => notion.Modal),
@@ -139,22 +137,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
 
-  let comments: React.ReactNode = null
   let pageAside: React.ReactChild = null
 
   // only display comments and page actions on blog post pages
   if (isBlogPost) {
-    if (config.utterancesGitHubRepo) {
-      comments = (
-        <ReactUtterances
-          repo={config.utterancesGitHubRepo}
-          issueMap='issue-term'
-          issueTerm='title'
-          theme={darkMode.value ? 'photon-dark' : 'github-light'}
-        />
-      )
-    }
-
     const tweet = getPageTweet(block, recordMap)
     if (tweet) {
       pageAside = <PageActions tweet={tweet} />
@@ -249,15 +235,43 @@ export const NotionPage: React.FC<types.PageProps> = ({
               <a {...props} />
             </Link>
           ),
+          image: ({
+            src,
+            alt,
+
+            width,
+            height,
+
+            className,
+            style,
+
+            ...rest
+          }) => {
+            const layout = width && height ? 'intrinsic' : 'fill'
+
+            return (
+              <Image
+                {...rest}
+                className={className}
+                src={src}
+                alt={alt}
+                width={layout === 'intrinsic' && width}
+                height={layout === 'intrinsic' && height}
+                objectFit={style?.objectFit}
+                objectPosition={style?.objectPosition}
+                layout={layout}
+              />
+            )
+          },
           code: Code,
           collection: Collection,
           collectionRow: CollectionRow,
           tweet: Tweet,
-          modal: Modal,
-          equation: Equation
+          modal: Modal
         }}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
+        rootDomain={site.domain}
         fullPage={!isLiteMode}
         darkMode={darkMode.value}
         previewImages={site.previewImages !== false}
@@ -270,7 +284,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapNotionImageUrl}
         searchNotion={searchNotion}
-        pageFooter={comments}
         pageAside={pageAside}
         footer={
           <Footer
