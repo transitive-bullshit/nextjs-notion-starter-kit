@@ -1,10 +1,15 @@
-// const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
-
+const withPlugins = require('next-compose-plugins')
+// const withTM = require('next-transpile-modules')([
+//   'react-notion-x',
+//   'notion-client',
+//   'notion-utils',
+//   'notion-types'
+// ])
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
 
-module.exports = withBundleAnalyzer({
+module.exports = withPlugins([withBundleAnalyzer], {
   staticPageGenerationTimeout: 300,
   images: {
     domains: [

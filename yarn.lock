@@ -1092,6 +1092,14 @@ end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
+enhanced-resolve@^5.7.0:
+  version "5.9.2"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.9.2.tgz#0224dcd6a43389ebfb2d55efee517e5466772dd9"
+  integrity sha512-GIm3fQfwLJ8YZx2smuHpBKkXC1yOk+OBEmKckVyL0i/ea8mqDEykK3ld5dgH1QYPNyT/lIllxV2LULnxCHaHkA==
+  dependencies:
+    graceful-fs "^4.2.4"
+    tapable "^2.2.0"
+
 entities@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
@@ -1168,6 +1176,11 @@ es-to-primitive@^1.2.1:
     is-callable "^1.1.4"
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
+
+escalade@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
+  integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
 escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -1623,6 +1636,11 @@ graceful-fs@^4.1.2:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
+
+graceful-fs@^4.2.4:
+  version "4.2.9"
+  resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
+  integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
 
 gzip-size@^6.0.0:
   version "6.0.0"
@@ -2479,6 +2497,19 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
+next-compose-plugins@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.1.tgz#020fc53f275a7e719d62521bef4300fbb6fde5ab"
+  integrity sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==
+
+next-transpile-modules@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/next-transpile-modules/-/next-transpile-modules-9.0.0.tgz#133b1742af082e61cc76b02a0f12ffd40ce2bf90"
+  integrity sha512-VCNFOazIAnXn1hvgYYSTYMnoWgKgwlYh4lm1pKbSfiB3kj5ZYLcKVhfh3jkPOg1cnd9DP+pte9yCUocdPEUBTQ==
+  dependencies:
+    enhanced-resolve "^5.7.0"
+    escalade "^3.1.1"
+
 next@^12.1.0:
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/next/-/next-12.1.0.tgz#c33d753b644be92fc58e06e5a214f143da61dd5d"
@@ -2547,27 +2578,27 @@ normalize-url@^4.1.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.5.0.tgz#453354087e6ca96957bd8f5baf753f5982142129"
   integrity sha512-2s47yzUxdexf1OhyRi4Em83iQk0aPvwTddtFz4hnSSw9dCEsLEGf6SwIO8ss/19S9iBb5sJaOuTvTGDeZI00BQ==
 
-notion-client@^4.19.8:
-  version "4.19.8"
-  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-4.19.8.tgz#dd5b5236aa82cee05a597b98ab31ea58701e1f8e"
-  integrity sha512-be9hMYILCKH8kQIUhNJKTBj5VWKufRvnMIRcP1Rj2nxdXW6w0vyTeL6akqYrdMoIJq1wxL3eFFwhB7Ji7b0cdQ==
+notion-client@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-5.0.0.tgz#6578e214a52c874e599b3d9f3834b936cc18e402"
+  integrity sha512-FpQqMpPts+45ourp5Q9NK55ku+HM0j5iQhmvRSFLm+xtrpNwn4vsetFQ+YUEUeYb47NfQl1MOGmadX0pkNNzyA==
   dependencies:
     got "^11.8.1"
-    notion-types "^4.19.8"
-    notion-utils "^4.19.8"
+    notion-types "^5.0.0"
+    notion-utils "^5.0.0"
     p-map "^4.0.0"
 
-notion-types@^4.19.8:
-  version "4.19.8"
-  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-4.19.8.tgz#2e89d93a1cdcc85ede8b70a48baa32e5d6ab4db8"
-  integrity sha512-KLszLpe2UtejnX0bCoLe8JFZPeQyUS15F29LW4iRPFwnlNZePWz0h303F0IBhxOXQRiWIwy4mEGzRDu45a+dhA==
+notion-types@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-5.0.0.tgz#86149cfc701b38de685617a00e7a9f65c6cb2103"
+  integrity sha512-dSRNftMeqGXVp+xax5XuToWji1BzjCLPT2qGcoAgCaaDjwA4CSiFKHRghBaTjfrjx3JzYTVvSxaeMQW4g5W4mw==
 
-notion-utils@^4.19.8:
-  version "4.19.8"
-  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-4.19.8.tgz#afda224b20def44922c4214e4e9c4df225bf48b1"
-  integrity sha512-d85bSrfr58/vReesEALiZcDcczRa/iiBZagmoNFjLX87ooMeJoPs9CLwGuCg0inhDFFqAU8c4PJgAc7/FNOM/A==
+notion-utils@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-5.0.0.tgz#4b1ffb38099f30e8bb409e6fb404ed36aa0161af"
+  integrity sha512-XYyxwpR83hH8GK2rOvKZtThVHCd2fYXN/iuR7pd5+uQ81b/Xuf6lf2XLbY3cGb4/o4bUJ7PlF6tM0tjBp5+yMA==
   dependencies:
-    notion-types "^4.19.8"
+    notion-types "^5.0.0"
     p-queue "6"
 
 npm-run-all@^4.1.5:
@@ -2880,7 +2911,12 @@ prettier@^2.4.1:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.4.1.tgz#671e11c89c14a4cfc876ce564106c4a6726c9f5c"
   integrity sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==
 
-prismjs@^1.20.0, prismjs@~1.23.0:
+prismjs@^1.27.0:
+  version "1.27.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.27.0.tgz#bb6ee3138a0b438a3653dd4d6ce0cc6510a45057"
+  integrity sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==
+
+prismjs@~1.23.0:
   version "1.23.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.23.0.tgz#d3b3967f7d72440690497652a9d40ff046067f33"
   integrity sha512-c29LVsqOaLbBHuIbsTxaKENh1N2EQBOHaWv7gkHN4dgRbxSREqDnDbtFJYdpPauS4YCplMSNCABQ6Eeor69bAA==
@@ -3115,10 +3151,10 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^4.19.8:
-  version "4.19.8"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-4.19.8.tgz#9492ea4d80f348b36abd72026d307fd352ba2374"
-  integrity sha512-dbLAyGa0gDrdrK+DyuZ3imTyvEs16w+PbhHAIqjkJqnvQU5myudzkOioi2XdO1mIYeiTxgTFvnThErxYmi3T9w==
+react-notion-x@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-5.0.0.tgz#f47601efb0b8b8e120f020c2dfde7d15a1a16454"
+  integrity sha512-OU0E+EekyQmwTgaVBtppyXYKMZ+K0nsrsNUmh92RPAOvM7Z9AjKeTbKUPzEguBJQ3gQGTVFtDCvbVjkqjJkbWA==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     date-fns "^2.15.0"
@@ -3127,9 +3163,9 @@ react-notion-x@^4.19.8:
     katex "^0.13.18"
     lodash.throttle "^4.1.1"
     medium-zoom "^1.0.6"
-    notion-types "^4.19.8"
-    notion-utils "^4.19.8"
-    prismjs "^1.20.0"
+    notion-types "^5.0.0"
+    notion-utils "^5.0.0"
+    prismjs "^1.27.0"
     rc-dropdown "^3.1.2"
     rc-menu "^9.0.14"
     react-hotkeys-hook "^3.0.3"
@@ -3814,6 +3850,11 @@ swr@^1.0.0-beta.5:
   integrity sha512-Iz4Q9vXDNN8TDTsF8iZol19usiGy2FCrTUva9VaW2cLoLo5YCfhMmgTh3pX32mNDL+p6lU4nNb67UA8/ScQbtQ==
   dependencies:
     dequal "2.0.2"
+
+tapable@^2.2.0:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/tapable/-/tapable-2.2.1.tgz#1967a73ef4060a82f12ab96af86d52fdb76eeca0"
+  integrity sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==
 
 tar-fs@^2.0.0, tar-fs@^2.1.1:
   version "2.1.1"

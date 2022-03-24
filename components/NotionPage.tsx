@@ -1,7 +1,5 @@
 import * as React from 'react'
-import Image from 'next/image'
 import Head from 'next/head'
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import cs from 'classnames'
 import { useRouter } from 'next/router'
@@ -13,7 +11,8 @@ import { PageBlock } from 'notion-types'
 import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 
 // core notion renderer
-import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
+import { NotionRenderer } from 'react-notion-x'
+import { Image, PageLink } from 'react-notion-x/build/esm/third-party/next'
 
 // utils
 import { getBlockTitle } from 'notion-utils'
@@ -41,33 +40,31 @@ import styles from './styles.module.css'
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
 
-// const Code = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Code)
-// )
-//
-// const Collection = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Collection)
-// )
-//
-// const CollectionRow = dynamic(
-//   () => import('react-notion-x').then((notion) => notion.CollectionRow),
-//   {
-//     ssr: false
-//   }
-// )
-//
-// const Pdf = dynamic(
-//   () => import('react-notion-x').then((notion) => (notion as any).Pdf),
-//   { ssr: false }
-// )
-//
-// const Equation = dynamic(() =>
-//   import('react-notion-x').then((notion) => notion.Equation)
-// )
-
+const Code = dynamic(() =>
+  import('react-notion-x/build/esm/third-party/code').then((m) => m.Code)
+)
+const Collection = dynamic(() =>
+  import('react-notion-x/build/esm/third-party/collection').then(
+    (m) => m.Collection
+  )
+)
+const Equation = dynamic(() =>
+  import('react-notion-x/build/esm/third-party/equation').then(
+    (m) => m.Equation
+  )
+)
+const Pdf = dynamic(
+  () => import('react-notion-x/build/esm/third-party/pdf').then((m) => m.Pdf),
+  {
+    ssr: false
+  }
+)
 const Modal = dynamic(
-  () => import('react-notion-x').then((notion) => notion.Modal),
-  { ssr: false }
+  () =>
+    import('react-notion-x/build/esm/third-party/modal').then((m) => m.Modal),
+  {
+    ssr: false
+  }
 )
 
 export const NotionPage: React.FC<types.PageProps> = ({
@@ -211,70 +208,21 @@ export const NotionPage: React.FC<types.PageProps> = ({
           pageId === site.rootNotionPageId && 'index-page'
         )}
         components={{
-          pageLink: ({
-            href,
-            as,
-            passHref,
-            prefetch,
-            replace,
-            scroll,
-            shallow,
-            locale,
-            ...props
-          }) => (
-            <Link
-              href={href}
-              as={as}
-              passHref={passHref}
-              prefetch={prefetch}
-              replace={replace}
-              scroll={scroll}
-              shallow={shallow}
-              locale={locale}
-            >
-              <a {...props} />
-            </Link>
-          ),
-          image: ({
-            src,
-            alt,
-
-            width,
-            height,
-
-            className,
-            style,
-
-            ...rest
-          }) => {
-            const layout = width && height ? 'intrinsic' : 'fill'
-
-            return (
-              <Image
-                {...rest}
-                className={className}
-                src={src}
-                alt={alt}
-                width={layout === 'intrinsic' && width}
-                height={layout === 'intrinsic' && height}
-                objectFit={style?.objectFit}
-                objectPosition={style?.objectPosition}
-                layout={layout}
-              />
-            )
-          },
-          code: Code,
-          collection: Collection,
-          collectionRow: CollectionRow,
-          tweet: Tweet,
-          modal: Modal
+          Image,
+          PageLink,
+          Code,
+          Collection,
+          Equation,
+          Pdf,
+          Modal,
+          Tweet
         }}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
         fullPage={!isLiteMode}
         darkMode={darkMode.value}
-        previewImages={site.previewImages !== false}
+        previewImages={!!recordMap.preview_images}
         showCollectionViewDropdown={false}
         showTableOfContents={showTableOfContents}
         minTableOfContentsItems={minTableOfContentsItems}
