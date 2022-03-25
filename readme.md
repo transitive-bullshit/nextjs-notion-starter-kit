@@ -114,11 +114,7 @@ If you want to copy some of the fancier elements of my site, then you'll have to
 
 [Fathom](https://usefathom.com/ref/42TFOZ) provides a lightweight alternative to Google Analytics.
 
-It's optional, but I really love how simple and elegant their solution is.
-
-To enable analytics, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable.
-
-This environment variable will only be taken into account in production, so you don't have to worry about messing up your analytics with localhost development.
+To enable the optional analytics feature, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will only be taken into account in production.
 
 ### Automatic Table of Contents
 
@@ -132,7 +128,7 @@ If a page has less than `minTableOfContentsItems` (default 3), the table of cont
 
 This table of contents uses the same logic that Notion uses for its built-in Table of Contents block (see [getPageTableOfContents](https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts) for the underlying logic and associated unit tests).
 
-## Mobile
+## Responsive
 
 <p align="center">
   <img alt="Mobile article page" src="https://user-images.githubusercontent.com/552829/160132983-c2dd5830-80b3-4a0e-a8f1-abab5dbeed11.jpg" width="300">
