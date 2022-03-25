@@ -9,7 +9,8 @@ export default withBundleAnalyzer({
       'www.notion.so',
       'notion.so',
       'images.unsplash.com',
-      'pbs.twimg.com'
+      'pbs.twimg.com',
+      'abs.twimg.com'
     ],
     formats: ['image/avif', 'image/webp']
   }
