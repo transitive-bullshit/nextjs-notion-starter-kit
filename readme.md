@@ -85,7 +85,7 @@ REDIS_PASSWORD='TODO'
 
 Note that support for preview images and redis caching are both optional. If you’d rather not deal with them, just disable them in your site config.
 
-## Theming
+## Styles
 
 All CSS styles that customize Notion content are located in [styles/notion.css](./styles/notion.css).
 
@@ -93,7 +93,7 @@ They mainly target global CSS classes exported by react-notion-x [styles.css](ht
 
 It should be pretty easy to customize most styling-related things, especially with local development and hot reload.
 
-### Dark Mode
+## Dark Mode
 
 <p align="center">
   <img alt="Light Mode" src="https://transitive-bs.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F83ea9f0f-4761-4c0b-b53e-1913627975fc%2Ftransitivebullsh.it_-opt.jpg?table=block&id=ed7e8f60-c6d1-449e-840b-5c7762505c44&spaceId=fde5ac74-eea3-4527-8f00-4482710e1af3&width=2000&userId=&cache=v2" width="45%"> 
@@ -103,19 +103,7 @@ It should be pretty easy to customize most styling-related things, especially wi
 
 Dark mode is fully supported and can be toggled via the sun / moon icon in the footer.
 
-## Extras
-
-All extra dependencies are optional -- the project should work just fine out of the box.
-
-If you want to copy some of the fancier elements of my site, then you'll have to set up a few extras.
-
-### Fathom Analytics
-
-[Fathom](https://usefathom.com/ref/42TFOZ) provides a lightweight alternative to Google Analytics.
-
-To enable the optional analytics feature, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will only be taken into account in production.
-
-### Automatic Table of Contents
+## Automatic Table of Contents
 
 <p align="center">
   <img alt="Smooth ToC Scrollspy" src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcb2df62d-9028-440b-964b-117711450921%2Ftoc2.gif?table=block&id=d7e9951b-289c-4ff2-8b82-b0a61fe260b1&cache=v2" width="240">
@@ -132,6 +120,14 @@ This table of contents uses the same logic that Notion uses for its built-in Tab
 <p align="center">
   <img alt="Mobile article page" src="https://user-images.githubusercontent.com/552829/160132983-c2dd5830-80b3-4a0e-a8f1-abab5dbeed11.jpg" width="300">
 </p>
+
+## Fathom Analytics
+
+[Fathom](https://usefathom.com/ref/42TFOZ) provides a lightweight alternative to Google Analytics.
+
+To enable analytics, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will only be taken into account in production.
+
+Note that this feature is completely optional.
 
 ## License
 
