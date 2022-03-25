@@ -7,8 +7,8 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '卢东东 x Joy.Lu',
-  domain: 'xjoylu.com',
+  name: '卢东东 - 偷懒界翘楚',
+  domain: 'si.lu',
   author: '卢东东',
 
   // open graph metadata (optional)
