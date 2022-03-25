@@ -1,15 +1,8 @@
-const withPlugins = require('next-compose-plugins')
-// const withTM = require('next-transpile-modules')([
-//   'react-notion-x',
-//   'notion-client',
-//   'notion-utils',
-//   'notion-types'
-// ])
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-})
+import withBundleAnalyzer from '@next/bundle-analyzer'
 
-module.exports = withPlugins([withBundleAnalyzer], {
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true'
+})({
   staticPageGenerationTimeout: 300,
   images: {
     domains: [

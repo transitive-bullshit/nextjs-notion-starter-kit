@@ -1,5 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
+import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import cs from 'classnames'
 import { useRouter } from 'next/router'
@@ -12,7 +14,6 @@ import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 
 // core notion renderer
 import { NotionRenderer } from 'react-notion-x'
-import { Image, PageLink } from 'react-notion-x/build/esm/third-party/next'
 
 // utils
 import { getBlockTitle } from 'notion-utils'
@@ -208,8 +209,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
           pageId === site.rootNotionPageId && 'index-page'
         )}
         components={{
-          Image,
-          PageLink,
+          nextImage: Image,
+          nextLink: Link,
           Code,
           Collection,
           Equation,

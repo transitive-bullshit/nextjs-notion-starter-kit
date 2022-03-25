@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // where it all starts -- the site's root Notion page (required)
   rootNotionPageId: '78fc5a4b88d74b0e824e29407e9f1ec1',
 
