@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { SiteMap } from '../lib/types'
-import { host } from '../lib/config'
-import { getSiteMaps } from '../lib/get-site-maps'
+import { SiteMap } from '../../lib/types'
+import { host } from '../../lib/config'
+import { getSiteMaps } from '../../lib/get-site-maps'
 
 export default async (
   req: NextApiRequest,
@@ -24,9 +24,9 @@ export default async (
   res.end()
 }
 
-const createSitemap = (
-  siteMap: SiteMap
-) => `<?xml version="1.0" encoding="UTF-8"?>
+const createSitemap = (siteMap: SiteMap) =>
+  `
+  <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
         <loc>${host}</loc>
@@ -46,4 +46,5 @@ const createSitemap = (
         )
         .join('')}
     </urlset>
-    `
+  </xml>
+  `
