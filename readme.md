@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://transitivebullsh.it/nextjs-notion-starter-kit">
-    <img alt="Example article page" src="https://ssfy.io/https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252Fd147d76c-28a4-4cdd-a503-2d6bcc50a787%252Ftransitivebullsh.it__(5)-opt.jpg%3Ftable%3Dblock%26id%3D5b87b717-ca5b-49da-b17c-12c3eab1644a%26cache%3Dv2" width="689">
+    <img alt="Example article page" src="https://user-images.githubusercontent.com/552829/160132094-12875e09-41ec-450a-80fc-ae8cd488129d.jpg" width="689">
   </a>
 </p>
 
@@ -8,7 +8,7 @@
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
-[![Build Status](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit.svg?branch=main)](https://travis-ci.com/transitive-bullshit/nextjs-notion-starter-kit) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
+[![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 
 ## Intro
 
@@ -111,30 +111,12 @@ If a page has less than `minTableOfContentsItems` (default 3), the table of cont
 
 This table of contents uses the same logic that Notion uses for its built-in Table of Contents block (see [getPageTableOfContents](https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts) for the underlying logic and associated unit tests).
 
-## Screenshots
-
-### Mobile Article Page
+## Mobile
 
 <p align="center">
-  <a href="https://transitivebullsh.it/free-resources-for-indie-saas-devs">
-    <img alt="Mobile Article Page" src="https://transitive-bs.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6c05a0f9-59a0-4322-bef9-3f08fe4efc6a%2Farticle-mobile-opt.jpg?table=block&id=a1eb2263-fdf1-4d51-a3d4-8a02cb32bbba&spaceId=fde5ac74-eea3-4527-8f00-4482710e1af3&width=2000&userId=&cache=v2" width="300">
-  </a>
-</p>
-
-### Desktop Home Page
-
-<p align="center">
-  <a href="https://transitivebullsh.it">
-    <img alt="Desktop Home Page" src="https://transitive-bs.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F1d3ab4b2-60af-4b95-b35d-cac5d440b8ca%2Ftransitivebullsh.it_-opt.jpg?table=block&id=97f445e8-2da1-41cd-996a-5ad0e73a1d79&spaceId=fde5ac74-eea3-4527-8f00-4482710e1af3&width=2000&userId=&cache=v2" width="600">
-  </a>
-</p>
-
-### Desktop Article Page (Dark Mode)
-
-<p align="center">
-  <a href="https://transitivebullsh.it/free-resources-for-indie-saas-devs">
-    <img alt="Desktop Article Page" src="https://transitive-bs.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fb564d13f-b71b-4473-8531-65b5dd9b995f%2Ftransitivebullsh.it__(4)-opt.jpg?table=block&id=16e03de2-0df7-4232-a129-e1666505c4d2&spaceId=fde5ac74-eea3-4527-8f00-4482710e1af3&width=2000&userId=&cache=v2" width="600">
-  </a>
+  <img alt="Mobile home page" src="https://user-images.githubusercontent.com/552829/160132901-c9454301-222a-4349-b666-9226c468eb16.jpg" width="45%"> 
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="Mobile article page" src="https://user-images.githubusercontent.com/552829/160132983-c2dd5830-80b3-4a0e-a8f1-abab5dbeed11.jpg" width="45%">
 </p>
 
 ## License
