@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import RSS from 'rss';
 
-import { host, name } from '../lib/config';
+import { host, name, description, author } from '../lib/config';
 import { getSiteMaps } from '../lib/get-site-maps'
 import * as types from 'lib/types'
 
@@ -24,7 +24,10 @@ export default async (
   const feed = new RSS({
     title: name,
     site_url: host,
-    feed_url: `${host}/feed.xml`
+    feed_url: `${host}/feed.xml`,
+    description,
+    copyright: `${new Date().getFullYear()} ${author}`,
+    webMaster: author,
   })
 
   siteMaps.forEach((siteMap: types.SiteMap) => {
@@ -38,6 +41,7 @@ export default async (
         url: `${host}/${pageURL}`,
         guid: pageData.pageID,
         date: pageData.createdTime,
+        author,
       })
     })
   })

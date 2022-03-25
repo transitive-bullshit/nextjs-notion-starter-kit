@@ -14,11 +14,11 @@ module.exports = {
   // basic site info (required)
   name: 'FKYnJYQ',
   domain: 'blog.fkynjyq.com',
-  author: 'FKY',
+  author: 'Feng Kaiyu',
 
   // open graph metadata (optional)
   description: 'Code for Good.',
-  socialImageTitle: 'FKY',
+  socialImageTitle: 'Feng Kaiyu',
   socialImageSubtitle: '一个有技术和思考的角落',
 
   // social usernames (optional)
