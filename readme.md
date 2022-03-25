@@ -12,11 +12,9 @@
 
 ## Intro
 
-This repo is what I use to power my personal blog / portfolio site [transitivebullsh.it](https://transitivebullsh.it).
+This repo is what I use to power my personal blog and portfolio site [transitivebullsh.it](https://transitivebullsh.it).
 
-It uses Notion as a CMS, fetching content from Notion and then uses [Next.js](https://nextjs.org/) and [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything.
-
-The site is then deployed to [Vercel](http://vercel.com).
+It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything, [Next.js](https://nextjs.org/) as the web SDK, and [Vercel](http://vercel.com) for world class hosting.
 
 ## Features
 
@@ -24,6 +22,7 @@ The site is then deployed to [Vercel](http://vercel.com).
 - Robust support for Notion content via [react-notion-x](https://github.com/NotionX/react-notion-x)
 - Next.js / TS / React / Notion
 - Excellent page speeds
+- Smooth image previews
 - Automatic pretty URLs
 - Automatic table of contents
 - Full support for dark mode
