@@ -113,7 +113,7 @@ By default, every article page will have a table of contents displayed as an `as
 
 If a page has less than `minTableOfContentsItems` (default 3), the table of contents will be hidden. It is also hidden on the index page and if the browser window is too small.
 
-This table of contents uses the same logic that Notion uses for its built-in Table of Contents block (see [getPageTableOfContents](https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts) for the underlying logic and associated unit tests).
+This table of contents uses the same logic that Notion uses for its built-in Table of Contents block (see [getPageTableOfContents](https://github.com/NotionX/react-notion-x/blob/master/packages/notion-utils/src/get-page-table-of-contents.ts) for the underlying logic).
 
 ## Responsive
 
@@ -127,7 +127,7 @@ All pages are designed to be responsive across common device sizes.
 
 [Fathom](https://usefathom.com/ref/42TFOZ) provides a lightweight alternative to Google Analytics.
 
-To enable analytics, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will only be taken into account in production.
+To enable analytics, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will only be used in production.
 
 Note that this feature is completely optional.
 
