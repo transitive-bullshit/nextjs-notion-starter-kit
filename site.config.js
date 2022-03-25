@@ -28,9 +28,12 @@ export default {
   defaultPageCoverPosition: 0.5,
 
   // whether or not to enable support for LQIP preview images (optional)
-  // NOTE: this requires you to set up an external key-value store and add the
-  // environment variables specified in .env.example
   isPreviewImageSupportEnabled: true,
+
+  // whether or not redis is enabled for caching generated preview images (optional)
+  // NOTE: if you enable redis, you need to set the `REDIS_HOST` and `REDIS_PASSWORD`
+  // environment variables. see the readme for more info
+  isRedisEnabled: false,
 
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths

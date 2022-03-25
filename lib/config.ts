@@ -94,6 +94,8 @@ export const includeNotionIdInUrls: boolean = getSiteConfig(
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images
+export const isRedisEnabled: boolean = getSiteConfig('isRedisEnabled', false)
+
 // (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
 // we recommend that you store these in a local `.env` file
 export const redisHost: string | null = getEnv('REDIS_HOST', null)

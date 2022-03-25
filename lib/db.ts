@@ -1,14 +1,12 @@
 import Keyv from 'keyv'
 
-import {
-  isPreviewImageSupportEnabled,
-  redisUrl,
-  redisNamespace
-} from './config'
+import { isRedisEnabled, redisUrl, redisNamespace } from './config'
 
 let db: Keyv
-if (isPreviewImageSupportEnabled) {
+if (isRedisEnabled) {
   db = new Keyv(redisUrl, { namespace: redisNamespace || undefined })
+} else {
+  db = new Keyv()
 }
 
 export { db }

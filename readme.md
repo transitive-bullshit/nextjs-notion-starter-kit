@@ -65,6 +65,27 @@ See [mapPageUrl](./lib/map-page-url.ts) and [getCanonicalPageId](https://github.
 
 NOTE: if you have multiple pages in your workspace with the same slugified name, the app will throw an error letting you know that there are duplicate URL pathnames.
 
+## Preview Images
+
+<p align="center">
+  <img alt="Example preview image" src="https://user-images.githubusercontent.com/552829/160142320-35343317-aa9e-4710-bcf7-67e5cdec586d.gif" width="458">
+</p>
+
+We use [next/image](https://nextjs.org/docs/api-reference/next/image) to serve optimal images, with optional preview images generated via [lqip-modern](https://github.com/transitive-bullshit/lqip-modern). This gives us extremely optimized image support for sexy smooth images.
+
+Preview images are **enabled by default**, but they can be slow to generate, so if you want to disable them, set `isPreviewImageSupportEnabled` to `false` in `site.config.js`.
+
+If you want to cache generated preview images to speed up subsequent builds, you'll need to first set up an external [Redis](https://redis.io) data store. To enable redis caching, set `isRedisEnabled` to `true` in `site.config.js` and then set `REDIS_HOST` and `REDIS_PASSWORD` environment variables to point to your redis instance.
+
+You can do this locally adding a `.env` file:
+
+```bash
+REDIS_HOST='TODO'
+REDIS_PASSWORD='TODO'
+```
+
+Note that support for preview images and redis caching are both optional. If you’d rather not deal with them, just disable them in your site config.
+
 ## Theming
 
 All CSS styles that customize Notion content are located in [styles/notion.css](./styles/notion.css).
