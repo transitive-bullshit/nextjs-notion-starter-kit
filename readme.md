@@ -121,6 +121,8 @@ This table of contents uses the same logic that Notion uses for its built-in Tab
   <img alt="Mobile article page" src="https://user-images.githubusercontent.com/552829/160132983-c2dd5830-80b3-4a0e-a8f1-abab5dbeed11.jpg" width="300">
 </p>
 
+All pages are designed to be responsive across common device sizes.
+
 ## Fathom Analytics
 
 [Fathom](https://usefathom.com/ref/42TFOZ) provides a lightweight alternative to Google Analytics.
