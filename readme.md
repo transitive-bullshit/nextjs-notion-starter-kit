@@ -135,8 +135,6 @@ This table of contents uses the same logic that Notion uses for its built-in Tab
 ## Mobile
 
 <p align="center">
-  <img alt="Mobile home page" src="https://user-images.githubusercontent.com/552829/160132901-c9454301-222a-4349-b666-9226c468eb16.jpg" width="45%"> 
-&nbsp; &nbsp; &nbsp; &nbsp;
   <img alt="Mobile article page" src="https://user-images.githubusercontent.com/552829/160132983-c2dd5830-80b3-4a0e-a8f1-abab5dbeed11.jpg" width="45%">
 </p>
 
