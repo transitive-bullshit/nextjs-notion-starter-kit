@@ -14,7 +14,7 @@
 
 This repo is what I use to power my personal blog and portfolio site [transitivebullsh.it](https://transitivebullsh.it).
 
-It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything, [Next.js](https://nextjs.org/) as the web SDK, and [Vercel](http://vercel.com) for world class hosting.
+It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything, [Next.js](https://nextjs.org/) as the core, and [Vercel](http://vercel.com) for world class hosting.
 
 ## Features
 
