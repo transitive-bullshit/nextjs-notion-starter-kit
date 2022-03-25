@@ -14,7 +14,7 @@
 
 This repo is what I use to power my personal blog and portfolio site [transitivebullsh.it](https://transitivebullsh.it).
 
-It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notion-x) to render everything, [Next.js](https://nextjs.org/) as the core, and [Vercel](http://vercel.com) for world class hosting.
+It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notion-x), [Next.js](https://nextjs.org/), and [Vercel](http://vercel.com).
 
 ## Features
 
@@ -46,13 +46,13 @@ All you really need to do to get started is edit `rootNotionPageId`. It defaults
 
 You'll want to make your root Notion page **public** and then copy the link to your clipboard. Then extract the last part of the URL that looks like `d1b5dcf8b9ff425b8aef5ce6f0730202`, which is your page's Notion iD.
 
-In order to find your Notion workspace ID (optional), just load any of your site's pages into your browser and open up the developer console. There will be a global variable that you can access called `block` which is the Notion data for the current page, and you just have to type `block.space_id` which will print out your page's workspace ID.
+In order to find your Notion workspace ID (optional), just load any of your site's pages into your browser and open up the developer console. There will be a global variable that you can access called `block` which is the Notion data for the current page. If you enter `block.space_id`, it will print out your page's workspace ID.
 
 I recommend setting up a collection on your home page (optional; I use an inline gallery [here](https://notion.so/78fc5a4b88d74b0e824e29407e9f1ec1)) that contains all of your articles / projects / content. There are no structural constraints on your Notion workspace, however, so feel free to add content as you would normally in Notion.
 
 ## URL Paths
 
-The app defaults to slightly different pathnames in dev and prod (though pasting any dev pathname into prod will work and vice-versa).
+The app defaults to slightly different URL paths in dev vs prod (though pasting any dev pathname into prod will work and vice-versa).
 
 In development, it will use `/nextjs-notion-blog-d1b5dcf8b9ff425b8aef5ce6f0730202` which is a slugified version of the page's title suffixed with its Notion ID. I've found that it's really useful to always have the Notion Page ID front and center during local development.
 
