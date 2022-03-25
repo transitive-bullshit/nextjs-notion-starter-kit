@@ -76,14 +76,14 @@ Preview images are **enabled by default**, but they can be slow to generate, so 
 
 If you want to cache generated preview images to speed up subsequent builds, you'll need to first set up an external [Redis](https://redis.io) data store. To enable redis caching, set `isRedisEnabled` to `true` in `site.config.js` and then set `REDIS_HOST` and `REDIS_PASSWORD` environment variables to point to your redis instance.
 
-You can do this locally adding a `.env` file:
+You can do this locally by adding a `.env` file:
 
 ```bash
 REDIS_HOST='TODO'
 REDIS_PASSWORD='TODO'
 ```
 
-Note that support for preview images and redis caching are both optional. If you’d rather not deal with them, just disable them in your site config.
+Note that preview images and redis caching are both optional features. If you’d rather not deal with them, just disable them in your site config.
 
 ## Styles
 
