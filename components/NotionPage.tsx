@@ -131,7 +131,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const socialDescription =
     getPageDescription(block, recordMap) ?? config.description
-  
+
   let pageAside: React.ReactNode = null
 
   // only display comments and page actions on blog post pages
