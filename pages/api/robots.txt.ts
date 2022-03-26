@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { host } from '../lib/config'
+import { host } from '../../lib/config'
 
 export default async (
   req: NextApiRequest,
