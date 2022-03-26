@@ -3,7 +3,9 @@ import lqip from 'lqip-modern'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
 import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types'
+import { getPageImageUrls } from 'notion-utils'
 
+import { defaultPageIcon, defaultPageCover } from './config'
 import { db } from './db'
 import { mapImageUrl } from './map-image-url'
 
@@ -16,41 +18,10 @@ import { mapImageUrl } from './map-image-url'
 export async function getPreviewImageMap(
   recordMap: ExtendedRecordMap
 ): Promise<PreviewImageMap> {
-  const blockIds = Object.keys(recordMap.block)
-  const imageUrls: string[] = blockIds
-    .map((blockId) => {
-      const block = recordMap.block[blockId]?.value
-
-      if (block) {
-        if (block.type === 'image') {
-          const signedUrl = recordMap.signed_urls?.[block.id]
-          const source = signedUrl || block.properties?.source?.[0]?.[0]
-
-          if (source) {
-            return {
-              block,
-              url: source
-            }
-          }
-        }
-
-        if ((block.format as any)?.page_cover) {
-          const source = (block.format as any).page_cover
-
-          return {
-            block,
-            url: source
-          }
-        }
-      }
-
-      return null
-    })
-    .filter(Boolean)
-    .map(({ block, url }) => mapImageUrl(url, block))
+  const urls: string[] = getPageImageUrls(recordMap, { mapImageUrl })
+    .concat([defaultPageIcon, defaultPageCover])
     .filter(Boolean)
 
-  const urls = Array.from(new Set(imageUrls))
   const previewImagesMap = Object.fromEntries(
     await pMap(urls, async (url) => [url, await getPreviewImage(url)], {
       concurrency: 8

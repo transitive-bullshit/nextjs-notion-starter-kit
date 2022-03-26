@@ -11,7 +11,8 @@ module.exports = withBundleAnalyzer({
       'notion.so',
       'images.unsplash.com',
       'pbs.twimg.com',
-      'abs.twimg.com'
+      'abs.twimg.com',
+      'transitivebullsh.it'
     ],
     formats: ['image/avif', 'image/webp']
   }

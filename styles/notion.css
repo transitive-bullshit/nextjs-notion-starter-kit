@@ -324,8 +324,8 @@
   border-radius: 16px;
 }
 
-/* if you don't want rounded page images, remove this */
-.notion-page-icon-wrapper img.notion-page-icon {
+/* if you don't want rounded page icon images, remove this */
+.notion-page-icon-hero.notion-page-icon-image img.notion-page-icon {
   border-radius: 50%;
   box-shadow: 0 8px 40px 0 rgb(0 0 0 / 21%);
 }
