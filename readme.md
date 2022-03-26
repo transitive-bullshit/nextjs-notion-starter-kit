@@ -133,7 +133,7 @@ Note that this feature is completely optional.
 
 ## Contributing
 
-If you want to contribute to the project, see the [contribution guide](contributing.md) and join our amazing list of [contributors](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/graphs/contributors)!
+See the [contribution guide](contributing.md) and join our amazing list of [contributors](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/graphs/contributors)!
 
 ## License
 

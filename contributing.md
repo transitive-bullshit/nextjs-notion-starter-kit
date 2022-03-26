@@ -72,7 +72,7 @@ yarn link
 yarn link react react-dom
 ```
 
-Now, you can run `yarn dev` to keep `react-notion-x` up-to-date in one tab and in another tab, you can run `yarn dev` to keep `nextjs-notion-starter-kit` up-to-date.
+With this setup, in one tab, you can run `yarn dev` to keep `react-notion-x` up-to-date, and in another tab, you can run `yarn dev` to keep `nextjs-notion-starter-kit` up-to-date.
 
 ### Gotchas
 
