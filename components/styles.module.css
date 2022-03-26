@@ -93,6 +93,10 @@
   color: #2795e9;
 }
 
+.zhihu:hover {
+  color: #0066FF;
+}
+
 .github:hover {
   color: #c9510c;
 }
