@@ -8,7 +8,7 @@
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
-[![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
+[![Build Status](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/actions/workflows/test.yml/badge.svg)](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/actions/workflows/test.yml) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 
 ## Intro
 
@@ -26,7 +26,7 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 - Automatic pretty URLs
 - Automatic table of contents
 - Full support for dark mode
-- Quick search via CMD+P
+- Quick search via CMD+K / CMD+P
 - Responsive for different devices
 - Optimized for Next.js and Vercel
 
