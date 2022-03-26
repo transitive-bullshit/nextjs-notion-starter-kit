@@ -751,6 +751,11 @@ clean-stack@^4.0.0:
   dependencies:
     escape-string-regexp "5.0.0"
 
+clipboard-copy@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/clipboard-copy/-/clipboard-copy-4.0.1.tgz#326ef9726d4ffe72d9a82a7bbe19379de692017d"
+  integrity sha512-wOlqdqziE/NNTUJsfSgXmBMIrYmfd5V0HCGsR8uAKHcg+h9NENWINcfRjtWGU77wDHC8B8ijV4hMTGYbrKovng==
+
 clipboard@^2.0.0:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.6.tgz#52921296eec0fdf77ead1749421b21c968647376"
@@ -3157,12 +3162,13 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^6.0.8:
-  version "6.0.8"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.0.8.tgz#948d4bccee11ba2e475ba90b58cfd8f4cd7652f0"
-  integrity sha512-143Gc1oUjOhTVLqJI6QYrTQyqiCO9eZfJjkShDzJZYsv4ypPneydJ98d5WSXzeBw18128VegfhMHVPGtcYWQSA==
+react-notion-x@^6.0.9:
+  version "6.0.9"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.0.9.tgz#d8737dbdc433ea9ddda5b5743efae19f4833329a"
+  integrity sha512-n5aI/TlRxc09RoNltMRlDONSV2Fa97k49O9lfLiRNTMZv6qJ2/fDsAIOpvYtgTcqzM/x6yKwOOKN983AfpruCA==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
+    clipboard-copy "^4.0.1"
     date-fns "^2.15.0"
     format-number "^3.0.0"
     is-url-superb "4"
