@@ -60,7 +60,7 @@ yarn deps:link
 The last step is to make sure that the Next.js project and these local dependencies are all pointing to the same versions of `react` and `react-dom`.
 
 ```bash
-# from nextjs-notion-starter-kit
+# from react-notion-x clone
 cd node_modules/react
 yarn link
 cd ../react-dom
@@ -68,7 +68,7 @@ yarn link
 ```
 
 ```bash
-# from react-notion-x clone
+# from nextjs-notion-starter-kit
 yarn link react react-dom
 ```
 
