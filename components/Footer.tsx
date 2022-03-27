@@ -32,6 +32,7 @@ export const Footer: React.FC<{
         <div className={styles.settings}>
           <a
             className={styles.toggleDarkMode}
+            href='#'
             onClick={toggleDarkModeCb}
             title='Toggle dark mode'
           >
