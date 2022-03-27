@@ -16,10 +16,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const siteMaps = await getSiteMaps()
 
-  // cache for up to one hour
+  // cache for up to 8 hours
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600'
+    'public, max-age=28800, stale-while-revalidate=28800'
   )
   res.setHeader('Content-Type', 'text/xml')
   res.write(createSitemap(siteMaps[0]))
