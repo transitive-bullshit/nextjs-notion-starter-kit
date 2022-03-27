@@ -165,8 +165,8 @@
   text-align: center;
 }
 
-.notion-collection-column-title {
-  display: none !important;
+.notion-collection-page-properties .notion-collection-column-title {
+  display: none;
 }
 
 .notion-collection-row-property .notion-property {
