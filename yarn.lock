@@ -2596,14 +2596,14 @@ normalize-url@^7.0.3:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.0.3.tgz#12e56889f7a54b2d5b09616f36c442a9063f61af"
   integrity sha512-RiCOdwdPnzvwcBFJE4iI1ss3dMVRIrEzFpn8ftje6iBfzBInqlnRrNhxcLwBEKjPPXQKzm1Ptlxtaiv9wdcj5w==
 
-notion-client@^6.0.13:
-  version "6.0.13"
-  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-6.0.13.tgz#aa7e2c273e3a7acf36213abd86a8e3f2b3ead1f2"
-  integrity sha512-p9Iq1ytntxwEc3rCheSFN9dKpmYx1cIhcdEeGOKDlBNApvtj/SWyC4N0By4r3iKFEauDTVRF66kZq8p85jAGHg==
+notion-client@^6.0.14:
+  version "6.0.14"
+  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-6.0.14.tgz#711cdbcd670223e4980a56bd7a41d69c8019e8bc"
+  integrity sha512-zjODOnayDJNfrz7HKjAk/+L8QAyNugT90dtV8baUMigZuVATBT6JlT1ERM+TiNI3/p56Wyt3fXQNL0HhhELWNQ==
   dependencies:
     got "^11.8.1"
     notion-types "^6.0.6"
-    notion-utils "^6.0.13"
+    notion-utils "^6.0.14"
     p-map "^5.3.0"
 
 notion-types@^6.0.6:
@@ -2611,10 +2611,10 @@ notion-types@^6.0.6:
   resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-6.0.6.tgz#bd97d25119ff3526526f05d3f7b8defb6e593194"
   integrity sha512-SJF6KQvJXjzgaicatcaoDctYWWYxFP/RYUbBFEA3wYuQVprU5U7EwXddBVO6t62xpWmgLX+PKXQc1r+m/mDzCg==
 
-notion-utils@^6.0.13:
-  version "6.0.13"
-  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-6.0.13.tgz#7e0b129e138871374604fe11d8a81f63b43aed8d"
-  integrity sha512-NflWBv4C2SwC5dWKp+V5Q8/re1Oe4kxLB7MNXtqmza/AMwpsBAg9reGjOVnjfNOe483S//czRqBUSl5UmvRu2w==
+notion-utils@^6.0.14:
+  version "6.0.14"
+  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-6.0.14.tgz#929617f97a6df59798cf5648a810f5106368d202"
+  integrity sha512-JC6/1+fpClvYVt8tE8RtwOwgRVbxRxd8txkXHfiFMegi2OH88V+HfdwkiVeW/pTkIUSStYs57lQAdDQFgMVHWQ==
   dependencies:
     is-url-superb "^6.1.0"
     mem "^9.0.2"
@@ -3186,10 +3186,10 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^6.0.13:
-  version "6.0.13"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.0.13.tgz#df86b2c016abc5880d35da6443683fb13be78138"
-  integrity sha512-XUWbTVgCdQKdtmpA1sgb4LM7Rh1AfH7CK5m3nOYLIeRPNIVmfLroHCcGHJ2UX+HJM/XcXR25x6EiMefrUU6hDA==
+react-notion-x@^6.0.14:
+  version "6.0.14"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.0.14.tgz#8e43f2a8824589896b6166f4a2f7bbfd3823749d"
+  integrity sha512-2U7PA93IsvzxlLKG1oDkI2ivsw67cixlQ4rt3osWdzD1zkBiLLQPNy385P6Hys6vKSV+iXJqduQORE8QYA611g==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     clipboard-copy "^4.0.1"
@@ -3200,7 +3200,7 @@ react-notion-x@^6.0.13:
     lodash.throttle "^4.1.1"
     medium-zoom "^1.0.6"
     notion-types "^6.0.6"
-    notion-utils "^6.0.13"
+    notion-utils "^6.0.14"
     prismjs "^1.27.0"
     rc-dropdown "^3.3.3"
     rc-menu "^9.5.1"
