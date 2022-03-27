@@ -93,7 +93,7 @@ export const Footer: React.FC<{
           <a
             className={styles.instagram}
             href={`https://www.instagram.com/${config.instagram}`}
-            title={`instagram ${config.author}`}
+            title={`Instagram ${config.author}`}
             target='_blank'
             rel='noopener noreferrer'
           >
