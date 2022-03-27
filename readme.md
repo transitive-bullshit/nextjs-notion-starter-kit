@@ -92,11 +92,15 @@ Note that preview images and redis caching are both optional features. If you’
 
 ## Styles
 
-All CSS styles that customize Notion content are located in [styles/notion.css](./styles/notion.css).
+All CSS styles that customize Notion content are located in [styles/notion.css](./styles/notion.css). They mainly target global CSS classes exported by react-notion-x [styles.css](https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/styles.css).
 
-They mainly target global CSS classes exported by react-notion-x [styles.css](https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/styles.css).
+Every notion block gets its own unique classname, so you can target individual blocks like this:
 
-It should be pretty easy to customize most styling-related things, especially with local development and hot reload.
+```css
+.notion-block-260baa77f1e1428b97fb14ac99c7c385 {
+  display: none;
+}
+```
 
 ## Dark Mode
 
