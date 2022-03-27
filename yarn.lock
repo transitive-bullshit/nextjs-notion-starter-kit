@@ -928,15 +928,15 @@ data-uri-to-buffer@^3.0.1:
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz#594b8973938c5bc2c33046535785341abc4f3636"
   integrity sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
 
-date-fns@^2.15.0:
-  version "2.16.1"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
-  integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
-
 date-fns@^2.25.0:
   version "2.25.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
   integrity sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==
+
+date-fns@^2.28.0:
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
+  integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
 
 debug@3.1.0:
   version "3.1.0"
@@ -3162,14 +3162,14 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^6.0.9:
-  version "6.0.9"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.0.9.tgz#d8737dbdc433ea9ddda5b5743efae19f4833329a"
-  integrity sha512-n5aI/TlRxc09RoNltMRlDONSV2Fa97k49O9lfLiRNTMZv6qJ2/fDsAIOpvYtgTcqzM/x6yKwOOKN983AfpruCA==
+react-notion-x@^6.0.10:
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.0.10.tgz#0d00718ba4e265242d52e65e777321be9486a19b"
+  integrity sha512-KzqOcwqSuGJzBw62eeK2w7aPG+i/GZHGwC0GnK6tNwTjaFCMo6MldwE+FTRaBtHpE9Hj5plddt+HpnHmuauqpw==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     clipboard-copy "^4.0.1"
-    date-fns "^2.15.0"
+    date-fns "^2.28.0"
     format-number "^3.0.0"
     is-url-superb "4"
     katex "^0.13.18"
@@ -3186,6 +3186,7 @@ react-notion-x@^6.0.9:
     react-modal "^3.14.3"
     react-pdf "^5.7.1"
     react-use "^17.3.1"
+    timeago.js "^4.0.2"
 
 react-pdf@^5.7.1:
   version "5.7.1"
@@ -3893,6 +3894,11 @@ throttle-debounce@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-3.0.1.tgz#32f94d84dfa894f786c9a1f290e7a645b6a19abb"
   integrity sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==
+
+timeago.js@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/timeago.js/-/timeago.js-4.0.2.tgz#724e8c8833e3490676c7bb0a75f5daf20e558028"
+  integrity sha512-a7wPxPdVlQL7lqvitHGGRsofhdwtkoSXPGATFuSOA2i1ZNQEPLrGnj68vOp2sOJTCFAQVXPeNMX/GctBaO9L2w==
 
 tiny-emitter@^2.0.0:
   version "2.1.0"
