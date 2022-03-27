@@ -4,9 +4,10 @@ import { host } from 'lib/config'
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   if (req.method !== 'GET') {
     res.statusCode = 405
-    res.setHeader("Content-Type", "application/json")
-    res.write(JSON.stringify({ error: "method not allowed" }))
+    res.setHeader('Content-Type', 'application/json')
+    res.write(JSON.stringify({ error: 'method not allowed' }))
     res.end()
+
     return {
       props: {}
     }
@@ -14,18 +15,31 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=60, max-age=60, stale-while-revalidate=60'
+    'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600'
   )
   res.setHeader('Content-Type', 'text/plain')
-  res.write(`User-agent: *
-  Sitemap: ${host}/sitemap.xml
-  `)
+
+  // only allow the site to be crawlable on the production deployment
+  if (process.env.VERCEL_ENV === 'production') {
+    res.write(`User-agent: *
+Allow: /
+Disallow: /api/*
+
+Sitemap: ${host}/sitemap.xml
+`)
+  } else {
+    res.write(`User-agent: *
+Disallow: /
+
+Sitemap: ${host}/sitemap.xml
+`)
+  }
+
   res.end()
+
   return {
     props: {}
   }
 }
 
-const RobotsTxt: React.FC = () => null
-
-export default RobotsTxt
+export default () => null
