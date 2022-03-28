@@ -7,17 +7,17 @@ module.exports = {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'tianhaoXi\'s Notion',
+  name: "tianhaoXi's Notion",
   domain: 'https://oxidized-detective-b58.notion.site/',
   author: 'Tianhao Xi',
 
   // open graph metadata (optional)
-  description: 'TianhaoXi\'s Blog',
+  description: "TianhaoXi's Blog",
   socialImageTitle: 'Transitive Bullshit',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
-  github: 'TianhaoXi',
+  github: 'Alex-haohao',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
