@@ -9,12 +9,13 @@ export async function getSiteMaps(): Promise<types.SiteMap[]> {
 
   const siteMaps = await pMap(
     sites,
-    async (site, index) => {
+    async (site) => {
       try {
         return {
           site,
           ...(await getAllPages(site.rootNotionPageId, site.rootNotionSpaceId))
         } as types.SiteMap
+        // eslint-disable-next-line no-empty
       } catch (err) {}
     },
     {

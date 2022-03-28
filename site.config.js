@@ -13,7 +13,6 @@ export default {
 
   // open graph metadata (optional)
   description: "TianhaoXi's Blog",
-  socialImageTitle: 'Transitive Bullshit',
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
