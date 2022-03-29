@@ -34,12 +34,10 @@
   margin-bottom: 1em;
 }
 
-/* <-- Fix embedded video's size overflows its container */
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
   width: 100% !important;
 }
-/* Fix embedded video's size overflows its container --> */
 
 .notion-header .nav-header {
   max-width: 1100px;
