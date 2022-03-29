@@ -45,9 +45,13 @@ async function createPreviewImage(
   { cacheKey }: { cacheKey: string }
 ): Promise<PreviewImage | null> {
   try {
-    const cachedPreviewImage = await db.get(cacheKey)
-    if (cachedPreviewImage) {
-      return cachedPreviewImage
+    try {
+      const cachedPreviewImage = await db.get(cacheKey)
+      if (cachedPreviewImage) {
+        return cachedPreviewImage
+      }
+    } catch {
+      // ignore redis errors
     }
 
     const { body } = await got(url, { responseType: 'buffer' })
@@ -60,10 +64,15 @@ async function createPreviewImage(
       dataURIBase64: result.metadata.dataURIBase64
     }
 
-    await db.set(cacheKey, previewImage)
+    try {
+      await db.set(cacheKey, previewImage)
+    } catch {
+      // ignore redis errors
+    }
+
     return previewImage
   } catch (err) {
-    console.warn('error creating preview image', url, err)
+    console.warn('error creating preview image', url, err.message)
     return null
   }
 }
