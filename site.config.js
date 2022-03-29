@@ -8,13 +8,11 @@ export default {
 
   // basic site info (required)
   name: 'Transitive Bullshit',
-  domain: 'transitivebullsh.it',
+  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
   author: 'Travis Fischer',
 
   // open graph metadata (optional)
-  description: 'Example site description',
-  socialImageTitle: 'Transitive Bullshit',
-  socialImageSubtitle: 'Hello World! 👋',
+  description: 'Example Next.js Notion Starter Kit Site',
 
   // social usernames (optional)
   twitter: 'transitive_bs',
