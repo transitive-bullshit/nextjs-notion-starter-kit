@@ -207,7 +207,7 @@
 }
 
 .notion-link:hover {
-  border-width: 3px;
+  border-bottom-width: 3px;
   border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
   border-image-slice: 1;
 }
@@ -310,10 +310,6 @@
   margin: 0;
   border-radius: 0;
   background: none !important;
-}
-
-.notion-block-f382a57807bc40779860eb079d0144f2 .lazy-image-wrapper {
-  border-radius: 16px;
 }
 
 /* if you don't want rounded page icon images, remove this */
