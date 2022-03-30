@@ -5,13 +5,12 @@ import * as types from './types'
 import { includeNotionIdInUrls, overrideCreatedTime, overrideLastEditedTime } from './config'
 import { notion } from './notion'
 import { getCanonicalPageId } from './get-canonical-page-id'
-import { getPagePropertyExtend } from './get-page-property'
 
 const uuid = !!includeNotionIdInUrls
 
-export const getAllPages = pMemoize(getAllPagesImpl, { maxAge: 60000 * 5 })
-// For testing use.
-// export const getAllPages = pMemoize(getAllPagesImpl, { maxAge: 1000 })
+export const getAllPages = pMemoize(getAllPagesImpl, {
+  cacheKey: (...args) => JSON.stringify(args)
+})
 
 export async function getAllPagesImpl(
   rootNotionPageId: string,
@@ -42,9 +41,9 @@ export async function getAllPagesImpl(
       // Get Last Edited Time
       let lastEditedTime: Date | null = null;
       if (overrideLastEditedTime) {
-        let timestamp = "";
+        let timestamp = NaN;
         try {
-          timestamp = getPagePropertyExtend(overrideLastEditedTime, block, recordMap);
+          timestamp = getPageProperty(overrideLastEditedTime, block, recordMap);
         } catch (e) {
           console.error(e);
         }
@@ -61,9 +60,9 @@ export async function getAllPagesImpl(
       // Get Created Time
       let createdTime: Date | null = null;
       if (overrideCreatedTime) {
-        let timestamp = "";
+        let timestamp = NaN;
         try {
-          timestamp = getPagePropertyExtend(overrideCreatedTime, block, recordMap);
+          timestamp = getPageProperty(overrideCreatedTime, block, recordMap);
         } catch (e) {
           console.error(e);
         }
@@ -79,10 +78,10 @@ export async function getAllPagesImpl(
 
       // Insert SlugName instead of PageId.
       if (block) {
-        let slugName = getPageProperty('SlugName', block, recordMap)
+        const slugName = getPageProperty('SlugName', block, recordMap)
 
         if (slugName) {
-          canonicalPageId = slugName
+          canonicalPageId = slugName as string
         }
       }
 

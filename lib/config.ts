@@ -8,7 +8,7 @@
 import { parsePageId } from 'notion-utils'
 import { getSiteConfig, getEnv } from './get-config-value'
 import { PageUrlOverridesMap, PageUrlOverridesInverseMap } from './types'
-import { GiscusProps, Repo } from '@giscus/react'
+import { GiscusProps } from '@giscus/react'
 
 export const isDev =
   process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
@@ -55,17 +55,9 @@ export const description: string = getSiteConfig('description', 'Notion Blog')
 
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
+export const zhihu: string | null = getSiteConfig('zhihu', null)
 export const github: string | null = getSiteConfig('github', null)
 export const linkedin: string | null = getSiteConfig('linkedin', null)
-
-export const socialImageTitle: string | null = getSiteConfig(
-  'socialImageTitle',
-  null
-)
-export const socialImageSubtitle: string | null = getSiteConfig(
-  'socialImageSubtitle',
-  null
-)
 
 // default notion values for site-wide consistency (optional; may be overridden on a per-page basis)
 export const defaultPageIcon: string | null = getSiteConfig(
@@ -81,20 +73,16 @@ export const defaultPageCoverPosition: number = getSiteConfig(
   0.5
 )
 
-// Optional utteranc.es comments via GitHub issue comments
-export const utterancesGitHubRepo: string | null = getSiteConfig(
-  'utterancesGitHubRepo',
-  null
-)
-
-// Optional image CDN host to proxy all image requests through
-export const imageCDNHost: string | null = getSiteConfig('imageCDNHost', null)
-
 // Optional whether or not to enable support for LQIP preview images
-// (requires a Google Firebase collection)
 export const isPreviewImageSupportEnabled: boolean = getSiteConfig(
   'isPreviewImageSupportEnabled',
   false
+)
+
+// Optional whether or not to enable support for LQIP preview images
+export const isTweetEmbedSupportEnabled: boolean = getSiteConfig(
+  'isTweetEmbedSupportEnabled',
+  true
 )
 
 // where it all starts -- the site's root Notion page
@@ -105,15 +93,34 @@ export const includeNotionIdInUrls: boolean = getSiteConfig(
 
 // ----------------------------------------------------------------------------
 
+// Optional redis instance for persisting preview images
+export const isRedisEnabled: boolean =
+  getSiteConfig('isRedisEnabled', false) || !!getEnv('REDIS_ENABLED', null)
+
+// (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
+// we recommend that you store these in a local `.env` file
+export const redisHost: string | null = getEnv('REDIS_HOST', null)
+export const redisPassword: string | null = getEnv('REDIS_PASSWORD', null)
+export const redisUser: string = getEnv('REDIS_USER', 'default')
+export const redisUrl = getEnv(
+  'REDIS_URL',
+  `redis://${redisUser}:${redisPassword}@${redisHost}`
+)
+export const redisNamespace: string | null = getEnv(
+  'REDIS_NAMESPACE',
+  'preview-images'
+)
+
+// ----------------------------------------------------------------------------
+
 export const isServer = typeof window === 'undefined'
 
 export const port = getEnv('PORT', '3000')
 export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
 
-export const apiBaseUrl = `${host}/api`
+export const apiBaseUrl = `/api`
 
 export const api = {
-  createPreviewImage: `${apiBaseUrl}/create-preview-image`,
   searchNotion: `${apiBaseUrl}/search-notion`
 }
 
@@ -128,46 +135,6 @@ export const fathomConfig = fathomId
   : undefined
 
 export const googleAnalyticsID = isDev ? null : process.env.NEXT_PUBLIC_GA_ID
-
-const defaultEnvValueForPreviewImageSupport =
-  isPreviewImageSupportEnabled && isServer ? undefined : null
-
-export const googleProjectId = getEnv(
-  'GCLOUD_PROJECT',
-  defaultEnvValueForPreviewImageSupport
-)
-
-export const googleApplicationCredentials = getGoogleApplicationCredentials()
-
-export const firebaseCollectionImages = getEnv(
-  'FIREBASE_COLLECTION_IMAGES',
-  defaultEnvValueForPreviewImageSupport
-)
-
-// this hack is necessary because vercel doesn't support secret files so we need to encode our google
-// credentials a base64-encoded string of the JSON-ified content
-function getGoogleApplicationCredentials() {
-  if (!isPreviewImageSupportEnabled || !isServer) {
-    return null
-  }
-
-  try {
-    const googleApplicationCredentialsBase64 = getEnv(
-      'GOOGLE_APPLICATION_CREDENTIALS',
-      defaultEnvValueForPreviewImageSupport
-    )
-
-    return JSON.parse(
-      Buffer.from(googleApplicationCredentialsBase64, 'base64').toString()
-    )
-  } catch (err) {
-    console.error(
-      'Firebase config error: invalid "GOOGLE_APPLICATION_CREDENTIALS" should be base64-encoded JSON\n'
-    )
-
-    throw err
-  }
-}
 
 function cleanPageUrlMap(
   pageUrlMap: PageUrlOverridesMap,

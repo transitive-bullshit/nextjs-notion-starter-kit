@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { FaTwitter, FaGithub, FaLinkedin } from 'react-icons/fa'
+import React from 'react'
+import { FaTwitter, FaZhihu, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
 import * as config from 'lib/config'
 
@@ -34,6 +34,7 @@ export const Footer: React.FC<{
         <div className={styles.settings}>
           <a
             className={styles.toggleDarkMode}
+            href='#'
             onClick={toggleDarkModeCb}
             title='Toggle dark mode'
           >
@@ -52,6 +53,18 @@ export const Footer: React.FC<{
             rel='noopener noreferrer'
           >
             <FaTwitter />
+          </a>
+        )}
+
+        {config.zhihu && (
+          <a
+            className={styles.zhihu}
+            href={`https://zhihu.com/people/${config.zhihu}`}
+            title={`Zhihu @${config.zhihu}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaZhihu />
           </a>
         )}
 

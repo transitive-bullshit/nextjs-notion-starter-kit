@@ -30,11 +30,7 @@ html {
 
 body {
   font-family: var(--base-font-family);
-}
-
-
-.utterances {
-  max-width: 100% !important;
+  overflow-x: hidden;
 }
 
 .static-tweet blockquote {
