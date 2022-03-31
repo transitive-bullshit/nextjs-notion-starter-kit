@@ -6,7 +6,7 @@ import cs from 'classnames'
 import { useRouter } from 'next/router'
 import { useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
-import useDarkMode from 'use-dark-mode'
+import useDarkMode from '@fisch0920/use-dark-mode'
 import { PageBlock } from 'notion-types'
 
 import { Tweet, TwitterContextProvider } from 'react-static-tweets'
