@@ -2518,30 +2518,30 @@ normalize-url@^7.0.3:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-7.0.3.tgz#12e56889f7a54b2d5b09616f36c442a9063f61af"
   integrity sha512-RiCOdwdPnzvwcBFJE4iI1ss3dMVRIrEzFpn8ftje6iBfzBInqlnRrNhxcLwBEKjPPXQKzm1Ptlxtaiv9wdcj5w==
 
-notion-client@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-6.1.0.tgz#3aa6d2224a5b8eac781edfb47fd44bfdd3a5eadf"
-  integrity sha512-daTo4BKHnoaMSPDqPn+nJJUOmnVezUORPVJ4mlWv+zNROU5DK26x/YqwFcJeiF7ZYFBpve67fsyOYLWBCSEZQw==
+notion-client@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-6.2.0.tgz#580fe0bb12deb06e169be6782fc3c7cb191dd771"
+  integrity sha512-OioUNz9SO2iMtediJIgiWszIFdLj9WINJI7zseRc7yasp8ATs66hHI7AqXPiMG5QMoyjkrayctMR0p0U5VVzQw==
   dependencies:
     got "^11.8.1"
-    notion-types "^6.0.26"
-    notion-utils "^6.1.0"
+    notion-types "^6.2.0"
+    notion-utils "^6.2.0"
     p-map "^5.3.0"
 
-notion-types@^6.0.26:
-  version "6.0.26"
-  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-6.0.26.tgz#de5dea20558b61ef025cd77e527ae6a1fb753e0c"
-  integrity sha512-PvE5kZ8+9LV4M5lec5vYYxLwrk5yozv3CISkVXmGxZD80x+cyjT5y/yfAaXAMyXXOPQ0Y2MTqyQYl8c6Nlm34Q==
+notion-types@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-6.2.0.tgz#710f3654d6c7e92c837fab617e1a217302493dc7"
+  integrity sha512-HcY9Ng3XAGIPhMs15wsQZ4Fm73DcxHbgaTsqiWtfAdiWlPI5BCY9UVYqnTUVArup311h8Wzos43JFSTZJWsCPQ==
 
-notion-utils@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-6.1.0.tgz#5fcebe3dec30f495764d23ae27b7d22e8770c35a"
-  integrity sha512-/M+rENkIj462LEgIkNl9a59BgDA080jONGMxzCNqJrEWA9Mu2/hXqOIWfrKiix23vIQqxjll9UfbzGVfQYsSKQ==
+notion-utils@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-6.2.0.tgz#e928694af413a57a608d26dc7ee7dc1bb4106ea4"
+  integrity sha512-UqJq7g9KJUx3cNjneO+Y2eF0wA2xB9QR888lDMOFZlLC04Co/lGdy0PRnkLQtai6ihzitRIoGCwgXgPptVi14w==
   dependencies:
     is-url-superb "^6.1.0"
     mem "^9.0.2"
     normalize-url "^7.0.3"
-    notion-types "^6.0.26"
+    notion-types "^6.2.0"
     p-queue "^7.2.0"
 
 npm-run-all@^4.1.5:
@@ -3066,10 +3066,10 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^6.1.2:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.1.2.tgz#a6395e2670bec70e6d572b0736a16ea769bc0991"
-  integrity sha512-CyR+pFql9VrF5NY7IDo1iP/6Zo/mHtED2sE/J4hHgWV+A0llmuB22RBzOFnjedq5mlJnQ6mE7Om4HhMPWmdOJg==
+react-notion-x@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.2.0.tgz#982a22cea92388135932c26171c8ec9c19c637ab"
+  integrity sha512-Vt0ry/0phgAZlAqNevptsbTlI4GR5StsyQImOhn3DD/Xo7iqTvy+iHgw7UX3HE2+5c9c/vJ2W4PT2WtmbVxGuA==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     clipboard-copy "^4.0.1"
@@ -3079,8 +3079,8 @@ react-notion-x@^6.1.2:
     katex "^0.13.18"
     lodash.throttle "^4.1.1"
     medium-zoom "^1.0.6"
-    notion-types "^6.0.26"
-    notion-utils "^6.1.0"
+    notion-types "^6.2.0"
+    notion-utils "^6.2.0"
     prismjs "^1.27.0"
     rc-dropdown "^3.3.3"
     rc-menu "^9.5.1"
@@ -3090,7 +3090,6 @@ react-notion-x@^6.1.2:
     react-modal "^3.14.3"
     react-pdf "^5.7.1"
     react-use "^17.3.1"
-    timeago.js "^4.0.2"
 
 react-pdf@^5.7.1:
   version "5.7.2"
@@ -3768,11 +3767,6 @@ throttle-debounce@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-3.0.1.tgz#32f94d84dfa894f786c9a1f290e7a645b6a19abb"
   integrity sha512-dTEWWNu6JmeVXY0ZYoPuH5cRIwc0MeGbJwah9KUNYSJwommQpCzTySTpEe8Gs1J23aeWEuAobe4Ag7EHVt/LOg==
-
-timeago.js@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/timeago.js/-/timeago.js-4.0.2.tgz#724e8c8833e3490676c7bb0a75f5daf20e558028"
-  integrity sha512-a7wPxPdVlQL7lqvitHGGRsofhdwtkoSXPGATFuSOA2i1ZNQEPLrGnj68vOp2sOJTCFAQVXPeNMX/GctBaO9L2w==
 
 tiny-invariant@^1.0.0:
   version "1.2.0"
