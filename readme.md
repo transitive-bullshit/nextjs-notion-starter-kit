@@ -39,6 +39,8 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 
 **All config is defined in [site.config.js](./site.config.js).**
 
+This project requires a recent version of Node.js (>= 14.17).
+
 1. Fork / clone this repo
 2. Change a few values in [site.config.js](./site.config.js)
 3. `npm install`
