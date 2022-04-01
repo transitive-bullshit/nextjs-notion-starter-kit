@@ -2,22 +2,22 @@
 import 'styles/global.css'
 
 // core styles shared by all of react-notion-x (required)
-import 'react-notion-x/src/styles.css'
+import 'react-notion-x/build/styles.css'
+
+// used for collection views (optional)
+import 'react-notion-x/build/third-party/collection.css'
+
+// used for rendering equations (optional)
+import 'react-notion-x/build/third-party/equation.css'
+
+// used for tweet embeds (optional)
+import 'react-static-tweets/styles.css'
 
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-coy.css'
 
 // this might be better for dark mode
 // import 'prismjs/themes/prism-okaidia.css'
-
-// used for collection views selector (optional)
-import 'rc-dropdown/assets/index.css'
-
-// used for rendering equations (optional)
-import 'katex/dist/katex.min.css'
-
-// core styles for static tweet renderer (optional)
-import 'react-static-tweets/styles.css'
 
 // global style overrides for notion
 import 'styles/notion.css'

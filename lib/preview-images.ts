@@ -72,7 +72,7 @@ async function createPreviewImage(
 
     return previewImage
   } catch (err) {
-    console.warn('error creating preview image', url, err.message)
+    console.warn('failed to create preview image', url, err.message)
     return null
   }
 }
