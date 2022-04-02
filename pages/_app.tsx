@@ -2,10 +2,7 @@
 import 'styles/global.css'
 
 // core styles shared by all of react-notion-x (required)
-import 'react-notion-x/build/styles.css'
-
-// used for collection views (optional)
-import 'react-notion-x/build/third-party/collection.css'
+import 'react-notion-x/src/styles.css'
 
 // used for rendering equations (optional)
 import 'react-notion-x/build/third-party/equation.css'
