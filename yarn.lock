@@ -3234,10 +3234,10 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^6.6.1:
-  version "6.6.1"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.6.1.tgz#9fc00a0993604b18161faec32ac6fe5717152261"
-  integrity sha512-Pj4n3m/OE1OEBPyHkiRUYSSHZglTd3iGHw2Ec0u8ishbarM5l95LANirDF5VaxrL6CnzAEeLXfES2jFS9NF15w==
+react-notion-x@^6.6.2:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.6.2.tgz#aaa7a1fc1ccc58158b6703a4ef0f209a8e7f1cc4"
+  integrity sha512-juE52BUWrIkOWngThE8Cn1YznJwOLW4IzD6TxR/XH2EdgCqlzmd8az04tHhoAy+hirBCL9lYkdLhb23CQSCNUQ==
   dependencies:
     "@matejmazur/react-katex" "^3.1.3"
     "@radix-ui/react-dropdown-menu" "^0.1.6"
