@@ -1,18 +1,19 @@
 import Head from 'next/head'
-import * as React from 'react'
+import React from 'react'
+
 import * as types from 'lib/types'
-import useDarkMode from 'use-dark-mode'
+import * as config from 'lib/config'
 
-// TODO: remove duplication between PageHead and NotionPage Head
-
-export const PageHead: React.FC<types.PageProps> = ({ site }) => {
-  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
-  let themeColor
-  if (darkMode.value) {
-    themeColor = <meta name='theme-color' content='#06061a' />
-  } else {
-    themeColor = <meta name='theme-color' content='#fefefe' />
+export const PageHead: React.FC<
+  types.PageProps & {
+    title?: string
+    description?: string
+    image?: string
+    url?: string
   }
+> = ({ site, title, description, image, url }) => {
+  title = title ?? site?.name
+  description = description ?? site?.description
 
   return (
     <Head>
@@ -22,13 +23,50 @@ export const PageHead: React.FC<types.PageProps> = ({ site }) => {
         name='viewport'
         content='width=device-width, initial-scale=1, shrink-to-fit=no'
       />
-      {site?.description && (
+
+      <meta name='theme-color' content='#EB625A' />
+      <meta property='og:type' content='website' />
+
+      {site && (
         <>
-          <meta name='description' content={site.description} />
-          <meta property='og:description' content={site.description} />
+          <meta property='og:site_name' content={site.name} />
+          <meta property='twitter:domain' content={site.domain} />
         </>
       )}
-      {themeColor}
+
+      {config.twitter && (
+        <meta name='twitter:creator' content={`@${config.twitter}`} />
+      )}
+
+      {description && (
+        <>
+          <meta name='description' content={description} />
+          <meta property='og:description' content={description} />
+          <meta name='twitter:description' content={description} />
+        </>
+      )}
+
+      {image ? (
+        <>
+          <meta name='twitter:card' content='summary_large_image' />
+          <meta name='twitter:image' content={image} />
+          <meta property='og:image' content={image} />
+        </>
+      ) : (
+        <meta name='twitter:card' content='summary' />
+      )}
+
+      {url && (
+        <>
+          <link rel='canonical' href={url} />
+          <meta property='og:url' content={url} />
+          <meta property='twitter:url' content={url} />
+        </>
+      )}
+
+      <meta property='og:title' content={title} />
+      <meta name='twitter:title' content={title} />
+      <title>{title}</title>
     </Head>
   )
 }
