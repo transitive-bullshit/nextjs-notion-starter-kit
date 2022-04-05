@@ -1,6 +1,10 @@
 import React from 'react'
-import { FaTwitter, FaZhihu, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
+import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
+import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import * as config from 'lib/config'
 
 import styles from './styles.module.css'
