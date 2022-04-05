@@ -57,6 +57,17 @@ In order to find your Notion workspace ID (optional), just load any of your site
 
 I recommend setting up a collection on your home page (optional; I use an inline gallery [here](https://notion.so/78fc5a4b88d74b0e824e29407e9f1ec1)) that contains all of your articles / projects / content. There are no structural constraints on your Notion workspace, however, so feel free to add content as you would normally in Notion.
 
+## Production setup
+
+When deploying to Vercel, you'll need to set up a few things.
+
+### Vercel environment variables
+
+Vercel is not aware of the environment variables defined in the `.env` file.
+
+Therefore, those variable must be defined in Vercel, too. Once defined, they'll be available on the next builds.
+See [their documentation](https://vercel.com/docs/concepts/projects/environment-variables) for more details.
+
 ## URL Paths
 
 The app defaults to slightly different URL paths in dev vs prod (though pasting any dev pathname into prod will work and vice-versa).
@@ -91,6 +102,19 @@ REDIS_PASSWORD='TODO'
 ```
 
 Note that preview images and redis caching are both optional features. If you’d rather not deal with them, just disable them in your site config.
+
+### Configuring GitHub Actions
+
+By default, the workflow "[Build](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/main/.github/workflows/build.yml)" runs when commits are pushed to the repository.
+
+If you have defined a Redis instance, you will need to slightly change the configuration, for GitHub Actions to be aware of those environment variables.
+[Here is an example](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21)
+
+Additionally, you'll need to configure the [GitHub secrets](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-codespaces) for `REDIS_HOST` and `REDIS_PASSWORD`.
+
+### Redis provider
+
+If you want to use redis caching, you can use [Redis Labs](https://app.redislabs.com/), which provides a free plan.
 
 ## Styles
 
