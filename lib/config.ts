@@ -26,18 +26,18 @@ export const rootNotionSpaceId: string | null = parsePageId(
 
 export const pageUrlOverrides = cleanPageUrlMap(
   getSiteConfig('pageUrlOverrides', {}) || {},
-  'pageUrlOverrides'
+  { label: 'pageUrlOverrides' }
+)
+
+export const pageUrlAdditions = cleanPageUrlMap(
+  getSiteConfig('pageUrlAdditions', {}) || {},
+  { label: 'pageUrlAdditions' }
 )
 
 export const inversePageUrlOverrides = invertPageUrlOverrides(pageUrlOverrides)
 
-export const pageUrlAdditions = cleanPageUrlMap(
-  getSiteConfig('pageUrlAdditions', {}) || {},
-  'pageUrlAdditions'
-)
-
-export const isDev =
-  process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
+export const environment = process.env.NODE_ENV || 'development'
+export const isDev = environment === 'development'
 
 // general site config
 export const name: string = getSiteConfig('name')
@@ -50,15 +50,6 @@ export const twitter: string | null = getSiteConfig('twitter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
 export const github: string | null = getSiteConfig('github', null)
 export const linkedin: string | null = getSiteConfig('linkedin', null)
-
-export const socialImageTitle: string | null = getSiteConfig(
-  'socialImageTitle',
-  null
-)
-export const socialImageSubtitle: string | null = getSiteConfig(
-  'socialImageSubtitle',
-  null
-)
 
 // default notion values for site-wide consistency (optional; may be overridden on a per-page basis)
 export const defaultPageIcon: string | null = getSiteConfig(
@@ -95,7 +86,8 @@ export const includeNotionIdInUrls: boolean = getSiteConfig(
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images
-export const isRedisEnabled: boolean = getSiteConfig('isRedisEnabled', false)
+export const isRedisEnabled: boolean =
+  getSiteConfig('isRedisEnabled', false) || !!getEnv('REDIS_ENABLED', null)
 
 // (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
 // we recommend that you store these in a local `.env` file
@@ -136,7 +128,11 @@ export const fathomConfig = fathomId
 
 function cleanPageUrlMap(
   pageUrlMap: PageUrlOverridesMap,
-  label: string
+  {
+    label
+  }: {
+    label: string
+  }
 ): PageUrlOverridesMap {
   return Object.keys(pageUrlMap).reduce((acc, uri) => {
     const pageId = pageUrlMap[uri]

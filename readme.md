@@ -30,9 +30,16 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 - Responsive for different devices
 - Optimized for Next.js and Vercel
 
+## Demos
+
+- [Default demo](https://nextjs-notion-starter-kit.transitivebullsh.it) - Deployed from the `main` branch
+- [My site](https://transitivebullsh.it) - Deployed from the `transitive-bullshit` branch
+
 ## Setup
 
 **All config is defined in [site.config.js](./site.config.js).**
+
+This project requires a recent version of Node.js (>= 14.17).
 
 1. Fork / clone this repo
 2. Change a few values in [site.config.js](./site.config.js)
@@ -70,7 +77,7 @@ NOTE: if you have multiple pages in your workspace with the same slugified name,
   <img alt="Example preview image" src="https://user-images.githubusercontent.com/552829/160142320-35343317-aa9e-4710-bcf7-67e5cdec586d.gif" width="458">
 </p>
 
-We use [next/image](https://nextjs.org/docs/api-reference/next/image) to serve efficient images, with preview images optionally generated via [lqip-modern](https://github.com/transitive-bullshit/lqip-modern). This gives us extremely optimized image support for sexy smooth images.
+We use [next/image](https://nextjs.org/docs/api-reference/next/image) to serve images efficiently, with preview images optionally generated via [lqip-modern](https://github.com/transitive-bullshit/lqip-modern). This gives us extremely optimized image support for sexy smooth images.
 
 Preview images are **enabled by default**, but they can be slow to generate, so if you want to disable them, set `isPreviewImageSupportEnabled` to `false` in `site.config.js`.
 
@@ -87,11 +94,15 @@ Note that preview images and redis caching are both optional features. If you’
 
 ## Styles
 
-All CSS styles that customize Notion content are located in [styles/notion.css](./styles/notion.css).
+All CSS styles that customize Notion content are located in [styles/notion.css](./styles/notion.css). They mainly target global CSS classes exported by react-notion-x [styles.css](https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/styles.css).
 
-They mainly target global CSS classes exported by react-notion-x [styles.css](https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/styles.css).
+Every notion block gets its own unique classname, so you can target individual blocks like this:
 
-It should be pretty easy to customize most styling-related things, especially with local development and hot reload.
+```css
+.notion-block-260baa77f1e1428b97fb14ac99c7c385 {
+  display: none;
+}
+```
 
 ## Dark Mode
 

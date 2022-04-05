@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { FaTwitter, FaZhihu, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
 import * as config from 'lib/config'
@@ -32,6 +32,7 @@ export const Footer: React.FC<{
         <div className={styles.settings}>
           <a
             className={styles.toggleDarkMode}
+            href='#'
             onClick={toggleDarkModeCb}
             title='Toggle dark mode'
           >
