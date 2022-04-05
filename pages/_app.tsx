@@ -47,7 +47,6 @@ export default function App({ Component, pageProps }) {
         Fathom.trackPageview()
       }
       if (postHogId) {
-        // See https://posthog.com/docs/integrate/client/js#one-page-apps-and-page-views
         posthog.capture('$pageview')
       }
     }
@@ -56,7 +55,6 @@ export default function App({ Component, pageProps }) {
       Fathom.load(fathomId, fathomConfig)
     }
     if (postHogId) {
-      console.debug(`PostHog loading with id "${postHogId}".`)
       posthog.init(postHogId, postHogConfig)
     }
     if(!fathomId && !postHogId) {
