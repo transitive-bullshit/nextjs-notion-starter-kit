@@ -77,7 +77,7 @@ export default withOGImage<
       )
     }
   },
-  cacheControl: 'max-age 86400, stale-while-revalidate=3600',
+  cacheControl: 'max-age=0, s-maxage=86400, stale-while-revalidate',
   type: 'jpeg',
   quality: 75,
   dev: {
