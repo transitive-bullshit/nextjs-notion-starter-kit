@@ -22,6 +22,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     res.write(`User-agent: *
 Allow: /
 Disallow: /api/get-tweet-ast/*
+Disallow: /api/search-notion
 
 Sitemap: ${host}/sitemap.xml
 `)
