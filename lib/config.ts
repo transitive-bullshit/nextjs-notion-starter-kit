@@ -28,18 +28,18 @@ export const rootNotionSpaceId: string | null = parsePageId(
 
 export const pageUrlOverrides = cleanPageUrlMap(
   getSiteConfig('pageUrlOverrides', {}) || {},
-  'pageUrlOverrides'
+  { label: 'pageUrlOverrides' }
+)
+
+export const pageUrlAdditions = cleanPageUrlMap(
+  getSiteConfig('pageUrlAdditions', {}) || {},
+  { label: 'pageUrlAdditions' }
 )
 
 export const inversePageUrlOverrides = invertPageUrlOverrides(pageUrlOverrides)
 
-export const pageUrlAdditions = cleanPageUrlMap(
-  getSiteConfig('pageUrlAdditions', {}) || {},
-  'pageUrlAdditions'
-)
-
-export const isDev =
-  process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
+export const environment = process.env.NODE_ENV || 'development'
+export const isDev = environment === 'development'
 
 // general site config
 export const name: string = getSiteConfig('name')
@@ -140,7 +140,11 @@ export const postHogConfig: Config = {
 
 function cleanPageUrlMap(
   pageUrlMap: PageUrlOverridesMap,
-  label: string
+  {
+    label
+  }: {
+    label: string
+  }
 ): PageUrlOverridesMap {
   return Object.keys(pageUrlMap).reduce((acc, uri) => {
     const pageId = pageUrlMap[uri]
