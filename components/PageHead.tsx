@@ -3,17 +3,41 @@ import React from 'react'
 
 import * as types from 'lib/types'
 import * as config from 'lib/config'
+import { getSocialImageUrl } from 'lib/get-social-image-url'
 
 export const PageHead: React.FC<
   types.PageProps & {
     title?: string
     description?: string
     image?: string
+    imageObjectPosition?: string
+    author?: string
+    authorImage?: string
+    detail?: string
     url?: string
   }
-> = ({ site, title, description, image, url }) => {
+> = ({
+  site,
+  title,
+  description,
+  image,
+  imageObjectPosition,
+  author,
+  authorImage,
+  detail,
+  url
+}) => {
   title = title ?? site?.name
   description = description ?? site?.description
+
+  const socialImageUrl = getSocialImageUrl({
+    title,
+    image,
+    imageObjectPosition,
+    author,
+    authorImage,
+    detail
+  })
 
   return (
     <Head>
@@ -46,11 +70,11 @@ export const PageHead: React.FC<
         </>
       )}
 
-      {image ? (
+      {socialImageUrl ? (
         <>
           <meta name='twitter:card' content='summary_large_image' />
-          <meta name='twitter:image' content={image} />
-          <meta property='og:image' content={image} />
+          <meta name='twitter:image' content={socialImageUrl} />
+          <meta property='og:image' content={socialImageUrl} />
         </>
       ) : (
         <meta name='twitter:card' content='summary' />
