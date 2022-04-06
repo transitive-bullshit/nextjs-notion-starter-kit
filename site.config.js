@@ -7,7 +7,7 @@ export default {
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Transitive Bullshit',
+  name: 'Next.js Notion Starter Kit',
   domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
   author: 'Travis Fischer',
 
