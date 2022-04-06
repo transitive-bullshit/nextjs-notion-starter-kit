@@ -24,6 +24,7 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 - Excellent page speeds
 - Smooth image previews
 - Automatic pretty URLs
+- Automatic social images
 - Automatic table of contents
 - Full support for dark mode
 - Quick search via CMD+K / CMD+P
@@ -57,17 +58,6 @@ In order to find your Notion workspace ID (optional), just load any of your site
 
 I recommend setting up a collection on your home page (optional; I use an inline gallery [here](https://notion.so/78fc5a4b88d74b0e824e29407e9f1ec1)) that contains all of your articles / projects / content. There are no structural constraints on your Notion workspace, however, so feel free to add content as you would normally in Notion.
 
-## Production setup
-
-When deploying to Vercel, you'll need to set up a few things.
-
-### Vercel environment variables
-
-Vercel is not aware of the environment variables defined in the `.env` file.
-
-Therefore, those variable must be defined in Vercel, too. Once defined, they'll be available on the next builds.
-See [their documentation](https://vercel.com/docs/concepts/projects/environment-variables) for more details.
-
 ## URL Paths
 
 The app defaults to slightly different URL paths in dev vs prod (though pasting any dev pathname into prod will work and vice-versa).
@@ -92,6 +82,8 @@ We use [next/image](https://nextjs.org/docs/api-reference/next/image) to serve i
 
 Preview images are **enabled by default**, but they can be slow to generate, so if you want to disable them, set `isPreviewImageSupportEnabled` to `false` in `site.config.js`.
 
+### Redis
+
 If you want to cache generated preview images to speed up subsequent builds, you'll need to first set up an external [Redis](https://redis.io) data store. To enable redis caching, set `isRedisEnabled` to `true` in `site.config.js` and then set `REDIS_HOST` and `REDIS_PASSWORD` environment variables to point to your redis instance.
 
 You can do this locally by adding a `.env` file:
@@ -101,20 +93,15 @@ REDIS_HOST='TODO'
 REDIS_PASSWORD='TODO'
 ```
 
+If you're not sure which Redis provider to use, we recommend [Redis Labs](https://redis.com), which provides a free plan.
+
 Note that preview images and redis caching are both optional features. If you’d rather not deal with them, just disable them in your site config.
 
-### Configuring GitHub Actions
+### Redis with GitHub Actions
 
-By default, the workflow "[Build](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/main/.github/workflows/build.yml)" runs when commits are pushed to the repository.
+If you want to test your redis builds with GitHub Actions, you'll need to edit the [default build action](./.github/workflows/build.yml). Here is an [example from my personal branch](<(https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21)>).
 
-If you have defined a Redis instance, you will need to slightly change the configuration, for GitHub Actions to be aware of those environment variables.
-[Here is an example](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21)
-
-Additionally, you'll need to configure the [GitHub secrets](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-codespaces) for `REDIS_HOST` and `REDIS_PASSWORD`.
-
-### Redis provider
-
-If you want to use redis caching, you can use [Redis Labs](https://app.redislabs.com/), which provides a free plan.
+You'll also need to add these environment variables to your GitHub repo as [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
 
 ## Styles
 
@@ -173,6 +160,10 @@ To enable, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will o
 [PostHog](https://posthog.com/) provides a lightweight, **open source** alternative to Google Analytics.
 
 To enable, just add a `NEXT_PUBLIC_POSTHOG_ID` environment variable, which will only be used in production.
+
+## Vercel Production Setup
+
+If you're using Redis, analytics, or any other feature which requires environment variables, then you'll need to [define them in Vercel](https://vercel.com/docs/concepts/projects/environment-variables)).
 
 ## Contributing
 
