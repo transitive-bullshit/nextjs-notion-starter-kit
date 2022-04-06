@@ -15,12 +15,7 @@ import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 import { NotionRenderer } from 'react-notion-x'
 
 // utils
-import {
-  getBlockTitle,
-  getBlockIcon,
-  getPageProperty,
-  isUrl
-} from 'notion-utils'
+import { getBlockTitle, getPageProperty } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapImageUrl } from 'lib/map-image-url'
 import { getPageTweet } from 'lib/get-page-tweet'
@@ -134,35 +129,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
     block
   )
 
-  const socialImageCoverPosition =
-    (block as PageBlock).format?.page_cover_position ??
-    config.defaultPageCoverPosition
-  const socialImageObjectPosition = socialImageCoverPosition
-    ? `center ${(1 - socialImageCoverPosition) * 100}%`
-    : null
-
-  const blockIcon = getBlockIcon(block, recordMap)
-  const socialAuthorImage = mapImageUrl(
-    blockIcon && isUrl(blockIcon) ? blockIcon : config.defaultPageIcon,
-    block
-  )
-
-  const socialAuthor =
-    getPageProperty<string>('Author', block, recordMap) || config.author
-
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
-
-  const timePublished = getPageProperty<number>('Published', block, recordMap)
-  const datePublished = timePublished ? new Date(timePublished) : undefined
-  const socialDate =
-    isBlogPost && datePublished
-      ? `${datePublished.toLocaleString('en-US', {
-          month: 'long'
-        })} ${datePublished.getFullYear()}`
-      : undefined
-  const socialDetail = socialDate || site.domain
 
   let pageAside: React.ReactNode = null
 
@@ -187,14 +156,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
       }}
     >
       <PageHead
+        pageId={pageId}
         site={site}
         title={title}
         description={socialDescription}
         image={socialImage}
-        imageObjectPosition={socialImageObjectPosition}
-        author={socialAuthor}
-        authorImage={socialAuthorImage}
-        detail={socialDetail}
         url={canonicalPageUrl}
       />
 

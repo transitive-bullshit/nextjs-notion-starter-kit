@@ -10,34 +10,13 @@ export const PageHead: React.FC<
     title?: string
     description?: string
     image?: string
-    imageObjectPosition?: string
-    author?: string
-    authorImage?: string
-    detail?: string
     url?: string
   }
-> = ({
-  site,
-  title,
-  description,
-  image,
-  imageObjectPosition,
-  author,
-  authorImage,
-  detail,
-  url
-}) => {
+> = ({ site, title, description, pageId, image, url }) => {
   title = title ?? site?.name
   description = description ?? site?.description
 
-  const socialImageUrl = getSocialImageUrl({
-    title,
-    image,
-    imageObjectPosition,
-    author,
-    authorImage,
-    detail
-  })
+  const socialImageUrl = getSocialImageUrl(pageId) || image
 
   return (
     <Head>

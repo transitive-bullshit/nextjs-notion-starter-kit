@@ -1,6 +1,20 @@
 import React from 'react'
 import { withOGImage } from 'next-api-og-image'
-import { interRegular } from '../../lib/fonts'
+
+import {
+  getBlockTitle,
+  getBlockIcon,
+  getPageProperty,
+  isUrl,
+  parsePageId
+} from 'notion-utils'
+import { PageBlock } from 'notion-types'
+
+import { notion } from 'lib/notion'
+import { getSiteForDomain } from 'lib/get-site-for-domain'
+import { mapImageUrl } from 'lib/map-image-url'
+import * as config from 'lib/config'
+import { interRegular } from 'lib/fonts'
 
 /**
  * Social image generation via headless chrome.
@@ -12,24 +26,69 @@ import { interRegular } from '../../lib/fonts'
  */
 const debugInspectHtml = false
 
-export default withOGImage<
-  'query',
-  | 'title'
-  | 'image'
-  | 'author'
-  | 'authorImage'
-  | 'detail'
-  | 'imageObjectPosition'
->({
+export default withOGImage<'query', 'id'>({
   template: {
-    react: ({
-      title,
-      image,
-      author,
-      authorImage,
-      detail,
-      imageObjectPosition
-    }) => {
+    react: async ({ id }) => {
+      const pageId = parsePageId(id)
+
+      if (!pageId) {
+        throw new Error('Invalid notion page id')
+      }
+
+      const site = await getSiteForDomain(config.domain)
+      const recordMap = await notion.getPage(pageId)
+
+      const keys = Object.keys(recordMap?.block || {})
+      const block = recordMap?.block?.[keys[0]]?.value
+
+      if (!block) {
+        throw new Error('Invalid recordMap for page')
+      }
+
+      const isBlogPost =
+        block.type === 'page' && block.parent_table === 'collection'
+      const title = getBlockTitle(block, recordMap) || site.name
+      const image = mapImageUrl(
+        getPageProperty<string>('Social Image', block, recordMap) ||
+          (block as PageBlock).format?.page_cover ||
+          config.defaultPageCover,
+        block
+      )
+
+      const imageCoverPosition =
+        (block as PageBlock).format?.page_cover_position ??
+        config.defaultPageCoverPosition
+      const imageObjectPosition = imageCoverPosition
+        ? `center ${(1 - imageCoverPosition) * 100}%`
+        : null
+
+      const blockIcon = getBlockIcon(block, recordMap)
+      const authorImage = mapImageUrl(
+        blockIcon && isUrl(blockIcon) ? blockIcon : config.defaultPageIcon,
+        block
+      )
+
+      const author =
+        getPageProperty<string>('Author', block, recordMap) || config.author
+
+      // const socialDescription =
+      //   getPageProperty<string>('Description', block, recordMap) ||
+      //   config.description
+
+      const timePublished = getPageProperty<number>(
+        'Published',
+        block,
+        recordMap
+      )
+      const datePublished = timePublished ? new Date(timePublished) : undefined
+      const date =
+        isBlogPost && datePublished
+          ? `${datePublished.toLocaleString('en-US', {
+              month: 'long'
+            })} ${datePublished.getFullYear()}`
+          : undefined
+      const detail = date || site.domain
+
       return (
         <html>
           <head>
@@ -142,7 +201,8 @@ body {
 }
 
 .title {
-  font-size: 3em;
+  font-size: 3.2em;
+  line-height: 1.3;
 }
 
 .metadata {
