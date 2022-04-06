@@ -52,7 +52,7 @@ I tried to make configuration as easy as possible — All you really need to do 
 
 We recommend duplicating the [default page](https://notion.so/7875426197cf461698809def95960ebf) as a starting point, but you can use any public notion page you want.
 
-Make sure your root Notion page is **public** and then copy the link to your clipboard. Extract the last part of the URL that looks like `7875426197cf461698809def95960ebf`, which is your page's Notion iD.
+Make sure your root Notion page is **public** and then copy the link to your clipboard. Extract the last part of the URL that looks like `7875426197cf461698809def95960ebf`, which is your page's Notion ID.
 
 In order to find your Notion workspace ID (optional), just load any of your site's pages into your browser and open up the developer console. There will be a global variable that you can access called `block` which is the Notion data for the current page. If you enter `block.space_id`, it will print out your page's workspace ID.
 
@@ -130,6 +130,8 @@ Dark mode is fully supported and can be toggled via the sun / moon icon in the f
 All Open Graph and social meta tags are generated from your Notion content, which makes social sharing look professional by default.
 
 Social images are generated automatically using headless chrome. You can tweak the default React template for social images by editing [api/social-images.tsx](./pages/api/social-image.tsx).
+
+You can view an example social image live in production [here](https://transitivebullsh.it/api/social-image?id=d1b5dcf8-b9ff-425b-8aef-5ce6f0730202).
 
 ## Automatic Table of Contents
 
