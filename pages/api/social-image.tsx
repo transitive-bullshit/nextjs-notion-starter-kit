@@ -10,7 +10,7 @@ import {
 } from 'notion-utils'
 import { PageBlock } from 'notion-types'
 
-import { notion } from 'lib/notion'
+import { notion } from 'lib/notion-api'
 import { getSiteForDomain } from 'lib/get-site-for-domain'
 import { mapImageUrl } from 'lib/map-image-url'
 import * as config from 'lib/config'

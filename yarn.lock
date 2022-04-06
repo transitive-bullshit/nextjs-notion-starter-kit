@@ -3590,10 +3590,10 @@ react-remove-scroll@^2.4.0:
   resolved "https://registry.npmjs.org/react-side-effect/-/react-side-effect-2.1.1.tgz"
   integrity sha512-2FoTQzRNTncBVtnzxFOk2mCpcfxQpenBMbk5kSVBg5UcPqV9fRbgY2zhb7GTWWOlpFmAxhClBDlIq8Rsubz1yQ==
 
-react-static-tweets@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.npmjs.org/react-static-tweets/-/react-static-tweets-0.7.1.tgz"
-  integrity sha512-PWimW6Wcz1KEVPLVu7selfjmC2bOSucJlNDS3L3CdoUsvtbFj+4crv/4c+lu1QcktRZRAQplkCeEBRsRjoXrjA==
+react-static-tweets@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/react-static-tweets/-/react-static-tweets-0.7.2.tgz#295c15ff5d5c1dc0039505d06986a7c49722506f"
+  integrity sha512-aHXGnMs+NVf6vW51HEee0h84iAShE3lfmTBPnYrse9uVU3QcDe+Vf8EBgCs6tmrnxl4vrGC2+1T4IKiIad9L+w==
   dependencies:
     classnames "^2.2.6"
     swr "^1.0.0-beta.5"
@@ -4069,10 +4069,10 @@ standard-as-callback@^2.1.0:
   resolved "https://registry.npmjs.org/standard-as-callback/-/standard-as-callback-2.1.0.tgz"
   integrity sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A==
 
-static-tweets@^0.7.1:
-  version "0.7.1"
-  resolved "https://registry.npmjs.org/static-tweets/-/static-tweets-0.7.1.tgz"
-  integrity sha512-Jk9pmTXZOd+tibLvQxuQKX4txhwJIoYofco+R7v6wEctwIFFWxvwP5WpQdPRLWCRb4/l8EuWPiXqTt5TxbYRAg==
+static-tweets@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/static-tweets/-/static-tweets-0.7.2.tgz#d0bb8262856be600775562c05fd10ea3aedbbe9f"
+  integrity sha512-AyZOOOyAZ8UInonVsaOImQ5zcUfrFOhhV/UpnaecJ2joG7clG7I9Y5Uj9fJeYFE+QZaWQfsJQdJCUFaabzfQjQ==
   dependencies:
     "@mapbox/rehype-prism" "^0.5.0"
     "@vercel/fetch" "^6.1.0"
