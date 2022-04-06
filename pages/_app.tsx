@@ -28,10 +28,11 @@ import 'styles/prism-theme.css'
 
 import React from 'react'
 import { useRouter } from 'next/router'
-import { bootstrap } from 'lib/bootstrap-client'
-import { fathomId, fathomConfig, posthogId, posthogConfig } from 'lib/config'
 import * as Fathom from 'fathom-client'
 import posthog from 'posthog-js'
+
+import { bootstrap } from 'lib/bootstrap-client'
+import { fathomId, fathomConfig, posthogId, posthogConfig } from 'lib/config'
 
 if (typeof window !== 'undefined') {
   bootstrap()
