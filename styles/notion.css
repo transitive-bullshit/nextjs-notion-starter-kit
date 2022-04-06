@@ -96,6 +96,10 @@
   filter: brightness(120%);
 }
 
+.notion-collection-card-body {
+  padding: 10px;
+}
+
 /* only target safari */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   _::-webkit-full-page-media,
