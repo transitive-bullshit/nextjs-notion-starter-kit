@@ -125,6 +125,16 @@ Every notion block gets its own unique classname, so you can target individual b
 
 Dark mode is fully supported and can be toggled via the sun / moon icon in the footer.
 
+## Automatic Social Images
+
+<p align="center">
+  <img alt="https://user-images.githubusercontent.com/552829/161999932-9cbe5931-c817-4e33-9c86-f8e291c4aafa.jpeg" src="" width="458">
+</p>
+
+Open Graph and related social meta tags are all generated from your Notion content, so social sharing looks professional by default.
+
+Social images are generated automatically using headless chrome. You can tweak the default React template for social images by editing [api/social-images.tsx](./pages/api/social-image.tsx).
+
 ## Automatic Table of Contents
 
 <p align="center">
