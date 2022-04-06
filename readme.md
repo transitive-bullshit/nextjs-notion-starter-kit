@@ -99,12 +99,6 @@ If you're not sure which Redis provider to use, we recommend [Redis Labs](https:
 
 Note that preview images and redis caching are both optional features. If you’d rather not deal with them, just disable them in your site config.
 
-### Redis with GitHub Actions
-
-If you want to test your redis builds with GitHub Actions, you'll need to edit the [default build action](./.github/workflows/build.yml). Here is an [example from my personal branch](<(https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21)>).
-
-You'll also need to add these environment variables to your GitHub repo as [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
-
 ## Styles
 
 All CSS styles that customize Notion content are located in [styles/notion.css](./styles/notion.css). They mainly target global CSS classes exported by react-notion-x [styles.css](https://github.com/NotionX/react-notion-x/blob/master/packages/react-notion-x/src/styles.css).
@@ -173,9 +167,11 @@ To enable, just add a `NEXT_PUBLIC_FATHOM_ID` environment variable, which will o
 
 To enable, just add a `NEXT_PUBLIC_POSTHOG_ID` environment variable, which will only be used in production.
 
-## Vercel Production Setup
+## Environment Variables
 
-If you're using Redis, analytics, or any other feature which requires environment variables, then you'll need to [define them in Vercel](https://vercel.com/docs/concepts/projects/environment-variables)).
+If you're using Redis, analytics, or any other feature which requires environment variables, then you'll need to [define them in Vercel](https://vercel.com/docs/concepts/projects/environment-variables).
+
+If you want to test your redis builds with GitHub Actions, then you'll need to edit the [default build action](./.github/workflows/build.yml) to add `REDIS_HOST` and `REDIS_PASSWORD`. Here is an [example from my personal branch](<(https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21)>). You'll also need to add these environment variables to your GitHub repo as [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
 
 ## Contributing
 
