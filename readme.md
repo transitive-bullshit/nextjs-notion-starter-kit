@@ -128,7 +128,7 @@ Dark mode is fully supported and can be toggled via the sun / moon icon in the f
 ## Automatic Social Images
 
 <p align="center">
-  <img alt="Example social image" src="https://user-images.githubusercontent.com/552829/162001133-34d4cf24-123a-4569-a540-f683b22830d1.jpeg" width="458">
+  <img alt="Example social image" src="https://user-images.githubusercontent.com/552829/162001133-34d4cf24-123a-4569-a540-f683b22830d1.jpeg" width="600">
 </p>
 
 All Open Graph and social meta tags are generated from your Notion content, which makes social sharing look professional by default.
