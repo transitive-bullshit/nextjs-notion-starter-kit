@@ -128,10 +128,10 @@ Dark mode is fully supported and can be toggled via the sun / moon icon in the f
 ## Automatic Social Images
 
 <p align="center">
-  <img alt="https://user-images.githubusercontent.com/552829/161999932-9cbe5931-c817-4e33-9c86-f8e291c4aafa.jpeg" src="" width="458">
+  <img alt="Example social image" src="https://user-images.githubusercontent.com/552829/162001133-34d4cf24-123a-4569-a540-f683b22830d1.jpeg" width="458">
 </p>
 
-Open Graph and related social meta tags are all generated from your Notion content, so social sharing looks professional by default.
+All Open Graph and social meta tags are generated from your Notion content, which makes social sharing look professional by default.
 
 Social images are generated automatically using headless chrome. You can tweak the default React template for social images by editing [api/social-images.tsx](./pages/api/social-image.tsx).
 
