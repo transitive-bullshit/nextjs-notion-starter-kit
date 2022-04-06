@@ -29,8 +29,7 @@ import 'styles/prism-theme.css'
 import React from 'react'
 import { useRouter } from 'next/router'
 import { bootstrap } from 'lib/bootstrap-client'
-import { fathomId, fathomConfig } from 'lib/config'
-import { postHogId, postHogConfig } from 'lib/config'
+import { fathomId, fathomConfig, posthogId, posthogConfig } from 'lib/config'
 import * as Fathom from 'fathom-client'
 import posthog from 'posthog-js'
 
@@ -46,7 +45,8 @@ export default function App({ Component, pageProps }) {
       if (fathomId) {
         Fathom.trackPageview()
       }
-      if (postHogId) {
+
+      if (posthogId) {
         posthog.capture('$pageview')
       }
     }
@@ -54,11 +54,9 @@ export default function App({ Component, pageProps }) {
     if (fathomId) {
       Fathom.load(fathomId, fathomConfig)
     }
-    if (postHogId) {
-      posthog.init(postHogId, postHogConfig)
-    }
-    if(!fathomId && !postHogId) {
-      console.debug('No Analytics id provided.')
+
+    if (posthogId) {
+      posthog.init(posthogId, posthogConfig)
     }
 
     router.events.on('routeChangeComplete', onRouteChangeComplete)

@@ -9,7 +9,6 @@ import { parsePageId } from 'notion-utils'
 import posthog from 'posthog-js'
 import { getEnv, getSiteConfig } from './get-config-value'
 import { PageUrlOverridesInverseMap, PageUrlOverridesMap } from './types'
-import Config = posthog.Config
 
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),
@@ -128,15 +127,9 @@ export const fathomConfig = fathomId
     }
   : undefined
 
-// PostHog automatically filters events coming from localhost
-export const postHogId = process.env.NEXT_PUBLIC_POSTHOG_ID
-export const postHogConfig: Config = {
-  // See https://posthog.com/docs/integrate/client/js#config
-  api_host: 'https://app.posthog.com',
-  loaded: (posthog_instance) => {
-    console.debug(`PostHog loaded`, posthog_instance)
-    // posthog_instance.identify(unique user id)
-  }
+export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID
+export const posthogConfig: posthog.Config = {
+  api_host: 'https://app.posthog.com'
 }
 
 function cleanPageUrlMap(
