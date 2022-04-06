@@ -131,7 +131,7 @@ All Open Graph and social meta tags are generated from your Notion content, whic
 
 Social images are generated automatically using headless chrome. You can tweak the default React template for social images by editing [api/social-images.tsx](./pages/api/social-image.tsx).
 
-You can view an example social image live in production [here](https://transitivebullsh.it/api/social-image?id=d1b5dcf8-b9ff-425b-8aef-5ce6f0730202).
+You can view an example social image live in production [here](https://transitivebullsh.it/api/social-image?id=dfc7f709-ae3e-42c6-9292-f6543d5586f0).
 
 ## Automatic Table of Contents
 
