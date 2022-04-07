@@ -1055,12 +1055,12 @@ chownr@^1.1.1:
   resolved "https://registry.npmjs.org/chownr/-/chownr-1.1.4.tgz"
   integrity sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==
 
-chrome-aws-lambda@^10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/chrome-aws-lambda/-/chrome-aws-lambda-10.1.0.tgz#ac43b4cdfc1fbb2275c62effada560858099501e"
-  integrity sha512-NZQVf+J4kqG4sVhRm3WNmOfzY0OtTSm+S8rg77pwePa9RCYHzhnzRs8YvNI6L9tALIW6RpmefWiPURt3vURXcw==
+chrome-aws-lambda@2.1.1, chrome-aws-lambda@^10.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/chrome-aws-lambda/-/chrome-aws-lambda-2.1.1.tgz#2aeb0c97fb67e908d06dc8d92d92c7d4fb58467c"
+  integrity sha512-Wer2QuygxsCov5bM2+8CLa6qYpNsc5AxYTlgTne00aFoxFP491LGJRxOQtGnYtsJP6UG4pB0SfrwTyPnLys1Lw==
   dependencies:
-    lambdafs "^2.0.3"
+    lambdafs "^1.3.0"
 
 ci-info@^2.0.0:
   version "2.0.0"
@@ -2549,12 +2549,12 @@ klaw-sync@^6.0.0:
   dependencies:
     graceful-fs "^4.1.11"
 
-lambdafs@^2.0.3:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/lambdafs/-/lambdafs-2.1.1.tgz#4bf8d3037b6c61bbb4a22ab05c73ee47964c25ed"
-  integrity sha512-x5k8JcoJWkWLvCVBzrl4pzvkEHSgSBqFjg3Dpsc4AcTMq7oUMym4cL/gRTZ6VM4mUMY+M0dIbQ+V1c1tsqqanQ==
+lambdafs@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/lambdafs/-/lambdafs-1.3.0.tgz#7e369cedc9a09623bb365fa99a1113c2ab2fc7ae"
+  integrity sha512-HqRPmEgtkTW4sCYDUjTEuTGkjCHuLvtZU8iM8GkhD7SpjW4AJJbBk86YU4K43sWGuW5Vmzp1lVCx4ab/kJsuBw==
   dependencies:
-    tar-fs "^2.1.1"
+    tar-fs "^2.0.0"
 
 levn@^0.4.1:
   version "0.4.1"
