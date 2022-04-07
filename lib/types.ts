@@ -15,7 +15,7 @@ export interface PageProps {
   pageId?: string
   error?: PageError
   tagsPage?: boolean
-  propertyToFilterName?: string
+  propertyToFilterName?: string | string
 }
 
 export interface Model {
