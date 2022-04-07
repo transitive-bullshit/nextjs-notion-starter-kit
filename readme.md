@@ -20,7 +20,7 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 
 - Setup only takes a few minutes ([single config file](./site.config.js)) 💪
 - Robust support for Notion content via [react-notion-x](https://github.com/NotionX/react-notion-x)
-- Next.js / TS / React / Notion
+- Built using Next.js, TS, and React
 - Excellent page speeds
 - Smooth image previews
 - Automatic social images
