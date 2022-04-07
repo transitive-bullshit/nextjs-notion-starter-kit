@@ -67,20 +67,3 @@ export interface PageUrlOverridesInverseMap {
   // (this overrides the built-in URL path generation for these pages)
   [pageId: string]: string
 }
-
-export interface PreviewImage {
-  url: string
-  originalWidth: number
-  originalHeight: number
-  width: number
-  height: number
-  type: string
-  dataURIBase64: string
-
-  error?: string
-  statusCode?: number
-}
-
-export interface PreviewImageMap {
-  [url: string]: PreviewImage
-}

@@ -8,6 +8,7 @@
 import { parsePageId } from 'notion-utils'
 import posthog from 'posthog-js'
 import { getEnv, getSiteConfig } from './get-config-value'
+import { NavigationLink } from './site-config'
 import {
   PageUrlOverridesInverseMap,
   PageUrlOverridesMap,
@@ -92,6 +93,14 @@ export const navigationStyle: NavigationStyle = getSiteConfig(
   'navigationStyle',
   'default'
 )
+
+export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
+  'navigationLinks',
+  null
+)
+
+// Optional site search
+export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 
 // ----------------------------------------------------------------------------
 

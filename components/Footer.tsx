@@ -1,4 +1,5 @@
 import React from 'react'
+import useDarkMode from '@fisch0920/use-dark-mode'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
@@ -11,39 +12,31 @@ import styles from './styles.module.css'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
-export const Footer: React.FC<{
-  isDarkMode: boolean
-  toggleDarkMode: () => void
-}> = ({ isDarkMode, toggleDarkMode }) => {
-  const [hasMounted, setHasMounted] = React.useState(false)
-  const toggleDarkModeCb = React.useCallback(
+export const FooterImpl: React.FC = () => {
+  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
+
+  const onToggleDarkMode = React.useCallback(
     (e) => {
       e.preventDefault()
-      toggleDarkMode()
+      darkMode.toggle()
     },
-    [toggleDarkMode]
+    [darkMode]
   )
-
-  React.useEffect(() => {
-    setHasMounted(true)
-  }, [])
 
   return (
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright 2022 {config.author}</div>
 
-      {hasMounted ? (
-        <div className={styles.settings}>
-          <a
-            className={styles.toggleDarkMode}
-            href='#'
-            onClick={toggleDarkModeCb}
-            title='Toggle dark mode'
-          >
-            {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
-          </a>
-        </div>
-      ) : null}
+      <div className={styles.settings}>
+        <a
+          className={styles.toggleDarkMode}
+          href='#'
+          role='button'
+          onClick={onToggleDarkMode}
+        >
+          {darkMode.value ? <IoMoonSharp /> : <IoSunnyOutline />}
+        </a>
+      </div>
 
       <div className={styles.social}>
         {config.twitter && (
@@ -97,3 +90,5 @@ export const Footer: React.FC<{
     </footer>
   )
 }
+
+export const Footer = React.memo(FooterImpl)
