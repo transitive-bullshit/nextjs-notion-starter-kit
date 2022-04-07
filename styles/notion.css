@@ -39,9 +39,13 @@
   width: 100% !important;
 }
 
-.notion-header .nav-header {
+.notion-header .notion-nav-header {
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.notion-nav-header-rhs {
+  gap: 0.5rem;
 }
 
 .notion-gallery-grid {

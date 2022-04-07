@@ -31,6 +31,7 @@ import { PageHead } from './PageHead'
 import { PageActions } from './PageActions'
 import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
+import { NotionPageHeader } from './NotionPageHeader'
 import { GitHubShareButton } from './GitHubShareButton'
 
 import styles from './styles.module.css'
@@ -57,7 +58,11 @@ const Pdf = dynamic(
   }
 )
 const Modal = dynamic(
-  () => import('react-notion-x/build/third-party/modal').then((m) => m.Modal),
+  () =>
+    import('react-notion-x/build/third-party/modal').then((m) => {
+      m.Modal.setAppElement('.notion-viewport')
+      return m.Modal
+    }),
   {
     ssr: false
   }
@@ -72,14 +77,47 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const router = useRouter()
   const lite = useSearchParam('lite')
 
-  const params: any = {}
-  if (lite) params.lite = lite
+  const components = React.useMemo(
+    () => ({
+      nextImage: Image,
+      nextLink: Link,
+      Code,
+      Collection,
+      Equation,
+      Pdf,
+      Modal,
+      Tweet,
+      Header: NotionPageHeader
+    }),
+    []
+  )
+
+  const twitterContextValue = React.useMemo(() => {
+    if (!recordMap) {
+      return null
+    }
+
+    return {
+      tweetAstMap: (recordMap as any).tweetAstMap || {},
+      swrOptions: {
+        fetcher: (id: string) =>
+          fetch(`/api/get-tweet-ast/${id}`).then((r) => r.json())
+      }
+    }
+  }, [recordMap])
 
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
-  const searchParams = new URLSearchParams(params)
 
   const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
+
+  const siteMapPageUrl = React.useMemo(() => {
+    const params: any = {}
+    if (lite) params.lite = lite
+
+    const searchParams = new URLSearchParams(params)
+    return mapPageUrl(site, recordMap, searchParams)
+  }, [site, recordMap, lite])
 
   if (router.isFallback) {
     return <Loading />
@@ -109,8 +147,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     g.recordMap = recordMap
     g.block = block
   }
-
-  const siteMapPageUrl = mapPageUrl(site, recordMap, searchParams)
 
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
@@ -146,15 +182,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
   return (
-    <TwitterContextProvider
-      value={{
-        tweetAstMap: (recordMap as any).tweetAstMap || {},
-        swrOptions: {
-          fetcher: (id) =>
-            fetch(`/api/get-tweet-ast/${id}`).then((r) => r.json())
-        }
-      }}
-    >
+    <TwitterContextProvider value={twitterContextValue}>
       <PageHead
         pageId={pageId}
         site={site}
@@ -173,16 +201,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           styles.notion,
           pageId === site.rootNotionPageId && 'index-page'
         )}
-        components={{
-          nextImage: Image,
-          nextLink: Link,
-          Code,
-          Collection,
-          Equation,
-          Pdf,
-          Modal,
-          Tweet
-        }}
+        components={components}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
@@ -197,14 +216,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         defaultPageCoverPosition={config.defaultPageCoverPosition}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapImageUrl}
-        searchNotion={searchNotion}
+        searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
-        footer={
-          <Footer
-            isDarkMode={darkMode.value}
-            toggleDarkMode={darkMode.toggle}
-          />
-        }
+        footer={<Footer />}
       />
 
       <GitHubShareButton />

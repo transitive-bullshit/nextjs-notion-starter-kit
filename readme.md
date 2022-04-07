@@ -18,7 +18,7 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 
 ## Features
 
-- Setup only takes a few minutes ([single config file](./site.config.js)) 💪
+- Setup only takes a few minutes ([single config file](./site.config.ts)) 💪
 - Robust support for Notion content via [react-notion-x](https://github.com/NotionX/react-notion-x)
 - Built using Next.js, TS, and React
 - Excellent page speeds
@@ -38,12 +38,12 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 
 ## Setup
 
-**All config is defined in [site.config.js](./site.config.js).**
+**All config is defined in [site.config.ts](./site.config.ts).**
 
 This project requires a recent version of Node.js (>= 14.17).
 
 1. Fork / clone this repo
-2. Change a few values in [site.config.js](./site.config.js)
+2. Change a few values in [site.config.ts](./site.config.ts)
 3. `npm install`
 4. `npm run dev` to test locally
 5. `npm run deploy` to deploy to vercel 💪
@@ -82,11 +82,11 @@ NOTE: if you have multiple pages in your workspace with the same slugified name,
 
 We use [next/image](https://nextjs.org/docs/api-reference/next/image) to serve images efficiently, with preview images optionally generated via [lqip-modern](https://github.com/transitive-bullshit/lqip-modern). This gives us extremely optimized image support for sexy smooth images.
 
-Preview images are **enabled by default**, but they can be slow to generate, so if you want to disable them, set `isPreviewImageSupportEnabled` to `false` in `site.config.js`.
+Preview images are **enabled by default**, but they can be slow to generate, so if you want to disable them, set `isPreviewImageSupportEnabled` to `false` in `site.config.ts`.
 
 ### Redis
 
-If you want to cache generated preview images to speed up subsequent builds, you'll need to first set up an external [Redis](https://redis.io) data store. To enable redis caching, set `isRedisEnabled` to `true` in `site.config.js` and then set `REDIS_HOST` and `REDIS_PASSWORD` environment variables to point to your redis instance.
+If you want to cache generated preview images to speed up subsequent builds, you'll need to first set up an external [Redis](https://redis.io) data store. To enable redis caching, set `isRedisEnabled` to `true` in `site.config.ts` and then set `REDIS_HOST` and `REDIS_PASSWORD` environment variables to point to your redis instance.
 
 You can do this locally by adding a `.env` file:
 
