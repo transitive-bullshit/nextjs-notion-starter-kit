@@ -2,6 +2,8 @@ import { ExtendedRecordMap, PageMap } from 'notion-types'
 
 export * from 'notion-types'
 
+export type NavigationStyle = 'default' | 'custom'
+
 export interface PageError {
   message?: string
   statusCode: number

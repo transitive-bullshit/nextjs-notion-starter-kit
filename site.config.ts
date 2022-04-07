@@ -1,4 +1,6 @@
-export default {
+import { siteConfig } from './lib/site-config'
+
+export default siteConfig({
   // the site's root Notion page (required)
   rootNotionPageId: '7875426197cf461698809def95960ebf',
 
@@ -25,6 +27,8 @@ export default {
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
+  navigationStyle: 'custom',
+
   // whether or not to enable support for LQIP preview images (optional)
   isPreviewImageSupportEnabled: true,
 
@@ -42,4 +46,4 @@ export default {
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
   pageUrlOverrides: null
-}
+})
