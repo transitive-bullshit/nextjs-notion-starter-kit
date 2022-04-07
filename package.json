@@ -70,7 +70,8 @@
     "typescript": "^4.4.4"
   },
   "resolutions": {
-    "next-api-og-image/chrome-aws-lambda": "5.5.0"
+    "next-api-og-image/chrome-aws-lambda": "5.5.0",
+    "next-api-og-image/puppeteer-core": "5.5.0"
   },
   "overrides": {
     "cacheable-request": {
