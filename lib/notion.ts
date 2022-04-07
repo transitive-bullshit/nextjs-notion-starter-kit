@@ -24,6 +24,7 @@ const getNavigationLinkPages = pMemoize(
         navigationLinkPageIds,
         async (navigationLinkPageId) =>
           notion.getPage(navigationLinkPageId, {
+            chunkLimit: 1,
             fetchMissingBlocks: false,
             fetchCollections: false,
             signFileUrls: false
@@ -47,12 +48,17 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     // the page title, slug, etc.
     const navigationLinkRecordMaps = await getNavigationLinkPages()
 
+    const preLength = Object.keys(recordMap.block).length
     if (navigationLinkRecordMaps?.length) {
       recordMap = navigationLinkRecordMaps.reduce(
         (map, navigationLinkRecordMap) =>
           mergeRecordMaps(map, navigationLinkRecordMap),
         recordMap
       )
+
+      const postLength = Object.keys(recordMap.block).length
+
+      console.log('BLOCKS', { preLength, postLength })
     }
   }
 
