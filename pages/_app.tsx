@@ -5,7 +5,7 @@ import 'styles/global.css'
 import 'react-notion-x/src/styles.css'
 
 // used for rendering equations (optional)
-import 'react-notion-x/build/third-party/equation.css'
+import 'katex/dist/katex.min.css'
 
 // used for tweet embeds (optional)
 import 'react-static-tweets/styles.css'
@@ -21,10 +21,6 @@ import 'styles/notion.css'
 
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
-
-// import any languages we want to support for syntax highlighting via Notion's
-// Code block and prismjs
-// import 'prismjs/components/prism-typescript'
 
 import React from 'react'
 import { useRouter } from 'next/router'
