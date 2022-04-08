@@ -62,12 +62,7 @@ export const NotionPageHeader: React.FC<{
             })
             .filter(Boolean)}
 
-          <div
-            className={cs('breadcrumb', 'button')}
-            role='button'
-            aria-command-name='Toggle dark mode'
-            onClick={darkMode.toggle}
-          >
+          <div className={cs('breadcrumb', 'button')} onClick={darkMode.toggle}>
             {hasMounted && darkMode.value ? (
               <IoMoonSharp />
             ) : (
