@@ -34,14 +34,11 @@ export async function getAllPagesImpl(
       })
 
       if (map[canonicalPageId]) {
-        console.error(
-          'error duplicate canonical page id',
+        console.warn('error duplicate canonical page id', {
           canonicalPageId,
           pageId,
-          map[canonicalPageId]
-        )
-
-        return map
+          existingPageId: map[canonicalPageId]
+        })
       } else {
         return {
           ...map,

@@ -48,17 +48,12 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     // the page title, slug, etc.
     const navigationLinkRecordMaps = await getNavigationLinkPages()
 
-    const preLength = Object.keys(recordMap.block).length
     if (navigationLinkRecordMaps?.length) {
       recordMap = navigationLinkRecordMaps.reduce(
         (map, navigationLinkRecordMap) =>
           mergeRecordMaps(map, navigationLinkRecordMap),
         recordMap
       )
-
-      const postLength = Object.keys(recordMap.block).length
-
-      console.log('BLOCKS', { preLength, postLength })
     }
   }
 

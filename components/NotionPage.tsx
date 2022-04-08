@@ -87,7 +87,6 @@ const propertyDateValue = (
 ) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'published') {
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
-    console.log('date', { data, publishDate })
 
     if (publishDate) {
       return `Published ${formatDate(publishDate, {
