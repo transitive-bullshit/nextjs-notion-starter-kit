@@ -15,7 +15,7 @@ import { Tweet, TwitterContextProvider } from 'react-static-tweets'
 import { NotionRenderer } from 'react-notion-x'
 
 // utils
-import { getBlockTitle, getPageProperty } from 'notion-utils'
+import { getBlockTitle, getPageProperty, formatDate } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapImageUrl } from 'lib/map-image-url'
 import { getPageTweet } from 'lib/get-page-tweet'
@@ -68,6 +68,30 @@ const Modal = dynamic(
   }
 )
 
+const propertyLastEditedTimeValue = (
+  { block, pageHeader },
+  defaultFn: () => React.ReactNode
+) => {
+  if (pageHeader && block?.last_edited_time) {
+    return `Last updated ${formatDate(block?.last_edited_time, {
+      month: 'long'
+    })}`
+  } else {
+    return defaultFn()
+  }
+}
+
+const propertyTextValue = (
+  { schema, pageHeader },
+  defaultFn: () => React.ReactNode
+) => {
+  if (pageHeader && schema?.name?.toLowerCase() === 'author') {
+    return <b>{defaultFn()}</b>
+  } else {
+    return defaultFn()
+  }
+}
+
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
   recordMap,
@@ -87,7 +111,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
       Pdf,
       Modal,
       Tweet,
-      Header: NotionPageHeader
+      Header: NotionPageHeader,
+      propertyLastEditedTimeValue,
+      propertyTextValue
     }),
     []
   )
