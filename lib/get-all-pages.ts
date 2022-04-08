@@ -41,6 +41,8 @@ export async function getAllPagesImpl(
           pageId,
           existingPageId: map[canonicalPageId]
         })
+
+        return map
       } else {
         return {
           ...map,
