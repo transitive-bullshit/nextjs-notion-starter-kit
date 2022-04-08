@@ -65,6 +65,7 @@ export const NotionPageHeader: React.FC<{
           <div
             className={cs('breadcrumb', 'button')}
             role='button'
+            aria-command-name='Toggle dark mode'
             onClick={darkMode.toggle}
           >
             {hasMounted && darkMode.value ? (
