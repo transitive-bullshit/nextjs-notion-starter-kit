@@ -1,0 +1,44 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: liona/notion
+  DOCKER_USERNAME: liona
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag $IMAGE_NAME
+    - name: Log into registry
+      run: echo "${{ secrets.PASSWORD }}" | docker login -u $DOCKER_USERNAME --password-stdin
+    - name: Push image
+      run: |
+        # 将所有的大写字母转为小写
+        IMAGE_NAME=$(echo $IMAGE_NAME | tr '[A-Z]' '[a-z]')
+
+        # 从 GitHub.ref 中取出版本
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+
+        # 从 tag 名字中替换 v 字符
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+        # Use Docker `latest` tag convention
+        [ "$VERSION" == "main" ] && VERSION=latest
+
+        echo VERSION=$VERSION
+        # 设置镜像 id 和版本号
+        docker tag $IMAGE_NAME $IMAGE_NAME:$VERSION
+        # 进行 push
+        docker push $IMAGE_NAME:$VERSION

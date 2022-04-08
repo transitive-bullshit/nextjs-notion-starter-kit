@@ -11,6 +11,7 @@ import * as config from 'lib/config'
 import styles from './styles.module.css'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
+const year = new Date().getFullYear()
 
 export const FooterImpl: React.FC = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
@@ -30,7 +31,7 @@ export const FooterImpl: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2022 {config.author}</div>
+      <div className={styles.copyright}>Copyright {year} {config.author}</div>
 
       <div className={styles.settings}>
         {hasMounted && (
