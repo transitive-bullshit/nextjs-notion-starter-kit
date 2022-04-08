@@ -75,21 +75,12 @@ export default withOGImage<'query', 'id'>({
       //   getPageProperty<string>('Description', block, recordMap) ||
       //   config.description
 
-      const timeUpdated = getPageProperty<number>(
-        'Last Updated',
-        block,
-        recordMap
-      )
       const timePublished = getPageProperty<number>(
         'Published',
         block,
         recordMap
       )
-      const dateUpdated = timeUpdated
-        ? new Date(timeUpdated)
-        : timePublished
-        ? new Date(timePublished)
-        : undefined
+      const dateUpdated = timePublished ? new Date(timePublished) : undefined
       const date =
         isBlogPost && dateUpdated
           ? `${dateUpdated.toLocaleString('en-US', {

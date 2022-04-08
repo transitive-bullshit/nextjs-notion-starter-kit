@@ -76,9 +76,27 @@ const propertyLastEditedTimeValue = (
     return `Last updated ${formatDate(block?.last_edited_time, {
       month: 'long'
     })}`
-  } else {
-    return defaultFn()
   }
+
+  return defaultFn()
+}
+
+const propertyDateValue = (
+  { data, schema, pageHeader },
+  defaultFn: () => React.ReactNode
+) => {
+  if (pageHeader && schema?.name?.toLowerCase() === 'published') {
+    const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
+    console.log('date', { data, publishDate })
+
+    if (publishDate) {
+      return `Published ${formatDate(publishDate, {
+        month: 'long'
+      })}`
+    }
+  }
+
+  return defaultFn()
 }
 
 const propertyTextValue = (
@@ -87,9 +105,9 @@ const propertyTextValue = (
 ) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'author') {
     return <b>{defaultFn()}</b>
-  } else {
-    return defaultFn()
   }
+
+  return defaultFn()
 }
 
 export const NotionPage: React.FC<types.PageProps> = ({
@@ -113,7 +131,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       Tweet,
       Header: NotionPageHeader,
       propertyLastEditedTimeValue,
-      propertyTextValue
+      propertyTextValue,
+      propertyDateValue
     }),
     []
   )
