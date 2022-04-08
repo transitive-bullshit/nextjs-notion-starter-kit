@@ -90,12 +90,6 @@ const Collection = dynamic(() =>
     (m) => m.Collection
   )
 )
-const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
-  {
-    ssr: false
-  }
-)
 const Modal = dynamic(
   () =>
     import('react-notion-x/build/third-party/modal').then((m) => {
@@ -187,7 +181,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       nextLink: Link,
       Code,
       Collection,
-      Pdf,
       Modal,
       Tweet,
       Header: NotionPageHeader,
