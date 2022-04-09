@@ -217,13 +217,33 @@
   position: relative;
   transition: unset;
   opacity: 1;
+  border-bottom-width: 0.08rem;
 }
 
+.notion-link:focus,
 .notion-link:hover {
-  border-width: 0;
-  border-bottom-width: 3px;
-  border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
-  border-image-slice: 1;
+  border-bottom-style: none;
+}
+
+.notion-link:focus::after,
+.notion-link:hover::after {
+  visibility: visible;
+  width: 100%;
+  left: 0;
+}
+
+.notion-link::after {
+  content: '';
+  position: absolute;
+  bottom: -0.1rem;
+  left: 50%;
+  width: 0;
+  height: 0.1rem;
+  transform: scaleX(1);
+  transition-property: width, left;
+  transition-duration: 300ms;
+  visibility: hidden;
+  background: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
 }
 
 .notion-red_background,
