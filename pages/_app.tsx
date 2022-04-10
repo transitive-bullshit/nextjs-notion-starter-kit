@@ -22,7 +22,7 @@ import 'styles/notion.css'
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
 
-import React from 'react'
+import * as React from 'react'
 import { useRouter } from 'next/router'
 import * as Fathom from 'fathom-client'
 import posthog from 'posthog-js'

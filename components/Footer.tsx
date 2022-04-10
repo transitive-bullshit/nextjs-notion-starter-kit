@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import useDarkMode from '@fisch0920/use-dark-mode'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
