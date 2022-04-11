@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import cs from 'classnames'
 import useDarkMode from '@fisch0920/use-dark-mode'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
@@ -62,11 +62,7 @@ export const NotionPageHeader: React.FC<{
             })
             .filter(Boolean)}
 
-          <div
-            className={cs('breadcrumb', 'button')}
-            role='button'
-            onClick={darkMode.toggle}
-          >
+          <div className={cs('breadcrumb', 'button')} onClick={darkMode.toggle}>
             {hasMounted && darkMode.value ? (
               <IoMoonSharp />
             ) : (

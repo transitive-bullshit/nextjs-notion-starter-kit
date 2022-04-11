@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { isDev, domain } from 'lib/config'
 import { getSiteMaps } from 'lib/get-site-maps'
 import { resolveNotionPage } from 'lib/resolve-notion-page'

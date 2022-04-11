@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React from 'react'
+import * as React from 'react'
 
 import * as types from 'lib/types'
 import * as config from 'lib/config'
