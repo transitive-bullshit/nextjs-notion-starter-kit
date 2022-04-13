@@ -10,7 +10,7 @@ export default {
   name: 'Transitive Bullshit',
   domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
   author: 'Travis Fischer',
-
+//
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
 
