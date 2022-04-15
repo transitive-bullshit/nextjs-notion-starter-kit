@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ allinu ]
   pull_request:
-    branches: [ main ]
+    branches: [ allinu ]
   workflow_dispatch:
 
 env:
@@ -35,7 +35,7 @@ jobs:
         [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
         # Use Docker `latest` tag convention
-        [ "$VERSION" == "main" ] && VERSION=latest
+        [ "$VERSION" == "allinu" ] && VERSION=latest
 
         echo VERSION=$VERSION
         # 设置镜像 id 和版本号
