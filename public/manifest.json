@@ -3,8 +3,8 @@
   "short_name": "Starter Kit",
   "icons": [
     {
-      "src": "/00.jpg",
-      "type": "image/jpg",
+      "src": "",
+      "type": "image/",
       "sizes": "16x16"
     }
   ],
