@@ -2,7 +2,7 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '891c43219fa2403fbe551ea71ce22bb3',
+  rootNotionPageId: '1b6824cefe3e425799d584c2391f9ffd',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: '学习复盘',
-  domain: 'https://www.notion.so/891c43219fa2403fbe551ea71ce22bb3',
+  domain: 'https://uttermost-chard-83d.notion.site/1b6824cefe3e425799d584c2391f9ffd',
   author: 'CODE',
 
   // open graph metadata (optional)
