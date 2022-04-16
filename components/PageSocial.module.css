@@ -68,7 +68,7 @@
   fill: var(--bg-color);
 }
 
-:global(.dark-mode) .action:hover svg {
+:global([data-theme='dark']) .action:hover svg {
   fill: var(--fg-color);
 }
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import cs from 'classnames'
-import useDarkMode from '@fisch0920/use-dark-mode'
+import { useTheme } from 'next-themes'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 
@@ -14,13 +14,17 @@ import styles from './styles.module.css'
 export const NotionPageHeader: React.FC<{
   block: types.CollectionViewPageBlock | types.PageBlock
 }> = ({ block }) => {
-  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
   const [hasMounted, setHasMounted] = React.useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
   const { components, mapPageUrl } = useNotionContext()
 
   React.useEffect(() => {
     setHasMounted(true)
   }, [])
+
+  const onToggleTheme = React.useCallback(() => {
+    setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
+  }, [resolvedTheme, setTheme])
 
   if (navigationStyle === 'default') {
     return <Header block={block} />
@@ -62,8 +66,8 @@ export const NotionPageHeader: React.FC<{
             })
             .filter(Boolean)}
 
-          <div className={cs('breadcrumb', 'button')} onClick={darkMode.toggle}>
-            {hasMounted && darkMode.value ? (
+          <div className={cs('breadcrumb', 'button')} onClick={onToggleTheme}>
+            {hasMounted && resolvedTheme === 'dark' ? (
               <IoMoonSharp />
             ) : (
               <IoSunnyOutline />

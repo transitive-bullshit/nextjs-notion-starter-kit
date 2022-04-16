@@ -1,5 +1,5 @@
 import * as React from 'react'
-import useDarkMode from '@fisch0920/use-dark-mode'
+import { useTheme } from 'next-themes'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
@@ -14,14 +14,14 @@ import styles from './styles.module.css'
 
 export const FooterImpl: React.FC = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
-  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
+  const { setTheme, resolvedTheme } = useTheme()
 
   const onToggleDarkMode = React.useCallback(
     (e) => {
       e.preventDefault()
-      darkMode.toggle()
+      setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
     },
-    [darkMode]
+    [resolvedTheme, setTheme]
   )
 
   React.useEffect(() => {
@@ -41,7 +41,7 @@ export const FooterImpl: React.FC = () => {
             onClick={onToggleDarkMode}
             title='Toggle dark mode'
           >
-            {darkMode.value ? <IoMoonSharp /> : <IoSunnyOutline />}
+            {resolvedTheme === 'dark' ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
         )}
       </div>

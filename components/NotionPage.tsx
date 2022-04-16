@@ -6,7 +6,7 @@ import cs from 'classnames'
 import { useRouter } from 'next/router'
 import { useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
-import useDarkMode from '@fisch0920/use-dark-mode'
+import { useTheme } from 'next-themes'
 import { PageBlock } from 'notion-types'
 
 import { Tweet, TwitterContextProvider } from 'react-static-tweets'
@@ -189,7 +189,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
 
-  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
+  const { resolvedTheme } = useTheme()
 
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
@@ -284,7 +284,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
         fullPage={!isLiteMode}
-        darkMode={darkMode.value}
+        darkMode={resolvedTheme === 'dark'}
         previewImages={!!recordMap.preview_images}
         showCollectionViewDropdown={false}
         showTableOfContents={showTableOfContents}

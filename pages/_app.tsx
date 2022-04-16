@@ -23,8 +23,9 @@ import 'styles/notion.css'
 import 'styles/prism-theme.css'
 
 import * as React from 'react'
-import { useRouter } from 'next/router'
 import * as Fathom from 'fathom-client'
+import { useRouter } from 'next/router'
+import { ThemeProvider } from 'next-themes'
 import posthog from 'posthog-js'
 
 import { bootstrap } from 'lib/bootstrap-client'
@@ -63,5 +64,9 @@ export default function App({ Component, pageProps }) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider disableTransitionOnChange>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }
