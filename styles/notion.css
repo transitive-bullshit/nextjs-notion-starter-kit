@@ -217,33 +217,25 @@
   position: relative;
   transition: unset;
   opacity: 1;
-  border-bottom-width: 0.08rem;
+  border-bottom-width: 0.1rem;
+  background: transparent;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: 0 0.1rem;
 }
 
 .notion-link:focus,
 .notion-link:hover {
-  border-bottom-style: none;
-}
+  border-bottom-color: transparent;
 
-.notion-link:focus::after,
-.notion-link:hover::after {
-  visibility: visible;
-  width: 100%;
-  left: 0;
-}
+  background-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0.1rem;
 
-.notion-link::after {
-  content: '';
-  position: absolute;
-  bottom: -0.1rem;
-  left: 50%;
-  width: 0;
-  height: 0.1rem;
-  transform: scaleX(1);
-  transition-property: width, left;
+  transition-property: background-position, background-size;
   transition-duration: 300ms;
-  visibility: hidden;
-  background: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
 }
 
 .notion-red_background,
