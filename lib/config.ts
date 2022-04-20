@@ -77,12 +77,6 @@ export const isPreviewImageSupportEnabled: boolean = getSiteConfig(
   false
 )
 
-// Optional whether or not to enable support for LQIP preview images
-export const isTweetEmbedSupportEnabled: boolean = getSiteConfig(
-  'isTweetEmbedSupportEnabled',
-  true
-)
-
 // Optional whether or not to include the Notion ID in page URLs or just use slugs
 export const includeNotionIdInUrls: boolean = getSiteConfig(
   'includeNotionIdInUrls',

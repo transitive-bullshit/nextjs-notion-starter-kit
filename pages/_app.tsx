@@ -7,9 +7,6 @@ import 'react-notion-x/src/styles.css'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
 
-// used for tweet embeds (optional)
-import 'react-static-tweets/styles.css'
-
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-coy.css'
 
