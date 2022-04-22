@@ -74,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     'Cache-Control',
     `public, max-age=${ttlSeconds}, stale-while-revalidate=${ttlSeconds}`
   )
-  res.setHeader('Content-Type', 'text/xml')
+  res.setHeader('Content-Type', 'text/xml; charset=utf-8')
   res.write(feedText)
   res.end()
 
