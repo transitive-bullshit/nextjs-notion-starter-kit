@@ -16,15 +16,7 @@ export interface PageProps {
   error?: PageError
 }
 
-export interface Model {
-  id: string
-  userId: string
-
-  createdAt: number
-  updatedAt: number
-}
-
-export interface Site extends Model {
+export interface Site {
   name: string
   domain: string
 
@@ -40,10 +32,6 @@ export interface Site extends Model {
   // opengraph metadata
   description?: string
   image?: string
-
-  timestamp: Date
-
-  isDisabled: boolean
 }
 
 export interface SiteMap {
