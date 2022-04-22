@@ -13,6 +13,8 @@ export const PageHead: React.FC<
     url?: string
   }
 > = ({ site, title, description, pageId, image, url }) => {
+  const rssFeedUrl = `${config.host}/feed.xml`
+
   title = title ?? site?.name
   description = description ?? site?.description
 
@@ -66,6 +68,13 @@ export const PageHead: React.FC<
           <meta property='twitter:url' content={url} />
         </>
       )}
+
+      <link
+        rel='alternate'
+        type='application/rss+xml'
+        href={rssFeedUrl}
+        title={site?.name}
+      />
 
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />
