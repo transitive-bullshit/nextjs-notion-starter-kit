@@ -50,7 +50,8 @@
     "react-dom": "^17.0.2",
     "react-notion-x": "^6.12.3",
     "react-tweet-embed": "^2.0.0",
-    "react-use": "^17.3.2"
+    "react-use": "^17.3.2",
+    "rss": "^1.2.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.0",

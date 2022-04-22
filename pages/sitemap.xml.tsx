@@ -1,7 +1,7 @@
-import { GetServerSideProps } from 'next'
-import { SiteMap } from 'lib/types'
+import type { GetServerSideProps } from 'next'
+import type { SiteMap } from 'lib/types'
 import { host } from 'lib/config'
-import { getSiteMaps } from 'lib/get-site-maps'
+import { getSiteMap } from 'lib/get-site-map'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   if (req.method !== 'GET') {
@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     }
   }
 
-  const siteMaps = await getSiteMaps()
+  const siteMap = await getSiteMap()
 
   // cache for up to 8 hours
   res.setHeader(
@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     'public, max-age=28800, stale-while-revalidate=28800'
   )
   res.setHeader('Content-Type', 'text/xml')
-  res.write(createSitemap(siteMaps[0]))
+  res.write(createSitemap(siteMap))
   res.end()
 
   return {

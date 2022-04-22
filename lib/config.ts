@@ -12,7 +12,8 @@ import { NavigationLink } from './site-config'
 import {
   PageUrlOverridesInverseMap,
   PageUrlOverridesMap,
-  NavigationStyle
+  NavigationStyle,
+  Site
 } from './types'
 
 export const rootNotionPageId: string = parsePageId(
@@ -131,6 +132,14 @@ export const api = {
 }
 
 // ----------------------------------------------------------------------------
+
+export const site: Site = {
+  domain,
+  name,
+  rootNotionPageId,
+  rootNotionSpaceId,
+  description
+}
 
 export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
 export const fathomConfig = fathomId
