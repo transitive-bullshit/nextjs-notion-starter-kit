@@ -4,7 +4,7 @@ export default {
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: cc246794-7553-4039-870c-c2c6a9f8af8e,
+  rootNotionSpaceId: 'cc246794-7553-4039-870c-c2c6a9f8af8e',
 
   // basic site info (required)
   name: 'Transitive Bullshit',
