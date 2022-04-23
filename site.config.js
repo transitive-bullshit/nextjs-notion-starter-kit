@@ -1,10 +1,10 @@
 export default {
   // the site's root Notion page (required)
-  rootNotionPageId: '03c13ba886b94ba293054babac17a3d0',
+  rootNotionPageId: '776e54be135a47198c5a50b0f0868e68',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: null,
+  rootNotionSpaceId: cc246794-7553-4039-870c-c2c6a9f8af8e,
 
   // basic site info (required)
   name: 'Transitive Bullshit',
