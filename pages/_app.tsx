@@ -21,18 +21,25 @@ import 'styles/prism-theme.css'
 
 import * as React from 'react'
 import * as Fathom from 'fathom-client'
+import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import posthog from 'posthog-js'
 
 import { bootstrap } from 'lib/bootstrap-client'
-import { fathomId, fathomConfig, posthogId, posthogConfig } from 'lib/config'
+import {
+  isServer,
+  fathomId,
+  fathomConfig,
+  posthogId,
+  posthogConfig
+} from 'lib/config'
 
-if (typeof window !== 'undefined') {
+if (!isServer) {
   bootstrap()
 }
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
