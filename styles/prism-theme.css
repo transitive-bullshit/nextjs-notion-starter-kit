@@ -7,7 +7,7 @@
   padding: 1.5em !important;
 }
 
-[data-theme='dark'] .notion-code {
+.dark-mode .notion-code {
   background-color: rgba(17, 24, 39, 1);
   border-color: rgba(55, 65, 81, 1);
 }
@@ -18,17 +18,17 @@
   background: none !important;
   padding: 0 !important;
 }
-[data-theme='dark'] .notion code {
+.dark-mode .notion code {
   color: rgba(229, 231, 235, 1);
 }
 
-[data-theme='dark'] .notion .notion-inline-code {
+.dark-mode .notion .notion-inline-code {
   background: rgb(71, 76, 80) !important;
   color: #ff4081;
   padding: 0.2em 0.4em !important;
 }
 
-.light-mode .notion .notion-inline-code {
+.notion .notion-inline-code {
   color: #ff4081;
   background: rgba(127, 122, 107, 0.1) !important;
   padding: 0.2em 0.4em !important;
@@ -42,15 +42,15 @@
 .token.comment {
   color: #5b9b4c;
 }
-[data-theme='dark'] .token.cdata,
-[data-theme='dark'] .token.doctype,
-[data-theme='dark'] .token.prolog {
+.dark-mode .token.cdata,
+.dark-mode .token.doctype,
+.dark-mode .token.prolog {
   color: rgba(209, 213, 219, 1);
 }
 .token.punctuation {
   color: rgba(55, 65, 81, 1);
 }
-[data-theme='dark'] .token.punctuation {
+.dark-mode .token.punctuation {
   color: rgba(209, 213, 219, 1);
 }
 .token.boolean,
@@ -95,8 +95,8 @@ code[class*='language-'],
 pre[class*='language-'] {
   color: rgba(31, 41, 55, 1);
 }
-[data-theme='dark'] code[class*='language-'],
-[data-theme='dark'] pre[class*='language-'] {
+.dark-mode code[class*='language-'],
+.dark-mode pre[class*='language-'] {
   color: rgba(249, 250, 251, 1);
 }
 pre::-webkit-scrollbar {
