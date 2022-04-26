@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '@Rocky-XRQ',
-  domain: 'rocky-page.Rocky-XRQ',
-  author: 'Rocky-XRQ',
+  name: 'Rocky.xrq',
+  domain: 'rocky.xrq',
+  author: 'Rocky XRQ',
 
   // open graph metadata (optional)
-  description: 'RockyXRQ personal website',
+  description: 'Personal site of Rocky Xu',
 
   // social usernames (optional)
   twitter: '',
@@ -47,8 +47,8 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
+  // navigationStyle: 'default'
+  navigationStyle: 'custom',
   // navigationLinks: [
   //   {
   //     title: 'About',
