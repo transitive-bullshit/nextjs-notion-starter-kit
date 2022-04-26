@@ -25,6 +25,7 @@
     "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check"
   },
   "dependencies": {
+    "@fisch0920/use-dark-mode": "^2.4.0",
     "@keyvhq/core": "^1.6.9",
     "@keyvhq/redis": "^1.6.10",
     "@react-icons/all-files": "^4.1.0",
@@ -37,7 +38,6 @@
     "lqip-modern": "^1.2.0",
     "next": "^12.1.1",
     "next-api-og-image": "^2.2.1",
-    "next-themes": "^0.1.1",
     "node-fetch": "^2.6.1",
     "notion-client": "^6.12.0",
     "notion-types": "^6.11.0",

@@ -29,6 +29,14 @@
   resolved "https://registry.npmjs.org/@fisch0920/medium-zoom/-/medium-zoom-1.0.7.tgz"
   integrity sha512-hPUrgVM/QvsZdZzDTPyL1C1mOtEw03RqTLmK7ZlJ8S/64u4O4O5BvPvjB/9kyLtE6iVaS9UDRAMSwmM9uh2JIw==
 
+"@fisch0920/use-dark-mode@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@fisch0920/use-dark-mode/-/use-dark-mode-2.4.0.tgz#92ba90c313a37099879a7b0405280933f9105cdc"
+  integrity sha512-R5onciu81CCOxWVIJcRjp1PfSfBI5fIfxYR2jqydc0nuGWrn4ZB4ciDXiv36PNX5mFIbAgPfjUF0Z5lhSI62TA==
+  dependencies:
+    "@use-it/event-listener" "^0.1.2"
+    use-persisted-state "^0.3.0"
+
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.9.5.tgz"
@@ -611,6 +619,11 @@
   dependencies:
     "@typescript-eslint/types" "5.18.0"
     eslint-visitor-keys "^3.0.0"
+
+"@use-it/event-listener@^0.1.2":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@use-it/event-listener/-/event-listener-0.1.7.tgz#443a9b6df87f2f2961b74d42997ce723a7078623"
+  integrity sha512-hgfExDzUU9uTRTPDCpw2s9jWTxcxmpJya3fK5ADpf5VDpSy8WYwY/kh28XE0tUcbsljeP8wfan48QvAQTSSa3Q==
 
 "@xobotyi/scrollbar-width@^1.9.5":
   version "1.9.5"
@@ -2368,11 +2381,6 @@ next-api-og-image@^2.2.1:
     puppeteer-core "^10.4.0"
     twemoji "^13.1.0"
 
-next-themes@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.1.1.tgz#122113a458bf1d1be5ffed66778ab924c106f82a"
-  integrity sha512-Iqxt6rhS/KfK/iHJ0tfFjTcdLEAI0AgwFuAFrMwLOPK5e+MI3I+fzyvBoS+VaOS+NldUiazurhgwYhrfV0VXsQ==
-
 next@^12.1.1:
   version "12.1.3"
   resolved "https://registry.npmjs.org/next/-/next-12.1.3.tgz"
@@ -3762,6 +3770,13 @@ use-callback-ref@^1.2.3:
   version "1.2.5"
   resolved "https://registry.npmjs.org/use-callback-ref/-/use-callback-ref-1.2.5.tgz"
   integrity sha512-gN3vgMISAgacF7sqsLPByqoePooY3n2emTH59Ur5d/M8eg4WTWu1xp8i8DHjohftIyEx0S08RiYxbffr4j8Peg==
+
+use-persisted-state@^0.3.0:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/use-persisted-state/-/use-persisted-state-0.3.3.tgz#5e0f2236967cec7c34de33abc07ae6818e7c7451"
+  integrity sha512-pCNlvYC8+XjRxwnIut4teGC9f2p9aD88R8OGseQGZa2dvqG/h1vEGk1vRE1IZG0Vf161UDpn+NlW4+UGubQflQ==
+  dependencies:
+    "@use-it/event-listener" "^0.1.2"
 
 use-sidecar@^1.0.1:
   version "1.0.5"

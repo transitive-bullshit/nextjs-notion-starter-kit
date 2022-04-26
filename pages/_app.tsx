@@ -23,7 +23,6 @@ import * as React from 'react'
 import * as Fathom from 'fathom-client'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import { ThemeProvider } from 'next-themes'
 import posthog from 'posthog-js'
 
 import { bootstrap } from 'lib/bootstrap-client'
@@ -68,9 +67,5 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return (
-    <ThemeProvider disableTransitionOnChange>
-      <Component {...pageProps} />
-    </ThemeProvider>
-  )
+  return <Component {...pageProps} />
 }
