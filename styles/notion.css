@@ -327,15 +327,15 @@
 }
 
 /* disable highlighting in dark mode */
-[data-theme='dark'] .notion-red_background,
-[data-theme='dark'] .notion-pink_background,
-[data-theme='dark'] .notion-blue_background,
-[data-theme='dark'] .notion-purple_background,
-[data-theme='dark'] .notion-teal_background,
-[data-theme='dark'] .notion-yellow_background,
-[data-theme='dark'] .notion-orange_background,
-[data-theme='dark'] .notion-brown_background,
-[data-theme='dark'] .notion-gray_background {
+.dark-mode .notion-red_background,
+.dark-mode .notion-pink_background,
+.dark-mode .notion-blue_background,
+.dark-mode .notion-purple_background,
+.dark-mode .notion-teal_background,
+.dark-mode .notion-yellow_background,
+.dark-mode .notion-orange_background,
+.dark-mode .notion-brown_background,
+.dark-mode .notion-gray_background {
   padding: 0;
   margin: 0;
   border-radius: 0;
@@ -357,7 +357,7 @@
   backdrop-filter: saturate(180%) blur(16px);
 }
 
-[data-theme='dark'] .notion-header {
+.dark-mode .notion-header {
   background: transparent;
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   backdrop-filter: saturate(180%) blur(8px);
@@ -365,7 +365,7 @@
 
 /* Workaround for Firefox not supporting backdrop-filter yet */
 @-moz-document url-prefix() {
-  [data-theme='dark'] .notion-header {
+  .dark-mode .notion-header {
     background: hsla(203, 8%, 20%, 0.8);
   }
 }
