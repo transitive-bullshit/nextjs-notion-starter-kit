@@ -272,7 +272,7 @@ img.notion-page-icon {
 }
 
 .notion-page-title .notion-page-icon-inline {
-  height: auto;
+  height: 0;
 }
 
 .notion-page-content-inner .notion-page-link {
