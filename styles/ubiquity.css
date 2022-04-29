@@ -171,7 +171,7 @@ img {
 body.light-mode img.lazy-image-preview,
 body.light-mode img.lazy-image-real,
 body.light-mode img {
-  filter: grayscale(1) blur(8px) opacity(0.0625);
+  filter: grayscale(1);
   aspect-ratio: auto;
 }
 
@@ -267,7 +267,18 @@ body.light-mode img {
   border-image-slice: 0;
 }
 
-img.notion-page-icon,
+img.notion-page-icon {
+  background-color: transparent !important;
+}
+
+.notion-page-title .notion-page-icon-inline {
+  height: auto;
+}
+
+.notion-page-content-inner .notion-page-link {
+  line-height: 12px;
+}
+
 svg.notion-page-icon {
   display: block;
   object-fit: contain;
