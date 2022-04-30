@@ -2368,10 +2368,10 @@ next-api-og-image@^2.2.1:
     puppeteer-core "^10.4.0"
     twemoji "^13.1.0"
 
-next-themes@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.1.1.tgz#122113a458bf1d1be5ffed66778ab924c106f82a"
-  integrity sha512-Iqxt6rhS/KfK/iHJ0tfFjTcdLEAI0AgwFuAFrMwLOPK5e+MI3I+fzyvBoS+VaOS+NldUiazurhgwYhrfV0VXsQ==
+next-themes@0.2.0-beta.0:
+  version "0.2.0-beta.0"
+  resolved "https://registry.npmmirror.com/next-themes/-/next-themes-0.2.0-beta.0.tgz#4894b360116020dee9f89b8b8f01896f78caab11"
+  integrity sha512-vzF6V1cWo6LVuMZkTpsP3+7roc14X8VTRgyiZT/6TWzcd7sLdE+y/6F1WiXEvKg+IqwdUb8g3KwC20Fo1yUYqw==
 
 next@^12.1.1:
   version "12.1.3"
