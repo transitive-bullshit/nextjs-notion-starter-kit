@@ -326,7 +326,6 @@
   );
 }
 
-/* disable highlighting in dark mode */
 [data-theme='dark'] .notion-red_background,
 [data-theme='dark'] .notion-pink_background,
 [data-theme='dark'] .notion-blue_background,
