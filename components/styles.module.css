@@ -94,7 +94,7 @@
 }
 
 .zhihu:hover {
-  color: #0066FF;
+  color: #0066ff;
 }
 
 .github:hover {
@@ -200,4 +200,8 @@
   .githubCorner .octoArm {
     animation: octocat-wave 560ms ease-in-out;
   }
+}
+
+.hidden {
+  visibility: hidden;
 }
