@@ -1,12 +1,11 @@
 import * as React from 'react'
+import { useTheme } from 'next-themes'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
-
-import { useDarkMode } from 'lib/use-dark-mode'
 import * as config from 'lib/config'
 
 import styles from './styles.module.css'
@@ -15,14 +14,14 @@ import styles from './styles.module.css'
 
 export const FooterImpl: React.FC = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
-  const { isDarkMode, toggleDarkMode } = useDarkMode()
+  const { setTheme, resolvedTheme } = useTheme()
 
   const onToggleDarkMode = React.useCallback(
     (e) => {
       e.preventDefault()
-      toggleDarkMode()
+      setTheme(resolvedTheme === 'light' ? 'dark' : 'light')
     },
-    [toggleDarkMode]
+    [resolvedTheme, setTheme]
   )
 
   React.useEffect(() => {
@@ -42,7 +41,7 @@ export const FooterImpl: React.FC = () => {
             onClick={onToggleDarkMode}
             title='Toggle dark mode'
           >
-            {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+            {resolvedTheme === 'dark' ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
         )}
       </div>
