@@ -46,7 +46,6 @@ export default function App({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     function onRouteChangeComplete() {
       resize.resizeCover();
-      ga.bsz();
       ga.pageview();
       if (fathomId) {
         Fathom.trackPageview()
