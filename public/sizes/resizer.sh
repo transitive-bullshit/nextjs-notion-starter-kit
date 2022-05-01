@@ -14,15 +14,18 @@ extension="${fullname##*.}"
 filename="${fullname%.*}"
 
 for size in $*; do
-    # convert "$fullname" -resize "$size" "$filename"-"$size"."$extension"
+    # convert "$fullname" -background transparent -resize "$size" "$filename"-"$size"."$extension"
 
-    convert "$fullname" -resize "$size" android-chrome-"$size"."$extension"
-    convert "$fullname" -resize "$size" android-icon-"$size"."$extension"
-    convert "$fullname" -resize "$size" apple-icon-"$size"."$extension"
-    convert "$fullname" -resize "$size" favicon-"$size"."$extension"
-    convert "$fullname" -resize "$size" ms-icon-"$size"."$extension"
+    convert "$fullname" -background transparent -gravity center -resize "$size" -extent "$size" android-chrome-"$size"."$extension"
+    convert "$fullname" -background transparent -gravity center -resize "$size" -extent "$size" android-icon-"$size"."$extension"
+    convert "$fullname" -background transparent -gravity center -resize "$size" -extent "$size" apple-icon-"$size"."$extension"
+    convert "$fullname" -background transparent -gravity center -resize "$size" -extent "$size" favicon-"$size"."$extension"
+    convert "$fullname" -background transparent -gravity center -resize "$size" -extent "$size" ms-icon-"$size"."$extension"
 
 done
+
+convert "$fullname" -background transparent -gravity center -resize 16x16 -extent 16x16 favicon.ico
+convert "$fullname" -background transparent -gravity center -resize 32x32 -extent 32x32 favicon.png
 
 # 512x512 310x310 192x192 180x180 152x152 150x150 144x144 120x120 114x114 96x96 76x76 72x72 70x70 60x60 57x57 48x48 36x36 32x32 16x16
 
