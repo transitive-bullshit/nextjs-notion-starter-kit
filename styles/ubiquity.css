@@ -171,7 +171,7 @@ img {
 body.light-mode img.lazy-image-preview,
 body.light-mode img.lazy-image-real,
 body.light-mode img {
-  filter: grayscale(1) blur(8px) opacity(0.0625);
+  filter: grayscale(1);
   aspect-ratio: auto;
 }
 
@@ -267,7 +267,18 @@ body.light-mode img {
   border-image-slice: 0;
 }
 
-img.notion-page-icon,
+img.notion-page-icon {
+  background-color: transparent !important;
+}
+
+.notion-page-title .notion-page-icon-inline {
+  height: 0;
+}
+
+.notion-page-content-inner .notion-page-link {
+  line-height: 12px;
+}
+
 svg.notion-page-icon {
   display: block;
   object-fit: contain;
@@ -781,15 +792,22 @@ video.notion-page-cover {
   filter: invert(1) grayscale(0.25) brightness(1) contrast(1.25) blur(8px)
     opacity(0.3) hue-rotate(180deg);
   animation: 5s ease-in-out 0s 1 fadeIn;
-  height: calc(100vh - calc(2 * var(--header)));
+  height: calc(100vh - calc(2 * var(--header))) !important;
   width: 100vw;
   object-fit: cover;
   -webkit-mask-image: radial-gradient(#000000ff, #00000000);
+  max-height: 100vh !important;
 }
 .dark-mode video.notion-page-cover {
   filter: invert(0) grayscale(0.25) brightness(1) contrast(1.25) blur(8px)
     opacity(0.3);
   animation: 5s ease-in-out 0s 1 fadeIn;
+}
+
+.notion-page-icon-hero.notion-page-icon-image {
+  position: relative !important;
+  margin-bottom: var(--header);
+  top: 20px !important;
 }
 
 @media (orientation: portrait) {

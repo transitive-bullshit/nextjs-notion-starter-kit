@@ -1,5 +1,5 @@
-module.exports = {
-  // where it all starts -- the site's root Notion page (required)
+export default {
+  // the site's root Notion page (required)
   rootNotionPageId: 'ff1a3cae900941e49cc4d4458cc2867d',
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -38,6 +38,13 @@ module.exports = {
   // NOTE: this requires you to set up Google Firebase and add the environment
   // variables specified in .env.example
   // isPreviewImageSupportEnabled: true,
+  // whether or not to enable support for LQIP preview images (optional)
+  isPreviewImageSupportEnabled: true,
+
+  // whether or not redis is enabled for caching generated preview images (optional)
+  // NOTE: if you enable redis, you need to set the `REDIS_HOST` and `REDIS_PASSWORD`
+  // environment variables. see the readme for more info
+  isRedisEnabled: false,
 
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
