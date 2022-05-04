@@ -972,10 +972,12 @@ video.notion-page-cover {
   font-size: 20px;
 }
 
+.page-error-message,
 #loading-message {
   color: #fff;
   pointer-events: all;
 }
-#loading-message>a{
+.page-error-message > a,
+#loading-message > a {
   text-decoration: underline;
 }
