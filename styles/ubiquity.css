@@ -971,3 +971,11 @@ video.notion-page-cover {
 .katex {
   font-size: 20px;
 }
+
+#loading-message {
+  color: #fff;
+  pointer-events: all;
+}
+#loading-message>a{
+  text-decoration: underline;
+}
