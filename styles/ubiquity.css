@@ -981,3 +981,9 @@ video.notion-page-cover {
 #loading-message > a {
   text-decoration: underline;
 }
+
+.notion-page-icon-hero.notion-page-icon-image img,
+.notion-page-icon-hero.notion-page-icon-image span {
+  border-radius: 0;
+  object-fit: contain;
+}
