@@ -502,6 +502,9 @@ body.dark-mode
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
+}
+
+.resultsPane .notion-page-title-text {
   margin-left: 30px;
   margin-top: 10px;
 }
