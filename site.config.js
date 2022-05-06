@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'Laterbuy',
-  domain: 'laterbuy-blog.vercel.app',
+  domain: 'laterbuy.vercel.app',
   author: 'Laterbuy',
 
   // open graph metadata (optional)
