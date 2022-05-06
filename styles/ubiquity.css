@@ -502,6 +502,24 @@ body.dark-mode
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.notion-search .resultsPane {
+  display: block;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.notion-search .resultsPane::-webkit-scrollbar {
+  display: none;
+}
+
+.notion-search-result-highlight {
+  margin-top: 12px !important;
+  text-align: left;
 }
 
 .notion-page-content
@@ -916,6 +934,7 @@ video.notion-page-cover {
 
 .dark-mode .resultsPane .result {
   color: #000;
+  width: 100%;
 }
 
 .resultsPane .result {
