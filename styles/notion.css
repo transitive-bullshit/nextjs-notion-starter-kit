@@ -53,9 +53,10 @@
   gap: 6vmin;
 }
 
-.notion-gallery-grid .notion-page-icon {
+/* Removes icons from gallery tiles */
+/* .notion-gallery-grid .notion-page-icon {
   display: none;
-}
+} */
 
 .notion-gallery-grid .notion-page-title-text {
   font-size: 1em;
