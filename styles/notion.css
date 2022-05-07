@@ -47,7 +47,8 @@
 }
 
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  /* The following was removed to allow for three small tiles to fit in a gallery */
+  /* grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); */
   grid-gap: 6vmin;
   gap: 6vmin;
 }
