@@ -10,8 +10,8 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Zhiyi',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  domain: 'zhiyicai.com',
+  author: 'Zhiyi',
 
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
