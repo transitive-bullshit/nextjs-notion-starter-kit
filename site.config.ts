@@ -19,7 +19,7 @@ export default siteConfig({
   // social usernames (optional)
   twitter: 'grepLeigh',
   github: 'leigh-johnson',
-  linkedin: 'www.linkedin.com/in/leigh-by-the-bay',
+  linkedin: 'leigh-by-the-bay',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
