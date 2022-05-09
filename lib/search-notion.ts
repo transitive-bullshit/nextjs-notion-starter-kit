@@ -1,11 +1,15 @@
 // import ky from 'ky'
 import fetch from 'isomorphic-unfetch'
 import pMemoize from 'p-memoize'
+import ExpiryMap from 'expiry-map'
 
 import { api } from './config'
 import * as types from './types'
 
-export const searchNotion = pMemoize(searchNotionImpl, { maxAge: 10000 })
+export const searchNotion = pMemoize(searchNotionImpl, {
+  cacheKey: (args) => args[0]?.query,
+  cache: new ExpiryMap(10000)
+})
 
 async function searchNotionImpl(
   params: types.SearchParams
@@ -18,8 +22,6 @@ async function searchNotionImpl(
     }
   })
     .then((res) => {
-      console.log(res)
-
       if (res.ok) {
         return res
       }
