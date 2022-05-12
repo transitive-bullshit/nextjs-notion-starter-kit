@@ -247,7 +247,6 @@ body.light-mode img {
   min-width: 222px;
   overflow: auto;
   -webkit-mask-image: -webkit-linear-gradient(left, black, transparent);
-  height: 100%;
 }
 .notion-aside:hover {
 }
