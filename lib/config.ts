@@ -1,13 +1,20 @@
 /**
  * Site-wide app configuration.
  *
- * This file pulls from the root "site.config.js" as well as environment variables
+ * This file pulls from the root "site.config.ts" as well as environment variables
  * for optional depenencies.
  */
 
 import { parsePageId } from 'notion-utils'
-import { getSiteConfig, getEnv } from './get-config-value'
-import { PageUrlOverridesMap, PageUrlOverridesInverseMap } from './types'
+import posthog from 'posthog-js'
+import { getEnv, getSiteConfig } from './get-config-value'
+import { NavigationLink } from './site-config'
+import {
+  PageUrlOverridesInverseMap,
+  PageUrlOverridesMap,
+  NavigationStyle,
+  Site
+} from './types'
 
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),
@@ -44,12 +51,13 @@ export const name: string = getSiteConfig('name')
 export const author: string = getSiteConfig('author')
 export const domain: string = getSiteConfig('domain')
 export const description: string = getSiteConfig('description', 'Notion Blog')
+export const language: string = getSiteConfig('language', 'en')
 
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
-export const zhihu: string | null = getSiteConfig('zhihu', null)
 export const github: string | null = getSiteConfig('github', null)
 export const linkedin: string | null = getSiteConfig('linkedin', null)
+export const zhihu: string | null = getSiteConfig('zhihu', null)
 
 // default notion values for site-wide consistency (optional; may be overridden on a per-page basis)
 export const defaultPageIcon: string | null = getSiteConfig(
@@ -71,17 +79,24 @@ export const isPreviewImageSupportEnabled: boolean = getSiteConfig(
   false
 )
 
-// Optional whether or not to enable support for LQIP preview images
-export const isTweetEmbedSupportEnabled: boolean = getSiteConfig(
-  'isTweetEmbedSupportEnabled',
-  true
-)
-
-// where it all starts -- the site's root Notion page
+// Optional whether or not to include the Notion ID in page URLs or just use slugs
 export const includeNotionIdInUrls: boolean = getSiteConfig(
   'includeNotionIdInUrls',
   !!isDev
 )
+
+export const navigationStyle: NavigationStyle = getSiteConfig(
+  'navigationStyle',
+  'default'
+)
+
+export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
+  'navigationLinks',
+  null
+)
+
+// Optional site search
+export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 
 // ----------------------------------------------------------------------------
 
@@ -113,18 +128,31 @@ export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
 export const apiBaseUrl = `/api`
 
 export const api = {
-  searchNotion: `${apiBaseUrl}/search-notion`
+  searchNotion: `${apiBaseUrl}/search-notion`,
+  getSocialImage: `${apiBaseUrl}/social-image`
 }
 
 // ----------------------------------------------------------------------------
 
-export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
+export const site: Site = {
+  domain,
+  name,
+  rootNotionPageId,
+  rootNotionSpaceId,
+  description
+}
 
+export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
 export const fathomConfig = fathomId
   ? {
       excludedDomains: ['localhost', 'localhost:3000']
     }
   : undefined
+
+export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID
+export const posthogConfig: posthog.Config = {
+  api_host: 'https://app.posthog.com'
+}
 
 function cleanPageUrlMap(
   pageUrlMap: PageUrlOverridesMap,

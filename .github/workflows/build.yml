@@ -14,4 +14,9 @@ jobs:
           cache: yarn
 
       - run: yarn install --frozen-lockfile
-      - run: yarn build
+      - name: build
+#        TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
+#        env:
+#          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+#          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+        run: yarn build

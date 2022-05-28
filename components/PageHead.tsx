@@ -1,8 +1,9 @@
 import Head from 'next/head'
-import React from 'react'
+import * as React from 'react'
 
 import * as types from 'lib/types'
 import * as config from 'lib/config'
+import { getSocialImageUrl } from 'lib/get-social-image-url'
 
 export const PageHead: React.FC<
   types.PageProps & {
@@ -11,9 +12,13 @@ export const PageHead: React.FC<
     image?: string
     url?: string
   }
-> = ({ site, title, description, image, url }) => {
+> = ({ site, title, description, pageId, image, url }) => {
+  const rssFeedUrl = `${config.host}/feed`
+
   title = title ?? site?.name
   description = description ?? site?.description
+
+  const socialImageUrl = getSocialImageUrl(pageId) || image
 
   return (
     <Head>
@@ -24,7 +29,7 @@ export const PageHead: React.FC<
         content='width=device-width, initial-scale=1, shrink-to-fit=no'
       />
 
-      <meta name='theme-color' content='#EB625A' />
+      <meta name='robots' content='index,follow' />
       <meta property='og:type' content='website' />
 
       {site && (
@@ -46,11 +51,11 @@ export const PageHead: React.FC<
         </>
       )}
 
-      {image ? (
+      {socialImageUrl ? (
         <>
           <meta name='twitter:card' content='summary_large_image' />
-          <meta name='twitter:image' content={image} />
-          <meta property='og:image' content={image} />
+          <meta name='twitter:image' content={socialImageUrl} />
+          <meta property='og:image' content={socialImageUrl} />
         </>
       ) : (
         <meta name='twitter:card' content='summary' />
@@ -63,6 +68,13 @@ export const PageHead: React.FC<
           <meta property='twitter:url' content={url} />
         </>
       )}
+
+      <link
+        rel='alternate'
+        type='application/rss+xml'
+        href={rssFeedUrl}
+        title={site?.name}
+      />
 
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />
