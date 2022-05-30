@@ -100,6 +100,13 @@
   border-color: #c9510c;
 }
 
+.youtube .actionBgPane {
+  background: #FF0000;
+}
+.youtube:hover {
+  border-color: #FF0000;
+}
+
 .medium .actionBgPane {
   background: #00ab6c;
 }
