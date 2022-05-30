@@ -44,6 +44,17 @@ const socialLinks: SocialLink[] = [
         <path d='M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z' />
       </svg>
     )
+  },
+
+  config.newsletter && {
+    name: 'newsletter',
+    href: `${config.newsletter}`,
+    title: `Newsletter ${config.author}`,
+    icon: (
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 24 24">
+        <path d="M12 .64L8.23 3H5V5L2.97 6.29C2.39 6.64 2 7.27 2 8V18C2 19.11 2.9 20 4 20H20C21.11 20 22 19.11 22 18V8C22 7.27 21.61 6.64 21.03 6.29L19 5V3H15.77M7 5H17V9.88L12 13L7 9.88M8 6V7.5H16V6M5 7.38V8.63L4 8M19 7.38L20 8L19 8.63M8 8.5V10H16V8.5Z" />
+      </svg>
+    )
   }
 ].filter(Boolean)
 
