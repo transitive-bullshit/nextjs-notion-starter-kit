@@ -9,17 +9,17 @@ export default siteConfig({
   rootNotionSpaceId: 'cc246794-7553-4039-870c-c2c6a9f8af8e',
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: '島島阿學',
+  domain: 'blog.daoedu.tw',
+  author: '島島阿學',
 //
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
-  linkedin: 'fisch2',
+  twitter: '',
+  github: 'daodaoedu',
+  linkedin: '',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
