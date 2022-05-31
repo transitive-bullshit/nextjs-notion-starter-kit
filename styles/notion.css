@@ -57,6 +57,7 @@
 }
 
 .notion-gallery-grid {
+  grid-auto-rows: auto;
   grid-gap: 20px;
   gap: 20px;
 }
