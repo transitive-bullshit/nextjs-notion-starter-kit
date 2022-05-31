@@ -48,6 +48,20 @@ export const FooterImpl: React.FC = () => {
       </div>
 
       <div className={styles.social}>
+        {config.jike && (
+          <a
+            className={styles.jike}
+            href={`https://web.okjike.com/u/${config.jike}`}
+            title="即刻"
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="22594" width="1em" height="1em">
+              <path d="M660.39 123.63v463.59S645.04 726.4 558.98 771.43c-53.12 31.21-128.85 67.54-228.63 70.61l58.33 58.33s175-15.35 254.82-87.5 82.89-159.9 82.89-194.31V172.75l-66-49.12z" p-id="22595"></path>
+              <path d="M660.39 123.63v463.58s-15.36 139.17-101.41 184.21c-53.12 31.22-128.85 67.54-228.62 70.62L297.6 702.85s70.62-13.31 117.71-28.64c47.07-15.36 72-95.19 72-95.19V123.63h173.08z" p-id="22596"></path>
+            </svg>
+          </a>
+        )}
         {config.twitter && (
           <a
             className={styles.twitter}

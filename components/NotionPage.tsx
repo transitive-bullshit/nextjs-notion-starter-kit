@@ -14,13 +14,14 @@ import TweetEmbed from 'react-tweet-embed'
 import { NotionRenderer } from 'react-notion-x'
 
 // utils
-import { getBlockTitle, getPageProperty, formatDate } from 'notion-utils'
+import { getBlockTitle, getPageProperty } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapImageUrl } from 'lib/map-image-url'
 import { searchNotion } from 'lib/search-notion'
 import { useDarkMode } from 'lib/use-dark-mode'
 import * as types from 'lib/types'
 import * as config from 'lib/config'
+import { formatDate } from 'lib/format-date'
 
 // components
 import { Loading } from './Loading'
@@ -29,7 +30,7 @@ import { PageHead } from './PageHead'
 import { PageAside } from './PageAside'
 import { Footer } from './Footer'
 import { NotionPageHeader } from './NotionPageHeader'
-import { GitHubShareButton } from './GitHubShareButton'
+// import { GitHubShareButton } from './GitHubShareButton'
 
 import styles from './styles.module.css'
 
@@ -107,30 +108,20 @@ const Tweet = ({ id }: { id: string }) => {
 }
 
 const propertyLastEditedTimeValue = (
-  { block, pageHeader },
+  { block },
   defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && block?.last_edited_time) {
-    return `Last updated ${formatDate(block?.last_edited_time, {
-      month: 'long'
-    })}`
-  }
-
+  if (block?.last_edited_time) return formatDate(block.last_edited_time)
   return defaultFn()
 }
 
 const propertyDateValue = (
-  { data, schema, pageHeader },
+  { data, schema },
   defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && schema?.name?.toLowerCase() === 'published') {
+  if (schema?.name?.toLowerCase() === 'published') {
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
-
-    if (publishDate) {
-      return `Published ${formatDate(publishDate, {
-        month: 'long'
-      })}`
-    }
+    if (publishDate) return formatDate(publishDate)
   }
 
   return defaultFn()
@@ -264,6 +255,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
+          isBlogPost && 'blog-page',
           pageId === site.rootNotionPageId && 'index-page'
         )}
         darkMode={isDarkMode}
@@ -286,7 +278,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         footer={footer}
       />
 
-      <GitHubShareButton />
+      {/* <GitHubShareButton /> */}
     </>
   )
 }

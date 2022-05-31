@@ -89,6 +89,13 @@
   color: #2795e9;
 }
 
+.jike:hover path:nth-child(1) {
+  fill: #62B2E4;
+}
+.jike:hover path:nth-child(2) {
+  fill: #F3DB2B;
+}
+
 .twitter:hover {
   color: #2795e9;
 }

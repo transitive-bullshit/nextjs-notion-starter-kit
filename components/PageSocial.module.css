@@ -78,6 +78,12 @@
 .facebook:hover {
   border-color: #3b5998;
 }
+.jike .actionBgPane {
+  background: #F3DB2B;
+}
+.jike:hover {
+  border-color: #F3DB2B;
+}
 
 .twitter .actionBgPane {
   background: #2795e9;
