@@ -161,6 +161,9 @@
     padding-left: 2vw;
     padding-right: 2vw;
   }
+  .notion-gallery-grid-size-medium, .notion-gallery-grid-size-small {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media only screen and (max-width: 720px) {
@@ -173,6 +176,9 @@
 @media only screen and (max-width: 600px) {
   .notion-search-button {
     display: none !important;
+  }
+  .notion-gallery-grid-size-medium, .notion-gallery-grid-size-small {
+    grid-template-columns: 1fr;
   }
 }
 
