@@ -17,6 +17,19 @@ export default class MyDocument extends Document {
             />
 
             <link rel='manifest' href='/manifest.json' />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  var _hmt = _hmt || [];
+                  (function() {
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?5d4604ea78dcd87205ab8123de01b01e";
+                    var s = document.getElementsByTagName("script")[0]; 
+                    s.parentNode.insertBefore(hm, s);
+                  })();
+                `
+              }}
+            />
           </Head>
 
           <body>
@@ -58,19 +71,6 @@ export default class MyDocument extends Document {
                     }
                   })();
                   `
-              }}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  var _hmt = _hmt || [];
-                  (function() {
-                    var hm = document.createElement("script");
-                    hm.src = "https://hm.baidu.com/hm.js?5d4604ea78dcd87205ab8123de01b01e";
-                    var s = document.getElementsByTagName("script")[0]; 
-                    s.parentNode.insertBefore(hm, s);
-                  })();
-                `
               }}
             />
             <Main />
