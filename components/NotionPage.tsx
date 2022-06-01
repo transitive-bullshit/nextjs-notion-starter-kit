@@ -186,6 +186,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
 
+  const isIndexPage = pageId === site.rootNotionPageId
+
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
 
@@ -256,7 +258,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         bodyClassName={cs(
           styles.notion,
           isBlogPost && 'blog-page',
-          pageId === site.rootNotionPageId && 'index-page'
+          isIndexPage && 'index-page'
         )}
         darkMode={isDarkMode}
         components={components}
@@ -265,7 +267,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         rootDomain={site.domain}
         fullPage={!isLiteMode}
         previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={pageId !== site.rootNotionPageId}
+        showCollectionViewDropdown={!isIndexPage}
         showTableOfContents={showTableOfContents}
         minTableOfContentsItems={minTableOfContentsItems}
         defaultPageIcon={config.defaultPageIcon}
