@@ -86,8 +86,11 @@
 }
 
 .notion-gallery-grid .notion-collection-card-property {
-  white-space: unset;
-  text-overflow: unset;
+  /* white-space: unset;
+  text-overflow: unset; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .notion-gallery-grid .notion-property-text {
