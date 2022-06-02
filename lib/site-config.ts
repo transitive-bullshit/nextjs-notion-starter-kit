@@ -14,6 +14,7 @@ export interface SiteConfig {
   github?: string
   linkedin?: string
   newsletter?: string
+  youtube?: string
   zhihu?: string
 
   defaultPageIcon?: string | null
