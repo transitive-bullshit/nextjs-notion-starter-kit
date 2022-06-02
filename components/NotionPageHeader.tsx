@@ -1,9 +1,8 @@
 import * as React from 'react'
 import cs from 'classnames'
-import Link from 'next/link'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
-import { Header, Breadcrumbs, Search, useNotionContext } from 'react-notion-x'
+import { Header, Search, useNotionContext } from 'react-notion-x'
 import * as types from 'notion-types'
 import * as config from 'lib/config'
 
