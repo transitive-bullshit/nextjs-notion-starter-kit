@@ -114,6 +114,13 @@
   border-color: #00ab6c;
 }
 
+.newsletter .actionBgPane {
+  background: #777777;
+}
+.newsletter:hover {
+  border-color: #777777;
+}
+
 .email .actionBgPane {
   background: #777;
 }

@@ -109,6 +109,10 @@
   color: #0077b5;
 }
 
+.newsletter:hover {
+  color: #777777;
+}
+
 .comments {
   width: 100%;
   margin-top: 2em;
