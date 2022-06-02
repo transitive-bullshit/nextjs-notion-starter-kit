@@ -101,6 +101,10 @@
   color: #c9510c;
 }
 
+.youtube:hover {
+  color: #ff0000;
+}
+
 .linkedin:hover {
   color: #0077b5;
 }
