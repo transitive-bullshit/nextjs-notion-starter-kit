@@ -107,6 +107,7 @@ export const FooterImpl: React.FC = () => {
             rel='noopener noreferrer'
           >
             <FaEnvelopeOpenText />
+          </a>
         )}
 
         {config.youtube && (
