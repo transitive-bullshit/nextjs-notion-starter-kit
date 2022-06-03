@@ -1,6 +1,10 @@
 # Blog
 
 ## Description
+<div align="left">
+<img src="https://github.com/RichardS0268/Blog/blob/main/public/React.png", height=7px>
+<img src="https://github.com/RichardS0268/Blog/blob/main/public/Notion.png", height=7px>
+</div>
 
 The repo is forked from [nextjs-notion-starter-kit](https://github.com/transitive-bullshit/nextjs-notion-starter-kit). Thanks to @[Travis Fischer](https://github.com/transitive-bullshit), I constructed my personal blog successfully even if I barely know `React` and  `TypeScript`.
 
