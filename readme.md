@@ -17,12 +17,12 @@ The repo uses api of [Notion](https://www.notion.so), thus I can write blogs dir
 
   + Background color (dark or light) changes synchronously with blogs
 
-    ```html
+
       <div align="mid">
       <img src="https://github.com/RichardS0268/Blog/blob/main/public/1.png">
       <img src="https://github.com/RichardS0268/Blog/blob/main/public/2.png">
       </div>
-    ```
+
 
 ## Fork
 
