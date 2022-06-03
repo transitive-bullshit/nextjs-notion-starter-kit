@@ -1,4 +1,4 @@
-# Blog
+# Notion-Blog Template
 
 ## Description
 <div align="left">
