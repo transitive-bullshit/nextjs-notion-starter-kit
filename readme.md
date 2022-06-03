@@ -19,8 +19,8 @@ The repo uses api of [Notion](https://www.notion.so), thus I can write blogs dir
 
 
 <table><tr>
-<td><img src="https://github.com/RichardS0268/Blog/blob/main/public/1.png" border=0></td>
-<td><img src="https://github.com/RichardS0268/Blog/blob/main/public/2.png" border=0></td>
+<td><img src="https://github.com/RichardS0268/Blog/blob/main/public/comment_light.png" border=0></td>
+<td><img src="https://github.com/RichardS0268/Blog/blob/main/public/comment_dark.png" border=0></td>
 </tr></table>
 
 
