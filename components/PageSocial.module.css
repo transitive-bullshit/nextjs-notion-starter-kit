@@ -1,0 +1,127 @@
+.pageSocial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--fg-color);
+}
+
+.action {
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid var(--fg-color-6);
+  transition: all 300ms ease-out;
+  width: 3.5em;
+  height: 3.5em;
+  margin: 0 0 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none !important;
+  user-select: none;
+  cursor: pointer;
+}
+
+.action:last-child {
+  margin-bottom: 0;
+}
+
+.actionBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionBg svg {
+  width: 50%;
+  height: 50%;
+  fill: var(--fg-color-6);
+}
+
+.actionBgPane {
+  transition: all 300ms ease-out;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+}
+
+.action:hover {
+  transition: all 100ms ease-out;
+}
+
+.action:hover .actionBgPane {
+  width: 100%;
+  height: 100%;
+  transition: all 100ms ease-out;
+}
+
+.action:hover svg {
+  transition: fill 100ms ease-out;
+  fill: var(--bg-color);
+}
+
+:global(.dark-mode) .action:hover svg {
+  fill: var(--fg-color);
+}
+
+.facebook .actionBgPane {
+  background: #3b5998;
+}
+.facebook:hover {
+  border-color: #3b5998;
+}
+
+.twitter .actionBgPane {
+  background: #2795e9;
+}
+.twitter:hover {
+  border-color: #2795e9;
+}
+
+.linkedin .actionBgPane {
+  background: #0077b5;
+}
+.linkedin:hover {
+  border-color: #0077b5;
+}
+
+.github .actionBgPane {
+  background: #c9510c;
+}
+.github:hover {
+  border-color: #c9510c;
+}
+
+.medium .actionBgPane {
+  background: #00ab6c;
+}
+.medium:hover {
+  border-color: #00ab6c;
+}
+
+.email .actionBgPane {
+  background: #777;
+}
+.email:hover {
+  border-color: #777;
+}
+
+@media only screen and (max-width: 768px) {
+  .links {
+    position: relative;
+    left: 0.5em;
+    flex-wrap: wrap;
+  }
+
+  .action:last-child {
+    margin-right: 1em;
+  }
+}
