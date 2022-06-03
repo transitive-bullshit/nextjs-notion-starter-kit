@@ -328,7 +328,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
             <ViewCounter slug={slug} />
           </div>
           <ReactUtterances
-            repo={'RichardS0268/Blog'}
+            repo={'RichardS0268/BlogFeedback'}
             label={'feedback'}
             issueMap='issue-term'
             issueTerm='title'
