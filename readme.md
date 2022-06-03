@@ -21,7 +21,7 @@ This repo uses api of [Notion](https://www.notion.so), thus I can write blogs di
 
   + Only signed in github users can make comments
 
-  + Background color (dark or light) changes synchronously with blogs
+  + Background color (light or dark) changes synchronously with blogs
 
 
 <table><tr>
