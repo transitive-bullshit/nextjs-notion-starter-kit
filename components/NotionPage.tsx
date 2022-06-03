@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import { useSearchParam } from 'react-use'
 import BodyClassName from 'react-body-classname'
 import { PageBlock } from 'notion-types'
-import { FiBarChart2 } from 'react-icons/fi'
 import ColorThief from 'colorthief'
 
 
@@ -34,8 +33,6 @@ import { Footer } from './Footer'
 import { NotionPageHeader } from './NotionPageHeader'
 import { GitHubShareButton } from './GitHubShareButton'
 import { ReactUtterances } from './ReactUtterances'
-import { ViewCounter } from './ViewCounter'
-import { SimpleFeedback } from './SimpleFeedback'
 
 import styles from './styles.module.css'
 
@@ -300,7 +297,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     config.description
 
   let comments: React.ReactNode = null
-  const slug = new URL(pageUrl).pathname.substring(1)
   
   if (isBlogPost) {
     if (title.substr(-1, 1) !== "."){
