@@ -1,4 +1,5 @@
-# Notion-Blog Template 
+# Notion-Blog Template <img src="https://github.com/RichardS0268/Blog/blob/main/public/feedback-vegetabledog.gif", height=30px>
+
 
 ## Description
 <div align="left">
