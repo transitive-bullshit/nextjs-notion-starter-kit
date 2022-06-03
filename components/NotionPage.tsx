@@ -306,27 +306,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     if (title.substr(-1, 1) !== "."){
       comments = (
         <>
-<!--           <div
-            style={{
-              display: 'flex',
-              width: '100%',
-              alignItems: 'center',
-              marginTop: '2rem'
-            }}
-          >
-          <SimpleFeedback slug={slug} />
-          </div> -->
-  
-<!--           <div
-            style={{
-              marginLeft: 'auto',
-              display: 'flex',
-              alignItems: 'center'
-            }}
-          >
-            <FiBarChart2 style={{ marginRight: 3, marginBottom: 2 }} />
-            <ViewCounter slug={slug} />
-          </div> -->
           <ReactUtterances
             repo={'RichardS0268/BlogFeedback'}
             label={'feedback'}
