@@ -303,7 +303,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       comments = (
         <>
           <ReactUtterances
-            repo={'RichardS0268/BlogFeedback'}
+            repo={'user/repo'}
             label={'feedback'}
             issueMap='issue-term'
             issueTerm='title'
