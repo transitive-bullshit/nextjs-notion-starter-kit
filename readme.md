@@ -1,5 +1,4 @@
 # Notion-Blog Template 
-<img src="https://github.com/RichardS0268/Blog/blob/cdd69767ed4ea0c06fba75b18312cf6dc089f1d3/public/feedback-fingerheart.gif", height=30px>
 
 ## Description
 <div align="left">
