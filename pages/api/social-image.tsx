@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { withOGImage } from 'next-api-og-image'
-
 import {
   getBlockTitle,
   getBlockIcon,
