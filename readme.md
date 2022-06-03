@@ -2,8 +2,6 @@
 <h1>Notion-Blog Template <img src="https://github.com/RichardS0268/Blog/blob/main/public/feedback-fingerheart.gif", height=40px> </h1>
 </div>
 
-
-
 ## Description
 <div align="left">
 <img src="https://github.com/RichardS0268/Blog/blob/main/public/React.png", height=30px>
