@@ -9,7 +9,6 @@ import BodyClassName from 'react-body-classname'
 import { PageBlock } from 'notion-types'
 import ColorThief from 'colorthief'
 
-
 import TweetEmbed from 'react-tweet-embed'
 
 // core notion renderer
