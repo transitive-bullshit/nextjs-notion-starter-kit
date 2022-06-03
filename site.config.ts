@@ -11,7 +11,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: "Richard Song's Blog",
-  domain: 'https://blog-backup-git-main-tsinghua-university.vercel.app/',
+  domain: 'blog-backup-git-main-tsinghua-university.vercel.app',
   author: 'Richard Song',
 
   // open graph metadata (optional)
