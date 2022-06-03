@@ -51,7 +51,12 @@
     "react-notion-x": "^6.12.7",
     "react-tweet-embed": "^2.0.0",
     "react-use": "^17.3.2",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "swr": "^0.5.5",
+    "comma-number": "^2.0.1",
+    "react-icons": "^4.1.0",
+    "colorthief": "^2.3.2",
+    "device-uuid": "^1.0.4"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.1.0",
