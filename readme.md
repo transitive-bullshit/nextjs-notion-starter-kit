@@ -6,9 +6,9 @@
 <img src="https://github.com/RichardS0268/Blog/blob/main/public/Notion.png", height=30px>
 </div>
 
-The repo is forked from [nextjs-notion-starter-kit](https://github.com/transitive-bullshit/nextjs-notion-starter-kit). Thanks to @[Travis Fischer](https://github.com/transitive-bullshit), I constructed my personal blog successfully even if I barely know `React` and  `TypeScript`.
+This repo is forked from [nextjs-notion-starter-kit](https://github.com/transitive-bullshit/nextjs-notion-starter-kit). Thanks to @[Travis Fischer](https://github.com/transitive-bullshit), I constructed my personal blog successfully even if I barely know `React` and  `TypeScript`.
 
-The repo uses api of [Notion](https://www.notion.so), thus I can write blogs directly using Notion. I would like to share my courses notes, paper notes, reading notes and projects on [my blog](https://richardsong.space). Welcome to visit it!🥳
+This repo uses api of [Notion](https://www.notion.so), thus I can write blogs directly using Notion. I would like to share my courses notes, paper notes, reading notes and projects on [my blog](https://richardsong.space). Welcome to visit it!🥳
 
 ## Features
 
