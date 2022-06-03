@@ -11,7 +11,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: "Richard Song's Blog",
-  domain: 'richardsong.space',
+  domain: 'https://richardsong.space',
   author: 'Richard Song',
 
   // open graph metadata (optional)
