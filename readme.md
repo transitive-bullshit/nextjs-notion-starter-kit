@@ -1,7 +1,5 @@
-# Notion-Blog Template 
 <div align="left">
-<h1>Notion-Blog Template <img src="https://github.com/RichardS0268/Blog/blob/main/public/feedback-vegetabledog.gif", height=30px> </h1>
-
+<h1>Notion-Blog Template <img src="https://github.com/RichardS0268/Blog/blob/main/public/feedback-fingerheart.gif", height=40px> </h1>
 </div>
 
 
