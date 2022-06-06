@@ -43,7 +43,8 @@ export default siteConfig({
   pageUrlOverrides: {
     '/about': 'cadd73f1fa8e4f328993524fd9f58270',
     '/photography': 'c12ec4982f7546f7a0c2a9057f31eda8',
-    '/recommended': 'ff06c4aca7b14913b1bda1879a171196'
+    '/recommended': 'ff06c4aca7b14913b1bda1879a171196',
+    '/cookbook': '214244e551d0492d8bc6572968ebfb6d',
   },
 
   // whether to use the default notion navigation style or a custom one with links to
@@ -57,6 +58,10 @@ export default siteConfig({
     {
       title: '摄影',
       pageId: 'c12ec4982f7546f7a0c2a9057f31eda8'
+    },
+    {
+      title: '菜谱',
+      pageId: '214244e551d0492d8bc6572968ebfb6d'
     },
     {
       title: '关于',
