@@ -43,10 +43,14 @@ export default siteConfig({
   // example:
   //
   pageUrlOverrides: {
+    '/record': 'ff06c4aca7b14913b1bda1879a171196',
     '/about': 'cadd73f1fa8e4f328993524fd9f58270',
+    '/food': '214244e551d0492d8bc6572968ebfb6d',
+    '/movie': '23cb8c9c07f04aff920ec00300cf1466',
+    '/game': 'c7490a4d5b5a400cb1c1f500c05b05a0',
+    '/drama': '0e998c8235234bc8b5973df1f22b3e23',
+    '/book': 'b94cbd1bc98f41e79da21df8423ed349',
     '/photography': 'c12ec4982f7546f7a0c2a9057f31eda8',
-    '/recommended': 'ff06c4aca7b14913b1bda1879a171196',
-    '/cookbook': '214244e551d0492d8bc6572968ebfb6d',
   },
 
   // whether to use the default notion navigation style or a custom one with links to
@@ -54,16 +58,8 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: '推荐',
+      title: '记录',
       pageId: 'ff06c4aca7b14913b1bda1879a171196'
-    },
-    {
-      title: '摄影',
-      pageId: 'c12ec4982f7546f7a0c2a9057f31eda8'
-    },
-    {
-      title: '菜谱',
-      pageId: '214244e551d0492d8bc6572968ebfb6d'
     },
     {
       title: '关于',
