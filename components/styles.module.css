@@ -113,6 +113,13 @@
   color: #777777;
 }
 
+.jike:hover path:nth-child(1) {
+  fill: #62B2E4;
+}
+.jike:hover path:nth-child(2) {
+  fill: #F3DB2B;
+}
+
 .comments {
   width: 100%;
   margin-top: 2em;

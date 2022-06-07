@@ -16,6 +16,7 @@ export interface SiteConfig {
   newsletter?: string
   youtube?: string
   zhihu?: string
+  jike?: string
 
   defaultPageIcon?: string | null
   defaultPageCover?: string | null

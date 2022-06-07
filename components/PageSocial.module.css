@@ -128,6 +128,13 @@
   border-color: #777;
 }
 
+.jike .actionBgPane {
+  background: #F3DB2B;
+}
+.jike:hover {
+  border-color: #F3DB2B;
+}
+
 @media only screen and (max-width: 768px) {
   .links {
     position: relative;
