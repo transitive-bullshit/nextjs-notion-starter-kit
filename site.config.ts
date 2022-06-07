@@ -48,7 +48,7 @@ export default siteConfig({
     '/food': '6412380f41fa4eba83dc79916acda19c',
     '/movie': '3cbbfbceace6489eb1029ba5c7b54c3f',
     '/game': 'fd2b664a1e1e43ffb7d52f5db72cafc0',
-    '/drama': 'd5d316fe439c423f98ad4b891013b7a8',
+    '/drama': 'fa324bdac195411d84ebafc0198ac64d',
     '/book': '7a49fd91cd364cf7bef62345a4394551',
     '/photography': 'a2a9e808e692434597157acc0a7f9b17',
   },
