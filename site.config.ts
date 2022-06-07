@@ -25,7 +25,7 @@ export default siteConfig({
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
-  defaultPageIcon: null,
+  defaultPageIcon: https://research3.xyz/_next/image?url=https%3A%2F%2Fwww.notion.so%2Fimage%2Fhttps%253A%252F%252Fs3-us-west-2.amazonaws.com%252Fsecure.notion-static.com%252F6b1c0ea3-76d0-4916-97a5-fae8efad254a%252FkwYlpxVYdbIDthEiw1mnOwV0muADvLWwSERfLvwAo5rRvbHZE5oZJdsya1FYaLgYw9rau7UldTxg6X_9um20hToSHHtbgO4VAiVIJXtLewQtjBL02Jfx83FQLQfMN7e8kwO1gYF7IHnKV2Q9YalQIEB7znfwTCYQve42A3IqXdYljWFQovH3dhFRzwUGtp14nxBLJSmju5gy8rdlYt2fGimBkPCTZMG5xespPyxD_8.jpeg%3Ftable%3Dblock%26id%3D43d0f1b7-e973-4ba5-9947-8789ade378cf%26cache%3Dv2&w=828&q=75,
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
@@ -49,16 +49,16 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
-  // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
-  // ]
+  //navigationStyle: 'default'
+   navigationStyle: 'custom',
+   navigationLinks: [
+    {
+       title: 'About',
+       pageId: '9c11186453734777b807cce609a79f45'
+     },
+     {
+       title: 'Get in touch',
+  ]     pageId: '8d4b1368360a41908918802966c097a9'
+     }
+   ]
 })
