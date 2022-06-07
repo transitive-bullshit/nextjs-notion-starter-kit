@@ -17,10 +17,12 @@ export default siteConfig({
   description: 'Keep Alive & Do Better.',
 
   // social usernames (optional)
-  jike: 'FBF0F46B-5CA8-4568-A98C-3D50EF570462',
   twitter: 'XueRainey',
   github: 'RaineySpace',
   linkedin: '',
+  jike: 'FBF0F46B-5CA8-4568-A98C-3D50EF570462',
+  // newsletter: '#', // optional newsletter URL
+  // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
