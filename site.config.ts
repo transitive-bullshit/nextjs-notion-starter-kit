@@ -45,12 +45,12 @@ export default siteConfig({
   pageUrlOverrides: {
     '/record': 'ff06c4aca7b14913b1bda1879a171196',
     '/about': 'cadd73f1fa8e4f328993524fd9f58270',
-    '/food': '214244e551d0492d8bc6572968ebfb6d',
-    '/movie': '23cb8c9c07f04aff920ec00300cf1466',
-    '/game': 'c7490a4d5b5a400cb1c1f500c05b05a0',
-    '/drama': '0e998c8235234bc8b5973df1f22b3e23',
-    '/book': 'b94cbd1bc98f41e79da21df8423ed349',
-    '/photography': 'c12ec4982f7546f7a0c2a9057f31eda8',
+    '/food': '6412380f41fa4eba83dc79916acda19c',
+    '/movie': '3cbbfbceace6489eb1029ba5c7b54c3f',
+    '/game': 'fd2b664a1e1e43ffb7d52f5db72cafc0',
+    '/drama': 'd5d316fe439c423f98ad4b891013b7a8',
+    '/book': '7a49fd91cd364cf7bef62345a4394551',
+    '/photography': 'a2a9e808e692434597157acc0a7f9b17',
   },
 
   // whether to use the default notion navigation style or a custom one with links to
