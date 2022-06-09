@@ -62,7 +62,7 @@ export const HeaderLogo: React.FC<{
         </components.PageLink>
       )
     }
-    return props.children
+    return <a style={{ padding: 12 }}>{props.children}</a>
   }
 
   return (
