@@ -93,31 +93,30 @@
   color: #2795e9;
 }
 
+.zhihu:hover {
+  color: #0066ff;
+}
+
 .github:hover {
   color: #c9510c;
+}
+
+.youtube:hover {
+  color: #ff0000;
 }
 
 .linkedin:hover {
   color: #0077b5;
 }
 
+.newsletter:hover {
+  color: #777777;
+}
+
 .comments {
   width: 100%;
   margin-top: 2em;
   border-top: 1px solid var(--fg-color-0);
-}
-
-.utterances {
-  margin-top: 2em;
-  width: 100%;
-}
-
-@media only screen and (min-width: 567px) {
-  .utterances {
-    width: calc(100% + 60px);
-    position: relative;
-    left: -60px;
-  }
 }
 
 @media only screen and (max-width: 566px) {
@@ -209,4 +208,8 @@
   .githubCorner .octoArm {
     animation: octocat-wave 560ms ease-in-out;
   }
+}
+
+.hidden {
+  visibility: hidden;
 }

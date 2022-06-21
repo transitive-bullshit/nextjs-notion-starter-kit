@@ -1,6 +1,6 @@
-import React from 'react'
-import { IoHeartOutline } from 'react-icons/io5'
-import { AiOutlineRetweet } from 'react-icons/ai'
+import * as React from 'react'
+import { IoHeartOutline } from '@react-icons/all-files/io5/IoHeartOutline'
+import { AiOutlineRetweet } from '@react-icons/all-files/ai/AiOutlineRetweet'
 
 import styles from './styles.module.css'
 
