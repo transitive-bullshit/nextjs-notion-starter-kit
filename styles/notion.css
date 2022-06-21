@@ -55,10 +55,6 @@
   gap: 6vmin;
 }
 
-.notion-gallery-grid .notion-page-icon-inline {
-  display: none;
-} */
-
 .notion-gallery-grid .notion-page-title-text {
   font-size: 1em;
   white-space: unset;
