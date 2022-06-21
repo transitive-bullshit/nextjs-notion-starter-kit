@@ -2,25 +2,25 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '2a9bf7526da84f7daa846a866faf1799',
+  rootNotionPageId: '7875426197cf461698809def95960ebf',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Leo Thesen',
-  domain: 'leothesen.com',
-  author: 'Leo Thesen',
+  name: 'Next.js Notion Starter Kit',
+  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
+  author: 'Travis Fischer',
 
   // open graph metadata (optional)
-  description: 'Leo Thesen\'s personal website.',
+  description: 'Example Next.js Notion Starter Kit Site',
 
   // social usernames (optional)
-  twitter: 'leothesen',
-  github: 'leothesen',
-  linkedin: 'leothesen',
-  newsletter: 'https://leothesen.us14.list-manage.com/subscribe?u=48ac2df5c8c9410ed02b4c867&id=c2f10802e5', // optional newsletter URL
+  twitter: 'transitive_bs',
+  github: 'transitive-bullshit',
+  linkedin: 'fisch2',
+  // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
