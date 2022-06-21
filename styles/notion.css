@@ -231,68 +231,6 @@
   transition-duration: 300ms;
 }
 
-.notion-red_background,
-.notion-pink_background,
-.notion-blue_background,
-.notion-purple_background,
-.notion-teal_background,
-.notion-yellow_background,
-.notion-orange_background,
-.notion-brown_background,
-.notion-gray_background,
-.notion-purple_background,
-.notion-pink_background,
-.notion-blue_background,
-.notion-gray_background,
-.notion-red_background,
-.notion-orange_background {
-  /* light red */
-  background-image: linear-gradient(
-    119deg,
-    var(--bg-color),
-    #f5c4ff 10.5%,
-    #e7a8fc 85.29%,
-    var(--bg-color)
-  );
-}
-
-.notion-teal_background {
-  /* light green */
-  background-image: linear-gradient(
-    119deg,
-    var(--bg-color),
-    #d4eabc 10.5%,
-    #d2eabc 85.29%,
-    var(--bg-color)
-  );
-}
-
-.notion-brown_background {
-  /* dark blue */
-  background-image: linear-gradient(
-    119deg,
-    var(--bg-color),
-    #96b8ec 10.5%,
-    #a6c3f0 85.29%,
-    var(--bg-color)
-  );
-}
-
-/* disable highlighting in dark mode */
-.dark-mode .notion-red_background,
-.dark-mode .notion-pink_background,
-.dark-mode .notion-blue_background,
-.dark-mode .notion-purple_background,
-.dark-mode .notion-teal_background,
-.dark-mode .notion-yellow_background,
-.dark-mode .notion-orange_background,
-.dark-mode .notion-brown_background,
-.dark-mode .notion-gray_background {
-  padding: 0;
-  margin: 0;
-  border-radius: 0;
-}
-
 /* if you don't want rounded page icon images, remove this */
 .notion-page-icon-hero.notion-page-icon-image {
   border-radius: 50%;
