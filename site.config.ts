@@ -17,10 +17,10 @@ export default siteConfig({
   description: 'Leo Thesen\'s personal website.',
 
   // social usernames (optional)
-  twitter: 'leothesen',
+  // twitter: 'leothesen',
   github: 'leothesen',
   linkedin: 'leothesen',
-  // newsletter: '#', // optional newsletter URL
+  newsletter: 'https://leothesen.us14.list-manage.com/subscribe?u=48ac2df5c8c9410ed02b4c867&id=c2f10802e5', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
