@@ -6,6 +6,8 @@ My personal website.
 
 It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notion-x), [Next.js](https://nextjs.org/), and [Vercel](https://vercel.com).
 
+All credit for the codebase goes to [Travis Fischer](https://github.com/transitive-bullshit/nextjs-notion-starter-kit)
+
 ## Features
 
 - Setup only takes a few minutes ([single config file](./site.config.ts)) 💪
