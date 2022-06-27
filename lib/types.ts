@@ -1,4 +1,5 @@
 import { ExtendedRecordMap, PageMap } from 'notion-types'
+import { ParsedUrlQuery } from 'querystring'
 
 export * from 'notion-types'
 
@@ -14,6 +15,10 @@ export interface PageProps {
   recordMap?: ExtendedRecordMap
   pageId?: string
   error?: PageError
+}
+
+export interface Params extends ParsedUrlQuery {
+  pageId: string
 }
 
 export interface Site {
