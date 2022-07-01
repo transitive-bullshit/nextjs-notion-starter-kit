@@ -124,16 +124,18 @@
     flex-direction: column;
   }
 
-  .footer > div {
+  .footer>div {
     margin-top: 1em;
   }
 
   .footer .settings {
     order: 1;
   }
+
   .footer .social {
     order: 2;
   }
+
   .footer .copyright {
     order: 3;
   }
@@ -186,14 +188,17 @@
 }
 
 @keyframes octocat-wave {
+
   0%,
   100% {
     transform: rotate(0);
   }
+
   20%,
   60% {
     transform: rotate(-25deg);
   }
+
   40%,
   80% {
     transform: rotate(10deg);
@@ -212,4 +217,31 @@
 
 .hidden {
   visibility: hidden;
+}
+
+.link {
+  color: #03a9fc;
+  position: relative;
+  transition: unset;
+  opacity: 1;
+  border-bottom-width: 0.1rem;
+  background: transparent;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: 0 0.1rem;
+}
+
+.link:focus,
+.link:hover {
+  border-bottom-color: transparent;
+
+  background-image: linear-gradient(90.68deg, #03a9fc 0.26%, #03a9fc 102.37%);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0.1rem;
+
+  transition-property: background-position, background-size;
+  transition-timing-function: ease-in-out;
+  transition-duration: 300ms;
 }

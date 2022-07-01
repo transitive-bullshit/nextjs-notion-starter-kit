@@ -15,7 +15,8 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
         <main className={styles.main}>
           <h1>Page Not Found</h1>
 
-          <a href="https://us14.list-manage.com/contact-form?u=48ac2df5c8c9410ed02b4c867&form_id=b38cf72feb797a9ebd3b251645784085">Let Leo know that something went wrong</a>
+          <div className={styles.link}><a href="https://us14.list-manage.com/contact-form?u=48ac2df5c8c9410ed02b4c867&form_id=b38cf72feb797a9ebd3b251645784085">Let Leo know that something went wrong</a></div>
+          
 
           {error ? (
             <p>{error.message}</p>
