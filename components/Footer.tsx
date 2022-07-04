@@ -86,7 +86,7 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
 
-        {config.linkedin && (
+        {/* {config.linkedin && (
           <a
             className={styles.linkedin}
             href={`https://www.linkedin.com/in/${config.linkedin}`}
@@ -96,7 +96,7 @@ export const FooterImpl: React.FC = () => {
           >
             <FaLinkedin />
           </a>
-        )}
+        )} */}
 
         {config.newsletter && (
           <a
