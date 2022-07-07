@@ -363,6 +363,10 @@
   backdrop-filter: saturate(180%) blur(8px);
 }
 
+.dark-mode .notion-search .searchBar .searchInput {
+  color: var(--fg-color);
+}
+
 /* Workaround for Firefox not supporting backdrop-filter yet */
 @-moz-document url-prefix() {
   .dark-mode .notion-header {
