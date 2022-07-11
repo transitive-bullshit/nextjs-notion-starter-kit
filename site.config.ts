@@ -8,7 +8,7 @@ export default siteConfig({
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: '66e6ecc647f04ad789a2e272eec5bc7a',
+  rootNotionSpaceId: null,
 
   // https://www.notion.so/n8kb/Welcome-6d4acd9a23a4417baf428b29e452a7d1
 
@@ -50,6 +50,8 @@ export default siteConfig({
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
   pageUrlOverrides: null,
+
+  isSearchEnabled: false,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
