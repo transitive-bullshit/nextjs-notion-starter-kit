@@ -56,7 +56,7 @@ export const NotionPageHeader: React.FC<{
               if (link.pageId) {
                 return (
                   <components.PageLink
-                    href={mapPageUrl()}
+                    href={mapPageUrl(null)}
                     key={index}
                     className={cs(styles.navLink, 'breadcrumb', 'button')}
                   >
