@@ -8,12 +8,14 @@ export default siteConfig({
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: null,
+  rootNotionSpaceId: '6d4acd9a23a4417baf428b29e452a7d1',
+
+  // https://www.notion.so/n8kb/Welcome-6d4acd9a23a4417baf428b29e452a7d1
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'UDX Library CΣ',
+  domain: 'sigma.clib.nathandw.ca',
+  author: 'Nathan Dick',
 
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
