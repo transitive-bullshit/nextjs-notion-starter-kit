@@ -39,9 +39,13 @@
   width: 100% !important;
 }
 
-.notion-header .notion-nav-header {
+.notion-header {
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.notion-nav-header {
+  display: none;
 }
 
 .notion-nav-header-rhs {
