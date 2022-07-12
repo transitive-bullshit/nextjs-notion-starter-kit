@@ -4,7 +4,6 @@ import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { Header, Search, useNotionContext } from 'react-notion-x'
 import * as types from 'notion-types'
-
 import { useDarkMode } from 'lib/use-dark-mode'
 import { navigationStyle, navigationLinks, isSearchEnabled } from 'lib/config'
 
