@@ -15,7 +15,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'UDX Library CΣ',
-  domain: 'sigma-clib.nathandw.ca',
+  domain: 'sigma.libraries.nathandw.ca',
   author: 'Nathan Dick',
 
   // open graph metadata (optional)
