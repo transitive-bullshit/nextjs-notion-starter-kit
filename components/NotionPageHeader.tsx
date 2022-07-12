@@ -45,7 +45,6 @@ export const NotionPageHeader: React.FC<{
     <header className='notion-header'>
       <div className='notion-nav-header'>
         
-
         <div className='notion-nav-header-rhs breadcrumbs'>
           {navigationLinks
             ?.map((link, index) => {
