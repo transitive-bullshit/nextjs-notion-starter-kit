@@ -58,7 +58,7 @@ export default siteConfig({
      },
      {
        title: 'Get in touch',
-  ]     pageId: '8d4b1368360a41908918802966c097a9'
+      pageId: '8d4b1368360a41908918802966c097a9'
      }
    ]
 })
