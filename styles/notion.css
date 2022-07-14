@@ -18,7 +18,7 @@
 }
 
 .index-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 100vw;
 }
 
 .notion-text {
