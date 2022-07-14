@@ -24,6 +24,10 @@
 .notion-text {
   padding: 0.5em 2px;
 }
+.notion-full-width{
+  padding-left: 0px !important;
+  padding-left: 0px !important;
+}
 
 .notion-asset-caption {
   text-align: center;
