@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Circular Basecamp',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
+  domain: 'circular-basecamp.com',
   author: 'Baptiste Sene',
 
   // open graph metadata (optional)
