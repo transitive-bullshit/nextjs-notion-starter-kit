@@ -1,3 +1,113 @@
+/* Canela Deck */
+@font-face {
+  font-family: 'CanelaDeck-Regular';
+  font-weight: 700;
+  src: url('../styles/fonts/CanelaDeck-Regular.woff') format('woff');
+  font-display: auto;
+}
+
+/* This is the only one you really need */
+@font-face {
+  font-family: 'CanelaDeck-Bold';
+  font-weight: 700;
+  src: url('../styles/fonts/CanelaDeck-Bold.woff') format('woff');
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'CanelaDeck-Light';
+  font-weight: 700;
+  src: url('../styles/fonts/CanelaDeck-Light.woff') format('woff');
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'CanelaText-Medium';
+  font-weight: 700;
+  src: url('../styles/fonts/CanelaText-Medium.woff') format('woff');
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'CanelaText-Light';
+  font-weight: 700;
+  src: url('../styles/fonts/CanelaText-Light.woff') format('woff');
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'CanelaText-LightItalic';
+  font-weight: 700;
+  src: url('../styles/fonts/CanelaText-LightItalic.woff') format('woff');
+  font-display: auto;
+}
+
+/* Walsheim */
+@font-face {
+  font-family: 'GT Walsheim Regular';
+  font-weight: 400;
+  src: url('../styles/fonts/GT-Walsheim-Pro-Regular.woff') format('woff');
+  font-display: auto;
+}
+@font-face {
+  font-family: 'GT Walsheim Bold';
+  font-weight: 700;
+  src: url('../styles/fonts/GT-Walsheim-Pro-Bold.woff') format('woff');
+  font-display: auto;
+}
+@font-face {
+  font-family: 'GT Walsheim Light';
+  font-weight: 200;
+  src: url('../styles/fonts/GT-Walsheim-Pro-Light.woff') format('woff');
+  font-display: auto;
+}
+
+/* Freight Sans */
+@font-face {
+  font-family: 'Freight Sans W03 Light';
+  src: url('../styles/fonts/207add5d-09f8-4df9-a0aa-e5f02f8bcb52.woff2') format('woff2'),
+    url('../styles/fonts/57b64ccd-ce33-4c5a-b6ba-0fcf5232aec9.woff') format('woff');
+}
+@font-face {
+  font-family: 'FreightSans W03 Book';
+  src: url('../styles/fonts/3ce61ac1-805d-43a5-a253-d1c60a009223.woff2') format('woff2'),
+    url('../styles/fonts/6c0b84f1-a183-4da8-be59-3e245034db2e.woff') format('woff');
+}
+@font-face {
+  font-family: 'Freight Sans W03 Book Italic';
+  src: url('../styles/fonts/4da9ca38-0acd-4126-af35-ed7a7c04df72.woff2') format('woff2'),
+    url('../styles/fonts/3ecdf98b-d96f-4cd2-8117-174487b21f9a.woff') format('woff');
+}
+@font-face {
+  font-family: 'Freight Sans W03 Bold';
+  src: url('../styles/fonts/8ea6bd8e-4c27-4055-b5db-8780735770c3.woff2') format('woff2'),
+    url('../styles/fonts/7ff7354a-3aef-43f5-b89a-e509847978e8.woff') format('woff');
+}
+
+/* Freight Text */
+@font-face {
+  font-family: 'FreightText W01 Book';
+  src: url('../styles/fonts/b273cf7b-f375-4188-9216-9101312446b2.woff2') format('woff2'),
+    url('fonts/a991fddf-68f5-41d7-a58b-ee7a8650a7df.woff') format('woff');
+}
+@font-face {
+  font-family: 'FreightText W01 Book Italic';
+  src: url('/fonts/6d321fba-bd5f-4afb-82c7-a801895f5a88.woff2') format('woff2'),
+    url('../styles/fonts/80088bb5-4929-418e-9bba-d7c469420880.woff') format('woff');
+}
+@font-face {
+  font-family: 'FreightText W01 Bold';
+  src: url('../styles/fonts/892ae817-932e-4400-b146-2035246d953e.woff2') format('woff2'),
+    url('../styles/fonts/f95b7095-668b-49f4-a518-e1d4064d703a.woff') format('woff');
+}
+@font-face {
+  font-family: 'FreightText W01 Bold Italic';
+  src: url('../styles/fonts/12c4a9a8-1d86-4d72-a699-83c0e393f136.woff2') format('woff2'),
+    url('../styles/fonts/60a3f9e0-bfb2-48f8-81ec-aa5ffd3f93ef.woff') format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
 * {
   box-sizing: border-box;
 }

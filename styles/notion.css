@@ -18,10 +18,11 @@
 }
 
 .index-page {
-  --notion-max-width: 1200px;
+  --notion-max-width: 1400px;
 }
 
 .notion-text {
+  font-family: FreightSans W03 Book;
   padding: 0.5em 2px;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .notion-header .notion-nav-header {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -64,6 +65,7 @@
 }
 
 .notion-gallery-grid .notion-page-title-text {
+  font-family: Lato;
   font-size: 1em;
   white-space: unset;
 }
@@ -127,10 +129,41 @@
   border-left: 4px solid #67bdfc;
 }
 
-.notion-h1,
-.notion-h2,
+/* Fonts -------------------------------------------------------------------------------------------------- */
+
+.notion-h1 {
+  font-family: CanelaText-Light;
+}
+.notion-h2 {
+  font-family: CanelaText-Light;
+}
 .notion-h3 {
+  font-family: CanelaText-Light;
   margin-bottom: 0.25em;
+}
+
+/* Main title (In each page!) */
+.notion-title {
+  font-family: CanelaDeck-Bold;
+  display: block;
+  text-align: center;
+}
+
+/* Main title (Rootpage!) */
+.notion-block-3e32c6077d8b4d699b8360e92124e284 .notion-title {
+  font-family: CanelaDeck-Bold;
+  font-size: 6em;
+  display: block;
+  text-align: left;
+}
+
+/* Sub title (Rootpage!) */
+.notion-block-f8d7a895a62a4c8b974eb99e641b9469 {
+  font-family: Lato thin 100;
+  font-size: 2.5em;
+  max-width: 20em;
+  display: block;
+  text-align: left;
 }
 
 .notion-callout {
@@ -164,12 +197,6 @@
 .notion .notion-page-icon-cover {
   margin-left: auto;
   margin-right: auto;
-}
-
-/* Main title (Circular Basecamp) */
-.notion-title {
-  display: block;
-  text-align: center;
 }
 
 .notion-collection-row {
@@ -366,6 +393,7 @@
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
   backdrop-filter: saturate(180%) blur(16px);
+  font-family: Lato;
 }
 
 .dark-mode .notion-header {
@@ -393,3 +421,16 @@
 .notion-block-260baa77f1e1428b97fb14ac99c7c385 {
   display: none;
 }
+
+/* .homepage-link {
+  margin-top: 0.4em;
+  fill: #19bf64;
+  transition: 550ms;
+  opacity: 100%;
+}
+
+.homepage-link:hover {
+    fill: #e0265e;
+    transform: scale(1.05);
+    opacity: 100%;
+} */
