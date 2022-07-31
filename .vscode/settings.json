@@ -33,5 +33,7 @@
     "**/.now/": true,
     "**/.vercel/": true,
     "**/.google.json": true
-  }
+  },
+  "appService.defaultWebAppToDeploy": "/subscriptions/bff0d32d-646b-497f-aeb0-e8f2de226847/microsoft.web/sites/subscriptions/bff0d32d-646b-497f-aeb0-e8f2de226847/resourceGroups/appsvc_linux_centralus_premium/providers/Microsoft.Web/sites/vizinhosorg",
+  "appService.deploySubpath": "."
 }
