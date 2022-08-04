@@ -36,7 +36,7 @@
     "got": "^12.0.3",
     "isomorphic-unfetch": "^3.1.0",
     "lqip-modern": "^1.2.0",
-    "next": "^12.1.1",
+    "next": "^12.2.3",
     "next-api-og-image": "^2.2.1",
     "node-fetch": "^2.6.1",
     "notion-client": "^6.12.6",
