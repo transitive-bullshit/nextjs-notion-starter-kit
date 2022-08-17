@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "vercel build",
     "start": "next start",
     "deploy": "vercel deploy",
     "deps": "run-s deps:*",
