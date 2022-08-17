@@ -31,7 +31,6 @@
     "**/dist/": true,
     "**/build/": true,
     "**/.now/": true,
-    "**/.vercel/": true,
     "**/.google.json": true
   }
 }
