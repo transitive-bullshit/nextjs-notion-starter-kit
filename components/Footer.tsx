@@ -3,7 +3,6 @@ import * as React from 'react'
 import { useDarkMode } from 'lib/use-dark-mode'
 import * as config from 'lib/config'
 import { SiFacebook, SiGithub, SiGmail } from 'react-icons/si'
-import styles from './styles.module.css'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
