@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { IoHeartOutline } from '@react-icons/all-files/io5/IoHeartOutline'
-import { AiOutlineRetweet } from '@react-icons/all-files/ai/AiOutlineRetweet'
+import { IoMdHeart } from 'react-icons/io'
+import { FaRetweet } from 'react-icons/fa'
 
 import styles from './styles.module.css'
 
@@ -17,7 +17,7 @@ export const PageActions: React.FC<{ tweet: string }> = ({ tweet }) => {
         rel='noopener noreferrer'
         title='Like this post on Twitter'
       >
-        <IoHeartOutline />
+        <IoMdHeart />
       </a>
 
       <a
@@ -27,7 +27,7 @@ export const PageActions: React.FC<{ tweet: string }> = ({ tweet }) => {
         rel='noopener noreferrer'
         title='Retweet this post on Twitter'
       >
-        <AiOutlineRetweet />
+        <FaRetweet />
       </a>
     </div>
   )

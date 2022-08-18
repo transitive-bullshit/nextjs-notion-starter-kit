@@ -52,5 +52,9 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <div className='flex h-screen flex-col justify-between'>
+      <Component {...pageProps} />
+    </div>
+  )
 }

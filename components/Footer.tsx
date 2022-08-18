@@ -1,126 +1,67 @@
 import * as React from 'react'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
-import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
-import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 
 import { useDarkMode } from 'lib/use-dark-mode'
 import * as config from 'lib/config'
-
+import { SiFacebook, SiGithub, SiGmail } from 'react-icons/si'
 import styles from './styles.module.css'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
-
+const DarkModeToggle = dynamic(
+  async () => (await import('react-dark-mode-toggle-2')).DarkModeToggle,
+  {
+    ssr: false
+  }
+)
 export const FooterImpl: React.FC = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
   const { isDarkMode, toggleDarkMode } = useDarkMode()
-
-  const onToggleDarkMode = React.useCallback(
-    (e) => {
-      e.preventDefault()
-      toggleDarkMode()
-    },
-    [toggleDarkMode]
-  )
 
   React.useEffect(() => {
     setHasMounted(true)
   }, [])
 
   return (
-    <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2022 {config.author}</div>
-
-      <div className={styles.settings}>
-        {hasMounted && (
-          <a
-            className={styles.toggleDarkMode}
-            href='#'
-            role='button'
-            onClick={onToggleDarkMode}
-            title='Toggle dark mode'
-          >
-            {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+    <footer>
+      <div className='mt-16 flex flex-col items-center'>
+        <div className='mb-3 flex space-x-4'>
+          <a href='mailto:filename@inft.kr' target='_blank' rel='noreferrer'>
+            <SiGmail size={30} />
           </a>
-        )}
-      </div>
-
-      <div className={styles.social}>
-        {config.twitter && (
           <a
-            className={styles.twitter}
-            href={`https://twitter.com/${config.twitter}`}
-            title={`Twitter @${config.twitter}`}
+            href={'https://github.com/' + config.github}
             target='_blank'
-            rel='noopener noreferrer'
+            rel='noreferrer'
           >
-            <FaTwitter />
+            <SiGithub size={30} />
           </a>
-        )}
-
-        {config.zhihu && (
           <a
-            className={styles.zhihu}
-            href={`https://zhihu.com/people/${config.zhihu}`}
-            title={`Zhihu @${config.zhihu}`}
+            href={'https://facebook.com/' + config.facebook}
             target='_blank'
-            rel='noopener noreferrer'
+            rel='noreferrer'
           >
-            <FaZhihu />
+            <SiFacebook size={30} />
           </a>
-        )}
-
-        {config.github && (
-          <a
-            className={styles.github}
-            href={`https://github.com/${config.github}`}
-            title={`GitHub @${config.github}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaGithub />
-          </a>
-        )}
-
-        {config.linkedin && (
-          <a
-            className={styles.linkedin}
-            href={`https://www.linkedin.com/in/${config.linkedin}`}
-            title={`LinkedIn ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaLinkedin />
-          </a>
-        )}
-
-        {config.newsletter && (
-          <a
-            className={styles.newsletter}
-            href={`${config.newsletter}`}
-            title={`Newsletter ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaEnvelopeOpenText />
-          </a>
-        )}
-
-        {config.youtube && (
-          <a
-            className={styles.youtube}
-            href={`https://www.youtube.com/${config.youtube}`}
-            title={`YouTube ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaYoutube />
-          </a>
-        )}
+          <DarkModeToggle
+            onChange={toggleDarkMode}
+            isDarkMode={isDarkMode && hasMounted}
+            speed={2}
+            size={65}
+          />
+        </div>
+        <div className='mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400 sm:text-xs'>
+          <div>{config.author}</div>
+          <div>{` • `}</div>
+          <div>{`© 2020 - ${new Date().getFullYear()}`}</div>
+          <div>{`All rights reserved by`}</div>
+          <Link href='/'>{config.name}</Link>
+        </div>
+        <div className='mb-8 text-sm text-gray-500 dark:text-gray-400'>
+          <Link href='https://github.com/Anhgerel/Huvaari-Frontend'>
+            MySchool v0.1-beta
+          </Link>
+        </div>
       </div>
     </footer>
   )
