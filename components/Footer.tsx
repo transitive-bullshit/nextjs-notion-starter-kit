@@ -22,9 +22,9 @@ export const FooterImpl: React.FC = () => {
   }, [])
 
   return (
-    <footer>
-      <div className='mt-16 flex flex-col items-center'>
-        <div className='mb-3 flex space-x-4'>
+    <footer className='pt-16'>
+      <div className=' flex flex-col items-center'>
+        <div className='pb-1 flex space-x-4'>
           <a href='mailto:filename@inft.kr' target='_blank' rel='noreferrer'>
             <SiGmail size={30} />
           </a>
@@ -49,14 +49,14 @@ export const FooterImpl: React.FC = () => {
             size={65}
           />
         </div>
-        <div className='mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400 sm:text-xs'>
+        <div className='pb-1 flex space-x-2 text-sm text-gray-500 dark:text-gray-400 sm:text-xs'>
           <div>{config.author}</div>
           <div>{` • `}</div>
           <div>{`© 2020 - ${new Date().getFullYear()}`}</div>
           <div>{`All rights reserved by`}</div>
           <Link href='/'>{config.name}</Link>
         </div>
-        <div className='mb-8 text-sm text-gray-500 dark:text-gray-400'>
+        <div className='pb-3 text-sm text-gray-500 dark:text-gray-400'>
           <Link href='https://github.com/Anhgerel/Huvaari-Frontend'>
             MySchool v0.1-beta
           </Link>

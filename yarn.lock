@@ -1341,6 +1341,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@headlessui/react@npm:^1.6.6":
+  version: 1.6.6
+  resolution: "@headlessui/react@npm:1.6.6"
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: 6ebb34bde0bd2a5045ae29a2bac1dc166f7163c9ad98aabe5abb580c3c770d0b3040d5992045f9e68b6c8e8eca5bf7eca71276ff9b1696a9fb88a9380d8fcf96
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.10.4":
   version: 0.10.4
   resolution: "@humanwhocodes/config-array@npm:0.10.4"
@@ -5899,6 +5909,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jotai@npm:^1.7.8":
+  version: 1.7.8
+  resolution: "jotai@npm:1.7.8"
+  peerDependencies:
+    "@babel/core": "*"
+    "@babel/template": "*"
+    "@tanstack/query-core": "*"
+    "@urql/core": "*"
+    immer: "*"
+    optics-ts: "*"
+    react: ">=16.8"
+    valtio: "*"
+    wonka: "*"
+    xstate: "*"
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+    "@babel/template":
+      optional: true
+    "@tanstack/query-core":
+      optional: true
+    "@urql/core":
+      optional: true
+    immer:
+      optional: true
+    optics-ts:
+      optional: true
+    valtio:
+      optional: true
+    wonka:
+      optional: true
+    xstate:
+      optional: true
+  checksum: 15eca7c0519511c9d4b6c56c334e79451ea44466c23cd2abbcdb88072f9b068f1a3612513bdacd3c1b9558a744776368796c3a5ec26f32704b8b7488d294f7fb
+  languageName: node
+  linkType: hard
+
 "js-cookie@npm:^2.2.1":
   version: 2.2.1
   resolution: "js-cookie@npm:2.2.1"
@@ -6775,6 +6822,7 @@ __metadata:
   resolution: "nextjs-notion-starter-kit@workspace:."
   dependencies:
     "@fisch0920/use-dark-mode": ^2.4.0
+    "@headlessui/react": ^1.6.6
     "@keyvhq/core": ^1.6.14
     "@keyvhq/redis": ^1.6.21
     "@next/bundle-analyzer": ^12.2.5
@@ -6796,6 +6844,7 @@ __metadata:
     fathom-client: ^3.5.0
     got: ^12.3.1
     isomorphic-unfetch: ^3.1.0
+    jotai: ^1.7.8
     lqip-modern: ^1.2.0
     next: ^12.2.5
     next-api-og-image: ^4.2.1
