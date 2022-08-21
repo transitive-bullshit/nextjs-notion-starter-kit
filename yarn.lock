@@ -3313,14 +3313,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chrome-aws-lambda@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "chrome-aws-lambda@npm:6.0.0"
+"chrome-aws-lambda@npm:3":
+  version: 3.1.1
+  resolution: "chrome-aws-lambda@npm:3.1.1"
   dependencies:
-    lambdafs: ^2.0.2
+    lambdafs: ^1.3.0
   peerDependencies:
-    puppeteer-core: 6.0.x
-  checksum: a6caca5f9890bd7c845d479ae6cb6cf1e2e267335666f043dc98b3f9919c2a5a12e03e1bc116abf1acbb3df4fdfa475607449491e33bbd75caf4d6763a4e0e46
+    puppeteer-core: 3.1.x
+  checksum: 96d2dd0f2ac7f22d7583792c76b1072420d32609b7787970694db5235227fddd9e16b05b1ec882a25f8b344a217063d3e76b02161e3eccdf49244b2d3a50f9d9
   languageName: node
   linkType: hard
 
@@ -6095,14 +6095,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lambdafs@npm:^2.0.2":
-  version: 2.1.1
-  resolution: "lambdafs@npm:2.1.1"
+"lambdafs@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "lambdafs@npm:1.3.0"
   dependencies:
-    tar-fs: "*"
+    tar-fs: ^2.0.0
   bin:
     lambdafs: bin/brotli.js
-  checksum: e277462851769dbb9062096e793d0da67f8bada78be9988bb177ddab91f9335ba1f67ea9fc0768c966dc52381301575945211b6e34061a068b82f127e6848e4e
+  checksum: 6cd79b9a68e76ed720a4e7ab2b6cb3e13665b6e4e3a2ae780f4715602904271c713d960fbf7c1e98ec594ba0126f4ca47e98e0c2f2c4fc157439f5875d3a222c
   languageName: node
   linkType: hard
 
@@ -6784,7 +6784,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.33.1
     "@typescript-eslint/parser": ^5.33.1
     autoprefixer: ^10.4.8
-    chrome-aws-lambda: ^6.0.0
+    chrome-aws-lambda: 3
     classnames: ^2.3.1
     cross-env: ^7.0.3
     date-fns: ^2.29.1
@@ -9261,7 +9261,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar-fs@npm:*, tar-fs@npm:^2.0.0, tar-fs@npm:^2.1.1":
+"tar-fs@npm:^2.0.0, tar-fs@npm:^2.1.1":
   version: 2.1.1
   resolution: "tar-fs@npm:2.1.1"
   dependencies:
