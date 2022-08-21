@@ -26,7 +26,7 @@
     "@headlessui/react": "^1.6.6",
     "@keyvhq/core": "^1.6.14",
     "@keyvhq/redis": "^1.6.21",
-    "chrome-aws-lambda": "^6.0.0",
+    "chrome-aws-lambda": "3",
     "classnames": "^2.3.1",
     "date-fns": "^2.29.1",
     "expiry-map": "^2.0.0",
