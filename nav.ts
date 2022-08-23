@@ -6,23 +6,12 @@ export type NavItem = {
 
 export const NavigationList: NavItem[] = [
   {
-    name: 'Voluptate Non Enim',
+    name: 'Main',
     to: '/',
     items: [
-      { name: 'Ea Dolor Ad Hic Soluta', to: '/' },
-      { name: 'Magnam Ratione Quos Sit', to: '/b' },
-      { name: 'Quia Ut Et Nisi Qui', to: '/c' },
-      { name: 'Exercitationem Aut Alias', to: '/d' }
-    ]
-  },
-  {
-    name: 'Voluptate Non Enim',
-    to: '/',
-    items: [
-      { name: 'Ea Dolor Ad Hic Soluta', to: '/z' },
-      { name: 'Magnam Ratione Quos Sit', to: '/e' },
-      { name: 'Quia Ut Et Nisi Qui', to: '/f' },
-      { name: 'Exercitationem Aut Alias', to: '/g' }
+      { name: 'Home', to: '/' },
+      { name: '8 aнгийн хичээлийн хуваарь', to: '/8' },
+      { name: '9 aнгийн хичээлийн хуваарь', to: '/9' }
     ]
   }
 ]

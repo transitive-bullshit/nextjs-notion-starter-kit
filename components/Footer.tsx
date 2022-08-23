@@ -57,8 +57,8 @@ export const FooterImpl: React.FC = () => {
           <Link href='/'>{config.name}</Link>
         </div>
         <div className='pb-3 text-sm text-gray-500 dark:text-gray-400'>
-          <Link href='https://github.com/Anhgerel/Huvaari-Frontend'>
-            MySchool v0.1-beta
+          <Link href='https://github.com/ankhgerel/School'>
+            MySchool v0.0.1-dev
           </Link>
         </div>
       </div>

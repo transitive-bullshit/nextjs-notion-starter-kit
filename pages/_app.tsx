@@ -26,6 +26,7 @@ import { useRouter } from 'next/router'
 
 import { bootstrap } from 'lib/bootstrap-client'
 import { isServer, fathomId, fathomConfig } from 'lib/config'
+import { SideNav } from 'components/SideNav'
 
 if (!isServer) {
   bootstrap()
@@ -54,6 +55,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <div className='flex h-screen flex-col justify-between'>
+      <SideNav />
       <Component {...pageProps} />
     </div>
   )

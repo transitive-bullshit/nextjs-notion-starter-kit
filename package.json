@@ -55,7 +55,6 @@
     "rss": "^1.2.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^12.2.5",
     "@types/node": "^18.7.6",
     "@types/node-fetch": "^3.0.3",
     "@types/react": "^18.0.17",

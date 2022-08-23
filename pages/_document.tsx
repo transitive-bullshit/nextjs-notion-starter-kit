@@ -4,10 +4,19 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang='en'>
+      <Html lang='mn'>
         <Head>
+          <meta charSet='utf-8' />
+          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
           <link rel='shortcut icon' href='/favicon.ico' />
           <link rel='icon' type='image/png' sizes='32x32' href='favicon.png' />
+
+          <meta name='description' content='My school coming soon...' />
+          <meta name='og:title' content='My school' />
+          <meta name='og:url' content='https://anhgerel.ml' />
+          <meta name='og:description' content='My school coming soon...' />
+          <meta name='og:image' content='/favicon.ico' />
+          <link rel='shortcut icon' href='/favicon.ico' />
 
           <meta name='theme-color' content='#0369a1' />
 

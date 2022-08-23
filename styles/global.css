@@ -19,7 +19,7 @@ html {
 }
 
 body.dark {
-  background: #303437;
+  @apply bg-slate-800;
 }
 
 body {

@@ -1,7 +1,4 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-})
 const withPWA = require('next-pwa')
 
 /** @type {import('next').NextConfig} */
@@ -30,13 +27,15 @@ const config = {
     path: '',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
   },
+
   poweredByHeader: false,
   reactStrictMode: true,
   pwa: {
-    //disable: process.env.NODE_ENV !== 'production',
-    register: false,
-    dest: 'public'
+    dest: 'public',
+    register: true,
+    skipWaiting: true,
+    disable: process.env.NODE_ENV === 'development'
   }
 }
 
-module.exports = withPWA(withBundleAnalyzer(config))
+module.exports = withPWA(config)

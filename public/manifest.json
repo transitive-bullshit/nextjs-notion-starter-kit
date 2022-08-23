@@ -3,7 +3,7 @@
   "name": "My School",
   "short_name": "My school - 9B",
   "start_url": "/9",
-  "lang": "mn-MN",
+  "scope": "/",
   "theme_color": "#0369a1",
   "background_color": "#0369a1",
   "display": "standalone",

@@ -32,7 +32,7 @@ import { NotionPageHeader } from './NotionPageHeader'
 // import { GitHubShareButton } from './GitHubShareButton'
 
 import styles from './styles.module.css'
-import { ContentWrapper, SideNav } from './SideNav'
+import { ContentWrapper } from './SideNav'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -250,8 +250,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   return (
     <div className='flex h-full'>
-      <SideNav />
-
       <ContentWrapper>
         <PageHead
           pageId={pageId}
