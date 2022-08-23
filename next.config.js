@@ -7,6 +7,12 @@ const withPWA = require('next-pwa')
 /** @type {import('next').NextConfig} */
 const config = {
   staticPageGenerationTimeout: 300,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback.fs = false
+    }
+    return config
+  },
   images: {
     domains: [
       'www.notion.so',
@@ -27,8 +33,9 @@ const config = {
   poweredByHeader: false,
   reactStrictMode: true,
   pwa: {
-    disable: process.env.NODE_ENV !== 'production',
-    register: false
+    //disable: process.env.NODE_ENV !== 'production',
+    register: false,
+    dest: 'public'
   }
 }
 
