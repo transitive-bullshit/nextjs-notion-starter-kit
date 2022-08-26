@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/get-tweet-ast/*
+Disallow: /api/search-notion
+
+Sitemap: https://anhgerel.ml/sitemap.xml

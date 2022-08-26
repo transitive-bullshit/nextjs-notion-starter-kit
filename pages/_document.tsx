@@ -8,24 +8,24 @@ export default class MyDocument extends Document {
         <Head>
           <meta charSet='utf-8' />
           <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+
           <link rel='shortcut icon' href='/favicon.ico' />
           <link rel='icon' type='image/png' sizes='32x32' href='favicon.png' />
 
           <meta name='description' content='My school coming soon...' />
+
           <meta name='og:title' content='My school' />
           <meta name='og:url' content='https://anhgerel.ml' />
           <meta name='og:description' content='My school coming soon...' />
           <meta name='og:image' content='/favicon.ico' />
+
           <link rel='shortcut icon' href='/favicon.ico' />
 
-          <meta name='theme-color' content='#0369a1' />
+          <meta name='msapplication-TileColor' content='#829fff' />
+          <meta name='theme-color' content='#829fff' />
 
-          <meta name='msapplication-TileColor' content='#0369a1' />
           <meta name='msapplication-config' content='/browserconfig.xml' />
-
           <link rel='manifest' href='/manifest.json' />
-          <link rel='shortcut icon' href='/favicon.ico' />
-
           <link
             rel='apple-touch-icon'
             sizes='180x180'
@@ -36,7 +36,6 @@ export default class MyDocument extends Document {
             href='/icons/safari-pinned-tab.svg'
             color='#0369a1'
           />
-
           <link
             rel='icon'
             type='image/png'
@@ -49,7 +48,6 @@ export default class MyDocument extends Document {
             sizes='16x16'
             href='/icons/favicon-16x16.png'
           />
-
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=G-DHTH501J9H`}
@@ -60,7 +58,7 @@ export default class MyDocument extends Document {
 						window.dataLayer = window.dataLayer || [];
 						function gtag(){window.dataLayer.push(arguments);}
 						gtag('js', new Date());
-						gtag('config', G-DHTH501J9H);
+						gtag('config', "G-DHTH501J9H");
 						if(/MSIE \\d|Trident.*rv:/.test(navigator.userAgent)) {
 							window.location = 'microsoft-edge:' + window.location;
 							setTimeout(function() {

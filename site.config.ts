@@ -26,7 +26,10 @@ export default siteConfig({
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
-  defaultPageIcon: '',
+  isSearchEnabled: false,
+
+  defaultPageCover: 'https://anhgerel.ml/page-cover.jpg',
+  defaultPageIcon: 'https://anhgerel.ml/page-icon.png',
   defaultPageCoverPosition: 0.5,
 
   // whether or not to enable support for LQIP preview images (optional)

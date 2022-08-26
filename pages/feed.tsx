@@ -94,7 +94,15 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   res.write(feedText)
   res.end()
 
-  return { props: {} }
+  return {
+    props: {
+      feed: feedText
+    }
+  }
 }
 
-export default () => null
+const Feed = () => {
+  return
+}
+
+export default Feed

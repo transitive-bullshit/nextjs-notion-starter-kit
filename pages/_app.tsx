@@ -14,7 +14,7 @@ import 'prismjs/themes/prism-coy.css'
 import 'prismjs/themes/prism-okaidia.css'
 
 // global style overrides for notion
-//import 'styles/notion.css'
+import 'styles/notion.css'
 
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
