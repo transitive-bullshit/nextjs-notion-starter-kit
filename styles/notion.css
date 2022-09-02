@@ -422,15 +422,28 @@
   display: none;
 }
 
-/* .homepage-link {
+.homepage_link {
   margin-top: 0.4em;
-  fill: #19bf64;
+  fill: rgb(55, 53, 47);
   transition: 550ms;
   opacity: 100%;
 }
 
-.homepage-link:hover {
-    fill: #e0265e;
+.homepage_link:hover {
+    fill: rgb(55, 53, 47);
     transform: scale(1.05);
     opacity: 100%;
-} */
+}
+
+.dark-mode .homepage_link {
+  margin-top: 0.4em;
+  fill: rgb(255, 255, 255);
+  transition: 550ms;
+  opacity: 100%;
+}
+
+.dark-mode .homepage_link:hover {
+    fill: rgb(255, 255, 255);
+    transform: scale(1.05);
+    opacity: 100%;
+}
