@@ -18,7 +18,7 @@ export default siteConfig({
 
   // social usernames (optional)
 //   twitter: '',
-  github: 'HAhanqiZHQ',
+  github: 'HQhanqiZHQ',
   linkedin: 'Hanqi Z',
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
