@@ -21,6 +21,7 @@ import 'styles/prism-theme.css'
 
 import * as React from 'react'
 import * as Fathom from 'fathom-client'
+import * as ReactGA from 'react-ga'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import posthog from 'posthog-js'
@@ -31,7 +32,8 @@ import {
   fathomId,
   fathomConfig,
   posthogId,
-  posthogConfig
+  posthogConfig,
+  googleId
 } from 'lib/config'
 
 if (!isServer) {
@@ -59,6 +61,12 @@ export default function App({ Component, pageProps }: AppProps) {
     if (posthogId) {
       posthog.init(posthogId, posthogConfig)
     }
+
+    if (googleId) {
+      ReactGA.initialize(googleId);
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
 
     router.events.on('routeChangeComplete', onRouteChangeComplete)
 
