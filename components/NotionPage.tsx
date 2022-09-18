@@ -252,7 +252,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <PageHead
         pageId={pageId}
         site={site}
-        title={title}
+        // title={title}
+        title={'遇明不散 · ' + title}
         description={socialDescription}
         image={socialImage}
         url={canonicalPageUrl}

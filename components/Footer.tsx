@@ -33,8 +33,6 @@ export const FooterImpl: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2022 {config.author}</div>
-
       <div className={styles.settings}>
         {hasMounted && (
           <a
@@ -48,8 +46,27 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
       </div>
+      <div className={styles.copyright}>
+        {/* Copyright 2022 {config.author} */}
+        <a
+          className={`${styles.police} ${isDarkMode ? styles.dark : ''}`}
+          target='_blank'
+          rel='noreferrer'
+          href='http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=61011302001425'
+        >
+          <img src='/police.png' alt='' />
+          <span>陕公网安备: 61011302001425号</span>
+        </a>
+        <a
+          className={`${styles.icp} ${isDarkMode ? styles.dark : ''}`}
+          target='_blank'
+          href='https://beian.miit.gov.cn/'
+        >
+          ICP备案号: 陕ICP备2022003201号-1
+        </a>
+      </div>
 
-      <div className={styles.social}>
+      {/* <div className={styles.social}>
         {config.twitter && (
           <a
             className={styles.twitter}
@@ -121,7 +138,7 @@ export const FooterImpl: React.FC = () => {
             <FaYoutube />
           </a>
         )}
-      </div>
+      </div> */}
     </footer>
   )
 }

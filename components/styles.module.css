@@ -57,7 +57,27 @@
 
 .copyright {
   font-size: 80%;
-  padding: 0.5em;
+  /* padding: 0.5em; */
+}
+.police {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.police img {
+  width: 1em;
+  margin-right: 0.2em;
+}
+.police,
+.icp {
+  line-height: 1.6em;
+  font-size: 0.8em;
+  color: #37352f;
+}
+
+.police.dark,
+.icp.dark {
+  color: #fff;
 }
 
 .settings,
