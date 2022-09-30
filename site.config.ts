@@ -11,7 +11,7 @@ export default siteConfig({
   // basic site info (required)
   name: 'personal webpage',
   domain: 'https://verdant-meteorite-47a.notion.site/Resume-0284c2c1996d4246bc781fb433f058a1',
-  author: 'Hanqi Z',
+  author: 'Hanna Z',
 
   // open graph metadata (optional)
   description: 'Notion',
