@@ -125,8 +125,9 @@ export const redisNamespace: string | null = getEnv(
 export const isServer = typeof window === 'undefined'
 
 export const port = getEnv('PORT', '3000')
-export const host = isDev
-  ? `http://localhost:${port}`
+export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
+export const apiHost = isDev
+  ? host
   : `https://${process.env.VERCEL_URL || domain}`
 
 export const apiBaseUrl = `/api`

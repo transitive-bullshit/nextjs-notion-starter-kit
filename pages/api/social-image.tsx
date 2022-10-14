@@ -3,7 +3,7 @@ import { ImageResponse } from '@vercel/og'
 import { NextRequest } from 'next/server'
 
 import { NotionPageInfo } from 'lib/types'
-import { host, api } from 'lib/config'
+import { apiHost, api } from 'lib/config'
 
 const interRegularFontP = fetch(
   new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
@@ -29,7 +29,7 @@ export default async function OGImage(req: NextRequest) {
     return new Response('Invalid notion page id', { status: 400 })
   }
 
-  const pageInfoRes = await fetch(`${host}${api.getNotionPageInfo}`, {
+  const pageInfoRes = await fetch(`${apiHost}${api.getNotionPageInfo}`, {
     method: 'POST',
     body: JSON.stringify({ pageId }),
     headers: { 'Content-Type': 'application/json' }
