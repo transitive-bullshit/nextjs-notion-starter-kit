@@ -6,6 +6,9 @@
   "author": "Travis Fischer <travis@transitivebullsh.it>",
   "repository": "transitive-bullshit/nextjs-notion-starter-kit",
   "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
