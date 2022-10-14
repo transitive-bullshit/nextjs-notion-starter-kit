@@ -59,7 +59,7 @@ export default async function OGImage(req: NextRequest) {
               position: 'absolute',
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
+              objectFit: 'cover'
               // TODO: satori doesn't support background-size: cover and seems to
               // have inconsistent support for filter + transform to get rid of the
               // blurred edges. For now, we'll go without a blur filter on the
@@ -71,8 +71,8 @@ export default async function OGImage(req: NextRequest) {
               //   : undefined,
               // backgroundSize: '100% 100%'
               // TODO: pageInfo.imageObjectPosition
-              filter: 'blur(8px)',
-              transform: 'scale(1.05)'
+              // filter: 'blur(8px)'
+              // transform: 'scale(1.05)'
             }}
           />
         )}
