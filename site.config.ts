@@ -23,6 +23,10 @@ export default siteConfig({
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
+  // Custom logo - this will replace the breadcrumbs - Feature requires navigationStyle: 'custom'
+  // customHeaderLogo: 'https://transitivebullsh.it/logo.png',
+  // customHeaderLogoDark: 'https://transitivebullsh.it/logo-dark.png', // optional
+
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
   defaultPageIcon: null,
