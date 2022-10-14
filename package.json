@@ -29,6 +29,7 @@
     "@keyvhq/core": "^1.6.9",
     "@keyvhq/redis": "^1.6.10",
     "@react-icons/all-files": "^4.1.0",
+    "@vercel/og": "^0.0.18",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
     "expiry-map": "^2.0.0",
@@ -37,7 +38,6 @@
     "isomorphic-unfetch": "^3.1.0",
     "lqip-modern": "^1.2.0",
     "next": "^12.3.1",
-    "next-api-og-image": "^2.2.1",
     "notion-client": "^6.13.11",
     "notion-types": "^6.13.4",
     "notion-utils": "^6.13.4",
@@ -67,15 +67,7 @@
     "prettier": "^2.7.1",
     "typescript": "^4.8.4"
   },
-  "resolutions": {
-    "next-api-og-image/chrome-aws-lambda": "6.0.0",
-    "next-api-og-image/puppeteer-core": "6.0.0"
-  },
   "overrides": {
-    "next-api-og-image": {
-      "chrome-aws-lambda": "6.0.0",
-      "puppeteer-core": "6.0.0"
-    },
     "cacheable-request": {
       "keyv": "npm:@keyvhq/core@~1.6.6"
     }
