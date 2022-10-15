@@ -11,7 +11,7 @@
   "importOrder": [
     "^(react/(.*)$)|^(react$)|^(next/(.*)$)|^(next$)",
     "<THIRD_PARTY_MODULES>",
-    "^(lib/(.*)$)|^(components/(.*)$)|^(styles/(.*)$)",
+    "^(@/lib/(.*)$)|^(@/components/(.*)$)|^(@/styles/(.*)$)",
     "^[./]"
   ],
   "importOrderSeparation": true,
