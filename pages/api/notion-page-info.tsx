@@ -60,7 +60,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (imageUrl.host === 'images.unsplash.com') {
       if (!imageUrl.searchParams.has('w')) {
-        imageUrl.searchParams.set('w', '2000')
+        imageUrl.searchParams.set('w', '1200')
         imageUrl.searchParams.set('fit', 'max')
         image = imageUrl.toString()
       }
