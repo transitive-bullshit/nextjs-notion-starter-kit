@@ -1,7 +1,6 @@
 import * as React from 'react'
 
-import { NotionPage } from '@/components'
-
+import { NotionPage } from '@/components/NotionPage'
 import { domain } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 
