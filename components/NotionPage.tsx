@@ -1,36 +1,34 @@
 import * as React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import cs from 'classnames'
+import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useSearchParam } from 'react-use'
-import BodyClassName from 'react-body-classname'
+
+import cs from 'classnames'
 import { PageBlock } from 'notion-types'
-
-import TweetEmbed from 'react-tweet-embed'
-
+// utils
+import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import BodyClassName from 'react-body-classname'
 // core notion renderer
 import { NotionRenderer } from 'react-notion-x'
+import TweetEmbed from 'react-tweet-embed'
+import { useSearchParam } from 'react-use'
 
-// utils
-import { getBlockTitle, getPageProperty, formatDate } from 'notion-utils'
-import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
+import * as config from 'lib/config'
+import * as types from 'lib/types'
 import { mapImageUrl } from 'lib/map-image-url'
+import { getCanonicalPageUrl, mapPageUrl } from 'lib/map-page-url'
 import { searchNotion } from 'lib/search-notion'
 import { useDarkMode } from 'lib/use-dark-mode'
-import * as types from 'lib/types'
-import * as config from 'lib/config'
 
+import { Footer } from './Footer'
+import { GitHubShareButton } from './GitHubShareButton'
 // components
 import { Loading } from './Loading'
-import { Page404 } from './Page404'
-import { PageHead } from './PageHead'
-import { PageAside } from './PageAside'
-import { Footer } from './Footer'
 import { NotionPageHeader } from './NotionPageHeader'
-import { GitHubShareButton } from './GitHubShareButton'
-
+import { Page404 } from './Page404'
+import { PageAside } from './PageAside'
+import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
 // -----------------------------------------------------------------------------
