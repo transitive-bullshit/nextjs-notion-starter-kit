@@ -34,7 +34,11 @@ export default async function OGImage(req: NextRequest) {
     body: JSON.stringify({ pageId }),
     headers: { 'Content-Type': 'application/json' }
   })
+  if (!pageInfoRes.ok) {
+    return new Response(pageInfoRes.statusText, { status: pageInfoRes.status })
+  }
   const pageInfo: NotionPageInfo = await pageInfoRes.json()
+  console.log(pageInfo)
 
   return new ImageResponse(
     (
