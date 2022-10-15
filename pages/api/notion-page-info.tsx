@@ -48,12 +48,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
   const title = getBlockTitle(block, recordMap) || libConfig.name
-  const image = mapImageUrl(
+  let image = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
       (block as PageBlock).format?.page_cover ||
       libConfig.defaultPageCover,
     block
   )
+
+  if (image) {
+    const imageUrl = new URL(image)
+
+    if (imageUrl.host === 'images.unsplash.com') {
+      if (!imageUrl.searchParams.has('w')) {
+        imageUrl.searchParams.set('w', '2000')
+        imageUrl.searchParams.set('fit', 'max')
+        image = imageUrl.toString()
+      }
+    }
+  }
 
   const imageCoverPosition =
     (block as PageBlock).format?.page_cover_position ??
