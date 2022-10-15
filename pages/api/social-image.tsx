@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { ImageResponse } from '@vercel/og'
 import { NextRequest } from 'next/server'
 
-import { NotionPageInfo } from 'lib/types'
-import { apiHost, api } from 'lib/config'
+import { ImageResponse } from '@vercel/og'
+
+import { api, apiHost } from '@/lib/config'
+import { NotionPageInfo } from '@/lib/types'
 
 const interRegularFontP = fetch(
   new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)

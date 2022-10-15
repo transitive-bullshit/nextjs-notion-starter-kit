@@ -1,11 +1,11 @@
-import pMemoize from 'p-memoize'
 import { getAllPagesInSpace, uuidToId } from 'notion-utils'
+import pMemoize from 'p-memoize'
 
-import { includeNotionIdInUrls } from './config'
-import { notion } from './notion-api'
-import { getCanonicalPageId } from './get-canonical-page-id'
 import * as config from './config'
 import * as types from './types'
+import { includeNotionIdInUrls } from './config'
+import { getCanonicalPageId } from './get-canonical-page-id'
+import { notion } from './notion-api'
 
 const uuid = !!includeNotionIdInUrls
 
