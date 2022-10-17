@@ -2,6 +2,7 @@ import * as React from 'react'
 import { NextRequest } from 'next/server'
 
 import { ImageResponse } from '@vercel/og'
+import ky from 'ky'
 
 import { api, apiHost } from '@/lib/config'
 import { NotionPageInfo } from '@/lib/types'
@@ -30,15 +31,11 @@ export default async function OGImage(req: NextRequest) {
     return new Response('Invalid notion page id', { status: 400 })
   }
 
-  const pageInfoRes = await fetch(`${apiHost}${api.getNotionPageInfo}`, {
-    method: 'POST',
-    body: JSON.stringify({ pageId }),
-    headers: { 'Content-Type': 'application/json' }
-  })
-  if (!pageInfoRes.ok) {
-    return new Response(pageInfoRes.statusText, { status: pageInfoRes.status })
-  }
-  const pageInfo: NotionPageInfo = await pageInfoRes.json()
+  const pageInfo = await ky
+    .post(`${apiHost}${api.getNotionPageInfo}`, {
+      json: { pageId }
+    })
+    .json<NotionPageInfo>()
   console.log(pageInfo)
 
   return new ImageResponse(
@@ -86,7 +83,7 @@ export default async function OGImage(req: NextRequest) {
           style={{
             position: 'relative',
             width: 900,
-            height: 450,
+            height: 465,
             display: 'flex',
             flexDirection: 'column',
             border: '16px solid rgba(0,0,0,0.3)',
@@ -133,7 +130,7 @@ export default async function OGImage(req: NextRequest) {
           <div
             style={{
               position: 'absolute',
-              top: 32,
+              top: 47,
               left: 104,
               height: 128,
               width: 128,
@@ -157,7 +154,7 @@ export default async function OGImage(req: NextRequest) {
     ),
     {
       width: 1200,
-      height: 600,
+      height: 630,
       fonts: [
         {
           name: 'Inter',
