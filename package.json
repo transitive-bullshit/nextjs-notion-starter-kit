@@ -36,6 +36,7 @@
     "fathom-client": "^3.4.1",
     "got": "^12.0.3",
     "isomorphic-unfetch": "^3.1.0",
+    "ky": "^0.31.4",
     "lqip-modern": "^1.2.0",
     "next": "^12.3.1",
     "notion-client": "^6.13.11",
