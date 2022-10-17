@@ -2557,30 +2557,30 @@ normalize-url@^7.0.3:
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-7.0.3.tgz"
   integrity sha512-RiCOdwdPnzvwcBFJE4iI1ss3dMVRIrEzFpn8ftje6iBfzBInqlnRrNhxcLwBEKjPPXQKzm1Ptlxtaiv9wdcj5w==
 
-notion-client@^6.13.11:
-  version "6.13.11"
-  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-6.13.11.tgz#9db30b4652e5d28802a2e41807ff20cf4a0b1c58"
-  integrity sha512-5JkRXQkIJb1dwyuPOVO5Nji38p46of8bihkQVOzLAQYDtEhx04euyp8LDKZyUFkTOtea7/JrSUeCcQsAmjj8TA==
+notion-client@^6.15.6:
+  version "6.15.6"
+  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-6.15.6.tgz#3dfd0cbd8d2256bdbc93b5549d9cb86e3c33ced3"
+  integrity sha512-/ze9bHNhi09IvSo+loAelGVf2VsrnPaXoGtea/VUQq0adTvgcQhC1u37BwaK5G8bS/crVC277+KWlgdJOBIxeQ==
   dependencies:
     got "^11.8.1"
-    notion-types "^6.13.4"
-    notion-utils "^6.13.4"
+    notion-types "^6.15.6"
+    notion-utils "^6.15.6"
     p-map "^5.3.0"
 
-notion-types@^6.13.4:
-  version "6.13.4"
-  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-6.13.4.tgz#7b845e923da9cb485035f6b6ad7cdaa502fc4e4e"
-  integrity sha512-Ci4r4xZDpwx9iGUV2rS8IpjN+vFnOi0jH+m1uSIk6ulgxd4e7XZYrJb4yDgZmWeDrf1dQMT8ea4lheHzyyAzDg==
+notion-types@^6.15.6:
+  version "6.15.6"
+  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-6.15.6.tgz#eabbb28e1c514f421f0ffbf06ecdecd90e8ec8e3"
+  integrity sha512-JgLWDN4oHg/1sNdHDCeKUfdPl1AYsjOTnYkq+Zn7vITPykxbhw7nIxbAJ7owWUTro1cYTPh+GVmdX0mPiZGujg==
 
-notion-utils@^6.13.4:
-  version "6.13.4"
-  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-6.13.4.tgz#0eaa38bce7d0815c25e57bde3aacfeab30b26e5c"
-  integrity sha512-PLgJTFP6lmTzk7xAhZPeacogqOmRQeNPeh6WuxvmG1w7OOO+Bi1Whpn+c6aLUJmnAlJ+ZuI8AkSadvyo5mafAg==
+notion-utils@^6.15.6:
+  version "6.15.6"
+  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-6.15.6.tgz#d172faa2c29d62eac71b4e17ed01336d5e372d02"
+  integrity sha512-Ys7lQ5KWmrk9ZmpFquomQcVRdQqmZMRAl0aFhoqirVgeyKtq/i5IZoHCw8jCY8732WlaEAUnBid56nN33N2fRQ==
   dependencies:
     is-url-superb "^6.1.0"
     mem "^9.0.2"
     normalize-url "^7.0.3"
-    notion-types "^6.13.4"
+    notion-types "^6.15.6"
     p-queue "^7.2.0"
 
 npm-run-all@^4.1.5:
@@ -3044,16 +3044,16 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^6.15.3:
-  version "6.15.3"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.15.3.tgz#b2f18268cad8f35328210f09344894f77eb36e34"
-  integrity sha512-HmN7r4TvA0HE1wSyDKqFWJctz2gX7emQxmqFPfV5CgArdS1ixNyVMDR55PdfDb9uzga6W/OiEAnq6c66wnxl/A==
+react-notion-x@^6.15.6:
+  version "6.15.6"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.15.6.tgz#af42e836dce9f5d3ece97f2796c09608c49347de"
+  integrity sha512-s8FVh8bs2vb32VLvPq21V0rjeWtF+U6Fudaxfx9yA6vVvQ5kgF9RRyc7eNlKpLPfq/HMEqLE52hZW+ecQ15PZQ==
   dependencies:
     "@fisch0920/medium-zoom" "^1.0.7"
     "@matejmazur/react-katex" "^3.1.3"
     katex "^0.15.3"
-    notion-types "^6.13.4"
-    notion-utils "^6.13.4"
+    notion-types "^6.15.6"
+    notion-utils "^6.15.6"
     prismjs "^1.27.0"
     react-fast-compare "^3.2.0"
     react-hotkeys-hook "^3.0.3"
