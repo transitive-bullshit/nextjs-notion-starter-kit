@@ -2,7 +2,6 @@ import * as React from 'react'
 import { NextRequest } from 'next/server'
 
 import { ImageResponse } from '@vercel/og'
-import ky from 'ky'
 
 import { api, apiHost } from '@/lib/config'
 import { NotionPageInfo } from '@/lib/types'
@@ -31,11 +30,17 @@ export default async function OGImage(req: NextRequest) {
     return new Response('Invalid notion page id', { status: 400 })
   }
 
-  const pageInfo = await ky
-    .post(`${apiHost}${api.getNotionPageInfo}`, {
-      json: { pageId }
-    })
-    .json<NotionPageInfo>()
+  const pageInfoRes = await fetch(`${apiHost}${api.getNotionPageInfo}`, {
+    method: 'POST',
+    body: JSON.stringify({ pageId }),
+    headers: {
+      'content-type': 'application/json'
+    }
+  })
+  if (!pageInfoRes.ok) {
+    return new Response(pageInfoRes.statusText, { status: pageInfoRes.status })
+  }
+  const pageInfo: NotionPageInfo = await pageInfoRes.json()
   console.log(pageInfo)
 
   return new ImageResponse(
