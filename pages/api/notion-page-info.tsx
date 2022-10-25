@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import got from 'got'
 import { PageBlock } from 'notion-types'
 import {
   getBlockIcon,
@@ -48,24 +49,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const isBlogPost =
     block.type === 'page' && block.parent_table === 'collection'
   const title = getBlockTitle(block, recordMap) || libConfig.name
-  let image = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      libConfig.defaultPageCover,
-    block
-  )
-
-  if (image) {
-    const imageUrl = new URL(image)
-
-    if (imageUrl.host === 'images.unsplash.com') {
-      if (!imageUrl.searchParams.has('w')) {
-        imageUrl.searchParams.set('w', '1200')
-        imageUrl.searchParams.set('fit', 'max')
-        image = imageUrl.toString()
-      }
-    }
-  }
 
   const imageCoverPosition =
     (block as PageBlock).format?.page_cover_position ??
@@ -74,11 +57,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     ? `center ${(1 - imageCoverPosition) * 100}%`
     : null
 
-  const blockIcon = getBlockIcon(block, recordMap)
-  const authorImage = mapImageUrl(
-    blockIcon && isUrl(blockIcon) ? blockIcon : libConfig.defaultPageIcon,
+  const imageBlockUrl = mapImageUrl(
+    getPageProperty<string>('Social Image', block, recordMap) ||
+      (block as PageBlock).format?.page_cover,
     block
   )
+  const imageFallbackUrl = mapImageUrl(libConfig.defaultPageCover, block)
+
+  const blockIcon = getBlockIcon(block, recordMap)
+  const authorImageBlockUrl = mapImageUrl(
+    blockIcon && isUrl(blockIcon) ? blockIcon : null,
+    block
+  )
+  const authorImageFallbackUrl = mapImageUrl(libConfig.defaultPageIcon, block)
+  const [authorImage, image] = await Promise.all([
+    getCompatibleImageUrl(authorImageBlockUrl, authorImageFallbackUrl),
+    getCompatibleImageUrl(imageBlockUrl, imageFallbackUrl)
+  ])
 
   const author =
     getPageProperty<string>('Author', block, recordMap) || libConfig.author
@@ -119,7 +114,41 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=30, max-age=30, stale-while-revalidate=30'
+    'public, s-maxage=3600, max-age=3600, stale-while-revalidate=3600'
   )
   res.status(200).json(pageInfo)
+}
+
+async function isUrlReachable(url: string | null): Promise<boolean> {
+  if (!url) {
+    return false
+  }
+
+  try {
+    await got.head(url)
+    return true
+  } catch (err) {
+    return false
+  }
+}
+
+async function getCompatibleImageUrl(
+  url: string | null,
+  fallbackUrl: string | null
+): Promise<string | null> {
+  const image = (await isUrlReachable(url)) ? url : fallbackUrl
+
+  if (image) {
+    const imageUrl = new URL(image)
+
+    if (imageUrl.host === 'images.unsplash.com') {
+      if (!imageUrl.searchParams.has('w')) {
+        imageUrl.searchParams.set('w', '1200')
+        imageUrl.searchParams.set('fit', 'max')
+        return imageUrl.toString()
+      }
+    }
+  }
+
+  return image
 }

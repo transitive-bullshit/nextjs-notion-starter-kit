@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server'
 
 import { ImageResponse } from '@vercel/og'
 
-import { api, apiHost } from '@/lib/config'
+import { api, apiHost, rootNotionPageId } from '@/lib/config'
 import { NotionPageInfo } from '@/lib/types'
 
 const interRegularFontP = fetch(
@@ -19,13 +19,8 @@ export const config = {
 }
 
 export default async function OGImage(req: NextRequest) {
-  const [interRegularFont, interBoldFont] = await Promise.all([
-    interRegularFontP,
-    interBoldFontP
-  ])
-
   const { searchParams } = new URL(req.url)
-  const pageId = searchParams.get('id')
+  const pageId = searchParams.get('id') || rootNotionPageId
   if (!pageId) {
     return new Response('Invalid notion page id', { status: 400 })
   }
@@ -42,6 +37,11 @@ export default async function OGImage(req: NextRequest) {
   }
   const pageInfo: NotionPageInfo = await pageInfoRes.json()
   console.log(pageInfo)
+
+  const [interRegularFont, interBoldFont] = await Promise.all([
+    interRegularFontP,
+    interBoldFontP
+  ])
 
   return new ImageResponse(
     (
