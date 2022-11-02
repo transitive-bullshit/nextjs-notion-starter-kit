@@ -1,7 +1,7 @@
 import Keyv from '@keyvhq/core'
 import KeyvRedis from '@keyvhq/redis'
 
-import { isRedisEnabled, redisUrl, redisNamespace } from './config'
+import { isRedisEnabled, redisNamespace, redisUrl } from './config'
 
 let db: Keyv
 if (isRedisEnabled) {
