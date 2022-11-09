@@ -205,3 +205,28 @@
     animation: octocat-wave 560ms ease-in-out;
   }
 }
+
+/* Page 404 styles */
+.page404 {
+  display: flex;
+  align-items: center;
+}
+
+.page404 ul {
+  list-style: none;
+  padding: 0;
+}
+
+.page404 a {
+  text-decoration: underline;
+}
+
+.page404 > div:nth-child(1) {
+  padding: 16px;
+  text-align: left;
+}
+
+.page404 > div:nth-child(2) {
+  padding: 16px;
+  font-size: 2rem;
+}
