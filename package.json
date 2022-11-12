@@ -37,7 +37,7 @@
     "got": "^12.0.3",
     "isomorphic-unfetch": "^3.1.0",
     "lqip-modern": "^1.2.0",
-    "next": "^12.3.1",
+    "next": "^13.0.3",
     "notion-client": "^6.15.6",
     "notion-types": "^6.15.6",
     "notion-utils": "^6.15.6",
@@ -53,7 +53,7 @@
     "rss": "^1.2.2"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^12.3.1",
+    "@next/bundle-analyzer": "^13.0.3",
     "@trivago/prettier-plugin-sort-imports": "^3.3.1",
     "@types/node": "^18.8.5",
     "@types/react": "^18.0.21",
