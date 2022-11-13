@@ -9,8 +9,8 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'TophatTurtle',
-  domain: 'tophatturtle.in',
+  name: 'succinct e-com',
+  domain: 'succincte.com',
   author: 'Rohit Martires',
 
   // open graph metadata (optional)
