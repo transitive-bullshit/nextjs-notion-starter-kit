@@ -3,6 +3,7 @@ import * as React from 'react'
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
+import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
@@ -60,6 +61,17 @@ export const FooterImpl: React.FC = () => {
             rel='noopener noreferrer'
           >
             <FaTwitter />
+          </a>
+        )}
+
+        {config.mastodon && (
+          <a
+            className={styles.mastodon}
+            href={config.mastodon}
+            title={`Mastodon ${config.getMastodonHandle()}`}
+            rel='me'
+          >
+            <FaMastodon />
           </a>
         )}
 
