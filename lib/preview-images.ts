@@ -1,11 +1,11 @@
 import got from 'got'
 import lqip from 'lqip-modern'
-import pMap from 'p-map'
-import pMemoize from 'p-memoize'
 import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types'
 import { getPageImageUrls, normalizeUrl } from 'notion-utils'
+import pMap from 'p-map'
+import pMemoize from 'p-memoize'
 
-import { defaultPageIcon, defaultPageCover } from './config'
+import { defaultPageCover, defaultPageIcon } from './config'
 import { db } from './db'
 import { mapImageUrl } from './map-image-url'
 
