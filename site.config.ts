@@ -2,23 +2,23 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '3d6bacf7cd9d446a99c2144636bc1fd6',
+  rootNotionPageId: 'ae7d520aa99e493ea080d1307e6fe07e',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Rean2Rean Blog',
-  domain: 'rean2rean.blog',
-  author: 'Thy Madona',
+  name: 'Teacher Madona Blog',
+  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
+  author: 'Thy madona',
 
   // open graph metadata (optional)
-  description: 'rean2Rean blog where you learn how to learn',
+  description: 'The blog about my teaching',
 
   // social usernames (optional)
   twitter: 'thymadonakh',
-  github: 'Thymadonakh',
+  github: 'thymadonakh',
   linkedin: 'thymadonakh',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
@@ -50,16 +50,20 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  navigationStyle: 'default'
+  // navigationStyle: 'default',
   navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: 'About',
-      pageId: 'b2d17b0eae6d4273a436bd324d948a26'
+      title: 'Videos',
+      pageId: 'e339dcfb6e9b4fa1b7be5ae380c2c3c4?v=f6ea695bbb904274afb4d5ab82f0d279'
     },
-//     {
-//       title: 'Contact',
-//       pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-//     }
+    {
+      title: 'Projects',
+      pageId: 'c8b60f702ae442dcb7f5a005d602e1a4'
+    },
+    {
+      title: 'Blogs',
+      pageId: '17d6149af5674d07a2b500949cee7c38'
+    }
   ]
 })
