@@ -1,5 +1,12 @@
 {
   "typescript.tsdk": "./node_modules/typescript/lib",
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#450112",
+    "titleBar.inactiveBackground": "#450112",
+    "sideBar.border": "#450112",
+    "statusBar.background": "#450112",
+    "editorLineNumber.foreground": "#999999"
+  },
   "files.exclude": {
     "**/logs": true,
     "**/*.log": true,
