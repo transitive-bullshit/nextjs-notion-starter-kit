@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 
 import * as Fathom from 'fathom-client'
+import ReactGA from 'react-ga4'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
 import posthog from 'posthog-js'
@@ -25,7 +26,8 @@ import {
   fathomId,
   isServer,
   posthogConfig,
-  posthogId
+  posthogId,
+  googleAnalyticsId
 } from '@/lib/config'
 
 if (!isServer) {
@@ -34,7 +36,10 @@ if (!isServer) {
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
-
+  if (googleAnalyticsId) {
+    ReactGA.initialize( googleAnalyticsId)
+    ReactGA.send("pageview")
+  }
   React.useEffect(() => {
     function onRouteChangeComplete() {
       if (fathomId) {
@@ -53,6 +58,7 @@ export default function App({ Component, pageProps }: AppProps) {
     if (posthogId) {
       posthog.init(posthogId, posthogConfig)
     }
+
 
     router.events.on('routeChangeComplete', onRouteChangeComplete)
 
