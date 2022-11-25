@@ -61,7 +61,7 @@ export const youtube: string | null = getSiteConfig('youtube', null)
 export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const newsletter: string | null = getSiteConfig('newsletter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
-
+export const privacyPolicy : string | null = getSiteConfig('privacyPolicy', null)
 export const getMastodonHandle = (): string | null => {
   if (!mastodon) {
     return null
@@ -108,6 +108,9 @@ export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
   'navigationLinks',
   null
 )
+
+export const googleAnalyticsId : string | null = getSiteConfig('googleAnalyticsId', null)
+export const disqusShortname : string | null = getSiteConfig('disqusShortname', null)
 
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
@@ -166,6 +169,8 @@ export const fathomConfig = fathomId
       excludedDomains: ['localhost', 'localhost:3000']
     }
   : undefined
+
+
 
 export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID
 export const posthogConfig: posthog.Config = {

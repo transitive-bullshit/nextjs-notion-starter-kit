@@ -17,6 +17,10 @@ export interface SiteConfig {
   youtube?: string
   zhihu?: string
   mastodon?: string;
+  privacyPolicy?: string;
+
+  googleAnalyticsId?: string | null
+  disqusShortname?: string | null
 
   defaultPageIcon?: string | null
   defaultPageCover?: string | null

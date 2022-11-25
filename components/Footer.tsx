@@ -14,12 +14,14 @@ import * as config from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
+import { useNotionContext } from 'react-notion-x'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
 export const FooterImpl: React.FC = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
   const { isDarkMode, toggleDarkMode } = useDarkMode()
+  const { mapPageUrl } = useNotionContext()
 
   const onToggleDarkMode = React.useCallback(
     (e) => {
@@ -36,7 +38,17 @@ export const FooterImpl: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright 2022 {config.author}</div>
-
+      {config.privacyPolicy && (
+        <a 
+          className={styles.copyright}
+          href={mapPageUrl(config.privacyPolicy)}
+          title='Privacy Policy'
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Privacy Policy
+        </a>
+      )}
       <div className={styles.settings}>
         {hasMounted && (
           <a

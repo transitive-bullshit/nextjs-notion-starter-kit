@@ -33,6 +33,13 @@ export default siteConfig({
   // whether or not to enable support for LQIP preview images (optional)
   isPreviewImageSupportEnabled: true,
 
+  // To enable Google Analytics, include your Data Stream Measurement ID here
+  // googleAnalyticsId: '',
+  // To enable Disqsus Comments, include your Disqus Shortname here
+  // disqusShortname: '',
+  // To enable a Privacy Policy link in the footer, include your Page ID here
+  // privacyPolicy: '',
+
   // whether or not redis is enabled for caching generated preview images (optional)
   // NOTE: if you enable redis, you need to set the `REDIS_HOST` and `REDIS_PASSWORD`
   // environment variables. see the readme for more info
