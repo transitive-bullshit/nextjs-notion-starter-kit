@@ -21,7 +21,7 @@ import 'styles/prism-theme.css'
 
 import * as React from 'react'
 import * as Fathom from 'fathom-client'
-import * as ReactGA from 'react-ga'
+import ReactGA from "react-ga4"
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import posthog from 'posthog-js'
@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     if (googleId) {
       ReactGA.initialize(googleId);
-      ReactGA.pageview(window.location.pathname + window.location.search);
+      ReactGA.send({ hitType: "pageview", page: window.location.pathname + window.location.search });
     }
 
 
