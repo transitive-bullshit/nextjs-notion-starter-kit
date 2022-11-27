@@ -1008,3 +1008,12 @@ video.notion-page-cover {
   border-radius: 0;
   object-fit: contain;
 }
+
+
+[style="width: calc((100% - (1 * min(32px, 4vw))) * 0.5);"] > a{
+  width: 100%;
+}
+
+.notion-column {
+  justify-content: center;
+}
