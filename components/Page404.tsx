@@ -28,22 +28,22 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
               </p>
               <ul>
                 <li>
-                  <a class="notion-page-link" href="//github.com/ubiquity/ubiquity-dollar/wiki" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Docs</span></a>
+                  <span class="notion-page-title-text"><a class="notion-page-link" href="//github.com/ubiquity/ubiquity-dollar/wiki" target="_blank" rel="noreferrer">Docs</a></span>
                 </li>
                 <li>
-                  <a class="notion-page-link" href="//dao.ubq.fi/faq" target="_blank" rel="noreferrer"><span class="notion-page-title-text">FAQ</span></a>
+                  <span class="notion-page-title-text"><a class="notion-page-link" href="//dao.ubq.fi/faq" target="_blank" rel="noreferrer">FAQ</a></span>
                 </li>
                 <li>
-                  <a class="notion-page-link" href="//github.com/ubiquity/ubiquity-dollar" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Github</span></a>
+                  <span class="notion-page-title-text"><a class="notion-page-link" href="//github.com/ubiquity/ubiquity-dollar" target="_blank" rel="noreferrer">Github</a></span>
                 </li>
                 <li>
-                  <a class="notion-page-link" href="//discord.gg/SjymJ5maJ4" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Discord</span></a>
+                  <span class="notion-page-title-text"><a class="notion-page-link" href="//discord.gg/SjymJ5maJ4" target="_blank" rel="noreferrer">Discord</a></span>
                 </li>
                 <li>
-                  <a class="notion-page-link" href="//t.me/ubiquitydao" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Telegram</span></a>
+                  <span class="notion-page-title-text"><a class="notion-page-link" href="//t.me/ubiquitydao" target="_blank" rel="noreferrer">Telegram</a></span>
                 </li>
                 <li>
-                  <a class="notion-page-link" href="//twitter.com/UbiquityDAO" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Twitter</span></a>
+                  <span class="notion-page-title-text"><a class="notion-page-link" href="//twitter.com/UbiquityDAO" target="_blank" rel="noreferrer">Twitter</a></span>
                 </li>
               </ul>
             </div>
