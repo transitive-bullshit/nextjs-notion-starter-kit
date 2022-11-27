@@ -9,9 +9,27 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
 
   const errorText =
     error?.message ||
-    (pageId ?
-      `Make sure that Notion page "${pageId}" is publicly accessible` :
-      "We can't seem to find the page you're looking for")
+    (pageId
+      ? `Make sure that Notion page "${pageId}" is publicly accessible`
+      : "We can't seem to find the page you're looking for")
+
+  const aStyle = {
+    textDecoration: 'none',
+    //,   // position: "relative"
+    // ,   // top: "0"
+    // ,   // borderBottom: "none"
+    // ,   lineHeight: "1"
+    textRendering: 'geometricPrecision',
+    fontSmoothing: 'subpixelAntialiased',
+    fontWeight: '600',
+    fontSize: '12px',
+    display: 'inlineBlock',
+    maxHeight: '36px',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    width: '100%'
+  }
 
   return (
     <>
@@ -27,30 +45,76 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
                 <b>Here are some helpful links instead:</b>
               </p>
               <ul>
-                <li className="notion-page-title-text">
-                  <a className="notion-page-link" href="//github.com/ubiquity/ubiquity-dollar/wiki" target="_blank" rel="noreferrer">Docs</a>
+                <li>
+                  <a
+                    style={aStyle}
+                    className='notion-page-link'
+                    href='//github.com/ubiquity/ubiquity-dollar/wiki'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    Docs
+                  </a>
                 </li>
-                <li className="notion-page-title-text">
-                  <a className="notion-page-link" href="//dao.ubq.fi/faq" target="_blank" rel="noreferrer">FAQ</a>
+                <li>
+                  <a
+                    style={aStyle}
+                    className='notion-page-link'
+                    href='//dao.ubq.fi/faq'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    FAQ
+                  </a>
                 </li>
-                <li className="notion-page-title-text">
-                  <a className="notion-page-link" href="//github.com/ubiquity/ubiquity-dollar" target="_blank" rel="noreferrer">Github</a>
+                <li>
+                  <a
+                    style={aStyle}
+                    className='notion-page-link'
+                    href='//github.com/ubiquity/ubiquity-dollar'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    Github
+                  </a>
                 </li>
-                <li className="notion-page-title-text">
-                  <a className="notion-page-link" href="//discord.gg/SjymJ5maJ4" target="_blank" rel="noreferrer">Discord</a>
+                <li>
+                  <a
+                    style={aStyle}
+                    className='notion-page-link'
+                    href='//discord.gg/SjymJ5maJ4'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    Discord
+                  </a>
                 </li>
-                <li className="notion-page-title-text">
-                  <a className="notion-page-link" href="//t.me/ubiquitydao" target="_blank" rel="noreferrer">Telegram</a>
+                <li>
+                  <a
+                    style={aStyle}
+                    className='notion-page-link'
+                    href='//t.me/ubiquitydao'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    Telegram
+                  </a>
                 </li>
-                <li className="notion-page-title-text">
-                  <a className="notion-page-link" href="//twitter.com/UbiquityDAO" target="_blank" rel="noreferrer">Twitter</a>
+                <li>
+                  <a
+                    style={aStyle}
+                    className='notion-page-link'
+                    href='//twitter.com/UbiquityDAO'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    Twitter
+                  </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h1>
-                404
-              </h1>
+              <h1>404</h1>
             </div>
           </div>
         </main>
