@@ -218,7 +218,16 @@
 }
 
 .page404 a {
-  text-decoration: underline;
+  text-decoration: none;
+  text-rendering: geometricPrecision;
+  font-weight: 600;
+  font-size: 12px;
+  display: inlineBlock;
+  max-height: 36px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .page404 > div:nth-child(1) {

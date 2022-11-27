@@ -13,24 +13,6 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
       ? `Make sure that Notion page "${pageId}" is publicly accessible`
       : "We can't seem to find the page you're looking for")
 
-  const aStyle = {
-    textDecoration: 'none',
-    //,   // position: "relative"
-    // ,   // top: "0"
-    // ,   // borderBottom: "none"
-    // ,   lineHeight: "1"
-    textRendering: 'geometricPrecision',
-    fontSmoothing: 'subpixelAntialiased',
-    fontWeight: '600',
-    fontSize: '12px',
-    display: 'inlineBlock',
-    maxHeight: '36px',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    width: '100%'
-  }
-
   return (
     <>
       <PageHead site={site} title={title} />
@@ -47,7 +29,6 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
               <ul>
                 <li>
                   <a
-                    style={aStyle}
                     className='notion-page-link'
                     href='//github.com/ubiquity/ubiquity-dollar/wiki'
                     target='_blank'
@@ -58,7 +39,6 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
                 </li>
                 <li>
                   <a
-                    style={aStyle}
                     className='notion-page-link'
                     href='//dao.ubq.fi/faq'
                     target='_blank'
@@ -69,7 +49,6 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
                 </li>
                 <li>
                   <a
-                    style={aStyle}
                     className='notion-page-link'
                     href='//github.com/ubiquity/ubiquity-dollar'
                     target='_blank'
@@ -80,7 +59,6 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
                 </li>
                 <li>
                   <a
-                    style={aStyle}
                     className='notion-page-link'
                     href='//discord.gg/SjymJ5maJ4'
                     target='_blank'
@@ -91,7 +69,6 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
                 </li>
                 <li>
                   <a
-                    style={aStyle}
                     className='notion-page-link'
                     href='//t.me/ubiquitydao'
                     target='_blank'
@@ -102,7 +79,6 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
                 </li>
                 <li>
                   <a
-                    style={aStyle}
                     className='notion-page-link'
                     href='//twitter.com/UbiquityDAO'
                     target='_blank'
