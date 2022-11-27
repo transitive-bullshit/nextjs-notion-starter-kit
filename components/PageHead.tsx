@@ -24,7 +24,7 @@ export const PageHead: React.FC<
         content='width=device-width, initial-scale=1, shrink-to-fit=no'
       />
 
-      <meta name='theme-color' content='#EB625A' />
+      {/* <meta name='theme-color' content='#EB625A' /> */}
       <meta property='og:type' content='website' />
 
       {site && (
