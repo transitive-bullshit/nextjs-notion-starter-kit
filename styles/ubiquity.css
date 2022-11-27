@@ -1010,6 +1010,7 @@ video.notion-page-cover {
 }
 
 
+[style="width:calc((100% - (1 * min(32px, 4vw))) * 0.5)"] > a,
 [style="width: calc((100% - (1 * min(32px, 4vw))) * 0.5);"] > a{
   width: 100%;
 }
