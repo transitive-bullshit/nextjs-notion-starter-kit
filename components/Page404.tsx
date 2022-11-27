@@ -7,11 +7,11 @@ import styles from './styles.module.css'
 export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
   const title = site?.name || 'Notion Page Not Found'
 
-  const errorText = 
-    error?.message || 
-    (pageId ? 
-      `Make sure that Notion page "${pageId}" is publicly accessible` : 
-      "We can't seem to find the page you're looking for") 
+  const errorText =
+    error?.message ||
+    (pageId ?
+      `Make sure that Notion page "${pageId}" is publicly accessible` :
+      "We can't seem to find the page you're looking for")
 
   return (
     <>
@@ -21,29 +21,29 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
         <main className={styles.main}>
           <div className={styles.page404}>
             <div>
-              <h1>Oops!</h1>
+              <h1>Sorry!</h1>
               <p>{errorText}</p>
               <p>
                 <b>Here are some helpful links instead:</b>
               </p>
               <ul>
                 <li>
-                  <a href="//github.com/ubiquity/ubiquity-dollar/wiki" target="_blank" rel="noreferrer">Docs</a>
+                  <a class="notion-page-link" href="//github.com/ubiquity/ubiquity-dollar/wiki" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Docs</span></a>
                 </li>
                 <li>
-                  <a href="//dao.ubq.fi/faq" target="_blank" rel="noreferrer">FAQ</a>
+                  <a class="notion-page-link" href="//dao.ubq.fi/faq" target="_blank" rel="noreferrer"><span class="notion-page-title-text">FAQ</span></a>
                 </li>
                 <li>
-                  <a href="//github.com/ubiquity/ubiquity-dollar" target="_blank" rel="noreferrer">Github</a>
+                  <a class="notion-page-link" href="//github.com/ubiquity/ubiquity-dollar" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Github</span></a>
                 </li>
                 <li>
-                  <a href="//discord.gg/SjymJ5maJ4" target="_blank" rel="noreferrer">Discord</a>
+                  <a class="notion-page-link" href="//discord.gg/SjymJ5maJ4" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Discord</span></a>
                 </li>
                 <li>
-                  <a href="//t.me/ubiquitydao" target="_blank" rel="noreferrer">Telegram</a>
+                  <a class="notion-page-link" href="//t.me/ubiquitydao" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Telegram</span></a>
                 </li>
                 <li>
-                  <a href="//twitter.com/UbiquityDAO" target="_blank" rel="noreferrer">Twitter</a>
+                  <a class="notion-page-link" href="//twitter.com/UbiquityDAO" target="_blank" rel="noreferrer"><span class="notion-page-title-text">Twitter</span></a>
                 </li>
               </ul>
             </div>
