@@ -16,9 +16,10 @@ export default {
   socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
-  twitter: 'ubiquitydao',
+  twitter: 'UbiquityDAO',
   github: 'ubiquity',
   discord: 'SjymJ5maJ4',
+  telegram: 'UbiquityDAO',
   // linkedin: 'fisch2',
 
   // default notion icon and cover images for site-wide consistency (optional)

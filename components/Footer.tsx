@@ -4,7 +4,8 @@ import {
   FaZhihu,
   FaGithub,
   FaLinkedin,
-  FaDiscord
+  FaDiscord,
+  FaTelegramPlane
 } from 'react-icons/fa'
 import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
 import * as config from 'lib/config'
@@ -32,7 +33,9 @@ export const Footer: React.FC<{
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>&copy; {new Date().getFullYear()} {config.author}</div>
+      <div className={styles.copyright}>
+        &copy; {new Date().getFullYear()} {config.author}
+      </div>
 
       {hasMounted ? (
         <div className={styles.settings}>
@@ -104,6 +107,17 @@ export const Footer: React.FC<{
             rel='noopener noreferrer'
           >
             <FaDiscord />
+          </a>
+        )}
+        {config.telegram && (
+          <a
+            className={styles.telegram}
+            href={`https://t.me/${config.telegram}`}
+            title={`Telegram ${config.author}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaTelegramPlane />
           </a>
         )}
       </div>

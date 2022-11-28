@@ -51,6 +51,7 @@ export const zhihu: string | null = getSiteConfig('zhihu', null)
 export const github: string | null = getSiteConfig('github', null)
 export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const discord: string | null = getSiteConfig('discord', null)
+export const telegram: string | null = getSiteConfig('telegram', null)
 
 // default notion values for site-wide consistency (optional; may be overridden on a per-page basis)
 export const defaultPageIcon: string | null = getSiteConfig(
