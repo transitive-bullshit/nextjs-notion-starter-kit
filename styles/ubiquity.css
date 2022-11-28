@@ -83,6 +83,7 @@
   width: 100vw;
   line-height: 1.5;
   padding-top: var(--header) !important;
+  margin-bottom: 2.16em;
 }
 
 .notion-page-no-cover {
@@ -510,8 +511,8 @@ body.dark-mode
 
 .notion-search .resultsPane {
   display: block;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -1009,12 +1010,12 @@ video.notion-page-cover {
   object-fit: contain;
 }
 
-
-[style="width:calc((100% - (1 * min(32px, 4vw))) * 0.5)"] > a,
-[style="width: calc((100% - (1 * min(32px, 4vw))) * 0.5);"] > a{
+[style='width:calc((100% - (1 * min(32px, 4vw))) * 0.5)'] > a,
+[style='width: calc((100% - (1 * min(32px, 4vw))) * 0.5);'] > a {
   width: 100%;
 }
 
+.notion-page,
 .notion-column {
   justify-content: center;
 }
