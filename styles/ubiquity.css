@@ -799,7 +799,8 @@ span.notion-page-link {
 }
 
 footer {
-  height: var(--header);
+  /* height: var(--header); */
+  height: unset;
 }
 
 .notion-page-cover-background {
