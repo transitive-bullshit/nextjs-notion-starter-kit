@@ -308,7 +308,7 @@ svg.notion-page-icon {
 }
 
 .dark-mode .notion-quote {
-  background: #181818 !important;
+  background: #20202080 !important;
   border-radius: 0;
   border-left: 2px solid #808080;
   padding: 8px 20px;
@@ -1019,4 +1019,17 @@ video.notion-page-cover {
 .notion-page,
 .notion-column {
   justify-content: center;
+}
+
+/* .dark-mode  */
+/* .dark-mode  */
+.notion-table-row,
+.notion-table-cell,
+.notion-table-header-inner,
+.notion-table-view-header-cell-inner,
+.notion-collection-row {
+  border-color: #80808020;
+}
+.notion-table-header-inner {
+  background: #80808010;
 }
