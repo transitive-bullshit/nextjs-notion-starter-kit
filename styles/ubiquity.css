@@ -1020,7 +1020,7 @@ video.notion-page-cover {
 .notion-column {
   justify-content: center;
 }
-
+.notion-hr,
 .notion-simple-table td,
 .notion-table-row,
 .notion-table-cell,
