@@ -1021,8 +1021,7 @@ video.notion-page-cover {
   justify-content: center;
 }
 
-/* .dark-mode  */
-/* .dark-mode  */
+.notion-simple-table td,
 .notion-table-row,
 .notion-table-cell,
 .notion-table-header-inner,
@@ -1030,6 +1029,7 @@ video.notion-page-cover {
 .notion-collection-row {
   border-color: #80808020;
 }
+.notion-simple-table tr td,
 .notion-table-header-inner {
   background: #80808010;
 }
