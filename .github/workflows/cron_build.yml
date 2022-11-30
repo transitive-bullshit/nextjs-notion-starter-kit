@@ -1,0 +1,30 @@
+# This helps avoid 502 bad gateway errors due to stale image IDs
+name: Build
+
+# env:
+#   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+#   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  0 0/2 * 1/1 * ? *
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+
+      - run: yarn install --frozen-lockfile
+      - name: deploy
+#        TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
+#        env:
+#          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+#          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+        run: yarn deploy
