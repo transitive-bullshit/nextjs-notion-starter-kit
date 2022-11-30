@@ -15,16 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-          cache: yarn
-
-      - run: yarn install --frozen-lockfile
-      - name: deploy
-#        TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
-#        env:
-#          REDIS_HOST: ${{ secrets.REDIS_HOST }}
-#          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
-        run: yarn deploy
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
