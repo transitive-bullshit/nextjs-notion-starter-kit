@@ -1,14 +1,14 @@
 # This helps avoid 502 bad gateway errors due to stale image IDs
 name: CronBuild
 
-# env:
-#   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-#   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '18/5 * * * *'
+    - cron:  '0 5 * * *'
 
 jobs:
   Build:
