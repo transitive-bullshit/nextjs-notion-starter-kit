@@ -23,6 +23,10 @@
     'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .loadingIcon {
   animation: spinner 0.6s linear infinite;
   display: block;
@@ -105,12 +109,28 @@
   color: #0066ff;
 }
 
+.mastodon:hover {
+  color: #5a4be1;
+}
+
+.zhihu:hover {
+  color: #0066ff;
+}
+
 .github:hover {
   color: #808080;
 }
 
+.youtube:hover {
+  color: #ff0000;
+}
+
 .linkedin:hover {
   color: #808080;
+}
+
+.newsletter:hover {
+  color: #777777;
 }
 
 .comments {
