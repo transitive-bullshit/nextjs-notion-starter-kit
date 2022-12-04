@@ -1,5 +1,11 @@
-import { AiOutlineRetweet } from '@react-icons/all-files/ai/AiOutlineRetweet'
-import { IoHeartOutline } from '@react-icons/all-files/io5/IoHeartOutline'
+import /* Ant Design Icons */
+{ 
+  AiOutlineRetweet
+} from 'react-icons/ai'
+import /* Ionicons 5 */
+{ 
+  IoHeartOutline
+} from 'react-icons/io5'
 
 import styles from './styles.module.css'
 
