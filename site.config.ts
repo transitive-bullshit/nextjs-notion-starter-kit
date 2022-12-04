@@ -16,13 +16,17 @@ export default siteConfig({
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
 
-  // social usernames (optional)
+  /* (optional)
+    Social usernames
+  */
   twitter: 'transitive_bs',
   github: 'transitive-bullshit',
   linkedin: 'fisch2',
-  // mastodon: '#', // optional mastodon profile URL, provides link verification
-  // newsletter: '#', // optional newsletter URL
-  // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  // discord: 'My Server',  /* Server Name */
+  // discord_invite: 'https://discord.gg/zf6g5KQ6H4', /* Discord invite link */
+  // mastodon: '#', /* Optional mastodon profile URL, provides link verification */
+  // newsletter: '#', /* Optional newsletter URL */
+  // youtube: '#', /* Optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX` */
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
