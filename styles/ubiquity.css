@@ -173,7 +173,6 @@ img {
 body.light-mode img.lazy-image-preview,
 body.light-mode img.lazy-image-real,
 body.light-mode img {
-  filter: grayscale(1);
   aspect-ratio: auto;
 }
 
@@ -622,6 +621,17 @@ div.notion-page-content a.notion-page-link::after {
 .notion-page-link > .notion-page-title {
   max-width: 192px;
   line-height: 1;
+}
+
+.notion-gallery .notion-page-link > .notion-page-title {
+  max-width: unset;
+}
+.notion-gallery-grid .notion-page-title-text {
+  font-size: unset;
+}
+.notion-gallery img {
+  object-fit: contain !important;
+  background: transparent;
 }
 
 .notion-page-link:hover {
