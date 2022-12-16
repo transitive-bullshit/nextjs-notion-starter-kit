@@ -142,7 +142,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
   const heroVideo =
-    'https://storageapi.fleek.co/2e62e11d-d4be-4c6f-a2bb-b159c83a0d95-bucket/ubq.fi/hero.mp4'
+    'https://storageapi.fleek.one/2e62e11d-d4be-4c6f-a2bb-b159c83a0d95-bucket/ubq.fi/hero.mp4'
 
   let pageCover
 

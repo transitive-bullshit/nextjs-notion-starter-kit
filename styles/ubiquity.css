@@ -34,6 +34,7 @@
 }
 
 .dark-mode .notion-app {
+  background: radial-gradient(#06061a, #000000);
 }
 .notion-callout {
   border: none;
@@ -1005,9 +1006,14 @@ video.notion-page-cover {
   font-size: 20px;
 }
 
-.page-error-message,
-#loading-message {
+.dark-mode .page-error-message,
+.dark-mode #loading-message {
   color: #fff;
+  pointer-events: all;
+}
+.light-mode .page-error-message,
+.light-mode #loading-message {
+  color: unset;
   pointer-events: all;
 }
 .page-error-message > a,
