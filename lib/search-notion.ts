@@ -1,10 +1,10 @@
 // import ky from 'ky'
+import ExpiryMap from 'expiry-map'
 import fetch from 'isomorphic-unfetch'
 import pMemoize from 'p-memoize'
-import ExpiryMap from 'expiry-map'
 
-import { api } from './config'
 import * as types from './types'
+import { api } from './config'
 
 export const searchNotion = pMemoize(searchNotionImpl, {
   cacheKey: (args) => args[0]?.query,

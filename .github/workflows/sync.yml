@@ -1,0 +1,17 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # every day at 00:00
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: tgymnich/fork-sync@v1.6.3
+        with:
+          base: ubiquity
+          head: main
