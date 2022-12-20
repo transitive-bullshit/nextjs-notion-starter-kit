@@ -9,7 +9,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: wei/pull
+      - uses: wei/pull@1.0.0
         with:
           base: ubiquity
           upstream: transitive-bullshit:main
