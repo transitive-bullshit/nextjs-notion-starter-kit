@@ -11,7 +11,7 @@ export const PageHead: React.FC<
     image?: string
     url?: string
   }
-> = ({ site, title, description, _pageId, image, url }) => {
+> = ({ site, title, description, image, url }) => {
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
