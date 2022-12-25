@@ -2,7 +2,7 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: 'https://robotbird.notion.site/1-c4d352db3cee4d8280b1b27e4a6c8cb8',
+  rootNotionPageId: 'c4d352db3cee4d8280b1b27e4a6c8cb8',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
