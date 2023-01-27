@@ -2,7 +2,7 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: 'c4d352db3cee4d8280b1b27e4a6c8cb8',
+  rootNotionPageId: '0441e5e7d62940f28a11f351608ada44',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -17,7 +17,7 @@ export default siteConfig({
   description: '机器鸟的个人博客，不定义自己是什么角色，希望在这个世界可以留下自己的作品',
 
   // social usernames (optional)
-  twitter: 'robotbird',
+  twitter: 'PMAndDog',
   github: 'robotbird',
   //linkedin: 'ro',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
