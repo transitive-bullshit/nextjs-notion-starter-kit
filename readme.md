@@ -30,6 +30,7 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 - Quick search via CMD+K / CMD+P
 - Responsive for different devices
 - Optimized for Next.js and Vercel
+- add tag filter
 
 ## Demos
 
