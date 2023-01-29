@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Next.js Notion Starter Kit',
-  domain: 'https://www.notion.so/Hello-I-m-Yucheng-bc8b48c018ca42bf9934021f2581b979',
+  domain: 'https://possible-binder-6eb.notion.site/Hello-I-m-Yucheng-bc8b48c018ca42bf9934021f2581b979',
   author: 'Yucheng Liu',
 
   // open graph metadata (optional)
