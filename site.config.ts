@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
+  name: 'Hello, I am Yucheng',
   domain: 'https://possible-binder-6eb.notion.site/Hello-I-m-Yucheng-bc8b48c018ca42bf9934021f2581b979',
   author: 'Yucheng Liu',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Yucheng Liu\'s Blogs',
 
   // social usernames (optional)
   twitter: 'cl0ud1ite',
