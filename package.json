@@ -71,6 +71,7 @@
   "overrides": {
     "cacheable-request": {
       "keyv": "npm:@keyvhq/core@~1.6.6"
-    }
+    },
+    "p-queue": "7.3.0"
   }
 }
