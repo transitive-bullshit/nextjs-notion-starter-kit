@@ -10,8 +10,8 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'devzhao的个人空间',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  domain: 'devzhao.com',
+  author: 'pmzhao',
 
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
