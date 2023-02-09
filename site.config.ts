@@ -10,13 +10,11 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'W4nder\'s Blog',
-  domain: 'test',
+  domain: 'notion-blog-lilac-omega.vercel.app',
   author: 'W4nder',
 
   // open graph metadata (optional)
   description: '',
-
-  // social usernames (optional)
 
 
   // default notion icon and cover images for site-wide consistency (optional)
@@ -37,17 +35,17 @@ export default siteConfig({
   // any pages defined here will override their default URL paths
   // example:
   //
-//   pageUrlOverrides: {
-//     '/javasec': 'e12dd5850aaa4e5c8aeec025842c03f2',
-//     '/toolkits': '53d483b0884a4c9291bfd763b6ec9f65',
-//     '/toys':'55625e20e0eb4158b571e3735574cdb5'
-//   }
+  pageUrlOverrides: {
+    '/javasec': 'e12dd5850aaa4e5c8aeec025842c03f2',
+    '/toolkits': '53d483b0884a4c9291bfd763b6ec9f65',
+    '/toys':'55625e20e0eb4158b571e3735574cdb5'
+  }
   pageUrlOverrides: null,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  navigationStyle: 'default',
-  // navigationStyle: 'custom',
+//   navigationStyle: 'default',
+  navigationStyle: 'custom',
   navigationLinks: [
     {
       title: 'Javasec',
