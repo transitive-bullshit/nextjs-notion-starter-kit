@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { ArticleJsonLd } from 'next-seo'
+import { NewsArticleJsonLd } from 'next-seo'
 
 import cs from 'classnames'
 import { PageBlock } from 'notion-types'
@@ -253,15 +253,21 @@ export const NotionPage: React.FC<types.PageProps> = ({
         image={socialImage}
         url={canonicalPageUrl}
       />
-      <ArticleJsonLd
-      url="https://www.example.com/article"
-      title="My Article"
-      images={['https://www.example.com/article/image.jpg']}
-      datePublished="2021-01-01"
-      authorName="John Doe"
-      publisherName="My Website"
-      publisherLogo="https://www.example.com/logo.png"
-      description="This is a brief description of my article."
+      <NewsArticleJsonLd
+      url={canonicalPageUrl}
+      title={title}
+      images={socialImage}
+      datePublished="2023-02-05T09:00:00+08:00"
+      dateCreated="2023-02-05T09:00:00+08:00"
+      dateModified="2023-02-05T09:00:00+08:00"
+      dateline="New York, NY"
+      section="Telehealth"
+      keywords="Telehealth, Telemedicine, Digital Health, Start-ups, E-Commerce"
+      authorName="Bask Health"
+      publisherName="Bask Health"
+      publisherLogo="https://blog.bask.bio/favicon_bask_round.png"
+      description={socialDescription}
+      body={socialDescription}
       />
       {isLiteMode && <BodyClassName className='notion-lite' />}
       {isDarkMode && <BodyClassName className='dark-mode' />}
