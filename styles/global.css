@@ -187,6 +187,7 @@ body {
 
 .footer-widget__logo {
   margin-bottom: 40px;
+}
 .searchInput {
   color: var(--fg-color);
   caret-color: var(--fg-color);

@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { ArticleJsonLd } from 'next-seo'
 
 import cs from 'classnames'
 import { PageBlock } from 'notion-types'
@@ -252,7 +253,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
         image={socialImage}
         url={canonicalPageUrl}
       />
-
+      <ArticleJsonLd
+      url="https://www.example.com/article"
+      title="My Article"
+      images={['https://www.example.com/article/image.jpg']}
+      datePublished="2021-01-01"
+      authorName="John Doe"
+      publisherName="My Website"
+      publisherLogo="https://www.example.com/logo.png"
+      description="This is a brief description of my article."
+      />
       {isLiteMode && <BodyClassName className='notion-lite' />}
       {isDarkMode && <BodyClassName className='dark-mode' />}
 
