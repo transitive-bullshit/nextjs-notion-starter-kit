@@ -256,7 +256,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <NewsArticleJsonLd
       url={canonicalPageUrl}
       title={title}
-      images={socialImage}
+      images= {["https://blog.bask.bio/favicon_bask_round.png"]}
       datePublished="2023-02-05T09:00:00+08:00"
       dateCreated="2023-02-05T09:00:00+08:00"
       dateModified="2023-02-05T09:00:00+08:00"
