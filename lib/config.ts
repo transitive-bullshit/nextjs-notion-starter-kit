@@ -5,7 +5,7 @@
  * for optional depenencies.
  */
 import { parsePageId } from 'notion-utils'
-import { PostHogConfig } from 'posthog-js'
+import PostHogConfig from 'posthog-js'
 
 import { getEnv, getSiteConfig } from './get-config-value'
 import { NavigationLink } from './site-config'
