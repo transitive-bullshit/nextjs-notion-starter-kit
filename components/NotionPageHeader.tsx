@@ -36,7 +36,21 @@ const ToggleThemeButton = () => {
 export const NotionPageHeader: React.FC<{
   block: types.CollectionViewPageBlock | types.PageBlock
 }> = ({ block }) => {
+  const [hasMounted, setHasMounted] = React.useState(false)
   const { components, mapPageUrl } = useNotionContext()
+  const { isDarkMode, toggleDarkMode } = useDarkMode()
+
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  const onToggleDarkMode = React.useCallback(
+    (e) => {
+      e.preventDefault()
+      toggleDarkMode()
+    },
+    [toggleDarkMode]
+  )
 
   if (navigationStyle === 'default') {
     return <Header block={block} />
@@ -81,6 +95,20 @@ export const NotionPageHeader: React.FC<{
           <ToggleThemeButton />
 
           {isSearchEnabled && <Search block={block} title={null} />}
+
+          <div className={styles.settings}>
+            {hasMounted && (
+              <a
+                className={styles.toggleDarkMode}
+                href='#'
+                role='button'
+                onClick={onToggleDarkMode}
+                title='Toggle dark mode'
+              >
+                {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </header>
