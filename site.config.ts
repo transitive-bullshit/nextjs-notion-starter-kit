@@ -11,7 +11,7 @@ export default siteConfig({
   // basic site info (required)
   name: 'Bask Health | Blog',
   domain: 'blog.bask.bio',
-  author: 'Bask Health, LLC',
+  author: 'Bask Health, Inc',
 
   // open graph metadata (optional)
   description: 'Our completely customizable platform allows you to expand your healthcare business online. From our white label solution to our suite of telehealth APIs. We offer the no-code tools to build your DTC telehealth brand.	',
