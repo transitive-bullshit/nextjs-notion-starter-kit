@@ -14,12 +14,13 @@ export default siteConfig({
   author: 'Li Keke',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: '可可的个人博客测试...',
 
   // social usernames (optional)
   twitter: '',
   github: 'tmxk000',
   linkedin: 'fisch2',
+  newsletter: '519338871@qq.com', 
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
