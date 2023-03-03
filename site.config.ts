@@ -2,26 +2,26 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '9cc0f9efb71a4608b0980fd0cd618d69',
+  rootNotionPageId: 'd1d534a7eeab41b9ace5191b0156b44c',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Iggo Abedul',
-  domain: 'abedul.iggo.me',
-  author: 'Abe Dul',
+  name: 'Iggo Abe',
+  domain: 'rasimedia.iggo.me',
+  author: 'Iggo Abe',
 
   // open graph metadata (optional)
-  description: 'Official Abedul Site',
+  description: 'Rasi Media',
 
   // social usernames (optional)
-  twitter: 'Abedulx',
-  //github: 'transitive-bullshit',
-  //linkedin: 'fisch2',
+  twitter: 'rasimedia',
+  github: 'rasimedia',
+  linkedin: 'hairasi',
   // newsletter: '#', // optional newsletter URL
-  // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
