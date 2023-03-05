@@ -19,7 +19,7 @@ export default siteConfig({
   // social usernames (optional)
   twitter: '',
   github: 'tmxk000',
-  linkedin: 'fisch2',
+  linkedin: '',
   newsletter: '519338871@qq.com', 
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
