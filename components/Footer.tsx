@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
+import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
@@ -62,6 +63,18 @@ export const FooterImpl: React.FC = () => {
             <FaTwitter />
           </a>
         )}
+        
+        {config.instagram && (
+          <a
+            className={styles.instagram}
+            href={`https://instagram.com/${config.instagram}`}
+            title={`Instagram @${config.instagram}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaTwitter />
+          </a>
+        )}
 
         {config.zhihu && (
           <a
@@ -115,7 +128,7 @@ export const FooterImpl: React.FC = () => {
           <a
             className={styles.youtube}
             href={`https://www.youtube.com/${config.youtube}`}
-            title={`YouTube ${config.author}`}
+            title={`YouTube ${config.youtube}`}
             target='_blank'
             rel='noopener noreferrer'
           >
