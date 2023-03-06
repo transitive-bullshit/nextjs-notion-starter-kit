@@ -14,14 +14,14 @@ export default siteConfig({
   author: 'Iggo Abe',
 
   // open graph metadata (optional)
-  description: 'Rasi Media',
+  description: 'Rasi Media was founded in late December 2022, our mission is to provide actual and entertaining information.',
 
   // social usernames (optional)
   twitter: 'rasimedia',
   instagram: 'rasimedia',
   //linkedin: 'hairasi',
   // newsletter: '#', // optional newsletter URL
-  youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  youtube: '@rasimedia', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
