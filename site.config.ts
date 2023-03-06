@@ -19,7 +19,7 @@ export default siteConfig({
   // social usernames (optional)
   twitter: 'rasimedia',
   instagram: 'rasimedia',
-  //linkedin: 'hairasi',
+  facebook: 'hairasi',
   // newsletter: '#', // optional newsletter URL
   youtube: '@rasimedia', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
