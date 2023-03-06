@@ -11,7 +11,7 @@ export default siteConfig({
   // basic site info (required)
   name: 'Rasi Media',
   domain: 'rasi.media',
-  author: 'Iggo Abe',
+  author: 'Rasi Media',
 
   // open graph metadata (optional)
   description: 'Rasi Media was founded in late December 2022, our mission is to provide actual and entertaining information.',
