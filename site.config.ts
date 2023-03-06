@@ -9,8 +9,8 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Iggo Abe',
-  domain: 'rasimedia.iggo.me',
+  name: 'Rasi Media',
+  domain: 'rasi.media',
   author: 'Iggo Abe',
 
   // open graph metadata (optional)
