@@ -6,18 +6,18 @@ export default siteConfig({
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: 'fde5ac74eea345278f004482710e1af3',
+  rootNotionSpaceId: 'ac6e6eac439c464aa45986582424945e',
 
   // basic site info (required)
-  name: 'Transitive Bullshit',
-  domain: 'transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'Archiv3ds',
+  domain: 'archiv3ds.vercel.app',
+  author: 'Alp Yaltı',
 
   // open graph metadata (optional)
-  description: 'Personal site of Travis Fischer aka Transitive Bullshit',
+  description: 'Archiv3ds is the best platform for 3D Designers, Digital Artists, and Game Developers. Join us to discover new artists and share your work.',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
+  twitter: 'archiv3ds',
   github: 'transitive-bullshit',
   linkedin: 'fisch2',
   // newsletter: '#', // optional newsletter URL
@@ -57,11 +57,11 @@ export default siteConfig({
   navigationLinks: [
     {
       title: 'About',
-      pageId: '8d0062776d0c4afca96eb1ace93a7538'
+      pageId: '599b332da54a4f35b03d94f302d9d76a'
     },
     {
       title: 'Contact',
-      pageId: '9a7ddf2973444067bbc5ce0a4e0e0058'
+      pageId: '599b332da54a4f35b03d94f302d9d76a'
     }
   ]
 })
