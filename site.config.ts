@@ -30,6 +30,9 @@ export default siteConfig({
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
+  // if you want to switch the display direction to right-to-left  (e.g. in case you have Arabic content)
+  RTL: false,
+
   // whether or not to enable support for LQIP preview images (optional)
   isPreviewImageSupportEnabled: true,
 

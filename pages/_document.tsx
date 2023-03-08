@@ -2,6 +2,7 @@ import * as React from 'react'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 import { IconContext } from '@react-icons/all-files'
+import siteConfig from 'site.config'
 
 export default class MyDocument extends Document {
   render() {
@@ -20,7 +21,7 @@ export default class MyDocument extends Document {
             <link rel='manifest' href='/manifest.json' />
           </Head>
 
-          <body>
+          <body dir={siteConfig.RTL ? 'rtl' : 'ltr'}>
             <script
               dangerouslySetInnerHTML={{
                 __html: `
