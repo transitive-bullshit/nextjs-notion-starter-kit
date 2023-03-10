@@ -20,7 +20,7 @@ export default siteConfig({
   twitter: '',
   github: 'tmxk000',
   linkedin: '',
-  newsletter: '<a href="mailto:519338871@qq.com">Email Me</a>', 
+  newsletter: '101d53178b124e6382049a3a350d5a96', 
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
