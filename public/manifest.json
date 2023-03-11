@@ -1,21 +1,36 @@
 {
-  "name": "Next.js Notion Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "Transitive Bullshit",
+  "short_name": "Transitive BS",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "/favicon-32x32.png",
       "type": "image/png",
       "sizes": "32x32"
     },
     {
-      "src": "/favicon-128x128.png",
+      "src": "/favicon-96x96.png",
       "type": "image/png",
-      "sizes": "128x128"
+      "sizes": "96x96"
     },
     {
-      "src": "/favicon-192x192.png",
+      "src": "/apple-touch-icon.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "180x180"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "theme_color": "#000000",

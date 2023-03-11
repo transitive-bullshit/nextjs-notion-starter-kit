@@ -75,6 +75,7 @@ export const PageHead: React.FC<
         href={rssFeedUrl}
         title={site?.name}
       />
+      <meta name='follow.it-verification-code' content='c0A1rAARM3FC2XRfMAke' />
 
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />
