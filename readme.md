@@ -43,10 +43,11 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 This project requires a recent version of Node.js (we recommend >= 16).
 
 1. Fork / clone this repo
-2. Change a few values in [site.config.ts](./site.config.ts)
-3. `npm install`
-4. `npm run dev` to test locally
-5. `npm run deploy` to deploy to vercel 💪
+2. Copy site.config.example.ts -> site.config.ts
+3. Change a few values in [site.config.ts](./site.config.ts)
+4. `npm install --legacy-peer-deps`
+5. `npm run dev` to test locally
+6. `npm run deploy` to deploy to vercel 💪
 
 I tried to make configuration as easy as possible — All you really need to do to get started is edit `rootNotionPageId`.
 
