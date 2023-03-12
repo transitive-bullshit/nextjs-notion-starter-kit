@@ -17,17 +17,21 @@ import {
 } from './types'
 
 export const rootNotionPageId: string = parsePageId(
-  getSiteConfig('rootNotionPageId'),
+  process.env.NEXT_PUBLIC_NOTION_PAGE_ID,
   { uuid: false }
 )
 
+
 if (!rootNotionPageId) {
+  console.log('FALSE rootNotionPageId')
+  console.log(rootNotionPageId)
+  console.log(process.env)
   throw new Error('Config error invalid "rootNotionPageId"')
 }
 
 // if you want to restrict pages to a single notion workspace (optional)
 export const rootNotionSpaceId: string | null = parsePageId(
-  getSiteConfig('rootNotionSpaceId', null),
+  getEnv('NOTION_SPACE_ID', null),
   { uuid: true }
 )
 
@@ -47,11 +51,11 @@ export const environment = process.env.NODE_ENV || 'development'
 export const isDev = environment === 'development'
 
 // general site config
-export const name: string = getSiteConfig('name')
+export const name: string = process.env.NEXT_PUBLIC_SITE_NAME
 export const author: string = getSiteConfig('author')
-export const domain: string = getSiteConfig('domain')
-export const description: string = getSiteConfig('description', 'Notion Blog')
-export const language: string = getSiteConfig('language', 'en')
+export const domain: string = process.env.NEXT_PUBLIC_SITE_DOMAIN
+export const description: string = process.env.NEXT_PUBLIC_SITE_DESCRIPTION
+export const language: string = process.env.NEXT_PUBLIC_LANGUAGE
 
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
