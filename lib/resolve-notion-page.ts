@@ -36,7 +36,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
         // check if the database has a cached mapping of this URI to page ID
         pageId = await db.get(cacheKey)
 
-        // console.log(`redis get "${cacheKey}"`, pageId)
       } catch (err) {
         // ignore redis errors
         console.warn(`redis error get "${cacheKey}"`, err.message)
@@ -63,7 +62,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
             // update the database mapping of URI to pageId
             await db.set(cacheKey, pageId, cacheTTL)
 
-            // console.log(`redis set "${cacheKey}"`, pageId, { cacheTTL })
           } catch (err) {
             // ignore redis errors
             console.warn(`redis error set "${cacheKey}"`, err.message)
@@ -82,7 +80,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
   } else {
     pageId = site.rootNotionPageId
 
-    console.log(site)
     recordMap = await getPage(pageId)
   }
 
