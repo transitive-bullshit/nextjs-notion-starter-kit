@@ -93,6 +93,10 @@
   color: #2795e9;
 }
 
+.buymeacoffee:hover {
+  color: #FFDD00;
+}
+
 .mastodon:hover {
   color: #5a4be1;
 }

@@ -20,7 +20,8 @@ export default siteConfig({
 //  twitter: 'transitive_bs',
   github: 'tthdvd',
   linkedin: 'tthdvd',
-   mastodon: 'https://mastodon.social/@tthdvd', // optional mastodon profile URL, provides link verification
+  mastodon: 'https://mastodon.social/@tthdvd', // optional mastodon profile URL, provides link verification
+  buymeacoffee: 'https://www.buymeacoffee.com/tthdvd',
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 

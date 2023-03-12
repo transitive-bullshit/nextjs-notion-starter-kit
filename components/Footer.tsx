@@ -9,6 +9,7 @@ import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+import { SiBuymeacoffee } from '@react-icons/all-files/si/SiBuymeacoffee'
 
 import * as config from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -52,6 +53,19 @@ export const FooterImpl: React.FC = () => {
       </div>
 
       <div className={styles.social}>
+
+      {config.buymeacoffee && (
+          <a
+            className={styles.buymeacoffee}
+            href={config.buymeacoffee}
+            title={`Buy Me a Coffee!`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <SiBuymeacoffee />
+          </a>
+        )}
+
         {config.twitter && (
           <a
             className={styles.twitter}
