@@ -29,6 +29,9 @@ export const PageHead: React.FC<
         content='width=device-width, initial-scale=1, shrink-to-fit=no'
       />
 
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fefffe" key="theme-color-light"/>
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2d3439" key="theme-color-dark"/>
+
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='website' />
 
