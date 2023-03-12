@@ -10,14 +10,15 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Hello, I am Yucheng',
-  domain: 'https://possible-binder-6eb.notion.site/Hello-I-m-Yucheng-bc8b48c018ca42bf9934021f2581b979',
+  domain:
+    'https://possible-binder-6eb.notion.site/Hello-I-m-Yucheng-bc8b48c018ca42bf9934021f2581b979',
   author: 'Yucheng Liu',
 
   // open graph metadata (optional)
-  description: 'Yucheng Liu\'s Blogs',
+  description: "Yucheng Liu's Blogs",
 
   // social usernames (optional)
-  twitter: 'cl0ud1ite',
+  twitter: 'xyuchengz',
   linkedin: 'liuyucheng',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
