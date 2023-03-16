@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'AI训练师营地',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
+  domain: 'aizhushou.site',
   author: 'ZeroZ',
 
   // open graph metadata (optional)
