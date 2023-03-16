@@ -1,18 +1,27 @@
 import * as React from 'react'
-import { FaTwitter, FaZhihu, FaGithub, FaLinkedin } from 'react-icons/fa'
-import { IoSunnyOutline, IoMoonSharp } from 'react-icons/io5'
-import * as config from 'lib/config'
+
+import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
+import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
+import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
+import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
+import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
+import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
+import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+
+import * as config from '@/lib/config'
+import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
-export const Footer: React.FC<{
-  isDarkMode: boolean
-  toggleDarkMode: () => void
-}> = ({ isDarkMode, toggleDarkMode }) => {
+export const FooterImpl: React.FC = () => {
   const [hasMounted, setHasMounted] = React.useState(false)
-  const toggleDarkModeCb = React.useCallback(
+  const { isDarkMode, toggleDarkMode } = useDarkMode()
+
+  const onToggleDarkMode = React.useCallback(
     (e) => {
       e.preventDefault()
       toggleDarkMode()
@@ -28,18 +37,19 @@ export const Footer: React.FC<{
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright 2022 {config.author}</div>
 
-      {hasMounted ? (
-        <div className={styles.settings}>
+      <div className={styles.settings}>
+        {hasMounted && (
           <a
             className={styles.toggleDarkMode}
             href='#'
-            onClick={toggleDarkModeCb}
+            role='button'
+            onClick={onToggleDarkMode}
             title='Toggle dark mode'
           >
             {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
-        </div>
-      ) : null}
+        )}
+      </div>
 
       <div className={styles.social}>
         {config.twitter && (
@@ -51,6 +61,17 @@ export const Footer: React.FC<{
             rel='noopener noreferrer'
           >
             <FaTwitter />
+          </a>
+        )}
+
+        {config.mastodon && (
+          <a
+            className={styles.mastodon}
+            href={config.mastodon}
+            title={`Mastodon ${config.getMastodonHandle()}`}
+            rel='me'
+          >
+            <FaMastodon />
           </a>
         )}
 
@@ -89,7 +110,33 @@ export const Footer: React.FC<{
             <FaLinkedin />
           </a>
         )}
+
+        {config.newsletter && (
+          <a
+            className={styles.newsletter}
+            href={`${config.newsletter}`}
+            title={`Newsletter ${config.author}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaEnvelopeOpenText />
+          </a>
+        )}
+
+        {config.youtube && (
+          <a
+            className={styles.youtube}
+            href={`https://www.youtube.com/${config.youtube}`}
+            title={`YouTube ${config.author}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaYoutube />
+          </a>
+        )}
       </div>
     </footer>
   )
 }
+
+export const Footer = React.memo(FooterImpl)

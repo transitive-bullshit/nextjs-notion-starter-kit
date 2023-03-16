@@ -1,60 +1,63 @@
 // global styles shared across the entire site
-import 'styles/global.css'
+import * as React from 'react'
+import type { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
 
-// core styles shared by all of react-notion-x (required)
-import 'react-notion-x/src/styles.css'
-
-// used for code syntax highlighting (optional)
-import 'prismjs/themes/prism-coy.css'
-
-// this might be better for dark mode
-// import 'prismjs/themes/prism-okaidia.css'
-
-// used for collection views selector (optional)
-import 'rc-dropdown/assets/index.css'
-
+import * as Fathom from 'fathom-client'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
-
-// core styles for static tweet renderer (optional)
-import 'react-static-tweets/styles.css'
-
+import posthog from 'posthog-js'
+// used for code syntax highlighting (optional)
+import 'prismjs/themes/prism-coy.css'
+// core styles shared by all of react-notion-x (required)
+import 'react-notion-x/src/styles.css'
+import 'styles/global.css'
+// this might be better for dark mode
+// import 'prismjs/themes/prism-okaidia.css'
 // global style overrides for notion
 import 'styles/notion.css'
-
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
 
-// import any languages we want to support for syntax highlighting via Notion's
-// Code block and prismjs
-// import 'prismjs/components/prism-typescript'
+import { bootstrap } from '@/lib/bootstrap-client'
+import {
+  fathomConfig,
+  fathomId,
+  isServer,
+  posthogConfig,
+  posthogId
+} from '@/lib/config'
 
-import React from 'react'
-import { useRouter } from 'next/router'
-import { bootstrap } from 'lib/bootstrap-client'
-import { fathomId, fathomConfig } from 'lib/config'
-import * as Fathom from 'fathom-client'
-
-if (typeof window !== 'undefined') {
+if (!isServer) {
   bootstrap()
 }
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
     function onRouteChangeComplete() {
-      Fathom.trackPageview()
+      if (fathomId) {
+        Fathom.trackPageview()
+      }
+
+      if (posthogId) {
+        posthog.capture('$pageview')
+      }
     }
 
     if (fathomId) {
       Fathom.load(fathomId, fathomConfig)
+    }
 
-      router.events.on('routeChangeComplete', onRouteChangeComplete)
+    if (posthogId) {
+      posthog.init(posthogId, posthogConfig)
+    }
 
-      return () => {
-        router.events.off('routeChangeComplete', onRouteChangeComplete)
-      }
+    router.events.on('routeChangeComplete', onRouteChangeComplete)
+
+    return () => {
+      router.events.off('routeChangeComplete', onRouteChangeComplete)
     }
   }, [router.events])
 

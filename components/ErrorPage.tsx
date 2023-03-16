@@ -1,7 +1,6 @@
-import React from 'react'
-import Head from 'next/head'
-import { PageHead } from './PageHead'
+import * as React from 'react'
 
+import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
 export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
@@ -9,14 +8,7 @@ export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
 
   return (
     <>
-      <PageHead />
-
-      <Head>
-        <meta property='og:site_name' content={title} />
-        <meta property='og:title' content={title} />
-
-        <title>{title}</title>
-      </Head>
+      <PageHead title={title} />
 
       <div className={styles.container}>
         <main className={styles.main}>
