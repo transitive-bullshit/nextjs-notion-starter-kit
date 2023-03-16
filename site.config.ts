@@ -1,8 +1,8 @@
-import { siteConfig } from './lib/site-config'
+import { siteConfig } from "./lib/site-config";
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '104c109ffce942d0a082512e8fbdf8af',
+  rootNotionPageId: "104c109ffce942d0a082512e8fbdf8af",
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -10,12 +10,11 @@ export default siteConfig({
 
   // basic site info (required)
   name: "tianhaoXi's Notion",
-  domain: 'https://oxidized-detective-b58.notion.site/',
-  author: 'Tianhao Xi',
+  domain: "https://oxidized-detective-b58.notion.site/",
+  author: "Tianhao Xi",
 
   // open graph metadata (optional)
   description: "TianhaoXi's Blog",
-  socialImageSubtitle: 'Hello World! 👋',
 
   // social usernames (optional)
 
@@ -46,7 +45,7 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  navigationStyle: 'default'
+  navigationStyle: "default"
   // navigationStyle: 'custom',
   // navigationLinks: [
   //   {
@@ -58,4 +57,4 @@ export default siteConfig({
   //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
   //   }
   // ]
-})
+});
