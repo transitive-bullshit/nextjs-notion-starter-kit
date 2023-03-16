@@ -17,7 +17,7 @@ export default siteConfig({
   description: 'AI训练师营地',
 
   // social usernames (optional)
-  //twitter: 'transitive_bs',
+  twitter: 'ZeroZ_JQ',
  // github: 'transitive-bullshit',
   //linkedin: 'fisch2',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
