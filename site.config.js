@@ -12,7 +12,7 @@ module.exports = {
   author: 'Sharmaine Sie',
 
   // open graph metadata (optional)
-  description: 'Example site description',
+  // description: 'Example site description',
   socialImageTitle: 'Sharmaine Sie',
   socialImageSubtitle: 'Hello World! 👋',
 
