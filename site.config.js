@@ -12,7 +12,7 @@ module.exports = {
   author: 'Sharmaine Sie',
 
   // open graph metadata (optional)
-  description: 'Product design portfolio',
+//   description: 'Product design portfolio',
   socialImageTitle: 'Sharmaine Sie',
   socialImageSubtitle: 'Hello World! 👋',
 
