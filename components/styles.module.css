@@ -60,6 +60,11 @@
   padding: 0.5em;
 }
 
+.icp {
+  font-size: 80%;
+  padding: 0.5em;
+}
+
 .settings,
 .social {
   user-select: none;
@@ -140,6 +145,10 @@
   }
   .footer .copyright {
     order: 3;
+  }
+
+  .footer .icp {
+    order: 4;
   }
 }
 

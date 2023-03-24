@@ -62,6 +62,11 @@ export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const newsletter: string | null = getSiteConfig('newsletter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
 
+// cn info.
+export const icp: string | null = getSiteConfig('icp', null)
+export const picp_url: string | null = getSiteConfig('picp_url', null)
+export const picp_name: string | null = getSiteConfig('picp_name', null);
+
 export const getMastodonHandle = (): string | null => {
   if (!mastodon) {
     return null

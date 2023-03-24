@@ -14,15 +14,14 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
 
       <div className={styles.container}>
         <main className={styles.main}>
-          <h1>Notion Page Not Found</h1>
+          <h1>似乎不存在这个页面 🤔</h1>
 
           {error ? (
             <p>{error.message}</p>
           ) : (
             pageId && (
               <p>
-                Make sure that Notion page &quot;{pageId}&quot; is publicly
-                accessible.
+                Page Id 不存在 / 已删除或移动。
               </p>
             )
           )}

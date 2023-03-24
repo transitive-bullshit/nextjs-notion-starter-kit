@@ -18,6 +18,10 @@ export interface SiteConfig {
   zhihu?: string
   mastodon?: string;
 
+  icp?: string;
+  picp_url?: string;
+  picp_name?: string;
+
   defaultPageIcon?: string | null
   defaultPageCover?: string | null
   defaultPageCoverPosition?: number | null
