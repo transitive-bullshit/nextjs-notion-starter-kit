@@ -65,7 +65,10 @@ export const zhihu: string | null = getSiteConfig('zhihu', null)
 // cn info.
 export const icp: string | null = getSiteConfig('icp', null)
 export const picp_url: string | null = getSiteConfig('picp_url', null)
-export const picp_name: string | null = getSiteConfig('picp_name', null);
+export const picp_name: string | null = getSiteConfig('picp_name', null)
+
+// comment
+export const waline_host: string | null = getSiteConfig('waline_host', null)
 
 export const getMastodonHandle = (): string | null => {
   if (!mastodon) {

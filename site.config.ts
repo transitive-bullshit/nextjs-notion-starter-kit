@@ -27,6 +27,9 @@ export default siteConfig({
   picp_url: 'https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33028102000963',
   picp_name: '浙公网安备 33028102000963号',
 
+  // comment 
+  waline_host: 'https://line.mas0n.cn',
+
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
   defaultPageIcon: null,
@@ -45,11 +48,12 @@ export default siteConfig({
   // any pages defined here will override their default URL paths
   // example:
   //
-  // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
-  pageUrlOverrides: null,
+  pageUrlOverrides: {
+    '/about': '8ffe26f578a84d6ea3ded535e4729b6e',
+    '/contact': 'e9ad54fc0b694fb194f4016dd23e92e2',
+    '/links': 'e4733f1b091b458fa9d25aa5d14efce8'
+  },
+  // pageUrlOverrides: null,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
@@ -63,6 +67,10 @@ export default siteConfig({
     {
       title: 'Contact',
       pageId: 'e9ad54fc0b694fb194f4016dd23e92e2'
+    },
+    {
+      title: 'Links',
+      pageId: 'e4733f1b091b458fa9d25aa5d14efce8'
     }
   ]
 })

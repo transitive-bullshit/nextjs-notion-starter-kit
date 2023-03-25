@@ -18,6 +18,8 @@ import 'styles/global.css'
 import 'styles/notion.css'
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
+// global style overrides for waline (optional)
+import 'styles/waline.css'
 
 import {
   fathomConfig,

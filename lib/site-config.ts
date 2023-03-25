@@ -22,6 +22,8 @@ export interface SiteConfig {
   picp_url?: string;
   picp_name?: string;
 
+  waline_host?: string;
+  
   defaultPageIcon?: string | null
   defaultPageCover?: string | null
   defaultPageCoverPosition?: number | null

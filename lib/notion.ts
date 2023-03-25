@@ -39,6 +39,20 @@ const getNavigationLinkPages = pMemoize(
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   let recordMap = await notion.getPage(pageId)
+  // @patch: optimize image cache.
+  // Refer: https://github.com/WeijunDeng/nextjs-notion-starter-kit/commit/5a2f5bab6a6dfe2d8df49ebcb9c506f3134bd66d
+  if (recordMap && recordMap.signed_urls) {
+    const signed_urls = recordMap.signed_urls
+    const new_signed_urls = {} 
+    for (const p in signed_urls) {
+      if (signed_urls[p] && signed_urls[p].includes(".amazonaws.com/")) {
+        console.log("cache: " + signed_urls[p])
+        continue
+      }
+      new_signed_urls[p] = signed_urls[p]
+    }
+    recordMap.signed_urls = new_signed_urls
+  }
 
   if (navigationStyle !== 'default') {
     // ensure that any pages linked to in the custom navigation header have

@@ -27,6 +27,8 @@ import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
+import { Waline } from './Comment'
+
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -210,6 +212,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
   const title = getBlockTitle(block, recordMap) || site.name
+  // @TODO: page title include site name
+  // const title = `${getBlockTitle(block, recordMap)} | ${site.name}`
 
   console.log('notion page', {
     isDev: config.isDev,
@@ -232,8 +236,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const socialImage = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
+    (block as PageBlock).format?.page_cover ||
+    config.defaultPageCover,
     block
   )
 
@@ -278,6 +282,25 @@ export const NotionPage: React.FC<types.PageProps> = ({
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
         footer={footer}
+        pageFooter={pageId === site.rootNotionPageId ? null : (config.waline_host ? <Waline
+          serverURL={config.waline_host}
+          path={'/' + block.id.replace(/-/g, '')}
+          emoji={[
+            '//cdn.jsdelivr.net/gh/walinejs/emojis@1.1.0/tw-emoji'
+          ]}
+          dark={isDarkMode}
+          meta={['nick', 'mail']}
+          requiredMeta={['nick', 'mail']}
+          imageUploader={false}
+          copyright={false}
+          reaction={true}
+          locale={{reactionTitle: '🎉 文章到底啦'}}
+          highlighter={true}
+          texRenderer={true}
+          login={'disable'}
+          wordLimit={10000}
+          
+        /> : null)}
       />
 
     </>
