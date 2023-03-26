@@ -65,6 +65,11 @@
   padding: 0.5em;
 }
 
+.record {
+  font-size: 80%;
+  padding: 0.5em;
+}
+
 .settings,
 .social {
   user-select: none;

@@ -19,10 +19,10 @@ export interface SiteConfig {
   mastodon?: string;
 
   icp?: string;
-  picp_url?: string;
-  picp_name?: string;
+  recordName?: string;
+  recordNumber?: string;
 
-  waline_host?: string;
+  walineHost?: string;
   
   defaultPageIcon?: string | null
   defaultPageCover?: string | null

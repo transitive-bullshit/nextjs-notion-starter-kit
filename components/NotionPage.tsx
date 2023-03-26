@@ -282,8 +282,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
         footer={footer}
-        pageFooter={pageId === site.rootNotionPageId ? null : (config.waline_host ? <Waline
-          serverURL={config.waline_host}
+        pageFooter={pageId === site.rootNotionPageId ? null : (config.walineHost ? <Waline
+          serverURL={config.walineHost}
           path={'/' + block.id.replace(/-/g, '')}
           emoji={[
             '//cdn.jsdelivr.net/gh/walinejs/emojis@1.1.0/tw-emoji'

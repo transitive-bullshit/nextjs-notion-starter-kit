@@ -39,7 +39,7 @@ export const FooterImpl: React.FC = () => {
         )}
       </div> */}
 
-      <div className={styles.icp}>
+      <div>
         {config.icp && (
           <a
           className={styles.icp}
@@ -51,14 +51,14 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
 
-        {config.picp_name && config.picp_url && (
+        {config.recordName && config.recordNumber && (
           <a
-          className={styles.icp}
-          href={config.picp_url}
+          className={styles.record}
+          href={`https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${config.recordNumber}`}
           target='_blank'
           rel='noopener noreferrer'
           >
-          {config.picp_name}
+          {config.recordName}
           </a>
         )}
 

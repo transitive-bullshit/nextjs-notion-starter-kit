@@ -62,13 +62,13 @@ export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const newsletter: string | null = getSiteConfig('newsletter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
 
-// cn info.
+// ICP & Public Security Record Number 
 export const icp: string | null = getSiteConfig('icp', null)
-export const picp_url: string | null = getSiteConfig('picp_url', null)
-export const picp_name: string | null = getSiteConfig('picp_name', null)
+export const recordNumber: string | null = getSiteConfig('recordNumber', null)
+export const recordName: string | null = getSiteConfig('recordName', null)
 
 // comment
-export const waline_host: string | null = getSiteConfig('waline_host', null)
+export const walineHost: string | null = getSiteConfig('walineHost', null)
 
 export const getMastodonHandle = (): string | null => {
   if (!mastodon) {

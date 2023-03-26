@@ -14,21 +14,23 @@ export default siteConfig({
   author: 'Mas0n',
 
   // open graph metadata (optional)
-  description: 'New blog for Mas0n',
+  description: 'New blog for Mas0n | CTF | 逆向 | Reverse',
 
   // social usernames (optional)
   twitter: 'Mas0nShi',
   github: 'Mas0nShi',
-  // linkedin: 'fisch2',
+  // linkedin: '#',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
-  icp: '浙ICP备2021002476号-2',
-  picp_url: 'https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33028102000963',
-  picp_name: '浙公网安备 33028102000963号',
 
-  // comment 
-  waline_host: 'https://line.mas0n.cn',
+  // ICP & Public Security Record Number 
+  icp: '浙ICP备2021002476号-2',
+  recordName: '浙公网安备 33028102000963号',
+  recordNumber: '33028102000963',
+
+  // comment system
+  walineHost: 'https://line.mas0n.cn',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
@@ -50,7 +52,6 @@ export default siteConfig({
   //
   pageUrlOverrides: {
     '/about': '8ffe26f578a84d6ea3ded535e4729b6e',
-    '/contact': 'e9ad54fc0b694fb194f4016dd23e92e2',
     '/links': 'e4733f1b091b458fa9d25aa5d14efce8'
   },
   // pageUrlOverrides: null,
@@ -63,10 +64,6 @@ export default siteConfig({
     {
       title: 'About',
       pageId: '8ffe26f578a84d6ea3ded535e4729b6e'
-    },
-    {
-      title: 'Contact',
-      pageId: 'e9ad54fc0b694fb194f4016dd23e92e2'
     },
     {
       title: 'Links',
