@@ -239,9 +239,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
     block
   )
 
-  const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) ||
-    config.description
+  const getSocial = (key: string) =>
+    getPageProperty<string>(key, block, recordMap)
+
+  const socialDescription = getSocial('Description') || config.description
+
+  const postKeywords = getSocial('Tags').toString().replace(/,/g, ', ')
 
   return (
     <>
@@ -254,20 +257,20 @@ export const NotionPage: React.FC<types.PageProps> = ({
         url={canonicalPageUrl}
       />
       <NewsArticleJsonLd
-      url={canonicalPageUrl}
-      title={title}
-      images= {["https://blog.bask.bio/favicon_bask_round.png"]}
-      datePublished="2023-02-05T09:00:00+08:00"
-      dateCreated="2023-02-05T09:00:00+08:00"
-      dateModified="2023-02-05T09:00:00+08:00"
-      dateline="New York, NY"
-      section="Telehealth"
-      keywords="Telehealth, Telemedicine, Digital Health, Start-ups, E-Commerce"
-      authorName="Bask Health"
-      publisherName="Bask Health"
-      publisherLogo="https://blog.bask.bio/favicon_bask_round.png"
-      description={socialDescription}
-      body={socialDescription}
+        url={canonicalPageUrl}
+        title={title}
+        images={['https://blog.bask.bio/favicon_bask_round.png']}
+        datePublished={new Date(getSocial('Published')).toString()}
+        dateCreated={new Date(getSocial('Created')).toString()}
+        dateModified={new Date(getSocial('Last Updated')).toString()}
+        dateline='New York, NY'
+        section='Telehealth'
+        keywords={postKeywords}
+        authorName={getSocial('Author') || config.author}
+        publisherName='Bask Health'
+        publisherLogo='https://blog.bask.bio/favicon_bask_round.png'
+        description={socialDescription}
+        body={socialDescription}
       />
       {isLiteMode && <BodyClassName className='notion-lite' />}
       {isDarkMode && <BodyClassName className='dark-mode' />}
