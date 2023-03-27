@@ -242,7 +242,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const socialDescription = getSocial('Description') || config.description
 
-  const postKeywords = getSocial('Tags').toString().replace(/,/g, ', ')
+  const postKeywords = getSocial('Tags')?.toString().replace(/,/g, ', ')
 
   return (
     <>
