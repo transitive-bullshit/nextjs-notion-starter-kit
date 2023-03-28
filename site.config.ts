@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Bask Health | Blog',
-  domain: 'blog.bask.bio',
+  domain: 'bask.blog',
   author: 'Bask Health, Inc',
 
   // open graph metadata (optional)

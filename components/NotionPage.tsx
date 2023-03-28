@@ -257,7 +257,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <NewsArticleJsonLd
         url={canonicalPageUrl}
         title={title}
-        images={['https://blog.bask.bio/favicon_bask_round.png']}
+        images={['https://bask.blog/favicon_bask_round.png']}
         datePublished={new Date(getSocial('Published'))?.toString()}
         dateCreated={new Date(getSocial('Created'))?.toString()}
         dateModified={new Date(getSocial('Last Updated'))?.toString()}
@@ -266,7 +266,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         keywords={postKeywords}
         authorName={getSocial('Author') || config.author}
         publisherName='Bask Health'
-        publisherLogo='https://blog.bask.bio/favicon_bask_round.png'
+        publisherLogo='https://bask.blog/favicon_bask_round.png'
         description={socialDescription}
         body={socialDescription}
       />
