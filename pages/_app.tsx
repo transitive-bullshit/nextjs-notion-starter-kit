@@ -34,14 +34,15 @@ import {
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
-  // google analytics
-  if (googleAnalyticsId) {
-    ReactGA.initialize(googleAnalyticsId)
-    ReactGA.send('pageview')
-  }
+
 
   React.useEffect(() => {
     function onRouteChangeComplete() {
+
+      if (googleAnalyticsId) {
+        ReactGA.send('pageview')
+      }
+
       if (fathomId) {
         Fathom.trackPageview()
       }
@@ -49,6 +50,10 @@ export default function App({ Component, pageProps }: AppProps) {
       if (posthogId) {
         posthog.capture('$pageview')
       }
+    }
+
+    if (googleAnalyticsId) {
+      ReactGA.initialize(googleAnalyticsId)
     }
 
     if (fathomId) {
