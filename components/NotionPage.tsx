@@ -295,7 +295,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
           requiredMeta={['nick', 'mail']}
           imageUploader={false}
           copyright={false}
-          reaction={true}
+          reaction={[
+            '//npm.elemecdn.com/@waline/emojis/tieba/tieba_agree.png',
+            '//npm.elemecdn.com/@waline/emojis/tieba/tieba_look_down.png',
+            '//npm.elemecdn.com/@waline/emojis/tieba/tieba_sunglasses.png',
+            '//npm.elemecdn.com/@waline/emojis/tieba/tieba_pick_nose.png',
+            '//npm.elemecdn.com/@waline/emojis/tieba/tieba_awkward.png',
+            '//npm.elemecdn.com/@waline/emojis/tieba/tieba_sleep.png'
+          ]}
           locale={{reactionTitle: '🎉 文章到底啦'}}
           highlighter={true}
           texRenderer={true}
