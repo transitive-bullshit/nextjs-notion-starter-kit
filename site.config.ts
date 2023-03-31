@@ -32,6 +32,9 @@ export default siteConfig({
   // comment system
   walineHost: 'https://line.mas0n.cn',
 
+  // google analytics ID
+  googleAnalyticsId: 'G-PR1E4LD9CZ',
+
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
   defaultPageIcon: null,

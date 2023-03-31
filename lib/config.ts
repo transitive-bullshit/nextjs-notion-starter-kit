@@ -67,6 +67,9 @@ export const icp: string | null = getSiteConfig('icp', null)
 export const recordNumber: string | null = getSiteConfig('recordNumber', null)
 export const recordName: string | null = getSiteConfig('recordName', null)
 
+// google analytics id
+export const googleAnalyticsId: string | null = getSiteConfig('googleAnalyticsId', null)
+
 // comment
 export const walineHost: string | null = getSiteConfig('walineHost', null)
 

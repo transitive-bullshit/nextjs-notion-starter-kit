@@ -23,6 +23,8 @@ export interface SiteConfig {
   recordNumber?: string;
 
   walineHost?: string;
+
+  googleAnalyticsId?: string;
   
   defaultPageIcon?: string | null
   defaultPageCover?: string | null

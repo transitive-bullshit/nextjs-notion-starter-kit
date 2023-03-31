@@ -3,6 +3,9 @@ import * as React from 'react'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 
+// google analytics
+import ReactGA from 'react-ga4'
+
 import * as Fathom from 'fathom-client'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
@@ -25,11 +28,17 @@ import {
   fathomConfig,
   fathomId,
   posthogConfig,
-  posthogId
+  posthogId,
+  googleAnalyticsId
 } from '@/lib/config'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
+  // google analytics
+  if (googleAnalyticsId) {
+    ReactGA.initialize(googleAnalyticsId)
+    ReactGA.send('pageview')
+  }
 
   React.useEffect(() => {
     function onRouteChangeComplete() {

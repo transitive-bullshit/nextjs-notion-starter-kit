@@ -43,7 +43,7 @@ export const FooterImpl: React.FC = () => {
         {config.icp && (
           <a
           className={styles.icp}
-          href={`https://beian.miit.gov.cn/`}
+          href={`//beian.miit.gov.cn/`}
           target='_blank'
           rel='noopener noreferrer'
           >
@@ -54,7 +54,7 @@ export const FooterImpl: React.FC = () => {
         {config.recordName && config.recordNumber && (
           <a
           className={styles.record}
-          href={`https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${config.recordNumber}`}
+          href={`//www.beian.gov.cn/portal/registerSystemInfo?recordcode=${config.recordNumber}`}
           target='_blank'
           rel='noopener noreferrer'
           >
