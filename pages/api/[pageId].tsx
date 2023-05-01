@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { GetStaticProps } from 'next'
 
 import { domain, isDev } from '@/lib/config'
