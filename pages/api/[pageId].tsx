@@ -54,10 +54,18 @@ export async function getStaticPaths() {
 // export default function NotionDomainDynamicPage(req, res, props) {
 //   res.status(200).json(props)
 // }
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
-}
-// export default function NotionDomainDynamicPage(req, res) {
-//   return res.status(200).json({ name: 'John Doe' })
-  // return <pre><code>{JSON.stringify(props, null, 2)}</code></pre>
+// export default function handler(req, res) {
+//   res.status(200).json({ name: 'John Doe' })
 // }
+export default async function NotionDomainDynamicPage(req, res) {
+  const rawPageId = req.query.pageId as string
+
+  const props = await resolveNotionPage(domain, rawPageId)
+
+  // console.log(req.query)
+  res.status(200).json(props)
+
+  // return <pre>{CircularJSON.stringify(props, null, 2)}</pre>
+  // return <pre><code>{JSON.stringify(props, null, 2)}</code></pre>
+  // return res.status(200).
+}

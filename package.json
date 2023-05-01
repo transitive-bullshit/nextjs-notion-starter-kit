@@ -30,6 +30,7 @@
     "@keyvhq/redis": "^1.6.10",
     "@react-icons/all-files": "^4.1.0",
     "@vercel/og": "^0.0.19",
+    "circular-json": "^0.5.9",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
     "date-fns": "^2.28.0",
