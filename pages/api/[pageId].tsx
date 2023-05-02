@@ -1,9 +1,29 @@
 import { GetStaticProps } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
+
+import Cors from 'cors'
 
 import { domain, isDev } from '@/lib/config'
 import { getSiteMap } from '@/lib/get-site-map'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { PageProps, Params } from '@/lib/types'
+
+// Initializing the cors middleware
+const cors = Cors({
+  methods: ['GET', 'HEAD']
+})
+
+// Helper method to apply cors as middleware
+function runMiddleware(req: NextApiRequest, res: NextApiResponse, fn: any) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result: any) => {
+      if (result instanceof Error) {
+        return reject(result)
+      }
+      return resolve(result)
+    })
+  })
+}
 
 export const getStaticProps: GetStaticProps<PageProps, Params> = async (
   context
@@ -58,6 +78,7 @@ export async function getStaticPaths() {
 // }
 export default async function NotionDomainDynamicPage(req, res) {
   const rawPageId = req.query.pageId as string
+  await runMiddleware(req, res, cors)
 
   const props = await resolveNotionPage(domain, rawPageId)
 

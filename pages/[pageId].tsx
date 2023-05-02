@@ -58,5 +58,5 @@ export default function handler(req, res) {
 }
 // export default function NotionDomainDynamicPage(req, res) {
 //   return res.status(200).json({ name: 'John Doe' })
-  // return <pre><code>{JSON.stringify(props, null, 2)}</code></pre>
+// return <pre><code>{JSON.stringify(props, null, 2)}</code></pre>
 // }
