@@ -93,6 +93,13 @@
   border-color: #0077b5;
 }
 
+.telegram .actionBgPane {
+  background: #0088cc;
+}
+.telegram:hover {
+  border-color: #0088cc;
+}
+
 .github .actionBgPane {
   background: #c9510c;
 }

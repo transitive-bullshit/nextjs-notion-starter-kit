@@ -17,8 +17,8 @@ export default siteConfig({
   description: 'LensCN Hackation',
 
   // social usernames (optional)
-  // twitter: 'transitive_bs',
-  // github: 'transitive-bullshit',
+  twitter: 'Lens_CN',
+  telegram: 'LensCN',  // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL

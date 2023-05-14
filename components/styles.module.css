@@ -113,6 +113,10 @@
   color: #0077b5;
 }
 
+.telegram:hover {
+  color: #0088cc;
+}
+
 .newsletter:hover {
   color: #777777;
 }
