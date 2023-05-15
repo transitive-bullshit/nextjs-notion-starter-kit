@@ -51,6 +51,7 @@
     "react-notion-x": "^6.15.6",
     "react-tweet-embed": "^2.0.0",
     "react-use": "^17.3.2",
+    "rss": "^1.2.2",
     "sharp": "^0.32.1"
   },
   "devDependencies": {
