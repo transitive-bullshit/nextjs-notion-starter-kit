@@ -11,6 +11,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const blockId: string = req.query.blockId as string
+  // Currently unused, but takes a parameter to change the cache key if the original image is replaced by a file with Replace Image in Notion.
+  // const fileId: string = req.query.fileId as string
+  // const fileName : string = req.query.fileName as string
 
   const sourceUrl = await extractImageSourceUrlFromBlockId(blockId)
   const signedImageUrl = await getSignedUrl(blockId, sourceUrl)

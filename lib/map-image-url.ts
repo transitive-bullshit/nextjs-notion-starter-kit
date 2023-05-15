@@ -15,7 +15,10 @@ export const mapImageUrl = (url: string, block: Block) => {
     // so we use image Proxy to freeze the URLs.
     // Extract the block Id from the URL and pass it to the image proxy.
     if (u.hostname.startsWith('file.notion.so')) {
-      return `${apiHost}/api/image-proxy/file.notion.so/${block.id}`
+      // u.pathname = /f/s/a93b0b82-7783-4340-a60b-e072a885986b/untitled.jpg
+      const fileId = u.pathname.split('/')[3]
+      const fileName = u.pathname.split('/')[4]
+      return `${apiHost}/api/image-proxy/file.notion.so/${block.id}/${fileId}/${fileName}`
     }
 
     if (
