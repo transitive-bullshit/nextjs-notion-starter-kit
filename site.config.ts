@@ -56,14 +56,6 @@ export default siteConfig({
     {
       title: 'Resources',
       pageId: 'Resources-0a604eb713fc48e5abaf579c1faeae41'
-    },
-    {
-      title: 'About',
-      pageId: 'About-f897c8b7a6854093b5a22ac0f56618ce'
-    },
-    {
-      title: 'Contact',
-      pageId: 'Contact-0e4691bf16074b81b5390b1e167075e9'
     }
   ]
 })
