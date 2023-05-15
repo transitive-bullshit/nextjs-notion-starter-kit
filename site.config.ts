@@ -55,7 +55,7 @@ export default siteConfig({
   navigationLinks: [
     {
       title: 'Resources',
-      pageId: 'Resources-0a604eb713fc48e5abaf579c1faeae41'
+      pageId: '89e80079f42f4fed931d2547726bc18e'
     }
   ]
 })
