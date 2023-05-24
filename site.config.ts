@@ -9,7 +9,7 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '学习复盘',
+  name: 'Savior',
   domain: 'https://uttermost-chard-83d.notion.site/1b6824cefe3e425799d584c2391f9ffd',
   author: 'CODE',
 
@@ -47,16 +47,16 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
-  // navigationLinks: [
+  //navigationStyle: 'default'
+  //navigationStyle: 'custom'
+  //navigationLinks: [
+    // {
+   //   title: 'About',
+  // pageId: '2cfeb6de0dee4307804fd1622387173b'
+  // },
   //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
+   //   title: 'Contact',
+   //    pageId: 'a67655fbdaab4fbe9f0e53545ee8d463'
   //   }
   // ]
 })
