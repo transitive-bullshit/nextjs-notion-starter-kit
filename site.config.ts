@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Eshwar-Portfolio',
-  domain: 'https://www.notion.so/ewshwar/Eshwar-s-Portfolio-84e8cc892a9d4b45b2017c88654709ca',
+  domain: 'https://eshu.me/',
   author: 'Eshwar Pamula',
 
   // open graph metadata (optional)
