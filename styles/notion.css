@@ -118,7 +118,7 @@
   border-bottom: 0 none;
   transition: filter 150ms linear;
   filter: none;
-  border-right: 2px solid #aaa;
+  /* border-right: 2px solid #aaa; */
 }
 
 .notion-toggle {
