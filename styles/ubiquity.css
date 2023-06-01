@@ -150,6 +150,7 @@ details.notion-toggle:hover {
 .notion-page {
   min-height: calc(100% - calc(2 * var(--header)));
 }
+
 /* } */
 /*
 @media (orientation: landscape) and (max-width: 960px) {
