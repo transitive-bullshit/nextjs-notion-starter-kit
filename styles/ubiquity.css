@@ -118,6 +118,7 @@ summary {
 
 details.notion-toggle {
   padding: 8px 24px;
+  padding-left: 32px;;
   padding-right: 0;
   opacity: 0.75;
   border-left: 2px solid #80808040;
