@@ -58,6 +58,10 @@
   gap: 6vmin;
 }
 
+.notion-gallery-grid .notion-gallery-grid-size-small {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
 .notion-gallery-grid .notion-page-icon-inline {
   display: none;
 }
