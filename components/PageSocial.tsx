@@ -16,7 +16,7 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   config.twitter && {
     name: 'twitter',
-    href: `https://twitter.com/${config.twitter}`,
+    href: `https://www.notion.so/SWIS-e4037ffe4c4c4498b5117478e655f559${config.twitter}`,
     title: `Twitter @${config.twitter}`,
     icon: (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
@@ -38,7 +38,7 @@ const socialLinks: SocialLink[] = [
 
   config.linkedin && {
     name: 'linkedin',
-    href: `https://www.linkedin.com/mypreferences/d/categories/account${config.linkedin}`,
+    href: `https://vercel.com/369386973/swissite2${config.linkedin}`,
     title: `LinkedIn ${config.author}`,
     icon: (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
