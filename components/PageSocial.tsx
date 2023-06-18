@@ -27,7 +27,7 @@ const socialLinks: SocialLink[] = [
 
   config.github && {
     name: 'github',
-    href: `https://github.com/${config.github}`,
+    href: `https://github.com/369386973/swissite2/tree/2${config.github}`,
     title: `GitHub @${config.github}`,
     icon: (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
@@ -38,7 +38,7 @@ const socialLinks: SocialLink[] = [
 
   config.linkedin && {
     name: 'linkedin',
-    href: `https://www.linkedin.com/in/${config.linkedin}`,
+    href: `https://www.linkedin.com/mypreferences/d/categories/account${config.linkedin}`,
     title: `LinkedIn ${config.author}`,
     icon: (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
