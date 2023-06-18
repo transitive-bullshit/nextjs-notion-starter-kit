@@ -4,7 +4,7 @@ import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
-import { Twitter } from '@react-icons/all-files/fa/FaTwitter'
+import { SiNotion } from '@react-icons/all-files/si/SiNotion'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
@@ -52,15 +52,19 @@ export const FooterImpl: React.FC = () => {
       </div>
 
       <div className={styles.social}>
-        {config.twitter && (
-          <a
-            className={styles.twitter}
-            href={`https://www.notion.so${config.twitter}`}
-            title={`Twitter @${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
+     {config.twitter && (
+  <a
+    className={styles.twitter}
+    href={`https://www.notion.so${config.twitter}`}
+    title={`Twitter @${config.author}`}
+    target='_blank'
+    rel='noopener noreferrer'
+  >
+   <SiNotion />
+  </a>
+)}
           >
-            <FaTwitter />
+           // <FaTwitter />
           </a>
         )}
 
