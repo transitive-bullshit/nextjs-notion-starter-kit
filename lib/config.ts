@@ -54,11 +54,11 @@ export const description: string = getSiteConfig('description', 'Notion Blog')
 export const language: string = getSiteConfig('language', 'en')
 
 // social accounts
-export const notion: string | null = getSiteConfig('notion', null)
+export const twitter: string | null = getSiteConfig('twitter', null)
 export const mastodon: string | null = getSiteConfig('mastodon', null)
 export const github: string | null = getSiteConfig('github', null)
 export const youtube: string | null = getSiteConfig('youtube', null)
-export const vercel: string | null = getSiteConfig('vercel', null)
+export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const newsletter: string | null = getSiteConfig('newsletter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
 
