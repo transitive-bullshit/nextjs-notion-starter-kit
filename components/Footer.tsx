@@ -52,7 +52,7 @@ export const FooterImpl: React.FC = () => {
       </div>
 
       <div className={styles.social}>
-      {config.twitter && (
+     {config.twitter && (
   <a
     className={styles.twitter}
     href={`https://www.notion.so${config.twitter}`}
