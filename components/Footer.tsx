@@ -52,11 +52,11 @@ export const FooterImpl: React.FC = () => {
       </div>
 
       <div className={styles.social}>
-        {config.notion && (
+        {config.twitter && (
           <a
-            className={styles.notion}
-            href={`https://www.notion.so${config.notion}`}
-            title={`Notion @${config.notion}`}
+            className={styles.twitter}
+            href={`https://www.notion.so${config.twitter}`}
+            title={`Twitter @${config.twitter}`}
             target='_blank'
             rel='noopener noreferrer'
           >
@@ -99,11 +99,11 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
 
-        {config.vercel && (
+        {config.linkedin && (
           <a
-            className={styles.vercel}
-            href={`https://vercel.com/${config.vercel}`}
-            title={`Vercel ${config.author}`}
+            className={styles.linkedin}
+            href={`https://www.linkedin.com/in/${config.linkedin}`}
+            title={`LinkedIn ${config.author}`}
             target='_blank'
             rel='noopener noreferrer'
           >
