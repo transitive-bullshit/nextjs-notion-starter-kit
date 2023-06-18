@@ -62,10 +62,7 @@ export const FooterImpl: React.FC = () => {
   >
    <SiNotion />
   </a>
-)}
-          >
-           // <FaTwitter />
-          </a>
+
         )}
 
         {config.mastodon && (
