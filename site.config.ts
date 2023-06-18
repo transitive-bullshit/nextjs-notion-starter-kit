@@ -11,7 +11,7 @@ export default siteConfig({
   // basic site info (required)
   name: 'SWIS',
   domain: 'xiajt.site',
-  author: '夏靖涛啊啊',
+  author: '夏靖涛',
 
   // open graph metadata (optional)
   description: 'summer',
