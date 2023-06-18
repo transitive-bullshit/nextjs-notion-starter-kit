@@ -17,9 +17,9 @@ export default siteConfig({
   description: 'summer',
 
   // social usernames (optional)
-  twitter: 'xiajt',
-  github: 'xiajt',
-  linkedin: 'xiajt',
+  twitter: 'SWIS-e4037ffe4c4c4498b5117478e655f559',
+  github: '369386973/swissite2/tree/2',
+  linkedin: '靖涛-夏-20468a27b/',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
