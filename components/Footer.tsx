@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { IoLogoVercel } from '@react-icons/all-files/iologo/IoLogoVercel'
+import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { SiNotion } from '@react-icons/all-files/si/SiNotion'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
@@ -108,7 +108,7 @@ export const FooterImpl: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <IoLogoVercel />
+            <FaLinkedin />
           </a>
         )}
 
