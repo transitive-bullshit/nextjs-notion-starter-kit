@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Eshwar-Portfolio',
-  domain: 'https://eshu.me/',
+  domain: 'https://eshwarp.com/',
   author: 'Eshwar Pamula',
 
   // open graph metadata (optional)
