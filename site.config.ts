@@ -14,7 +14,7 @@ export default siteConfig({
   author: 'Eshwar Pamula',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Eshwar Pamula',
 
   // social usernames (optional)
   twitter: 'ewshwar',
