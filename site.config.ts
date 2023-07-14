@@ -9,9 +9,9 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: '开卷有益',
+  name: 'inBloom',
   domain: 'https://iheqing.notion.site/e2fb1758e5cf449fb4aad1b03b31da90',
-  author: '河清',
+  author: 'Heqing',
 
   // open graph metadata (optional)
   // description: 'Example Next.js Notion Starter Kit Site',
