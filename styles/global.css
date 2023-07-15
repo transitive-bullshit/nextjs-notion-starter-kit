@@ -38,3 +38,8 @@ body {
   color: var(--fg-color);
   caret-color: var(--fg-color);
 }
+
+/* add a space between the icon and the site title after setting the theme direction to RTL */
+.breadcrumb .title {
+  margin-right: 7px;
+}
