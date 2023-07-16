@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Next.js Notion Starter Kit',
-  domain: 'https://www.notion.so/zhuling/zhuling-s-blog-6756ff3cf1204075bf137c2e327e603c',
+  domain: 'https://zhuling.notion.site/zhuling/zhuling-s-blog-6756ff3cf1204075bf137c2e327e603c',
   author: 'Travis Fischer',
 
   // open graph metadata (optional)
