@@ -38,7 +38,8 @@ export const FooterImpl: React.FC = () => {
       
       <div className={styles.copyright}>
         <a 
-          target='_blank' 
+          target='_blank'
+           rel='noopener noreferrer'
           href='https://beian.miit.gov.cn/'
         >
           浙ICP备2020035677号-2
