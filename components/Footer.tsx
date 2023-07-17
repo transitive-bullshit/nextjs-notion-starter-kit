@@ -39,7 +39,10 @@ export const FooterImpl: React.FC = () => {
       <div className={styles.copyright}>
         <a 
           target='_blank' 
-          href="https://beian.miit.gov.cn/">浙ICP备2020035677号-2</a> 
+          href='https://beian.miit.gov.cn/'
+        >
+          浙ICP备2020035677号-2
+        </a> 
       </div>
 
       <div className={styles.settings}>
