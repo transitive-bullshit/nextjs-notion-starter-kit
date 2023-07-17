@@ -121,6 +121,7 @@ export const FooterImpl: React.FC = () => {
           >
             <FaYoutube />
           </a>
+         <a target='_blank' href="https://beian.miit.gov.cn/">浙ICP备2020035677号-2</a>
         )}
       </div>
     </footer>
