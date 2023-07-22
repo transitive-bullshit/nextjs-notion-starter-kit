@@ -52,7 +52,7 @@ export const FooterImpl: React.FC = () => {
       </div>
 
       <div className={styles.social}>
-        {config.twitter && (
+        {/* {config.twitter && (
           <a
             className={styles.twitter}
             href={`https://twitter.com/${config.twitter}`}
@@ -62,9 +62,9 @@ export const FooterImpl: React.FC = () => {
           >
             <FaTwitter />
           </a>
-        )}
+        )} */}
 
-        {config.mastodon && (
+        {/* {config.mastodon && (
           <a
             className={styles.mastodon}
             href={config.mastodon}
@@ -73,9 +73,9 @@ export const FooterImpl: React.FC = () => {
           >
             <FaMastodon />
           </a>
-        )}
+        )} */}
 
-        {config.zhihu && (
+        {/* {config.zhihu && (
           <a
             className={styles.zhihu}
             href={`https://zhihu.com/people/${config.zhihu}`}
@@ -85,9 +85,9 @@ export const FooterImpl: React.FC = () => {
           >
             <FaZhihu />
           </a>
-        )}
+        )} */}
 
-        {config.github && (
+        {/* {config.github && (
           <a
             className={styles.github}
             href={`https://github.com/${config.github}`}
@@ -97,9 +97,9 @@ export const FooterImpl: React.FC = () => {
           >
             <FaGithub />
           </a>
-        )}
+        )} */}
 
-        {config.linkedin && (
+        {/* {config.linkedin && (
           <a
             className={styles.linkedin}
             href={`https://www.linkedin.com/in/${config.linkedin}`}
@@ -109,9 +109,9 @@ export const FooterImpl: React.FC = () => {
           >
             <FaLinkedin />
           </a>
-        )}
+        )} */}
 
-        {config.newsletter && (
+        {/* {config.newsletter && (
           <a
             className={styles.newsletter}
             href={`${config.newsletter}`}
@@ -121,8 +121,8 @@ export const FooterImpl: React.FC = () => {
           >
             <FaEnvelopeOpenText />
           </a>
-        )}
-
+        )} */}
+{/* 
         {config.youtube && (
           <a
             className={styles.youtube}
@@ -133,7 +133,7 @@ export const FooterImpl: React.FC = () => {
           >
             <FaYoutube />
           </a>
-        )}
+        )} */}
       </div>
     </footer>
   )
