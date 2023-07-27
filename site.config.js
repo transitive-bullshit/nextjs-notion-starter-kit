@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'China Dairy',
-  domain: 'https://dairycn.eu.org',
+  domain: 'https://fangd.notion.site/dc27eb999bc3413fb1acc31251e1888b',
   author: 'Fang',
 
   // open graph metadata (optional)
