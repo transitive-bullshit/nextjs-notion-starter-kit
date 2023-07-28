@@ -16,11 +16,7 @@ module.exports = {
   socialImageTitle: 'China Dairy',
   socialImageSubtitle: 'Hello World! 🐮',
 
-  // social usernames (optional)
-  twitter: 'Davee_fang',
-  github: 'libixi123',
-  linkedin: null,
-
+ 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
   defaultPageIcon: null,
