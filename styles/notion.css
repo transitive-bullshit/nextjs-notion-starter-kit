@@ -8,7 +8,7 @@
  */
 
 .notion {
-  --notion-max-width: 1000px;
+  --notion-max-width: 1200px;
   --notion-header-height: 54px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .notion-header .nav-header {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -121,14 +121,14 @@
   margin: 2em 0;
 }
 
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 1200px) {
   .index-page.notion-page {
     padding-left: 2vw;
     padding-right: 2vw;
   }
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 1200px) {
   .notion-page {
     padding-left: 2vw;
     padding-right: 2vw;
