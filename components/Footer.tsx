@@ -35,8 +35,7 @@ export const FooterImpl: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright 2022 {config.author}</div>
-
+      <div className={styles.copyright}>This page is established with Notion + React + Next </div>
       <div className={styles.settings}>
         {hasMounted && (
           <a
@@ -46,7 +45,7 @@ export const FooterImpl: React.FC = () => {
             onClick={onToggleDarkMode}
             title='Toggle dark mode'
           >
-            {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+            {isDarkMode ? <IoMoonSharp size={18}/> : <IoSunnyOutline size={18} />}
           </a>
         )}
       </div>
