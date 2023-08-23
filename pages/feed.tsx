@@ -1,17 +1,18 @@
-import RSS from 'rss'
 import type { GetServerSideProps } from 'next'
+
+import { ExtendedRecordMap } from 'notion-types'
 import {
   getBlockParentPage,
   getBlockTitle,
   getPageProperty,
   idToUuid
 } from 'notion-utils'
-import { ExtendedRecordMap } from 'notion-types'
+import RSS from 'rss'
 
-import * as config from 'lib/config'
-import { getSiteMap } from 'lib/get-site-map'
-import { getCanonicalPageUrl } from 'lib/map-page-url'
-import { getSocialImageUrl } from 'lib/get-social-image-url'
+import * as config from '@/lib/config'
+import { getSiteMap } from '@/lib/get-site-map'
+import { getSocialImageUrl } from '@/lib/get-social-image-url'
+import { getCanonicalPageUrl } from '@/lib/map-page-url'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   if (req.method !== 'GET') {
