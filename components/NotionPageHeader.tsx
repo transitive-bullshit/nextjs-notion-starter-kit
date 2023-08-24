@@ -4,10 +4,12 @@ import * as types from 'notion-types'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import cs from 'classnames'
-import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+// import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
+import { Header, Search, useNotionContext } from 'react-notion-x'
+import Link from 'next/link'
+
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
-import Link from 'next/link'
 
 import styles from './styles.module.css'
 
@@ -101,3 +103,4 @@ export const NotionPageHeader: React.FC<{
     </header>
   )
 }
+
