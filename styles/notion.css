@@ -156,10 +156,31 @@
 /* Main title (Rootpage!) */
 .notion-block-3e32c6077d8b4d699b8360e92124e284 .notion-title {
   font-family: CanelaDeck-Bold;
-  font-size: 6em;
   display: block;
   text-align: left;
 }
+
+/* 800px or more: sized windows for Main title in root page */
+@media screen and (min-width: 800px) {
+
+  .notion-block-3e32c6077d8b4d699b8360e92124e284 .notion-title {
+  
+  font-size: 6vw;
+  
+  }
+  
+  }
+
+  /* 799px or less: sized windows for Main title in root page */
+@media screen and (max-width: 799px) {
+
+  .notion-block-3e32c6077d8b4d699b8360e92124e284 .notion-title {
+    
+  font-size: 10vw;
+  
+  }
+  
+  }
 
 /* Sub title (Rootpage!) */
 .notion-block-f8d7a895a62a4c8b974eb99e641b9469 {
@@ -169,6 +190,28 @@
   display: block;
   text-align: left;
 }
+
+/* 800px or more: sized windows for Main title in root page */
+@media screen and (min-width: 800px) {
+
+  .notion-block-f8d7a895a62a4c8b974eb99e641b9469 {
+  
+  font-size: 2.5vw;
+  
+  }
+  
+  }
+
+  /* 799px or less: sized windows for Main title in root page */
+@media screen and (max-width: 799px) {
+
+  .notion-block-f8d7a895a62a4c8b974eb99e641b9469 {
+  
+  font-size: 4vw;
+  
+  }
+  
+  }
 
 .notion-callout {
   margin: 0.75em 0;
