@@ -26,6 +26,7 @@ import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
+import { Mermaid } from './mermaid/Mermaid'
 import styles from './styles.module.css'
 
 // -----------------------------------------------------------------------------
@@ -54,6 +55,7 @@ const Code = dynamic(() =>
       import('prismjs/components/prism-less.js'),
       import('prismjs/components/prism-makefile.js'),
       import('prismjs/components/prism-markdown.js'),
+      import('prismjs/components/prism-mermaid.js'),
       import('prismjs/components/prism-objectivec.js'),
       import('prismjs/components/prism-ocaml.js'),
       import('prismjs/components/prism-python.js'),
@@ -68,6 +70,7 @@ const Code = dynamic(() =>
       import('prismjs/components/prism-wasm.js'),
       import('prismjs/components/prism-yaml.js')
     ])
+
     return m.Code
   })
 )
@@ -155,7 +158,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
     () => ({
       nextImage: Image,
       nextLink: Link,
-      Code,
+      Code: (m) => {
+        // Custom code renderer for Mermaid diagrams
+        if (m.block.properties.language[0][0] === 'Mermaid')
+          return <Mermaid chart={m.block.properties.title[0][0]} />
+
+        return <Code {...m} />
+      },
       Collection,
       Equation,
       Pdf,
