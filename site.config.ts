@@ -6,20 +6,21 @@ export default siteConfig({
   rootNotionPageId:'Home-96ce09b46e0341ebbb080cde34d547b8'
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: null,
+  rootNotionSpaceId: 'b955c0a2-5773-4e4c-9324-0443d7f35a39',
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: '鹏的小Home',
+  domain: 'no.wpeng.icu',
+  author: 'Wpenga',
 
   // open graph metadata (optional)
   description: 'Example Next.js Notion Starter Kit Site',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
-  linkedin: 'fisch2',
+  
+  twitter: 'none',
+  github: 'Wpenga',
+  linkedin: 'none',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
