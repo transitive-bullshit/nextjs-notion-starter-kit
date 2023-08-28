@@ -12,16 +12,16 @@ export const PageFooter: React.FC<{
       <div className={styles.comments}>
         <Giscus
           id="comments"
-          repo="sgamerw/nextjs-notion-starter-kit"
-          repoId="R_kgDOKLTTmw"
-          category="Announcements"
-          categoryId="DIC_kwDOKLTTm84CY6Ny"
+          repo="giscus/giscus"
+          repoId="MDEwOlJlcG9zaXRvcnkzNTE5NTgwNTM="
+          category="General"
+          categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyNzk2NTc1"
           mapping="title"
           reactionsEnabled="1"
           emitMetadata="0"
           inputPosition="bottom"
           theme="preferred_color_scheme"
-          lang="zh-CN"
+          lang="en"
           loading="lazy"
         />
       </div>
