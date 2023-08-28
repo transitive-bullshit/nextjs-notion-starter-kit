@@ -262,6 +262,13 @@
     "@use-it/event-listener" "^0.1.2"
     use-persisted-state "^0.3.0"
 
+"@giscus/react@^1.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@giscus/react/-/react-2.3.0.tgz#1c13f2f96bb67684d4f5288dc1ed3155ff307ce4"
+  integrity sha512-tj79B+NNBfidhPdXJqWoqRm5Jhoc6CBhXMYwBR9nwTwsrdaB/spcQXmHpKcUuOdXZtlYSwMfCFcBogMNbD+gKQ==
+  dependencies:
+    giscus "^1.3.0"
+
 "@humanwhocodes/config-array@^0.10.5":
   version "0.10.7"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.10.7.tgz#6d53769fd0c222767e6452e8ebda825c22e9f0dc"
@@ -340,6 +347,18 @@
   dependencies:
     ioredis "~5.0.2"
     p-event "~4.2.0"
+
+"@lit-labs/ssr-dom-shim@^1.0.0", "@lit-labs/ssr-dom-shim@^1.1.0":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@lit-labs/ssr-dom-shim/-/ssr-dom-shim-1.1.1.tgz#64df34e2f12e68e78ac57e571d25ec07fa460ca9"
+  integrity sha512-kXOeFbfCm4fFf2A3WwVEeQj55tMZa8c8/f9AKHMobQMkzNUfUj+antR3fRPaZJawsa1aZiP/Da3ndpZrwEe4rQ==
+
+"@lit/reactive-element@^1.3.0", "@lit/reactive-element@^1.6.0":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@lit/reactive-element/-/reactive-element-1.6.3.tgz#25b4eece2592132845d303e091bad9b04cdcfe03"
+  integrity sha512-QuTgnG52Poic7uM1AN5yJ09QMe0O28e10XzSvWDz02TJiiKee4stsiownEIadWm8nYzyDAyT+gKzUoZmiWQtsQ==
+  dependencies:
+    "@lit-labs/ssr-dom-shim" "^1.0.0"
 
 "@matejmazur/react-katex@^3.1.3":
   version "3.1.3"
@@ -583,6 +602,11 @@
   version "0.16.2"
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+
+"@types/trusted-types@^2.0.2":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/trusted-types/-/trusted-types-2.0.3.tgz#a136f83b0758698df454e328759dbd3d44555311"
+  integrity sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==
 
 "@types/yoga-layout@1.9.2":
   version "1.9.2"
@@ -1715,6 +1739,13 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
+giscus@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/giscus/-/giscus-1.3.0.tgz#b413e6e39b7c3aa96c2d2838df99bbf75fd4709d"
+  integrity sha512-A3tVLgSmpnh2sX9uGjo9MbzmTTEJirSyFUPRvkipvy37y9rhxUYDoh9kO37QVrP7Sc7QuJ+gihB6apkO0yDyTw==
+  dependencies:
+    lit "^2.7.5"
+
 github-from-package@0.0.0:
   version "0.0.0"
   resolved "https://registry.npmjs.org/github-from-package/-/github-from-package-0.0.0.tgz"
@@ -2241,6 +2272,31 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
+lit-element@^3.3.0:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-3.3.3.tgz#10bc19702b96ef5416cf7a70177255bfb17b3209"
+  integrity sha512-XbeRxmTHubXENkV4h8RIPyr8lXc+Ff28rkcQzw3G6up2xg5E8Zu1IgOWIwBLEQsu3cOVFqdYwiVi0hv0SlpqUA==
+  dependencies:
+    "@lit-labs/ssr-dom-shim" "^1.1.0"
+    "@lit/reactive-element" "^1.3.0"
+    lit-html "^2.8.0"
+
+lit-html@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-2.8.0.tgz#96456a4bb4ee717b9a7d2f94562a16509d39bffa"
+  integrity sha512-o9t+MQM3P4y7M7yNzqAyjp7z+mQGa4NS4CxiyLqFPyFWyc4O+nodLrkrxSaCTrla6M5YOLaT3RpbbqjszB5g3Q==
+  dependencies:
+    "@types/trusted-types" "^2.0.2"
+
+lit@^2.7.5:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/lit/-/lit-2.8.0.tgz#4d838ae03059bf9cafa06e5c61d8acc0081e974e"
+  integrity sha512-4Sc3OFX9QHOJaHbmTMk28SYgVxLN3ePDjg7hofEft2zWlehFL3LiAuapWc4U/kYwMYJSh2hTCPZ6/LIC7ii0MA==
+  dependencies:
+    "@lit/reactive-element" "^1.6.0"
+    lit-element "^3.3.0"
+    lit-html "^2.8.0"
+
 load-json-file@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/load-json-file/-/load-json-file-4.0.0.tgz"
@@ -2552,30 +2608,30 @@ normalize-url@^7.0.3:
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-7.0.3.tgz"
   integrity sha512-RiCOdwdPnzvwcBFJE4iI1ss3dMVRIrEzFpn8ftje6iBfzBInqlnRrNhxcLwBEKjPPXQKzm1Ptlxtaiv9wdcj5w==
 
-notion-client@^6.15.6:
-  version "6.15.6"
-  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-6.15.6.tgz#3dfd0cbd8d2256bdbc93b5549d9cb86e3c33ced3"
-  integrity sha512-/ze9bHNhi09IvSo+loAelGVf2VsrnPaXoGtea/VUQq0adTvgcQhC1u37BwaK5G8bS/crVC277+KWlgdJOBIxeQ==
+notion-client@^6.16.0:
+  version "6.16.0"
+  resolved "https://registry.yarnpkg.com/notion-client/-/notion-client-6.16.0.tgz#5d3db8c36fa7b9eb7cf03f237a61c6f98241a717"
+  integrity sha512-gI2kPpls8XxJfXt7cs2JDmSHPZL1HkkXQnE5YWKPT4OnpiniUgHk5b+rRB2dXUqGT4003vSYmPnxXUTbzKPoLA==
   dependencies:
     got "^11.8.1"
-    notion-types "^6.15.6"
-    notion-utils "^6.15.6"
+    notion-types "^6.16.0"
+    notion-utils "^6.16.0"
     p-map "^5.3.0"
 
-notion-types@^6.15.6:
-  version "6.15.6"
-  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-6.15.6.tgz#eabbb28e1c514f421f0ffbf06ecdecd90e8ec8e3"
-  integrity sha512-JgLWDN4oHg/1sNdHDCeKUfdPl1AYsjOTnYkq+Zn7vITPykxbhw7nIxbAJ7owWUTro1cYTPh+GVmdX0mPiZGujg==
+notion-types@^6.16.0:
+  version "6.16.0"
+  resolved "https://registry.yarnpkg.com/notion-types/-/notion-types-6.16.0.tgz#1c676b180095d14209a6760dd8586db55a115e91"
+  integrity sha512-Cv83GaAczx57q1qsnuG8DHOuOb63c83u9LX2IainG5aqBEB0GUuLZ4DUQfB6MaXt+FMY9fO+KTgPeZWwX9hbrQ==
 
-notion-utils@^6.15.6:
-  version "6.15.6"
-  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-6.15.6.tgz#d172faa2c29d62eac71b4e17ed01336d5e372d02"
-  integrity sha512-Ys7lQ5KWmrk9ZmpFquomQcVRdQqmZMRAl0aFhoqirVgeyKtq/i5IZoHCw8jCY8732WlaEAUnBid56nN33N2fRQ==
+notion-utils@^6.16.0:
+  version "6.16.0"
+  resolved "https://registry.yarnpkg.com/notion-utils/-/notion-utils-6.16.0.tgz#b81567b9d8d7ee6199383b9b41f58f5f297a1c36"
+  integrity sha512-DxToriZAJW/64O1xlAjyU/50dRmkO1e54+i0dEAPDij0MlHyihEivAMsdEG/6/4eFC972BIsEKZ6BXsSTUYKlQ==
   dependencies:
     is-url-superb "^6.1.0"
     mem "^9.0.2"
     normalize-url "^7.0.3"
-    notion-types "^6.15.6"
+    notion-types "^6.16.0"
     p-queue "^7.2.0"
 
 npm-run-all@^4.1.5:
@@ -3039,16 +3095,16 @@ react-modal@^3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-notion-x@^6.15.6:
-  version "6.15.6"
-  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.15.6.tgz#af42e836dce9f5d3ece97f2796c09608c49347de"
-  integrity sha512-s8FVh8bs2vb32VLvPq21V0rjeWtF+U6Fudaxfx9yA6vVvQ5kgF9RRyc7eNlKpLPfq/HMEqLE52hZW+ecQ15PZQ==
+react-notion-x@^6.16.0:
+  version "6.16.0"
+  resolved "https://registry.yarnpkg.com/react-notion-x/-/react-notion-x-6.16.0.tgz#48e70e90ab0f4a150b3379a928ac338e1e75dc2f"
+  integrity sha512-YdJikX38YNX5eIKAO9diw/tEhsc0ypnaqOqcdXEr7zFf0h/+eoppEzlLdzYJktnZy4n2q0z5ooXWAQi4QLi8Zw==
   dependencies:
     "@fisch0920/medium-zoom" "^1.0.7"
     "@matejmazur/react-katex" "^3.1.3"
     katex "^0.15.3"
-    notion-types "^6.15.6"
-    notion-utils "^6.15.6"
+    notion-types "^6.16.0"
+    notion-utils "^6.16.0"
     prismjs "^1.27.0"
     react-fast-compare "^3.2.0"
     react-hotkeys-hook "^3.0.3"
