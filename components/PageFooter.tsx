@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Giscus from '@giscus/react';
+import * as config from '@/lib/config'
 
 import styles from './styles.module.css'
 
@@ -9,13 +10,13 @@ export const PageFooter: React.FC<{
   // only display comments and page actions on blog post pages
   if (isBlogPost) {
     return (
-      <div className={styles.comments}>
+      config.giscusRepo && (<div className={styles.comments}>
         <Giscus
           id="comments"
-          repo="giscus/giscus"
-          repoId="MDEwOlJlcG9zaXRvcnkzNTE5NTgwNTM="
-          category="General"
-          categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyNzk2NTc1"
+          repo={config.giscusRepo}
+          repoId={config.giscusRepoId}
+          category={config.giscusCategory}
+          categoryId={config.giscusCategoryId}
           mapping="title"
           reactionsEnabled="1"
           emitMetadata="0"
@@ -24,7 +25,7 @@ export const PageFooter: React.FC<{
           lang="en"
           loading="lazy"
         />
-      </div>
+      </div>)
     );
   }
 
