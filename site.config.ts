@@ -63,7 +63,7 @@ export default siteConfig({
   //   }
   // ]
 
-  // uncomment gisucs config to enable gisucs, get these keys from https://gisucs.com/
+  // uncomment gisucs config to enable gisucs, get these keys from https://giscus.app/
   // giscusRepo: '',
   // giscusRepoId: '',
   // giscusCategory: '',
