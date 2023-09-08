@@ -19,10 +19,10 @@ export default siteConfig({
   // social usernames (optional)
   twitter: 'ABLER_official',
   github: 'dodo-acon3d',
-  linkedin: 'carpenstreet',
+  linkedin: 'company/carpenstreet',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
-  youtube: 'ABLER_Official', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  youtube: '@ABLER_Official', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
