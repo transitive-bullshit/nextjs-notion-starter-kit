@@ -9,17 +9,17 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Luhang Sun',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'luhangsnn',
+  domain: 'luhangsnn.vercel.app',
+  author: 'Luhang Sun',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  // description: 'Example Next.js Notion Starter Kit Site',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
-  github: 'https://github.com/luhangsnn',
-  linkedin: 'https://www.linkedin.com/in/luhang-sun/',
+  github: 'luhangsnn',
+  linkedin: 'luhang-sun/',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
