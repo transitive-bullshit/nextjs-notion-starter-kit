@@ -5,9 +5,9 @@
 /.pnp
 .pnp.js
 
-#deployment
+#deployment - these files changes when I use npm to test locally
 yarn.lock
-package.lock.json
+package-lock.json
 
 
 # testing
