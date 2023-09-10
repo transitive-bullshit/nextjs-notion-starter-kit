@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
+// import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
+// import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
@@ -87,7 +87,7 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
 
-        {config.github && (
+        {/* {config.github && (
           <a
             className={styles.github}
             href={`https://github.com/${config.github}`}
@@ -97,9 +97,9 @@ export const FooterImpl: React.FC = () => {
           >
             <FaGithub />
           </a>
-        )}
+        )} */}
 
-        {config.linkedin && (
+        {/* {config.linkedin && (
           <a
             className={styles.linkedin}
             href={`https://www.linkedin.com/in/${config.linkedin}`}
@@ -109,7 +109,7 @@ export const FooterImpl: React.FC = () => {
           >
             <FaLinkedin />
           </a>
-        )}
+        )} */}
 
         {config.newsletter && (
           <a
