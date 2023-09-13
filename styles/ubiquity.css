@@ -962,7 +962,7 @@ video.notion-page-cover {
   width: 48px;
   height: 48px;
   display: block;
-  background: #fff;
+  /* background: #fff; */
   background-repeat: no-repeat;
   background-position: 12px;
 }
@@ -1153,6 +1153,8 @@ video.notion-page-cover {
 }
 
 .quickFindMenu .resultsPane .notion-page-icon{
-  background: unset;
-  background-position: unset;
+  background-color: transparent;
+  background-position: center;
+  font-size: 20px;
+  line-height: 1;
 }
