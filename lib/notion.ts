@@ -1,5 +1,5 @@
 import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
-import { mergeRecordMaps } from 'notion-utils'
+import { mergeRecordMaps, parsePageId } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
 
@@ -64,5 +64,38 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 }
 
 export async function search(params: SearchParams): Promise<SearchResults> {
-  return notion.search(params)
+  // NOTICE: Refactored the original implementation because the search
+  // feature is broken in the latest "notion-client@6.16.0" (https://github.com/NotionX/react-notion-x/pull/505)
+  // TODO: Refactor the "search()" methof to its original implementation
+  // https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/7193796abd714356d5bb8e621b0f422e0b89ec03/lib/notion.ts#L66
+  // when "notion-client >= 6.16.1" is released
+
+  // return notion.search(params)
+
+  const body = {
+    type: 'BlocksInAncestor',
+    source: 'quick_find_public',
+    ancestorId: parsePageId(params.ancestorId),
+    sort: {
+      field: 'relevance'
+    },
+    limit: params.limit || 20,
+    query: params.query,
+    filters: {
+      isDeletedOnly: false,
+      isNavigableOnly: false,
+      excludeTemplates: true,
+      requireEditPermissions: false,
+      ancestors: [],
+      createdBy: [],
+      editedBy: [],
+      lastEditedTime: {},
+      createdTime: {},
+      ...params.filters
+    }
+  }
+  return notion.fetch<SearchResults>({
+    endpoint: 'search',
+    body,
+  });
 }
