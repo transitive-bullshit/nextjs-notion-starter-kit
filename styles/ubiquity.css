@@ -1122,6 +1122,7 @@ video.notion-page-cover {
   background-color: unset;
 }
 
-.ReactModalPortal{
+.ReactModalPortal > div {
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
