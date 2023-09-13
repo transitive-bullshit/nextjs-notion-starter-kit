@@ -1072,16 +1072,52 @@ video.notion-page-cover {
 
 .quickFindMenu *,
 .quickFindMenu b {
-  text-transform: initial;
-  letter-spacing: initial;
-  font-size: 16px;
-  color: #808080;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 12px;
+  color: #ffffff80; /* 0.625 */
+  opacity: 0.75;
+  line-height: 1.25;
 }
-
+.quickFindMenu .resultsPane > a > div {
+  margin: 4px 30px 0 0 !important;
+}
+.quickFindMenu .resultsPane .notion-page-title-text {
+  font-size: 16px;
+  margin: 6px 0px 6px 30px;
+}
+.quickFindMenu b {
+  opacity: 1;
+  font-size: inherit;
+  font-weight: inherit;
+}
 .quickFindMenu a {
   background-color: transparent !important;
 }
 
 .quickFindMenu a .notion-page-title-text {
   border-bottom: none;
+}
+
+.notion-search {
+  box-shadow: unset;
+  border-radius: unset;
+  background: unset;
+  /* position: unset; */
+  top: var(--header);
+  max-width: unset;
+  min-height: unset;
+  max-height: unset;
+  width: unset;
+  overflow: unset;
+  outline: unset;
+  font-size: unset;
+  line-height: unset;
+  color: unset;
+  caret-color: unset;
+  font-family: unset;
+  backdrop-filter: unset;
+}
+.notion-search input {
+  background-color: unset;
 }
