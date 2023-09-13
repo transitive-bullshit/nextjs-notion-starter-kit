@@ -118,7 +118,7 @@ summary {
 
 details.notion-toggle {
   padding: 8px 24px;
-  padding-left: 32px;;
+  padding-left: 32px;
   padding-right: 0;
   opacity: 0.75;
   border-left: 2px solid #80808040;
@@ -1068,4 +1068,20 @@ video.notion-page-cover {
 .notion-simple-table tr td,
 .notion-table-header-inner {
   background: #80808010;
+}
+
+.quickFindMenu *,
+.quickFindMenu b {
+  text-transform: initial;
+  letter-spacing: initial;
+  font-size: 16px;
+  color: #808080;
+}
+
+.quickFindMenu a {
+  background-color: transparent !important;
+}
+
+.quickFindMenu a .notion-page-title-text {
+  border-bottom: none;
 }
