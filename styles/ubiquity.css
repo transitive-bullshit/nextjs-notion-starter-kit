@@ -1075,7 +1075,7 @@ video.notion-page-cover {
   text-transform: none;
   letter-spacing: normal;
   font-size: 12px;
-  color: #ffffff80; /* 0.625 */
+  color: #ffffff; /* 0.625 */
   opacity: 0.75;
   line-height: 1.25;
 }
@@ -1120,4 +1120,8 @@ video.notion-page-cover {
 }
 .notion-search input {
   background-color: unset;
+}
+
+.ReactModalPortal{
+  backdrop-filter: blur(16px);
 }
