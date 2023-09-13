@@ -1151,3 +1151,8 @@ video.notion-page-cover {
 .light-mode .notion-search-overlay {
   background-color: #ffffffbf;
 }
+
+.quickFindMenu .resultsPane .notion-page-icon{
+  background: unset;
+  background-position: unset;
+}
