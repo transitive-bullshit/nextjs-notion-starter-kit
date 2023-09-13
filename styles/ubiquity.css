@@ -118,7 +118,7 @@ summary {
 
 details.notion-toggle {
   padding: 8px 24px;
-  padding-left: 32px;;
+  padding-left: 32px;
   padding-right: 0;
   opacity: 0.75;
   border-left: 2px solid #80808040;
@@ -962,12 +962,12 @@ video.notion-page-cover {
   width: 48px;
   height: 48px;
   display: block;
-  background: #fff;
+  /* background: #fff; */
   background-repeat: no-repeat;
   background-position: 12px;
 }
 
-.dark-mode .resultsPane .result {
+.resultsPane .result {
   color: #000;
   width: 100%;
 }
@@ -1068,4 +1068,93 @@ video.notion-page-cover {
 .notion-simple-table tr td,
 .notion-table-header-inner {
   background: #80808010;
+}
+
+.quickFindMenu .notion-search-result-highlight,
+.quickFindMenu .notion-page-title,
+.quickFindMenu b {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.dark-mode .quickFindMenu .notion-search-result-highlight,
+.dark-mode .quickFindMenu .notion-page-title,
+.dark-mode .quickFindMenu b {
+  color: #ffffff80;
+}
+.light-mode .quickFindMenu .notion-search-result-highlight,
+.light-mode .quickFindMenu .notion-page-title,
+.light-mode .quickFindMenu b {
+  color: #00000080;
+}
+
+.quickFindMenu .resultsPane > a > div {
+  margin: 4px 30px 0 0 !important;
+}
+.quickFindMenu .resultsPane .notion-page-title-text {
+  font-size: 16px;
+  margin: 6px 0px 6px 30px;
+}
+
+.quickFindMenu a {
+  background-color: transparent !important;
+}
+.quickFindMenu a .notion-page-title-text {
+  border-bottom: none;
+}
+
+.quickFindMenu b {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.light-mode .quickFindMenu b {
+  color: #000;
+}
+.dark-mode .quickFindMenu b {
+  color: #fff;
+}
+
+.notion-search {
+  box-shadow: unset;
+  border-radius: unset;
+  background: unset;
+  /* position: unset; */
+  top: var(--header);
+  max-width: unset;
+  min-height: unset;
+  max-height: unset;
+  width: unset;
+  overflow: unset;
+  outline: unset;
+  font-size: unset;
+  line-height: unset;
+  color: unset;
+  caret-color: unset;
+  font-family: unset;
+  backdrop-filter: unset;
+}
+.notion-search input {
+  background-color: unset;
+}
+
+.ReactModalPortal > div {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark-mode .notion-search-overlay {
+  background-color: #000000bf;
+}
+.light-mode .notion-search-overlay {
+  background-color: #ffffffbf;
+}
+
+.quickFindMenu .resultsPane .notion-page-icon{
+  background-color: transparent;
+  background-position: center;
+  font-size: 20px;
+  line-height: 1;
 }
