@@ -1070,20 +1070,24 @@ video.notion-page-cover {
   background: #80808010;
 }
 
-.quickFindMenu *,
+.quickFindMenu .notion-search-result-highlight,
+.quickFindMenu .notion-page-title,
 .quickFindMenu b {
   text-transform: none;
   letter-spacing: normal;
   font-size: 12px;
-  color: #ffffff; /* 0.625 */
-  opacity: 0.75;
   line-height: 1.25;
 }
 
-.light-mode .quickFindMenu *,
+.dark-mode .quickFindMenu .notion-search-result-highlight,
+.dark-mode .quickFindMenu .notion-page-title,
+.dark-mode .quickFindMenu b {
+  color: #ffffff80;
+}
+.light-mode .quickFindMenu .notion-search-result-highlight,
+.light-mode .quickFindMenu .notion-page-title,
 .light-mode .quickFindMenu b {
-  color: #000;
-  opacity: 1;
+  color: #00000080;
 }
 
 .quickFindMenu .resultsPane > a > div {
@@ -1093,17 +1097,24 @@ video.notion-page-cover {
   font-size: 16px;
   margin: 6px 0px 6px 30px;
 }
-.quickFindMenu b {
-  opacity: 1;
-  font-size: inherit;
-  font-weight: inherit;
-}
+
 .quickFindMenu a {
   background-color: transparent !important;
 }
-
 .quickFindMenu a .notion-page-title-text {
   border-bottom: none;
+}
+
+.quickFindMenu b {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.light-mode .quickFindMenu b {
+  color: #000;
+}
+.dark-mode .quickFindMenu b {
+  color: #fff;
 }
 
 .notion-search {
@@ -1134,6 +1145,9 @@ video.notion-page-cover {
   -webkit-backdrop-filter: blur(16px);
 }
 
+.dark-mode .notion-search-overlay {
+  background-color: #000000bf;
+}
 .light-mode .notion-search-overlay {
   background-color: #ffffffbf;
 }
