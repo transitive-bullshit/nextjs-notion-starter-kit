@@ -10,8 +10,9 @@ export default siteConfig({
 
   // basic site info (required)
   name: '에이블러 유저 가이드',
-  domain: 'abler-notion-guide-test.vercel.app',
+  domain: 'guide.abler.world',
   author: 'Carpenstreet',
+  homepage: 'https://abler.world/',
 
   // open graph metadata (optional)
   description: '에이블러 유저 가이드',

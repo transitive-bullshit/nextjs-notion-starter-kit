@@ -52,6 +52,7 @@ export const author: string = getSiteConfig('author')
 export const domain: string = getSiteConfig('domain')
 export const description: string = getSiteConfig('description', 'Notion Blog')
 export const language: string = getSiteConfig('language', 'en')
+export const homepage: string = getSiteConfig('homepage', 'https://abler.world/')
 
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
