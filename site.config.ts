@@ -18,8 +18,9 @@ export default siteConfig({
 
   // social usernames (optional)
   twitter: 'ABLER_official',
-  github: 'dodo-acon3d',
-  linkedin: 'company/carpenstreet',
+  // github: 'dodo-acon3d',
+  // linkedin: 'company/carpenstreet',
+  postype: 'acon3d-abler',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   youtube: '@ABLER_Official', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`

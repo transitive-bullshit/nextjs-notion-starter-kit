@@ -111,6 +111,17 @@ export const FooterImpl: React.FC = () => {
             <FaLinkedin />
           </a>
         )}
+        {config.postype && (
+          <a
+            className={styles.linkedin}
+            href={`https://${config.postype}.postype.com`}
+            title={`Postype ${config.author}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaLinkedin />
+          </a>
+        )}
 
         {config.newsletter && (
           <a
