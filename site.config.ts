@@ -18,7 +18,7 @@ export default siteConfig({
   description: '에이블러 유저 가이드',
 
   // social usernames (optional)
-  twitter: 'ABLER_official',
+  twitter: 'ABLER_official', 
   // github: 'dodo-acon3d',
   // linkedin: 'company/carpenstreet',
   postype: 'acon3d-abler',
