@@ -27,6 +27,7 @@ import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
+import { Header } from './Header'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -191,16 +192,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
     block?.type === 'page' && block?.parent_table === 'collection'
 
   const showTableOfContents = true
-  const minTableOfContentsItems = 3
+  const minTableOfContentsItems = 1
 
-  const pageAside = React.useMemo(
-    () => (
-      <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />
-    ),
-    [block, recordMap, isBlogPost]
-  )
+  // const pageAside = React.useMemo(
+  //   () => (
+  //     <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />
+  //   ),
+  //   [block, recordMap, isBlogPost]
+  // )
+  const pageAside = null
 
   const footer = React.useMemo(() => <Footer />, [])
+  const header = React.useMemo(() => <Header />, [])
 
   if (router.isFallback) {
     return <Loading />
@@ -279,6 +282,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={pageAside}
         footer={footer}
+        header={header}
       />
 
       <GitHubShareButton />
