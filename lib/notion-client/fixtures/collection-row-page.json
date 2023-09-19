@@ -1,0 +1,5795 @@
+{
+  "recordMap": {
+    "block": {
+      "139ac7d7-30d5-4b5e-9393-7a282d8ff635": {
+        "role": "reader",
+        "value": {
+          "id": "139ac7d7-30d5-4b5e-9393-7a282d8ff635",
+          "version": 4,
+          "type": "page",
+          "properties": {
+            "\"G]_": [["2016: Rnd 1 Pick 30"]],
+            "([kx": [["United States"]],
+            "-@$\\": [["6' 11\""]],
+            "9DS!": [
+              [
+                "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1627745.png",
+                [
+                  [
+                    "a",
+                    "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1627745.png"
+                  ]
+                ]
+              ]
+            ],
+            "ChHi": [["Atlanta Hawks"]],
+            "MYa3": [["Center"]],
+            "N!$K": [["24"]],
+            "ZHAU": [
+              [
+                "‣",
+                [
+                  [
+                    "d",
+                    {
+                      "type": "date",
+                      "start_date": "1995-06-30"
+                    }
+                  ]
+                ]
+              ]
+            ],
+            "gq#*": [["#30"]],
+            "jhk5": [["Vanderbilt"]],
+            "p4nU": [["‣", [["p", "841918aa-f2a3-4d4c-b5ad-64b0f57c47b8"]]]],
+            "title": [["Damian Jones"]]
+          },
+          "created_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "created_time": 1578275575291,
+          "last_edited_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "last_edited_time": 1578278700000,
+          "parent_id": "1a425309-21c0-4ca1-8548-c5915137b566",
+          "parent_table": "collection",
+          "alive": true,
+          "ignore_block_count": true,
+          "created_by_table": "notion_user",
+          "created_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "last_edited_by_table": "notion_user",
+          "last_edited_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e"
+        }
+      },
+      "25630754-1583-4e09-b080-787768ecff62": {
+        "role": "reader",
+        "value": {
+          "id": "25630754-1583-4e09-b080-787768ecff62",
+          "version": 145,
+          "type": "collection_view",
+          "properties": {
+            "title": [["Import Jan 05, 2020"]]
+          },
+          "view_ids": [
+            "693b4304-0bbd-4f9a-85f1-7c9cb1768110",
+            "448a76b8-847d-4a40-a494-9a6da9c41a58",
+            "9fdf39a1-64c3-464c-a4c9-f3e4d9a9aa2c",
+            "c34ab79e-df2d-4a6d-af71-8aef61a65aa7",
+            "385ed123-6a39-46e5-984c-9704bcfd6494",
+            "5ae81e49-33ad-47bf-9c14-14adb9145b4d",
+            "ab6c9a56-5322-4bd1-a384-7797a81478c5",
+            "048d8535-b957-488a-89f0-ade8d3c4c026",
+            "dac0d378-1774-47fc-a3a3-103ae120a3c1",
+            "e8feed24-4bf6-41b5-84a7-6134f9160cc1",
+            "52718a79-d339-4d26-873f-734004af8823",
+            "63717bf3-3af6-4112-989d-acbe665ccf91",
+            "b6c6b669-659e-4487-8d48-8a538b8a0d82",
+            "85e4d626-09cc-45f6-9a28-07d5d490ca1d",
+            "367ecf41-f124-4652-bb7d-464b3789aefd",
+            "d8f02741-e03a-4e40-91d7-0b821ee4014d",
+            "c14e33fe-19d2-4266-a935-0ef6528a77ff",
+            "bdc489ac-13dd-46bd-97f9-86866d76bc43",
+            "7687ad1f-ccbe-4abb-8e95-a3685543aefe",
+            "5c20b593-23d4-4884-9102-3ef3b1049273",
+            "c69e1799-88cb-4135-a10d-1ec4617f0aa6",
+            "cfe27a86-00d0-4322-b2db-2bc3e69269e2",
+            "5742eaed-3c36-495a-bde5-7d33cba0ddb5",
+            "59a7246f-e923-4faf-9246-75851294365b",
+            "e3d28d4f-e72e-430a-92f8-263cd01ea452",
+            "99cd3dfb-97fb-493d-bfaa-518bd872dda4",
+            "5662c1f4-a011-4629-9616-3a2d53f6c9af",
+            "93fe8a38-e32b-4c6a-87f2-03f1a438de75",
+            "3815e8d7-e5f2-4399-a761-9ceaed565257",
+            "bd226193-3647-4ed1-bbe3-a5baa69954c7",
+            "43d091fb-a648-40cc-ae10-9d9784c34524",
+            "1d79cc15-d040-43eb-9d65-7e35bafbcf74",
+            "1a1863bd-f819-41dc-a228-831ca7a75d2a",
+            "9a43758f-21c5-4fc2-a4b5-0fc82971b79f",
+            "d4102177-3cb3-4d36-8f39-92d84147f825",
+            "e1c31992-ad30-4ab5-a497-c69fc579e2ec"
+          ],
+          "collection_id": "1a425309-21c0-4ca1-8548-c5915137b566",
+          "permissions": [
+            {
+              "role": "editor",
+              "type": "user_permission",
+              "user_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e"
+            }
+          ],
+          "created_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "created_time": 1578275575291,
+          "last_edited_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "last_edited_time": 1582404240000,
+          "parent_id": "3f92ae50-5636-427c-8976-34a15b9f2892",
+          "parent_table": "block",
+          "alive": true,
+          "created_by_table": "notion_user",
+          "created_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "last_edited_by_table": "notion_user",
+          "last_edited_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e"
+        }
+      },
+      "3f92ae50-5636-427c-8976-34a15b9f2892": {
+        "role": "reader",
+        "value": {
+          "id": "3f92ae50-5636-427c-8976-34a15b9f2892",
+          "version": 310,
+          "type": "page",
+          "properties": {
+            "title": [["The NBA — in Notion."]]
+          },
+          "content": [
+            "6d3d29a0-6996-4596-8994-84d39d22e724",
+            "96d5a750-08d3-4eab-864f-2d1ae7bd2269",
+            "515c7b1b-533b-482b-8d3c-35189d2138e6",
+            "093ef04d-9a61-4c20-a96c-aa4a9695249e",
+            "646c48ab-e27b-4593-b35a-0925fc0b117a",
+            "16241d83-6149-49cf-b482-6903671876ea",
+            "25630754-1583-4e09-b080-787768ecff62",
+            "c51d712c-4450-4b3e-9e00-7ba17ff37a89",
+            "741f7719-6fb2-4a16-98f0-7fd173a062f5",
+            "eb8b9c05-45ee-4865-b9b2-a80ac1919d83"
+          ],
+          "format": {
+            "page_icon": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1502a53c-eb51-4840-bc6c-8f9a15c068dd/notion_vip__nba_icon.png",
+            "page_cover": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3074c03d-5f7c-4a24-a210-273c099867ce/tobias_harris-tunnel.jpg",
+            "page_full_width": true,
+            "page_cover_position": 0.6068
+          },
+          "permissions": [
+            {
+              "role": "reader",
+              "type": "public_permission",
+              "allow_duplicate": false
+            }
+          ],
+          "created_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "created_time": 1578174780000,
+          "last_edited_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "last_edited_time": 1597357140000,
+          "parent_id": "d50605c0-76a9-455c-896e-a4ce68cbc504",
+          "parent_table": "block",
+          "alive": true,
+          "file_ids": [
+            "1502a53c-eb51-4840-bc6c-8f9a15c068dd",
+            "9ef90ed1-9c86-431e-8d9e-8f4a7665eaea",
+            "f757d3fe-33b4-4fdf-847b-48d5b7a5a093",
+            "910f21df-4990-418a-850e-5054606671b6",
+            "0a3f97e8-bce5-48bd-8025-bdfe27379940",
+            "864783b5-6809-42f7-bfe4-b71eb6408fb5",
+            "99d3d36b-9cc6-41f9-8167-aac2d386fdf5",
+            "f75d666d-e9e6-4f60-8bb4-ce4bc6cc4554",
+            "e76f1314-80e3-47cc-9dc6-f70da357dd13",
+            "282ba6fd-e898-405a-ae17-e75252348fae",
+            "eb40412e-820e-434d-93f0-06c948cf9474",
+            "4d37c2c3-bd6d-4cb8-ae27-4658ce16cb2f",
+            "9d9f798c-e83f-42bf-8938-07e7185d287c",
+            "4dba11fe-6722-49bb-b248-53c0f02b0dcc",
+            "56192761-5d6f-4042-a46f-0f1ea43670c3",
+            "b9ae9b3c-5c44-42d9-80d5-4c32f2db9572",
+            "a3389423-5c9f-48b0-8076-06948ce0c66c",
+            "739726f8-68d1-403b-a93b-f8a941e88355",
+            "51a165ab-33e2-416d-aa04-4a5e08748768",
+            "3074c03d-5f7c-4a24-a210-273c099867ce"
+          ],
+          "created_by_table": "notion_user",
+          "created_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "last_edited_by_table": "notion_user",
+          "last_edited_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "shard_id": 429248,
+          "space_id": "2c820bf0-f79c-458e-af19-33ce31468cc0"
+        }
+      }
+    },
+    "collection": {
+      "1a425309-21c0-4ca1-8548-c5915137b566": {
+        "role": "reader",
+        "value": {
+          "id": "1a425309-21c0-4ca1-8548-c5915137b566",
+          "version": 174,
+          "name": [["2020 NBA Players"]],
+          "schema": {
+            "\"G]_": {
+              "name": "Draft",
+              "type": "text"
+            },
+            "([kx": {
+              "name": "Nationality",
+              "type": "text"
+            },
+            "-@$\\": {
+              "name": "Height",
+              "type": "text",
+              "options": [
+                {
+                  "id": "<8JB",
+                  "color": "default",
+                  "value": "6' 11\""
+                },
+                {
+                  "id": "iV93",
+                  "color": "purple",
+                  "value": "6' 10\""
+                },
+                {
+                  "id": "x)?v",
+                  "color": "default",
+                  "value": "6' 7\""
+                },
+                {
+                  "id": ";G[_",
+                  "color": "green",
+                  "value": "6' 5\""
+                },
+                {
+                  "id": "L><@",
+                  "color": "yellow",
+                  "value": "6' 1\""
+                },
+                {
+                  "id": "}yVJ",
+                  "color": "orange",
+                  "value": "6' 8\""
+                },
+                {
+                  "id": "KjKY",
+                  "color": "green",
+                  "value": "6' 4\""
+                },
+                {
+                  "id": "(/=[",
+                  "color": "pink",
+                  "value": "6' 6\""
+                },
+                {
+                  "id": "nOii",
+                  "color": "default",
+                  "value": "6' 9\""
+                },
+                {
+                  "id": "Bgws",
+                  "color": "purple",
+                  "value": "6' 0\""
+                },
+                {
+                  "id": "2t)V",
+                  "color": "yellow",
+                  "value": "7' 0\""
+                },
+                {
+                  "id": "Jm69",
+                  "color": "brown",
+                  "value": "6' 3\""
+                },
+                {
+                  "id": "}|`Y",
+                  "color": "green",
+                  "value": "5' 11\""
+                },
+                {
+                  "id": "4t;7",
+                  "color": "blue",
+                  "value": "6' 2\""
+                },
+                {
+                  "id": "1mfp",
+                  "color": "purple",
+                  "value": "5' 9\""
+                },
+                {
+                  "id": "aVuk",
+                  "color": "pink",
+                  "value": "7' 4\""
+                },
+                {
+                  "id": "tu[%",
+                  "color": "green",
+                  "value": "7' 1\""
+                },
+                {
+                  "id": "Sq9R",
+                  "color": "blue",
+                  "value": "7' 2\""
+                },
+                {
+                  "id": "oD-K",
+                  "color": "brown",
+                  "value": "7' 5\""
+                },
+                {
+                  "id": "|tNZ",
+                  "color": "blue",
+                  "value": "5' 10\""
+                },
+                {
+                  "id": "vDdE",
+                  "color": "purple",
+                  "value": "7' 3\""
+                }
+              ]
+            },
+            "9DS!": {
+              "name": "Photo",
+              "type": "file"
+            },
+            "=7m2": {
+              "name": "Last Name",
+              "type": "formula",
+              "formula": {
+                "args": [
+                  {
+                    "id": "title",
+                    "name": "Name",
+                    "type": "property",
+                    "result_type": "text"
+                  },
+                  {
+                    "type": "constant",
+                    "value": ".+ ",
+                    "value_type": "string",
+                    "result_type": "text"
+                  },
+                  {
+                    "type": "constant",
+                    "value": "",
+                    "value_type": "string",
+                    "result_type": "text"
+                  }
+                ],
+                "name": "replaceAll",
+                "type": "function",
+                "result_type": "text"
+              }
+            },
+            "IY\\1": {
+              "name": "Number | Position | Height",
+              "type": "formula",
+              "formula": {
+                "args": [
+                  {
+                    "args": [
+                      {
+                        "args": [
+                          {
+                            "args": [
+                              {
+                                "id": "gq#*",
+                                "name": "Number",
+                                "type": "property",
+                                "result_type": "text"
+                              },
+                              {
+                                "type": "constant",
+                                "value": " | ",
+                                "value_type": "string",
+                                "result_type": "text"
+                              }
+                            ],
+                            "name": "add",
+                            "type": "operator",
+                            "operator": "+",
+                            "result_type": "text"
+                          },
+                          {
+                            "id": "MYa3",
+                            "name": "Position",
+                            "type": "property",
+                            "result_type": "text"
+                          }
+                        ],
+                        "name": "add",
+                        "type": "operator",
+                        "operator": "+",
+                        "result_type": "text"
+                      },
+                      {
+                        "type": "constant",
+                        "value": " | ",
+                        "value_type": "string",
+                        "result_type": "text"
+                      }
+                    ],
+                    "name": "add",
+                    "type": "operator",
+                    "operator": "+",
+                    "result_type": "text"
+                  },
+                  {
+                    "id": "-@$\\",
+                    "name": "Height",
+                    "type": "property",
+                    "result_type": "text"
+                  }
+                ],
+                "name": "add",
+                "type": "operator",
+                "operator": "+",
+                "result_type": "text"
+              }
+            },
+            "LH{*": {
+              "name": "Labeled Draft",
+              "type": "formula",
+              "formula": {
+                "args": [
+                  {
+                    "args": [
+                      {
+                        "id": "\"G]_",
+                        "name": "Draft",
+                        "type": "property",
+                        "result_type": "text"
+                      },
+                      {
+                        "type": "constant",
+                        "value": ":",
+                        "value_type": "string",
+                        "result_type": "text"
+                      },
+                      {
+                        "type": "constant",
+                        "value": " Draft:",
+                        "value_type": "string",
+                        "result_type": "text"
+                      }
+                    ],
+                    "name": "replace",
+                    "type": "function",
+                    "result_type": "text"
+                  },
+                  {
+                    "type": "constant",
+                    "value": "Rnd",
+                    "value_type": "string",
+                    "result_type": "text"
+                  },
+                  {
+                    "type": "constant",
+                    "value": "Round",
+                    "value_type": "string",
+                    "result_type": "text"
+                  }
+                ],
+                "name": "replace",
+                "type": "function",
+                "result_type": "text"
+              }
+            },
+            "MYa3": {
+              "name": "Position",
+              "type": "select",
+              "options": [
+                {
+                  "id": "-*!z",
+                  "color": "default",
+                  "value": "Center"
+                },
+                {
+                  "id": "i5^K",
+                  "color": "default",
+                  "value": "Center-Forward"
+                },
+                {
+                  "id": "o;Os",
+                  "color": "default",
+                  "value": "Forward"
+                },
+                {
+                  "id": "pV.U",
+                  "color": "default",
+                  "value": "Forward-Center"
+                },
+                {
+                  "id": "o|jr",
+                  "color": "default",
+                  "value": "Forward-Guard"
+                },
+                {
+                  "id": "=p8a",
+                  "color": "default",
+                  "value": "Guard"
+                },
+                {
+                  "id": "_Fdr",
+                  "color": "default",
+                  "value": "Guard-Forward"
+                }
+              ]
+            },
+            "N!$K": {
+              "name": "Age",
+              "type": "number",
+              "number_format": "number"
+            },
+            "RyF.": {
+              "name": "Labeled School",
+              "type": "formula",
+              "formula": {
+                "args": [
+                  {
+                    "type": "constant",
+                    "value": "School: ",
+                    "value_type": "string",
+                    "result_type": "text"
+                  },
+                  {
+                    "id": "jhk5",
+                    "name": "School",
+                    "type": "property",
+                    "result_type": "text"
+                  }
+                ],
+                "name": "add",
+                "type": "operator",
+                "operator": "+",
+                "result_type": "text"
+              }
+            },
+            "ZHAU": {
+              "name": "Birthday",
+              "type": "date"
+            },
+            "gq#*": {
+              "name": "Number",
+              "type": "text"
+            },
+            "i?W1": {
+              "name": "Birthday | Age",
+              "type": "formula",
+              "formula": {
+                "args": [
+                  {
+                    "args": [
+                      {
+                        "args": [
+                          {
+                            "args": [
+                              {
+                                "type": "constant",
+                                "value": "Born: ",
+                                "value_type": "string",
+                                "result_type": "text"
+                              },
+                              {
+                                "args": [
+                                  {
+                                    "id": "ZHAU",
+                                    "name": "Birthday",
+                                    "type": "property",
+                                    "result_type": "date"
+                                  }
+                                ],
+                                "name": "format",
+                                "type": "function",
+                                "result_type": "text"
+                              }
+                            ],
+                            "name": "add",
+                            "type": "operator",
+                            "operator": "+",
+                            "result_type": "text"
+                          },
+                          {
+                            "type": "constant",
+                            "value": " | ",
+                            "value_type": "string",
+                            "result_type": "text"
+                          }
+                        ],
+                        "name": "add",
+                        "type": "operator",
+                        "operator": "+",
+                        "result_type": "text"
+                      },
+                      {
+                        "type": "constant",
+                        "value": "Age: ",
+                        "value_type": "string",
+                        "result_type": "text"
+                      }
+                    ],
+                    "name": "add",
+                    "type": "operator",
+                    "operator": "+",
+                    "result_type": "text"
+                  },
+                  {
+                    "args": [
+                      {
+                        "id": "N!$K",
+                        "name": "Age",
+                        "type": "property",
+                        "result_type": "number"
+                      }
+                    ],
+                    "name": "format",
+                    "type": "function",
+                    "result_type": "text"
+                  }
+                ],
+                "name": "add",
+                "type": "operator",
+                "operator": "+",
+                "result_type": "text"
+              }
+            },
+            "jhk5": {
+              "name": "School",
+              "type": "text"
+            },
+            "p4nU": {
+              "name": "Team",
+              "type": "relation",
+              "property": "3-5L",
+              "collection_id": "e777a528-9404-4e96-9f26-0014be705592"
+            },
+            "title": {
+              "name": "Name",
+              "type": "title"
+            }
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true
+        }
+      }
+    },
+    "notion_user": {
+      "422adcc4-3ce5-40c0-8baf-972c55171c4e": {
+        "role": "reader",
+        "value": {
+          "id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+          "version": 104,
+          "email": "william@nutt.io",
+          "given_name": "William",
+          "family_name": "Nutt",
+          "profile_photo": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/f8c80cb9-d738-4d61-89d1-889b635ef90d/william_nutt__headshot.jpg",
+          "onboarding_completed": true,
+          "mobile_onboarding_completed": true,
+          "clipper_onboarding_completed": true
+        }
+      }
+    },
+    "collection_view": {
+      "693b4304-0bbd-4f9a-85f1-7c9cb1768110": {
+        "role": "reader",
+        "value": {
+          "id": "693b4304-0bbd-4f9a-85f1-7c9cb1768110",
+          "version": 50,
+          "type": "gallery",
+          "name": "Atlanta Hawks",
+          "query": {
+            "sort": [
+              {
+                "id": "5e4717f1-aaa9-43b7-b47c-27870be21c81",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "841918aa-f2a3-4d4c-b5ad-64b0f57c47b8",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "5e4717f1-aaa9-43b7-b47c-27870be21c81",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "841918aa-f2a3-4d4c-b5ad-64b0f57c47b8"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "448a76b8-847d-4a40-a494-9a6da9c41a58": {
+        "role": "reader",
+        "value": {
+          "id": "448a76b8-847d-4a40-a494-9a6da9c41a58",
+          "version": 6,
+          "type": "gallery",
+          "name": "Boston Celtics",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "e722d82d-e545-4dc5-9658-c66260f0d3f4",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "e722d82d-e545-4dc5-9658-c66260f0d3f4"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "9fdf39a1-64c3-464c-a4c9-f3e4d9a9aa2c": {
+        "role": "reader",
+        "value": {
+          "id": "9fdf39a1-64c3-464c-a4c9-f3e4d9a9aa2c",
+          "version": 4,
+          "type": "gallery",
+          "name": "Brooklyn Nets",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "282f1ce5-85cc-47c3-8145-31ebee469aa4",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "282f1ce5-85cc-47c3-8145-31ebee469aa4"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "c34ab79e-df2d-4a6d-af71-8aef61a65aa7": {
+        "role": "reader",
+        "value": {
+          "id": "c34ab79e-df2d-4a6d-af71-8aef61a65aa7",
+          "version": 4,
+          "type": "gallery",
+          "name": "Charlotte Hornets",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "dddd453b-579c-472a-9339-26dcfcaa1976",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "dddd453b-579c-472a-9339-26dcfcaa1976"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "385ed123-6a39-46e5-984c-9704bcfd6494": {
+        "role": "reader",
+        "value": {
+          "id": "385ed123-6a39-46e5-984c-9704bcfd6494",
+          "version": 4,
+          "type": "gallery",
+          "name": "Chicago Bulls",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "3cbd18cd-cab2-4b10-9b0d-e67ff1e365e1",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "3cbd18cd-cab2-4b10-9b0d-e67ff1e365e1"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "5ae81e49-33ad-47bf-9c14-14adb9145b4d": {
+        "role": "reader",
+        "value": {
+          "id": "5ae81e49-33ad-47bf-9c14-14adb9145b4d",
+          "version": 4,
+          "type": "gallery",
+          "name": "Cleveland Cavaliers",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "afeaba17-8f70-40c9-a648-4e0afc314948",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "afeaba17-8f70-40c9-a648-4e0afc314948"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "ab6c9a56-5322-4bd1-a384-7797a81478c5": {
+        "role": "reader",
+        "value": {
+          "id": "ab6c9a56-5322-4bd1-a384-7797a81478c5",
+          "version": 4,
+          "type": "gallery",
+          "name": "Dallas Mavericks",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "274924c4-c151-4e45-9ac4-fd3b8839a56c",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "274924c4-c151-4e45-9ac4-fd3b8839a56c"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "048d8535-b957-488a-89f0-ade8d3c4c026": {
+        "role": "reader",
+        "value": {
+          "id": "048d8535-b957-488a-89f0-ade8d3c4c026",
+          "version": 4,
+          "type": "gallery",
+          "name": "Denver Nuggest",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "a5b2ed08-4322-4923-888f-c70193751759",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "a5b2ed08-4322-4923-888f-c70193751759"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "dac0d378-1774-47fc-a3a3-103ae120a3c1": {
+        "role": "reader",
+        "value": {
+          "id": "dac0d378-1774-47fc-a3a3-103ae120a3c1",
+          "version": 4,
+          "type": "gallery",
+          "name": "Detroit Pistons",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "73447b75-434c-4eee-a68d-f6cecb8a844c",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "73447b75-434c-4eee-a68d-f6cecb8a844c"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "e8feed24-4bf6-41b5-84a7-6134f9160cc1": {
+        "role": "reader",
+        "value": {
+          "id": "e8feed24-4bf6-41b5-84a7-6134f9160cc1",
+          "version": 4,
+          "type": "gallery",
+          "name": "Golden State Warriors",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "7c579637-e84f-4ddf-ab72-78a0d414baf8",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "7c579637-e84f-4ddf-ab72-78a0d414baf8"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "52718a79-d339-4d26-873f-734004af8823": {
+        "role": "reader",
+        "value": {
+          "id": "52718a79-d339-4d26-873f-734004af8823",
+          "version": 4,
+          "type": "gallery",
+          "name": "Houston Rockets",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "e075359b-b750-46c4-86a1-1e76027e140f",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "e075359b-b750-46c4-86a1-1e76027e140f"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "63717bf3-3af6-4112-989d-acbe665ccf91": {
+        "role": "reader",
+        "value": {
+          "id": "63717bf3-3af6-4112-989d-acbe665ccf91",
+          "version": 4,
+          "type": "gallery",
+          "name": "Indiana Pacers",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "414ba2c7-d02a-4f5d-acc3-5512ff3f6b35",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "414ba2c7-d02a-4f5d-acc3-5512ff3f6b35"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "b6c6b669-659e-4487-8d48-8a538b8a0d82": {
+        "role": "reader",
+        "value": {
+          "id": "b6c6b669-659e-4487-8d48-8a538b8a0d82",
+          "version": 4,
+          "type": "gallery",
+          "name": "Los Angeles Clippers",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "bfc372e8-125f-4392-91b2-004532d1d808",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "bfc372e8-125f-4392-91b2-004532d1d808"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "85e4d626-09cc-45f6-9a28-07d5d490ca1d": {
+        "role": "reader",
+        "value": {
+          "id": "85e4d626-09cc-45f6-9a28-07d5d490ca1d",
+          "version": 4,
+          "type": "gallery",
+          "name": "Los Angeles Lakers",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "f6c7514f-b3bf-4a1b-99fd-8588eb0fdc13",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "f6c7514f-b3bf-4a1b-99fd-8588eb0fdc13"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "367ecf41-f124-4652-bb7d-464b3789aefd": {
+        "role": "reader",
+        "value": {
+          "id": "367ecf41-f124-4652-bb7d-464b3789aefd",
+          "version": 4,
+          "type": "gallery",
+          "name": "Memphis Grizzlies",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "db15dad7-0fda-4900-9c68-d2a4a99e362a",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "db15dad7-0fda-4900-9c68-d2a4a99e362a"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "d8f02741-e03a-4e40-91d7-0b821ee4014d": {
+        "role": "reader",
+        "value": {
+          "id": "d8f02741-e03a-4e40-91d7-0b821ee4014d",
+          "version": 4,
+          "type": "gallery",
+          "name": "Miami Heat",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "95c79219-0f51-43ad-895e-53f8eb08ee93",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "95c79219-0f51-43ad-895e-53f8eb08ee93"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "c14e33fe-19d2-4266-a935-0ef6528a77ff": {
+        "role": "reader",
+        "value": {
+          "id": "c14e33fe-19d2-4266-a935-0ef6528a77ff",
+          "version": 4,
+          "type": "gallery",
+          "name": "Milwaukee Bucks",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "f2379c53-d112-42a8-a248-fabebaa98337",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "f2379c53-d112-42a8-a248-fabebaa98337"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "bdc489ac-13dd-46bd-97f9-86866d76bc43": {
+        "role": "reader",
+        "value": {
+          "id": "bdc489ac-13dd-46bd-97f9-86866d76bc43",
+          "version": 4,
+          "type": "gallery",
+          "name": "Minnesota Timberwolves",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "62b3eea9-3084-461d-bbc1-c727360218ad",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "62b3eea9-3084-461d-bbc1-c727360218ad"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "7687ad1f-ccbe-4abb-8e95-a3685543aefe": {
+        "role": "reader",
+        "value": {
+          "id": "7687ad1f-ccbe-4abb-8e95-a3685543aefe",
+          "version": 4,
+          "type": "gallery",
+          "name": "New Orleans Pelicans",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "20a58853-197a-4909-8fb7-900b76cba9c3",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "20a58853-197a-4909-8fb7-900b76cba9c3"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "5c20b593-23d4-4884-9102-3ef3b1049273": {
+        "role": "reader",
+        "value": {
+          "id": "5c20b593-23d4-4884-9102-3ef3b1049273",
+          "version": 4,
+          "type": "gallery",
+          "name": "New York Knicks",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "e650d5c6-66c0-44d4-80da-76da908ca284",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "e650d5c6-66c0-44d4-80da-76da908ca284"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "c69e1799-88cb-4135-a10d-1ec4617f0aa6": {
+        "role": "reader",
+        "value": {
+          "id": "c69e1799-88cb-4135-a10d-1ec4617f0aa6",
+          "version": 4,
+          "type": "gallery",
+          "name": "Oklahoma City Thunder",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "71d3bf63-2eea-464f-aa6c-ccd52ba13856",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "71d3bf63-2eea-464f-aa6c-ccd52ba13856"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "cfe27a86-00d0-4322-b2db-2bc3e69269e2": {
+        "role": "reader",
+        "value": {
+          "id": "cfe27a86-00d0-4322-b2db-2bc3e69269e2",
+          "version": 5,
+          "type": "gallery",
+          "name": "Orlando Magic",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "2ed75575-6e95-4a55-9fcc-01853125be21",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "2ed75575-6e95-4a55-9fcc-01853125be21"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "5742eaed-3c36-495a-bde5-7d33cba0ddb5": {
+        "role": "reader",
+        "value": {
+          "id": "5742eaed-3c36-495a-bde5-7d33cba0ddb5",
+          "version": 4,
+          "type": "gallery",
+          "name": "Philadelphia 76ers",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "001b1958-7c2d-4a11-8f9d-ce1c0fe476a9",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "001b1958-7c2d-4a11-8f9d-ce1c0fe476a9"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "59a7246f-e923-4faf-9246-75851294365b": {
+        "role": "reader",
+        "value": {
+          "id": "59a7246f-e923-4faf-9246-75851294365b",
+          "version": 4,
+          "type": "gallery",
+          "name": "Phoenix Suns",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "f2a7b5f6-7cf5-4c14-bf61-597f45870469",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "f2a7b5f6-7cf5-4c14-bf61-597f45870469"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "e3d28d4f-e72e-430a-92f8-263cd01ea452": {
+        "role": "reader",
+        "value": {
+          "id": "e3d28d4f-e72e-430a-92f8-263cd01ea452",
+          "version": 4,
+          "type": "gallery",
+          "name": "Portland Trail Blazers",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "ef225d59-62fe-4e8c-bf78-01000aec6466",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "ef225d59-62fe-4e8c-bf78-01000aec6466"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "99cd3dfb-97fb-493d-bfaa-518bd872dda4": {
+        "role": "reader",
+        "value": {
+          "id": "99cd3dfb-97fb-493d-bfaa-518bd872dda4",
+          "version": 4,
+          "type": "gallery",
+          "name": "Sacramento Kings",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "e355c83e-efd6-43a9-9fbd-b8c863ce28aa",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "e355c83e-efd6-43a9-9fbd-b8c863ce28aa"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "5662c1f4-a011-4629-9616-3a2d53f6c9af": {
+        "role": "reader",
+        "value": {
+          "id": "5662c1f4-a011-4629-9616-3a2d53f6c9af",
+          "version": 4,
+          "type": "gallery",
+          "name": "San Antonio Spurs",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "14996a91-fff0-4234-bc9b-64250b59ae31",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "14996a91-fff0-4234-bc9b-64250b59ae31"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "93fe8a38-e32b-4c6a-87f2-03f1a438de75": {
+        "role": "reader",
+        "value": {
+          "id": "93fe8a38-e32b-4c6a-87f2-03f1a438de75",
+          "version": 4,
+          "type": "gallery",
+          "name": "Toronto Raptors",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "9e5ce76a-7550-449f-a7ed-4ade717ab7a7",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "9e5ce76a-7550-449f-a7ed-4ade717ab7a7"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "3815e8d7-e5f2-4399-a761-9ceaed565257": {
+        "role": "reader",
+        "value": {
+          "id": "3815e8d7-e5f2-4399-a761-9ceaed565257",
+          "version": 4,
+          "type": "gallery",
+          "name": "Utah Jazz",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "ceae18ce-490a-464a-ac7c-822df32c9a28",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "ceae18ce-490a-464a-ac7c-822df32c9a28"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "bd226193-3647-4ed1-bbe3-a5baa69954c7": {
+        "role": "reader",
+        "value": {
+          "id": "bd226193-3647-4ed1-bbe3-a5baa69954c7",
+          "version": 4,
+          "type": "gallery",
+          "name": "Washington Wizards",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "relation",
+                "value": "7611bc05-d4c6-41de-9a18-f9a1071d99c8",
+                "property": "p4nU",
+                "comparator": "enum_contains"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "7611bc05-d4c6-41de-9a18-f9a1071d99c8"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "43d091fb-a648-40cc-ae10-9d9784c34524": {
+        "role": "reader",
+        "value": {
+          "id": "43d091fb-a648-40cc-ae10-9d9784c34524",
+          "version": 13,
+          "type": "gallery",
+          "name": "University of Kentucky",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "text",
+                "value": "Kentucky",
+                "property": "jhk5",
+                "comparator": "string_is"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "Kentucky"
+                    },
+                    "operator": "string_is"
+                  },
+                  "property": "jhk5"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "1d79cc15-d040-43eb-9d65-7e35bafbcf74": {
+        "role": "reader",
+        "value": {
+          "id": "1d79cc15-d040-43eb-9d65-7e35bafbcf74",
+          "version": 7,
+          "type": "gallery",
+          "name": "Duke University",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "text",
+                "value": "Duke",
+                "property": "jhk5",
+                "comparator": "string_is"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "Duke"
+                    },
+                    "operator": "string_is"
+                  },
+                  "property": "jhk5"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "1a1863bd-f819-41dc-a228-831ca7a75d2a": {
+        "role": "reader",
+        "value": {
+          "id": "1a1863bd-f819-41dc-a228-831ca7a75d2a",
+          "version": 7,
+          "type": "gallery",
+          "name": "UCLA",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "text",
+                "value": "UCLA",
+                "property": "jhk5",
+                "comparator": "string_is"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "UCLA"
+                    },
+                    "operator": "string_is"
+                  },
+                  "property": "jhk5"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "9a43758f-21c5-4fc2-a4b5-0fc82971b79f": {
+        "role": "reader",
+        "value": {
+          "id": "9a43758f-21c5-4fc2-a4b5-0fc82971b79f",
+          "version": 23,
+          "type": "gallery",
+          "name": "University of North Carolina",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "text",
+                "value": "North Carolina",
+                "property": "jhk5",
+                "comparator": "string_is"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "North Carolina"
+                    },
+                    "operator": "string_is"
+                  },
+                  "property": "jhk5"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "d4102177-3cb3-4d36-8f39-92d84147f825": {
+        "role": "reader",
+        "value": {
+          "id": "d4102177-3cb3-4d36-8f39-92d84147f825",
+          "version": 8,
+          "type": "gallery",
+          "name": "University of Texas",
+          "query": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": [
+              {
+                "id": "b477edbf-0ebd-49d7-98e3-8d46bd0de0dc",
+                "type": "text",
+                "value": "Texas",
+                "property": "jhk5",
+                "comparator": "string_is"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "gallery_cover": {
+              "type": "property",
+              "property": "9DS!"
+            },
+            "gallery_cover_size": "small",
+            "gallery_properties": [
+              {
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "visible": true,
+                "property": "LH{*"
+              },
+              {
+                "visible": false,
+                "property": "gq#*"
+              },
+              {
+                "visible": false,
+                "property": "MYa3"
+              },
+              {
+                "visible": false,
+                "property": "jhk5"
+              },
+              {
+                "visible": false,
+                "property": "\"G]_"
+              },
+              {
+                "visible": false,
+                "property": "-@$\\"
+              },
+              {
+                "visible": false,
+                "property": "ZHAU"
+              },
+              {
+                "visible": false,
+                "property": "N!$K"
+              },
+              {
+                "visible": false,
+                "property": "9DS!"
+              },
+              {
+                "visible": false,
+                "property": "=7m2"
+              }
+            ],
+            "gallery_cover_aspect": "contain",
+            "gallery_title_visible": true
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "query2": {
+            "sort": [
+              {
+                "id": "0643c2be-0d39-43d0-b87a-aecfdd468edb",
+                "type": "formula",
+                "property": "=7m2",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact",
+                      "value": "Texas"
+                    },
+                    "operator": "string_is"
+                  },
+                  "property": "jhk5"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      },
+      "e1c31992-ad30-4ab5-a497-c69fc579e2ec": {
+        "role": "reader",
+        "value": {
+          "id": "e1c31992-ad30-4ab5-a497-c69fc579e2ec",
+          "version": 55,
+          "type": "table",
+          "name": "Raw Table",
+          "query": {
+            "sort": [
+              {
+                "id": "704f5583-a864-457c-be45-838fd85db6d2",
+                "type": "text",
+                "property": "ChHi",
+                "direction": "ascending"
+              }
+            ],
+            "filter_operator": "and"
+          },
+          "format": {
+            "table_properties": [
+              {
+                "width": 196,
+                "visible": true,
+                "property": "title"
+              },
+              {
+                "width": 244,
+                "visible": true,
+                "property": "p4nU"
+              },
+              {
+                "width": 114,
+                "visible": true,
+                "property": "gq#*"
+              },
+              {
+                "width": 168,
+                "visible": true,
+                "property": "MYa3"
+              },
+              {
+                "width": 200,
+                "visible": true,
+                "property": "jhk5"
+              },
+              {
+                "width": 200,
+                "visible": true,
+                "property": "([kx"
+              },
+              {
+                "width": 121,
+                "visible": true,
+                "property": "-@$\\"
+              },
+              {
+                "width": 200,
+                "visible": true,
+                "property": "\"G]_"
+              },
+              {
+                "width": 154,
+                "visible": true,
+                "property": "ZHAU"
+              },
+              {
+                "width": 100,
+                "visible": true,
+                "property": "N!$K"
+              },
+              {
+                "width": 136,
+                "visible": true,
+                "property": "9DS!"
+              },
+              {
+                "width": 172,
+                "visible": true,
+                "property": "=7m2"
+              },
+              {
+                "width": 192,
+                "visible": true,
+                "property": "IY\\1"
+              },
+              {
+                "width": 200,
+                "visible": true,
+                "property": "RyF."
+              },
+              {
+                "width": 223,
+                "visible": true,
+                "property": "i?W1"
+              },
+              {
+                "width": 200,
+                "visible": true,
+                "property": "LH{*"
+              }
+            ]
+          },
+          "parent_id": "25630754-1583-4e09-b080-787768ecff62",
+          "parent_table": "block",
+          "alive": true,
+          "page_sort": [
+            "c7ea3f1d-91de-451d-b271-271865442cc4",
+            "9ef5a892-bb30-4ce2-a124-af0a4ce308ee",
+            "8a3b0b94-7551-4836-af16-00e8babf7ad5",
+            "d26aeb07-2605-4293-9b12-38ebd8a4453e",
+            "ca9d5f4e-54b2-4a92-80bc-c943eff69f20",
+            "d75a9827-3ec6-4943-b361-10b8c4821ff1",
+            "c8e4d0dd-a27d-4798-bb58-531102e03706",
+            "129aaae2-0713-4c89-a3f7-d4b8bd3b6e6c",
+            "58a92c7b-b52a-4547-8f3d-a4250ff3416a",
+            "50395c04-2584-4a35-b3eb-f1057fdb5d3a",
+            "fef63b45-91ec-47d5-bd32-27d27dab419f",
+            "8fade8ad-a605-41ba-9652-57e4b064d0ff",
+            "331608be-0978-4f03-88f6-c74118a5538c",
+            "f5dde43e-3ff4-4643-9ceb-0277ae7e6428",
+            "c1ffed95-feac-4bb3-b45f-6dfdd1ca73f1",
+            "8bc1f4f2-8efb-4056-9253-a2cd313a0664",
+            "785631ae-a5a8-4d2c-9ce6-0fafb6c0930a",
+            "e3bf5e62-9eae-449f-a777-175e1def8b80",
+            "8f01a708-e394-40c0-8c97-48c93124fe27",
+            "0f57d9f2-b687-4a7a-839f-8ea642c1b34e",
+            "462b6820-aaf3-4cac-8a24-c961e2eb57b0",
+            "f2c125eb-97d0-40fa-b147-d325b8689f99",
+            "1f9fa735-a6ff-481c-aa72-0d824660dd36",
+            "e9ba7138-c112-4ffc-9a49-58cc79ca97ba",
+            "dcc5756d-5f36-4119-bb6f-f70674e57ed4",
+            "397a5b0a-78b6-4d44-98a9-3951d525611f",
+            "4f3a36b3-1817-4451-a692-73e6d2d9566f",
+            "5dcbf508-1f19-4ae5-9993-3f0e8876681b",
+            "7578f7b0-914a-4f66-9251-367af2ba0325",
+            "cd72e8a3-07a7-4f90-924b-704d275dd197",
+            "4b63e868-7277-40ed-b830-7d72d5bccf41",
+            "ac6f5d8c-83b8-40de-bd28-8f7fc4c0ef34",
+            "a26cf209-469d-42db-a726-c9d7ec8f809a",
+            "6c04e02d-76c5-4a7e-a421-b4ad0efc3e3a",
+            "6fe85469-68e9-4444-8159-f1e7bc54b77b",
+            "95dd3862-b518-4055-85f2-40a89c0555c0",
+            "d778dda5-6659-4462-9c19-d4d625d04974",
+            "f5dc3f45-5d23-4d42-8132-2230fd5d354c",
+            "e8325846-2c81-44bc-bffe-7be3e11b2fab",
+            "43f6ad58-8cc3-4875-8476-e8856727056c",
+            "de516906-d101-485a-bdcc-aa11b932ec87",
+            "8fe0836e-7ac1-41c3-904c-12b8d6b72f1a",
+            "53eff952-0112-4c9c-b230-59cb09bd101f",
+            "c08a13b1-d7c5-4e78-94ef-8b149c4660a2",
+            "040d887f-7e12-4041-85d0-2f01a651e4a6",
+            "fb7e8bc2-1c6c-4bb9-8417-f3f35ec81c40",
+            "65af3799-3b7e-4fc2-8dce-ba2c520f6bd6",
+            "4721be6b-2e37-484e-b7ab-78eda2ac1fc8",
+            "ddc12215-3538-4fab-8847-eb7b9ee906e2",
+            "f10dbc1a-5366-4da7-b41c-5c1bae52d817",
+            "6b38233e-c62f-4ce8-b959-26256e77246a",
+            "5316faee-fcf7-4a48-a572-40c7e809cce1",
+            "eb0bea4e-81dd-4de2-8266-6956bccdc212",
+            "f41f23d4-640f-4200-8567-c30a84548be8",
+            "c61dd34c-5c34-4f5c-bec5-f16ed5b89cb0",
+            "99936274-2eae-4def-92f6-34b46649dbd3",
+            "bfcfc733-44f6-43fe-bcae-43a436947aec",
+            "461091f8-f1f0-4e99-b969-a7e1e9b6ae3c",
+            "2f4720a8-875b-4980-9d14-54ec2d54b435",
+            "73d4b541-7a47-4205-a96d-6776f8eefec6",
+            "50988a22-3fc1-4cfa-9bcf-f53225e12ee5",
+            "bf1b7e65-98ef-4af1-aaf3-9e345ffab9f7",
+            "15e5035e-396a-4822-a510-e1a6f42f959a",
+            "8c33dcb8-abfd-480a-85fb-06b75799b9f2",
+            "be887255-8a1b-4de8-b2dc-fe62d4970276",
+            "e79b8489-eca3-4c8e-ae2e-97fc6aa1f42a",
+            "622e9abf-ca89-4a64-a43f-7633f2bcc157",
+            "ae647d94-0c24-43fe-9863-2735765193d0",
+            "c4a83c17-fc38-4e08-8edc-97d2fb8112c4",
+            "14861372-4966-4bd2-9241-15eb54af1740",
+            "6cd139ad-3bb1-497d-9866-fb8d97486279",
+            "eef49b94-5e83-4f4d-89cc-be1f3fc51194",
+            "21ee8a3d-77a0-4681-8d38-d68ab459596a",
+            "465066e3-be56-4ce0-9482-92fc538e7693",
+            "92079ec1-3110-4cd7-8ffa-e8500d5850d9",
+            "c291c341-6270-4429-911a-712692a7f27a",
+            "4fe86627-1790-4a53-9351-810fec002c5e",
+            "052887bd-7623-4b48-b5ec-84c646a1cf1b",
+            "83d039b4-d75b-433b-bf0a-6abb0d42d7ab",
+            "203c29af-2b16-43cb-a846-db74eced0a3f",
+            "bd458279-307c-4a15-8838-42e6cfa7ffee",
+            "0cf08062-1177-4438-95ca-f08ffa08f68b",
+            "9e01bab7-4ea9-4cc8-aca3-4b5588c9748b",
+            "4fe48fff-7247-4872-9df0-0ae1bd512e7b",
+            "5bdac465-4c43-4d58-88be-5f83a2ab2f43",
+            "e744573e-3e3e-4d72-bf70-abc408a988f7",
+            "6ad51635-0f9b-4f01-a6b2-7ce5c2e5dd2f",
+            "d6c06029-acde-44e1-836f-e1486ebede6e",
+            "766b743c-1aa6-468f-b94c-a8d78c27d78e",
+            "1eda32b5-dbb0-4f9c-b4b7-916beb8644df",
+            "abb057ce-1ce2-4534-b5dc-dd7abc27fa72",
+            "07610753-46a4-4610-bc36-d250db60a35d",
+            "bebb6cc0-96b0-4123-a8fc-b98faa4ad5ca",
+            "9eabc0da-62ca-4263-9b37-237fc821d42e",
+            "9a3b3071-f994-4fd2-8e31-495d87617b8d",
+            "f1740d6e-aecc-46b8-9593-c03ac98428c2",
+            "139ac7d7-30d5-4b5e-9393-7a282d8ff635",
+            "dcda924e-8b52-4461-ab5a-6593ced99dba",
+            "a0a1cd9a-71bf-409d-8633-691ed657b5af",
+            "e5fa63eb-9a90-4393-9559-6d468a45713b",
+            "c6932a55-2df4-4c14-ae50-78a45e6e847c",
+            "d068369f-757a-4365-b78e-6bea4a7f929f",
+            "1f0cc211-400a-4a31-bc20-ede8a7ee06ad",
+            "6e391c53-f569-4ecc-9447-45c3b5e81205",
+            "36030fb8-b864-4f8e-a81e-27086d8c4b42",
+            "8131d1f8-61c8-4dc5-be92-d0725f165ea1",
+            "0a9655db-94cf-4b07-8414-18b2c12b1f88",
+            "54aa4736-d952-4873-a1c0-eb3a9985a9b3",
+            "f5401633-95dc-4884-b5be-f2ff895e2930",
+            "ffc132d9-6f51-4100-8de8-ffd44f07bb1f",
+            "17c847ff-bdbb-4c2a-a00f-6043f22204a1",
+            "5d092eea-2814-4a33-bcd7-2077b149b831",
+            "9b522935-900a-4649-aacc-f5f50d455118",
+            "f3f7f355-52a9-4931-b7d2-19b637b6ed02",
+            "36d2d68c-71da-44ba-8421-b7e57e34bb07",
+            "1b3f747d-80d4-484c-90e1-e1d56b7bd3f6",
+            "28141942-a4be-4bab-a43b-da51ff36d8b3",
+            "041482e3-a3a4-41c4-a30d-38f1621a45f8",
+            "49b2b551-8b85-4bdb-bd0b-484a068b29c3",
+            "5267f716-9b46-4784-81cc-b6227f932ccb",
+            "e55031d0-8855-4f6c-a937-e9e55cb665b9",
+            "af6fed24-d7a7-4279-a371-141b916f29c9",
+            "f99806d7-bcd6-4c68-9084-bb60e317e3a7",
+            "6c4293fd-e16e-4d5a-9171-b0a6f7e03998",
+            "aa37a93c-ecad-45a1-90d5-3df954c7fa40",
+            "6cb98fa9-927a-42db-a7df-665020bcb456",
+            "57e1309d-433d-4356-a397-c6ffcb3038b5",
+            "bf7af6a2-79f0-44f0-9355-0099157e7883",
+            "235ee243-e12e-4d0c-b044-5ae62d261fe4",
+            "b0ead175-abb3-4fc1-9338-f7ef9c77036b",
+            "ba1e1e72-dd81-4ca3-a042-832d08c0db64",
+            "e26d6bd2-6f2a-480d-913d-2ecd6efc4c03",
+            "fac1d890-740a-4c57-bfd6-4612ec1e18cc",
+            "692d1af4-6523-4c4c-82e7-fed8faa29688",
+            "654f1d0e-1c4a-4b68-abf0-49f82690555a",
+            "55e81f47-1606-46be-8164-ca014eeca0f1",
+            "858e3b08-f5fa-44d3-9579-d31a1b37997e",
+            "c2825fad-7403-4f4a-b251-302fca95954d",
+            "947682f7-7e61-4583-a0f4-70280db629f0",
+            "f3c1f8ce-34d0-4816-ac70-bf77c0739c25",
+            "e1986719-1c20-431a-9c69-292a98a2f986",
+            "efdf0752-0130-49a1-a9f2-e4b21b0e720e",
+            "004bbdd1-543c-4a36-81c2-4bffa97269e8",
+            "62f5cbb8-df1e-4288-b8d7-b0a4eb141911",
+            "8812937a-7b9f-4e59-92dd-72d80b0f0150",
+            "2ccbad8c-b6ce-4092-b56e-67556e19834e",
+            "453c7312-d23c-4a09-8f7f-019931287567",
+            "726b87b3-bc9d-4af4-a804-03f1be3340fd",
+            "aa4fa68c-b98f-4838-9e6a-930d58ecac2d",
+            "676a23d9-5b72-4846-8a39-d5ec6893fda0",
+            "effaf7b4-d44f-4f76-87fb-ddb55e4f235d",
+            "1c4af320-8de1-4fb8-a0ed-3e3998023c85",
+            "b40cda73-b89a-44fc-8840-78aff8792427",
+            "6933a5d4-24ef-4705-a0e7-aaf627668d4e",
+            "a9747787-f2d7-48e0-ac80-2ca1c2bec19e",
+            "65d84d86-39bb-4171-af71-05f99707bf85",
+            "8a9f4000-5840-4726-b31d-566ba40d3f44",
+            "dedf24ff-d412-44f6-a7b7-009b7691f8f8",
+            "f17e0ebf-c690-4fbe-9aef-32f7c1e0242d",
+            "4aee59ce-3c76-4cb5-b720-545266a1a1f2",
+            "56aaad71-3013-4c49-b37c-5c227c79f299",
+            "9a266d39-ce62-49b0-8715-84afb16f6a41",
+            "6db88bd8-fcfa-4409-8260-9192d26e4596",
+            "d08454cd-0889-457a-ab90-2f4c52d1fc4a",
+            "001a3b09-88e9-4a6a-8c90-e524a04c2f27",
+            "a1bed86a-7bef-46d5-9932-4e94c8c092ba",
+            "0763d43d-70c9-4ad4-ada5-cb0374b8d730",
+            "5ef2821b-a547-45d8-b1ba-fcebe8adacc1",
+            "e6ebae0a-867e-4aa9-8449-45b425503ad7",
+            "b49c42f5-fe7c-4c23-aa9a-ebdd7cb4822d",
+            "699cc67e-a9fc-4cbb-a264-bac18dc422f2",
+            "1a04ee78-9062-4483-92f9-a812dca78f08",
+            "d6641250-13c6-4c2c-95e5-e04bfe2d7338",
+            "923fddb3-f155-4ed0-8f73-4b35f548313a",
+            "1ac05e78-817b-4def-be68-e4abf9931099",
+            "f41fccaf-fdaa-4baa-8696-31b6ecad12f7",
+            "4fc14aba-c8c2-4fc6-ab5a-706f9e5722b9",
+            "849aca7d-95ff-4a55-993b-545fbb024e9f",
+            "9afef1ef-b1eb-4afa-bc0a-a529bd0980e5",
+            "5d6c4bdb-7e33-4f83-a09a-94729a73628f",
+            "1cb564d0-2918-4625-8c82-1812df38e104",
+            "e652949a-bef8-43f1-baa9-2d760b23deb1",
+            "d3981dcf-4829-49f5-9a51-b88a202b91a4",
+            "aca8c73a-ed85-4cbd-8af9-9ea099791fbb",
+            "477de7da-a3e1-4c46-9e3a-5952af73e44b",
+            "61f6ec91-aac3-4211-bd15-f6e85e3800bd",
+            "b377bc3f-7e1a-438f-8a51-39ba81453826",
+            "1893193b-bdb6-4531-9fee-d9f4405e94df",
+            "af144d64-bac6-47ad-afea-5353bd445047",
+            "116d9fd5-23d5-4b40-a5f5-4d17c3ec4878",
+            "bade9948-e8d0-4706-b135-f4ac402f363c",
+            "053abff1-2986-4ff9-ba0d-dc3d9eca8a73",
+            "dfc56d92-0eb1-4da1-a9c4-7079b85a65c3",
+            "6160cdcc-b421-4bb8-b65d-2b47a89f59af",
+            "db2d6578-3120-4987-ae63-c865722c5b32",
+            "e0019987-0da1-43d0-8dd9-eef326282b49",
+            "bc2c88f9-b011-4e06-a493-d8ef870b3b00",
+            "458a640c-0440-4bab-800d-6addb1fce4a2",
+            "3a6b159d-905d-4d63-a623-e85ad03ce964",
+            "e6349b92-5944-4be7-8a47-5851f4d19d09",
+            "5426599c-94a1-4306-a35f-a07a5c0d19eb",
+            "8a87d4a3-ddb0-47f1-9346-488e0dd7ee70",
+            "95b21335-9403-4491-b07e-dc7aa7b4831b",
+            "033f25e6-a8f6-4ba7-8b56-508e95be5f15",
+            "57a4a7a7-6c0b-4024-b4e0-77698d8e9d42",
+            "734f8ebc-e117-40d9-b39a-e46578ef805e",
+            "e8bb9f90-8d11-4d4c-bf02-50be069d3497",
+            "7f32bc1b-7598-47d2-88ed-692d1cdf2f1a",
+            "7f4b610d-8ccc-4a6e-859a-9af750ef197c",
+            "aa76e519-6aed-470c-87d5-00d28fc8e5d1",
+            "db67ff57-37ad-49aa-9acb-928996d16aca",
+            "0917ae4f-d544-4e50-8b56-0d41ebb1d3ee",
+            "c936e013-e4b8-491b-b3c0-4111619bb0c4",
+            "c2e04e3d-74d3-47a0-b4ea-0c2bf58ebf2e",
+            "59da3e17-f388-428d-a7a5-ed4ffdf2863f",
+            "f44230a0-9778-4e33-a586-bc78afb659b4",
+            "348cef4e-a2f3-4339-8fde-dd9b5434955b",
+            "2e882951-6345-4584-92cc-bb496a0832a9",
+            "d7574446-5fef-4bd3-aabb-1efb11d790b1",
+            "2650a90e-d204-4817-b86a-f96156bc42d7",
+            "1df0cb61-e72f-45de-9778-f17a6a7faa02",
+            "d045ec1f-c1df-48c7-93c9-b7c07dfa55ae",
+            "d4ef28bc-ceec-46b1-ac94-d83d05008953",
+            "d814bdb7-8fe8-497d-bdfd-11c32736b4bd",
+            "e47dfd5d-eff8-443f-997e-d4f87df4eba3",
+            "1b47d758-678d-44bf-8fe4-e432618b6282",
+            "1d2cf72f-e1cc-4a26-bfd8-d37598b6bfa0",
+            "07238e54-8e66-44a7-8a1e-116238320caa",
+            "4637d950-fddd-46ff-831e-9641df3253cd",
+            "53452992-30fb-4120-b21a-db76e99ab839",
+            "a2cead6d-b40d-4882-99a5-0770a22c618b",
+            "36ad2e36-890c-4263-bb06-57882acb8e92",
+            "7be223f5-d93c-4536-b450-bcff98b777c5",
+            "668439ae-81b2-4f07-802c-4c2dc2109a31",
+            "7ed2188a-e376-45ad-b032-ce4b72129c6d",
+            "7ba6a6ed-f214-40c1-8031-ed5a7d4dc5ed",
+            "23422a36-f518-4e0b-aec8-e901a9617e10",
+            "f76af635-59d6-4321-a1a5-254314c82abf",
+            "d539802b-e51c-4187-8061-b8b670f083a7",
+            "d29887cc-0496-4f13-9780-2dec88465fd3",
+            "5994f819-887e-4e3e-b7dc-0095f0b4df7d",
+            "3cb90950-bff5-4557-951a-090990a2c8f9",
+            "a246b542-87de-4c11-af6b-ef6c87c04b25",
+            "e9fa60a7-3b95-44bd-bcb3-398227dc0d93",
+            "95a42416-cc68-417c-abaf-0987a2eee8d4",
+            "eeeca8b7-af12-487c-aaab-ab3fbbf6ab4c",
+            "9bf37264-5772-454c-9406-b7d220a8c5cd",
+            "c0cf46e3-3c12-49f1-a8fd-eeb01d715a38",
+            "3e605533-879f-4167-972e-1454c44eb0fb",
+            "1ba167a8-2d0a-40fc-a5c7-f62b8858e715",
+            "97b68898-a0a4-447c-b144-5ccb91a8684e",
+            "c3d50be3-8ba7-4a1b-a341-cc096ed6130e",
+            "caf05638-c338-45e2-8708-69d11382e16e",
+            "0bd29c4d-0c75-4a36-8803-646148c9fc18",
+            "0648882a-df3f-4b7f-924e-ae14ad7d4ccb",
+            "49f89791-85b4-4cd1-98f0-2219f96dfe7e",
+            "9cbf50b4-1237-47a4-affa-332d83ada494",
+            "390c32a6-f4b5-4120-84a3-d1a85c88c18c",
+            "bad715e5-9ed4-4105-894a-54dbb9cb6731",
+            "22e7dc5f-a5e3-40cf-87c4-762a57a2ef55",
+            "b8dcb266-39f8-418e-95e4-37dc9b183b3b",
+            "0240087b-223d-4c18-aa50-87e72836565b",
+            "73e3c5c0-0dc9-4cbe-b7fe-afa40d33a550",
+            "9fb342a5-281b-43ca-9ef6-0b5c5c1ee2ed",
+            "081f52dc-abad-4119-b79e-94b155327d62",
+            "f40275d2-3c48-49ab-82f7-8f4032e95452",
+            "d7a971e2-2ae6-43ce-ba54-8356afc680b9",
+            "0b0bc477-fe3c-46d9-8b4d-0558d052ad35",
+            "1145281e-c801-4d5a-85e6-a65edc2f76f0",
+            "b7cdb0ca-34e3-456a-bb24-4f63f04627fe",
+            "2e35e5fd-1f19-4832-a717-e9d0217e0902",
+            "17ce2264-a0bc-4cd7-a1b4-4c4fe0dfc746",
+            "6f337686-c8a2-466f-ace0-ffd050d3ae1f",
+            "518bf55c-e3f4-4078-96a0-92301c95ab02",
+            "81e021ae-d175-4d6c-aeeb-c934ac0b3ac6",
+            "39615d67-a5ba-4766-b1de-d5f2ccb262be",
+            "33074977-d5e8-40aa-8cdb-8e7f82ba3bf2",
+            "f5a4d04f-31e7-4d10-99f3-bd90b6fac5e8",
+            "64423602-a7b7-49f8-b986-6e26ec296044",
+            "6eaab6b4-38bb-4f5b-bdd0-24f53f791cd6",
+            "badb5fbc-a2a3-4f65-af67-1a85e1acb1d9",
+            "0f6bf1b5-3152-4620-9ca6-c70cc9220146",
+            "f877266a-4d95-45dd-ade4-8ac248a52dbc",
+            "680ce12f-b1a1-4696-ae20-c9d20a36fb8a",
+            "fb6f0fae-aa51-423b-8118-655f91b2a171",
+            "3ef4ffb1-40dd-4c0d-9094-37c23c181c5f",
+            "f506dae2-41fe-4c07-81ce-452ef509aee5",
+            "57f0d621-3035-4676-8e64-0bba57105ce3",
+            "fb34269c-7388-439e-8c63-29735124e448",
+            "bc125aeb-c287-4282-a196-d34cb432298e",
+            "ae68ad50-b170-4e2e-8913-a9fba4fb6685",
+            "217469c1-0a42-4f90-a2c7-3aed5ac01ac2",
+            "7cfcaa96-bb56-4646-8bad-cc8fd58aea57",
+            "93ee0f76-145b-4283-906b-bc6e1f9d74cc",
+            "31d71a35-0697-4d79-9788-0a0aece5a9f1",
+            "91bd4399-4e91-418c-9906-b360a4a32107",
+            "e82bcf69-7ab8-4716-962a-a990a1320c68",
+            "78fc64d5-8a93-4458-b31d-8783a08480a6",
+            "7b029780-64dc-4019-a040-ab21b1ac175e",
+            "e7190a3a-132e-48a2-8660-e7df6da0a1d5",
+            "1fb18673-c269-41dc-9588-2adc35ebdc53",
+            "159ba45a-670d-4a0d-bfd2-d54146e72740",
+            "3ab63431-c603-4693-ab9e-e6d58148df7d",
+            "f006a1e4-3bdb-4882-a640-db64b88f00c0",
+            "781dbbf8-028b-401f-912a-ec0984a7e884",
+            "ee43e779-ef6a-44e0-b390-b27a73e3a8f0",
+            "48fd037d-56f5-460a-b324-ad7d6cc07e45",
+            "bf120f14-3973-44be-aa6e-57e9fd7f99f0",
+            "2cc221c5-bad1-4d70-8fca-6dbaa28ef17d",
+            "0dbd808e-acde-46af-b341-c509726914bb",
+            "5903bd9d-026a-41b2-ae39-58c7348a9167",
+            "d82575ca-95bd-4bd1-b430-e3af06d1cc57",
+            "26541856-88cd-47bb-9df1-af7ff478859d",
+            "02bbf5ab-e2c7-48f5-b782-145a5f1551e5",
+            "67f33590-2cc2-4a1b-a5ad-5e065187934f",
+            "28c7d311-d951-42cc-9723-439f68448bff",
+            "9fed1e10-4d32-4482-bb8a-7332b87b794f",
+            "5e418731-93cc-4256-a193-4e4b6e0a8a50",
+            "dfd8bd11-873c-4778-8e08-02e5e6b3b6a4",
+            "be8a710a-78fc-400f-8852-72f976b04b4a",
+            "dd73c4c3-3b09-4701-801b-cc92eaf33e93",
+            "5f7db689-4d74-4a04-9feb-0fb1318a5793",
+            "cc7e9314-8d65-45f4-9f9b-f71626c610ba",
+            "8c4ed0e2-57f4-44c0-908c-45118a267a8c",
+            "ba8bccf0-3f72-4999-81de-654f8f521c83",
+            "9cc65a75-21a0-4c68-a6bf-da9291bde225",
+            "8fa213b5-2031-48db-8da9-94dc34699fcb",
+            "eb058479-abe5-4bef-ab45-fd8a02417c57",
+            "68e07892-66d9-4e15-96b2-c169c270e81a",
+            "6c933f98-253d-4db5-8dc6-7600ee8c4346",
+            "1c8ba9c0-052f-4d23-9f97-5ba6b88dee30",
+            "9b8b837a-085e-4840-a3b0-a669167f7268",
+            "c502ac7c-4f87-4dc1-b0a5-8eacba5ce865",
+            "60bfa5fc-f2f6-4af2-bcec-eee315cad899",
+            "1fc82e99-08b1-4275-8c3b-cf75f9d9a3c1",
+            "32c355a9-ad70-4738-b27e-19357a1c59f7",
+            "c48d4fad-35e3-4c51-be9b-620c0203d6c0",
+            "58cc0600-d996-4946-b575-8d1891efba85",
+            "0b0d01f1-04bb-4024-aaf1-fd1a81b8315a",
+            "31dd97fd-a0a6-41e1-83b9-f2fb91c58550",
+            "18cdf4a8-a6b4-44b4-89dc-e787ec8e1bd6",
+            "21ba0c99-00bd-4ff2-b3bb-ddbebdda399d",
+            "712feb1b-3340-4276-9d72-1cbb957b12d2",
+            "746dc4dd-7b22-4777-b34c-0430315bfed9",
+            "4aa98c40-1dc2-4545-bdb0-116cbd4f8ece",
+            "48bda606-dc77-4e13-836e-c3e32ede5922",
+            "11442b43-4920-4104-a5a8-0dd806c70900",
+            "6c670f9d-c383-46c8-8bf8-6b9998d8c93b",
+            "4716d21c-42a7-43a0-a163-6efeb50b5e46",
+            "3d2134ed-9279-4195-876d-cb645a6870a8",
+            "98244082-609b-4e4c-82f4-3c5a62446688",
+            "bd3fad3d-eb60-4523-a725-3ec994b96165",
+            "e708b1da-967c-4d68-a6d6-a5987b5c83b3",
+            "897ef5d0-a209-49ee-909d-489af1423e15",
+            "5a380378-ae79-4be5-b887-dbda78444d9d",
+            "06e60f3a-dd9c-4934-986b-68c18987dac1",
+            "e250707e-beee-4f50-a9f4-01ea03186929",
+            "e4a178c4-0d0d-4c5d-9f90-ed16b53c60fa",
+            "a5611170-3b44-4d9b-aae5-9d7002b673cf",
+            "edfbad32-801d-4ce4-ae61-fb5cb0240ff3",
+            "44bad171-b4ac-44b9-ad58-b83c95efc455",
+            "b1ed6778-ccb0-461e-917c-ddd64e0af148",
+            "aff15622-7df6-4978-b040-d9cb89dc270d",
+            "2ad5c149-4539-4f0e-8a36-4f6bae9540a2",
+            "b087f212-0ed6-4b35-9650-bdc18e68b030",
+            "378291b3-7b98-4444-98df-07af3a99989a",
+            "96406da9-b28b-4899-8885-9883f6909ed6",
+            "2758897b-91e1-41f1-8360-ad7872e8c15b",
+            "5049a1e2-4929-46f6-9fed-f36956469df6",
+            "18155006-506b-4529-9ef2-0cd45a8426ac",
+            "35f647fc-94d3-41e9-9f6a-8bd6a11cad7e",
+            "20e1fdd9-312b-466d-a1e9-96b88652fd7a",
+            "db5379f5-87e9-48b7-969d-4b82c1ce174e",
+            "d6a07a3a-00c3-4513-94ee-ac54b428377b",
+            "f14efca6-b40b-4411-8ceb-de5b87cb113c",
+            "00d0e651-e8c0-4b15-a11d-2b68bceb9119",
+            "9c196736-4326-44e9-b2b4-0bb3ec87a7f4",
+            "db024394-18b0-4b48-8ec6-c5dcbc623d36",
+            "bfd3f7a1-c119-45d2-acd3-77f5eea0e16f",
+            "2c122b60-b41d-4161-858c-4dae8e9f0b0b",
+            "8854951b-0821-4239-a8a4-82ec6c764c9e",
+            "5b33f792-195a-44d2-9bd6-f6738ff1f432",
+            "f4edd0e8-9106-46e1-a983-a390ce26a67c",
+            "25ebb018-1bf8-438a-9ba0-c16c033d527f",
+            "95a2889c-1a7d-406f-917c-8d9794314c0a",
+            "f16c45fe-f2c8-45a7-b181-d64605bd5840",
+            "50bcbdc0-0f62-4d11-9b8d-1acfb33064c9",
+            "b27d3c7b-dfaa-4ca3-8a58-76a71d4e1249",
+            "873b6533-79bf-4331-ace1-1c6d51fc9872",
+            "4eb264b8-df87-49f0-a0d1-af56908d0bb5",
+            "d2637657-3107-4ac0-ac4d-b86b1d112ae4",
+            "4c6173b9-d127-48e5-b06c-5b1199e1b668",
+            "56e9c69a-5b13-4de4-ac7d-97e28f43a907",
+            "578d7618-26a6-41b7-9593-9d43efca2816",
+            "f8fcb6f0-1d50-4de7-a0f2-040c1d8d295b",
+            "88e820c8-cf3a-483c-b70a-f95a1de175ba",
+            "ec525e26-c898-49a5-b930-de3ab98eedb4",
+            "5613c066-00fd-46cf-ad75-9c9de4fb773c",
+            "672ab20d-33c3-4863-b94a-a20b4191f9d2",
+            "3fc9c51e-1ae8-48de-90b3-2a8ebccdb3d8",
+            "dc0be7cc-c8a7-4197-9498-b80b0af2293f",
+            "8af58cfe-b746-4dc0-9dec-35824c67dcda",
+            "1f0a5f7e-8858-40e9-a779-303422f6d7be",
+            "0e968a69-2b1d-491b-903d-1a02946e6570",
+            "5d07bfbd-fd51-4cab-867b-39d67061c193",
+            "79888a00-2038-40c3-9bce-c952a63e0a04",
+            "0a858acd-bea3-4a53-ba1e-1ac8faaeb778",
+            "bacd4cb0-8b58-480f-88d1-fd4f92e43660",
+            "d450c617-527a-4b42-9d5b-425b0fe6cb24",
+            "9c709e5e-f447-4c97-94e4-8abd9c61fb8b",
+            "c7047621-214e-4bc0-9a23-12fcf26a11e0",
+            "dd379e8b-3896-41d4-95f8-fff5ab73de5c",
+            "db375bde-34fb-44ea-a3f2-75e41fa92e93",
+            "d580b754-59c2-4d78-9d6b-85d50ef5a343",
+            "a28988ab-b85c-4c07-9465-49a32a3bb34c",
+            "34dd9fa6-aa50-456d-bb01-971c18c127fc",
+            "cab48d12-642c-4cfe-ab61-140357800313",
+            "aadd128a-2301-4371-82fc-745b7f12d65b",
+            "91a215b7-d355-4eb1-b57c-3587c98e2625",
+            "e8afe3d1-89bc-4304-99c3-1432ac893c35",
+            "e93ad1c5-28f0-414d-bf38-2ee4942a179b",
+            "ef0f8cdf-1e74-412c-9a76-815ceadab388",
+            "02f0e434-bc26-41d3-85b6-3763ebf5508d",
+            "262921ae-76f4-4f85-b88c-f5d7389788d2",
+            "3cf9537e-e47c-456a-9cfb-1f6fbecc49b6",
+            "78823d5c-e17f-4f51-a648-a77626259cdd",
+            "ae1d419b-7091-4caa-a158-dfe922433575",
+            "28cf85e8-77d6-4ab2-8ce0-b8879dcf2525",
+            "5bbd362c-20d8-444f-ba64-e7db752bee6e",
+            "d4e42ee3-b07e-4f33-985d-72722f80714c",
+            "36d03792-4f52-4e05-af3d-2f1833d8a0f2",
+            "a69f0451-9638-486c-ae55-4a0c382e13f3",
+            "e61534e0-9e31-4153-b0d8-5608465751c3",
+            "caee42ee-0955-4621-85be-f98869854b5d",
+            "08ca98f2-bc53-487f-8185-d250ca885632",
+            "60e2f725-8a98-4c9f-826f-5c989dee34e7",
+            "8b9e79af-0a4b-4372-90a1-be49cb02dbd7",
+            "a47a1a8a-f853-4021-9578-638e8178fbb6",
+            "e1aaa0d5-73e4-419d-b5d6-e414ba0d4e55",
+            "3399ed56-0507-4e71-a964-6e59e87c24af",
+            "5ed8919b-a754-4695-a071-afffff2470b9",
+            "3aeabcf7-fb3e-4849-b1b0-72072f05e2cb",
+            "df11c1c9-550e-4b70-817f-b4762579fb7d",
+            "41edbc2a-e801-47df-8f51-7b26cfae051b",
+            "5957ea43-6466-4016-b68c-6c2ee342c0dd",
+            "edeba402-7b8e-4fe0-bdd6-1eb91fc7d0ba",
+            "3aa043eb-2935-4ccb-b248-d13a97f305cd",
+            "8b9c71b6-4a6c-4075-87a4-6878d3bdcb9f",
+            "163d744c-1fd0-4207-ae19-b1d8d6d4aecb",
+            "6c51dece-aadc-4e2a-8426-17f693128f0a",
+            "8fcd3b85-515b-4f64-b56c-0bfa25378c1f",
+            "1e03f644-396f-42ba-addb-3b1dbf2a513c",
+            "2c3c06fb-ba3d-4a58-8eba-4097a9011961",
+            "6d1d75e9-3195-45d2-9016-6a14f3882ef4",
+            "81c1ea34-eeca-446f-b042-3a4ed41702f6",
+            "3ee3ee0f-f0d2-4a1f-acb6-151b633296e3",
+            "f6030e27-cb91-41ca-8379-8a1dac44ffb6",
+            "fbfc7c0a-46e6-410a-b7c6-8d4efcd2b97e",
+            "9daa69f7-d373-4155-bcdd-21039929c55b",
+            "caed86cc-1745-4629-bc35-6387d012efc4",
+            "0a65cca9-fcff-423f-8bef-a4ce66aaece8",
+            "860c5666-66ec-4c82-94e2-650df0525be8",
+            "1ef2791e-d8a4-4234-8327-ba0bc066bf66",
+            "ef13dd90-81d0-4e13-917e-28cf366213b1",
+            "48ffab96-cf5f-4e84-8491-a6939e631a24",
+            "065d7fa4-c7d0-45b7-a95f-5535e48c7ff3",
+            "d905c027-6f15-4b54-a3ac-f5b89e9baf6b",
+            "ae9380a8-cd3f-407b-9547-969b65e0a936",
+            "46912a1e-c529-40e6-a4eb-e9e33af9eab8",
+            "dc108e7a-8ec5-4f1f-bca4-87060b5dd29c",
+            "d5747412-75f3-43c2-9dd2-e82956c0f11c",
+            "6930de26-1600-4bc9-ba77-6ee56e13a6d1",
+            "bbaed06c-3a14-42b8-964b-438f1fbacb7d",
+            "618353f9-1dcb-4894-bda3-a95780ef9897",
+            "e8d5499c-2b14-4501-90db-973142cc3b28",
+            "37532462-8d6d-4ffc-bea8-98b6643ee2e3",
+            "3bd9c235-f796-4c98-af0c-4534ce84d1b7",
+            "1999a4fd-f30c-44b6-8bad-002af81dda68",
+            "cb9d9d33-235b-48ed-aee1-94f4d2874e30",
+            "d1e18c54-56d4-448d-8693-0ab2b32b69b3",
+            "a8a84326-0219-43b1-ba4e-53c655c76ef9",
+            "eb6703eb-70ff-4d7b-abd0-925e1531a77a",
+            "ed8a572f-f2d0-460a-89d3-d475f33c5974",
+            "36249588-5867-4eab-a5d8-44479a1d7531",
+            "427341bc-79a3-4ec5-8987-a91dbd65e041",
+            "b8b5853c-f8ef-41b2-92cb-fca80e9531c4",
+            "a653ae64-a4d3-464e-bf8c-9f5acf9eeb97",
+            "7a9eb58b-4c83-4418-a5c5-702993da5eca",
+            "af584923-1332-4b4a-b6a0-d1edd5dea6a9",
+            "42627190-f17b-44cc-bf37-6480e44681ce",
+            "32002064-7d3d-4cbd-9a52-a9bcf3c61448",
+            "ed72b903-be42-4f83-bb75-688d6bfddf11",
+            "4f674cd3-80df-4dc7-b882-75f5f181cabb",
+            "a9d3d864-127d-44c1-86b3-4cc8dba3aacd",
+            "499b8f7f-007a-473e-900d-a641445ba1b7",
+            "19b92c37-9784-4471-b973-0e3953433fe5",
+            "e0f49706-84c9-412d-ae8a-8f0542fa890d",
+            "9dedabed-701c-4b05-b317-4b6b75a2481f",
+            "03bc6e86-ad24-4535-8b67-bedf868ec936",
+            "6d2cd5e5-cdd1-46d8-ad7f-ecca8a67c563",
+            "df813a44-8057-4304-bb08-71a3547bbf3c",
+            "d389225d-1ed7-4234-a83d-85eb3ed46c33",
+            "88fe3c43-ec2b-4804-b8ee-a6e085536b85"
+          ],
+          "query2": {
+            "sort": [
+              {
+                "property": "p4nU",
+                "direction": "ascending"
+              },
+              {
+                "property": "title",
+                "direction": "ascending"
+              }
+            ],
+            "filter": {
+              "filters": [
+                {
+                  "filter": {
+                    "value": {
+                      "type": "exact"
+                    },
+                    "operator": "relation_contains"
+                  },
+                  "property": "p4nU"
+                }
+              ],
+              "operator": "and"
+            }
+          }
+        }
+      }
+    },
+    "space": {}
+  },
+  "cursor": {
+    "stack": []
+  }
+}

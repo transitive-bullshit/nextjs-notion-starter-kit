@@ -1,0 +1,895 @@
+{
+  "cursor": {
+    "stack": []
+  },
+  "recordMap": {
+    "block": {
+      "067dd719-a912-471e-a9a3-ac10710e7fdf": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "content": [
+            "3478af43-8028-4002-be15-9ff1411ded2a",
+            "17b2fb8a-83fd-4cf5-ac21-6d90977c378b",
+            "9695cb5e-3786-4a79-92bd-46b11ca8b3a6",
+            "572fcaf2-d9d0-45c4-abcc-1b0aaf4fccb8",
+            "6139bb9f-5320-4227-bad1-6ec809e3653f",
+            "09779c11-04a2-4679-8080-be72c598dec0",
+            "6bad7d71-3fdd-4e42-bfcb-56f691b2175d",
+            "aa69255b-583a-46c1-a14c-260f74320d36",
+            "a0b5774c-2d19-4972-9fa3-6b9e268d9bf3",
+            "6d395f0c-5460-4ae8-a3ba-b4e8a81e0f98",
+            "de14421f-1391-4ac7-b528-fa2e31eb1455",
+            "72c5d33c-a466-42fe-aee0-6852cc57c588",
+            "3702a5d6-403d-4d58-b8a9-44a77ca26c70",
+            "e68c18a4-6190-4eb5-a2dd-c3748e76b893",
+            "54bf5661-1797-480c-951e-5c1f96cb06f2",
+            "2fea615a-97a7-401c-81be-486e4eec2e94",
+            "bcd8b8e8-e071-453f-ae71-6aba5fa3c7dc",
+            "faee7c8e-a191-4720-b556-072d1e75c1b3",
+            "705ea6dc-a839-4dd4-9d30-b651d0f4fe78",
+            "bc0b711a-7399-4d6b-b00b-110df0109896",
+            "d2535e08-c5f7-45a4-87e9-299cef2d1601",
+            "09cf8325-d1ef-42aa-8e67-3736bd21d720",
+            "ef06b2cf-ceaf-4765-8bce-ca446236cdc1",
+            "fb211cdf-87cb-4707-9d1c-e20419469915",
+            "f88a2c6d-876f-4332-abeb-b0768cc68c93",
+            "cf56cf3e-56e1-40d4-a5bb-fdc4bec75c47",
+            "10a9ba63-0123-4764-801e-795e3b1e4d6d",
+            "46740964-0378-475a-a001-b2898c4dc1af",
+            "596d4541-3e2d-40c2-8d24-300c0f38ba22",
+            "927b287b-679f-4a21-a79d-e1f451635d16",
+            "1f9c2a91-4988-4d8f-a4f2-4185de365a81",
+            "afab8851-cb1e-48e4-808e-2aa5fcabdc02",
+            "bb05fb9a-7e1d-43bc-b4bc-f082d7556b0f",
+            "cde50f96-5202-4a5d-a019-53d050ac0649"
+          ],
+          "copied_from": "dc6f890f-ec6b-4766-bd9b-616324904187",
+          "created_by_id": "bfe4e4aa-0528-4ca2-8620-9d1813ba92c1",
+          "created_by_table": "notion_user",
+          "created_time": 1591569510730,
+          "format": {
+            "page_cover": "https://images.unsplash.com/photo-1532386236358-a33d8a9434e3?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb",
+            "page_cover_position": 0.5,
+            "page_icon": "🔥"
+          },
+          "id": "067dd719-a912-471e-a9a3-ac10710e7fdf",
+          "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "last_edited_by_table": "notion_user",
+          "last_edited_time": 1595420160000,
+          "parent_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "parent_table": "space",
+          "permissions": [
+            {
+              "role": "editor",
+              "type": "user_permission",
+              "user_id": "db401f86-4012-4d18-9445-236978ef32df"
+            },
+            {
+              "allow_duplicate": false,
+              "role": "reader",
+              "type": "public_permission"
+            }
+          ],
+          "properties": {
+            "title": [["notion2site minimal test"]]
+          },
+          "shard_id": 924403,
+          "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "type": "page",
+          "version": 113
+        }
+      },
+      "2fea615a-97a7-401c-81be-486e4eec2e94": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "content": [
+            "3cd6974c-fe3f-4918-bdbc-1f05e29aa76b",
+            "6d886ca8-7ab9-4c21-a16e-3b82b43a57fb",
+            "c8318858-2bf0-4c83-8a5d-f0070f8d81b7",
+            "abbef548-0c0e-4fdc-9287-fdbb5f821aea",
+            "71274cdd-003f-4661-9a1c-50007a670974",
+            "e0770ebe-2cbf-48f1-975d-76d300bb9531"
+          ],
+          "created_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "created_by_table": "notion_user",
+          "created_time": 1595419999724,
+          "format": {
+            "page_icon": "💠"
+          },
+          "id": "2fea615a-97a7-401c-81be-486e4eec2e94",
+          "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "last_edited_by_table": "notion_user",
+          "last_edited_time": 1596652020000,
+          "parent_id": "067dd719-a912-471e-a9a3-ac10710e7fdf",
+          "parent_table": "block",
+          "properties": {
+            "title": [["Collection Tests"]]
+          },
+          "shard_id": 924403,
+          "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "type": "page",
+          "version": 129
+        }
+      },
+      "3cd6974c-fe3f-4918-bdbc-1f05e29aa76b": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "created_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "created_by_table": "notion_user",
+          "created_time": 1595419980000,
+          "id": "3cd6974c-fe3f-4918-bdbc-1f05e29aa76b",
+          "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "last_edited_by_table": "notion_user",
+          "last_edited_time": 1596649260000,
+          "parent_id": "2fea615a-97a7-401c-81be-486e4eec2e94",
+          "parent_table": "block",
+          "shard_id": 924403,
+          "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "type": "text",
+          "version": 25
+        }
+      },
+      "6d886ca8-7ab9-4c21-a16e-3b82b43a57fb": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "collection_id": "2d8aec23-8281-4a94-9090-caaf823dd21a",
+          "copied_from": "5782b385-351e-4b18-9dca-6432e4a2c6d8",
+          "created_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "created_by_table": "notion_user",
+          "created_time": 1595420008792,
+          "id": "6d886ca8-7ab9-4c21-a16e-3b82b43a57fb",
+          "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "last_edited_by_table": "notion_user",
+          "last_edited_time": 1596656340000,
+          "parent_id": "2fea615a-97a7-401c-81be-486e4eec2e94",
+          "parent_table": "block",
+          "shard_id": 924403,
+          "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "type": "collection_view",
+          "version": 24,
+          "view_ids": [
+            "0c7e54c9-32c2-4ed0-9b6d-edbef5a54cba",
+            "ab639a5a-853e-45e1-9ef7-133b486c0acf",
+            "0f4b7e0e-ac5d-4ef6-ae23-b324459f0bc3",
+            "bdffa1d3-dc8f-4a5e-8772-9b1bc106e799"
+          ]
+        }
+      },
+      "71274cdd-003f-4661-9a1c-50007a670974": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "created_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "created_by_table": "notion_user",
+          "created_time": 1596226500000,
+          "id": "71274cdd-003f-4661-9a1c-50007a670974",
+          "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "last_edited_by_table": "notion_user",
+          "last_edited_time": 1596226500000,
+          "parent_id": "2fea615a-97a7-401c-81be-486e4eec2e94",
+          "parent_table": "block",
+          "shard_id": 924403,
+          "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "type": "text",
+          "version": 23
+        }
+      },
+      "abbef548-0c0e-4fdc-9287-fdbb5f821aea": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "collection_id": "efeb55b2-3085-4481-9445-b9082d11b26d",
+          "created_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "created_by_table": "notion_user",
+          "created_time": 1595420265864,
+          "id": "abbef548-0c0e-4fdc-9287-fdbb5f821aea",
+          "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "last_edited_by_table": "notion_user",
+          "last_edited_time": 1595420640000,
+          "parent_id": "2fea615a-97a7-401c-81be-486e4eec2e94",
+          "parent_table": "block",
+          "shard_id": 924403,
+          "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "type": "collection_view",
+          "version": 14,
+          "view_ids": ["0cdd3740-f8c3-4a4e-a953-9742eda52e71"]
+        }
+      },
+      "c8318858-2bf0-4c83-8a5d-f0070f8d81b7": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "created_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "created_by_table": "notion_user",
+          "created_time": 1595420220000,
+          "id": "c8318858-2bf0-4c83-8a5d-f0070f8d81b7",
+          "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "last_edited_by_table": "notion_user",
+          "last_edited_time": 1596651960000,
+          "parent_id": "2fea615a-97a7-401c-81be-486e4eec2e94",
+          "parent_table": "block",
+          "shard_id": 924403,
+          "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "type": "text",
+          "version": 2
+        }
+      },
+      "e0770ebe-2cbf-48f1-975d-76d300bb9531": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "created_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "created_by_table": "notion_user",
+          "created_time": 1596226500000,
+          "id": "e0770ebe-2cbf-48f1-975d-76d300bb9531",
+          "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+          "last_edited_by_table": "notion_user",
+          "last_edited_time": 1596226980000,
+          "parent_id": "2fea615a-97a7-401c-81be-486e4eec2e94",
+          "parent_table": "block",
+          "shard_id": 924403,
+          "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+          "type": "text",
+          "version": 7
+        }
+      }
+    },
+    "collection": {
+      "2d8aec23-8281-4a94-9090-caaf823dd21a": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "copied_from": "0c126cb8-a114-4220-8524-b07e035acd0f",
+          "format": {
+            "collection_page_properties": [
+              {
+                "property": "IYxF",
+                "visible": true
+              },
+              {
+                "property": "-Phs",
+                "visible": true
+              }
+            ]
+          },
+          "id": "2d8aec23-8281-4a94-9090-caaf823dd21a",
+          "name": [["Table Kitchen Sink"]],
+          "parent_id": "6d886ca8-7ab9-4c21-a16e-3b82b43a57fb",
+          "parent_table": "block",
+          "schema": {
+            ")2xt": {
+              "name": "Number",
+              "type": "number"
+            },
+            "-NUI": {
+              "name": "Files",
+              "type": "file"
+            },
+            "0rv;": {
+              "name": "Date",
+              "type": "date"
+            },
+            "3*Oe": {
+              "name": "Phone",
+              "type": "phone_number"
+            },
+            "IYxF": {
+              "name": "Multi-select",
+              "options": [
+                {
+                  "color": "green",
+                  "id": "e9207187-3729-4880-8318-388905441fe5",
+                  "value": "foo"
+                },
+                {
+                  "color": "pink",
+                  "id": "12a88aaf-1938-4034-964b-07c3e274c053",
+                  "value": "bar"
+                },
+                {
+                  "color": "orange",
+                  "id": "3235f917-4cd9-4f11-99f4-d129ff34af59",
+                  "value": "nala"
+                },
+                {
+                  "color": "blue",
+                  "id": "1ce6d339-ef04-4f59-87b2-b9d90bfd86fd",
+                  "value": "git"
+                },
+                {
+                  "color": "brown",
+                  "id": "5759b95b-6c88-41da-9aea-9d6d7f324507",
+                  "value": "baz"
+                },
+                {
+                  "color": "red",
+                  "id": "078abcee-6398-43dd-a826-8e3be5272d6c",
+                  "value": "abc"
+                },
+                {
+                  "color": "yellow",
+                  "id": "4e65926b-f43f-4eeb-a2f0-91154b8f3532",
+                  "value": "ghi"
+                },
+                {
+                  "color": "default",
+                  "id": "01f4a8ee-db00-48e8-83c5-48e65fe95aeb",
+                  "value": "jkl"
+                },
+                {
+                  "color": "purple",
+                  "id": "5d05d9c6-8141-4ac0-806e-de584bc1b994",
+                  "value": "mno"
+                },
+                {
+                  "color": "purple",
+                  "id": "98f11bab-1cd5-4a97-b816-eb9c36e5766d",
+                  "value": "pqr"
+                },
+                {
+                  "color": "gray",
+                  "id": "1f6ffdd8-3db0-4308-a1ae-0d51bec1e2aa",
+                  "value": "stu"
+                }
+              ],
+              "type": "multi_select"
+            },
+            "UA6Q": {
+              "name": "Select",
+              "options": [
+                {
+                  "color": "blue",
+                  "id": "913dfbf6-d00c-4bb5-88e9-eb98226249e7",
+                  "value": "foo"
+                },
+                {
+                  "color": "orange",
+                  "id": "9d07a8cd-12aa-41f0-a67b-396eee740cf3",
+                  "value": "bar"
+                }
+              ],
+              "type": "select"
+            },
+            "Y)hG": {
+              "name": "URL",
+              "type": "url"
+            },
+            "i>sK": {
+              "name": "Email",
+              "type": "email"
+            },
+            "title": {
+              "name": "Name",
+              "type": "title"
+            },
+            "uy^(": {
+              "name": "Person",
+              "type": "person"
+            },
+            "x\"Lr": {
+              "name": "Checkbox",
+              "type": "checkbox"
+            },
+            "~UNY": {
+              "name": "Text",
+              "type": "text"
+            }
+          },
+          "version": 39
+        }
+      },
+      "efeb55b2-3085-4481-9445-b9082d11b26d": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "format": {
+            "collection_page_properties": [
+              {
+                "property": "}y%e",
+                "visible": true
+              },
+              {
+                "property": "2HJ,",
+                "visible": true
+              }
+            ]
+          },
+          "id": "efeb55b2-3085-4481-9445-b9082d11b26d",
+          "name": [["Table Number Tests"]],
+          "parent_id": "abbef548-0c0e-4fdc-9287-fdbb5f821aea",
+          "parent_table": "block",
+          "schema": {
+            "'27V": {
+              "name": "Pound",
+              "number_format": "pound",
+              "type": "number"
+            },
+            ".?d,": {
+              "name": "Won",
+              "number_format": "won",
+              "type": "number"
+            },
+            "2HJ,": {
+              "name": "Percent",
+              "number_format": "percent",
+              "type": "number"
+            },
+            ";0w4": {
+              "name": "Yen",
+              "number_format": "yen",
+              "type": "number"
+            },
+            "G:/\\": {
+              "name": "Dollar",
+              "number_format": "dollar",
+              "type": "number"
+            },
+            "MQ8F": {
+              "name": "Euro",
+              "number_format": "euro",
+              "type": "number"
+            },
+            "n\\gc": {
+              "name": "Rupee",
+              "number_format": "rupee",
+              "type": "number"
+            },
+            "title": {
+              "name": "Title",
+              "type": "title"
+            },
+            "ycVN": {
+              "name": "Yuan",
+              "number_format": "yuan",
+              "type": "number"
+            },
+            "}y%e": {
+              "name": "Commas",
+              "number_format": "number_with_commas",
+              "type": "number"
+            }
+          },
+          "version": 54
+        }
+      }
+    },
+    "collection_view": {
+      "0c7e54c9-32c2-4ed0-9b6d-edbef5a54cba": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "format": {
+            "table_properties": [
+              {
+                "property": "title",
+                "visible": true,
+                "width": 155
+              },
+              {
+                "property": "~UNY",
+                "visible": true,
+                "width": 100
+              },
+              {
+                "property": ")2xt",
+                "visible": true,
+                "width": 103
+              },
+              {
+                "property": "UA6Q",
+                "visible": true,
+                "width": 122
+              },
+              {
+                "property": "IYxF",
+                "visible": true,
+                "width": 200
+              },
+              {
+                "property": "0rv;",
+                "visible": true,
+                "width": 200
+              },
+              {
+                "property": "uy^(",
+                "visible": true,
+                "width": 160
+              },
+              {
+                "property": "-NUI",
+                "visible": true,
+                "width": 135
+              },
+              {
+                "property": "x\"Lr",
+                "visible": true,
+                "width": 121
+              },
+              {
+                "property": "Y)hG",
+                "visible": true,
+                "width": 200
+              },
+              {
+                "property": "i>sK",
+                "visible": true,
+                "width": 104
+              },
+              {
+                "property": "3*Oe",
+                "visible": true,
+                "width": 113
+              }
+            ],
+            "table_wrap": true
+          },
+          "id": "0c7e54c9-32c2-4ed0-9b6d-edbef5a54cba",
+          "name": "Default view",
+          "page_sort": [
+            "3a30fcd6-fd7a-4450-8f74-f39a019e68d0",
+            "43fb2254-b7e3-412c-a461-566f7a83918e",
+            "3b506960-ea91-4b59-8e7c-f3c51e40529a",
+            "3fce55d4-2528-4d05-8af5-6f2bbc4af418",
+            "c755e6c7-dcdd-433b-9c4c-ac9b3119ae92",
+            "6bb42d8d-57b8-479e-b7f1-224eb7a868d5"
+          ],
+          "parent_id": "6d886ca8-7ab9-4c21-a16e-3b82b43a57fb",
+          "parent_table": "block",
+          "query2": {
+            "aggregations": [
+              {
+                "aggregator": "count",
+                "property": "title"
+              }
+            ]
+          },
+          "type": "table",
+          "version": 2
+        }
+      },
+      "0cdd3740-f8c3-4a4e-a953-9742eda52e71": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "format": {
+            "table_properties": [
+              {
+                "property": "title",
+                "visible": true,
+                "width": 108
+              },
+              {
+                "property": "}y%e",
+                "visible": true,
+                "width": 100
+              },
+              {
+                "property": "2HJ,",
+                "visible": true,
+                "width": 100
+              },
+              {
+                "property": "G:/\\",
+                "visible": true,
+                "width": 114
+              },
+              {
+                "property": "MQ8F",
+                "visible": true,
+                "width": 108
+              },
+              {
+                "property": "'27V",
+                "visible": true,
+                "width": 113
+              },
+              {
+                "property": ";0w4",
+                "visible": true,
+                "width": 100
+              },
+              {
+                "property": "n\\gc",
+                "visible": true,
+                "width": 100
+              },
+              {
+                "property": ".?d,",
+                "visible": true,
+                "width": 100
+              },
+              {
+                "property": "ycVN",
+                "visible": true,
+                "width": 100
+              }
+            ],
+            "table_wrap": true
+          },
+          "id": "0cdd3740-f8c3-4a4e-a953-9742eda52e71",
+          "name": "Default view",
+          "page_sort": [
+            "f053cea9-65b3-4f2b-bec9-2cc0521069b0",
+            "5b2a70e6-4fff-48d5-9403-04b0d3f48802",
+            "0ffcec42-8b65-49d9-b783-229267b933a9",
+            "d965d0d4-23e8-4b60-a738-b1805a800f08",
+            "dc20e995-2b95-450b-948c-92b67a655372",
+            "407f9e3e-62ab-41c9-adb2-7b86e8d4470b",
+            "ab47f3df-0dab-4b85-972e-eaba152c4ce4"
+          ],
+          "parent_id": "abbef548-0c0e-4fdc-9287-fdbb5f821aea",
+          "parent_table": "block",
+          "query2": {
+            "aggregations": [
+              {
+                "aggregator": "count",
+                "property": "title"
+              }
+            ]
+          },
+          "type": "table",
+          "version": 26
+        }
+      },
+      "0f4b7e0e-ac5d-4ef6-ae23-b324459f0bc3": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "format": {
+            "gallery_cover": {
+              "type": "page_content"
+            },
+            "gallery_cover_size": "medium",
+            "gallery_properties": [
+              {
+                "property": "title",
+                "visible": true
+              },
+              {
+                "property": "x\"Lr",
+                "visible": false
+              },
+              {
+                "property": "0rv;",
+                "visible": false
+              },
+              {
+                "property": "i>sK",
+                "visible": false
+              },
+              {
+                "property": "-NUI",
+                "visible": true
+              },
+              {
+                "property": "IYxF",
+                "visible": false
+              },
+              {
+                "property": ")2xt",
+                "visible": true
+              },
+              {
+                "property": "uy^(",
+                "visible": false
+              },
+              {
+                "property": "3*Oe",
+                "visible": false
+              },
+              {
+                "property": "UA6Q",
+                "visible": false
+              },
+              {
+                "property": "~UNY",
+                "visible": false
+              },
+              {
+                "property": "Y)hG",
+                "visible": false
+              }
+            ]
+          },
+          "id": "0f4b7e0e-ac5d-4ef6-ae23-b324459f0bc3",
+          "name": "",
+          "parent_id": "6d886ca8-7ab9-4c21-a16e-3b82b43a57fb",
+          "parent_table": "block",
+          "type": "gallery",
+          "version": 15
+        }
+      },
+      "ab639a5a-853e-45e1-9ef7-133b486c0acf": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "format": {
+            "list_properties": [
+              {
+                "property": "0rv;",
+                "visible": true
+              },
+              {
+                "property": "x\"Lr",
+                "visible": false
+              },
+              {
+                "property": "i>sK",
+                "visible": false
+              },
+              {
+                "property": "-NUI",
+                "visible": false
+              },
+              {
+                "property": "IYxF",
+                "visible": true
+              },
+              {
+                "property": ")2xt",
+                "visible": false
+              },
+              {
+                "property": "uy^(",
+                "visible": true
+              },
+              {
+                "property": "3*Oe",
+                "visible": false
+              },
+              {
+                "property": "UA6Q",
+                "visible": false
+              },
+              {
+                "property": "~UNY",
+                "visible": false
+              },
+              {
+                "property": "Y)hG",
+                "visible": false
+              }
+            ]
+          },
+          "id": "ab639a5a-853e-45e1-9ef7-133b486c0acf",
+          "name": "",
+          "parent_id": "6d886ca8-7ab9-4c21-a16e-3b82b43a57fb",
+          "parent_table": "block",
+          "type": "list",
+          "version": 3
+        }
+      },
+      "bdffa1d3-dc8f-4a5e-8772-9b1bc106e799": {
+        "role": "reader",
+        "value": {
+          "alive": true,
+          "format": {
+            "board_groups2": [
+              {
+                "hidden": false,
+                "property": "UA6Q",
+                "value": {
+                  "type": "select"
+                }
+              },
+              {
+                "hidden": false,
+                "property": "UA6Q",
+                "value": {
+                  "type": "select",
+                  "value": "foo"
+                }
+              },
+              {
+                "hidden": false,
+                "property": "UA6Q",
+                "value": {
+                  "type": "select",
+                  "value": "bar"
+                }
+              }
+            ],
+            "board_properties": [
+              {
+                "property": "title",
+                "visible": true
+              },
+              {
+                "property": "x\"Lr",
+                "visible": false
+              },
+              {
+                "property": "0rv;",
+                "visible": false
+              },
+              {
+                "property": "i>sK",
+                "visible": false
+              },
+              {
+                "property": "-NUI",
+                "visible": true
+              },
+              {
+                "property": "IYxF",
+                "visible": false
+              },
+              {
+                "property": ")2xt",
+                "visible": false
+              },
+              {
+                "property": "uy^(",
+                "visible": false
+              },
+              {
+                "property": "3*Oe",
+                "visible": false
+              },
+              {
+                "property": "UA6Q",
+                "visible": false
+              },
+              {
+                "property": "~UNY",
+                "visible": false
+              },
+              {
+                "property": "Y)hG",
+                "visible": false
+              }
+            ]
+          },
+          "id": "bdffa1d3-dc8f-4a5e-8772-9b1bc106e799",
+          "name": "",
+          "parent_id": "6d886ca8-7ab9-4c21-a16e-3b82b43a57fb",
+          "parent_table": "block",
+          "query2": {
+            "aggregations": [
+              {
+                "aggregator": "count"
+              }
+            ],
+            "group_by": "UA6Q"
+          },
+          "type": "board",
+          "version": 4
+        }
+      }
+    },
+    "notion_user": {
+      "bfe4e4aa-0528-4ca2-8620-9d1813ba92c1": {
+        "role": "reader",
+        "value": {
+          "clipper_onboarding_completed": true,
+          "email": "timo.lins@gmail.com",
+          "family_name": "Lins",
+          "given_name": "Timo",
+          "id": "bfe4e4aa-0528-4ca2-8620-9d1813ba92c1",
+          "mobile_onboarding_completed": true,
+          "onboarding_completed": true,
+          "profile_photo": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/42beb486-d735-4841-b3df-5d065de407c0/ad83a4b7b2a2c4472c1b5d6489c177b9.png",
+          "version": 19
+        }
+      },
+      "db401f86-4012-4d18-9445-236978ef32df": {
+        "role": "reader",
+        "value": {
+          "email": "travis@saasify.sh",
+          "family_name": "Fischer",
+          "given_name": "Travis",
+          "id": "db401f86-4012-4d18-9445-236978ef32df",
+          "mobile_onboarding_completed": true,
+          "onboarding_completed": true,
+          "profile_photo": "https://lh3.googleusercontent.com/a-/AAuE7mD7V0l26Q8fOvQCQEvttqbWdCMrmYtLTMZgWN-1qOP3DiLHdM1gD0DaLYfCJ_fRVJg5Zt5ucYavpz67Okog7FyTF7-LflxWvCIuloAvfpIiDuZC5BkWB6AkLbAwUbMtb0MFJ-auTFWzln0K7X092ZFftasLqaoGlHy4k6AsgRSEg2fUv9ax55ewxBTc6TiuLlwpRJv93zRHMhYJGAA7RaH4vCB6r4AL4UP6h77nQK4a-He83-7ozZOs4dAqz_u6O9_mgAd1Z30KKwGRG3AEtUoHz4fdEkxZR9i0esiV7W4v_mLFROGO6oo3K-ZpkNDTXyr8hXpROqg3U2d-3ki-qnXo-W_iUv6d3AruGqca9gYxk0iId9a5i_XQOjTOAkTuurTZNGDR3p3-gpNRiG_cUYU7yB3IgqRCplEh8FWOjw8uH7nlc5PxxL6fgFVbsIyN0x1W5wjpvxfEYWzzzbZHkkcfHDam2g6Wc0PfGjwcaOYFFgG6Q0ntQk0ZcQDCdADyBAAk1nCMlxsQ_9rQocjNkw9WdU9fswnwWVLTx7Zb_05bfwQtovwiz0mOPLSBhVdcHZWcr2YMBnjvj1AcmddPF5TNarQzM6AaBd5NW6IMl25GkuA9S_LQR_pErXBhmY6PlkWsSA68zzk3ARPHW_i_PY_5WpCF0__tibpcgKpNogYDkFymB7B6FyH-EFC85sPkP_pdryzN5os8Ugg-RpanmfpVIwvIpBFGdQmzkHWu6i_qIO5XDpxRj4iSiU_URMg=s100",
+          "version": 5
+        }
+      }
+    },
+    "space": {}
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "block": {
+    "8a586d25-3f98-4b85-b482-54da84465d23": {
+      "role": "reader",
+      "value": {
+        "id": "8a586d25-3f98-4b85-b482-54da84465d23",
+        "version": 67,
+        "type": "collection_view_page",
+        "view_ids": [
+          "93a5d7a2-7664-478a-993f-4a5b948c0dba"
+        ],
+        "collection_id": "e777a528-9404-4e96-9f26-0014be705592",
+        "permissions": [
+          {
+            "role": "editor",
+            "type": "user_permission",
+            "user_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e"
+          }
+        ],
+        "created_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "created_time": 1578264432048,
+        "last_edited_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "last_edited_time": 1578698280000,
+        "parent_id": "eb8b9c05-45ee-4865-b9b2-a80ac1919d83",
+        "parent_table": "block",
+        "alive": true,
+        "created_by_table": "notion_user",
+        "created_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "last_edited_by_table": "notion_user",
+        "last_edited_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e"
+      }
+    },
+    "eb8b9c05-45ee-4865-b9b2-a80ac1919d83": {
+      "role": "reader",
+      "value": {
+        "id": "eb8b9c05-45ee-4865-b9b2-a80ac1919d83",
+        "version": 20,
+        "type": "toggle",
+        "properties": {
+          "title": [
+            [
+              "Admin",
+              [
+                [
+                  "i"
+                ]
+              ]
+            ]
+          ]
+        },
+        "content": [
+          "8a586d25-3f98-4b85-b482-54da84465d23"
+        ],
+        "format": {
+          "block_color": "gray"
+        },
+        "created_time": 1578698220000,
+        "last_edited_time": 1578698220000,
+        "parent_id": "3f92ae50-5636-427c-8976-34a15b9f2892",
+        "parent_table": "block",
+        "alive": true,
+        "created_by_table": "notion_user",
+        "created_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "last_edited_by_table": "notion_user",
+        "last_edited_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e"
+      }
+    },
+    "3f92ae50-5636-427c-8976-34a15b9f2892": {
+      "role": "reader",
+      "value": {
+        "id": "3f92ae50-5636-427c-8976-34a15b9f2892",
+        "version": 310,
+        "type": "page",
+        "properties": {
+          "title": [
+            [
+              "The NBA — in Notion."
+            ]
+          ]
+        },
+        "content": [
+          "6d3d29a0-6996-4596-8994-84d39d22e724",
+          "96d5a750-08d3-4eab-864f-2d1ae7bd2269",
+          "515c7b1b-533b-482b-8d3c-35189d2138e6",
+          "093ef04d-9a61-4c20-a96c-aa4a9695249e",
+          "646c48ab-e27b-4593-b35a-0925fc0b117a",
+          "16241d83-6149-49cf-b482-6903671876ea",
+          "25630754-1583-4e09-b080-787768ecff62",
+          "c51d712c-4450-4b3e-9e00-7ba17ff37a89",
+          "741f7719-6fb2-4a16-98f0-7fd173a062f5",
+          "eb8b9c05-45ee-4865-b9b2-a80ac1919d83"
+        ],
+        "format": {
+          "page_icon": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1502a53c-eb51-4840-bc6c-8f9a15c068dd/notion_vip__nba_icon.png",
+          "page_cover": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3074c03d-5f7c-4a24-a210-273c099867ce/tobias_harris-tunnel.jpg",
+          "page_full_width": true,
+          "page_cover_position": 0.6068
+        },
+        "permissions": [
+          {
+            "role": "reader",
+            "type": "public_permission",
+            "allow_duplicate": false
+          }
+        ],
+        "created_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "created_time": 1578174780000,
+        "last_edited_by": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "last_edited_time": 1597357140000,
+        "parent_id": "d50605c0-76a9-455c-896e-a4ce68cbc504",
+        "parent_table": "block",
+        "alive": true,
+        "file_ids": [
+          "1502a53c-eb51-4840-bc6c-8f9a15c068dd",
+          "9ef90ed1-9c86-431e-8d9e-8f4a7665eaea",
+          "f757d3fe-33b4-4fdf-847b-48d5b7a5a093",
+          "910f21df-4990-418a-850e-5054606671b6",
+          "0a3f97e8-bce5-48bd-8025-bdfe27379940",
+          "864783b5-6809-42f7-bfe4-b71eb6408fb5",
+          "99d3d36b-9cc6-41f9-8167-aac2d386fdf5",
+          "f75d666d-e9e6-4f60-8bb4-ce4bc6cc4554",
+          "e76f1314-80e3-47cc-9dc6-f70da357dd13",
+          "282ba6fd-e898-405a-ae17-e75252348fae",
+          "eb40412e-820e-434d-93f0-06c948cf9474",
+          "4d37c2c3-bd6d-4cb8-ae27-4658ce16cb2f",
+          "9d9f798c-e83f-42bf-8938-07e7185d287c",
+          "4dba11fe-6722-49bb-b248-53c0f02b0dcc",
+          "56192761-5d6f-4042-a46f-0f1ea43670c3",
+          "b9ae9b3c-5c44-42d9-80d5-4c32f2db9572",
+          "a3389423-5c9f-48b0-8076-06948ce0c66c",
+          "739726f8-68d1-403b-a93b-f8a941e88355",
+          "51a165ab-33e2-416d-aa04-4a5e08748768",
+          "3074c03d-5f7c-4a24-a210-273c099867ce"
+        ],
+        "created_by_table": "notion_user",
+        "created_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "last_edited_by_table": "notion_user",
+        "last_edited_by_id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "shard_id": 429248,
+        "space_id": "2c820bf0-f79c-458e-af19-33ce31468cc0"
+      }
+    }
+  },
+  "collection_view": {
+    "93a5d7a2-7664-478a-993f-4a5b948c0dba": {
+      "role": "reader",
+      "value": {
+        "id": "93a5d7a2-7664-478a-993f-4a5b948c0dba",
+        "version": 18,
+        "type": "table",
+        "name": "Full Table",
+        "query": {
+          "aggregate": [
+            {
+              "id": "count",
+              "type": "title",
+              "property": "title",
+              "view_type": "table",
+              "aggregation_type": "count"
+            }
+          ]
+        },
+        "format": {
+          "table_properties": [
+            {
+              "width": 260,
+              "visible": true,
+              "property": "title"
+            },
+            {
+              "width": 188,
+              "visible": true,
+              "property": "$N1}"
+            },
+            {
+              "width": 100,
+              "visible": true,
+              "property": "f+&p"
+            },
+            {
+              "width": 228,
+              "visible": true,
+              "property": "3-5L"
+            }
+          ]
+        },
+        "parent_id": "8a586d25-3f98-4b85-b482-54da84465d23",
+        "parent_table": "block",
+        "alive": true,
+        "query2": {
+          "sort": [
+            {
+              "property": "title",
+              "direction": "ascending"
+            }
+          ],
+          "aggregate": [
+            {
+              "id": "count",
+              "type": "title",
+              "property": "title",
+              "view_type": "table",
+              "aggregation_type": "count"
+            }
+          ],
+          "aggregations": [
+            {
+              "property": "title",
+              "aggregator": "count"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "collection": {
+    "e777a528-9404-4e96-9f26-0014be705592": {
+      "role": "reader",
+      "value": {
+        "id": "e777a528-9404-4e96-9f26-0014be705592",
+        "version": 34,
+        "name": [
+          [
+            "NBA Teams"
+          ]
+        ],
+        "schema": {
+          "$N1}": {
+            "name": "Conference",
+            "type": "select",
+            "options": [
+              {
+                "id": "`8t(",
+                "color": "blue",
+                "value": "Eastern Conference"
+              },
+              {
+                "id": "A'Q~",
+                "color": "red",
+                "value": "Western Conference"
+              }
+            ]
+          },
+          "3-5L": {
+            "name": "Players",
+            "type": "relation",
+            "property": "p4nU",
+            "collection_id": "1a425309-21c0-4ca1-8548-c5915137b566"
+          },
+          "f+&p": {
+            "name": "Logo",
+            "type": "file"
+          },
+          "title": {
+            "name": "﻿Team",
+            "type": "title"
+          }
+        },
+        "parent_id": "8a586d25-3f98-4b85-b482-54da84465d23",
+        "parent_table": "block",
+        "alive": true
+      }
+    }
+  },
+  "notion_user": {
+    "422adcc4-3ce5-40c0-8baf-972c55171c4e": {
+      "role": "reader",
+      "value": {
+        "id": "422adcc4-3ce5-40c0-8baf-972c55171c4e",
+        "version": 104,
+        "email": "william@nutt.io",
+        "given_name": "William",
+        "family_name": "Nutt",
+        "profile_photo": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/f8c80cb9-d738-4d61-89d1-889b635ef90d/william_nutt__headshot.jpg",
+        "onboarding_completed": true,
+        "mobile_onboarding_completed": true,
+        "clipper_onboarding_completed": true
+      }
+    }
+  },
+  "space": {},
+  "collection_query": {},
+  "signed_urls": {}
+}

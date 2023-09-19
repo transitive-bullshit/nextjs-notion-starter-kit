@@ -1,0 +1,6 @@
+{
+  "signedUrls": [
+    "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1288fa7f-5aca-4b01-9f83-be0db99f5a86/The-Growth-Handbook-by-Intercom.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200816%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200816T021959Z&X-Amz-Expires=86400&X-Amz-Signature=27f058c2436e2e9e4ae3698dca16936c0e4b562c923700eff3fe7719ce409918&X-Amz-SignedHeaders=host",
+    "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9c998f9f-4808-4e9f-ab35-55b25db0fd3f/example.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200816%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200816T021959Z&X-Amz-Expires=86400&X-Amz-Signature=c604adcc2675afeac234e6f7a5bac3de80a35ae43773417f924651112ff52ff6&X-Amz-SignedHeaders=host"
+  ]
+}

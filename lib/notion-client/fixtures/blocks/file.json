@@ -1,0 +1,34 @@
+{
+  "id": "d142a056-f104-477c-96d5-2b03fdd8c6e3",
+  "version": 50,
+  "type": "file",
+  "properties": {
+    "size": [["1605.6KB"]],
+    "title": [["Aaron_Wang_Design_Resume.pdf"]],
+    "source": [
+      [
+        "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f428f70f-aadc-45e3-acdc-72f762c2fbc9/Aaron_Wang_Design_Resume.pdf"
+      ]
+    ]
+  },
+  "created_time": 1589838779607,
+  "last_edited_time": 1595261160000,
+  "parent_id": "a779c1d6-9399-4cdf-beee-2a6fbcf9340c",
+  "parent_table": "block",
+  "alive": true,
+  "file_ids": [
+    "d325a6d0-28b8-41e0-9285-1259e2dcbbce",
+    "076e9b76-e457-4c79-9885-d5df1a60bf24",
+    "9ee96f80-b8fd-4f73-8518-c645bb760b5a",
+    "e51498ba-3b60-41fb-b111-10c0f878bc6d",
+    "1dec7864-81a3-4454-9db6-4c6f998ea0a4",
+    "ee750ab8-c198-4d98-aba5-269108eca1df",
+    "f428f70f-aadc-45e3-acdc-72f762c2fbc9"
+  ],
+  "created_by_table": "notion_user",
+  "created_by_id": "27f1b8d4-257c-46b0-bb74-37b8e5712699",
+  "last_edited_by_table": "notion_user",
+  "last_edited_by_id": "27f1b8d4-257c-46b0-bb74-37b8e5712699",
+  "shard_id": 759545,
+  "space_id": "053d69ca-7a30-40b4-9e39-7fb0f92b96f9"
+}

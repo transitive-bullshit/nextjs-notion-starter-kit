@@ -1,0 +1,23 @@
+{
+  "id": "2ce1e02a-e603-457a-9ccc-f291562d890a",
+  "version": 11,
+  "type": "equation",
+  "properties": {
+    "title": [
+      [
+        "\\displaystyle {1 +  \\frac{q^2}{(1-q)}+\\frac{q^6}{(1-q)(1-q^2)}+\\cdots }= \\prod_{j=0}^{\\infty}\\frac{1}{(1-q^{5j+2})(1-q^{5j+3})}, \\quad\\quad \\text{for }\\lvert q\\rvert<1.1+(1−q)q2​+(1−q)(1−q2)q6​+⋯=j=0∏∞​(1−q5j+2)(1−q5j+3)1​,for ∣q∣<1."
+      ]
+    ]
+  },
+  "created_time": 1597774249622,
+  "last_edited_time": 1597774260000,
+  "parent_id": "7820b2d5-3007-47b3-8e31-344eb06fbd57",
+  "parent_table": "block",
+  "alive": true,
+  "created_by_table": "notion_user",
+  "created_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+  "last_edited_by_table": "notion_user",
+  "last_edited_by_id": "db401f86-4012-4d18-9445-236978ef32df",
+  "shard_id": 924403,
+  "space_id": "fde5ac74-eea3-4527-8f00-4482710e1af3"
+}

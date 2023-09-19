@@ -1,0 +1,40 @@
+[
+  {
+    "value": {
+      "type": "select"
+    },
+    "blockIds": ["c755e6c7-dcdd-433b-9c4c-ac9b3119ae92"],
+    "total": 1,
+    "aggregationResult": {
+      "type": "number",
+      "value": 1
+    }
+  },
+  {
+    "value": {
+      "type": "select",
+      "value": "foo"
+    },
+    "blockIds": ["43fb2254-b7e3-412c-a461-566f7a83918e"],
+    "total": 1,
+    "aggregationResult": {
+      "type": "number",
+      "value": 1
+    }
+  },
+  {
+    "value": {
+      "type": "select",
+      "value": "bar"
+    },
+    "blockIds": [
+      "3b506960-ea91-4b59-8e7c-f3c51e40529a",
+      "3fce55d4-2528-4d05-8af5-6f2bbc4af418"
+    ],
+    "total": 2,
+    "aggregationResult": {
+      "type": "number",
+      "value": 2
+    }
+  }
+]

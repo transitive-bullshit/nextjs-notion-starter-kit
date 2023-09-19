@@ -1,0 +1,31 @@
+    if (fetchParents) {
+      let block = recordMap.block[pageId]?.value
+
+      while (block && block.id !== rootBlockId) {
+        console.log('finding parent of', block?.id)
+
+        const parentBlockId = block.parent_id
+        const parentBlock = recordMap.block[parentBlockId]?.value
+
+        if (parentBlock) {
+          console.log('have parent', parentBlockId)
+          block = parentBlock
+        } else {
+          console.log('fetching parent', parentBlockId)
+
+          const newBlocks = await this.getBlocks([parentBlockId]).then(
+            (res) => res.recordMap.block
+          )
+
+          console.log('parent blocks fetched', newBlocks)
+
+          if (!newBlocks[parentBlockId]?.value) {
+            // unable to find parent
+            break
+          }
+
+          recordMap.block = { ...recordMap.block, ...newBlocks }
+        }
+      }
+    }
+

@@ -1,0 +1,40 @@
+{
+  "s0": {
+    "type": "BlocksInSpace",
+    "query": "test",
+    "spaceId": "fde5ac74-eea3-4527-8f00-4482710e1af3",
+    "limit": 20,
+    "filters": {
+      "isDeletedOnly": false,
+      "excludeTemplates": false,
+      "isNavigableOnly": false,
+      "requireEditPermissions": false,
+      "ancestors": [],
+      "createdBy": [],
+      "editedBy": [],
+      "lastEditedTime": {},
+      "createdTime": {}
+    },
+    "sort": "Relevance",
+    "source": "quick_find"
+  },
+  "s1": {
+    "type": "BlocksInAncestor",
+    "query": "test",
+    "ancestorId": "78fc5a4b-88d7-4b0e-824e-29407e9f1ec1",
+    "filters": {
+      "isDeletedOnly": false,
+      "excludeTemplates": false,
+      "isNavigableOnly": false,
+      "requireEditPermissions": false,
+      "ancestors": [],
+      "createdBy": [],
+      "editedBy": [],
+      "lastEditedTime": {},
+      "createdTime": {}
+    },
+    "sort": "Relevance",
+    "limit": 20,
+    "source": "quick_find_public"
+  }
+}
