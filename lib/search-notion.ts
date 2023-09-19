@@ -4,7 +4,7 @@ import fetch from 'isomorphic-unfetch'
 import pMemoize from 'p-memoize'
 
 import * as types from './types'
-import { api } from './config'
+import { api, apiHost } from './config'
 
 export const searchNotion = pMemoize(searchNotionImpl, {
   cacheKey: (args) => args[0]?.query,
@@ -14,7 +14,7 @@ export const searchNotion = pMemoize(searchNotionImpl, {
 async function searchNotionImpl(
   params: types.SearchParams
 ): Promise<types.SearchResults> {
-  return fetch(api.searchNotion, {
+  return fetch(`${apiHost}${api.searchNotion}`, {
     method: 'POST',
     body: JSON.stringify(params),
     headers: {

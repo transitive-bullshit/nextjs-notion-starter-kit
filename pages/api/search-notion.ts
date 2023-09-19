@@ -4,8 +4,11 @@ import * as types from '../../lib/types'
 import { search } from '../../lib/notion'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== 'POST') {
+  if (req.method !== 'POST' && req.method !== 'FETCH') {
     return res.status(405).send({ error: 'method not allowed' })
+  }
+  if (req.method === 'FETCH') {
+    return res.status(200).send({ message: 'fetch' })
   }
 
   const searchParams: types.SearchParams = req.body
