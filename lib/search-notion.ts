@@ -18,7 +18,9 @@ async function searchNotionImpl(
     method: 'POST',
     body: JSON.stringify(params),
     headers: {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      // cors
+      'Access-Control-Allow-Origin': '*'
     }
   })
     .then((res) => {
