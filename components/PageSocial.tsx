@@ -48,11 +48,21 @@ const socialLinks: SocialLink[] = [
   },
   config.postype && {
     name: 'postype',
-    href:`https://${config.postype}.postype.com`,
+    href: `https://${config.postype}.postype.com`,
     title: `Postype ${config.author}`,
     icon: (
-      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
-        <path d='M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z' />
+      <svg
+        width='26'
+        height='26'
+        viewBox='0 0 32 32'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <path
+          fillRule='evenodd'
+          clipRule='evenodd'
+          d='M5.5 2.5C3.84315 2.5 2.5 3.84315 2.5 5.5V26.5C2.5 28.1569 3.84315 29.5 5.5 29.5H26.5C28.1569 29.5 29.5 28.1569 29.5 26.5V5.5C29.5 3.84315 28.1569 2.5 26.5 2.5H5.5ZM4.5 5.5C4.5 4.94772 4.94772 4.5 5.5 4.5H26.5C27.0523 4.5 27.5 4.94772 27.5 5.5V26.5C27.5 27.0523 27.0523 27.5 26.5 27.5H5.5C4.94772 27.5 4.5 27.0523 4.5 26.5V5.5ZM8.5 10.5H10.5V24.5H12.5V10.5H14V24.5H16V20.5H17.5C20.8137 20.5 23.5 17.8137 23.5 14.5C23.5 11.1863 20.8137 8.5 17.5 8.5H15H11.5H8.5V10.5ZM16 18.5V10.5H17.5C19.7091 10.5 21.5 12.2909 21.5 14.5C21.5 16.7091 19.7091 18.5 17.5 18.5H16Z'
+          fill='black'
+        />
       </svg>
     )
   },
