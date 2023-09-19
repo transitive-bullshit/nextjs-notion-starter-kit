@@ -24,7 +24,7 @@ import { GitHubShareButton } from './GitHubShareButton'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
-import { PageAside } from './PageAside'
+// import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 import { Header } from './Header'
@@ -188,8 +188,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
-  const isBlogPost =
-    block?.type === 'page' && block?.parent_table === 'collection'
+  // const isBlogPost =
+  //   block?.type === 'page' && block?.parent_table === 'collection'
 
   const showTableOfContents = true
   const minTableOfContentsItems = 1
