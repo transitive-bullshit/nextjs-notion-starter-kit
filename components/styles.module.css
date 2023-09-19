@@ -84,7 +84,7 @@
   display: inline-flex;
   padding: 0.25em;
   margin-right: 1vw;
-  transition: color 250ms ease-out;
+  transition: color 250ms ease-out, fill 250ms ease-out;
 }
 
 .settings a:last-of-type,
@@ -123,6 +123,10 @@
 
 .linkedin:hover {
   color: #0077b5;
+}
+
+.postype:hover {
+  color: #3478ff;
 }
 
 .newsletter:hover {

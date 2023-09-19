@@ -11,10 +11,21 @@ export default class MyDocument extends Document {
           <Head>
             <link rel='shortcut icon' href='/favicon.ico' />
             <link
-              rel='icon'
-              type='image/png'
-              sizes='32x32'
-              href='favicon.png'
+              rel="apple_touch_icon"
+              sizes="180x180"
+              href="/ico_apple_touch.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="/ico_favicon_32x32.png"
+            />
+            <link
+              rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="/ico_favicon_16x16.png"
             />
 
             <link rel='manifest' href='/manifest.json' />
