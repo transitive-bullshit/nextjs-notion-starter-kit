@@ -285,14 +285,23 @@
   );
 }
 
-.notion-blue_background,
-.notion-gray_background {
+.notion-blue_background {
   /* light blue */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
     #adedfc 10.5%,
     #adebfd 85.29%,
+    var(--bg-color)
+  );
+}
+.notion-gray_background {
+  /* light blue */
+  background-image: linear-gradient(
+    119deg,
+    var(--bg-color),
+    rgb(241, 241, 239) 10.5%,
+    rgb(241, 241, 239) 85.29%,
     var(--bg-color)
   );
 }
@@ -410,4 +419,22 @@
 
 .notion-aside-table-of-contents-header {
   padding-left: 6px;
+}
+
+.notion-collection-card-cover {
+  aspect-ratio: 346 / 200;
+  height: auto;
+}
+/* image in this component */
+.notion-collection-card-cover img {
+  object-position: bottom !important;
+}
+
+.notion-teal_background_co {
+  background-color: var(--color-lime-300);
+}
+
+.dark-mode .notion-teal_background_co {
+  /* background-color: var(--color-lime-700); */
+  color: black;
 }

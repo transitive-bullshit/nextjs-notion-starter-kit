@@ -11,23 +11,26 @@ export const GitHubShareButton: React.FC = () => {
       target='_blank'
       rel='noopener noreferrer'
       className={styles.githubCorner}
-      aria-label='View source on GitHub'
+      aria-label='Download Abler'
     >
       <svg
         width='80'
         height='80'
         viewBox='0 0 250 250'
         style={{
-          fill: '#70B7FD',
-          color: '#fff',
+          fill: 'var(--color-lime-300',
+          color: '#000',
           position: 'absolute',
           zIndex: 1001,
           top: 0,
           right: 0,
           border: 0,
-          transform: 'scale(1, 1)'
+          transform: 'scale(1, 1)',
+          '&:hover': {
+            fill: 'var(--color-lime-200'
+          }
         }}
-        aria-hidden='true'
+        // aria-hidden='true'
       >
         <path d='M0,0 L115,115  L250,250 L250,0 Z' />
         {/* Text : Download */}
@@ -35,7 +38,7 @@ export const GitHubShareButton: React.FC = () => {
           x='130'
           y='100'
           style={{
-            fill: '#fff',
+            fill: '#121212',
             fontSize: '36px',
             fontWeight: 600,
             fontFamily: 'sans-serif',
@@ -46,7 +49,7 @@ export const GitHubShareButton: React.FC = () => {
           transform='rotate(45 120 120)'
           textAnchor='middle'
         >
-          DOWNLOAD{' '}
+          DOWNLOAD
         </text>
       </svg>
     </a>

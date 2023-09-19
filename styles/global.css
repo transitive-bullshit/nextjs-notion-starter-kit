@@ -11,6 +11,18 @@ body,
 html {
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
+  
+  --color-lime-100: rgba(251, 255, 232, 1);
+  --color-lime-200: rgba(245, 255, 201, 1);
+  --color-lime-300: rgba(235, 255, 147, 1);
+  --color-lime-400: rgba(224, 255, 85, 1);
+  --color-lime-500: rgba(211, 240, 80, 1);
+  --color-lime-600: rgba(192, 219, 73, 1);
+  --color-lime-700: rgba(161, 183, 62, 1);
+  --color-lime-800: rgba(114, 130, 44, 1);
+  --color-lime-900: rgba(67, 76, 27, 1);
+
 }
 
 body {
