@@ -17,7 +17,7 @@ export default siteConfig({
   description: '에이블러 유저 가이드',
 
   // social usernames (optional)
-  twitter: 'ABLER_official', 
+  twitter: 'ABLER_official',
   // github: 'dodo-acon3d',
   // linkedin: 'company/carpenstreet',
   postype: 'acon3d-abler',
@@ -43,11 +43,11 @@ export default siteConfig({
   // any pages defined here will override their default URL paths
   // example:
   //
-  // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
-  pageUrlOverrides: null,
+  pageUrlOverrides: {
+    '/en': '316838433d0141ffa4dd11dccc80982c',
+    '/ja': 'bc26a6b09de14dfba8f9f10cebb87df2',
+    '/zh': '1433d7c4cbb1496a883f9dee6b41fb68'
+  },
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
