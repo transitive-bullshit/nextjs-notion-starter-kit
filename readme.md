@@ -1,4 +1,4 @@
-Let's start!
+Let's start with me :) 
 
 <p align="center">
   <a href="https://transitivebullsh.it/nextjs-notion-starter-kit">
