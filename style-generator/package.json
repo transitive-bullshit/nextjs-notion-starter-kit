@@ -1,0 +1,17 @@
+{
+  "name": "style-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-sass": "node-sass --output-style compressed -o ../styles scss/theme-1.scss",
+    "watch-sass": "nodemon -e scss -x \"npm run build-sass\""
+  },
+  "author": "Jiffy",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,12 @@
+@import '_colors';
+@import '_layout';
+@import '_forms';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700';
+
+body {
+    font-family: 'Open Sans';
+
+    .notion-title {
+        text-transform: uppercase;
+    }
+}
