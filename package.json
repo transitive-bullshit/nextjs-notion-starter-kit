@@ -12,6 +12,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build2": "next build && next export",
+    "build:dev": "NODE_ENV=development next build",
     "start": "next start",
     "deploy": "vercel deploy",
     "deps": "run-s deps:*",

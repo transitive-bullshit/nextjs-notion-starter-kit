@@ -18,5 +18,25 @@ module.exports = withBundleAnalyzer({
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
-  }
-})
+  },
+  transpilePackages: [
+    "child_process",
+    "dns",
+  ]
+});
+
+const nextConfig = {
+  // distDir: 'build',
+  // distDir: "_next",
+  // output: 'standalone',
+  // trailingSlash: true,
+  cleanDistDir: false,
+  images: {
+    unoptimized: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },   
+};
+
+module.exports = nextConfig;
