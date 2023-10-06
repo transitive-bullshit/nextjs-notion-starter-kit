@@ -91,7 +91,6 @@ export default async function OGImage(req: NextRequest) {
             height: 465,
             display: 'flex',
             flexDirection: 'column',
-            border: '16px solid rgba(0,0,0,0.3)',
             borderRadius: 8,
             zIndex: '1'
           }}
@@ -103,10 +102,13 @@ export default async function OGImage(req: NextRequest) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-around',
-              backgroundColor: '#fff',
+              backgroundColor: 'rgba(255, 255, 255, 0.5)',
               padding: 24,
               alignItems: 'center',
-              textAlign: 'center'
+              textAlign: 'center',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+              borderRadius: '10px'
             }}
           >
             {pageInfo.detail && (
