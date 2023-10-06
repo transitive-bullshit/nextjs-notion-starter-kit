@@ -91,7 +91,6 @@ export default async function OGImage(req: NextRequest) {
             height: 465,
             display: 'flex',
             flexDirection: 'column',
-            border: '16px solid rgba(0,0,0,0.3)',
             borderRadius: 8,
             zIndex: '1'
           }}
