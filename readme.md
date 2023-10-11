@@ -1,5 +1,6 @@
 # Leo Thesen
-Hello! For things related to me, go have a look at [my website](https://leothesen.com).
+Hello! ⭐️
+For things related to me, go have a look at [my website](https://leothesen.com).
 
 <picture>
   <source
