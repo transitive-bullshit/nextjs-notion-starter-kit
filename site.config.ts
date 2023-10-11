@@ -10,11 +10,11 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Float Flow',
-  domain: 'notion.floatflow.com',
+  domain: 'www.floatflow.com',
   author: 'flawflew',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'A Personal Blog Site',
 
   // social usernames (optional)
   twitter: 'flawflew',
