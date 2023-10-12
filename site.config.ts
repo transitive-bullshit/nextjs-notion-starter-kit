@@ -2,7 +2,7 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '567b66d2a92c4ab5a5631314e71e4d61',
+  rootNotionPageId: 'd3df5a4015904d6d9e1e55f39a1b5ab2',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Chengshiluu.tech',
-  domain: 'https://www.notion.so/Chengshiluu-tech-567b66d2a92c4ab5a5631314e71e4d61',
+  domain: 'https://www.notion.so/Chengshiluu-tech-d3df5a4015904d6d9e1e55f39a1b5ab2',
   author: 'Fizzbow',
 
   // open graph metadata (optional)
