@@ -1,4 +1,4 @@
-import React, { useEffect, FC } from 'react';
+import { useEffect, FC } from 'react';
 
 const Favicon: FC = () => {
   useEffect(() => {
