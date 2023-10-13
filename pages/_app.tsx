@@ -19,6 +19,8 @@ import 'styles/notion.css'
 // global style overrides for prism theme (optional)
 import 'styles/prism-theme.css'
 
+import Favicon from '../components/Favicon';
+
 import { bootstrap } from '@/lib/bootstrap-client'
 import {
   fathomConfig,
@@ -61,5 +63,10 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Favicon />
+      <Component {...pageProps} />
+    </>
+  );
 }
