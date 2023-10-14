@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Insitut de Formacio Fox',
-  domain: 'https://www.notion.so/ifox/Insitut-de-Formacio-Fox-c35863b9ad964a71a75b89f888844996',
+  domain: 'https://www.ifox.es',
   author: 'Fox',
 
   // open graph metadata (optional)
