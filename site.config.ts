@@ -16,7 +16,7 @@ export default siteConfig({
 
   // open graph metadata (optional)
   description:
-    'Talking Points for Life - the way to ask questions and answer them',
+    "Talking Points for Life - How to answer life's toughest questions, draw boundaries, ask for what you want, and more. Too many people are left with little choice but to scroll through Reddit threads and Quora posts when looking for advice on what to say. Communication is tricky. We all bring our own biases, emotions and histories to the table. This site will help you navigate those tricky subjects, allowing you to build healthier and happier relationships.",
 
   // social usernames (optional)
   // twitter: 'transitive_bs',

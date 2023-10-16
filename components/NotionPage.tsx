@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import cs from 'classnames'
 import { PageBlock } from 'notion-types'
 import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
-import BodyClassName from 'react-body-classname'
 import { NotionRenderer } from 'react-notion-x'
 import TweetEmbed from 'react-tweet-embed'
 import { useSearchParam } from 'react-use'
@@ -17,9 +16,10 @@ import * as types from '@/lib/types'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
-import { useDarkMode } from '@/lib/use-dark-mode'
 
+// import { useDarkMode } from '@/lib/use-dark-mode'
 import { Footer } from './Footer'
+import Header from './Header'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
@@ -171,7 +171,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
 
-  const { isDarkMode } = useDarkMode()
+  // const { isDarkMode } = useDarkMode()
 
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
@@ -251,16 +251,31 @@ export const NotionPage: React.FC<types.PageProps> = ({
         image={socialImage}
         url={canonicalPageUrl}
       />
-
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+      <Header block={block} />
+      <div className='absolute top-28 max-w-3xl lg:max-w-7xl mx-auto px-4 z-50 text-center text-white'>
+        <h1 className='text-3xl text-pink-900 pb-4'>Talking Points for Life</h1>
+        <p>
+          How to answer life&apos;s toughest questions, draw boundaries, ask for
+          what you want, and more.
+        </p>
+        <p>
+          Too many people are left with little choice but to scroll through
+          Reddit threads and Quora posts when looking for advice on what to say.
+          Communication is tricky. We all bring our own biases, emotions and
+          histories to the table.
+        </p>
+        <p>
+          This site will help you navigate those tricky subjects, allowing you
+          to build healthier and happier relationships.
+        </p>
+      </div>
 
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
           pageId === site.rootNotionPageId && 'index-page'
         )}
-        darkMode={isDarkMode}
+        // darkMode={isDarkMode}
         components={components}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
