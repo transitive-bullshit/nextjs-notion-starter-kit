@@ -9,11 +9,11 @@ import 'katex/dist/katex.min.css'
 import posthog from 'posthog-js'
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-coy.css'
+// this might be better for dark mode
+// import 'prismjs/themes/prism-okaidia.css'
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
 import 'styles/global.css'
-// this might be better for dark mode
-// import 'prismjs/themes/prism-okaidia.css'
 // global style overrides for notion
 import 'styles/notion.css'
 // global style overrides for prism theme (optional)
