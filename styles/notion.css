@@ -10,6 +10,29 @@
 .notion {
   --notion-max-width: 720px;
   --notion-header-height: 0px;
+  @apply w-full h-[500px] bg-gradient-to-r from-pink-400 via-red-500  to-purple-500 background-animate;
+}
+
+.bg-gradient {
+  @apply w-full h-[500px] bg-gradient-to-r from-pink-400 via-red-500  to-purple-500 background-animate;
+}
+
+.background-animate {
+  background-size: 800%;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+
+@keyframes AnimationName {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .notion-frame {
@@ -22,7 +45,7 @@
 }
 
 .index-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 80vw;
 }
 
 .notion-text {
@@ -53,9 +76,9 @@
 }
 
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  grid-gap: 6vmin;
-  gap: 6vmin;
+  grid-template-columns: minmax(6, 300px);
+  grid-gap: 1vmin;
+  gap: 1.5vmin;
 }
 
 .notion-gallery-grid .notion-page-icon-inline {
@@ -63,7 +86,7 @@
 }
 
 .notion-gallery-grid .notion-page-title-text {
-  font-size: 2em;
+  font-size: 1.25em;
   white-space: unset;
 }
 
@@ -79,6 +102,7 @@
 .notion-collection-card {
   border-radius: 16px;
   box-shadow: none;
+  background-color: transparent;
 }
 
 .notion-collection-card-cover img {
@@ -166,7 +190,7 @@
 }
 
 .notion-title {
-  display: block;
+  display: none;
   text-align: center;
 }
 
@@ -195,6 +219,8 @@
 .notion-page-cover-wrapper img {
   max-width: 1200px !important;
   border-radius: 24px;
+  background-color: #67bdfc;
+  z-index: 0;
 }
 
 .notion-page-cover-wrapper {
@@ -209,13 +235,13 @@
   }
 }
 
-.notion-block-ab9a258d6cf444f3bb40dc2600feae91 .notion-page-link {
+/* .notion-block-ab9a258d6cf444f3bb40dc2600feae91 .notion-page-link {
   justify-content: center;
   padding: 2em;
-}
+} */
 
 .notion-code {
-  background: rgba(249, 250, 251, 1);
+  background: rgb(184, 189, 194);
   border: 1px solid rgba(229, 231, 235, 1);
   border-radius: 0.375rem;
 }
@@ -384,5 +410,16 @@
 }
 
 .notion-block-260baa77f1e1428b97fb14ac99c7c385 {
+  display: none;
+}
+
+.notion-collection-header-title {
+  display: none;
+}
+
+.notion-page-icon-hero {
+  display: none;
+}
+.notion-page-icon-span {
   display: none;
 }
