@@ -251,7 +251,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         image={socialImage}
         url={canonicalPageUrl}
       />
-      <Header />
+      <Header block={block} />
       <div className='absolute top-28 max-w-3xl lg:max-w-7xl mx-auto px-4 z-50 text-center text-white'>
         <h1 className='text-3xl text-pink-900 pb-4'>Talking Points for Life</h1>
         <p>
