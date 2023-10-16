@@ -79,5 +79,5 @@ h1 {
 }
 
 button {
-  @apply px-6 py-2 text-xs bg-pink-700 text-white rounded-lg uppercase hover:bg-transparent/60 transition-transform ease-linear duration-700 border border-white;
+  @apply px-6 py-2 text-xs bg-pink-700 text-white rounded-lg uppercase hover:bg-pink-500/60 transition-all ease-linear duration-150 border border-white;
 }
