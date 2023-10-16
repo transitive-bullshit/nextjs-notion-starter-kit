@@ -1,9 +1,9 @@
 {
   "name": "talking-points-for-life",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "private": true,
   "description": "The perfect starter kit for building beautiful websites with Next.js and Notion.",
-  "author": "Pedro Ferreira and Travis Fischer",
+  "author": "Pedro Ferreira",
   "repository": "prgf87/talking-points-t3-nextjs-notion-x",
   "license": "MIT",
   "engines": {
