@@ -10,7 +10,29 @@
 .notion {
   --notion-max-width: 720px;
   --notion-header-height: 0px;
-  /* background-color: #67bdfc;? */
+  @apply w-full h-[500px] bg-gradient-to-r from-pink-400 via-red-500  to-purple-500 background-animate;
+}
+
+.bg-gradient {
+  @apply w-full h-[500px] bg-gradient-to-r from-pink-400 via-red-500  to-purple-500 background-animate;
+}
+
+.background-animate {
+  background-size: 800%;
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+
+@keyframes AnimationName {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .notion-frame {

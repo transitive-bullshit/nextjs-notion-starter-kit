@@ -242,7 +242,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     config.description
 
   return (
-    <div className='bg-gradient'>
+    <>
       <PageHead
         pageId={pageId}
         site={site}
@@ -279,6 +279,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={pageAside}
         footer={footer}
       />
-    </div>
+    </>
   )
 }
