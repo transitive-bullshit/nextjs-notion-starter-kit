@@ -62,3 +62,11 @@ body {
 ::-webkit-scrollbar-track {
   background-color: var(--bg-color);
 }
+
+h1 {
+  @apply pt-2 font-bold text-2xl;
+}
+
+button {
+  @apply px-6 py-2 text-xs bg-pink-700 text-white rounded-lg uppercase hover:bg-transparent/60 transition-transform ease-linear duration-700 border border-white;
+}
