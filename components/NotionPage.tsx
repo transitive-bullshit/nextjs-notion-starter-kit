@@ -253,8 +253,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       />
       <Header block={block} />
       {!isBlogPost && (
-        <div className='top-40 max-w-3xl lg:max-w-7xl mx-auto px-4 z-50 text-center text-white'>
-          <h1 className='text-3xl text-pink-900 pb-4'>
+        <div className='pt-20 max-w-3xl lg:max-w-7xl mx-auto px-4 z-50 text-center text-white'>
+          <h1 className='text-5xl text-pink-900 pb-4'>
             Talking Points for Life
           </h1>
           <p>
@@ -271,11 +271,22 @@ export const NotionPage: React.FC<types.PageProps> = ({
             This site will help you navigate those tricky subjects, allowing you
             to build healthier and happier relationships.
           </p>
+          <div className='flex justify-center items-center'>
+            <input className='w-1/2 rounded-lg h-8 mt-4' />
+            <Image
+              src='/search1.svg'
+              alt='search icon'
+              width={30}
+              height={30}
+            />
+          </div>
         </div>
       )}
       {isBlogPost && (
         <div className='absolute top-[390px] left-0 right-0 text-center z-50 text-white'>
-          <p className='pb-4 text-5xl font-light'>{title}</p>
+          <p className='pb-4 text-5xl font-light underline underline-offset-3 decoration-slate-200'>
+            {title}
+          </p>
         </div>
       )}
 
