@@ -242,7 +242,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     config.description
 
   return (
-    <>
+    <div className='bg-gradient'>
       <PageHead
         pageId={pageId}
         site={site}
@@ -252,23 +252,32 @@ export const NotionPage: React.FC<types.PageProps> = ({
         url={canonicalPageUrl}
       />
       <Header block={block} />
-      <div className='absolute top-28 max-w-3xl lg:max-w-7xl mx-auto px-4 z-50 text-center text-white'>
-        <h1 className='text-3xl text-pink-900 pb-4'>Talking Points for Life</h1>
-        <p>
-          How to answer life&apos;s toughest questions, draw boundaries, ask for
-          what you want, and more.
-        </p>
-        <p>
-          Too many people are left with little choice but to scroll through
-          Reddit threads and Quora posts when looking for advice on what to say.
-          Communication is tricky. We all bring our own biases, emotions and
-          histories to the table.
-        </p>
-        <p>
-          This site will help you navigate those tricky subjects, allowing you
-          to build healthier and happier relationships.
-        </p>
-      </div>
+      {!isBlogPost && (
+        <div className='top-40 max-w-3xl lg:max-w-7xl mx-auto px-4 z-50 text-center text-white'>
+          <h1 className='text-3xl text-pink-900 pb-4'>
+            Talking Points for Life
+          </h1>
+          <p>
+            How to answer life&apos;s toughest questions, draw boundaries, ask
+            for what you want, and more.
+          </p>
+          <p>
+            Too many people are left with little choice but to scroll through
+            Reddit threads and Quora posts when looking for advice on what to
+            say. Communication is tricky. We all bring our own biases, emotions
+            and histories to the table.
+          </p>
+          <p>
+            This site will help you navigate those tricky subjects, allowing you
+            to build healthier and happier relationships.
+          </p>
+        </div>
+      )}
+      {isBlogPost && (
+        <div className='absolute top-[390px] left-0 right-0 text-center z-50 text-white'>
+          <p className='pb-4 text-5xl font-light'>{title}</p>
+        </div>
+      )}
 
       <NotionRenderer
         bodyClassName={cs(
@@ -294,6 +303,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={pageAside}
         footer={footer}
       />
-    </>
+    </div>
   )
 }

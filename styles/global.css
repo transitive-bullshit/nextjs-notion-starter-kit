@@ -25,6 +25,17 @@ body {
   overflow-x: hidden;
 }
 
+.bg-gradient {
+  @apply w-full bg-gradient-to-r from-pink-400/90 via-red-500/90  to-purple-500/90 background-animate;
+}
+
+.background-animate {
+  background-size: 800%;
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+
 .static-tweet blockquote {
   margin: 0;
   margin-block-start: 0;
