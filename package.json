@@ -29,6 +29,7 @@
     "@keyvhq/core": "^1.6.9",
     "@keyvhq/redis": "^1.6.10",
     "@react-icons/all-files": "^4.1.0",
+    "@vercel/kv": "^0.2.3",
     "@vercel/og": "^0.0.19",
     "@waline/client": "^2.14.9",
     "caniuse-lite": "^1.0.30001551",
