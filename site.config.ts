@@ -48,6 +48,7 @@ export default siteConfig({
   // NOTE: if you enable redis, you need to set the `KV_URL`
   // environment variables. see the readme for more info
   isRedisEnabled: true,
+  isSearchEnabled: true,
 
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
