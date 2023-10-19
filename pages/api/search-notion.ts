@@ -5,14 +5,15 @@ import { search } from '../../lib/notion'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
+    console.log('[+] Search Notion Request:', req.method);
     return res.status(405).send({ error: 'method not allowed' })
   }
 
   const searchParams: types.SearchParams = req.body
 
-  console.log('<<< lambda search-notion', searchParams)
+  console.log('[+]: Searching: ', searchParams)
   const results = await search(searchParams)
-  console.log('>>> lambda search-notion', results)
+  console.log('[+]: Search Result:', results)
 
   res.setHeader(
     'Cache-Control',
