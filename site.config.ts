@@ -1,14 +1,6 @@
 import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
-    // Add the LinkedIn JavaScript code here
-  linkedinScript: `
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="hanna-z-092423226" data-version="v1">
-      <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/hanna-z-092423226?trk=profile-badge">Hanna Z.</a>
-    </div>
-  `,
-
   
   // the site's root Notion page (required)
   rootNotionPageId: '0284c2c1996d4246bc781fb433f058a1',
