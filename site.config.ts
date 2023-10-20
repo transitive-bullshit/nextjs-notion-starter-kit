@@ -22,6 +22,13 @@ export default siteConfig({
   linkedin: 'hanna-z-092423226',
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+    // Add the LinkedIn JavaScript code here
+  linkedinScript: `
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="VERTICAL" data-vanity="hanna-z-092423226" data-version="v1">
+      <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/hanna-z-092423226?trk=profile-badge">Hanna Z.</a>
+    </div>
+  `,
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
@@ -50,15 +57,15 @@ export default siteConfig({
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
   navigationStyle: 'default'
-  // navigationStyle: 'custom',
-  // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
-  // ]
+  navigationStyle: 'custom',
+  navigationLinks: [
+    {
+      title: 'About',
+      pageId: 'f1199d37579b41cbabfc0b5174f4256a'
+    },
+    {
+      title: 'Contact',
+      pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
+    }
+  ]
 })
