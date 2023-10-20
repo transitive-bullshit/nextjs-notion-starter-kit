@@ -56,10 +56,10 @@ export default siteConfig({
   // }
   pageUrlOverrides: null,
 
-  // whether to use the default notion navigation style or a custom one with links to
-  // important pages
-  navigationStyle: 'default'
-  navigationStyle: 'custom',
+ // Choose either 'default' or 'custom' for navigation style
+  navigationStyle: 'default',
+  // navigationStyle: 'custom',
+
   navigationLinks: [
     {
       title: 'About',
