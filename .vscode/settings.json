@@ -27,9 +27,9 @@
     "**/.node_repl_history": true,
     "**/*.tgz": true,
     "**/.yarn-integrity": true,
-    "**/.next/": true,
-    "**/dist/": true,
-    "**/build/": true,
+    "**/.next/": false,
+    "**/dist/": false,
+    "**/build/": false,
     "**/.now/": true,
     "**/.vercel/": true,
     "**/.google.json": true
