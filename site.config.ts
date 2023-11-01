@@ -18,10 +18,10 @@ export default siteConfig({
   description: 'Notion',
 
   // social usernames (optional)
-//   twitter: '',
+  twitter: 'hanna_zeng',
   github: 'HQhanqiZHQ',
   linkedin: 'hanna-z-092423226',
-  // newsletter: '#', // optional newsletter URL
+  newsletter: 'https://scholar.google.ca/citations?user=z9QF4YEAAAAJ&hl=zh-CN', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
