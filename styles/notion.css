@@ -387,6 +387,10 @@
   display: none;
 }
 
-.notion-equation.notion-equation-block{
+.notion-equation.notion-equation-block {
   align-items: center;
+}
+
+.notion-property-created_time {
+  display: flex !important;
 }

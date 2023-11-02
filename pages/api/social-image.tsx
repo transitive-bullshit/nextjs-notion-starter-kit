@@ -10,7 +10,7 @@ import { NotionPageInfo } from '@/lib/types'
 const interFont = Inter({weight: ['400', '700'], style: 'normal', subsets: ['latin'], display: 'swap'})
 
 export const config = {
-  runtime: 'experimental-edge'
+  runtime: 'edge'
 }
 
 export default async function OGImage(req: NextRequest) {
