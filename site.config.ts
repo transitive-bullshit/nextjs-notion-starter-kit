@@ -20,7 +20,7 @@ export default siteConfig({
   // social usernames (optional)
   twitter: 'hanna_zeng',
   github: 'HQhanqiZHQ',
-  linkedin: 'hanna-z-092423226',
+  linkedin: 'hanqizeng',
   newsletter: 'https://scholar.google.ca/citations?user=z9QF4YEAAAAJ&hl=zh-CN', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
