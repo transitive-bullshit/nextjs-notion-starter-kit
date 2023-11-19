@@ -110,8 +110,7 @@
 
 /* only target safari */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  _::-webkit-full-page-media,
-  _:future,
+  :future,
   :root,
   .notion-collection-card-cover {
     transition: none 0ms linear;
@@ -260,7 +259,7 @@
   border-bottom-left-radius: 0.125rem;
   box-decoration-break: clone;
 
-  background-color: none;
+  background-color: transparent;
 
   /* light yellow */
   background-image: linear-gradient(
@@ -375,7 +374,7 @@
 }
 
 .notion-bookmark:hover {
-  border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
+  border-image-source: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
   border-image-slice: 1;
 }
 
@@ -385,4 +384,17 @@
 
 .notion-block-260baa77f1e1428b97fb14ac99c7c385 {
   display: none;
+}
+
+/*.dark-mode {*/
+/*  background-color: rgb(102, 82, 154);*/
+/*  border-color: rgb(118, 98, 170);*/
+/*  color: rgb(250, 240, 230);*/
+/*}*/
+
+.dark-mode,
+.light-mode {
+  background-color: rgb(250, 240, 230);
+  border-color: rgb(217, 196, 179);
+  color: rgb(109, 95, 85);
 }
