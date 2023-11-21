@@ -1,0 +1,318 @@
+diff --git a/node_modules/notion-client/build/index.js b/node_modules/notion-client/build/index.js
+index 625be1d..b8505a4 100644
+--- a/node_modules/notion-client/build/index.js
++++ b/node_modules/notion-client/build/index.js
+@@ -1,2 +1,310 @@
+-import z from"got";import{getBlockCollectionId as Q,getPageContentBlockIds as O,parsePageId as $,uuidToId as Y}from"notion-utils";import G from"p-map";var E=class{constructor({apiBaseUrl:r="https://www.notion.so/api/v3",authToken:n,activeUser:e,userTimeZone:a="America/New_York"}={}){this._apiBaseUrl=r,this._authToken=n,this._activeUser=e,this._userTimeZone=a}async getPage(r,{concurrency:n=3,fetchMissingBlocks:e=!0,fetchCollections:a=!0,signFileUrls:o=!0,chunkLimit:s=100,chunkNumber:h=0,gotOptions:p}={}){let y=await this.getPageRaw(r,{chunkLimit:s,chunkNumber:h,gotOptions:p}),t=y==null?void 0:y.recordMap;if(!(t!=null&&t.block))throw new Error(`Notion page not found "${Y(r)}"`);if(t.collection=t.collection??{},t.collection_view=t.collection_view??{},t.notion_user=t.notion_user??{},t.collection_query={},t.signed_urls={},e)for(;;){let d=O(t).filter(i=>!t.block[i]);if(!d.length)break;let c=await this.getBlocks(d,p).then(i=>i.recordMap.block);t.block={...t.block,...c}}let _=O(t);if(a){let d=_.flatMap(c=>{var m;let i=t.block[c].value,g=i&&(i.type==="collection_view"||i.type==="collection_view_page")&&Q(i,t);return g?(m=i.view_ids)==null?void 0:m.map(b=>({collectionId:g,collectionViewId:b})):[]});await G(d,async c=>{var b,k;let{collectionId:i,collectionViewId:g}=c,m=(b=t.collection_view[g])==null?void 0:b.value;try{let l=await this.getCollectionData(i,g,m,{gotOptions:p});t.block={...t.block,...l.recordMap.block},t.collection={...t.collection,...l.recordMap.collection},t.collection_view={...t.collection_view,...l.recordMap.collection_view},t.notion_user={...t.notion_user,...l.recordMap.notion_user},t.collection_query[i]={...t.collection_query[i],[g]:(k=l.result)==null?void 0:k.reducerResults}}catch(l){console.warn("NotionAPI collectionQuery error",r,l.message),console.error(l)}},{concurrency:n})}return o&&await this.addSignedUrls({recordMap:t,contentBlockIds:_,gotOptions:p}),t}async addSignedUrls({recordMap:r,contentBlockIds:n,gotOptions:e={}}){r.signed_urls={},n||(n=O(r));let a=n.flatMap(o=>{var h,p,y,t,_,d;let s=(h=r.block[o])==null?void 0:h.value;if(s&&(s.type==="pdf"||s.type==="audio"||s.type==="image"&&((p=s.file_ids)==null?void 0:p.length)||s.type==="video"||s.type==="file"||s.type==="page")){let c=s.type==="page"?(y=s.format)==null?void 0:y.page_cover:(d=(_=(t=s.properties)==null?void 0:t.source)==null?void 0:_[0])==null?void 0:d[0];if(c)return c.includes("secure.notion-static.com")?{permissionRecord:{table:"block",id:s.id},url:c}:[]}return[]});if(a.length>0)try{let{signedUrls:o}=await this.getSignedFileUrls(a,e);if(o.length===a.length)for(let s=0;s<a.length;++s){let h=a[s],p=o[s];r.signed_urls[h.permissionRecord.id]=p}}catch(o){console.warn("NotionAPI getSignedfileUrls error",o)}}async getPageRaw(r,{gotOptions:n,chunkLimit:e=100,chunkNumber:a=0}={}){let o=$(r);if(!o)throw new Error(`invalid notion pageId "${r}"`);let s={pageId:o,limit:e,chunkNumber:a,cursor:{stack:[]},verticalColumns:!1};return this.fetch({endpoint:"loadPageChunk",body:s,gotOptions:n})}async getCollectionData(r,n,e,{limit:a=9999,searchQuery:o="",userTimeZone:s=this._userTimeZone,loadContentCover:h=!0,gotOptions:p}={}){var i,g,m,b,k,l,q,T,I,N,C,P;let y=e==null?void 0:e.type,t=y==="board",_=t?(i=e==null?void 0:e.format)==null?void 0:i.board_columns_by:(g=e==null?void 0:e.format)==null?void 0:g.collection_group_by,d=[];(m=e==null?void 0:e.format)!=null&&m.property_filters&&(d=(b=e.format)==null?void 0:b.property_filters.map(f=>{var B,R;return{filter:(B=f==null?void 0:f.filter)==null?void 0:B.filter,property:(R=f==null?void 0:f.filter)==null?void 0:R.property}})),(l=(k=e==null?void 0:e.query2)==null?void 0:k.filter)!=null&&l.filters&&d.push(...e.query2.filter.filters);let c={type:"reducer",reducers:{collection_group_results:{type:"results",limit:a,loadContentCover:h}},sort:[],...e==null?void 0:e.query2,filter:{filters:d,operator:"and"},searchQuery:o,userTimeZone:s};if(_){let f=((q=e==null?void 0:e.format)==null?void 0:q.board_columns)||((T=e==null?void 0:e.format)==null?void 0:T.collection_groups)||[],B=[t?"board":"group_aggregation","results"],R={checkbox:"checkbox_is",url:"string_starts_with",text:"string_starts_with",select:"enum_is",multi_select:"enum_contains",created_time:"date_is_within",undefined:"is_empty"},x={};for(let v of f){let{property:D,value:{value:u,type:J}}=v;for(let S of B){let F=S==="results"?{type:S,limit:a}:{type:"aggregation",aggregation:{aggregator:"count"}},U=typeof u>"u",M=u==null?void 0:u.range,A=U?"uncategorized":M?((I=u.range)==null?void 0:I.start_date)||((N=u.range)==null?void 0:N.end_date):(u==null?void 0:u.value)||u,Z=!U&&(M||(u==null?void 0:u.value)||u);x[`${S}:${J}:${A}`]={...F,filter:{operator:"and",filters:[{property:D,filter:{operator:U?"is_empty":R[J],...!U&&{value:{type:"exact",value:Z}}}}]}}}}let L=t?"board_columns":`${y}_groups`;c={type:"reducer",reducers:{[L]:{type:"groups",groupBy:_,...((C=e==null?void 0:e.query2)==null?void 0:C.filter)&&{filter:(P=e==null?void 0:e.query2)==null?void 0:P.filter},groupSortPreference:f.map(v=>v==null?void 0:v.value),limit:a},...x},...e==null?void 0:e.query2,searchQuery:o,userTimeZone:s,filter:{filters:d,operator:"and"}}}return this.fetch({endpoint:"queryCollection",body:{collection:{id:r},collectionView:{id:n},loader:c},gotOptions:p})}async getUsers(r,n){return this.fetch({endpoint:"getRecordValues",body:{requests:r.map(e=>({id:e,table:"notion_user"}))},gotOptions:n})}async getBlocks(r,n){return this.fetch({endpoint:"syncRecordValues",body:{requests:r.map(e=>({table:"block",id:e,version:-1}))},gotOptions:n})}async getSignedFileUrls(r,n){return this.fetch({endpoint:"getSignedFileUrls",body:{urls:r},gotOptions:n})}async search(r,n){let e={type:"BlocksInAncestor",source:"quick_find_public",ancestorId:$(r.ancestorId),sort:"Relevance",limit:r.limit||20,query:r.query,filters:{isDeletedOnly:!1,isNavigableOnly:!1,excludeTemplates:!0,requireEditPermissions:!1,ancestors:[],createdBy:[],editedBy:[],lastEditedTime:{},createdTime:{},...r.filters}};return this.fetch({endpoint:"search",body:e,gotOptions:n})}async fetch({endpoint:r,body:n,gotOptions:e,headers:a}){let o={...a,...e==null?void 0:e.headers,"Content-Type":"application/json"};this._authToken&&(o.cookie=`token_v2=${this._authToken}`),this._activeUser&&(o["x-notion-active-user-header"]=this._activeUser);let s=`${this._apiBaseUrl}/${r}`;return z.post(s,{...e,json:n,headers:o}).json()}};export{E as NotionAPI};
+-//# sourceMappingURL=index.js.map
+\ No newline at end of file
++import z from 'got'
++import {
++  getBlockCollectionId as Q,
++  getPageContentBlockIds as O,
++  parsePageId as $,
++  uuidToId as Y,
++} from 'notion-utils'
++import G from 'p-map'
++var E = class {
++  constructor({
++    apiBaseUrl: r = 'https://www.notion.so/api/v3',
++    authToken: n,
++    activeUser: e,
++    userTimeZone: a = 'America/New_York',
++  } = {}) {
++    ; (this._apiBaseUrl = r), (this._authToken = n), (this._activeUser = e), (this._userTimeZone = a)
++  }
++  async getPage(
++    r,
++    {
++      concurrency: n = 3,
++      fetchMissingBlocks: e = !0,
++      fetchCollections: a = !0,
++      signFileUrls: o = !0,
++      chunkLimit: s = 100,
++      chunkNumber: h = 0,
++      gotOptions: p,
++    } = {}
++  ) {
++    let y = await this.getPageRaw(r, { chunkLimit: s, chunkNumber: h, gotOptions: p }),
++      t = y == null ? void 0 : y.recordMap
++    if (!(t != null && t.block)) throw new Error(`Notion page not found "${Y(r)}"`)
++    if (
++      ((t.collection = t.collection ?? {}),
++        (t.collection_view = t.collection_view ?? {}),
++        (t.notion_user = t.notion_user ?? {}),
++        (t.collection_query = {}),
++        (t.signed_urls = {}),
++        e)
++    )
++      for (; ;) {
++        let d = O(t).filter((i) => !t.block[i])
++        if (!d.length) break
++        let c = await this.getBlocks(d, p).then((i) => i.recordMap.block)
++        t.block = { ...t.block, ...c }
++      }
++    let _ = O(t)
++    if (a) {
++      let d = _.flatMap((c) => {
++        var m
++        let i = t.block[c].value,
++          g = i && (i.type === 'collection_view' || i.type === 'collection_view_page') && Q(i, t)
++        return g
++          ? (m = i.view_ids) == null
++            ? void 0
++            : m.map((b) => ({ collectionId: g, collectionViewId: b }))
++          : []
++      })
++      await G(
++        d,
++        async (c) => {
++          var b, k
++          let { collectionId: i, collectionViewId: g } = c,
++            m = (b = t.collection_view[g]) == null ? void 0 : b.value
++          try {
++            let l = await this.getCollectionData(i, g, m, { gotOptions: p })
++              ; (t.block = { ...t.block, ...l.recordMap.block }),
++                (t.collection = { ...t.collection, ...l.recordMap.collection }),
++                (t.collection_view = { ...t.collection_view, ...l.recordMap.collection_view }),
++                (t.notion_user = { ...t.notion_user, ...l.recordMap.notion_user }),
++                (t.collection_query[i] = {
++                  ...t.collection_query[i],
++                  [g]: (k = l.result) == null ? void 0 : k.reducerResults,
++                })
++          } catch (l) {
++            console.warn('NotionAPI collectionQuery error', r, l.message), console.error(l)
++          }
++        },
++        { concurrency: n }
++      )
++    }
++    return o && (await this.addSignedUrls({ recordMap: t, contentBlockIds: _, gotOptions: p })), t
++  }
++  async addSignedUrls({ recordMap: r, contentBlockIds: n, gotOptions: e = {} }) {
++    ; (r.signed_urls = {}), n || (n = O(r))
++    let a = n.flatMap((o) => {
++      var h, p, y, t, _, d
++      let s = (h = r.block[o]) == null ? void 0 : h.value
++      if (
++        s &&
++        (s.type === 'pdf' ||
++          s.type === 'audio' ||
++          (s.type === 'image' && ((p = s.file_ids) == null ? void 0 : p.length)) ||
++          s.type === 'video' ||
++          s.type === 'file' ||
++          s.type === 'page')
++      ) {
++        let c =
++          s.type === 'page'
++            ? (y = s.format) == null
++              ? void 0
++              : y.page_cover
++            : (d = (_ = (t = s.properties) == null ? void 0 : t.source) == null ? void 0 : _[0]) ==
++              null
++              ? void 0
++              : d[0]
++        if (c)
++          return c.includes('secure.notion-static.com')
++            ? { permissionRecord: { table: 'block', id: s.id }, url: c }
++            : []
++      }
++      return []
++    })
++    if (a.length > 0)
++      try {
++        let { signedUrls: o } = await this.getSignedFileUrls(a, e)
++        if (o.length === a.length)
++          for (let s = 0; s < a.length; ++s) {
++            let h = a[s],
++              p = o[s]
++            r.signed_urls[h.permissionRecord.id] = p
++          }
++      } catch (o) {
++        console.warn('NotionAPI getSignedfileUrls error', o)
++      }
++  }
++  async getPageRaw(r, { gotOptions: n, chunkLimit: e = 100, chunkNumber: a = 0 } = {}) {
++    let o = $(r)
++    if (!o) throw new Error(`invalid notion pageId "${r}"`)
++    let s = { pageId: o, limit: e, chunkNumber: a, cursor: { stack: [] }, verticalColumns: !1 }
++    return this.fetch({ endpoint: 'loadPageChunk', body: s, gotOptions: n })
++  }
++  async getCollectionData(
++    r,
++    n,
++    e,
++    {
++      limit: a = 9999,
++      searchQuery: o = '',
++      userTimeZone: s = this._userTimeZone,
++      loadContentCover: h = !0,
++      gotOptions: p,
++    } = {}
++  ) {
++    var i, g, m, b, k, l, q, T, I, N, C, P
++    let y = e == null ? void 0 : e.type,
++      t = y === 'board',
++      _ = t
++        ? (i = e == null ? void 0 : e.format) == null
++          ? void 0
++          : i.board_columns_by
++        : (g = e == null ? void 0 : e.format) == null
++          ? void 0
++          : g.collection_group_by,
++      d = []
++      ; (m = e == null ? void 0 : e.format) != null &&
++        m.property_filters &&
++        (d =
++          (b = e.format) == null
++            ? void 0
++            : b.property_filters.map((f) => {
++              var B, R
++              return {
++                filter: (B = f == null ? void 0 : f.filter) == null ? void 0 : B.filter,
++                property: (R = f == null ? void 0 : f.filter) == null ? void 0 : R.property,
++              }
++            })),
++        (l = (k = e == null ? void 0 : e.query2) == null ? void 0 : k.filter) != null &&
++        l.filters &&
++        d.push(...e.query2.filter.filters)
++    let c = {
++      type: 'reducer',
++      reducers: { collection_group_results: { type: 'results', limit: a, loadContentCover: h } },
++      sort: [],
++      ...(e == null ? void 0 : e.query2),
++      filter: { filters: d, operator: 'and' },
++      searchQuery: o,
++      userTimeZone: s,
++    }
++    if (_) {
++      let f =
++        ((q = e == null ? void 0 : e.format) == null ? void 0 : q.board_columns) ||
++        ((T = e == null ? void 0 : e.format) == null ? void 0 : T.collection_groups) ||
++        [],
++        B = [t ? 'board' : 'group_aggregation', 'results'],
++        R = {
++          checkbox: 'checkbox_is',
++          url: 'string_starts_with',
++          text: 'string_starts_with',
++          select: 'enum_is',
++          multi_select: 'enum_contains',
++          created_time: 'date_is_within',
++          undefined: 'is_empty',
++        },
++        x = {}
++      for (let v of f) {
++        let {
++          property: D,
++          value: { value: u, type: J },
++        } = v
++        for (let S of B) {
++          let F =
++            S === 'results'
++              ? { type: S, limit: a }
++              : { type: 'aggregation', aggregation: { aggregator: 'count' } },
++            U = typeof u > 'u',
++            M = u == null ? void 0 : u.range,
++            A = U
++              ? 'uncategorized'
++              : M
++                ? ((I = u.range) == null ? void 0 : I.start_date) ||
++                ((N = u.range) == null ? void 0 : N.end_date)
++                : (u == null ? void 0 : u.value) || u,
++            Z = !U && (M || (u == null ? void 0 : u.value) || u)
++          x[`${S}:${J}:${A}`] = {
++            ...F,
++            filter: {
++              operator: 'and',
++              filters: [
++                {
++                  property: D,
++                  filter: {
++                    operator: U ? 'is_empty' : R[J],
++                    ...(!U && { value: { type: 'exact', value: Z } }),
++                  },
++                },
++              ],
++            },
++          }
++        }
++      }
++      let L = t ? 'board_columns' : `${y}_groups`
++      c = {
++        type: 'reducer',
++        reducers: {
++          [L]: {
++            type: 'groups',
++            groupBy: _,
++            ...(((C = e == null ? void 0 : e.query2) == null ? void 0 : C.filter) && {
++              filter: (P = e == null ? void 0 : e.query2) == null ? void 0 : P.filter,
++            }),
++            groupSortPreference: f.map((v) => (v == null ? void 0 : v.value)),
++            limit: a,
++          },
++          ...x,
++        },
++        ...(e == null ? void 0 : e.query2),
++        searchQuery: o,
++        userTimeZone: s,
++        filter: { filters: d, operator: 'and' },
++      }
++    }
++    return this.fetch({
++      endpoint: 'queryCollection',
++      body: { collection: { id: r }, collectionView: { id: n }, loader: c },
++      gotOptions: p,
++    })
++  }
++  async getUsers(r, n) {
++    return this.fetch({
++      endpoint: 'getRecordValues',
++      body: { requests: r.map((e) => ({ id: e, table: 'notion_user' })) },
++      gotOptions: n,
++    })
++  }
++  async getBlocks(r, n) {
++    return this.fetch({
++      endpoint: 'syncRecordValues',
++      body: { requests: r.map((e) => ({ table: 'block', id: e, version: -1 })) },
++      gotOptions: n,
++    })
++  }
++  async getSignedFileUrls(r, n) {
++    return this.fetch({ endpoint: 'getSignedFileUrls', body: { urls: r }, gotOptions: n })
++  }
++  async search(r, n) {
++    let e = {
++      type: 'BlocksInAncestor',
++      source: 'quick_find_public',
++      ancestorId: $(r.ancestorId),
++      sort: {
++        "field": "relevance"
++      },
++      limit: r.limit || 20,
++      query: r.query,
++      filters: {
++        isDeletedOnly: !1,
++        isNavigableOnly: !1,
++        excludeTemplates: !0,
++        requireEditPermissions: !1,
++        ancestors: [],
++        createdBy: [],
++        editedBy: [],
++        lastEditedTime: {},
++        createdTime: {},
++        ...r.filters,
++      },
++    }
++    return this.fetch({ endpoint: 'search', body: e, gotOptions: n })
++  }
++  async fetch({ endpoint: r, body: n, gotOptions: e, headers: a }) {
++    let o = { ...a, ...(e == null ? void 0 : e.headers), 'Content-Type': 'application/json' }
++    this._authToken && (o.cookie = `token_v2=${this._authToken}`),
++      this._activeUser && (o['x-notion-active-user-header'] = this._activeUser)
++    let s = `${this._apiBaseUrl}/${r}`
++    const data = await z.post(s, { ...e, json: n, headers: o }).json()
++    return data
++  }
++}
++export { E as NotionAPI }
