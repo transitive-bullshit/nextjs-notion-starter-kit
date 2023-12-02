@@ -1,0 +1,19 @@
+:root {
+  --bg-color: #eceff4;
+}
+
+.dark-mode {
+  --bg-color: #2e3440;
+}
+
+.notion-header {
+  background: rgba(236, 239, 244, 0.8);
+}
+
+.dark-mode .notion-header {
+  background: rgba(46, 52, 64, 0.8);
+}
+
+.notion-quote {
+  border-left: 4px solid #81a1c1;
+}

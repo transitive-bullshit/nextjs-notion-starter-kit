@@ -1,15 +1,23 @@
-/**
- * This file contains site-specifc style overrides for Notion elements from
- * react-notion-x.
- *
- * react-notion-x's goal is to match styling as close as possible to Notion,
- * whereas our goal with this site is to adjust Notion's styling in a few key
- * places to add some flare.
- */
+ @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Days+One&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Sintony:wght@400;700&family=Voces&display=swap');
+
+ :root {
+  --bg-color: #F5F5F5;
+  --fg-color-0: rgba(55, 53, 47, 0.12);
+ }
+
+ .notion, body, html {
+  font-family: 'Poppins' !important;
+}
+
+.breadcrumbs {
+  font-family: 'Days One', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
 
 .notion {
   --notion-max-width: 720px;
-  --notion-header-height: 54px;
+  --notion-header-height: 64px;
 }
 
 .notion-frame {
@@ -21,8 +29,12 @@
   line-height: 1.65;
 }
 
+.notion-page-no-cover.notion-page-no-icon {
+  padding-top: 9.5em;
+}
+
 .index-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 1200px;
 }
 
 .notion-text {
@@ -44,8 +56,21 @@
 }
 
 .notion-header .notion-nav-header {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+
+.notion-header .button {
+  font-family: 'Poppins' !important;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.styles_footer_new {
+  max-width: 1200px;
 }
 
 .notion-nav-header-rhs {
@@ -53,7 +78,7 @@
 }
 
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
   grid-gap: 6vmin;
   gap: 6vmin;
 }
@@ -63,8 +88,9 @@
 }
 
 .notion-gallery-grid .notion-page-title-text {
-  font-size: 2em;
+  font-size: 24px;
   white-space: unset;
+  font-weight: 600;
 }
 
 .notion-gallery-grid .notion-collection-card-property {
@@ -73,12 +99,13 @@
 }
 
 .notion-gallery-grid .notion-property-text {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .notion-collection-card {
   border-radius: 16px;
   box-shadow: none;
+  flex-direction: row;
 }
 
 .notion-collection-card-cover img {
@@ -92,20 +119,142 @@
 .notion-collection-card-cover {
   border-radius: 16px;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
-}
-
-.notion-collection-card-cover {
+  width: 48%;
+  height: 374px;
+  min-width: 48%;
   border-bottom: 0 none;
   transition: filter 150ms linear;
   filter: none;
 }
 
 .notion-collection-card:hover .notion-collection-card-cover {
-  filter: brightness(120%);
+  filter: brightness(100%);
 }
 
 .notion-collection-card-body {
-  padding: 10px;
+  padding: 48px;
+  padding-left: 48px;
+}
+
+.notion-aside {
+  top: 120px;
+}
+
+.notion-aside-table-of-contents-header {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+.notion-collection-page-properties{
+  height: 64px;
+}
+
+.notion-collection-row{
+  height: 24px;
+  border-bottom: 1px solid var(--fg-color-1);
+}
+
+.dark-mode .notion-collection-row {
+  height: 24px;
+  border-bottom: 1px solid var(--bg-color-1);
+}
+
+.notion-h3 {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.notion-h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-top: 0.5em;
+  line-height: 1.65;
+}
+
+.notion-h1 {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.notion-title {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.notion-page-title{
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.notion-collection-header-title{
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.notion b {
+  font-weight: 600;
+}
+
+.notion-hr {
+  border-color: var(--fg-color-1);
+  border-top: none;
+  width: 100%;
+
+}
+
+.notion-table-of-contents-active-item {
+  color: #3344DD !important;
+  opacity: 0.7;
+}
+
+.dark-mode .notion-table-of-contents-active-item {
+  color: #ff4081 !important;
+}
+
+
+.notion-table-of-contents-item:hover {
+  background: var(--bg-color-0);
+  opacity: 1;
+}
+
+.notion-table-of-contents-item{
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.7;
+  border-radius: 3px;
+}
+
+.notion-aside-table-of-contents .notion-table-of-contents-item-indent-level-1 {
+  font-size: 13px;
+}
+
+.notion-h1,
+.notion-h2,
+.notion-h3 {
+  margin-bottom: 0.25em;
+}
+
+[data-id="b6b14b5fe8ac4352b228e1ed95777ffa"] {
+  margin-bottom: 9.5em;
+}
+
+.notion-aside-table-of-contents .notion-table-of-contents-item {
+  line-height: 1.5;
+}
+
+.medium-zoom-image{
+  background: #F5F5F5;
+  border-radius: 16px;
+}
+
+.notion-page-cover-wrapper span, .notion-page-cover-wrapper img {
+  width: 1000% !important;
+  position: absolute !important;
+}
+
+.styles_social__ptL3p{
+  padding-left: 18%;
 }
 
 /* only target safari */
@@ -126,12 +275,6 @@
   border-left: 4px solid #67bdfc;
 }
 
-.notion-h1,
-.notion-h2,
-.notion-h3 {
-  margin-bottom: 0.25em;
-}
-
 .notion-callout {
   margin: 0.75em 0;
 }
@@ -140,10 +283,15 @@
   margin: 2em 0;
 }
 
+
 @media only screen and (max-width: 920px) {
   .index-page.notion-page {
     padding-left: 2vw;
     padding-right: 2vw;
+  }
+
+  .notion-page-cover-wrapper span, .notion-page-cover-wrapper img {
+    width: 100% !important;
   }
 }
 
@@ -152,11 +300,94 @@
     padding-left: 2vw;
     padding-right: 2vw;
   }
+
+  [data-id="b6b14b5fe8ac4352b228e1ed95777ffa"] {
+    margin-bottom: 4em;
+  }
+
+  .notion-page-no-cover.notion-page-no-icon {
+    padding-top: 2em;
+  }
+
+  .notion-collection-card {
+    border-radius: 16px;
+    box-shadow: none;
+    flex-direction: column;
+  }
+
+  .notion-collection-card-cover {
+    width: 100%;
+    height: 262px;
+  }
+
+  .notion-collection-card-body {
+    padding: 24px;
+  }
+  .notion-page-cover-wrapper span, .notion-page-cover-wrapper img {
+    width: 100% !important;
+  }
+  .notion-page-cover-wrapper,
+  .notion-page-cover-wrapper span,
+  .notion-page-cover-wrapper img {
+    min-height: 30vh !important;
+    height: 40vh !important;
+    max-height: 40vh !important;
+  }
 }
+
+
 
 @media only screen and (max-width: 600px) {
   .notion-search-button {
     display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .notion-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+  .notion-header .button {
+    font-family: 'Poppins' !important;
+    font-weight: 500;
+    font-size: 12px;
+  }
+  .breadcrumbs {
+    font-family: 'Days One', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 390px) {
+  .notion-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+  .notion-header .button {
+    font-family: 'Poppins' !important;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .breadcrumbs {
+    font-family: 'Days One', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 376px) {
+  .notion-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  }
+  .notion-header .button {
+    font-family: 'Poppins' !important;
+    font-weight: 500;
+    font-size: 11px;
+  }
+  .breadcrumbs {
+    font-family: 'Days One', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
   }
 }
 
@@ -167,7 +398,8 @@
 
 .notion-title {
   display: block;
-  text-align: center;
+  text-align: start;
+  margin-bottom: 0px;
 }
 
 .notion-collection-row {
@@ -183,6 +415,22 @@
   justify-content: center;
 }
 
+.notion-property-select-item, .notion-property-multi_select-item {
+  font-size: 14px;
+  padding: 16px 8px;
+  border-radius: 6px;
+}
+
+.notion .notion-inline-code{
+  background: rgba(127, 122, 107, 0.15) !important;
+  font-weight: 600;
+}
+
+.dark-mode .notion .notion-inline-code {
+  background: var(--bg-color-1) !important;
+}
+
+
 .notion-collection-row-value {
   display: flex;
   align-items: center;
@@ -195,17 +443,38 @@
 .notion-page-cover-wrapper img {
   max-width: 1200px !important;
   border-radius: 24px;
+  min-height: 40vh !important;
+  height: 50vh !important;
+  max-height: 50vh !important;
 }
+
 
 .notion-page-cover-wrapper {
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
+@media only screen and (max-width: 1440px) {
+  .notion-table-of-contents {
+    max-width: 280px; /* Set a maximum width for the table of contents */
+    overflow-x: auto; /* Add horizontal scroll if the content overflows */
+  }
+
+  .notion-aside-table-of-contents .notion-table-of-contents-item-body {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
 @media only screen and (max-width: 1200px) {
   .notion-page-cover-wrapper,
   .notion-page-cover-wrapper span,
   .notion-page-cover-wrapper img {
-    border-radius: 0;
+  border-radius: 0px;
+  min-height: 35vh !important;
+  height: 45vh !important;
+  max-height: 45vh !important;
   }
 }
 
@@ -357,8 +626,8 @@
 }
 
 .notion-header {
-  background: hsla(0, 0%, 100%, 0.8);
-  backdrop-filter: saturate(180%) blur(16px);
+  background: hsla(0, 0%, 96%, 0.5);
+  backdrop-filter: saturate(120%) blur(5px);
 }
 
 .dark-mode .notion-header {
@@ -383,6 +652,227 @@
   padding: 0;
 }
 
+@media only screen and (max-width: 600px) {
+  .notion-page-cover-wrapper,
+  .notion-page-cover-wrapper span,
+  .notion-page-cover-wrapper img {
+    min-height: 30vh !important;
+    height: 40vh !important;
+    max-height: 40vh !important;
+  }
+
+  .styles_social__ptL3p {
+    padding-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  n
+  .notion-page-cover-wrapper,
+  .notion-page-cover-wrapper span,
+  .notion-page-cover-wrapper img {
+    border-radius: 0;
+  }
+
+  .notion-callout-text{
+    width: auto;
+  }
+
+  .notion-block-1c741923813d4bbb83eee718fa0aeda0,
+  .notion-block-fd910ca7a61c4c1c942b9194ccedf75a,
+  .notion-block-3bd58812544c4ef7a70c0e64626e2c59,
+  .notion-block-9e7ef541e467485b8322e6e074553a10 {
+    display: none;
+  }
+
+  .notion-block-16e657c4018e43b095de71ac54218a42,
+  .notion-block-b096426259814d3fa96c37d7351545a9,
+  .notion-block-896239ed8c2a4b2cae1408d2a634b195,
+  .notion-block-33ed58cb22884ed5801af8bab6d88e84,
+  .notion-block-822c5ea376e6460d920d347e94642c99,
+  .notion-block-bfb967bc19f44902b2aba879b44ed673 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+ 
+  .notion-block-e65e5506ecf14eed9824a24294af3072,
+  .notion-block-3cf421f028cf48abb5fcd6ab6eeb70f2,
+  .notion-block-ed448f20493b4b7994145a292594e33a {
+    padding-bottom: 24px;
+  }
+}
+
+.notion-callout{
+  justify-content: center;
+}
+
 .notion-block-260baa77f1e1428b97fb14ac99c7c385 {
+  display: none;
+}
+
+.notion-callout
+{
+  border-radius: 16px;
+}
+
+.notion-spacer {
+  width: calc(min(24px, 4vw));
+}
+
+.notion-block-ef395f7d9978473485988e304e900e0b {
+  line-height: 1.65;
+}
+
+.notion-block-0bd82b6d1f1c4d228dc3745ef9fb53bc {
+  visibility: hidden;
+}
+
+.notion-block-9895e5c7efee43bda982b92881e0064a {
+  justify-content: center;
+}
+
+
+.notion-block-9895e5c7efee43bda982b92881e0064a .notion-callout-text {
+  width: auto;
+}
+
+.notion-header .breadcrumb:not(.active):focus {
+  background: var(--bg-color-0);
+}
+
+.dark-mode {
+  --fg-color: rgba(241, 241, 241, 0.9);
+  --bg-color: #232628;
+}
+
+.dark-mode .notion-header {
+  background: hsla(204, 7%, 15%, 0.8);
+}
+
+.dark-mode .notion-hr{
+  border-color: var(--bg-color-1);
+}
+
+.dark-mode .notion-callout {
+  border-color: var(--bg-color-1);
+}
+
+.dark-mode .notion-gallery-grid {
+  border-top: 1px solid var(--bg-color-1);
+}
+
+
+.notion-callout-text {
+  width: auto;
+}
+
+.notion-gray {
+  color: #888787;
+}
+
+.notion-block-2e03d128c2b74f209a1752c71fcc0d2c .notion-column {
+  width: calc((100% - (3 * min(24px, 4vw))) * 0.25) !important;
+}
+
+@media only screen and (max-width: 640px) {
+  .notion-block-2e03d128c2b74f209a1752c71fcc0d2c {
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .notion-block-2e03d128c2b74f209a1752c71fcc0d2c .notion-callout {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 504px) {
+  .notion-block-2e03d128c2b74f209a1752c71fcc0d2c {
+    flex-direction: column;
+    display: flex;
+    display: none;
+  }
+
+  .notion-block-2e03d128c2b74f209a1752c71fcc0d2c .notion-callout {
+    display: inline-flex;
+  }
+
+  .notion-block-2e03d128c2b74f209a1752c71fcc0d2c .notion-column {
+    width: auto !important;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+}
+
+.notion-block-b9e896583c7f4d2dbeeb77078360469a .notion-link,
+.notion-block-02c5099dae1d4866933f566a7068d8d3 .notion-link,
+.notion-block-ae9f1f1359a74795befa8e0bb780c59c .notion-link {
+  font-weight: 500;
+}
+
+.notion-block-73d938a30a8c48e28998fa545472dfb2 .medium-zoom-image {
+  border-radius: 0px;
+}
+
+
+.dark-mode .notion-block-73d938a30a8c48e28998fa545472dfb2 .medium-zoom-image {
+  background: none;
+}
+
+
+/*----------------------------------Resume download button-----------------------------------*/
+
+.notion-block-f41e8d7c4ec34ae1b462bc0cfca0f819 .notion-file-link{
+  justify-content: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: #3344DD;
+  border-radius: 15px;
+  transition: background 120ms ease-in 0s;
+  font-weight: 400;
+  color: var(--bg-color) !important;
+}
+
+.notion-block-f41e8d7c4ec34ae1b462bc0cfca0f819 .notion-file-link:hover {
+  background-color: #3a4eff;
+}
+
+.dark-mode .notion-block-f41e8d7c4ec34ae1b462bc0cfca0f819 .notion-file-link { 
+  justify-content: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: #d8366c;
+  border-radius: 15px;
+  transition: background 120ms ease-in 0s;
+  font-weight: 400;
+  color: var(--fg-color) !important;
+}
+
+.dark-mode .notion-block-f41e8d7c4ec34ae1b462bc0cfca0f819 .notion-file-link:hover {
+  background-color: #ff4081;
+}
+
+.dark-mode .notion-block-f41e8d7c4ec34ae1b462bc0cfca0f819 .notion-file-icon {
+  fill: var(--fg-color);  
+}
+
+.notion-block-f41e8d7c4ec34ae1b462bc0cfca0f819 .notion-file-icon {
+  fill: var(--bg-color);  
+}
+
+.notion-block-ab993b628511405aba2569d3ab211b2f {
+  top: 10% !important;
+}
+
+.notion-block-b20a1cf846bf4203a0d92347679c3d9f .notion-spacer {
+  width: calc(min(32px, 4vw));
+}
+
+.notion-block-fe3f049abf464d93aebb31cd47e82f35{
+  width: calc((100% + max(-60px, -4vw)) * 0.4375);
+}
+
+.notion-file .notion-file-size {
   display: none;
 }
