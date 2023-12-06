@@ -14,7 +14,7 @@ export default siteConfig({
   author: 'Leo Thesen',
 
   // open graph metadata (optional)
-  description: 'Leo Thesen\'s personal website.',
+  description: 'Leo Thesen\'s digital garden 🌱',
 
   // social usernames (optional)
   // twitter: 'leothesen',
