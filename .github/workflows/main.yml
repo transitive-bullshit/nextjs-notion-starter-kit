@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: deploy
         env:
-          DEPLOY_URL: ${{ DEPLOY_URL }}
+          DEPLOY_URL: ${{ env.DEPLOY_URL }}
         run: curl -X POST $DEPLOY_URL
