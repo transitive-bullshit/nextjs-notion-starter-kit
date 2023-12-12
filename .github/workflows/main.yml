@@ -9,6 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy
-        env:
-          DEPLOY_URL: ${{ env.DEPLOY_URL }}
-        run: curl -X POST $DEPLOY_URL
+        run: curl -X POST ${{ secrets.DEPLOY_URL }}
