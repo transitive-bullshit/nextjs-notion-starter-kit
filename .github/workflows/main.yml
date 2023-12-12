@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy
-        run: curl -X POST {{ DEPLOY_URL }}
+        run: curl -X POST ${{ DEPLOY_URL }}
