@@ -1,0 +1,12 @@
+name: Deploy
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0/5 * * *"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        run: curl -X POST {{ DEPLOY_URL }}
