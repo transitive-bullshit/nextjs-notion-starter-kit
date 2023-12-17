@@ -1,4 +1,4 @@
-import { getAllPagesInSpace, uuidToId } from 'notion-utils'
+import { getAllPagesInSpace, uuidToId, getPageProperty } from 'notion-utils'
 import pMemoize from 'p-memoize'
 
 import * as config from './config'
@@ -45,6 +45,11 @@ async function getAllPagesImpl(
       const recordMap = pageMap[pageId]
       if (!recordMap) {
         throw new Error(`Error loading page "${pageId}"`)
+      }
+
+      const block = recordMap.block[pageId]?.value
+      if (!(getPageProperty<boolean|null>('Public', block, recordMap) ?? true)) {
+        return map
       }
 
       const canonicalPageId = getCanonicalPageId(pageId, recordMap, {
