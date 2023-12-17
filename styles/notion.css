@@ -387,6 +387,18 @@
   display: none;
 }
 
+.notion-search .searchBar {
+  box-shadow: var(--fg-color-0) 0px 1px 0px;
+}
+
+.notion-search .noResults {
+  color: var(--fg-color-3);
+}
+
+.notion-search .noResultsDetail {
+  color: var(--fg-color-2);
+}
+
 .notion-equation.notion-equation-block{
   align-items: center;
 }
