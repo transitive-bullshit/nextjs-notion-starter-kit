@@ -101,6 +101,10 @@
   filter: none;
 }
 
+.notion-collection-card-cover span{
+  display: block !important;
+}
+
 .notion-collection-card:hover .notion-collection-card-cover {
   filter: brightness(120%);
 }
