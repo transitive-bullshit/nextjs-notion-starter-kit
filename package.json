@@ -36,8 +36,8 @@
     "fathom-client": "^3.4.1",
     "got": "^12.0.3",
     "isomorphic-unfetch": "^3.1.0",
-    "lqip-modern": "^1.2.0",
-    "next": "^12.3.1",
+    "lqip-modern": "^2.0.0",
+    "next": "12",
     "notion-client": "^6.15.6",
     "notion-types": "^6.15.6",
     "notion-utils": "^6.15.6",
@@ -49,7 +49,7 @@
     "react-dom": "^18.2.0",
     "react-notion-x": "^6.15.6",
     "react-tweet-embed": "^2.0.0",
-    "react-use": "^17.3.2",
+    "react-use": "^17.4.2",
     "rss": "^1.2.2"
   },
   "devDependencies": {
