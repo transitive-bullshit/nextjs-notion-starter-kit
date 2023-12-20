@@ -136,7 +136,7 @@ export const redisNamespace: string | null = getEnv(
 
 export const isServer = typeof window === 'undefined'
 
-export const port = getEnv('PORT', '3000')
+export const port = getEnv('PORT', '3003')
 export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
 export const apiHost = isDev
   ? host
@@ -163,8 +163,8 @@ export const site: Site = {
 export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
 export const fathomConfig = fathomId
   ? {
-      excludedDomains: ['localhost', 'localhost:3000']
-    }
+    excludedDomains: ['localhost', 'localhost:3000']
+  }
   : undefined
 
 export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID

@@ -16,7 +16,10 @@ export default class MyDocument extends Document {
               sizes='32x32'
               href='favicon.png'
             />
-
+            <link rel="stylesheet" href="https://use.typekit.net/dys1wkw.css"></link>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+            <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"></link>
             <link rel='manifest' href='/manifest.json' />
           </Head>
 
