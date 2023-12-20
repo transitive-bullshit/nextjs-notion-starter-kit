@@ -87,7 +87,7 @@ export default async function OGImage(req: NextRequest) {
         <div
           style={{
             position: 'relative',
-            width: 900,
+            width: '100%',
             height: 465,
             display: 'flex',
             flexDirection: 'column',
