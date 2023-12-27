@@ -55,11 +55,15 @@ export default siteConfig({
   navigationLinks: [
     {
       title: 'Aboutttt',
-      pageId: 'f1199d37579b41cbabfc0b5174f4256a'
+      pageId: '64a4df62db974fe69d23eec7d4f74203'
     },
     {
       title: 'Contact',
-      pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
+      pageId: '57697684c3b84fc38ce87a094f1f7310'
+    },
+    {
+      title: 'Java',
+      pageId: '3341c15b79e74e2890bb1ff7fbb80b5c'
     }
   ]
 })
