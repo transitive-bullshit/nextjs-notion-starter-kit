@@ -9,7 +9,7 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
+  name: 'Wang Next.js Notion Starter Kit',
   domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
   author: 'Travis Fischer',
 
