@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'MOOD MNKY BLOG',
-  domain: 'blog.moodmnky.com',
-  author: 'Simeon Bowman',
+  name: 'MIKES BLOG',
+  domain: 'jess.moodmnky.com',
+  author: 'Michael Whittaker',
 
   // open graph metadata (optional)
-  description: 'A blog to keep you up dated on the latest at MOOD MNKY',
+  description: 'A blog to keep you up dated on the latest with Mike',
 
   // social usernames (optional)
   twitter: 'moodmnky',
