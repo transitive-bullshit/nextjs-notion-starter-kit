@@ -128,6 +128,13 @@
   border-color: #777;
 }
 
+.bilibili .actionBgPane {
+  background: #fb7299;
+}
+.bilibili:hover {
+  border-color: #fb7299;
+}
+
 @media only screen and (max-width: 768px) {
   .links {
     position: relative;

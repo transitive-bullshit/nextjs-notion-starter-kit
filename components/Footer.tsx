@@ -1,14 +1,15 @@
 import * as React from 'react'
 
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
-import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
-import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
-import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+import { FaEnvelopeOpenText } from 'react-icons/fa'
+import { FaGithub } from 'react-icons/fa'
+import { FaLinkedin } from 'react-icons/fa'
+import { FaMastodon } from 'react-icons/fa'
+import { FaTwitter } from 'react-icons/fa'
+import { FaYoutube } from 'react-icons/fa'
+import { FaZhihu } from 'react-icons/fa6'
+import { FaBilibili } from 'react-icons/fa6'
+import { IoMoonSharp } from 'react-icons/io5'
+import { IoSunnyOutline } from 'react-icons/io5'
 
 import * as config from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -133,6 +134,18 @@ export const FooterImpl: React.FC = () => {
             rel='noopener noreferrer'
           >
             <FaYoutube />
+          </a>
+        )}
+
+        {config.bilibili && (
+          <a
+            className={styles.bilibili}
+            href={`https://space.bilibili.com/${config.bilibili}`}
+            title={`Bilibili ${config.bilibili}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaBilibili />
           </a>
         )}
       </div>
