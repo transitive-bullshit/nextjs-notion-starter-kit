@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 <script>
   var tmp = window.self.parent.document.createElement('div');
   tmp.className = "_giscus";
-  tmp.style.width = "100%"
+  tmp.style.width = "100%";
   window.self.parent.document.getElementsByClassName('notion-page-content-inner')[0].appendChild(tmp);
   var range = window.self.parent.document.createRange();
   range.selectNode(window.self.parent.document.getElementsByClassName('_giscus')[0]);
