@@ -21,8 +21,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   window.self.parent.document.getElementsByClassName('notion-page-content-inner')[0].appendChild(tmp);
   var range = window.self.parent.document.createRange();
   range.selectNode(window.self.parent.document.getElementsByClassName('_giscus')[0]);
-  var documentFragment = range.createContextualFragment('<div class="giscus" style="margin: 1rem; width: calc(100% - 2rem);"></div><script src="https://giscus.app/client.js" data-repo="lemonorangeapple/lemonorangeapple.github.io" data-repo-id="R_kgDOKvAL3w" data-category="Announcements" data-category-id="DIC_kwDOKvAL384Ccnt0" data-mapping="pathname" data-strict="0"data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></scr' + 'ipt>');
+  var documentFragment = range.createContextualFragment('<div class="giscus" style="width: 100%;"></div><script src="https://giscus.app/client.js" data-repo="lemonorangeapple/lemonorangeapple.github.io" data-repo-id="R_kgDOKvAL3w" data-category="Announcements" data-category-id="DIC_kwDOKvAL384Ccnt0" data-mapping="pathname" data-strict="0"data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></scr' + 'ipt>');
   window.self.parent.document.getElementsByClassName('_giscus')[0].appendChild(documentFragment);
+  window.self.parent.document.querySelector("#__next > div > div.notion-frame > div > main > div > article > figure > div > iframe").style.display = 'none';
 </script>`)
 
   res.end()
