@@ -12,9 +12,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     }
   }
 
-  // cache for up to one day
-  res.setHeader('Cache-Control', 'public, max-age=86400, immutable')
-  res.setHeader('Content-Type', 'text/plain')
+  res.setHeader('Content-Type', 'text/html')
   res.write(`
 <script>
   var tmp = window.self.parent.document.createElement('div');
