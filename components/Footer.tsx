@@ -34,6 +34,9 @@ export const FooterImpl: React.FC = () => {
   }, [])
 
   return (
+    <div class="giscus" style="margin: 1rem; width: calc(100% - 2rem);"></div>
+      <script src="https://giscus.app/client.js" data-repo="lemonorangeapple/lemonorangeapple.github.io" data-repo-id="R_kgDOKvAL3w" data-category="Announcements" data-category-id="DIC_kwDOKvAL384Ccnt0" data-mapping="pathname" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async type="1c29320959e51b8c2db70976-text/javascript"></script>
+    </div>
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright 2022 {config.author}</div>
 
