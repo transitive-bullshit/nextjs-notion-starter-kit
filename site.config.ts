@@ -18,7 +18,7 @@ export default siteConfig({
 
   // social usernames (optional)
   github: 'lemonorangeapple',
-  mastodon: 'https://mastodon.acm.org/@june', // optional mastodon profile URL, provides link verification
+  // mastodon: '#', // optional mastodon profile URL, provides link verification
   newsletter: 'https://blog.imjcj.eu.org/feed', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
