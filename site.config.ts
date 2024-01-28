@@ -19,7 +19,7 @@ export default siteConfig({
   // social usernames (optional)
   github: 'lemonorangeapple',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
-  // newsletter: '#', // optional newsletter URL
+  newsletter: 'https://blog.imjcj.eu.org/feed', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
