@@ -14,7 +14,9 @@ export interface SiteConfig {
   github?: string
   linkedin?: string
   newsletter?: string
+  instagram?: string
   youtube?: string
+  reddit?: string
   zhihu?: string
   mastodon?: string;
 
