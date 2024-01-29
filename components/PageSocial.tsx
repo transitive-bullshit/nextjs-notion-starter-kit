@@ -9,12 +9,10 @@ import styles from './PageSocial.module.css'
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
-import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaReddit } from '@react-icons/all-files/fa/FaReddit'
 import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 
 interface SocialLink {
   name: string
