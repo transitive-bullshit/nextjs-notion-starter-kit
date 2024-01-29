@@ -63,7 +63,7 @@ const socialLinks: SocialLink[] = [
   config.instagram && {
     name: 'instagram',
     href: `https://www.instagram.com/${config.instagram}`,
-    title: `Instagram ${config.instagram}`,
+    title: `Instagram @${config.instagram}`,
     icon: (
       <FaInstagram />
     )
@@ -72,7 +72,7 @@ const socialLinks: SocialLink[] = [
   config.youtube && {
     name: 'youtube',
     href: `https://www.youtube.com/${config.youtube}`,
-    title: `YouTube ${config.youtube}`,
+    title: `YouTube @${config.youtube}`,
     icon: (
       <FaYoutube />
     )
@@ -81,7 +81,7 @@ const socialLinks: SocialLink[] = [
   config.reddit && {
     name: 'reddit',
     href: `https://www.reddit.com/u/${config.reddit}`,
-    title: `Instagram ${config.reddit}`,
+    title: `Reddit @${config.reddit}`,
     icon: (
       <FaReddit />
     )
