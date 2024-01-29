@@ -6,6 +6,8 @@ import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
+import { FaReddit } from '@react-icons/all-files/fa/FaReddit'
+import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
@@ -124,6 +126,18 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
 
+        {config.instagram && (
+          <a
+            className={styles.instagram}
+            href={`https://www.reddit.com/u/${config.instagram}`}
+            title={`Instagram ${config.author}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaInstagram />
+          </a>
+        )}
+
         {config.youtube && (
           <a
             className={styles.youtube}
@@ -133,6 +147,18 @@ export const FooterImpl: React.FC = () => {
             rel='noopener noreferrer'
           >
             <FaYoutube />
+          </a>
+        )}
+
+        {config.reddit && (
+          <a
+            className={styles.reddit}
+            href={`https://www.reddit.com/u/${config.reddit}`}
+            title={`Reddit ${config.author}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaReddit />
           </a>
         )}
       </div>

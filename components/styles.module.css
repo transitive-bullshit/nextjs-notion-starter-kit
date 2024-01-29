@@ -110,6 +110,17 @@
   color: #ff0000;
 }
 
+.reddit:hover {
+  color: #FF5700;
+}
+
+.instagram:hover {
+  border-radius: 40px;
+  color: #fff;
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
 .linkedin:hover {
   color: #0077b5;
 }
