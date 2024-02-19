@@ -71,4 +71,4 @@ export default {
   //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
   //   }
   // ]
-})
+}
