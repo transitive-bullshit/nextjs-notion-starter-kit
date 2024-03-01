@@ -17,5 +17,6 @@ declare module 'posthog-js' {
     export function track(event: string, properties?: EventProperties): void;
     export function identify(userId: string, properties?: EventProperties): void;
     export function reset(): void;
+    export function capture(event: string, properties?: EventProperties): void;
     // Add other PostHog methods you use here
 }
