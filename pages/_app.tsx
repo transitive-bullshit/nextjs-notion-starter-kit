@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react";
+
 // global styles shared across the entire site
 import 'styles/global.css'
 
@@ -67,5 +69,10 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Analytics /> {/* This is where you add the Analytics component */}
+      <Component {...pageProps} />
+    </>
+  )
 }
