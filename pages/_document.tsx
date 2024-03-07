@@ -64,6 +64,13 @@ export default class MyDocument extends Document {
             <Main />
 
             <NextScript />
+            <script src="https://utteranc.es/client.js"
+              repo="buhe/comment"
+              issue-term="url"
+              theme="preferred-color-scheme"
+              crossorigin="anonymous"
+              async>
+            </script>
           </body>
         </Html>
       </IconContext.Provider>
