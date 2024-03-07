@@ -14,12 +14,12 @@ export default siteConfig({
   author: 'buhe',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Space Site',
 
   // social usernames (optional)
   twitter: 'buhe1986',
   github: 'buhe',
-  linkedin: 'fisch2',
+  // linkedin: 'fisch2',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
