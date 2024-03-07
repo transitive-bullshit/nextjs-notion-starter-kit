@@ -60,3 +60,13 @@ export interface PageUrlOverridesInverseMap {
   // (this overrides the built-in URL path generation for these pages)
   [pageId: string]: string
 }
+
+export interface NotionPageInfo {
+  pageId: string
+  title: string
+  image: string
+  imageObjectPosition: string
+  author: string
+  authorImage: string
+  detail: string
+}

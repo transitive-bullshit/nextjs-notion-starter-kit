@@ -1,11 +1,11 @@
+import { getAllPagesInSpace, uuidToId, getPageProperty } from 'notion-utils'
 import pMemoize from 'p-memoize'
-import { getAllPagesInSpace, uuidToId } from 'notion-utils'
 
-import { includeNotionIdInUrls } from './config'
-import { notion } from './notion-api'
-import { getCanonicalPageId } from './get-canonical-page-id'
 import * as config from './config'
 import * as types from './types'
+import { includeNotionIdInUrls } from './config'
+import { getCanonicalPageId } from './get-canonical-page-id'
+import { notion } from './notion-api'
 
 const uuid = !!includeNotionIdInUrls
 
@@ -45,6 +45,11 @@ async function getAllPagesImpl(
       const recordMap = pageMap[pageId]
       if (!recordMap) {
         throw new Error(`Error loading page "${pageId}"`)
+      }
+
+      const block = recordMap.block[pageId]?.value
+      if (!(getPageProperty<boolean|null>('Public', block, recordMap) ?? true)) {
+        return map
       }
 
       const canonicalPageId = getCanonicalPageId(pageId, recordMap, {

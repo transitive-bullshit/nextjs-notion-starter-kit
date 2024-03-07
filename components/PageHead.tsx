@@ -1,9 +1,9 @@
-import Head from 'next/head'
 import * as React from 'react'
+import Head from 'next/head'
 
-import * as types from 'lib/types'
-import * as config from 'lib/config'
-import { getSocialImageUrl } from 'lib/get-social-image-url'
+import * as config from '@/lib/config'
+import * as types from '@/lib/types'
+import { getSocialImageUrl } from '@/lib/get-social-image-url'
 
 export const PageHead: React.FC<
   types.PageProps & {
@@ -26,8 +26,17 @@ export const PageHead: React.FC<
       <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
       <meta
         name='viewport'
-        content='width=device-width, initial-scale=1, shrink-to-fit=no'
+        content='width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover'
       />
+
+      <meta name='apple-mobile-web-app-capable' content='yes' />
+      <meta
+        name='apple-mobile-web-app-status-bar-style'
+        content='black'
+      />
+
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fefffe" key="theme-color-light"/>
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2d3439" key="theme-color-dark"/>
 
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='website' />
