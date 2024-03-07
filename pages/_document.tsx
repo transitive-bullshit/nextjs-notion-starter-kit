@@ -2,7 +2,14 @@ import * as React from 'react'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 import { IconContext } from '@react-icons/all-files'
-
+declare module 'react' {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    // extends React's HTMLAttributes
+    repo?: string;
+    theme?: string;
+    crossorigin?: string;
+  }
+}
 export default class MyDocument extends Document {
   render() {
     return (
