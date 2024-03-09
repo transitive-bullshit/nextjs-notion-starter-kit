@@ -55,8 +55,8 @@ export default function App({ Component, pageProps }: AppProps) {
     }
 
     router.events.on('routeChangeComplete', onRouteChangeComplete)
-    const storageKey = 'darkMode'
-    localStorage.setItem(storageKey, JSON.stringify(false))
+    // const storageKey = 'darkMode'
+    // localStorage.setItem(storageKey, JSON.stringify(false))
     return () => {
       router.events.off('routeChangeComplete', onRouteChangeComplete)
     }

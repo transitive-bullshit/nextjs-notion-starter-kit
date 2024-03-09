@@ -58,23 +58,24 @@ export default class MyDocument extends Document {
   } else if (supportsColorSchemeQuery) {
     // source of truth from system
     setClassOnDocumentBody(mql.matches)
-    localStorage.setItem(storageKey, JSON.stringify(false))
+    localStorage.setItem(storageKey, mql.matches)
   } else {
     // source of truth from document.body
     var isDarkMode = document.body.classList.contains(classNameDark)
-    localStorage.setItem(storageKey, JSON.stringify(false))
+    localStorage.setItem(storageKey, JSON.stringify(isDarkMode))
   }
 })();
 `
               }}
             />
+            
             <Main />
-
+            
             <NextScript />
             <script src="https://utteranc.es/client.js"
               repo="buhe/comment"
               issue-term="url"
-              theme="github-light"
+              theme="preferred-color-scheme"
               crossorigin="anonymous"
               async>
             </script>
