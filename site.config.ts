@@ -9,16 +9,16 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'AI训练师营地',
-  domain: 'aizhushou.site',
+  name: 'AI关乎未来',
+  domain: 'zerozzz.win',
   author: 'ZeroZ',
 
   // open graph metadata (optional)
-  description: 'AI训练师营地',
+  description: 'AI关乎未来',
 
   // social usernames (optional)
   twitter: 'ZeroZ_JQ',
- // github: 'transitive-bullshit',
+  github: 'ZeroZ-lab',
   //linkedin: 'fisch2',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
