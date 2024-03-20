@@ -2,14 +2,14 @@ import * as React from 'react'
 
 import styles from './styles.module.css'
 
-export const GitHubShareButton: React.FC = () => {
+export const RSSButton: React.FC = () => {
   return (
     <a
       href='https://blog.buhe.dev/feed'
       target='_blank'
       rel='noopener noreferrer'
       className={styles.githubCorner}
-      aria-label='View source on GitHub'
+      aria-label='RSS Feed'
     >
       <svg
         width='100'
