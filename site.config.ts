@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Space',
+  name: 'blog',
   domain: 'blog.buhe.dev',
   author: 'buhe',
 
   // open graph metadata (optional)
-  description: 'Space Site',
+  description: 'buhe blog',
 
   // social usernames (optional)
   twitter: 'buhe1986',
