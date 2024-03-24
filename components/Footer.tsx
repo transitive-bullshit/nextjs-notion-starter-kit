@@ -46,7 +46,7 @@ export const FooterImpl: React.FC = () => {
         }
       `}
     </style>
-    <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" className="hoverColor">鄂ICP备2023013744号-1</a>
+{/*     <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" className="hoverColor">鄂ICP备2023013744号-1</a> */}
   </div>
 
       
