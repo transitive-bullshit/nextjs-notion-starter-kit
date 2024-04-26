@@ -4,6 +4,7 @@ import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
+import { SiPixiv } from '@react-icons/all-files/si/SiPixiv'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
@@ -73,6 +74,16 @@ export const FooterImpl: React.FC = () => {
             rel='me'
           >
             <FaMastodon />
+          </a>
+        )}
+
+        {config.pixiv && (
+          <a
+            className={styles.pixiv}
+            href={`https://www.pixiv.net/users/${config.pixiv}`}
+            rel='me'
+          >
+            <SiPixiv />
           </a>
         )}
 

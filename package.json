@@ -47,6 +47,7 @@
     "react": "^18.2.0",
     "react-body-classname": "^1.3.1",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.1.0",
     "react-notion-x": "^6.15.6",
     "react-tweet-embed": "^2.0.0",
     "react-use": "^17.4.2",

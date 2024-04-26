@@ -97,7 +97,9 @@
 .mastodon:hover {
   color: #5a4be1;
 }
-
+.pixiv:hover {
+  color: #0096fa;
+}
 .zhihu:hover {
   color: #0066ff;
 }
