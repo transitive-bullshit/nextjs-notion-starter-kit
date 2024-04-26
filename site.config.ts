@@ -60,7 +60,7 @@ export default siteConfig({
     },
      {
        title: 'BLOG',
-       pageId: '6ff6114a871849b785453bc706574282'
+       pageId: '6ff6114a871849b785453bc706574282?v=c886560a15b74d298e44d5d5d7aa2878&pvs=4'
      }
    ]
 })
