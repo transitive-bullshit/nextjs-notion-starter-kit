@@ -14,7 +14,7 @@ export default siteConfig({
   author: 'KujiraTiku',
 
   // open graph metadata (optional)
-  description: '清熱鯨騰草',
+  description: '清熱鯨騰草1',
 
   // social usernames (optional)
   twitter: 'KujiraTiku',
