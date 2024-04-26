@@ -60,12 +60,13 @@ export default siteConfig({
     },
      {
        title: 'BLOG',
-       pageId: '6ff6114a871849b785453bc706574282?v=c3696e99a7074b45a1a39ea0afdc32d5&pvs=4'
+       pageId: 'https://whale-tiku.notion.site/6ff6114a871849b785453bc706574282?v=c3696e99a7074b45a1a39ea0afdc32d5&pvs=4'
      }
    ]
 })
 // 6ff6114a871849b785453bc706574282?v=c3696e99a7074b45a1a39ea0afdc32d5
 // 6ff6114a871849b785453bc706574282
-// c3696e99a7074b45a1a39ea0afdc32d5
+// c3696e99a7074b45a1a39ea0afdc32d
+// 6ff6114a871849b785453bc706574282?v=c3696e99a7074b45a1a39ea0afdc32d5&pvs=4
 // 3696e99a7074b45a1a39ea0afdc32d5
 // https://whale-tiku.notion.site/6ff6114a871849b785453bc706574282?v=c3696e99a7074b45a1a39ea0afdc32d5&pvs=4
