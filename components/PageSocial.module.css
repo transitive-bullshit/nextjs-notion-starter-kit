@@ -85,7 +85,18 @@
 .twitter:hover {
   border-color: #2795e9;
 }
-
+.mastodon .actionBgPane {
+  background: #6364FF;
+}
+.mastodon:hover {
+  border-color: #6364FF;
+}
+.pixiv .actionBgPane {
+  background: #0096fa;
+}
+.pixiv:hover {
+  border-color: #0096fa;
+}
 .linkedin .actionBgPane {
   background: #0077b5;
 }

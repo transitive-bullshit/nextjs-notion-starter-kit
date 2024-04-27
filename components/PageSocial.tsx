@@ -82,7 +82,7 @@ const socialLinks: SocialLink[] = [
 
   config.pixiv && {
     name: 'pixiv',
-    href: `${config.pixiv}`,
+    href: `https://www.pixiv.net/users/${config.pixiv}`,
     title: `Pixiv ${config.pixiv}`,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
