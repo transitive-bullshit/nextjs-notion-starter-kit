@@ -1,4 +1,5 @@
-import * as React from 'react'
+import React from 'react'
+
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -149,6 +150,30 @@ export const NotionPage: React.FC<types.PageProps> = ({
 }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
+// 添加禁止鼠标右键、禁止选中和禁止文字复制粘贴的逻辑
+React.useEffect(() => {
+  const handleContextMenu = (event: MouseEvent) => {
+    event.preventDefault();
+  };
+
+  const handleSelectStart = (event: Event) => {
+    event.preventDefault();
+  };
+
+  const handleCopy = (event: ClipboardEvent) => {
+    event.preventDefault();
+  };
+
+  document.addEventListener('contextmenu', handleContextMenu);
+  document.addEventListener('selectstart', handleSelectStart);
+  document.addEventListener('copy', handleCopy);
+
+  return () => {
+    document.removeEventListener('contextmenu', handleContextMenu);
+    document.removeEventListener('selectstart', handleSelectStart);
+    document.removeEventListener('copy', handleCopy);
+  };
+}, []);
 
   const components = React.useMemo(
     () => ({
