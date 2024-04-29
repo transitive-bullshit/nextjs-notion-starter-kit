@@ -19,9 +19,8 @@ export default siteConfig({
   // social usernames (optional)
   twitter: 'yush_g',
   github: 'rhotter',
-  linkedin: 'Marley Xiong',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
-  // newsletter: '#', // optional newsletter URL
+  newsletter: 'mailto:marleyxiong0@gmail.com', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
