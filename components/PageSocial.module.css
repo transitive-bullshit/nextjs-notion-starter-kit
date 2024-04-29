@@ -93,6 +93,13 @@
   border-color: #0077b5;
 }
 
+.tiktok .actionBgPane {
+  background: #0077b5;
+}
+.tiktok:hover {
+  border-color: #0077b5;
+}
+
 .github .actionBgPane {
   background: #c9510c;
 }

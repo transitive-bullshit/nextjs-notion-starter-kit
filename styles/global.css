@@ -11,12 +11,32 @@ body,
 html {
   padding: 0;
   margin: 0;
+  line-height: 1.5; /* Add this line */
+}
+
+.notion {
+  padding-left: 15%;
+  padding-right: 15%;
+  @media only screen and (max-width: 920px) {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+}
+
+.notion-page {
+  line-height: 1.5; /* Adjust line height for notion pages */
+  /* padding-bottom: calc(max(5vh, 32px)) !important; */
+}
+
+.notion-h1, .notion-h2, .notion-h3 {
+  line-height: 1.5; /* Adjust line height for headers */
+}
+.notion-text {
+  line-height: 1.5; /* Adjust line height for text blocks */
 }
 
 body {
-  --notion-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif;
+  --notion-font: 'OCR-B Letterpress M Standard', 'OCR-B-10 Pitch', 'OCRBEF Regular', 'OCR-B BT 10', monospace;
   font-family: var(--notion-font);
   overflow-x: hidden;
 }
@@ -57,6 +77,6 @@ body {
   background-color: var(--fg-color-1);
 }
 
-::-webkit-scrollbar-track {           
+::-webkit-scrollbar-track {
     background-color: var(--bg-color);
 }
