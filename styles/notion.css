@@ -37,7 +37,9 @@
   margin-top: 1em;
   margin-bottom: 1em;
 }
-
+.notion-asset-wrapper img {
+  border-radius: 8px;
+}
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
   width: 100% !important;
