@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Tsao',
-  domain: 'cycinc.eu.org',
+  domain: 'blog.cycinc.eu.org',
   author: 'Tsao',
 
   // open graph metadata (optional)
