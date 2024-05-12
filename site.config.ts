@@ -2,25 +2,25 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '4c5524a5a3204a99a5a543ab664c65a6',
+  rootNotionPageId: 'c5ae80b83bbb418693cc0cc5c59d71c7',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'LXM House',
-  domain: 'lxm.house',
-  author: 'LXM House',
+  name: 'Coursetexts',
+  domain: 'coursetexts.org',
+  author: 'Coursetexts',
 
   // open graph metadata (optional)
-  description: 'A rotating home in Cambridge, MA for researchers, students, and people with ideas.',
+  description: 'Coursetexts is a modern, open library of MIT and Harvard course notes.',
 
   // social usernames (optional)
-  twitter: 'yush_g',
-  github: 'rhotter',
+  twitter: 'selenazhxng',
+  github: 'coursetexts',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
-  newsletter: 'mailto:marleyxiong0@gmail.com', // optional newsletter URL
+  newsletter: 'mailto:coursetexts@mit.edu', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
