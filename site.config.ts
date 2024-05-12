@@ -17,7 +17,7 @@ export default siteConfig({
   description: '清熱鯨騰草',
 
   // social usernames (optional)
-  myCat:'3e2f077098284288ae4778c0070e652f',
+  myCat:'https://seto-life.vercel.app/',
   twitter: 'KujiraTiku',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
