@@ -55,6 +55,7 @@ export const language: string = getSiteConfig('language', 'en')
 
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
+export const myCat: string | null = getSiteConfig('myCat', null)
 export const mastodon: string | null = getSiteConfig('mastodon', null)
 export const pixiv: string | null = getSiteConfig('pixiv', null)
 export const github: string | null = getSiteConfig('github', null)

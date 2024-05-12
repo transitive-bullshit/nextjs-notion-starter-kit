@@ -5,6 +5,7 @@ import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { SiPixiv } from '@react-icons/all-files/si/SiPixiv'
+import { FaCat } from '@react-icons/all-files/fa/FaCat'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
@@ -54,6 +55,16 @@ export const FooterImpl: React.FC = () => {
       </div>
 
       <div className={styles.social}>
+        {config.myCat && (
+          <a
+            className={styles.myCat}
+            href={config.myCat}
+            rel='me'
+          >
+            <FaCat/>
+          </a>
+        )}
+
         {config.twitter && (
           <a
             className={styles.twitter}

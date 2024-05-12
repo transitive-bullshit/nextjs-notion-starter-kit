@@ -17,6 +17,7 @@ export default siteConfig({
   description: '清熱鯨騰草',
 
   // social usernames (optional)
+  myCat:'3e2f077098284288ae4778c0070e652f',
   twitter: 'KujiraTiku',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
@@ -65,6 +66,10 @@ export default siteConfig({
      {
        title: 'BLOG',
        pageId: 'Blog-1d5ee83bb5cc4956b1544d578e92beb6'
+     },
+     {
+       title: 'GALLERY',
+       pageId: 'Gallery-ef6cd60929ab4ba097569da47d42a903'
      }
    ]
 })
