@@ -15,11 +15,11 @@ html {
 }
 
 .notion {
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 3%;
+  padding-right: 3%;
   @media only screen and (max-width: 920px) {
-    padding-left: 8%;
-    padding-right: 8%;
+    padding-left: 3%;
+    padding-right: 3%;
   }
 }
 
@@ -36,7 +36,7 @@ html {
 }
 
 body {
-  --notion-font: 'OCR-B Letterpress M Standard', 'OCR-B-10 Pitch', 'OCRBEF Regular', 'OCR-B BT 10', monospace;
+  --notion-font: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
   font-family: var(--notion-font);
   overflow-x: hidden;
 }
