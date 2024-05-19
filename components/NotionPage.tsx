@@ -150,7 +150,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
-// 添加禁止鼠标右键、禁止选中和禁止文字复制粘贴的逻辑
+  // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和禁止长按的逻辑
 React.useEffect(() => {
   const handleContextMenu = (event: MouseEvent) => {
     event.preventDefault();
@@ -164,16 +164,29 @@ React.useEffect(() => {
     event.preventDefault();
   };
 
+  const handleTouchStart = (event: TouchEvent) => {
+    event.preventDefault();
+  };
+
+  const handleTouchEnd = (event: TouchEvent) => {
+    event.preventDefault();
+  };
+
   document.addEventListener('contextmenu', handleContextMenu);
   document.addEventListener('selectstart', handleSelectStart);
   document.addEventListener('copy', handleCopy);
+  document.addEventListener('touchstart', handleTouchStart, { passive: false });
+  document.addEventListener('touchend', handleTouchEnd, { passive: false });
 
   return () => {
     document.removeEventListener('contextmenu', handleContextMenu);
     document.removeEventListener('selectstart', handleSelectStart);
     document.removeEventListener('copy', handleCopy);
+    document.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchend', handleTouchEnd);
   };
 }, []);
+
 
   const components = React.useMemo(
     () => ({
