@@ -21,7 +21,7 @@ export default siteConfig({
   twitter: 'KujiraTiku',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
-   mastodon: 'https://fedibird.com/@kujiTake', // optional mastodon profile URL, provides link verification
+  mastodon: 'https://fedibird.com/@kujiTake', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
   pixiv: '2781527',
@@ -56,20 +56,20 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: 'HOME',
+      title: 'Home',
       pageId: '858447c91db0434282b31b8d08d8df83'
     },
-     {
-      title: 'ABOUT',
+    {
+      title: 'About',
       pageId: 'About-8ff57d87b0654b0b8c38b5e05947d5d7'
     },
-     {
-       title: 'BLOG',
-       pageId: 'Blog-1d5ee83bb5cc4956b1544d578e92beb6'
-     },
-     {
-       title: 'GALLERY',
-       pageId: 'Gallery-ef6cd60929ab4ba097569da47d42a903'
-     }
-   ]
+    {
+      title: 'Blog',
+      pageId: 'Blog-6d3fa135bc944d3d93d5c71007f874c9'
+    },
+    {
+      title: 'Gallery',
+      pageId: 'Gallery-8135fc5f12fb4115970586bd53484963'
+    }
+  ]
 })
