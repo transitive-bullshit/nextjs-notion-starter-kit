@@ -164,16 +164,18 @@ React.useEffect(() => {
     event.preventDefault();
   };
 
-  let touchStartTime: number;
+  let touchStartTime: number | null = null; // Initialize as null
 
   const handleTouchStart = (event: TouchEvent) => {
     touchStartTime = Date.now();
   };
 
   const handleTouchEnd = (event: TouchEvent) => {
-    const touchDuration = Date.now() - touchStartTime;
-    if (touchDuration > 500) {
-      event.preventDefault();
+    if (touchStartTime) { // Check if touchStartTime is not null
+      const touchDuration = Date.now() - touchStartTime;
+      if (touchDuration > 500) {
+        event.preventDefault();
+      }
     }
   };
 
