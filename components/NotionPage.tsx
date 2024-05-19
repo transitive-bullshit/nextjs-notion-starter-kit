@@ -308,3 +308,52 @@ React.useEffect(() => {
     </>
   )
 }
+
+interface Props {}
+interface State {
+    longpress: boolean;
+    presstimeout: any;
+}
+class LongPressComponent extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+        this.state = {
+            longpress: false,
+            presstimeout: null
+        };
+    }
+
+    handleMouseDown = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        this.setState({
+            presstimeout: setTimeout(() => {
+                this.setState({ longpress: true });
+                // 在这里添加你需要执行的长按后的操作，比如禁止默认行为
+                event.preventDefault();
+            }, 500) // 设置长按时间阈值，单位为毫秒，这里设置为500毫秒
+        });
+    };
+
+    handleMouseUp = () => {
+        clearTimeout(this.state.presstimeout);
+        if (this.state.longpress) {
+            // 如果是长按，则重置长按标志
+            this.setState({ longpress: false });
+        } else {
+            // 如果不是长按，则执行正常的左键点击操作
+            // 在这里添加你需要执行的左键点击后的操作
+        }
+    };
+
+    render() {
+        return (
+            <div
+                onMouseDown={this.handleMouseDown}
+                onMouseUp={this.handleMouseUp}
+            >
+                {/* 在这里编写组件的 JSX 结构 */}
+            </div>
+        );
+    }
+}
+
+export default LongPressComponent;
