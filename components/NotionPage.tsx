@@ -150,80 +150,54 @@ export const NotionPage: React.FC<types.PageProps> = ({
 }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
+  // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和禁止长按的逻辑
+React.useEffect(() => {
+  const handleContextMenu = (event: MouseEvent) => {
+    event.preventDefault();
+  };
 
-  // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和长按的逻辑
-  React.useEffect(() => {
-    // 检测是否是 iOS 设备
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  
-    const handleContextMenu = (event: MouseEvent) => {
+  const handleSelectStart = (event: Event) => {
+    event.preventDefault();
+  };
+
+  const handleCopy = (event: ClipboardEvent) => {
+    event.preventDefault();
+  };
+
+  const handleTouchStart = (event: TouchEvent) => {
+    event.preventDefault();
+    // Record the start time of the touch event
+    startTime = event.timeStamp;
+  };
+
+  const handleTouchEnd = (event: TouchEvent) => {
+    event.preventDefault();
+    // Calculate the duration of the touch event
+    const touchDuration = event.timeStamp - startTime;
+    if (touchDuration > 500) {
       event.preventDefault();
-    };
-  
-    const handleSelectStart = (event: Event) => {
-      event.preventDefault();
-    };
-  
-    const handleCopy = (event: ClipboardEvent) => {
-      event.preventDefault();
-    };
-  
-    let touchTimer: NodeJS.Timeout | null = null;
-  
-    const handleTouchStart = (event: TouchEvent) => {
-      if (isIOS) {
-        touchTimer = setTimeout(() => {
-          event.preventDefault();
-          event.stopPropagation();
-        }, 500); // 500ms 长按阈值，可以根据需要调整
-      }
-    };
-  
-    const clearTouchTimer = () => {
-      if (touchTimer) {
-        clearTimeout(touchTimer);
-        touchTimer = null;
-      }
-    };
-  
-    const handleTouchEnd = () => {
-      clearTouchTimer();
-    };
-  
-    const handleTouchMove = () => {
-      clearTouchTimer();
-    };
-  
-    const handleTouchCancel = () => {
-      clearTouchTimer();
-    };
-  
-    document.addEventListener('contextmenu', handleContextMenu);
-    document.addEventListener('selectstart', handleSelectStart);
-    document.addEventListener('copy', handleCopy);
-  
-    if (isIOS) {
-      document.addEventListener('touchstart', handleTouchStart, { passive: false });
-      document.addEventListener('touchend', handleTouchEnd, { passive: false });
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('touchcancel', handleTouchCancel, { passive: false });
     }
-  
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-      document.removeEventListener('selectstart', handleSelectStart);
-      document.removeEventListener('copy', handleCopy);
-  
-      if (isIOS) {
-        document.removeEventListener('touchstart', handleTouchStart);
-        document.removeEventListener('touchend', handleTouchEnd);
-        document.removeEventListener('touchmove', handleTouchMove);
-        document.removeEventListener('touchcancel', handleTouchCancel);
-      }
-    };
-  }, []);
+  };
 
-  
+  // Variable to store the start time of the touch event
+  let startTime: number;
+
+  document.addEventListener('contextmenu', handleContextMenu);
+  document.addEventListener('selectstart', handleSelectStart);
+  document.addEventListener('copy', handleCopy);
+  document.addEventListener('touchstart', handleTouchStart, { passive: false });
+  document.addEventListener('touchend', handleTouchEnd, { passive: false });
+
+  return () => {
+    document.removeEventListener('contextmenu', handleContextMenu);
+    document.removeEventListener('selectstart', handleSelectStart);
+    document.removeEventListener('copy', handleCopy);
+    document.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchend', handleTouchEnd);
+  };
+}, []);
+
+
   const components = React.useMemo(
     () => ({
       nextImage: Image,
