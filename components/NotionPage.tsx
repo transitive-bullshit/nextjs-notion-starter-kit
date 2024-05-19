@@ -150,60 +150,30 @@ export const NotionPage: React.FC<types.PageProps> = ({
 }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
-  // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和禁止长按的逻辑
+// 添加禁止鼠标右键、禁止选中和禁止文字复制粘贴的逻辑
 React.useEffect(() => {
   const handleContextMenu = (event: MouseEvent) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     event.preventDefault();
   };
-  
+
   const handleSelectStart = (event: Event) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     event.preventDefault();
   };
-  
+
   const handleCopy = (event: ClipboardEvent) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     event.preventDefault();
-  };
-
-  let touchStartTime: number | null = null; // Initialize as null
-
-  const handleTouchStart = (event: TouchEvent) => {
-    touchStartTime = Date.now();
-  };
-
-  const handleTouchEnd = (event: TouchEvent) => {
-    if (touchStartTime) { // Check if touchStartTime is not null
-      const touchDuration = Date.now() - touchStartTime;
-      if (touchDuration > 500) {
-        event.preventDefault();
-      }
-    }
-  };
-
-  const handleTouchMove = (event: TouchEvent) => {
-    // Reset touch start time on move to allow scrolling
-    touchStartTime = null;
   };
 
   document.addEventListener('contextmenu', handleContextMenu);
   document.addEventListener('selectstart', handleSelectStart);
   document.addEventListener('copy', handleCopy);
-  document.addEventListener('touchstart', handleTouchStart, { passive: true });
-  document.addEventListener('touchend', handleTouchEnd, { passive: false });
-  document.addEventListener('touchmove', handleTouchMove, { passive: true });
 
   return () => {
     document.removeEventListener('contextmenu', handleContextMenu);
     document.removeEventListener('selectstart', handleSelectStart);
     document.removeEventListener('copy', handleCopy);
-    document.removeEventListener('touchstart', handleTouchStart);
-    document.removeEventListener('touchend', handleTouchEnd);
-    document.removeEventListener('touchmove', handleTouchMove);
   };
 }, []);
-
 
   const components = React.useMemo(
     () => ({
