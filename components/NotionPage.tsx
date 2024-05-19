@@ -153,7 +153,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和长按的逻辑
   React.useEffect(() => {
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    // 检测是否是 iOS 设备
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
   
     const handleContextMenu = (event: MouseEvent) => {
       event.preventDefault();
@@ -221,6 +222,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       }
     };
   }, []);
+
   
   const components = React.useMemo(
     () => ({
