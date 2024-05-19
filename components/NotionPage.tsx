@@ -164,29 +164,30 @@ React.useEffect(() => {
     event.preventDefault();
   };
 
+  let touchStartTime: number;
+
   const handleTouchStart = (event: TouchEvent) => {
-    event.preventDefault();
-    // Record the start time of the touch event
-    startTime = event.timeStamp;
+    touchStartTime = Date.now();
   };
 
   const handleTouchEnd = (event: TouchEvent) => {
-    event.preventDefault();
-    // Calculate the duration of the touch event
-    const touchDuration = event.timeStamp - startTime;
+    const touchDuration = Date.now() - touchStartTime;
     if (touchDuration > 500) {
       event.preventDefault();
     }
   };
 
-  // Variable to store the start time of the touch event
-  let startTime: number;
+  const handleTouchMove = (event: TouchEvent) => {
+    // Reset touch start time on move to allow scrolling
+    touchStartTime = null;
+  };
 
   document.addEventListener('contextmenu', handleContextMenu);
   document.addEventListener('selectstart', handleSelectStart);
   document.addEventListener('copy', handleCopy);
-  document.addEventListener('touchstart', handleTouchStart, { passive: false });
+  document.addEventListener('touchstart', handleTouchStart, { passive: true });
   document.addEventListener('touchend', handleTouchEnd, { passive: false });
+  document.addEventListener('touchmove', handleTouchMove, { passive: true });
 
   return () => {
     document.removeEventListener('contextmenu', handleContextMenu);
@@ -194,6 +195,7 @@ React.useEffect(() => {
     document.removeEventListener('copy', handleCopy);
     document.removeEventListener('touchstart', handleTouchStart);
     document.removeEventListener('touchend', handleTouchEnd);
+    document.removeEventListener('touchmove', handleTouchMove);
   };
 }, []);
 
