@@ -6,7 +6,14 @@
  * whereas our goal with this site is to adjust Notion's styling in a few key
  * places to add some flare.
  */
-
+ img{
+  /* SPの長押し禁止 */
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -moz-touch-callout:none;
+  -moz-user-select:none;
+  user-select:none;
+}
  .notion {
   --notion-max-width: 720px;
   --notion-header-height: 54px;
