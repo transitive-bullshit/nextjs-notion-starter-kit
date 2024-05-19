@@ -153,14 +153,17 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和禁止长按的逻辑
 React.useEffect(() => {
   const handleContextMenu = (event: MouseEvent) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     event.preventDefault();
   };
-
+  
   const handleSelectStart = (event: Event) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     event.preventDefault();
   };
-
+  
   const handleCopy = (event: ClipboardEvent) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     event.preventDefault();
   };
 
