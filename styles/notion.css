@@ -20,9 +20,9 @@
   padding-bottom: calc(max(5vh, 32px)) !important;
   line-height: 1.65;
 }
-
+/* 小猫页面宽度不固定 */
 .index-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 95%;
 }
 
 .notion-text {
