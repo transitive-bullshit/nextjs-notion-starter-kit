@@ -156,37 +156,52 @@ export const NotionPage: React.FC<types.PageProps> = ({
     const handleContextMenu = (event: MouseEvent) => {
       event.preventDefault();
     };
+  
     const handleSelectStart = (event: Event) => {
       event.preventDefault();
     };
+  
     const handleCopy = (event: ClipboardEvent) => {
       event.preventDefault();
     };
+  
     let touchTimer: NodeJS.Timeout | null = null;
+  
     const handleTouchStart = (event: TouchEvent) => {
       touchTimer = setTimeout(() => {
         // 阻止长按菜单的默认行为
         event.preventDefault();
+        event.stopPropagation();
       }, 500); // 500ms 长按阈值，可以根据需要调整
     };
+  
     const clearTouchTimer = () => {
       if (touchTimer) {
         clearTimeout(touchTimer);
         touchTimer = null;
       }
     };
+  
     const handleTouchEnd = () => {
       clearTouchTimer(); // 在 touchend 时清除计时器
     };
+  
     const handleTouchMove = () => {
       clearTouchTimer(); // 在 touchmove 时清除计时器，避免滑动时触发长按
     };
+  
+    const handleTouchCancel = () => {
+      clearTouchTimer(); // 在 touchcancel 时清除计时器
+    };
+  
     document.addEventListener('contextmenu', handleContextMenu);
     document.addEventListener('selectstart', handleSelectStart);
     document.addEventListener('copy', handleCopy);
     document.addEventListener('touchstart', handleTouchStart, { passive: false });
     document.addEventListener('touchend', handleTouchEnd, { passive: false });
     document.addEventListener('touchmove', handleTouchMove, { passive: false });
+    document.addEventListener('touchcancel', handleTouchCancel, { passive: false });
+  
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('selectstart', handleSelectStart);
@@ -194,9 +209,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
       document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
       document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchcancel', handleTouchCancel);
     };
   }, []);
-
+  
 
   const components = React.useMemo(
     () => ({
