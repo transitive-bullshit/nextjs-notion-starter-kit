@@ -350,6 +350,9 @@
 }
 
 /* disable highlighting in dark mode */
+.dark-mode {
+  --bg-color: #2f2f2f;
+}
 .dark-mode .notion-red_background,
 .dark-mode .notion-pink_background,
 .dark-mode .notion-blue_background,
