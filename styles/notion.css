@@ -50,16 +50,7 @@
   margin: 0 auto;
   overflow-x: auto;
 }
-/*blog间隔尺寸*/
-.notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  grid-gap: 3vmin;
-  gap: 3vmin;
-}
-.notion-collection-card-property:first-child {
-  font-size: 14px;
-  font-weight: 700;
-}
+
 .notion-nav-header-rhs {
   gap: 0.5rem;
 }
