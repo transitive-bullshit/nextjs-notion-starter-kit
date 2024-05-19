@@ -153,6 +153,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和长按的逻辑
   React.useEffect(() => {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  
     const handleContextMenu = (event: MouseEvent) => {
       event.preventDefault();
     };
@@ -168,11 +170,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
     let touchTimer: NodeJS.Timeout | null = null;
   
     const handleTouchStart = (event: TouchEvent) => {
-      touchTimer = setTimeout(() => {
-        // 阻止长按菜单的默认行为
-        event.preventDefault();
-        event.stopPropagation();
-      }, 500); // 500ms 长按阈值，可以根据需要调整
+      if (isIOS) {
+        touchTimer = setTimeout(() => {
+          event.preventDefault();
+          event.stopPropagation();
+        }, 500); // 500ms 长按阈值，可以根据需要调整
+      }
     };
   
     const clearTouchTimer = () => {
@@ -183,37 +186,42 @@ export const NotionPage: React.FC<types.PageProps> = ({
     };
   
     const handleTouchEnd = () => {
-      clearTouchTimer(); // 在 touchend 时清除计时器
+      clearTouchTimer();
     };
   
     const handleTouchMove = () => {
-      clearTouchTimer(); // 在 touchmove 时清除计时器，避免滑动时触发长按
+      clearTouchTimer();
     };
   
     const handleTouchCancel = () => {
-      clearTouchTimer(); // 在 touchcancel 时清除计时器
+      clearTouchTimer();
     };
   
     document.addEventListener('contextmenu', handleContextMenu);
     document.addEventListener('selectstart', handleSelectStart);
     document.addEventListener('copy', handleCopy);
-    document.addEventListener('touchstart', handleTouchStart, { passive: false });
-    document.addEventListener('touchend', handleTouchEnd, { passive: false });
-    document.addEventListener('touchmove', handleTouchMove, { passive: false });
-    document.addEventListener('touchcancel', handleTouchCancel, { passive: false });
+  
+    if (isIOS) {
+      document.addEventListener('touchstart', handleTouchStart, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd, { passive: false });
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchcancel', handleTouchCancel, { passive: false });
+    }
   
     return () => {
       document.removeEventListener('contextmenu', handleContextMenu);
       document.removeEventListener('selectstart', handleSelectStart);
       document.removeEventListener('copy', handleCopy);
-      document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchend', handleTouchEnd);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchcancel', handleTouchCancel);
+  
+      if (isIOS) {
+        document.removeEventListener('touchstart', handleTouchStart);
+        document.removeEventListener('touchend', handleTouchEnd);
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchcancel', handleTouchCancel);
+      }
     };
   }, []);
   
-
   const components = React.useMemo(
     () => ({
       nextImage: Image,
