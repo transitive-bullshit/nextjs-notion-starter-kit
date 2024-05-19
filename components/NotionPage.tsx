@@ -150,7 +150,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
-  // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和禁止长按的逻辑
+
+  // 添加禁止鼠标右键、禁止选中、禁止文字复制粘贴和长按的逻辑
 React.useEffect(() => {
   const handleContextMenu = (event: MouseEvent) => {
     event.preventDefault();
@@ -164,12 +165,21 @@ React.useEffect(() => {
     event.preventDefault();
   };
 
+  // 用于记录 touchstart 的计时器
+  let touchTimer: NodeJS.Timeout;
+
   const handleTouchStart = (event: TouchEvent) => {
-    event.preventDefault();
+    touchTimer = setTimeout(() => {
+      event.preventDefault();
+    }, 500); // 500ms 长按阈值，可以根据需要调整
   };
 
-  const handleTouchEnd = (event: TouchEvent) => {
-    event.preventDefault();
+  const handleTouchEnd = () => {
+    clearTimeout(touchTimer); // 在 touchend 时清除计时器
+  };
+
+  const handleTouchMove = () => {
+    clearTimeout(touchTimer); // 在 touchmove 时清除计时器，避免滑动时触发长按
   };
 
   document.addEventListener('contextmenu', handleContextMenu);
@@ -177,6 +187,7 @@ React.useEffect(() => {
   document.addEventListener('copy', handleCopy);
   document.addEventListener('touchstart', handleTouchStart, { passive: false });
   document.addEventListener('touchend', handleTouchEnd, { passive: false });
+  document.addEventListener('touchmove', handleTouchMove, { passive: false });
 
   return () => {
     document.removeEventListener('contextmenu', handleContextMenu);
@@ -184,8 +195,10 @@ React.useEffect(() => {
     document.removeEventListener('copy', handleCopy);
     document.removeEventListener('touchstart', handleTouchStart);
     document.removeEventListener('touchend', handleTouchEnd);
+    document.removeEventListener('touchmove', handleTouchMove);
   };
 }, []);
+
 
 
   const components = React.useMemo(
