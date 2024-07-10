@@ -8,7 +8,7 @@
  */
 
 .notion {
-  --notion-max-width: 720px;
+  --notion-max-width: 1020px;
   --notion-header-height: 54px;
 }
 
@@ -41,6 +41,7 @@
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
   width: 100% !important;
+  height: 500px !important;
 }
 
 .notion-header .notion-nav-header {
@@ -348,9 +349,15 @@
 }
 
 /* if you don't want rounded page icon images, remove this */
+.notion-page-has-cover .notion-page-icon-hero.notion-page-icon-image {
+  top: -90px;
+}
 .notion-page-icon-hero.notion-page-icon-image {
   border-radius: 50%;
   box-shadow: 0 8px 40px 0 rgb(0 0 0 / 21%);
+  width: 170px;
+  height: 170px;
+  margin-left: -80px;
 }
 .notion-page-icon-hero.notion-page-icon-image span,
 .notion-page-icon-hero.notion-page-icon-image img {
@@ -402,4 +409,8 @@
 
 .notion-equation.notion-equation-block{
   align-items: center;
+}
+
+.notion-h2 {
+  text-align: center;
 }
