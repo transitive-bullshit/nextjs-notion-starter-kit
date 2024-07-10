@@ -9,9 +9,9 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'Sam Lee Portfolio',
+  domain: 'https://18smlee.github.io/samlee-portfolio/',
+  author: 'Samantha Lee',
 
   // open graph metadata (optional)
   description: 'Sam Lee Portfolio',
