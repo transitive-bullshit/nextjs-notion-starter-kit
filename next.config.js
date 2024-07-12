@@ -18,5 +18,32 @@ module.exports = withBundleAnalyzer({
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/:slug*',
+        destination: 'https://guide.v1.ablur.studio/:slug*',
+        has: [
+          {
+            type: 'host',
+            value: 'guide.abler.world'
+          }
+        ],
+        permanent: false
+      },
+      {
+        source: '/',
+        destination: 'https://ablur.studio/guide',
+        has: [
+          {
+            type: 'host',
+            value: 'v2-guide.abler.world'
+          }
+        ],
+        permanent: false
+      }
+    ]
   }
 })

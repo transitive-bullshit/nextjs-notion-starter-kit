@@ -9,9 +9,9 @@ export default siteConfig({
 
   // basic site info (required)
   name: '에이블러 유저 가이드',
-  domain: 'guide.abler.world',
+  domain: 'guide.v1.ablur.studio',
   author: 'Carpenstreet',
-  homepage: 'https://abler.world/',
+  homepage: 'https://v1.ablur.studio/',
 
   // open graph metadata (optional)
   description: '에이블러 유저 가이드',
@@ -51,7 +51,7 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'custom',
+  navigationStyle: 'custom'
   // navigationLinks: [
   //   {
   //     title: 'About',
