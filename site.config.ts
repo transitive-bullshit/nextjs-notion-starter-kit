@@ -17,13 +17,13 @@ export default siteConfig({
   description: '에이블러 유저 가이드',
 
   // social usernames (optional)
-  twitter: 'ABLER_official',
+  twitter: 'ABLUR_official',
   // github: 'dodo-acon3d',
   // linkedin: 'company/carpenstreet',
-  postype: 'acon3d-abler',
+  postype: 'acon3d-ablur',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
-  youtube: '@ABLER_Official', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  youtube: '@ABLUR_Official', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
