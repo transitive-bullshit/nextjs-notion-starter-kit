@@ -9,16 +9,16 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'pushinpublish Notion Nextjs',
-  domain: 'prickle-dove-5f9.notion.site',
+  name: 'pushinpublish',
+  domain: 'https://pushinpublish.notion.site/',
   author: '163 express',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'pushinpublish nextjs notion site',
 
   // social usernames (optional)
-  twitter: 'ponerinalone',
-  github: 'spykeylife47',
+  twitter: 'ponderinalone',
+  github: 'spykeydp',
   linkedin: 'jompinity',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
