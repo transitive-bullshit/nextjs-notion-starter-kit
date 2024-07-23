@@ -55,10 +55,10 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     
-    {
-      title: 'Templates',
-      pageId: 'bcd3c7dd643648e69cafc86373746188'
-    },
+    // {
+    //   title: 'Templates',
+    //   pageId: 'bcd3c7dd643648e69cafc86373746188'
+    // },
     {
       title: 'Blogs',
       pageId: 'dd82a28579584fb79ad477d2832b3685'
