@@ -91,69 +91,6 @@ background-color: rgb(255, 255, 255 , 0.4);
 
 
 
-/**/
-/* Example styles for responsive header */
-.notion-header {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-}
-
-.notion-nav-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.notion-nav-header-rhs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.breadcrumb {
-  margin: 0 8px;
-}
-
-.button {
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Hamburger Menu Styles */
-.hamburger {
-  display: none;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .notion-header {
-    flex-direction: column;
-  }
-
-  .notion-nav-header-rhs {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  .notion-nav-header-rhs.open {
-    display: flex;
-  }
-
-  .breadcrumb {
-    margin: 4px 0;
-  }
-
-  .hamburger {
-    display: block;
-  }
-}
 
 .notion-gallery-grid {
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
