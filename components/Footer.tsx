@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
+import { FaInstagram } from '@react-icons/all-files/fa/FaInstagram'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
@@ -36,7 +37,9 @@ export const FooterImpl: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright {currentYear} {config.author}</div>
+      <div className={styles.copyright}>
+        Copyright {currentYear} {config.author}
+      </div>
 
       <div className={styles.settings}>
         {hasMounted && (
@@ -133,6 +136,18 @@ export const FooterImpl: React.FC = () => {
             rel='noopener noreferrer'
           >
             <FaYoutube />
+          </a>
+        )}
+
+        {config.instagram && (
+          <a
+            className={styles.instagram}
+            href={`https://www.instagram.com/${config.instagram}`}
+            title={`Instagram ${config.author}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaInstagram />
           </a>
         )}
       </div>

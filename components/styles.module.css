@@ -24,6 +24,10 @@
   background-color: var(--bg-color);
 }
 
+.styles_githubCorner__7QjNo{
+  display: none;
+}
+
 .loadingIcon {
   animation: spinner 0.6s linear infinite;
   display: block;
@@ -49,6 +53,7 @@
   max-width: 1100px;
   margin: auto auto 0;
   padding: 8px;
+  
 
   display: flex;
   flex-direction: row;
@@ -56,8 +61,12 @@
   align-items: center;
 }
 
+.dark-mode .footer{
+  background-color: black;
+}
+
 .copyright {
-  font-size: 80%;
+  font-size: 60%;
   padding: 0.5em;
 }
 
@@ -69,7 +78,7 @@
 .settings a,
 .social a {
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1.25em;
   display: inline-flex;
   padding: 0.25em;
   margin-right: 1vw;

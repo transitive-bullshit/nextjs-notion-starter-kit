@@ -29,14 +29,14 @@
 
 .notion-page {
   padding-bottom: calc(max(5vh, 32px)) !important;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   line-height: 1.65;
 }
 
-/* .index-page {
-  --notion-max-width: 900px;
-} */
+.index-page {
+  --notion-max-width: 1000px;
+}
 
 .notion-text {
   padding: 0.5em 2px;
@@ -56,7 +56,8 @@
 .notion-asset-wrapper iframe{
   background-color: transparent;
   padding: 5px;
-  padding-left: 15px;
+  display: flex;
+  margin-left: 20px;
 }
 
 .notion-asset-wrapper-video > div,
@@ -86,6 +87,72 @@ background-color: rgb(255, 255, 255 , 0.4);
 
 .notion-nav-header-rhs {
   gap: 0rem;
+}
+
+
+
+/**/
+/* Example styles for responsive header */
+.notion-header {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.notion-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.notion-nav-header-rhs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb {
+  margin: 0 8px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .notion-header {
+    flex-direction: column;
+  }
+
+  .notion-nav-header-rhs {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .notion-nav-header-rhs.open {
+    display: flex;
+  }
+
+  .breadcrumb {
+    margin: 4px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
 
 .notion-gallery-grid {
@@ -201,8 +268,8 @@ background-color: rgb(255, 255, 255 , 0.4);
 
 @media only screen and (max-width: 920px) {
   .index-page.notion-page {
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
   }
 }
 

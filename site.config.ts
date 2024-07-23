@@ -18,6 +18,7 @@ export default siteConfig({
 
   // social usernames (optional)
   twitter: 'DG_R_NY',
+  instagram: 'dgrny_studio',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
