@@ -2,19 +2,19 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '7875426197cf461698809def95960ebf',
+  rootNotionPageId: '2e0b31584dc3480db7b406ac699fd04f',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'DGRNY-The Journey',
+  domain: 'dgrny.com',
+  author: 'DGRNY',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'DGRNY-The Journey site',
 
   // social usernames (optional)
   twitter: 'transitive_bs',
@@ -50,16 +50,20 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
-  // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
-  // ]
+  
+  navigationStyle: 'custom',
+  navigationLinks: [
+    {
+      title: 'Courses',
+      pageId: '4582c58b96744249b6d85b4eb9237979'
+    },
+    {
+      title: 'Templates',
+      pageId: 'bcd3c7dd643648e69cafc86373746188'
+    },
+    {
+      title: 'Blogs',
+      pageId: 'dd82a28579584fb79ad477d2832b3685'
+    }
+  ]
 })
