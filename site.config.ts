@@ -54,10 +54,7 @@ export default siteConfig({
   
   navigationStyle: 'custom',
   navigationLinks: [
-    {
-      title: 'Courses',
-      pageId: '4582c58b96744249b6d85b4eb9237979'
-    },
+    
     {
       title: 'Templates',
       pageId: 'bcd3c7dd643648e69cafc86373746188'
