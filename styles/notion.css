@@ -33,8 +33,14 @@
 
 .notion-h-title{
   font-weight:900;
-  font-size: x-large;
 }
+
+.notion-h1{
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
 .notion-page {
   padding-bottom: calc(max(5vh, 32px)) !important;
   padding-left: 20px;
@@ -237,7 +243,7 @@ background-color: rgb(255, 255, 255 , 0.4);
 }
 
 .notion-title {
-  display: block;
+  
   text-align: center;
 }
 
