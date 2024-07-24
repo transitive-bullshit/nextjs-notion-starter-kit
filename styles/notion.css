@@ -27,6 +27,14 @@
   padding: 0;
 }
 
+.notion-title{
+  display: none;
+}
+
+.notion-h-title{
+  font-weight:900;
+  font-size: x-large;
+}
 .notion-page {
   padding-bottom: calc(max(5vh, 32px)) !important;
   padding-left: 20px;
