@@ -27,7 +27,7 @@
   padding: 0;
 }
 
-.notion-title{
+.index-page .notion-title{
   display: none;
 }
 
@@ -241,7 +241,7 @@ background-color: rgb(255, 255, 255 , 0.4);
 }
 
 .notion-title {
-  
+  display: block;
   text-align: center;
 }
 
