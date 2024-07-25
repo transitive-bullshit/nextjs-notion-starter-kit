@@ -23,6 +23,10 @@
   color: white;
 }
 
+.dark-mode{
+  background-color: rgba(0, 0, 0, 0.949);
+}
+
 .notion-frame {
   padding: 0;
 }
