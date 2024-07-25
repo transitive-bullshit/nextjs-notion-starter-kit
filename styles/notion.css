@@ -24,6 +24,7 @@
 }
 
 .dark-mode{
+  --bg-color:rgba(0, 0, 0, 0.949);
   background-color: rgba(0, 0, 0, 0.949);
 }
 
