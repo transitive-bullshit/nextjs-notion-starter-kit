@@ -216,8 +216,13 @@ background-color: rgb(255, 255, 255 , 0.4);
   margin: 0.75em 0;
 }
 
-.notion-hr {
+.dark-mode .notion-hr {
   margin: 1em 0;
+  border-color: #2b2b2b;
+}
+
+.dark-mode .notion-gallery-grid{
+  border-top: 1px solid #2b2b2b;
 }
 
 @media only screen and (max-width: 920px) {
