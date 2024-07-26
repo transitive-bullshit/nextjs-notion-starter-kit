@@ -1,14 +1,13 @@
 import * as React from 'react'
 
-import { FaEnvelopeOpenText, FaGithub, FaLinkedin, FaMastodon, FaTwitter, FaYoutube, FaZhihu } from 'react-icons/fa'
 import { IoMoonSharp, IoSunnyOutline } from 'react-icons/io5'
 
 import * as config from '@/lib/config'
-import { DarkModeContext, useDarkMode } from '@/lib/use-dark-mode'
-
+import { DarkModeContext } from '@/lib/use-dark-mode'
+import { socialLinks } from './PageSocial'
 import styles from './styles.module.css'
+import { cs } from 'react-notion-x'
 
-// TODO: merge the data and icons from PageSocial with the social links in Footer
 
 export const FooterImpl: React.FC = () => {
   const [hasMounted, setHasMounted] = React.useState(false);
@@ -45,89 +44,29 @@ export const FooterImpl: React.FC = () => {
         )}
       </div>
 
+      <style
+        dangerouslySetInnerHTML={{
+          __html: socialLinks.map((action) => (
+            `.social-link-footer-${action.name} {}
+            .social-link-footer-${action.name}:hover { color: ${action.color}; }
+            `
+          )).join('\n')
+        }}
+      />
+
       <div className={styles.social}>
-        {config.twitter && (
+        {socialLinks.map((action) => (
           <a
-            className={styles.twitter}
-            href={`https://twitter.com/${config.twitter}`}
-            title={`Twitter @${config.twitter}`}
+            className={cs(styles[action.name], `social-link-footer-${action.name}`)}
+            href={action.href}
+            title={action.title}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaTwitter />
+            {action.icon({ size: 16 })}
           </a>
-        )}
+        ))}
 
-        {config.mastodon && (
-          <a
-            className={styles.mastodon}
-            href={config.mastodon}
-            title={`Mastodon ${config.getMastodonHandle()}`}
-            rel='me'
-          >
-            <FaMastodon />
-          </a>
-        )}
-
-        {config.zhihu && (
-          <a
-            className={styles.zhihu}
-            href={`https://zhihu.com/people/${config.zhihu}`}
-            title={`Zhihu @${config.zhihu}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaZhihu />
-          </a>
-        )}
-
-        {config.github && (
-          <a
-            className={styles.github}
-            href={`https://github.com/${config.github}`}
-            title={`GitHub @${config.github}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaGithub />
-          </a>
-        )}
-
-        {config.linkedin && (
-          <a
-            className={styles.linkedin}
-            href={`https://www.linkedin.com/in/${config.linkedin}`}
-            title={`LinkedIn ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaLinkedin />
-          </a>
-        )}
-
-        {config.newsletter && (
-          <a
-            className={styles.newsletter}
-            href={`${config.newsletter}`}
-            title={`Newsletter ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaEnvelopeOpenText />
-          </a>
-        )}
-
-        {config.youtube && (
-          <a
-            className={styles.youtube}
-            href={`https://www.youtube.com/${config.youtube}`}
-            title={`YouTube ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaYoutube />
-          </a>
-        )}
       </div>
     </footer>
   )
