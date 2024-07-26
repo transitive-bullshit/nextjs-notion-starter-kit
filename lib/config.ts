@@ -112,6 +112,9 @@ export const navigationLinks: Array<NavigationLink | null> = getSiteConfig(
 // Optional site search
 export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 
+// Optional github share button
+export const isGithubShareButtonEnabled: boolean = getSiteConfig('isGithubShareButtonEnabled', true)
+
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images
@@ -163,8 +166,8 @@ export const site: Site = {
 export const fathomId = isDev ? null : process.env.NEXT_PUBLIC_FATHOM_ID
 export const fathomConfig = fathomId
   ? {
-      excludedDomains: ['localhost', 'localhost:3000']
-    }
+    excludedDomains: ['localhost', 'localhost:3000']
+  }
   : undefined
 
 export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID

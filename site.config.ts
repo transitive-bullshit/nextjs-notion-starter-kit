@@ -42,6 +42,9 @@ export default siteConfig({
   // this requires support from Notion.
   isSearchEnabled: true,
 
+  // whether or not to show the GitHub share button on the top-right.
+  isGithubShareButtonEnabled: true,
+
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
   // example:
