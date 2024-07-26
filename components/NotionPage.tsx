@@ -17,7 +17,7 @@ import * as types from '@/lib/types'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
-import { useDarkMode } from '@/lib/use-dark-mode'
+import { DarkModeContext, useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
 import { GitHubShareButton } from './GitHubShareButton'
@@ -172,7 +172,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
 
-  const { isDarkMode } = useDarkMode()
+  const { isDarkMode, toggleDarkMode } = useDarkMode()
 
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
@@ -233,8 +233,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const socialImage = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
+    (block as PageBlock).format?.page_cover ||
+    config.defaultPageCover,
     block
   )
 
@@ -244,44 +244,46 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   return (
     <>
-      <PageHead
-        pageId={pageId}
-        site={site}
-        title={title}
-        description={socialDescription}
-        image={socialImage}
-        url={canonicalPageUrl}
-      />
+      <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+        <PageHead
+          pageId={pageId}
+          site={site}
+          title={title}
+          description={socialDescription}
+          image={socialImage}
+          url={canonicalPageUrl}
+        />
 
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+        {isLiteMode && <BodyClassName className='notion-lite' />}
+        {isDarkMode && <BodyClassName className='dark-mode' />}
 
-      <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
-        )}
-        darkMode={isDarkMode}
-        components={components}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : null}
-        pageAside={pageAside}
-        footer={footer}
-      />
+        <NotionRenderer
+          bodyClassName={cs(
+            styles.notion,
+            pageId === site.rootNotionPageId && 'index-page'
+          )}
+          darkMode={isDarkMode}
+          components={components}
+          recordMap={recordMap}
+          rootPageId={site.rootNotionPageId}
+          rootDomain={site.domain}
+          fullPage={!isLiteMode}
+          previewImages={!!recordMap.preview_images}
+          showCollectionViewDropdown={false}
+          showTableOfContents={showTableOfContents}
+          minTableOfContentsItems={minTableOfContentsItems}
+          defaultPageIcon={config.defaultPageIcon}
+          defaultPageCover={config.defaultPageCover}
+          defaultPageCoverPosition={config.defaultPageCoverPosition}
+          mapPageUrl={siteMapPageUrl}
+          mapImageUrl={mapImageUrl}
+          searchNotion={config.isSearchEnabled ? searchNotion : null}
+          pageAside={pageAside}
+          footer={footer}
+        />
 
-      <GitHubShareButton />
+        <GitHubShareButton />
+      </DarkModeContext.Provider>
     </>
   )
 }

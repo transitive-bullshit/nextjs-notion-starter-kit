@@ -1,10 +1,13 @@
-import useDarkModeImpl from '@fisch0920/use-dark-mode'
+import React from "react";
+import { useLocalStorage } from "react-use";
+
 
 export function useDarkMode() {
-  const darkMode = useDarkModeImpl(false, { classNameDark: 'dark-mode' })
-
+  const [isDarkMode, setIsDarkMode] = useLocalStorage<boolean>('dark-mode', false)
   return {
-    isDarkMode: darkMode.value,
-    toggleDarkMode: darkMode.toggle
+    isDarkMode,
+    toggleDarkMode: () => setIsDarkMode(!isDarkMode)
   }
 }
+
+export const DarkModeContext = React.createContext<ReturnType<typeof useDarkMode> | null>(null);
