@@ -15,7 +15,7 @@
   user-select:none;
 }
  .notion {
-  --notion-max-width: 920px;
+  --notion-max-width: 960px;
   --notion-header-height: 54px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .index-page {
-  --notion-max-width: 920px;
+  --notion-max-width: 960px;
 }
 
 .notion-text {
@@ -49,9 +49,11 @@
 .notion-asset-wrapper img {
   border-radius: 5px;
 }
-.notion-asset-wrapper div {
+.notion-asset-wrapper > div {
   height: 100%;
+  display: contents !important;
 }
+
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
   width: 100% !important;
