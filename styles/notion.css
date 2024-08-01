@@ -47,7 +47,10 @@
   margin-bottom: 1em;
 }
 .notion-asset-wrapper img {
-  border-radius: 8px;
+  border-radius: 5px;
+}
+.notion-asset-wrapper div {
+  height: 100%;
 }
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
