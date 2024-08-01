@@ -15,7 +15,7 @@
   user-select:none;
 }
  .notion {
-  --notion-max-width: 960px;
+  --notion-max-width: 920px;
   --notion-header-height: 54px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .index-page {
-  --notion-max-width: 960px;
+  --notion-max-width: 920px;
 }
 
 .notion-text {
