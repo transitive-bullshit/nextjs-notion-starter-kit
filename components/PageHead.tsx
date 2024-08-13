@@ -14,7 +14,7 @@ export const PageHead: React.FC<
     datePub?: Date
     dateMod?: Date
   }
-> = ({ site, title, description, pageId, image, url }) => {
+> = ({ site, title, description, pageId, image, url, datePub, dateMod }) => {
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
@@ -34,9 +34,10 @@ export const PageHead: React.FC<
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='article' />
       <meta property='og:type' content='website' />
-      <meta property='article:published_time' content={datePub} />
-      <meta property='article:modified_time' content={dateMod} />
-
+      {datePub&& 
+      <meta property='article:published_time' content={datePub.toISOString{}} />}
+      {dateMod&& 
+      <meta property='article:modified_time' content={dateMod.toISOString{}} />}
 
       {site && (
         <>
