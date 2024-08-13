@@ -34,10 +34,10 @@ export const PageHead: React.FC<
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='article' />
       <meta property='og:type' content='website' />
-      {datePub&& 
-      <meta property='article:published_time' content={datePub.toISOString{}} />}
-      {dateMod&& 
-      <meta property='article:modified_time' content={dateMod.toISOString{}} />}
+      {datePub &&
+        <meta property='article:published_time' content={datePub.toISOString()} />}
+      {dateMod &&
+        <meta property='article:modified_time' content={dateMod.toISOString()} />}
 
       {site && (
         <>
