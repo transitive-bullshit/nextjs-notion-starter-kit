@@ -252,6 +252,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         description={socialDescription}
         image={socialImage}
         url={canonicalPageUrl}
+        datePub={new Date(getSocial('Published'))}
+        dateMod={new Date(getSocial('Last Updated'))}
       />
       <NewsArticleJsonLd
         url={canonicalPageUrl}
