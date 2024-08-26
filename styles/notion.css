@@ -15,7 +15,7 @@
   user-select:none;
 }
  .notion {
-  --notion-max-width: 960px;
+  --notion-max-width: 840px;
   --notion-header-height: 54px;
 }
 
@@ -25,17 +25,16 @@
 
 .notion-page {
   padding-bottom: calc(max(5vh, 32px)) !important;
-  line-height: 1.65;
   padding-left: 0;
   padding-right: 0;
 }
 
 .index-page {
-  --notion-max-width: 960px;
+  --notion-max-width: 840px;
 }
 
 .notion-text {
-  padding: 0.5em 2px;
+  padding: 0.3em 2px;
 }
 
 .notion-asset-caption {
@@ -73,7 +72,7 @@
 }
 /*blog间隔尺寸*/
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 3vmin;
   gap: 3vmin;
 }
