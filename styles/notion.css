@@ -32,7 +32,12 @@
 .index-page {
   --notion-max-width: 840px;
 }
-
+.notion-aside {
+  top: 120px;
+}
+.notion-aside-table-of-contents {
+  max-height: calc(100vh - 120px - 18px);
+}
 .notion-text {
   padding: 0.3em 2px;
 }
@@ -84,7 +89,7 @@
   display: none;
 }
 .notion-gallery-grid .notion-page-title-text {
-  font-size: 2em;
+  font-size: 1.8em;
   white-space: unset;
 }
 .notion-gallery-grid .notion-collection-card-property {
