@@ -9,21 +9,21 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'DGRNY-The Journey',
-  domain: 'dgrny.com',
-  author: 'DGRNY',
+  name: 'Notionbees-Bee Productive',
+  domain: 'notionbees.in',
+  author: 'Notionbees',
 
   // open graph metadata (optional)
-  description: 'DGRNY-The Journey site',
+  description: 'Notionbees-Its a site where people are able to buy notion templates online',
 
   // social usernames (optional)
-  twitter: 'DG_R_NY',
-  instagram: 'dgrny_studio',
+  twitter: 'notionbees',
+  instagram: 'notionbees',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
-  // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  youtube: 'channel/UC2d_Ha_qk2E8-VQWIDH1kPQ', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
