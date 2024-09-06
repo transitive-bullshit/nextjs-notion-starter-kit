@@ -20,7 +20,7 @@ export default siteConfig({
   twitter: 'notionbees',
   instagram: 'notionbees',
   // github: 'transitive-bullshit',
-  // linkedin: 'fisch2',
+  linkedin: 'notionbees',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   youtube: 'channel/UC2d_Ha_qk2E8-VQWIDH1kPQ', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
