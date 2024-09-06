@@ -70,7 +70,7 @@ const socialLinks: SocialLink[] = [
   },
   config.instagram && {
     name: 'instagram',
-    href: `https://www.instagram.com/${config.youtube}`,
+    href: `https://www.instagram.com/${config.instagram}`,
     title: `Instagram ${config.instagram}`,
     icon: (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
