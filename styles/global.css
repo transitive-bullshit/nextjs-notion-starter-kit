@@ -1,56 +1,56 @@
 /* Import custom fonts from local directory */
 @font-face {
   font-family: 'Tektur';
-  src: url('/public/fonts/Tektur-Regular.ttf') format('truetype');
+  src: url('../../public/fonts/Tektur-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tektur';
-  src: url('/public/fonts/Tektur-Medium.ttf') format('truetype');
+  src: url('../../public/fonts/Tektur-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tektur';
-  src: url('/public/fonts/Tektur-SemiBold.ttf') format('truetype');
+  src: url('../../public/fonts/Tektur-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tektur';
-  src: url('/public/fonts/Tektur-Bold.ttf') format('truetype');
+  src: url('../../public/fonts/Tektur-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/Urbanist-Regular.ttf') format('truetype');
+  src: url('../../public/fonts/Urbanist-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/Urbanist-Medium.ttf') format('truetype');
+  src: url('../../public/fonts/Urbanist-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/Urbanist-SemiBold.ttf') format('truetype');
+  src: url('../../public/fonts/Urbanist-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/public/fonts/Urbanist-Bold.ttf') format('truetype');
+  src: url('../../public/fonts/Urbanist-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
