@@ -13,10 +13,10 @@
 }
 
 .title {
+  font-family: 'Tektur';
   color: rgb(8, 8, 8);
   font-weight: 800;
   font-size: x-large;
-  margin-left: 10px
 }
 
 .dark-mode .title{
