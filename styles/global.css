@@ -1,93 +1,59 @@
-/* Load Tektur font from the server */
+/* Import custom fonts from local directory */
 @font-face {
   font-family: 'Tektur';
-  src: url('/fonts/Tektur-Regular.ttf') format('truetype');
+  src: url('/public/fonts/Tektur-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tektur';
-  src: url('/fonts/Tektur-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Tektur';
-  src: url('/fonts/Tektur-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Tektur';
-  src: url('/fonts/Tektur-Medium.ttf') format('truetype');
+  src: url('/public/fonts/Tektur-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tektur';
-  src: url('/fonts/Tektur-SemiBold.ttf') format('truetype');
+  src: url('/public/fonts/Tektur-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Tektur';
-  src: url('/fonts/Tektur-Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
-
-/* Condensed variants of Tektur */
-@font-face {
-  font-family: 'Tektur Condensed';
-  src: url('/fonts/Tektur_Condensed-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* Add other Tektur Condensed variants as needed */
-
-/* Load Urbanist font from the server */
-@font-face {
-  font-family: 'Urbanist';
-  src: url('/fonts/Urbanist-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Urbanist';
-  src: url('/fonts/Urbanist-Bold.ttf') format('truetype');
+  src: url('/public/fonts/Tektur-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/fonts/Urbanist-Black.ttf') format('truetype');
-  font-weight: 900;
+  src: url('/public/fonts/Urbanist-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Urbanist';
-  src: url('/fonts/Urbanist-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Urbanist';
-  src: url('/fonts/Urbanist-Medium.ttf') format('truetype');
+  src: url('/public/fonts/Urbanist-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
-/* Add other Urbanist variants as needed */
+@font-face {
+  font-family: 'Urbanist';
+  src: url('/public/fonts/Urbanist-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('/public/fonts/Urbanist-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
 
 /* Box model adjustments for all elements */
 * {
@@ -113,23 +79,19 @@ body {
     'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif;
   --font-tektur: 'Tektur', sans-serif;
+  --font-urbanist: 'Urbanist', sans-serif;
   font-family: var(--notion-font); /* Applies Urbanist by default */
   overflow-x: hidden;
 }
 
 /* Heading styles using Tektur font */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-tektur); /* Apply Tektur to headings */
 }
 
 /* Paragraph styles using Urbanist font */
 p {
-  font-family: 'Urbanist', sans-serif; /* Apply Urbanist to paragraphs */
+  font-family: var(--font-urbanist); /* Apply Urbanist to paragraphs */
 }
 
 /* Static tweet blockquote adjustments */
@@ -162,7 +124,7 @@ p {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
   background-color: var(--fg-color-1);
 }
 
