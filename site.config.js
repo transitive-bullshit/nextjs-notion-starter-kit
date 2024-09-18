@@ -49,11 +49,7 @@ export default {
 
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
-  // example:
-  //
-  // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
-  pageUrlOverrides: null
+  pageUrlOverrides: {
+    '/devpool': 'fd3d3861654f4b7b9c2702ff7842ade2', // https://dao.ubq.fi/ubiquityos-for-daos-fd3d3861654f4b7b9c2702ff7842ade2
+  },
 }
