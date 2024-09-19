@@ -51,5 +51,6 @@ export default {
   // any pages defined here will override their default URL paths
   pageUrlOverrides: {
     '/devpool': 'fd3d3861654f4b7b9c2702ff7842ade2', // https://dao.ubq.fi/ubiquityos-for-daos-fd3d3861654f4b7b9c2702ff7842ade2
+    '/ubiquityos-for-daos': 'fd3d3861654f4b7b9c2702ff7842ade2',
   },
 }
