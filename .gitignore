@@ -38,3 +38,6 @@ yarn-error.log*
 # vercel
 .vercel
 .ignore/
+
+# yarn
+.yarn/install-state.gz
