@@ -33,7 +33,6 @@ export const PageHead: React.FC<
 
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='article' />
-      <meta property='og:type' content='website' />
       <meta property="og:locale" content="en_US" />
       <title>{title}</title>
       {datePub &&
