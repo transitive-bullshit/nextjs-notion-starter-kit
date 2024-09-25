@@ -39,7 +39,7 @@ export const oembed = async ({
   }
 
   const query = new URLSearchParams(params).toString()
-  const embedUrl = `${config.host}/${pageId}?${query}`
+  const embedUrl = `${config.host}/blog/${pageId}?${query}`
   const defaultWidth = 800
   const defaultHeight = 600
   const width = maxWidth ? Math.min(maxWidth, defaultWidth) : defaultWidth

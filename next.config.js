@@ -22,21 +22,23 @@ module.exports = withBundleAnalyzer({
   basePath: '/blog',
   async redirects() {
     const sources = ['/', '/:path']
-    return sources.map((s) => ({
-      source: s,
-      destination: `${process.env.ROOT_URL || 'https://bask.health'}/blog${
-        s === '/' ? '' : s
-      }`,
-      has: [
-        {
-          type: 'host',
-          value: process.env.REDIRECT_DOMAIN || 'bask.blog'
-        },
-        { type: 'host', value: 'blog.bask.health' },
-        { type: 'host', value: 'blog.bask.bio' }
-      ],
-      statusCode: 302,
-      basePath: false
-    }))
+    const hosts = [
+      process.env.REDIRECT_DOMAIN,
+      'bask.blog',
+      'blog.bask.health',
+      'blog.bask.bio'
+    ].filter(Boolean)
+
+    return sources.flatMap((s) =>
+      hosts.map((host) => ({
+        source: s,
+        destination: `${process.env.ROOT_URL || 'https://bask.health'}/blog${
+          s === '/' ? '' : s
+        }`,
+        has: [{ type: 'host', value: host }],
+        statusCode: 302,
+        basePath: false
+      }))
+    )
   }
 })

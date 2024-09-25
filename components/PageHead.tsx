@@ -15,7 +15,7 @@ export const PageHead: React.FC<
     dateMod?: Date
   }
 > = ({ site, title, description, pageId, image, url, datePub, dateMod }) => {
-  const rssFeedUrl = `${config.host}/feed`
+  const rssFeedUrl = `${config.host}/blog/feed`
 
   title = title ?? site?.name
   description = description ?? site?.description

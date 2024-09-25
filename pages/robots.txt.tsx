@@ -25,13 +25,13 @@ Allow: /
 Disallow: /api/get-tweet-ast/*
 Disallow: /api/search-notion
 
-Sitemap: ${host}/sitemap.xml
+Sitemap: ${host}/blog/sitemap.xml
 `)
   } else {
     res.write(`User-agent: *
 Disallow: /
 
-Sitemap: ${host}/sitemap.xml
+Sitemap: ${host}/blog/sitemap.xml
 `)
   }
 
