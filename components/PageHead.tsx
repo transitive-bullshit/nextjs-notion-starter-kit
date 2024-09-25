@@ -34,6 +34,8 @@ export const PageHead: React.FC<
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='article' />
       <meta property='og:type' content='website' />
+      <meta property="og:locale" content="en_US" />
+      <title>{title}</title>
       {datePub &&
         <meta property='article:published_time' content={datePub.toISOString()} />}
       {dateMod &&
@@ -85,7 +87,12 @@ export const PageHead: React.FC<
 
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />
-      <title>{title}</title>
+      <meta name='author' content='Bask Health Team' />
+      <meta name="twitter:label1" content="Written by" />
+      <meta name="twitter:data1" content="Bask Health Team" />
+      <meta name="twitter:label2" content="Est. reading time" />
+      <meta name="twitter:data2" content="14 minutes" />
+
     </Head>
   )
 }
