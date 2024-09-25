@@ -140,6 +140,20 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+function PageLink(
+  props: React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  >
+) {
+  return (
+    <a
+      {...props}
+      href={props.href.startsWith('/blog') ? props.href : `/blog${props.href}`}
+    />
+  )
+}
+
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
   recordMap,
@@ -153,6 +167,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     () => ({
       nextImage: Image,
       nextLink: Link,
+      PageLink,
       Code,
       Collection,
       Equation,
@@ -258,7 +273,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <NewsArticleJsonLd
         url={canonicalPageUrl}
         title={title}
-        images={['https://bask.blog/favicon_bask_round.png']}
+        images={['https://bask.health/blog/favicon_bask_round.png']}
         datePublished={new Date(getSocial('Published'))?.toString()}
         dateCreated={new Date(getSocial('Created'))?.toString()}
         dateModified={new Date(getSocial('Last Updated'))?.toString()}
@@ -267,7 +282,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         keywords={postKeywords}
         authorName={getSocial('Author') || config.author}
         publisherName='Bask Health'
-        publisherLogo='https://bask.blog/favicon_bask_round.png'
+        publisherLogo='https://bask.health/blog/favicon_bask_round.png'
         description={socialDescription}
         body={socialDescription}
       />
@@ -298,7 +313,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={pageAside}
         footer={footer}
       />
-
     </>
   )
 }

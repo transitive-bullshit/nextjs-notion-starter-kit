@@ -18,5 +18,23 @@ module.exports = withBundleAnalyzer({
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
+  },
+  basePath: '/blog',
+  async redirects() {
+    const sources = ['/', '/:path']
+    return sources.map((s) => ({
+      source: s,
+      destination: `${process.env.ROOT_URL || 'https://bask.health'}/blog${
+        s === '/' ? '' : s
+      }`,
+      has: [
+        {
+          type: 'host',
+          value: process.env.REDIRECT_DOMAIN || 'bask.blog'
+        }
+      ],
+      permanent: false,
+      basePath: false
+    }))
   }
 })
