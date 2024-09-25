@@ -31,9 +31,11 @@ module.exports = withBundleAnalyzer({
         {
           type: 'host',
           value: process.env.REDIRECT_DOMAIN || 'bask.blog'
-        }
+        },
+        { type: 'host', value: 'blog.bask.health' },
+        { type: 'host', value: 'blog.bask.bio' }
       ],
-      permanent: false,
+      statusCode: 302,
       basePath: false
     }))
   }
