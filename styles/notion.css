@@ -484,6 +484,10 @@ background-color: rgb(255, 255, 255 , 0.4);
   color: var(--fg-color-2);
 }
 
+.notion-page-icon-hero{
+display:none;
+}
+
 .notion-equation.notion-equation-block{
   align-items: center;
 }
