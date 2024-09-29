@@ -47,10 +47,11 @@
     "react": "^18.2.0",
     "react-body-classname": "^1.3.1",
     "react-dom": "^18.2.0",
-    "react-notion-x": "^6.15.6",
+    "react-notion-x": "^6.16.0",
     "react-tweet-embed": "^2.0.0",
     "react-use": "^17.4.2",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "@giscus/react": "^2.3.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^12.3.1",
