@@ -493,9 +493,9 @@ display:none;
 }
 
 .notion-page-no-cover{
-margin-top: none;
-padding-top: none;
+margin-top: 0;
+padding-top: 0;
 }
 .notion-page-no-cover.notion-page-has-image-icon{
-padding-top: none;
+padding-top: 0;
 }
