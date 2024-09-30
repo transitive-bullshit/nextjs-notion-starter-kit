@@ -491,3 +491,11 @@ display:none;
 .notion-equation.notion-equation-block{
   align-items: center;
 }
+
+.notion-page-no-cover{
+margin-top: none;
+padding-top: none;
+}
+.notion-page-no-cover.notion-page-has-image-icon{
+padding-top: none;
+}
