@@ -509,3 +509,7 @@ padding-top: 0;
 .notion-page-title {
   font-size: large;
 }
+
+.notion-page-cover-wrapper{
+  display: none;
+}
