@@ -106,7 +106,9 @@ background-color: rgb(255, 255, 255 , 0.4);
   
   }
 
-
+.notion-header .breadcrumb{
+  color:rgb(8, 8, 8) ;
+}
 
 .notion-nav-header-rhs {
   gap: 0rem;
@@ -148,6 +150,7 @@ background-color: rgb(255, 255, 255 , 0.4);
 
 .dark-mode .notion-collection-card{
   background-color: #fafafa;
+  color: rgb(8,8,8);
 }
 .dark-mode .notion-collection-card:hover{
   background-color: #fafafa;
@@ -303,6 +306,10 @@ background-color: rgb(255, 255, 255 , 0.4);
 .notion-block-ab9a258d6cf444f3bb40dc2600feae91 .notion-page-link {
   justify-content: center;
   padding: 2em;
+}
+
+.dark-mode .notion-page-link{
+color:rgb(8, 8, 8);
 }
 
 .notion-code {
