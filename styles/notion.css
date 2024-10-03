@@ -20,12 +20,12 @@
 }
 
 .dark-mode .title{
-  color: white;
+  color: rgb(2, 2, 2);
 }
 
 .dark-mode{
-  --bg-color:rgb(22 22 22 / 95%);
-  background-color: rgb(22 22 22 / 95%);
+  --bg-color:rgba(255, 251, 251, 0.95);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .notion-frame {
@@ -97,7 +97,7 @@ background-color: rgb(255, 255, 255 , 0.4);
 }
 
 .dark-mode .notion-nav-header{
-  background-color: rgba(9, 9, 9, 0.4);
+  background-color: rgba(255, 254, 254, 0.4);
   box-shadow: black;
   }
 
