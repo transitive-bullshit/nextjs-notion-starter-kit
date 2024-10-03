@@ -524,3 +524,11 @@ padding-top: 0;
 .notion-page-cover-wrapper{
   display: none;
 }
+
+.notion-collection-card{
+  font-size: large;
+}
+
+.notion-collection-row-property .notion-property{
+  font-size: large;
+}
