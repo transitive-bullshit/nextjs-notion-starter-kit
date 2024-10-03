@@ -12,6 +12,11 @@
   --notion-header-height: 54px;
 }
 
+.dark-mode .notion{
+  color:black;
+  caret-color: black;
+}
+
 .title {
   font-family: 'Tektur';
   color: rgb(8, 8, 8);
