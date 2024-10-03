@@ -29,7 +29,7 @@
 }
 
 .dark-mode{
-  --bg-color:rgba(255, 251, 251, 0.95);
+  --bg-color:rgba(255, 255, 255, 0.95);
   background-color: rgba(255, 255, 255, 0.95);
 }
 
@@ -103,7 +103,7 @@ background-color: rgb(255, 255, 255 , 0.4);
 
 .dark-mode .notion-nav-header{
   background-color: rgba(255, 254, 254, 0.4);
-  box-shadow: black;
+  
   }
 
 
@@ -147,10 +147,10 @@ background-color: rgb(255, 255, 255 , 0.4);
 }
 
 .dark-mode .notion-collection-card{
-  background-color: var(--bg-color-2);
+  background-color: #fafafa;
 }
 .dark-mode .notion-collection-card:hover{
-  background-color: var(--bg-color-1);
+  background-color: #fafafa;
 }
 
 .notion-collection-card-cover img {
@@ -224,7 +224,6 @@ background-color: rgb(255, 255, 255 , 0.4);
 }
 
 .dark-mode .notion-hr {
-  margin: 1em 0;
   border-color:var(--fg-color-0);
 }
 
