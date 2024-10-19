@@ -4,7 +4,9 @@
   </a>
 </p>
 
-# Next.js Notion Starter Kit
+# Coursetexts Notion Site
+
+This site deploys the notion page in 'Public Pages' on our notion to the web automatically. It uses Vercel but ideally we can transition to Render.
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
