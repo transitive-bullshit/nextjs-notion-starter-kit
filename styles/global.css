@@ -29,7 +29,7 @@ html {
 }
 
 .notion-h1, .notion-h2, .notion-h3 {
-  line-height: 1.5; /* Adjust line height for headers */
+  line-height: 2.25rem; /* Adjust line height for headers */
 }
 .notion-text {
   line-height: 1.5; /* Adjust line height for text blocks */
