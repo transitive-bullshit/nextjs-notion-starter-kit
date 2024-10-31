@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import got from 'got'
+import ky from 'ky'
 import { PageBlock } from 'notion-types'
 import {
   getBlockIcon,
@@ -125,7 +125,7 @@ async function isUrlReachable(url: string | null): Promise<boolean> {
   }
 
   try {
-    await got.head(url)
+    await ky.head(url)
     return true
   } catch (err) {
     return false

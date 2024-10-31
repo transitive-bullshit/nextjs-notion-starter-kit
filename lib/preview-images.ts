@@ -1,4 +1,4 @@
-import got from 'got'
+import ky from 'ky';
 import lqip from 'lqip-modern'
 import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types'
 import { getPageImageUrls, normalizeUrl } from 'notion-utils'
@@ -49,7 +49,7 @@ async function createPreviewImage(
       console.warn(`redis error get "${cacheKey}"`, err.message)
     }
 
-    const { body } = await got(url, { responseType: 'buffer' })
+    const { body } = await ky(url, { responseType: 'buffer' })
     const result = await lqip(body)
     console.log('lqip', { ...result.metadata, url, cacheKey })
 
