@@ -307,7 +307,6 @@
 
 .notion-red_background,
 .notion-orange_background {
-  /* light red */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
@@ -404,10 +403,6 @@
   align-items: center;
 }
 
-/* .notion-blank {
-  display: none;
-} */
-
 .notion-page-content-inner .notion-text {
   color: rgb(107 114 128 / 1);
   font-size: 0.875rem;
@@ -434,34 +429,23 @@
   display: none !important;
 }
 
-.custom-wrapper-class {
-  border: 1px solid rgb(229 231 235/ 1);
-  padding: 5px;
-  margin: 4px 0px;
-}
-
-.custom-wrapper-class-1 {
-  border: 1px solid rgb(229 231 235/ 1);
-  padding: 5px;
-  margin: 4px 0px;
-}
-
+.custom-wrapper-class,
+.custom-wrapper-class-1,
 .custom-wrapper-class-2 {
-  border: 1px solid rgb(229 231 235/ 1);
+  border: 1px solid rgb(229, 231, 235);
   padding: 5px;
-  margin: 4px 0px;
+  margin: 4px 0;
 }
 
-.dark-mode .notion-page-content-inner .notion-page-title {
-  color: #fff;
-  padding: 0.125rem 0;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-weight: 700;
+.dark-mode .customwrapper-class,
+.dark-mode .customwrapper-class-1,
+.dark-mode .customwrapper-class-2 {
+  border: 1px solid #C0C0C0;
 }
 
+.dark-mode .notion-page-content-inner .notion-page-title,
 .dark-mode .notion-page-content-inner .notion-page-link {
-  color: #fff;
+  color: rgba(111, 207, 202, 0.9);
   padding: 0.125rem 0;
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -469,14 +453,58 @@
 }
 
 .dark-mode .notion-page-content-inner .notion-text {
-  color: #fff;
+  color: #C0C0C0;
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-.notion-page-icon-inline {
-  display: none !important;
-}
+.notion-page-icon-inline,
 .notion-page-icon-image {
   display: none !important;
+}
+
+.notion-title {
+  text-align: left;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}
+
+.notion-page-no-cover.notion-page-has-image-icon {
+  padding-top: 0px !important;
+}
+
+.notion-link {
+  color: rgba(15, 118, 110, 0.9);
+  border-bottom: 1px solid rgba(15, 118, 110, 0.9);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+}
+
+.dark-mode .notion-link {
+  color: rgba(111, 207, 202, 0.9);
+  border-bottom: 1px solid rgba(111, 207, 202, 0.9);
+}
+
+.notion-h2 > .notion-h-title {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.notion-text {
+  padding: 5px;
+}
+
+.notion-page-title-text {
+  border-bottom: 1px solid rgba(15, 118, 110, 0.9);
+}
+
+.dark-mode .notion-page-title-text {
+  border-bottom: 1px solid rgba(111, 207, 202, 0.9);
+}
+
+.notion-page-link:hover,
+.notion-page-link:active {
+  background-color: transparent !important;
 }
