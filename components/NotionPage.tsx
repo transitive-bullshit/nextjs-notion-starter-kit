@@ -152,87 +152,123 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const lite = useSearchParam('lite')
 
   React.useEffect(() => {
-    // Select the parent container
-    const parentContainer = document.querySelector('.notion-page-content-inner');
+    const header = document.querySelector('.breadcrumbs')
+    if (header) {
+      const nav = document.createElement('nav')
+      nav.classList.add('nav-container') // Optionally add a class to the <nav> tag for styling
 
-    if(!parentContainer) return;
-    
+      const links = [
+        { href: '/about-9a2ace4be0dc4d928e7d304a44a6afe8', label: 'About' }
+      ]
+
+      links.forEach((link) => {
+        const anchor = document.createElement('a')
+        anchor.href = link.href
+        anchor.textContent = link.label
+        anchor.classList.add('nav-link') // Add styling class to <a> tag
+        nav.appendChild(anchor) // Append each <a> to the <nav>
+      })
+
+      header.appendChild(nav) // Append <nav> to the .notion-nav-header
+    }
+  }, [])
+
+  React.useEffect(() => {
+    // Select the parent container
+    if (!pageId) return
+    const parentContainer = document.querySelector('.notion-page-content-inner')
+
+    if (!parentContainer) return
+
     if (parentContainer) {
       // Select the existing elements
-      const notionLinkText = parentContainer.querySelector('.notion-page-link');
-      const notionText1 = parentContainer.querySelectorAll('.notion-text')[0];
-      const notionText2 = parentContainer.querySelectorAll('.notion-text')[1];
-      
+      const notionLinkText = parentContainer.querySelector('.notion-page-link')
+      const notionText1 = parentContainer.querySelectorAll(
+        '.notion-text'
+      )[0] as HTMLElement
+      const notionText2 = parentContainer.querySelectorAll('.notion-text')[1]
+
       // Ensure the elements exist before proceeding
       if (notionLinkText && notionText1 && notionText2) {
+        notionText1.style.color = 'rgb(55 65 81 / 1)'
         // Create a new wrapper div and give it a class
-        const wrapper = document.createElement('div');
-        wrapper.className = 'custom-wrapper-class';
-        
+        const wrapper = document.createElement('div')
+        wrapper.className = 'custom-wrapper-class'
+
         // Append the selected elements to the new wrapper
-        wrapper.appendChild(notionLinkText);
-        wrapper.appendChild(notionText1);
-        wrapper.appendChild(notionText2);
-        
+        wrapper.appendChild(notionLinkText)
+        wrapper.appendChild(notionText1)
+        wrapper.appendChild(notionText2)
+
         // Insert the wrapper into the parent container
-        parentContainer.appendChild(wrapper);
+        parentContainer.appendChild(wrapper)
       }
     }
 
     // Select the parent container
-    const parentContainer1 = document.querySelector('.notion-page-content-inner');
+    const parentContainer1 = document.querySelector(
+      '.notion-page-content-inner'
+    )
 
-    if(!parentContainer1) return;
-    
+    if (!parentContainer1) return
+
     if (parentContainer1) {
       // Select the existing elements
-      const notionText1 = parentContainer1.querySelectorAll('.notion-text')[0];
-      const notionText2 = parentContainer1.querySelectorAll('.notion-text')[1];
-      const notionText3 = parentContainer1.querySelectorAll('.notion-text')[2];
-      
+      const notionText1 = parentContainer1.querySelectorAll('.notion-text')[0]
+      const notionText2 = parentContainer1.querySelectorAll(
+        '.notion-text'
+      )[1] as HTMLElement
+      const notionText3 = parentContainer1.querySelectorAll('.notion-text')[2]
+
       // Ensure the elements exist before proceeding
       if (notionText1 && notionText2 && notionText3) {
+        notionText2.style.color = 'rgb(55 65 81 / 1)'
         // Create a new wrapper div and give it a class
-        const wrapper = document.createElement('div');
-        wrapper.className = 'custom-wrapper-class-1';
-        
+        const wrapper = document.createElement('div')
+        wrapper.className = 'custom-wrapper-class-1'
+
         // Append the selected elements to the new wrapper
-        wrapper.appendChild(notionText1);
-        wrapper.appendChild(notionText2);
-        wrapper.appendChild(notionText3);
-        
+        wrapper.appendChild(notionText1)
+        wrapper.appendChild(notionText2)
+        wrapper.appendChild(notionText3)
+
         // Insert the wrapper into the parent container
-        parentContainer1.appendChild(wrapper);
+        parentContainer1.appendChild(wrapper)
       }
     }
 
     // Select the parent container
-    const parentContainer2 = document.querySelector('.notion-page-content-inner');
+    const parentContainer2 = document.querySelector(
+      '.notion-page-content-inner'
+    )
 
-    if(!parentContainer2) return;
-    
+    if (!parentContainer2) return
+
     if (parentContainer2) {
       // Select the existing elements
-      const notionLinkText = parentContainer2.querySelector('.notion-page-link');
-      const notionText1 = parentContainer2.querySelectorAll('.notion-text')[0];
-      const notionText2 = parentContainer2.querySelectorAll('.notion-text')[1];
-      
+      const notionLinkText = parentContainer2.querySelector('.notion-page-link')
+      const notionText1 = parentContainer2.querySelectorAll(
+        '.notion-text'
+      )[0] as HTMLElement
+      const notionText2 = parentContainer2.querySelectorAll('.notion-text')[1]
+
       // Ensure the elements exist before proceeding
       if (notionLinkText && notionText1 && notionText2) {
+        notionText1.style.color = 'rgb(55 65 81 / 1)'
         // Create a new wrapper div and give it a class
-        const wrapper = document.createElement('div');
-        wrapper.className = 'custom-wrapper-class-2';
-        
+        const wrapper = document.createElement('div')
+        wrapper.className = 'custom-wrapper-class-2'
+
         // Append the selected elements to the new wrapper
-        wrapper.appendChild(notionLinkText);
-        wrapper.appendChild(notionText1);
-        wrapper.appendChild(notionText2);
-        
+        wrapper.appendChild(notionLinkText)
+        wrapper.appendChild(notionText1)
+        wrapper.appendChild(notionText2)
+
         // Insert the wrapper into the parent container
-        parentContainer2.appendChild(wrapper);
+        parentContainer2.appendChild(wrapper)
       }
     }
-  }, []);
+  }, [])
 
   const components = React.useMemo(
     () => ({
@@ -303,8 +339,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     recordMap
   })
 
- 
-
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
     const g = window as any
@@ -316,7 +350,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  const socialImage = null;
+  const socialImage = null
 
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) ||
@@ -360,7 +394,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={null}
         footer={footer}
       />
-
       {/* <GitHubShareButton /> */}
     </>
   )

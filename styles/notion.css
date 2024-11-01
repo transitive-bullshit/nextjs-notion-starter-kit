@@ -18,16 +18,18 @@
 
 .notion-page {
   padding-bottom: calc(max(5vh, 32px)) !important;
-  line-height: 1.65;
+  line-height: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 400;
 }
 
 .index-page {
   --notion-max-width: 48rem;
 }
 
-.notion-text {
-  padding: 0.5em 2px;
-}
+/* .notion-text {
+  padding: 0.5rem 2px;
+} */
 
 .notion-asset-caption {
   text-align: center;
@@ -410,11 +412,11 @@
 }
 
 .notion-page-content-inner .notion-page-link {
-  color: rgba(15, 118, 110, 0.9);
-  padding: 0.125rem 0;
+  color: rgb(107 114 128 / 1);
+  padding: 0.35rem 0.2rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .notion-page-content-inner .notion-page-title {
@@ -422,7 +424,6 @@
   padding: 0.125rem 0;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 700;
 }
 
 .notion-blank {
@@ -433,27 +434,26 @@
 .custom-wrapper-class-1,
 .custom-wrapper-class-2 {
   border: 1px solid rgb(229, 231, 235);
-  padding: 5px;
+  padding: 10px;
   margin: 4px 0;
 }
 
 .dark-mode .customwrapper-class,
 .dark-mode .customwrapper-class-1,
 .dark-mode .customwrapper-class-2 {
-  border: 1px solid #C0C0C0;
+  border: 1px solid #c0c0c0;
 }
 
 .dark-mode .notion-page-content-inner .notion-page-title,
 .dark-mode .notion-page-content-inner .notion-page-link {
-  color: rgba(111, 207, 202, 0.9);
+  color: rgba(15, 118, 110, 0.9) !important;
   padding: 0.125rem 0;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 700;
 }
 
 .dark-mode .notion-page-content-inner .notion-text {
-  color: #C0C0C0;
+  color: #c0c0c0 !important;
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -479,7 +479,7 @@
   border-bottom: 1px solid rgba(15, 118, 110, 0.9);
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .dark-mode .notion-link {
@@ -490,10 +490,6 @@
 .notion-h2 > .notion-h-title {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.notion-text {
-  padding: 5px;
 }
 
 .notion-page-title-text {
@@ -507,4 +503,23 @@
 .notion-page-link:hover,
 .notion-page-link:active {
   background-color: transparent !important;
+}
+
+.notion-callout-text {
+  margin-left: 0px;
+}
+
+.notion-page-title-text {
+  font-weight: 600 !important;
+}
+
+.breadcrumbs .nav-container .nav-link {
+  /* color: black; */
+  /* font-weight: 600; */
+  /* font-size: 16px; */
+  margin: 0 16px;
+}
+
+.notion-block-6bfe6d8beea144919ba99224cf40ee17 {
+  display: none;
 }
