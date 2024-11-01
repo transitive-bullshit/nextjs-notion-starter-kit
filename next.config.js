@@ -50,6 +50,7 @@ export default withBundleAnalyzer({
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
   },
+
   webpack: (config, _context) => {
     // Workaround for ensuring that `react` and `react-dom` resolve correctly
     // when using a locally-linked version of `react-notion-x`.
