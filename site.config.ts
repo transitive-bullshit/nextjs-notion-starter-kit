@@ -17,7 +17,7 @@ export default siteConfig({
   description: 'Coursetexts is a modern, open library of MIT and Harvard course notes.',
 
   // social usernames (optional)
-  twitter: 'yush_g',
+  // twitter: 'yush_g',
   github: 'coursetexts',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   newsletter: 'mailto:coursetexts@mit.edu', // optional newsletter URL
