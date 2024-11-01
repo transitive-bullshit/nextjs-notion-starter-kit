@@ -4,8 +4,9 @@ import cs from 'classnames'
 import * as config from '@/lib/config'
 
 import styles from './PageSocial.module.css'
-import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa'
-import { FaEnvelopeOpenText } from 'react-icons/fa6'
+import { FaGithub, FaLinkedin, FaMastodon, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaXTwitter, FaGitlab, FaEnvelopeOpenText } from 'react-icons/fa6'
+import { IoIosBug } from 'react-icons/io'
 
 interface SocialLink {
   name: string
@@ -23,6 +24,13 @@ export const socialLinks: SocialLink[] = [
     color: "#2795e9",
     icon: FaTwitter
   },
+  config.twitterX && {
+    name: 'twitterX',
+    href: `https://x.com/${config.twitterX}`,
+    title: `X @${config.twitterX}`,
+    color: "#222",
+    icon: FaXTwitter
+  },
 
   config.mastodon && {
     name: 'mastodon',
@@ -38,6 +46,14 @@ export const socialLinks: SocialLink[] = [
     title: `GitHub @${config.github}`,
     color: "#c9510c",
     icon: FaGithub
+  },
+
+  config.gitlab && {
+    name: 'gitlab',
+    href: `https://gitlab.com/${config.github}`,
+    title: `GitLab @${config.github}`,
+    color: "#e24329",
+    icon: FaGitlab
   },
 
   config.linkedin && {
@@ -63,6 +79,14 @@ export const socialLinks: SocialLink[] = [
     color: "#ff0000",
     icon: FaYoutube
   },
+
+  config.bugtracker && {
+    name: 'bugtracker',
+    href: `${config.bugtracker}`,
+    title: 'Bugtracker',
+    color: "#e24329",
+    icon: IoIosBug
+  }
 ].filter(Boolean)
 
 export function PageSocial(prefix: string) {
