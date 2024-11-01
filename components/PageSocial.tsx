@@ -14,6 +14,8 @@ interface SocialLink {
   icon: ({ size }: { size: number }) => React.ReactNode
   color: string
   href?: string
+  // Currently only used for instagram
+  background?: string
 }
 
 export const socialLinks: SocialLink[] = [
@@ -84,7 +86,8 @@ export const socialLinks: SocialLink[] = [
     name: 'instagram',
     href: `https://instagram.com/${config.instagram}`,
     title: `Instagram @${config.instagram}`,
-    color: "#ff0000",
+    color: "#ffffff",
+    background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%, #285AEB 90%)",
     icon: FaInstagram
   },
 
@@ -121,7 +124,7 @@ export function PageSocial() {
               rel='noopener noreferrer'
             >
               <div className={styles.actionBg}>
-                <div className={styles.actionBgPane} />
+                <div className={styles.actionBgPane} style={{ background: action.background } as React.CSSProperties} />
               </div>
 
               <div className={styles.actionBg}>{action.icon({ size: 24 })}</div>
@@ -139,7 +142,7 @@ export function PageSocialButtons() {
       {socialLinks.map((action) => (
         <a
           key={action.name}
-          style={{ '--hover-color': action.color } as React.CSSProperties}
+          style={{ '--hover-background': action.background, '--hover-color': action.color } as React.CSSProperties}
           className={cs(styles[action.name], styles.socialLink)}
           href={action.href}
           title={action.title}

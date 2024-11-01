@@ -7,7 +7,9 @@
 }
 
 .socialLink:hover {
+  border-radius: 50%;
   color: var(--hover-color);
+  background: var(--hover-background);
 }
 
 .pageSocial .actionBgPane {
