@@ -5,8 +5,7 @@ import * as config from '@/lib/config'
 
 import styles from './PageSocial.module.css'
 import { FaGithub, FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa'
-import { FaXTwitter, FaGitlab, FaEnvelopeOpenText } from 'react-icons/fa6'
-import { IoIosBug } from 'react-icons/io'
+import { FaEnvelopeOpenText } from 'react-icons/fa6'
 
 interface SocialLink {
   name: string
@@ -25,28 +24,12 @@ export const socialLinks: SocialLink[] = [
     icon: FaTwitter
   },
 
-  config.twitterX && {
-    name: 'twitterX',
-    href: `https://x.com/${config.twitterX}`,
-    title: `X @${config.twitterX}`,
-    color: "#222",
-    icon: FaXTwitter
-  },
-
   config.github && {
     name: 'github',
     href: `https://github.com/${config.github}`,
     title: `GitHub @${config.github}`,
     color: "#c9510c",
     icon: FaGithub
-  },
-
-  config.gitlab && {
-    name: 'gitlab',
-    href: `https://gitlab.com/${config.github}`,
-    title: `GitLab @${config.github}`,
-    color: "#e24329",
-    icon: FaGitlab
   },
 
   config.linkedin && {
@@ -72,14 +55,6 @@ export const socialLinks: SocialLink[] = [
     color: "#ff0000",
     icon: FaYoutube
   },
-
-  config.bugtracker && {
-    name: 'bugtracker',
-    href: `${config.bugtracker}`,
-    title: 'Bugtracker',
-    color: "#e24329",
-    icon: IoIosBug
-  }
 ].filter(Boolean)
 
 export function PageSocial(prefix: string) {
