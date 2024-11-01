@@ -17,6 +17,8 @@ export interface SiteConfig {
   linkedin?: string
   newsletter?: string
   youtube?: string
+  instagram?: string
+  reddit?: string
   zhihu?: string
   mastodon?: string
   bugtracker?: string

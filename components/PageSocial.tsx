@@ -4,7 +4,7 @@ import cs from 'classnames'
 import * as config from '@/lib/config'
 
 import styles from './PageSocial.module.css'
-import { FaGithub, FaLinkedin, FaMastodon, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaGithub, FaInstagram, FaLinkedin, FaMastodon, FaReddit, FaTwitter, FaYoutube } from 'react-icons/fa'
 import { FaXTwitter, FaGitlab, FaEnvelopeOpenText } from 'react-icons/fa6'
 import { IoIosBug } from 'react-icons/io'
 
@@ -27,7 +27,7 @@ export const socialLinks: SocialLink[] = [
   config.twitterX && {
     name: 'twitterX',
     href: `https://x.com/${config.twitterX}`,
-    title: `X @${config.twitterX}`,
+    title: `X.com @${config.twitterX}`,
     color: "#222",
     icon: FaXTwitter
   },
@@ -75,9 +75,25 @@ export const socialLinks: SocialLink[] = [
   config.youtube && {
     name: 'youtube',
     href: `https://www.youtube.com/${config.youtube}`,
-    title: `YouTube ${config.youtube}`,
+    title: `YouTube @${config.youtube}`,
     color: "#ff0000",
     icon: FaYoutube
+  },
+
+  config.instagram && {
+    name: 'instagram',
+    href: `https://instagram.com/${config.instagram}`,
+    title: `Instagram @${config.instagram}`,
+    color: "#ff0000",
+    icon: FaInstagram
+  },
+
+  config.reddit && {
+    name: 'reddit',
+    href: `https://www.reddit.com/u/${config.reddit}`,
+    title: `Reddit @${config.reddit}`,
+    color: "#ff0000",
+    icon: FaReddit
   },
 
   config.bugtracker && {
