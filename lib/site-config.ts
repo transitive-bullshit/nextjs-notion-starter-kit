@@ -11,12 +11,17 @@ export interface SiteConfig {
   language?: string
 
   twitter?: string
+  twitterX?: string
   github?: string
+  gitlab?: string
   linkedin?: string
   newsletter?: string
   youtube?: string
+  instagram?: string
+  reddit?: string
   zhihu?: string
   mastodon?: string
+  bugtracker?: string
 
   defaultPageIcon?: string | null
   defaultPageCover?: string | null
