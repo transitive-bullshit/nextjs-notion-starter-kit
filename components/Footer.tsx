@@ -47,20 +47,12 @@ export function FooterImpl() {
         )}
       </div>
 
-      <style
-        dangerouslySetInnerHTML={{
-          __html: socialLinks.map((action) => (
-            `.social-link-footer-${action.name} {}
-            .social-link-footer-${action.name}:hover { color: ${action.color}; }
-            `
-          )).join('\n')
-        }}
-      />
-
       <div className={styles.social}>
         {socialLinks.map((action) => (
           <a
-            className={cs(styles[action.name], `social-link-footer-${action.name}`)}
+            key={action.name}
+            style={{ '--hover-color': action.color } as React.CSSProperties}
+            className={styles[action.name]}
             href={action.href}
             title={action.title}
             target='_blank'
