@@ -24,6 +24,14 @@ export const socialLinks: SocialLink[] = [
     icon: FaTwitter
   },
 
+  config.mastodon && {
+    name: 'mastodon',
+    href: config.mastodon,
+    title: `Mastodon`,
+    color: "#5a4be1",
+    icon: FaMastodon
+  },
+
   config.github && {
     name: 'github',
     href: `https://github.com/${config.github}`,
