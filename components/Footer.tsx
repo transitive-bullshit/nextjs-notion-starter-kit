@@ -1,5 +1,13 @@
 import * as React from 'react'
-import { FaEnvelopeOpenText, FaGithub, FaLinkedin, FaMastodon, FaTwitter, FaYoutube, FaZhihu, } from 'react-icons/fa'
+import {
+  FaEnvelopeOpenText,
+  FaGithub,
+  FaLinkedin,
+  FaMastodon,
+  FaTwitter,
+  FaYoutube,
+  FaZhihu
+} from 'react-icons/fa'
 import { IoMoonSharp, IoSunnyOutline } from 'react-icons/io5'
 
 import * as config from '@/lib/config'
