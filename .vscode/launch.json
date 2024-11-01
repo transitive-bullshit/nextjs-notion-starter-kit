@@ -8,7 +8,6 @@
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/next",
       "runtimeArgs": ["dev"],
       "cwd": "${workspaceFolder}",
-      "port": 9229,
       "smartStep": true,
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"],
