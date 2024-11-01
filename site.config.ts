@@ -24,7 +24,7 @@ export default siteConfig({
   github: 'transitive-bullshit',
   // gitlab: 'transitive-bullshit', // optional gitlab account
 
-  linkedin: 'fisch2',
+  linkedin: 'fisch2', // For company pages use: 'company/microsoft' syntax
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
