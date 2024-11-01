@@ -55,12 +55,17 @@ export const language: string = getSiteConfig('language', 'en')
 
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
+export const twitterX: string | null = getSiteConfig('twitterX', null)
 export const mastodon: string | null = getSiteConfig('mastodon', null)
 export const github: string | null = getSiteConfig('github', null)
+export const gitlab: string | null = getSiteConfig('gitlab', null)
 export const youtube: string | null = getSiteConfig('youtube', null)
+export const instagram: string | null = getSiteConfig('instagram', null)
+export const reddit: string | null = getSiteConfig('reddit', null)
 export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const newsletter: string | null = getSiteConfig('newsletter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
+export const bugtracker: string | null = getSiteConfig('bugtracker', null)
 
 export const getMastodonHandle = (): string | null => {
   if (!mastodon) {
