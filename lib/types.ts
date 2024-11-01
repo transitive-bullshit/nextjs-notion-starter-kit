@@ -1,5 +1,6 @@
-import { ExtendedRecordMap, PageMap } from 'notion-types'
-import { ParsedUrlQuery } from 'querystring'
+import { type ParsedUrlQuery } from 'node:querystring'
+
+import { type ExtendedRecordMap, type PageMap } from 'notion-types'
 
 export * from 'notion-types'
 
