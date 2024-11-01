@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-a {
+a, button {
   color: inherit;
   text-decoration: none;
 }
@@ -57,6 +57,6 @@ body {
   background-color: var(--fg-color-1);
 }
 
-::-webkit-scrollbar-track {           
+::-webkit-scrollbar-track {
     background-color: var(--bg-color);
 }

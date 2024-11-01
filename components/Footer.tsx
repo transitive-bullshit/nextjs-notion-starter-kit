@@ -38,18 +38,16 @@ export function FooterImpl() {
       <div className={styles.copyright}>
         Copyright {currentYear} {config.author}
       </div>
-
       <div className={styles.settings}>
         {hasMounted && (
-          <a
+          <button
+            type="button"
             className={styles.toggleDarkMode}
-            href='#'
-            role='button'
             onClick={onToggleDarkMode}
             title='Toggle dark mode'
           >
             {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
-          </a>
+          </button>
         )}
       </div>
 
