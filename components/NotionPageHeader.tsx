@@ -23,12 +23,13 @@ function ToggleThemeButton() {
   }, [toggleDarkMode])
 
   return (
-    <div
+    <button
+      type="button"
       className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)}
       onClick={onToggleTheme}
     >
       {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
-    </div>
+    </button>
   )
 }
 
@@ -59,23 +60,22 @@ export function NotionPageHeader({
                 return (
                   <components.PageLink
                     href={mapPageUrl(link.pageId)}
-                    key={index}
+                    key={`nav-${link.pageId}-${link.title}`}
                     className={cs(styles.navLink, 'breadcrumb', 'button')}
                   >
                     {link.title}
                   </components.PageLink>
                 )
-              } else {
-                return (
-                  <components.Link
-                    href={link.url}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.Link>
-                )
               }
+              return (
+                <components.Link
+                  href={link.url}
+                  key={`nav-${link.url}-${link.title}`}
+                  className={cs(styles.navLink, 'breadcrumb', 'button')}
+                >
+                  {link.title}
+                </components.Link>
+              )
             })
             .filter(Boolean)}
 
