@@ -23,7 +23,8 @@ export const socialLinks: SocialLink[] = [
     name: 'twitter',
     href: `https://twitter.com/${config.twitter}`,
     title: `Twitter @${config.twitter}`,
-    color: "#2795e9",
+    color: "#ffffff",
+    background: "#2795e9",
     icon: FaTwitter
   },
   config.twitterX && {
@@ -46,7 +47,11 @@ export const socialLinks: SocialLink[] = [
     name: 'github',
     href: `https://github.com/${config.github}`,
     title: `GitHub @${config.github}`,
-    color: "#c9510c",
+    // FIXME: Figure out great way to preserve github black and white theme, For now it uses rainbow
+    color: "#ffffff",
+    // Fun rainbow background, similarl as their pride logo
+    // FIXME: Gradients can't be transitioned with css :(
+    background: "linear-gradient(to bottom, #C6474E 0%, #C6474E 17%, #D67940 17%, #D67940 33%, #F8D45C 33%, #F8D45C 50%, #67A25A 50%, #67A25A 67%, #3A63C7 67%, #3A63C7 84%, #6446B4 84%)",
     icon: FaGithub
   },
 
@@ -62,7 +67,8 @@ export const socialLinks: SocialLink[] = [
     name: 'linkedin',
     href: `https://www.linkedin.com/in/${config.linkedin}`,
     title: `LinkedIn ${config.author}`,
-    color: "#0077b5",
+    color: "#ffffff",
+    background: "#0077b5",
     icon: FaLinkedin
   },
 
@@ -95,7 +101,8 @@ export const socialLinks: SocialLink[] = [
     name: 'reddit',
     href: `https://www.reddit.com/u/${config.reddit}`,
     title: `Reddit @${config.reddit}`,
-    color: "#ff0000",
+    color: "#ffffff",
+    background: "#FF5700",
     icon: FaReddit
   },
 
@@ -112,31 +119,13 @@ export function PageSocial() {
   return (
     <>
       <div className={styles.pageSocial}>
-        {socialLinks.map((action) => (
-          <>
-            <a
-              key={action.name}
-              style={{ '--hover-color': action.color } as React.CSSProperties}
-              className={cs(styles.action, styles[action.name], styles.socialLink)}
-              href={action.href}
-              title={action.title}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <div className={styles.actionBg}>
-                <div className={styles.actionBgPane} style={{ background: action.background } as React.CSSProperties} />
-              </div>
-
-              <div className={styles.actionBg}>{action.icon({ size: 24 })}</div>
-            </a>
-          </>
-        ))}
+        <PageSocialButtons iconSize={24} />
       </div>
     </>
   )
 }
 
-export function PageSocialButtons() {
+export function PageSocialButtons({ iconSize = 32 }: { iconSize: number }) {
   return (
     <>
       {socialLinks.map((action) => (
@@ -149,7 +138,7 @@ export function PageSocialButtons() {
           target='_blank'
           rel='noopener noreferrer'
         >
-          {action.icon({ size: 32 })}
+          {action.icon({ size: iconSize })}
         </a>
       ))}
     </>

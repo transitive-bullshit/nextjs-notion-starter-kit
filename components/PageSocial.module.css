@@ -6,26 +6,10 @@
   color: var(--fg-color);
 }
 
-.socialLink:hover {
-  border-radius: 50%;
-  color: var(--hover-color);
-  background: var(--hover-background);
-}
-
-.pageSocial .actionBgPane {
-  background: var(--hover-color);
-}
-
-.pageSocial .socialLink:hover {
-  color: var(--fg-color);
-  border-color: var(--hover-color);;
-}
-
-.action {
+.pageSocial a {
   position: relative;
   border-radius: 50%;
   border: 2px solid var(--fg-color-6);
-  transition: all 300ms ease-out;
   width: 3.5em;
   height: 3.5em;
   margin: 0 0 1em;
@@ -38,52 +22,21 @@
   cursor: pointer;
 }
 
-.action:last-child {
-  margin-bottom: 0;
+.pageSocial a:hover {
+  border: 2px solid var(--hover-background);
 }
 
-.actionBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.socialLink {
+  transition: all 500ms ease-out;
 }
 
-.actionBg svg {
-  width: 50%;
-  height: 50%;
-  fill: var(--fg-color-6);
-}
-
-.actionBgPane {
-  transition: all 300ms ease-out;
+.socialLink:hover {
   border-radius: 50%;
-  width: 0;
-  height: 0;
+  color: var(--hover-color);
+  background: var(--hover-background);
 }
 
-.action:hover {
-  transition: all 100ms ease-out;
-}
-
-.action:hover .actionBgPane {
-  width: 100%;
-  height: 100%;
-  transition: all 100ms ease-out;
-}
-
-.action:hover svg {
-  transition: fill 100ms ease-out;
-  fill: var(--bg-color);
-}
-
-:global(.dark-mode) .action:hover svg {
+:global(.dark-mode) .socialLink:hover svg {
   fill: var(--fg-color);
 }
 
@@ -94,7 +47,7 @@
     flex-wrap: wrap;
   }
 
-  .action:last-child {
+  .pageSocial a:last-child {
     margin-right: 1em;
   }
 }
