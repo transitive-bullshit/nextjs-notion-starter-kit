@@ -76,36 +76,23 @@ export const socialLinks: SocialLink[] = [
   config.bugtracker && {
     name: 'bugtracker',
     href: `${config.bugtracker}`,
-    title: `Bugtracker`,
+    title: 'Bugtracker',
     color: "#e24329",
     icon: IoIosBug
   }
 ].filter(Boolean)
 
-function generateCssFrag(prefix: string) {
-  return socialLinks.map((action) => (
-    `.social-link-${prefix}-${action.name} {}
-    .social-link-${prefix}-${action.name}:hover {
-      background: ${action.color};
-      color: white;
-    }
-    `
-  )).join('\n');
-}
-
 export function PageSocial(prefix: string) {
   return (
     <>
-      <style
-        dangerouslySetInnerHTML={{ __html: generateCssFrag("side") }}
-      />
       <div className={styles.pageSocial}>
         {socialLinks.map((action) => (
           <>
             <a
-              className={cs(styles.action, styles[action.name], `social-link-side-${action.name}`)}
-              href={action.href}
               key={action.name}
+              style={{ '--hover-color': action.color } as React.CSSProperties}
+              className={cs(styles.action, styles[action.name], styles.socialLink)}
+              href={action.href}
               title={action.title}
               target='_blank'
               rel='noopener noreferrer'
@@ -119,6 +106,26 @@ export function PageSocial(prefix: string) {
           </>
         ))}
       </div>
+    </>
+  )
+}
+
+export function PageSocialButtons() {
+  return (
+    <>
+      {socialLinks.map((action) => (
+        <a
+          key={action.name}
+          style={{ '--hover-color': action.color } as React.CSSProperties}
+          className={cs(styles[action.name], styles.socialLink)}
+          href={action.href}
+          title={action.title}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          {action.icon({ size: 32 })}
+        </a>
+      ))}
     </>
   )
 }

@@ -85,9 +85,6 @@
 .social a:hover {
   transition: color 50ms ease-out;
 }
-.social a:hover {
-  color: var(--hover-color);
-}
 
 .toggleDarkMode:hover {
   color: #2795e9;

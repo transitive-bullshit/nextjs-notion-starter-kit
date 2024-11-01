@@ -4,7 +4,7 @@ import { IoMoonSharp, IoSunnyOutline } from 'react-icons/io5'
 
 import * as config from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
-import { socialLinks } from './PageSocial'
+import { PageSocialButtons } from './PageSocial'
 
 import styles from './styles.module.css'
 
@@ -48,20 +48,7 @@ export function FooterImpl() {
       </div>
 
       <div className={styles.social}>
-        {socialLinks.map((action) => (
-          <a
-            key={action.name}
-            style={{ '--hover-color': action.color } as React.CSSProperties}
-            className={styles[action.name]}
-            href={action.href}
-            title={action.title}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            {action.icon({ size: 16 })}
-          </a>
-        ))}
-
+        <PageSocialButtons />
       </div>
     </footer>
   )
