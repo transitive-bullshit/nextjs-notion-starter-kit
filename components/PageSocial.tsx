@@ -35,7 +35,7 @@ export const socialLinks: SocialLink[] = [
   config.mastodon && {
     name: 'mastodon',
     href: config.mastodon,
-    title: `Mastodon`,
+    title: 'Mastodon',
     color: "#5a4be1",
     icon: FaMastodon
   },
@@ -105,7 +105,7 @@ export const socialLinks: SocialLink[] = [
   }
 ].filter(Boolean)
 
-export function PageSocial(prefix: string) {
+export function PageSocial() {
   return (
     <>
       <div className={styles.pageSocial}>
