@@ -151,6 +151,80 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const router = useRouter()
   const lite = useSearchParam('lite')
 
+  React.useEffect(() => {
+    document.querySelectorAll('.notion-page-title-text').forEach((link) => {
+      if (link.textContent.trim().toLowerCase() === 'about') {
+        link.remove()
+      }
+    })
+
+    // Header
+    const header = document.querySelector('.breadcrumbs')
+    if (header) {
+      const nav = document.createElement('nav')
+      nav.classList.add('nav-container') // Optionally add a class to the <nav> tag for styling
+
+      const links = [
+        { href: '/', label: 'Coursetexts' },
+        { href: '/about-9a2ace4be0dc4d928e7d304a44a6afe8', label: 'About' }
+      ]
+
+      links.forEach((link) => {
+        const anchor = document.createElement('a')
+        anchor.href = link.href
+        anchor.textContent = link.label
+        anchor.classList.add('nav-link') // Add styling class to <a> tag
+        nav.appendChild(anchor) // Append each <a> to the <nav>
+      })
+
+      header.appendChild(nav) // Append <nav> to the .notion-nav-header
+    }
+    if (router.pathname !== '/') return
+
+    function wrapElementsBetweenBlanks() {
+      // Select all .notion-blank div elements
+      const blankDivs = document.querySelectorAll('.notion-blank')
+
+      // Exit if there are less than 2 .notion-blank divs, as no wrapping is needed
+      if (blankDivs.length < 2) return
+
+      // Iterate over each .notion-blank div except the last one
+      blankDivs.forEach((blankDiv, index) => {
+        // Only proceed if there's a subsequent .notion-blank div
+        if (index < blankDivs.length - 2) {
+          const elementsToWrap = []
+          let nextSibling = blankDiv.nextElementSibling
+
+          // Collect all elements until reaching the next .notion-blank div
+          while (
+            nextSibling &&
+            !nextSibling.classList.contains('notion-blank')
+          ) {
+            elementsToWrap.push(nextSibling)
+            nextSibling = nextSibling.nextElementSibling
+          }
+
+          // If there are elements to wrap, create a custom-wrapper div
+          if (elementsToWrap.length > 0) {
+            const wrapperDiv = document.createElement('div')
+            wrapperDiv.classList.add('custom-wrapper-class')
+
+            // Move each collected element into the custom-wrapper
+            elementsToWrap.forEach((element) => {
+              wrapperDiv.appendChild(element)
+            })
+
+            // Insert the custom-wrapper div after the current .notion-blank div
+            blankDiv.insertAdjacentElement('afterend', wrapperDiv)
+          }
+        }
+      })
+    }
+
+    // Execute the function to wrap elements
+    wrapElementsBetweenBlanks()
+  }, [router])
+
   const components = React.useMemo(
     () => ({
       nextImage: Image,
@@ -231,7 +305,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  const socialImage = null;
+  const socialImage = null
 
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) ||
@@ -275,7 +349,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={null}
         footer={footer}
       />
-
       {/* <GitHubShareButton /> */}
     </>
   )
