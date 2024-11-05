@@ -6,7 +6,7 @@ Note that there is a repo in coursetexts/notion-site and Divide-By-0/coursetexts
 
 preview.coursetexts.org is the preview site with all the preview sites included, and coursetexts.org is the production site with only fully professor-approved pages. They both deploy the main branch with different env vars.
 
-To setup, make sure to set the `NOTION_PAGE_ID` environment variable in Vercel and in .env.
+To setup, make sure to set the `NEXT_PUBLIC_NOTION_PAGE_ID` environment variable in Vercel and in .env.
 
 ---
 
