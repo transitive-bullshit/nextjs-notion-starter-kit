@@ -7,8 +7,14 @@ if (!rawSiteConfig) {
 
 // allow environment variables to override site.config.ts
 let siteConfigOverrides: SiteConfig
+let siteOverridesManual = {};
 
 try {
+  if (process.env.NEXT_PUBLIC_NOTION_PAGE_ID) {
+    siteOverridesManual = {
+      rootNotionPageId: process.env.NEXT_PUBLIC_NOTION_PAGE_ID
+    }
+  }
   if (process.env.NEXT_PUBLIC_SITE_CONFIG) {
     siteConfigOverrides = JSON.parse(process.env.NEXT_PUBLIC_SITE_CONFIG)
   }
@@ -19,7 +25,8 @@ try {
 
 const siteConfig: SiteConfig = {
   ...rawSiteConfig,
-  ...siteConfigOverrides
+  ...siteConfigOverrides,
+  ...siteOverridesManual
 }
 
 export function getSiteConfig<T>(key: string, defaultValue?: T): T {
@@ -33,7 +40,7 @@ export function getSiteConfig<T>(key: string, defaultValue?: T): T {
     return defaultValue
   }
 
-  throw new Error(`Config error: missing required site config value "${key}"`)
+  throw new Error(`Config error: missing required site config key "${key}"`)
 }
 
 export function getEnv(

@@ -1,12 +1,14 @@
-<p align="center">
-  <a href="https://transitivebullsh.it/nextjs-notion-starter-kit">
-    <img alt="Example article page" src="https://user-images.githubusercontent.com/552829/160132094-12875e09-41ec-450a-80fc-ae8cd488129d.jpg" width="689">
-  </a>
-</p>
-
 # Coursetexts Notion Site
 
-This site deploys the notion page in 'Public Pages' on our notion to the web automatically. It uses Vercel but ideally we can transition to Render.
+This site deploys the notion page in 'Public Pages' on our notion to the web automatically. It uses Vercel because Vercel refreshes builds more often so that it actually reflects the latest state of the notion page. For that reason, we cannot use Render right now.
+
+Note that there is a repo in coursetexts/notion-site and Divide-By-0/coursetexts-notion. The latter one is not a fork because I already forked the parent repo into my personal and Github has annoying rules, so that's just a clone with exactly mirrored common commit history. The one under Divide-By-0 is deployed to Vercel because private repos are free, and we can ensure that contractors on the coursetexts/notion-site page cannot mess up our production site.
+
+preview.coursetexts.org is the preview site with all the preview sites included, and coursetexts.org is the production site with only fully professor-approved pages. They both deploy the main branch with different env vars.
+
+To setup, make sure to set the `NOTION_PAGE_ID` environment variable in Vercel and in .env.
+
+---
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
