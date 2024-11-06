@@ -13,6 +13,9 @@ html {
   margin: 0;
   line-height: 1.5; /* Add this line */
 }
+.dark-mode {
+  --bg-color: #1e1e1e;
+}
 
 .notion {
   padding-left: 3%;

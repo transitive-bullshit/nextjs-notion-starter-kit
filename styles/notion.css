@@ -48,6 +48,7 @@
   max-width: 100%;
   margin: 0 auto;
   overflow-x: auto;
+  padding: 0 2px;
 }
 
 .notion-nav-header-rhs {
@@ -154,15 +155,15 @@
 
 @media only screen and (max-width: 920px) {
   .index-page.notion-page {
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 @media only screen and (max-width: 720px) {
   .notion-page {
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -175,11 +176,6 @@
 .notion .notion-page-icon-cover {
   margin-left: auto;
   margin-right: auto;
-}
-
-.notion-title {
-  display: block;
-  text-align: center;
 }
 
 .notion-collection-row {
@@ -474,12 +470,15 @@
 }
 
 .notion-title {
+  display: block;
   text-align: left;
   font-size: 2.25em;
   margin-top: 0;
   margin-bottom: 0.8888889em;
   line-height: 1.1111111;
   font-weight: 800;
+  word-wrap: break-word;
+  -ms-word-wrap: break-word;
 }
 
 .notion-page-no-cover.notion-page-has-image-icon {
@@ -550,11 +549,15 @@
   font-weight: 600 !important;
 }
 
+.breadcrumbs .nav-container {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
 .breadcrumbs .nav-container .nav-link {
   font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.75rem;
-  margin: 0 16px;
   opacity: 0.8;
 }
 .breadcrumbs .nav-container a[href='/'] {
@@ -631,4 +634,12 @@ details .notion-text {
   margin-top: 2em;
   margin-bottom: 1em;
   line-height: 1.3333333;
+}
+
+.lecture-wrapper {
+  width: 100%;
+  padding: 16px;
+  & .notion-h3 {
+    margin-top: 0;
+  }
 }
