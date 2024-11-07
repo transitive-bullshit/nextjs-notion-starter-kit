@@ -29,8 +29,7 @@ html {
 .notion-page {
   max-width: 48rem;
   width: 100%;
-  padding: 2rem;
-  /* padding-bottom: calc(max(5vh, 32px)) !important; */
+  padding: 0 2rem;
 }
 
 .notion-h1,
