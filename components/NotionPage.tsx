@@ -262,54 +262,53 @@ export const NotionPage: React.FC<types.PageProps> = ({
     // Execute the function to wrap elements
 
     if (router.pathname === '/') {
-      wrapElementsBetweenBlanks();
-      const details1Elements = document.querySelectorAll('.notion-link');
+      wrapElementsBetweenBlanks()
+      const details1Element = document.querySelectorAll('.notion-link')
 
-      details1Elements.forEach((details1Element) => {
-        details1Element.style.borderBottom = 'none';
-      });
+      if (details1Element instanceof HTMLElement) {
+        details1Element.style.borderBottom = 'none';  // Removing the border bottom
+      }
     } else {
       wrapHeadersAndContent()
     }
 
     const addSeeAllClassesButton = () => {
       // Locate the notion-callout div
-      const notionCallout = document.querySelector('.notion-callout');
+      const notionCallout = document.querySelector('.notion-callout')
       if (notionCallout) {
         // Create the button container div
-        const buttonContainer = document.createElement('div');
-        buttonContainer.className = 'button-container1';
+        const buttonContainer = document.createElement('div')
+        buttonContainer.className = 'button-container1'
 
         // Create the button element
-        const button = document.createElement('button');
-        button.textContent = 'See All Classes →';
-        button.className = 'see-all';
+        const button = document.createElement('button')
+        button.textContent = 'See All Classes →'
+        button.className = 'see-all'
 
         // Add click event to navigate to the classes page
-        button.onclick = () => router.push('/');
+        button.onclick = () => router.push('/')
 
         // Append the button to the container
-        buttonContainer.appendChild(button);
+        buttonContainer.appendChild(button)
 
         // Insert the button container after the notion-callout div
-        notionCallout.insertAdjacentElement('afterend', buttonContainer);
+        notionCallout.insertAdjacentElement('afterend', buttonContainer)
       }
-    };
-
+    }
 
     function setDropdownOpen() {
       // Select all details elements
       const detailsElements = document.querySelectorAll('details')
 
       detailsElements.forEach((detailsElement) => {
-        detailsElement.setAttribute('open', true) // Open the dropdown
+        detailsElement.setAttribute('open', 'true') // Open the dropdown
         detailsElement.style.borderBottom = '1px solid hsl(214.3, 31.8%, 91.4%)'
       })
     }
 
     if (router.asPath == '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
-      setDropdownOpen();
-      addSeeAllClassesButton();
+      setDropdownOpen()
+      addSeeAllClassesButton()
     }
   }, [router])
 
@@ -439,7 +438,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       />
       {router.asPath == '/about-9a2ace4be0dc4d928e7d304a44a6afe8' && (
         <div onClick={() => router.push('/')} className='button-container'>
-          <button className="see-all">See All Classes  →</button>
+          <button className='see-all'>See All Classes →</button>
         </div>
       )}
       {/* <GitHubShareButton /> */}
