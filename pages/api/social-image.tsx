@@ -11,7 +11,6 @@ import {
 } from 'notion-utils'
 
 import * as libConfig from '@/lib/config'
-import interRegularFont from '@/lib/fonts/inter-regular'
 import interSemiBoldFont from '@/lib/fonts/inter-semibold'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
@@ -52,7 +51,6 @@ export default async function OGImage(
           backgroundColor: '#1F2027',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: '"Inter", sans-serif',
           color: 'black'
         }}
       >
@@ -158,12 +156,6 @@ export default async function OGImage(
       width: 1200,
       height: 630,
       fonts: [
-        {
-          name: 'Inter',
-          data: interRegularFont,
-          style: 'normal',
-          weight: 400
-        },
         {
           name: 'Inter',
           data: interSemiBoldFont,
