@@ -33,8 +33,8 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2
       lqip-modern:
-        specifier: ^2.2.0
-        version: 2.2.0
+        specifier: ^2.2.1
+        version: 2.2.1
       next:
         specifier: ^15.0.3
         version: 15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1461,8 +1461,8 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
-  lqip-modern@2.2.0:
-    resolution: {integrity: sha512-c7obNgX/mI2vOIHSesqckbE7c05pbRF1eess3bekf8TgDe2+DEfQqbJZSzeydsUZCtzsUMsXaSHAJ4+7vsxcQg==}
+  lqip-modern@2.2.1:
+    resolution: {integrity: sha512-5XlvR9zczhDiNstMztH5kF3xs2cVbvPu7xmGWpgd4Qwb7UastgplSihZt2PHX9CBkZ241En9miZEDXyy0TgdiQ==}
     engines: {node: '>=18'}
 
   make-cancellable-promise@1.3.2:
@@ -3917,7 +3917,7 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  lqip-modern@2.2.0:
+  lqip-modern@2.2.1:
     dependencies:
       p-map: 7.0.2
       sharp: 0.33.5
