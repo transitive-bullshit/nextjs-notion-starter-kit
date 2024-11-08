@@ -6,7 +6,8 @@ import {
   getBlockIcon,
   getBlockTitle,
   getPageProperty,
-  isUrl
+  isUrl,
+  parsePageId
 } from 'notion-utils'
 
 import * as libConfig from '@/lib/config'
@@ -23,7 +24,9 @@ export default async function OGImage(
   res: NextApiResponse
 ) {
   const { searchParams } = new URL(req.url)
-  const pageId = searchParams.get('id') || libConfig.rootNotionPageId
+  const pageId = parsePageId(
+    searchParams.get('id') || libConfig.rootNotionPageId
+  )
   if (!pageId) {
     return new Response('Invalid notion page id', { status: 400 })
   }
