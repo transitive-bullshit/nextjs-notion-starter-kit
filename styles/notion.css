@@ -178,7 +178,6 @@
 
 @media only screen and (max-width: 400px) {
   .notion-page-link {
-    height: 35px !important;
     margin-bottom: 0px !important;
   }
 }
@@ -546,7 +545,7 @@
   border-bottom: 1px solid rgb(37 99 235 / 1);
 }
 
-[data-id="12419a13312a80cbbe34d48ae26d5a9d"] {
+[data-id='12419a13312a80cbbe34d48ae26d5a9d'] {
   margin-top: 0 !important;
 }
 
@@ -737,7 +736,7 @@ summary .notion-h3 .notion-h-title {
 }
 
 .dark-mode summary .notion-h3 .notion-h-title {
-   color: #fff;
+  color: #fff;
 }
 
 @media only screen and (min-width: 400px) and (max-width: 420px) {
