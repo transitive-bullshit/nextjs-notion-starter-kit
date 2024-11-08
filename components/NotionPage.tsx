@@ -260,16 +260,45 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
 
     // Execute the function to wrap elements
-
     if (router.pathname === '/') {
       wrapElementsBetweenBlanks()
-      const details1Element = document.querySelectorAll('.notion-link')
+      const details1Elements =
+        document.querySelectorAll<HTMLElement>('.notion-link')
 
-      if (details1Element instanceof HTMLElement) {
-        details1Element.style.borderBottom = 'none';  // Removing the border bottom
-      }
-    } else {
+      details1Elements.forEach((element) => {
+        element.style.borderBottom = 'none' // Removing the border bottom for each element
+      })
+      // Select all elements with the 'notion-title' class on h1 tags
+      const titleElements = document.querySelectorAll('h1.notion-title')
+
+      titleElements.forEach((element) => {
+        // Remove 'notion-title' class
+        element.classList.add('notion-home-title')
+      })
+    } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
       wrapHeadersAndContent()
+    } else if (router.asPath === '/about-2636f19a6ceb4d8db057f0b166b05ce0') {
+      const titleElements =
+        document.querySelectorAll<HTMLElement>('h1.notion-title')
+
+      titleElements.forEach((element) => {
+        // Add 'notion-about-title' class to the h1 element
+        element.classList.add('notion-about-title')
+
+        // Hide the 'notion-title' elements by setting display to 'none'
+        element.style.display = 'none'
+      })
+
+      //
+      const summaryElements = document.querySelectorAll('summary')
+
+      summaryElements.forEach((summaryElement) => {
+        // Get the text content from the <summary> element
+        const textContent = summaryElement.textContent
+
+        // Replace the inner HTML with only the text content
+        summaryElement.innerHTML = textContent
+      })
     }
 
     const addSeeAllClassesButton = () => {
@@ -306,7 +335,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
       })
     }
 
-    if (router.asPath == '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
+    if (
+      router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
+      router.asPath === '/about-2636f19a6ceb4d8db057f0b166b05ce0'
+    ) {
       setDropdownOpen()
       addSeeAllClassesButton()
     }
@@ -436,7 +468,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={null}
         footer={footer}
       />
-      {router.asPath == '/about-9a2ace4be0dc4d928e7d304a44a6afe8' && (
+      {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
+        router.asPath === '/about-2636f19a6ceb4d8db057f0b166b05ce0') && (
         <div onClick={() => router.push('/')} className='button-container'>
           <button className='see-all'>See All Classes →</button>
         </div>
