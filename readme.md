@@ -65,7 +65,7 @@ I recommend setting up a collection on your home page that contains all of your 
 
 👉 You need Login to Vercel Dashboard and **disable Vercel Authentication** from `Project -> Settings -> Deployment Protection`.
 
-![Vercel Deployment Protection setting](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/assets/5691777/9cce3b60-7102-4c34-a422-9f6572155c10 "Vercel Deployment Protection setting which causes social media preview image endpoint to return 401 Unauthorized")
+![How to disable Vercel Deployment Protection setting](https://github.com/user-attachments/assets/a1eb5a1f-da7a-497e-b4f6-f7e851a6cd8a "How to disable Vercel Deployment Protection setting which causes social media preview image endpoint to return 401 Unauthorized")
 
 💡 If you forget to do this your site will return `401 Unauthorized` responses when crawlers are trying to retrieve the images
 
