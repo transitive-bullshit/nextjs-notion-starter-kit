@@ -546,6 +546,10 @@
   border-bottom: 1px solid rgb(37 99 235 / 1);
 }
 
+[data-id="12419a13312a80cbbe34d48ae26d5a9d"] {
+  margin-top: 0 !important;
+}
+
 .notion-callout-text a[target*='_blank'] {
   color: #111827 !important;
   font-weight: 500;
