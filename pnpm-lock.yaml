@@ -45,14 +45,14 @@ importers:
         specifier: ^15.0.3
         version: 15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       notion-client:
-        specifier: ^7.0.1
-        version: 7.0.1
+        specifier: ^7.1.1
+        version: 7.1.1
       notion-types:
-        specifier: ^7.0.1
-        version: 7.0.1
+        specifier: ^7.1.1
+        version: 7.1.1
       notion-utils:
-        specifier: ^7.0.1
-        version: 7.0.1
+        specifier: ^7.1.1
+        version: 7.1.1
       p-map:
         specifier: ^7.0.2
         version: 7.0.2
@@ -75,8 +75,8 @@ importers:
         specifier: ^18.2.0
         version: 18.3.1(react@18.3.1)
       react-notion-x:
-        specifier: ^7.1.0
-        version: 7.1.0(@babel/runtime@7.26.0)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^7.2.1
+        version: 7.2.1(@babel/runtime@7.26.0)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-tweet-embed:
         specifier: ^2.0.0
         version: 2.0.0(react@18.3.1)
@@ -1693,16 +1693,16 @@ packages:
     resolution: {integrity: sha512-IO9QvjUMWxPQQhs60oOu10CRkWCiZzSUkzbXGGV9pviYl1fXYcvkzQ5jV9z8Y6un8ARoVRl4EtC6v6jNqbaJ/w==}
     engines: {node: '>=14.16'}
 
-  notion-client@7.0.1:
-    resolution: {integrity: sha512-nVJktjm6VOIrfpQXs8UhPFmEj4TpWsXMHwOTk6hbMry4IGemNpJ1pBnx2YY+2nCzvkJrvEiTLmKFuE+kkbGCfg==}
+  notion-client@7.1.1:
+    resolution: {integrity: sha512-mT/yEOIlbQzIAMsuIoWMX3XQrkoN07NMtSilDYIQQShxYJDdXMYfLuSoOgalEwFmwwsDnETHJqfrdkfe6sF9Rw==}
     engines: {node: '>=18'}
 
-  notion-types@7.0.1:
-    resolution: {integrity: sha512-vtyEBDdBKULYFrnMSzQpvcbs8vQm6jPca6wMmjTADXih0dAJqw5QLrPVUgCeKdnPfFJwldHmAL4FuOYQ3HhNvQ==}
+  notion-types@7.1.1:
+    resolution: {integrity: sha512-wsj/mwTi0hZjldvfVoKgtrXrOaBRgEsXic2n1kh6S1Aj7snx9Xo8sA8KtHqmXqKhJ8BFEsavh0Dv3TlyMv8aWg==}
     engines: {node: '>=18'}
 
-  notion-utils@7.0.1:
-    resolution: {integrity: sha512-c9pjCEKrNpocu62cRXn5A30rPIGNjPCCU5/ucoMve07E+xLXD6+JzJZvKRy6dteUtcSHdr/IQSbrAqCeHfGRcQ==}
+  notion-utils@7.1.1:
+    resolution: {integrity: sha512-Hks/sipBA7aDZ3TS90CRKuKvCsvs/cW+MXzZPFh/Q1uTjhEt9GynSUl8o11k+Nm4No3+deQJY/hsuv90gyCFjg==}
     engines: {node: '>=18'}
 
   npm-normalize-package-bin@4.0.0:
@@ -1962,8 +1962,8 @@ packages:
       react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
       react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
 
-  react-notion-x@7.1.0:
-    resolution: {integrity: sha512-6O388IfFIyfmPmFO3AV4Q2HFZjQbH1ywVjjgM2NgSakrIhOsQZ7KHi1GuExWnG+hGxwAwT6O31MFM59xgT3qjA==}
+  react-notion-x@7.2.1:
+    resolution: {integrity: sha512-wy/MOp/+pOL/qKUcY3azMvTn/y6AkKqutFboOKn0OUouPe2OaOjUk/VIGFV081UL7+nwCKbWecHgRZ9MuwwHng==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=18'
@@ -2560,7 +2560,7 @@ snapshots:
       '@typescript-eslint/parser': 7.18.0(eslint@8.57.1)(typescript@5.6.3)
       '@typescript-eslint/utils': 7.18.0(eslint@8.57.1)(typescript@5.6.3)
       eslint-config-prettier: 9.1.0(eslint@8.57.1)
-      eslint-import-resolver-typescript: 3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0)(eslint@8.57.1)
+      eslint-import-resolver-typescript: 3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1)
       eslint-plugin-import: 2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-typescript@3.6.3)(eslint@8.57.1)
       eslint-plugin-jest: 28.8.3(@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1)(typescript@5.6.3)
       eslint-plugin-jest-dom: 5.4.0(eslint@8.57.1)
@@ -3384,13 +3384,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0)(eslint@8.57.1):
+  eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.3.7
       enhanced-resolve: 5.17.1
       eslint: 8.57.1
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@8.57.1)
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
       fast-glob: 3.3.2
       get-tsconfig: 4.8.1
       is-bun-module: 1.2.1
@@ -3403,14 +3403,14 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-module-utils@2.12.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@8.57.1):
+  eslint-module-utils@2.12.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 7.18.0(eslint@8.57.1)(typescript@5.6.3)
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0)(eslint@8.57.1)
+      eslint-import-resolver-typescript: 3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -3425,7 +3425,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.1
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3)(eslint@8.57.1)
+      eslint-module-utils: 2.12.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.3(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint-plugin-import@2.31.0(@typescript-eslint/parser@7.18.0(eslint@8.57.1)(typescript@5.6.3))(eslint@8.57.1))(eslint@8.57.1))(eslint@8.57.1)
       hasown: 2.0.2
       is-core-module: 2.15.1
       is-glob: 4.0.3
@@ -4218,21 +4218,21 @@ snapshots:
 
   normalize-url@8.0.1: {}
 
-  notion-client@7.0.1:
+  notion-client@7.1.1:
     dependencies:
       ky: 1.7.2
-      notion-types: 7.0.1
-      notion-utils: 7.0.1
+      notion-types: 7.1.1
+      notion-utils: 7.1.1
       p-map: 7.0.2
 
-  notion-types@7.0.1: {}
+  notion-types@7.1.1: {}
 
-  notion-utils@7.0.1:
+  notion-utils@7.1.1:
     dependencies:
       is-url-superb: 6.1.0
       mem: 10.0.0
       normalize-url: 8.0.1
-      notion-types: 7.0.1
+      notion-types: 7.1.1
       p-queue: 8.0.1
 
   npm-normalize-package-bin@4.0.0: {}
@@ -4492,13 +4492,13 @@ snapshots:
       react-lifecycles-compat: 3.0.4
       warning: 4.0.3
 
-  react-notion-x@7.1.0(@babel/runtime@7.26.0)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-notion-x@7.2.1(@babel/runtime@7.26.0)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@fisch0920/medium-zoom': 1.0.7
       '@matejmazur/react-katex': 3.1.3(katex@0.16.11)(react@18.3.1)
       katex: 0.16.11
-      notion-types: 7.0.1
-      notion-utils: 7.0.1
+      notion-types: 7.1.1
+      notion-utils: 7.1.1
       prismjs: 1.29.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
