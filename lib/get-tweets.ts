@@ -35,7 +35,7 @@ async function getTweetImpl(tweetId: string): Promise<any> {
   try {
     try {
       const cachedTweet = await db.get(cacheKey)
-      if (cachedTweet) {
+      if (cachedTweet || cachedTweet === null) {
         return cachedTweet
       }
     } catch (err) {
@@ -43,7 +43,7 @@ async function getTweetImpl(tweetId: string): Promise<any> {
       console.warn(`redis error get "${cacheKey}"`, err.message)
     }
 
-    const tweetData = await getTweetData(tweetId)
+    const tweetData = (await getTweetData(tweetId)) || null
 
     try {
       await db.set(cacheKey, tweetData)
