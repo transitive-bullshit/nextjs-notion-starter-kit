@@ -18,6 +18,10 @@ export interface PageProps {
   error?: PageError
 }
 
+export interface ExtendedTweetRecordMap extends ExtendedRecordMap {
+  tweets: Record<string, any>
+}
+
 export interface Params extends ParsedUrlQuery {
   pageId: string
 }

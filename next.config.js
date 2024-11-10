@@ -10,41 +10,12 @@ export default withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'www.notion.so',
-        pathname: '**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'notion.so',
-        pathname: '**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        pathname: '**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'pbs.twimg.com',
-        pathname: '**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'abs.twimg.com',
-        pathname: '**'
-      },
-      {
-        protocol: 'https',
-        hostname: 's3.us-west-2.amazonaws.com',
-        pathname: '**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'transitivebullsh.it',
-        pathname: '**'
-      }
+      { protocol: 'https', hostname: 'www.notion.so' },
+      { protocol: 'https', hostname: 'notion.so' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'abs.twimg.com' },
+      { protocol: 'https', hostname: 'pbs.twimg.com' },
+      { protocol: 'https', hostname: 's3.us-west-2.amazonaws.com' }
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
@@ -62,5 +33,8 @@ export default withBundleAnalyzer({
       'node_modules/react-dom'
     )
     return config
-  }
+  },
+
+  // See https://react-tweet.vercel.app/next#troubleshooting
+  transpilePackages: ['react-tweet']
 })
