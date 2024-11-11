@@ -7,7 +7,7 @@
  * places to add some flare.
  */
 
-.notion {
+ .notion {
   --notion-max-width: 48rem;
   --notion-header-height: 54px;
 }
@@ -535,12 +535,12 @@
   margin-left: 0px;
 }
 
-.notion-callout-text a[href*='about-2636f19a6ceb4d8db057f0b166b05ce0'] {
+.notion-callout-text a[href*='about'] {
   color: rgb(37 99 235 / 1) !important;
   border-bottom: 1px solid rgb(37 99 235 / 1);
 }
 
-.notion-callout-text a[href*='about-2636f19a6ceb4d8db057f0b166b05ce0'] {
+.notion-callout-text a[href*='about'] {
   color: rgb(37 99 235 / 1) !important;
   border-bottom: 1px solid rgb(37 99 235 / 1);
 }
