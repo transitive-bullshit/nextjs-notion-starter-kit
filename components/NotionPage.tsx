@@ -20,10 +20,11 @@ import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
-// import { GitHubShareButton } from './GitHubShareButton'
+import { GitHubShareButton } from './GitHubShareButton'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
+import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
@@ -150,7 +151,86 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const router = useRouter()
   const lite = useSearchParam('lite')
 
+  function wrapElementsBetweenBlanks() {
+    // Select all .notion-blank div elements
+    const blankDivs = document.querySelectorAll('.notion-blank')
+
+    // Exit if there are less than 2 .notion-blank divs, as no wrapping is needed
+    if (blankDivs.length < 2) return
+
+    // Iterate over each .notion-blank div except the last one
+    blankDivs.forEach((blankDiv, index) => {
+      // Only proceed if there's a subsequent .notion-blank div
+      if (index < blankDivs.length - 2) {
+        const elementsToWrap = []
+        let nextSibling = blankDiv.nextElementSibling
+
+        // Collect all elements until reaching the next .notion-blank div
+        while (nextSibling && !nextSibling.classList.contains('notion-blank')) {
+          elementsToWrap.push(nextSibling)
+          nextSibling = nextSibling.nextElementSibling
+        }
+
+        // If there are elements to wrap, create a custom-wrapper div
+        if (elementsToWrap.length > 0) {
+          const wrapperDiv = document.createElement('div')
+          wrapperDiv.classList.add('custom-wrapper-class')
+
+          // Move each collected element into the custom-wrapper
+          elementsToWrap.forEach((element) => {
+            wrapperDiv.appendChild(element)
+          })
+
+          // Insert the custom-wrapper div after the current .notion-blank div
+          blankDiv.insertAdjacentElement('afterend', wrapperDiv)
+        }
+      }
+    })
+  }
+
+  function wrapHeadersAndContent() {
+    // Select all .notion-h3 elements
+    const headers = document.querySelectorAll('.notion-h3')
+
+    headers.forEach((header, index) => {
+      const elementsToWrap = [header] // Start by including the header itself
+      let nextSibling = header.nextElementSibling
+
+      // Collect all elements until we reach the next .notion-h3 header
+      while (
+        nextSibling &&
+        (!nextSibling.classList.contains('notion-h3') ||
+          index === headers.length - 1)
+      ) {
+        elementsToWrap.push(nextSibling)
+        nextSibling = nextSibling.nextElementSibling
+      }
+
+      // Create a custom-wrapper-class div and add the collected elements to it
+      const wrapperDiv = document.createElement('div')
+      wrapperDiv.classList.add('lecture-wrapper')
+
+      // Insert the wrapper before the first element in elementsToWrap
+      header.parentNode.insertBefore(wrapperDiv, header)
+
+      // Move each collected element into the custom-wrapper
+      elementsToWrap.forEach((element) => {
+        wrapperDiv.appendChild(element)
+      })
+    })
+  }
+
   React.useEffect(() => {
+    document.querySelectorAll('summary').forEach(function (summary) {
+      // Select the <b> tag inside the <summary>
+      const boldTag = summary.querySelector('b')
+
+      // If a <b> tag exists, replace it with its text content
+      if (boldTag) {
+        boldTag.replaceWith(boldTag.textContent)
+      }
+    })
+
     document.querySelectorAll('.notion-page-title-text').forEach((link) => {
       if (link.textContent.trim().toLowerCase() === 'about') {
         link.remove()
@@ -178,50 +258,90 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       header.appendChild(nav) // Append <nav> to the .notion-nav-header
     }
-    if (router.pathname !== '/') return
 
-    function wrapElementsBetweenBlanks() {
-      // Select all .notion-blank div elements
-      const blankDivs = document.querySelectorAll('.notion-blank')
+    // Execute the function to wrap elements
+    if (router.pathname === '/') {
+      wrapElementsBetweenBlanks()
+      const details1Elements =
+        document.querySelectorAll<HTMLElement>('.notion-link')
 
-      // Exit if there are less than 2 .notion-blank divs, as no wrapping is needed
-      if (blankDivs.length < 2) return
+      details1Elements.forEach((element) => {
+        element.style.borderBottom = 'none' // Removing the border bottom for each element
+      })
+      // Select all elements with the 'notion-title' class on h1 tags
+      const titleElements = document.querySelectorAll('h1.notion-title')
 
-      // Iterate over each .notion-blank div except the last one
-      blankDivs.forEach((blankDiv, index) => {
-        // Only proceed if there's a subsequent .notion-blank div
-        if (index < blankDivs.length - 2) {
-          const elementsToWrap = []
-          let nextSibling = blankDiv.nextElementSibling
+      titleElements.forEach((element) => {
+        // Remove 'notion-title' class
+        element.classList.add('notion-home-title')
+      })
+    } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
+      wrapHeadersAndContent()
+    } else if (router.asPath === '/about') {
+      const titleElements =
+        document.querySelectorAll<HTMLElement>('h1.notion-title')
 
-          // Collect all elements until reaching the next .notion-blank div
-          while (
-            nextSibling &&
-            !nextSibling.classList.contains('notion-blank')
-          ) {
-            elementsToWrap.push(nextSibling)
-            nextSibling = nextSibling.nextElementSibling
-          }
+      titleElements.forEach((element) => {
+        // Add 'notion-about-title' class to the h1 element
+        element.classList.add('notion-about-title')
 
-          // If there are elements to wrap, create a custom-wrapper div
-          if (elementsToWrap.length > 0) {
-            const wrapperDiv = document.createElement('div')
-            wrapperDiv.classList.add('custom-wrapper-class')
+        // Hide the 'notion-title' elements by setting display to 'none'
+        element.style.display = 'none'
+      })
 
-            // Move each collected element into the custom-wrapper
-            elementsToWrap.forEach((element) => {
-              wrapperDiv.appendChild(element)
-            })
+      //
+      const summaryElements = document.querySelectorAll('summary')
 
-            // Insert the custom-wrapper div after the current .notion-blank div
-            blankDiv.insertAdjacentElement('afterend', wrapperDiv)
-          }
-        }
+      summaryElements.forEach((summaryElement) => {
+        // Get the text content from the <summary> element
+        const textContent = summaryElement.textContent
+
+        // Replace the inner HTML with only the text content
+        summaryElement.innerHTML = textContent
       })
     }
 
-    // Execute the function to wrap elements
-    wrapElementsBetweenBlanks()
+    const addSeeAllClassesButton = () => {
+      // Locate the notion-callout div
+      const notionCallout = document.querySelector('.notion-callout')
+      if (notionCallout) {
+        // Create the button container div
+        const buttonContainer = document.createElement('div')
+        buttonContainer.className = 'button-container1'
+
+        // Create the button element
+        const button = document.createElement('button')
+        button.textContent = 'See All Classes →'
+        button.className = 'see-all'
+
+        // Add click event to navigate to the classes page
+        button.onclick = () => router.push('/')
+
+        // Append the button to the container
+        buttonContainer.appendChild(button)
+
+        // Insert the button container after the notion-callout div
+        notionCallout.insertAdjacentElement('afterend', buttonContainer)
+      }
+    }
+
+    function setDropdownOpen() {
+      // Select all details elements
+      const detailsElements = document.querySelectorAll('details')
+
+      detailsElements.forEach((detailsElement) => {
+        detailsElement.setAttribute('open', 'true') // Open the dropdown
+        detailsElement.style.borderBottom = '1px solid hsl(214.3, 31.8%, 91.4%)'
+      })
+    }
+
+    if (
+      router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
+      router.asPath === '/about'
+    ) {
+      setDropdownOpen()
+      addSeeAllClassesButton()
+    }
   }, [router])
 
   const components = React.useMemo(
@@ -265,6 +385,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
+
+  const pageAside = React.useMemo(
+    () => (
+      <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />
+    ),
+    [block, recordMap, isBlogPost]
+  )
 
   const footer = React.useMemo(() => <Footer />, [])
 
@@ -341,6 +468,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={null}
         footer={footer}
       />
+      {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
+        router.asPath === '/about') && (
+        <div onClick={() => router.push('/')} className='button-container'>
+          <button className='see-all'>See All Classes →</button>
+        </div>
+      )}
       {/* <GitHubShareButton /> */}
     </>
   )

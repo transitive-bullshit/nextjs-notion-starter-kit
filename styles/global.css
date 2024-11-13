@@ -13,6 +13,9 @@ html {
   margin: 0;
   line-height: 1.5; /* Add this line */
 }
+.dark-mode {
+  --bg-color: #1e1e1e;
+}
 
 .notion {
   padding-left: 3%;
@@ -26,8 +29,7 @@ html {
 .notion-page {
   max-width: 48rem;
   width: 100%;
-  padding: 2rem;
-  /* padding-bottom: calc(max(5vh, 32px)) !important; */
+  padding: 0 2rem;
 }
 
 .notion-h1,

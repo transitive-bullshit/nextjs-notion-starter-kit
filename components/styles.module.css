@@ -14,12 +14,10 @@
   justify-content: center;
   align-items: center;
   padding: 2vmin;
-
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: rgb(55, 53, 47);
   caret-color: rgb(55, 53, 47);
-  /* font-family: 'Inter', 'Helvetica Neue', sans-serif; */
   background-color: var(--bg-color);
 }
 
@@ -47,8 +45,7 @@
   width: 100%;
   max-width: 1100px;
   margin: auto auto 0;
-  padding: 8px;
-
+  padding: 8px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -125,21 +122,29 @@
 
 @media only screen and (max-width: 566px) {
   .footer {
-    flex-direction: column;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    row-gap: 1em;
   }
 
-  .footer > div {
+  /* .footer > div {
     margin-top: 1em;
-  }
+  } */
 
   .footer .settings {
-    order: 1;
+    order: 2;
   }
   .footer .social {
-    order: 2;
+    order: 1;
   }
   .footer .copyright {
     order: 3;
+    text-align: center;
+    width: 100%;
+  }
+  .settings a,
+  .social a {
+    font-size: 1.5rem;
   }
 }
 
