@@ -37,8 +37,8 @@ jobs:
         run: pnpm test
 
       # TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
-      # env:
-      #   REDIS_HOST: ${{ secrets.REDIS_HOST }}
-      #   REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
-      # - name: Build
-      #   run: pnpm build
+      - name: Build
+        env:
+          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+        run: pnpm build
