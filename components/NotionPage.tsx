@@ -259,12 +259,42 @@ export const NotionPage: React.FC<types.PageProps> = ({
       header.appendChild(nav) // Append <nav> to the .notion-nav-header
     }
 
+    //
+    function addContainerAtEndOfArticle(
+      articleSelector,
+      containerClassName,
+      content = ''
+    ) {
+      // Select the article element
+      const articleElement = document.querySelector(articleSelector)
+
+      if (articleElement) {
+        // Create a new div container
+        const newContainer = document.createElement('div')
+        newContainer.className = containerClassName // Assign a custom class
+        newContainer.innerHTML = content // Set the inner content
+
+        // Append the new container as the last child of the article
+        articleElement.appendChild(newContainer)
+      } else {
+        console.warn(
+          `Article element with selector "${articleSelector}" not found.`
+        )
+      }
+    }
+
     // Execute the function to wrap elements
     if (router.pathname === '/') {
       wrapElementsBetweenBlanks()
+      // Select all elements with the 'notion-page-link' class
+      const notionPageLinks = document.querySelectorAll('.notion-page-link')
+      // Loop through all the selected elements and replace the class with 'notion-link'
+      notionPageLinks.forEach((element) => {
+        element.classList.remove('notion-page-link')
+        element.classList.add('notion-link')
+      })
       const details1Elements =
         document.querySelectorAll<HTMLElement>('.notion-link')
-
       details1Elements.forEach((element) => {
         element.style.borderBottom = 'none' // Removing the border bottom for each element
       })
@@ -275,9 +305,20 @@ export const NotionPage: React.FC<types.PageProps> = ({
         // Remove 'notion-title' class
         element.classList.add('notion-home-title')
       })
+      addContainerAtEndOfArticle(
+        'article',
+        'custom-footer-container',
+        `<a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+         <a href="/terms-of-service" class="footer-link">Terms of Service</a>`
+      )
     } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
       wrapHeadersAndContent()
-    } else if (router.asPath === '/about') {
+    } else if (
+      router.asPath === '/about' ||
+      pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0' ||
+      (router.asPath.split('/')[1]?.startsWith('about') &&
+        router.asPath.split('/')[1])
+    ) {
       const titleElements =
         document.querySelectorAll<HTMLElement>('h1.notion-title')
 
@@ -337,7 +378,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
     if (
       router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
-      router.asPath === '/about'
+      router.asPath === '/about' ||
+      pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0'
     ) {
       setDropdownOpen()
       addSeeAllClassesButton()
@@ -469,7 +511,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
         footer={footer}
       />
       {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
-        router.asPath === '/about') && (
+        router.asPath === '/about' ||
+        (router.asPath.split('/')[1]?.startsWith('about') &&
+          router.asPath.split('/')[1]) ||
+        pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0') && (
         <div onClick={() => router.push('/')} className='button-container'>
           <button className='see-all'>See All Classes →</button>
         </div>

@@ -7,7 +7,7 @@
  * places to add some flare.
  */
 
- .notion {
+.notion {
   --notion-max-width: 48rem;
   --notion-header-height: 54px;
 }
@@ -154,6 +154,10 @@
   position: relative;
   /* height: 0px !important;
   margin-bottom: 30px; */
+}
+
+.notion-search-button {
+  display: none !important;
 }
 
 @media only screen and (max-width: 920px) {
@@ -447,7 +451,7 @@
 
 .custom-wrapper-class {
   border: 1px solid rgb(229, 231, 235);
-  padding: 10px 15px;
+  padding: 15px;
   margin: 4px 0;
   width: 100%;
   border-radius: calc(0.5rem - 4px);
@@ -627,15 +631,15 @@ details .notion-text {
 }
 
 .notion-text > em {
-  color: rgb(31 41 55 / 1);
+  color: rgb(75 85 99/1);
   line-height: 1.25rem;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   padding-bottom: 4px;
 }
 
 .notion-toggle .notion-text {
-  line-height: 1.25rem;
+  line-height: 1.74rem;
   font-size: 16px;
   font-weight: 400;
   color: rgb(31 41 55 / 1);
@@ -747,4 +751,19 @@ summary .notion-h3 .notion-h-title {
 
 .notion-hash-link svg {
   display: none;
+}
+
+.custom-footer-container {
+  border-top: 1px solid rgb(229 231 235/1);
+  width: 100%;
+  padding: 1rem 0rem;
+  gap: 1rem;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.footer-link {
+  color: rgb(75 85 99/1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
