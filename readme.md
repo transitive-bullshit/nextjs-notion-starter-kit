@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://philipredford.com/">
-    <img alt="Example article page" src="public/example_page.png" width="689">
+    <img alt="Example article page" src="public/assets/example_page.png" width="689">
   </a>
 </p>
 
@@ -9,7 +9,7 @@
 
 [![Build Status](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/actions/workflows/build.yml/badge.svg)](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/actions/workflows/build.yml) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
 ![GitHub last commit](https://img.shields.io/github/last-commit/philiprj/personal_website1.0?logo=hey)
-![Build Workflow Status](https://img.shields.io/github/workflow/status/philiprj/personal_website1.0/scheduled)
+![Build Workflow Status](https://img.shields.io/github/workflow/status/philiprj/personal_website1.0/test.yml?branch=main)
 
 ## Intro
 
@@ -60,19 +60,12 @@ Every notion block gets its own unique classname, so you can target individual b
 
 ## Dark Mode
 
-<p align="center">
-  <img alt="Light Mode" src="https://transitive-bs.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F83ea9f0f-4761-4c0b-b53e-1913627975fc%2Ftransitivebullsh.it_-opt.jpg?table=block&id=ed7e8f60-c6d1-449e-840b-5c7762505c44&spaceId=fde5ac74-eea3-4527-8f00-4482710e1af3&width=2000&userId=&cache=v2" width="45%">
-&nbsp; &nbsp; &nbsp; &nbsp;
-  <img alt="Dark Mode" src="https://transitive-bs.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fc0839d6c-7141-48df-8afd-69b27fed84aa%2Ftransitivebullsh.it__(1)-opt.jpg?table=block&id=23b11fe5-d6df-422d-9674-39cf7f547523&spaceId=fde5ac74-eea3-4527-8f00-4482710e1af3&width=2000&userId=&cache=v2" width="45%">
-</p>
-
-Dark mode is fully supported and can be toggled via the sun / moon icon in the footer.
-
+Dark mode is fully supported and can be toggled via the sun / moon icon in the footer/header.
 
 ## Responsive
 
 <p align="center">
-  <img alt="Mobile article page" src="https://user-images.githubusercontent.com/552829/160132983-c2dd5830-80b3-4a0e-a8f1-abab5dbeed11.jpg" width="300">
+  <img alt="Mobile article page" src="public/assets/mobile.jpg" width="300">
 </p>
 
 All pages are designed to be responsive across common device sizes.
