@@ -395,7 +395,9 @@
 .notion-page-icon-hero.notion-page-icon-image img {
   border-radius: 50%;
 }
-
+.notion-page-icon-hero.notion-page-icon-image img {
+  object-fit: none;
+}
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
   backdrop-filter: saturate(180%) blur(16px);
