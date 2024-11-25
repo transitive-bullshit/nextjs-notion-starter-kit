@@ -578,7 +578,7 @@
 }
 
 .notion-page-title-text {
-  font-weight: 600 !important;
+  font-weight: 400 !important;
 }
 
 .breadcrumbs .nav-container {
@@ -617,8 +617,8 @@
 .notion-toggle > summary {
   color: rgb(31 41 55 / 1);
   line-height: 1.25rem;
-  font-size: 16px;
-  font-weight: normal !important;
+  font-size: 0.875rem;
+  font-weight: 400 !important;
   padding: 1rem 0rem;
 }
 
@@ -633,14 +633,14 @@ details .notion-text {
 .notion-text > em {
   color: rgb(75 85 99/1);
   line-height: 1.25rem;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   padding-bottom: 4px;
 }
 
 .notion-toggle .notion-text {
   line-height: 1.74rem;
-  font-size: 16px;
+  font-size: 0.875rem;
   font-weight: 400;
   color: rgb(31 41 55 / 1);
 }
@@ -654,7 +654,7 @@ details .notion-text {
 
 .notion-quote em {
   line-height: 1.25rem;
-  font-size: 16px;
+  font-size: 0.875rem;
   font-weight: 400;
   color: rgb(31 41 55 / 1);
 }
@@ -735,7 +735,7 @@ summary .notion-h-title:hover {
 summary .notion-h3 .notion-h-title {
   color: rgb(31 41 55 / 1);
   line-height: 1.25rem;
-  font-size: 16px;
+  font-size: 0.875rem;
   font-weight: normal !important;
 }
 

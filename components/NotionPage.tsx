@@ -286,6 +286,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
     // Execute the function to wrap elements
     if (router.pathname === '/') {
       wrapElementsBetweenBlanks()
+      //
+      document
+        .querySelectorAll('.notion-page-title-text')
+        .forEach(function (summary) {
+          // Select the <b> tag inside the <summary>
+          const boldTag = summary.querySelector('b')
+
+          // If a <b> tag exists, replace it with its text content
+          if (boldTag) {
+            boldTag.replaceWith(boldTag.textContent)
+          }
+        })
       // Select all elements with the 'notion-page-link' class
       const notionPageLinks = document.querySelectorAll('.notion-page-link')
       // Loop through all the selected elements and replace the class with 'notion-link'
@@ -379,7 +391,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
     if (
       router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
       router.asPath === '/about' ||
-      pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0'
+      pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0' ||
+      (router.asPath.split('/')[1]?.startsWith('about') &&
+        router.asPath.split('/')[1])
     ) {
       setDropdownOpen()
       addSeeAllClassesButton()
