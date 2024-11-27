@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import React from 'react'
 
 const PrivacyAndPolicy = () => {
   return (
@@ -42,10 +43,12 @@ const PrivacyAndPolicy = () => {
                 1. Introduction
               </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
-                Coursetexts ("we", "our", or "us") is committed to protecting
-                your privacy. This Privacy Policy explains how we collect, use,
-                disclose, and safeguard your information when you visit our
-                website coursetexts.com (the "Site") or use our services. We
+                Coursetexts (
+                <span>&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;</span>)
+                is committed to protecting your privacy. This Privacy Policy
+                explains how we collect, use, disclose, and safeguard your
+                information when you visit our website coursetexts.com (
+                <span>&quot;the Site&quot;</span>) or use our services. We
                 operate with explicit consent from both Canvas and Harvard
                 University to provide our services.
               </p>
@@ -133,7 +136,9 @@ const PrivacyAndPolicy = () => {
                 We encourage you to review the privacy policies of any
                 third-party sites you visit.
               </p>
-              <h2 style={{ marginBottom: '1rem' }}>7. Children's Privacy</h2>
+              <h2
+                style={{ marginBottom: '1rem' }}
+              >{`7. Children's Privacy`}</h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
                 Our Site is not intended for children under 13 years of age. We
                 do not knowingly collect personal information from children
@@ -145,7 +150,7 @@ const PrivacyAndPolicy = () => {
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
                 We may update our Privacy Policy from time to time. We will
                 notify you of any changes by posting the new Privacy Policy on
-                this page and updating the "Last updated" date.
+                this page and updating the &quot;Last updated&quot; date.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>
                 9. Consent and Authorization

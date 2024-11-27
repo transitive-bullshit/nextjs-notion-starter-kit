@@ -451,7 +451,7 @@
 
 .custom-wrapper-class {
   border: 1px solid rgb(229, 231, 235);
-  padding: 15px;
+  padding: 9px 15px;
   margin: 4px 0;
   width: 100%;
   border-radius: calc(0.5rem - 4px);
@@ -505,7 +505,7 @@
   border-bottom: 1px solid rgba(15, 118, 110, 0.9);
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .dark-mode .notion-link {
@@ -766,4 +766,8 @@ summary .notion-h3 .notion-h-title {
   color: rgb(75 85 99/1);
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.notion-text:first-child {
+  margin-top: 0px !important;
 }

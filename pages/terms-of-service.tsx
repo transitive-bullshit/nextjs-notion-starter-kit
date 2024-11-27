@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import React from 'react'
 
 const TermsOfService = () => {
   return (
@@ -42,9 +43,10 @@ const TermsOfService = () => {
                 1. Acceptance of Terms
               </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
-                By accessing and using coursetexts.com (the "Site"), you accept
-                and agree to be bound by these Terms of Service. If you do not
-                agree to these terms, please do not use the Site.
+                By accessing and using coursetexts.com (the{' '}
+                <span>&quot;Site&quot;</span>), you accept and agree to be bound
+                by these Terms of Service. If you do not agree to these terms,
+                please do not use the Site.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>
                 2. Description of Service
@@ -93,9 +95,10 @@ const TermsOfService = () => {
                 6. Disclaimer of Warranties
               </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
-                The Site is provided "as is" without any warranties, express or
-                implied. We do not guarantee the accuracy, completeness, or
-                reliability of any content on the Site.
+                The Site is provided <span>&quot;as is&quot;</span> without any
+                warranties, express or implied. We do not guarantee the
+                accuracy, completeness, or reliability of any content on the
+                Site.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>
                 7. Limitation of Liability
