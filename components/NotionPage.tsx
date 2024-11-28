@@ -153,39 +153,44 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   function wrapElementsBetweenBlanks() {
     // Select all .notion-blank div elements
-    const blankDivs = document.querySelectorAll('.notion-blank')
+    const blankDivs = Array.from(document.querySelectorAll('.notion-blank'))
 
     // Exit if there are less than 2 .notion-blank divs, as no wrapping is needed
     if (blankDivs.length < 2) return
 
-    // Iterate over each .notion-blank div except the last one
-    blankDivs.forEach((blankDiv, index) => {
-      // Only proceed if there's a subsequent .notion-blank div
-      if (index < blankDivs.length - 2) {
-        const elementsToWrap = []
-        let nextSibling = blankDiv.nextElementSibling
+    // We will use a while loop to iterate over all .notion-blank elements
+    let index = 0
+    while (index < blankDivs.length - 1) {
+      const blankDiv = blankDivs[index]
+      const elementsToWrap = []
+      let nextSibling = blankDiv.nextElementSibling
 
-        // Collect all elements until reaching the next .notion-blank div
-        while (nextSibling && !nextSibling.classList.contains('notion-blank')) {
-          elementsToWrap.push(nextSibling)
-          nextSibling = nextSibling.nextElementSibling
-        }
-
-        // If there are elements to wrap, create a custom-wrapper div
-        if (elementsToWrap.length > 0) {
-          const wrapperDiv = document.createElement('div')
-          wrapperDiv.classList.add('custom-wrapper-class')
-
-          // Move each collected element into the custom-wrapper
-          elementsToWrap.forEach((element) => {
-            wrapperDiv.appendChild(element)
-          })
-
-          // Insert the custom-wrapper div after the current .notion-blank div
-          blankDiv.insertAdjacentElement('afterend', wrapperDiv)
-        }
+      // Collect all elements until reaching the next .notion-blank div
+      while (nextSibling && !nextSibling.classList.contains('notion-blank')) {
+        elementsToWrap.push(nextSibling)
+        nextSibling = nextSibling.nextElementSibling
       }
-    })
+
+      // If there are elements to wrap, create a custom-wrapper div
+      if (elementsToWrap.length > 0) {
+        const wrapperDiv = document.createElement('div')
+        wrapperDiv.classList.add('custom-wrapper-class')
+
+        // Move each collected element into the custom-wrapper
+        elementsToWrap.forEach((element) => {
+          wrapperDiv.appendChild(element)
+        })
+
+        // Insert the custom-wrapper div after the current .notion-blank div
+        blankDiv.insertAdjacentElement('afterend', wrapperDiv)
+
+        // Since we inserted a wrapper, the next .notion-blank should be skipped
+        index += 1
+      } else {
+        // Otherwise, move to the next .notion-blank
+        index += 1
+      }
+    }
   }
 
   function wrapHeadersAndContent() {
@@ -260,6 +265,30 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
 
     //
+    function removeNotionLinkWithText() {
+      // Select all anchor tags with the class 'notion-link'
+      const anchorTags = document.querySelectorAll('a.notion-link')
+
+      // Define the target texts to match
+      const targetTexts = ['Privacy Policy', 'Terms of Service']
+
+      // Iterate over all anchor tags
+      anchorTags.forEach((anchor) => {
+        // Check if the anchor's text content matches any of the target texts
+        if (targetTexts.includes(anchor.textContent.trim())) {
+          // Remove the parent container of the anchor tag
+          const parentContainer = anchor.closest('.notion-text') // Adjust the selector if needed
+          if (parentContainer) {
+            parentContainer.remove()
+          }
+
+          // Also remove the anchor tag itself (if you only want to remove the tag and not the entire container)
+          // anchor.remove();
+        }
+      })
+    }
+
+    //
     function addContainerAtEndOfArticle(
       articleSelector,
       containerClassName,
@@ -323,6 +352,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         `<a href="/privacy-policy" class="footer-link">Privacy Policy</a>
          <a href="/terms-of-service" class="footer-link">Terms of Service</a>`
       )
+      removeNotionLinkWithText()
     } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
       wrapHeadersAndContent()
     } else if (

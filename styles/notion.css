@@ -757,13 +757,13 @@ summary .notion-h3 .notion-h-title {
   border-top: 1px solid rgb(229 231 235/1);
   width: 100%;
   padding: 1rem 0rem;
-  gap: 1rem;
+  gap: 2.2rem;
   display: flex;
   margin-bottom: 20px;
 }
 
 .footer-link {
-  color: rgb(75 85 99/1);
+  color: rgba(15, 118, 110, 0.9);
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
