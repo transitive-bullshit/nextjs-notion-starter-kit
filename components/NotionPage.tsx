@@ -236,12 +236,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       }
     })
 
-    document.querySelectorAll('.notion-page-title-text').forEach((link) => {
-      if (link.textContent.trim().toLowerCase() === 'about') {
-        link.remove()
-      }
-    })
-
     // Header
     const header = document.querySelector('.breadcrumbs')
     if (header) {
@@ -270,7 +264,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       const anchorTags = document.querySelectorAll('a.notion-link')
 
       // Define the target texts to match
-      const targetTexts = ['Privacy Policy', 'Terms of Service']
+      const targetTexts = ['Privacy Policy', 'Terms of Service', 'About']
 
       // Iterate over all anchor tags
       anchorTags.forEach((anchor) => {
@@ -281,9 +275,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
           if (parentContainer) {
             parentContainer.remove()
           }
-
-          // Also remove the anchor tag itself (if you only want to remove the tag and not the entire container)
-          // anchor.remove();
         }
       })
     }
@@ -353,6 +344,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
          <a href="/terms-of-service" class="footer-link">Terms of Service</a>`
       )
       removeNotionLinkWithText()
+      //
+      const customWrappers = document.querySelectorAll('.custom-wrapper-class')
+      customWrappers.forEach((wrapper) => {
+        if (wrapper.children.length === 0) {
+          wrapper.remove()
+        }
+      })
     } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
       wrapHeadersAndContent()
     } else if (
@@ -381,6 +379,22 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
         // Replace the inner HTML with only the text content
         summaryElement.innerHTML = textContent
+      })
+    } else {
+      document.querySelectorAll('.notion-title').forEach(function (summary) {
+        // Select the <b> tag inside the <summary>
+        const boldTag = summary.querySelector('b')
+
+        // If a <b> tag exists, replace it with its text content
+        if (boldTag) {
+          boldTag.replaceWith(boldTag.textContent)
+        }
+      })
+      const customWrappers = document.querySelectorAll('.notion-text')
+      customWrappers.forEach((wrapper) => {
+        if (wrapper.children.length === 0) {
+          wrapper.remove()
+        }
       })
     }
 

@@ -683,7 +683,7 @@ details .notion-text {
 .button-container {
   display: flex;
   justify-content: center;
-  padding: 1.25rem 0;
+  padding: 0rem 0rem 1.25rem 0rem;
 }
 
 .dark-mode .button-container {
@@ -754,12 +754,11 @@ summary .notion-h3 .notion-h-title {
 }
 
 .custom-footer-container {
-  border-top: 1px solid rgb(229 231 235/1);
+  /* border-top: 1px solid rgb(229 231 235/1); */
   width: 100%;
-  padding: 1rem 0rem;
+  padding: 1.5rem 0rem 0rem 0rem;
   gap: 2.2rem;
   display: flex;
-  margin-bottom: 20px;
 }
 
 .footer-link {
