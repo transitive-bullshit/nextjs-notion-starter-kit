@@ -392,7 +392,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       })
       const customWrappers = document.querySelectorAll('.notion-text')
       customWrappers.forEach((wrapper) => {
-        if (wrapper.children.length === 0) {
+        if (wrapper.children.length === 0 && wrapper.textContent.trim() === '') {
           wrapper.remove()
         }
       })
