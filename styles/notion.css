@@ -458,7 +458,7 @@
 }
 
 .dark-mode .custom-wrapper-class {
-  border: 1px solid #c0c0c0;
+  border: 1px solid rgb(107 114 128 / 1);
 }
 
 .dark-mode .notion-page-content-inner .notion-page-title,
