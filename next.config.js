@@ -39,4 +39,7 @@ export default withBundleAnalyzer({
 
   // 静的エクスポートを有効にする設定
   output: 'export',
+  images: {
+    unoptimized: true, // 画像の最適化を無効にする
+  },
 })
