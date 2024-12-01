@@ -19,7 +19,8 @@ export default withBundleAnalyzer({
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    unoptimized: true // 画像の最適化を無効にする
   },
 
   webpack: (config, _context) => {
@@ -35,6 +36,5 @@ export default withBundleAnalyzer({
     return config
   },
 
-  // See https://react-tweet.vercel.app/next#troubleshooting
   transpilePackages: ['react-tweet']
 })
