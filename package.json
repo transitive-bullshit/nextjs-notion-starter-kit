@@ -27,7 +27,8 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "test": "run-p test:*",
     "test:lint": "eslint .",
-    "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check"
+    "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check",
+    "fix": "prettier '**/*.{js,jsx,ts,tsx}' --write"
   },
   "dependencies": {
     "@fisch0920/use-dark-mode": "^2.4.0",
