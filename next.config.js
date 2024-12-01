@@ -35,6 +35,8 @@ export default withBundleAnalyzer({
     return config
   },
 
-  // See https://react-tweet.vercel.app/next#troubleshooting
-  transpilePackages: ['react-tweet']
+  transpilePackages: ['react-tweet'],
+
+  // 静的エクスポートを有効にする設定
+  output: 'export',
 })

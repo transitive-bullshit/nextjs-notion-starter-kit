@@ -6,12 +6,11 @@ export const getStaticProps = async () => {
   try {
     const props = await resolveNotionPage(domain)
 
-    return { props, revalidate: 10 }
+    return { props } // `revalidate` を削除して静的生成にする
   } catch (err) {
     console.error('page error', domain, err)
 
-    // we don't want to publish the error version of this page, so
-    // let next.js know explicitly that incremental SSG failed
+    // エラーが発生した場合は、エラーをスローしてページをビルドしないようにする
     throw err
   }
 }
