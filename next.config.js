@@ -36,5 +36,8 @@ export default withBundleAnalyzer({
     return config
   },
 
-  transpilePackages: ['react-tweet']
+  transpilePackages: ['react-tweet'],
+
+  // 静的エクスポートを有効にする設定
+  output: 'export'
 })
