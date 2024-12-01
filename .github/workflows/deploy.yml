@@ -45,10 +45,10 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy out --project-name blog
       - name: Notify Discord
-      run: |
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d '{
-            "content": "デプロイ完了！ https://blog.technotut.net/"
-          }' \
-          ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+            curl -H "Content-Type: application/json" \
+            -X POST \
+            -d '{
+              "content": "デプロイ完了！ https://blog.technotut.net/"
+            }' \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
