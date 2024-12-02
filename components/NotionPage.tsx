@@ -488,7 +488,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
           element.style.setProperty('padding', '0', 'important'); // Apply padding with !important
           element.style.setProperty('margin', '0', 'important');  // Apply margin with !important
         }
-      });      
+      });       
+       // Get the notion-app element
+      const notionApp = document.querySelector('.notion-app');
+
+      // Get the button-container element
+      const buttonContainer = document.querySelector('.button-container');
+
+      // Check if both elements exist
+      if (notionApp && buttonContainer) {
+        // Move the button-container inside the notion-app
+        notionApp.appendChild(buttonContainer);
+     }
     }
   }, [router])
 
