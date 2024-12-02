@@ -302,22 +302,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
         )
       }
     }
-
+    
     // Execute the function to wrap elements
     if (router.pathname === '/') {
+      // 
       wrapElementsBetweenBlanks()
-      //
-      document
-        .querySelectorAll('.notion-page-title-text')
-        .forEach(function (summary) {
-          // Select the <b> tag inside the <summary>
-          const boldTag = summary.querySelector('b')
-
-          // If a <b> tag exists, replace it with its text content
-          if (boldTag) {
-            boldTag.replaceWith(boldTag.textContent)
-          }
-        })
       // Select all elements with the 'notion-page-link' class
       const notionPageLinks = document.querySelectorAll('.notion-page-link')
       // Loop through all the selected elements and replace the class with 'notion-link'
@@ -351,6 +340,29 @@ export const NotionPage: React.FC<types.PageProps> = ({
           wrapper.remove()
         }
       })
+     // Select all elements with the class 'notion-link'
+     const notionLinks = document.querySelectorAll('.notion-link');
+
+     // Iterate through each notion-link
+     notionLinks.forEach((notionLink) => {
+     // Check if the parent of the notion-link has the 'custom-wrapper-class'
+     const parentWrapper = notionLink.closest('.custom-wrapper-class');
+  
+     if (parentWrapper) {
+    // Check if the element is already wrapped with the 'notion-text' class
+    if (!notionLink.parentElement.classList.contains('notion-text')) {
+      // Create a new div with the class 'notion-text'
+      const wrapperDiv = document.createElement('div');
+      wrapperDiv.className = 'notion-text';
+
+      // Insert the wrapper div before the notion-link in the DOM
+      notionLink.parentNode.insertBefore(wrapperDiv, notionLink);
+
+      // Move the notion-link inside the wrapper div
+      wrapperDiv.appendChild(notionLink);
+      }
+    }
+   });
     } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
       wrapHeadersAndContent()
     } else if (
@@ -381,6 +393,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         summaryElement.innerHTML = textContent
       })
     } else {
+      // 
       document.querySelectorAll('.notion-title').forEach(function (summary) {
         // Select the <b> tag inside the <summary>
         const boldTag = summary.querySelector('b')
@@ -396,7 +409,34 @@ export const NotionPage: React.FC<types.PageProps> = ({
           wrapper.remove()
         }
       })
+      // 
+      // Find the parent container with the class 'notion-page-content-inner'
+  const notionPageContentInner = document.querySelector('.notion-page-content-inner');
+
+  // Check if the parent container exists
+  if (notionPageContentInner) {
+    // Create the parent div with the class 'notion-text notion-block-8522ee18749644889375acc2c5dee773'
+    const notionTextDiv = document.createElement('div');
+    notionTextDiv.className = 'notion-text';
+    notionTextDiv.textContent = 'All classes are licensed under the'
+
+    // Create the anchor element with the class 'notion-link'
+    const notionLink = document.createElement('a');
+    notionLink.className = 'notion-link';
+    notionLink.href = 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en';
+    notionLink.target = '_blank';
+    notionLink.rel = 'noopener noreferrer';
+    notionLink.style.borderBottom = 'medium'; // You can change or remove this style as needed
+    notionLink.style.marginLeft = '5px';
+    notionLink.textContent = 'CC-BY-NC-SA license';
+
+    // Append the anchor tag to the parent div
+    notionTextDiv.appendChild(notionLink);
+
+    // Append the created structure to the 'notion-page-content-inner' container
+    notionPageContentInner.appendChild(notionTextDiv);
     }
+  }
 
     const addSeeAllClassesButton = () => {
       // Locate the notion-callout div
@@ -428,6 +468,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       detailsElements.forEach((detailsElement) => {
         detailsElement.setAttribute('open', 'true') // Open the dropdown
+        detailsElement.style.paddingBottom = '8px';
         detailsElement.style.borderBottom = '1px solid hsl(214.3, 31.8%, 91.4%)'
       })
     }
@@ -441,6 +482,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
     ) {
       setDropdownOpen()
       addSeeAllClassesButton()
+      const notionTextElements = document.querySelectorAll('.notion-text'); // Select all elements with class 'notion-text'
+      notionTextElements.forEach((element) => {
+        if (element instanceof HTMLElement) { // Ensure the element is an HTMLElement
+          element.style.setProperty('padding', '0', 'important'); // Apply padding with !important
+          element.style.setProperty('margin', '0', 'important');  // Apply margin with !important
+        }
+      });      
     }
   }, [router])
 
