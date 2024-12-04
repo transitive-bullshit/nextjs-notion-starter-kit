@@ -252,6 +252,15 @@ export function NotionPage({
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
 
+  //追加
+  // dynamic で named export を指定
+  const TweetButtonArea = dynamic(
+    () => import('./TweetButtonArea').then((mod) => mod.TweetButtonArea),
+    { ssr: false }
+  )
+  const author =
+    getPageProperty<string>('author', block, recordMap) || config.author
+
   return (
     <>
       <PageHead
@@ -290,7 +299,7 @@ export function NotionPage({
         pageAside={pageAside}
         footer={footer}
       />
-
+      <TweetButtonArea title={title} author={author} />
       <GitHubShareButton />
     </>
   )

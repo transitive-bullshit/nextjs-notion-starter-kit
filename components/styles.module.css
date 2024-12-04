@@ -218,3 +218,30 @@
 .hidden {
   visibility: hidden;
 }
+
+
+
+/* 追加 */
+.tweetButtonArea {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+}
+
+.tweetButton {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #1da1f2;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.tweetButton:hover {
+  background-color: #0d95e8;
+}
