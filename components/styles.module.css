@@ -218,3 +218,28 @@
 .hidden {
   visibility: hidden;
 }
+
+
+
+/* 追加 */
+.tweetButtonArea {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; /* 縦方向に中央に配置 */
+  margin: 2rem 0;
+  margin-top: 20px;  /* 任意で上部に余白を追加 */
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+}
+
+/* Twitterボタンの大きさを変更 */
+.twitter-share-button {
+  font-size: 18px;  /* テキストサイズを変更 */
+  padding: 10px 20px;  /* ボタンの内側のスペースを調整 */
+  border-radius: 5px;  /* 角を丸くする */
+  background-color: #1da1f2;  /* ボタンの背景色を変更 */
+  color: white;  /* ボタンの文字色を変更 */
+  margin-right: 100px;
+}
+

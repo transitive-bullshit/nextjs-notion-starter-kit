@@ -48,6 +48,9 @@ export default siteConfig({
   // }
   pageUrlOverrides: null,
 
+  //検索バーの無効化
+  isSearchEnabled: false,
+
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
   navigationStyle: 'default'
