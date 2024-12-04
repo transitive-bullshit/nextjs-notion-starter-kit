@@ -247,6 +247,11 @@ export function NotionPage({
       config.defaultPageCover,
     block
   )
+  const imageBlockUrl = mapImageUrl(
+    getPageProperty<string>('Social Image', block, recordMap) ||
+      (block as PageBlock).format?.page_cover,
+    block
+  )
 
   const socialDescription =
     getPageProperty<string>('Description', block, recordMap) ||
@@ -270,6 +275,7 @@ export function NotionPage({
         description={socialDescription}
         image={socialImage}
         url={canonicalPageUrl}
+        covoer_url={imageBlockUrl}
       />
 
       {isLiteMode && <BodyClassName className='notion-lite' />}

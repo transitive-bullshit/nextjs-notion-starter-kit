@@ -37,3 +37,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# 追記
+.devcontainer/devcontainer.json

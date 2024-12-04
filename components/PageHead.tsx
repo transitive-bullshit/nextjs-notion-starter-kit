@@ -2,27 +2,29 @@ import Head from 'next/head'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
-import { getSocialImageUrl } from '@/lib/get-social-image-url'
 
 export function PageHead({
   site,
   title,
   description,
-  pageId,
-  image,
-  url
+  // pageId,
+  // image,
+  url,
+  covoer_url
 }: types.PageProps & {
   title?: string
   description?: string
+  pageId?: string
   image?: string
   url?: string
+  covoer_url?: string
 }) {
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
   description = description ?? site?.description
 
-  const socialImageUrl = getSocialImageUrl(pageId) || image
+  const socialImageUrl = covoer_url
 
   return (
     <Head>
@@ -60,7 +62,11 @@ export function PageHead({
       )}
 
       {config.twitter && (
-        <meta name='twitter:creator' content={`@${config.twitter}`} />
+        <>
+          <meta name='twitter:creator' content={`@${config.twitter}`} />
+          <meta name='twitter:card' content='summary' />
+          <meta name='twitter:image' content={socialImageUrl} />
+        </>
       )}
 
       {description && (
