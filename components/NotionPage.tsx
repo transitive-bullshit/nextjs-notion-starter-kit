@@ -241,12 +241,6 @@ export function NotionPage({
   const canonicalPageUrl =
     !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  const socialImage = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
-    block
-  )
   const imageBlockUrl = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
       (block as PageBlock).format?.page_cover,
@@ -273,7 +267,6 @@ export function NotionPage({
         site={site}
         title={title}
         description={socialDescription}
-        image={socialImage}
         url={canonicalPageUrl}
         covoer_url={imageBlockUrl}
       />

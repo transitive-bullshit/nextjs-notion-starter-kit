@@ -7,15 +7,11 @@ export function PageHead({
   site,
   title,
   description,
-  // pageId,
-  // image,
   url,
   covoer_url
 }: types.PageProps & {
   title?: string
   description?: string
-  pageId?: string
-  image?: string
   url?: string
   covoer_url?: string
 }) {
@@ -34,10 +30,8 @@ export function PageHead({
         name='viewport'
         content='width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover'
       />
-
       <meta name='apple-mobile-web-app-capable' content='yes' />
       <meta name='apple-mobile-web-app-status-bar-style' content='black' />
-
       <meta
         name='theme-color'
         media='(prefers-color-scheme: light)'
@@ -50,7 +44,6 @@ export function PageHead({
         content='#2d3439'
         key='theme-color-dark'
       />
-
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='website' />
 
@@ -64,8 +57,6 @@ export function PageHead({
       {config.twitter && (
         <>
           <meta name='twitter:creator' content={`@${config.twitter}`} />
-          <meta name='twitter:card' content='summary' />
-          <meta name='twitter:image' content={socialImageUrl} />
         </>
       )}
 
