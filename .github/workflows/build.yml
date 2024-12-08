@@ -1,22 +1,44 @@
-name: Build
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  Build:
+  test:
+    name: Test Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version:
+          - 18
+          - 22
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        id: pnpm-install
         with:
-          node-version: 16
-          cache: yarn
+          version: 9.12.2
+          run_install: false
 
-      - run: yarn install --frozen-lockfile
-      - name: build
-        #        TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
-        #        env:
-        #          REDIS_HOST: ${{ secrets.REDIS_HOST }}
-        #          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
-        run: yarn build
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
+
+      - name: Run test
+        run: pnpm test
+
+      # TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
+      # env:
+      #   REDIS_HOST: ${{ secrets.REDIS_HOST }}
+      #   REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+      # - name: Build
+      #   run: pnpm build

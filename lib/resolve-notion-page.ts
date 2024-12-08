@@ -1,4 +1,4 @@
-import { ExtendedRecordMap } from 'notion-types'
+import { type ExtendedRecordMap } from 'notion-types'
 import { parsePageId } from 'notion-utils'
 
 import * as acl from './acl'

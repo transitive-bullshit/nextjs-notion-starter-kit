@@ -1,4 +1,8 @@
-import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
+import {
+  type ExtendedRecordMap,
+  type SearchParams,
+  type SearchResults
+} from 'notion-types'
 import { mergeRecordMaps } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
@@ -8,6 +12,7 @@ import {
   navigationLinks,
   navigationStyle
 } from './config'
+import { getTweetsMap } from './get-tweets'
 import { notion } from './notion-api'
 import { getPreviewImageMap } from './preview-images'
 
@@ -59,6 +64,8 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     const previewImageMap = await getPreviewImageMap(recordMap)
     ;(recordMap as any).preview_images = previewImageMap
   }
+
+  await getTweetsMap(recordMap)
 
   return recordMap
 }
