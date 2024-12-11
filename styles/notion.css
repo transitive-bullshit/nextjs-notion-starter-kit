@@ -137,7 +137,7 @@
 }
 
 .notion-callout {
-  padding: 1rem;
+  padding: 1.2rem;
   max-width: 24rem;
   margin: auto;
   background-color: rgba(45, 212, 191, 0.05);
@@ -782,4 +782,12 @@ summary .notion-h3 .notion-h-title {
 
 .notion-page-scroller {
   padding: 0 3%;
+}
+
+.notion-callout-text > b {
+  line-height: 1.5rem !important;
+}
+
+.notion-callout-text > .notion-text {
+  line-height: 1.9rem !important;
 }

@@ -364,39 +364,23 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       })
       //
-      const notionTextElements = document.querySelectorAll(
-        '.notion-text'
-      ) as NodeListOf<HTMLElement>
+      function removeNearestContainersForLink(linkHref) {
+        document.querySelectorAll(`a[href="${linkHref}"]`).forEach((link) => {
+          let container = link.closest('div') as HTMLElement // Find the nearest container (first parent div)
+          let count = 0 // Track how many containers are removed
 
-      if (notionTextElements.length > 0) {
-        // Get the last .notion-text element
-        const lastNotionTextElement =
-          notionTextElements[notionTextElements.length - 1]
-
-        const notionLinkElement = lastNotionTextElement.querySelector(
-          'a'
-        ) as HTMLAnchorElement
-
-        if (
-          notionLinkElement &&
-          notionLinkElement.href.includes(
-            'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
-          )
-        ) {
-          // Add a border to the top of the container above the last .notion-text element
-          const borderContainer = document.createElement('div')
-          borderContainer.style.borderTop = '1px solid rgba(229, 231, 235, 1)'
-          borderContainer.style.width = '100%'
-          borderContainer.style.marginTop = '10px'
-          borderContainer.style.marginBottom = '10px'
-
-          // Insert the border container before the last .notion-text element
-          lastNotionTextElement.parentNode?.insertBefore(
-            borderContainer,
-            lastNotionTextElement
-          )
-        }
+          while (container && count < 2) {
+            const parent = container.parentElement // Get the parent container
+            container.remove() // Remove the current container
+            container = parent // Move to the next parent container
+            count++ // Increment the counter
+          }
+        })
       }
+      // Usage:
+      removeNearestContainersForLink(
+        'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
+      )
     } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
       wrapHeadersAndContent()
     } else if (
@@ -425,7 +409,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
         // Replace the inner HTML with only the text content
         summaryElement.innerHTML = textContent
-      })
+      })     
     } else {
       //
       document.querySelectorAll('.notion-title').forEach(function (summary) {
