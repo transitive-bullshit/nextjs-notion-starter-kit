@@ -137,7 +137,7 @@
 }
 
 .notion-callout {
-  padding: 1rem;
+  padding: 1.2rem;
   max-width: 24rem;
   margin: auto;
   background-color: rgba(45, 212, 191, 0.05);
@@ -578,7 +578,7 @@
 }
 
 .notion-page-title-text {
-  font-weight: 400 !important;
+  font-weight: 600 !important;
 }
 
 .breadcrumbs .nav-container {
@@ -626,9 +626,9 @@
   text-decoration: underline;
 }
 
-details .notion-text {
+/* details .notion-text {
   padding-bottom: 1rem;
-}
+} */
 
 .notion-text > em {
   color: rgb(75 85 99/1);
@@ -767,6 +767,27 @@ summary .notion-h3 .notion-h-title {
   line-height: 1.25rem;
 }
 
-.notion-text:first-child {
+.notion-text {
   margin-top: 0px !important;
+  padding: 4px 0px !important;
+}
+
+.notion {
+  padding: 0px;
+}
+
+.notion-header .notion-nav-header {
+  padding: 0 3%;
+}
+
+.notion-page-scroller {
+  padding: 0 3%;
+}
+
+.notion-callout-text > b {
+  line-height: 1.5rem !important;
+}
+
+.notion-callout-text > .notion-text {
+  line-height: 1.9rem !important;
 }
