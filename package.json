@@ -53,7 +53,8 @@
     "react-notion-x": "^7.2.3",
     "react-tweet": "^3.2.1",
     "react-use": "^17.4.2",
-    "rss": "^1.2.2"
+    "rss": "^1.2.2",
+    "vercel": "^39.2.2"
   },
   "devDependencies": {
     "@fisch0920/eslint-config": "^1.4.0",
