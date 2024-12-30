@@ -64,13 +64,7 @@ export default class MyDocument extends Document {
             <Main />
 
             <NextScript />
-            <script>
-           
-const breadcrumbLink = document.querySelector('.breadcrumb');
-if (breadcrumbLink && breadcrumbLink.tagName === 'A') {
-  breadcrumbLink.setAttribute('href', 'https://notionbees.in');
-}
-            </script>
+            
           </body>
         </Html>
       </IconContext.Provider>
