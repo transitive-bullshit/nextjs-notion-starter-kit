@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 
-export function GitHubShareButton() {
+//export function GitHubShareButton() {
   return (
     <a
       href='https://github.com/transitive-bullshit/nextjs-notion-starter-kit'
