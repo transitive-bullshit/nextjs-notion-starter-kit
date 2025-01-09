@@ -14,12 +14,20 @@ html {
 }
 
 body {
-  --notion-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif;
-  font-family: var(--notion-font);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   overflow-x: hidden;
 }
+
+/* Headers specifically use Helvetica */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-weight: bold; /* Optional: Bold headers */
+}
+
+p {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
 
 .static-tweet blockquote {
   margin: 0;
