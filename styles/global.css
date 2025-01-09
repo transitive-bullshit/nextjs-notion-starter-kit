@@ -1,4 +1,6 @@
-* {
+* 
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+{
   box-sizing: border-box;
 }
 
@@ -14,18 +16,17 @@ html {
 }
 
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  overflow-x: hidden;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 /* Headers specifically use Helvetica */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Helvetica', Arial, sans-serif;
+  font-family: 'Comfortaa', Arial, sans-serif;
   font-weight: bold; /* Optional: Bold headers */
 }
 
 body p {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Comfortaa', Arial, sans-serif;
 }
 
 
