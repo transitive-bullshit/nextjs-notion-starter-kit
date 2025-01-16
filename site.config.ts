@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Notionbees-Bee Productive',
-  domain: 'notionbees.in',
+  domain: 'blog.notionbees.in',
   author: 'Notionbees',
 
   // open graph metadata (optional)
