@@ -29,6 +29,9 @@ export default class MyDocument extends Document {
   var storageKey = 'darkMode'
   var classNameDark = 'dark-mode'
   var classNameLight = 'light-mode'
+
+  // Commented out the original logic
+  /*
   function setClassOnDocumentBody(darkMode) {
     document.body.classList.add(darkMode ? classNameDark : classNameLight)
     document.body.classList.remove(darkMode ? classNameLight : classNameDark)
@@ -57,6 +60,17 @@ export default class MyDocument extends Document {
     var isDarkMode = document.body.classList.contains(classNameDark)
     localStorage.setItem(storageKey, JSON.stringify(isDarkMode))
   }
+  */
+
+  // Always set to light mode
+  function setClassOnDocumentBody() {
+    document.body.classList.add(classNameLight)
+    document.body.classList.remove(classNameDark)
+  }
+
+  // Set the class on document body to light mode
+  setClassOnDocumentBody()
+  localStorage.setItem(storageKey, false) // Store light mode preference
 })();
 `
               }}
