@@ -129,7 +129,14 @@ const PrivacyAndPolicy = () => {
                 internet or electronic storage is 100% secure, and we cannot
                 guarantee absolute security.
               </p>
-              <h2 style={{ marginBottom: '1rem' }}>6. Third-Party Links</h2>
+              <h2 style={{ marginBottom: '1rem' }}>6. Data Retention and Deletion</h2>
+              <p style={{ marginBottom: '2rem' }} className='notion-text'>
+                We only retain user Google email addresses, and only for as long as necessary to provide our services.
+                Users may request deletion of their Google-associated account data at any time
+                by contacting us at coursetexts@mit.edu, or revoking access via Google settings.
+                Upon verification, we will permanently delete all associated personal data from our systems within 30 days.
+              </p>
+              <h2 style={{ marginBottom: '1rem' }}>7. Third-Party Links</h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
                 Our Site may contain links to third-party websites. We are not
                 responsible for the privacy practices or content of these sites.
@@ -138,14 +145,14 @@ const PrivacyAndPolicy = () => {
               </p>
               <h2
                 style={{ marginBottom: '1rem' }}
-              >{`7. Children's Privacy`}</h2>
+              >{`8. Children's Privacy`}</h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
                 Our Site is not intended for children under 13 years of age. We
                 do not knowingly collect personal information from children
                 under 13.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>
-                8. Changes to This Privacy Policy
+                9. Changes to This Privacy Policy
               </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
                 We may update our Privacy Policy from time to time. We will
@@ -153,7 +160,7 @@ const PrivacyAndPolicy = () => {
                 this page and updating the &quot;Last updated&quot; date.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>
-                9. Consent and Authorization
+                10. Consent and Authorization
               </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
                 We operate with explicit consent and authorization from both
@@ -161,7 +168,7 @@ const PrivacyAndPolicy = () => {
                 personal information from this site.
               </p>
 
-              <h2 style={{ marginBottom: '1rem' }}>10. Contact Us</h2>
+              <h2 style={{ marginBottom: '1rem' }}>11. Contact Us</h2>
               <p className='notion-text'>
                 If you have any questions about this Privacy Policy, please
                 contact us at:
