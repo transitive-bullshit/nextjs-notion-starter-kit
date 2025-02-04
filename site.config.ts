@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Insitut de Formacio Fox',
-  domain: 'ifox.es',
+  domain: 'foxnaut.com',
   author: 'Fox',
 
   // open graph metadata (optional)
