@@ -9,7 +9,7 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Insitut de Formacio Fox',
+  name: 'Foxnaut｜狐狸智航',
   domain: 'foxnaut.com',
   author: 'Fox',
 
@@ -18,7 +18,7 @@ export default siteConfig({
 
   // social usernames (optional)
   twitter: '',
-  github: '',
+  github: 'https://space.bilibili.com/18335369?spm_id_from=333.1007.0.0',
   linkedin: '',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
