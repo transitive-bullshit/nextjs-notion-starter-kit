@@ -342,6 +342,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       })
       // Select all elements with the class 'notion-link'
       const notionLinks = document.querySelectorAll('.notion-link')
+      console.log('notionLinks', notionLinks)
 
       // Iterate through each notion-link
       notionLinks.forEach((notionLink) => {
@@ -349,6 +350,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
         const parentWrapper = notionLink.closest('.custom-wrapper-class')
 
         if (parentWrapper) {
+          // Clean up the page title text if it exists
+          const pageTitleText = notionLink.querySelector('.notion-page-title-text')
+          if (pageTitleText) {
+            pageTitleText.textContent = pageTitleText.textContent
+              .replace(/[_.]/g, ' ')  // Replace underscores and dots with spaces
+              .trim()  // Remove extra whitespace
+          }
+
           // Check if the element is already wrapped with the 'notion-text' class
           if (!notionLink.parentElement.classList.contains('notion-text')) {
             // Create a new div with the class 'notion-text'
@@ -363,8 +372,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
           }
         }
       })
-      //
-      function removeNearestContainersForLink(linkHref) {
+
+      const removeNearestContainersForLink = (linkHref: string) => {
         document.querySelectorAll(`a[href="${linkHref}"]`).forEach((link) => {
           let container = link.closest('div') as HTMLElement // Find the nearest container (first parent div)
           let count = 0 // Track how many containers are removed
@@ -377,7 +386,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
           }
         })
       }
-      // Usage:
+
       removeNearestContainersForLink(
         'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
       )
@@ -409,7 +418,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
         // Replace the inner HTML with only the text content
         summaryElement.innerHTML = textContent
-      })     
+      })
     } else {
       //
       document.querySelectorAll('.notion-title').forEach(function (summary) {
