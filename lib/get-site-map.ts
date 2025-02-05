@@ -29,9 +29,9 @@ async function getAllPagesImpl(
   rootNotionPageId: string,
   rootNotionSpaceId: string
 ): Promise<Partial<types.SiteMap>> {
-  const getPage = async (pageId: string, ...args) => {
+  const getPage = (pageId: string) => {
     console.log('\nnotion getPage', uuidToId(pageId))
-    return notion.getPage(pageId, ...args)
+    return notion.getPage(pageId)
   }
 
   const pageMap = await getAllPagesInSpace(
