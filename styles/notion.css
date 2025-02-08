@@ -170,12 +170,6 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .notion-search-button {
-    display: none !important;
-  }
-}
-
 @media only screen and (max-width: 400px) {
   .notion-page-link {
     margin-bottom: 0px !important;
@@ -787,3 +781,4 @@ summary .notion-h3 .notion-h-title {
 .notion-callout-text > .notion-text {
   line-height: 1.9rem !important;
 }
+
