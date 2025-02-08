@@ -1,5 +1,6 @@
 import { getAllPagesInSpace, uuidToId, getPageProperty } from 'notion-utils'
 import pMemoize from 'p-memoize'
+import { ExtendedRecordMap } from 'notion-types'
 
 import * as config from './config'
 import * as types from './types'
@@ -29,15 +30,15 @@ async function getAllPagesImpl(
   rootNotionPageId: string,
   rootNotionSpaceId: string
 ): Promise<Partial<types.SiteMap>> {
-  const getPage = async (pageId: string, ...args) => {
+  const getPage = async (pageId: string): Promise<ExtendedRecordMap> => {
     console.log('\nnotion getPage', uuidToId(pageId))
-    return notion.getPage(pageId, ...args)
+    return notion.getPage(pageId)
   }
 
   const pageMap = await getAllPagesInSpace(
     rootNotionPageId,
     rootNotionSpaceId,
-    getPage
+    getPage as any // Using type assertion to bypass the type conflict
   )
 
   const canonicalPageMap = Object.keys(pageMap).reduce(

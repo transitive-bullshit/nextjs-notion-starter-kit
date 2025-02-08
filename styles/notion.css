@@ -156,10 +156,6 @@
   margin-bottom: 30px; */
 }
 
-.notion-search-button {
-  display: none !important;
-}
-
 @media only screen and (max-width: 920px) {
   .index-page.notion-page {
     padding-left: 0;
