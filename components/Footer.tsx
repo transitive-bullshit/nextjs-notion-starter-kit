@@ -36,7 +36,7 @@ export function FooterImpl() {
   return (
     <footer className={styles.footer}>
       <div className={styles.copyright}>
-        Copyright {currentYear} {config.author}
+        Copyright 2016 - {currentYear} {config.author}
       </div>
 
       <div className={styles.settings}>

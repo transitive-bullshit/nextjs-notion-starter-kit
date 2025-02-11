@@ -17,7 +17,7 @@ export default siteConfig({
   description: 'Gabriel Li\'s blog',
 
   // social usernames (optional)
-  twitter: 'Maaya_TvT',
+  twitter: 'MaayaTvT',
   github: 'EririSawamura',
   linkedin: 'honglong-li',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
