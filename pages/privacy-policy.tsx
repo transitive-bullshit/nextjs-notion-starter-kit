@@ -26,6 +26,12 @@ const PrivacyAndPolicy = () => {
                   >
                     About
                   </a>
+                  <a
+                    href='/why'
+                    className='nav-link'
+                  >
+                    Why Coursetexts?
+                  </a>
                 </nav>
               </div>
             </div>

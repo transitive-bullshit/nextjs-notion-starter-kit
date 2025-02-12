@@ -244,7 +244,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       const links = [
         { href: '/', label: 'Coursetexts' },
-        { href: '/about', label: 'About' }
+        { href: '/about', label: 'About' },
+        { href: '/why', label: 'Why Coursetexts?' }
       ]
 
       links.forEach((link) => {
