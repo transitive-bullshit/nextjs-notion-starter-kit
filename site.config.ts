@@ -17,10 +17,10 @@ export default siteConfig({
   description: 'Ahsfalod Page',
 
   // social usernames (optional)
-  twitter: 'ahsfalod',
-  instagram: 'ahsfalod',
+  //twitter: 'ahsfalod',
+  //instagram: 'ahsfalod',
   //github: 'transitive-bullshit',
-  linkedin: 'ahsan-jularso',
+  //linkedin: 'ahsan-jularso',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
