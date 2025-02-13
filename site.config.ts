@@ -14,10 +14,10 @@ export default siteConfig({
   // open graph metadata (optional)
   description: 'Ahsfalod Site',
   // social usernames (optional)
-  twitter: 'https://x.com/ahsfalod',
-  linkedin: 'https://www.linkedin.com/in/ahsan-jularso/',
-  instagram: 'https://www.instagram.com/ahsfalod/',
-  medium: 'https://medium.com/@ahsfalod',
+  twitter: 'ahsfalod',
+  linkedin: 'ahsan-jularso/',
+  instagram: 'ahsfalod/',
+  medium: '@ahsfalod',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
