@@ -10,16 +10,17 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Ahsfalod',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
+  domain: '',
   author: 'Ahsan Jularso W',
 
   // open graph metadata (optional)
   description: 'Ahsfalod Page',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
-  linkedin: 'fisch2',
+  twitter: 'ahsfalod',
+  instagram: 'ahsfalod',
+  //github: 'transitive-bullshit',
+  linkedin: 'ahsan-jularso',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
