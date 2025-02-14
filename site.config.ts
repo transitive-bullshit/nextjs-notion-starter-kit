@@ -53,7 +53,7 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: '狐狸B站',  // 网站名称
+      title: 'B站主页',  // 网站名称
       url: 'https://space.bilibili.com/18335369'  // 跳转到 B站
     },
     //{
