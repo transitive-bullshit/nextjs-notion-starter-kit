@@ -215,5 +215,5 @@
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;  /* 完全隐藏并移除空间 */
 }
