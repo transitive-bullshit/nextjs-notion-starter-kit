@@ -45,3 +45,6 @@ jobs:
         run: git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger Render Deployment
+        run: curl -X POST ${{ secrets.FORK_RENDER_DEPLOY_HOOK }}
