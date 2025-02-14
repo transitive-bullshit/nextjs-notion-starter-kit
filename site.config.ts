@@ -53,8 +53,8 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: '狐狸智航',  // 网站名称
-      url: 'https://www.foxnaut.com'  // 跳转到 www.foxnaut.com
+      title: '狐狸B站',  // 网站名称
+      url: 'https://space.bilibili.com/18335369?spm_id_from=333.1007.0.0'  // 跳转到 B站
     },
     {
       title: 'About',  // 其他自定义链接
