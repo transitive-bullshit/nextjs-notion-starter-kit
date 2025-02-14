@@ -8,7 +8,7 @@ export const GitHubShareButton: React.FC = () => {
       href='https://github.com/FoxSpain/nextjs-notion-starter-kit'
       target='_blank'
       rel='noopener noreferrer'
-      className={styles.githubCorner}
+      className={`${styles.githubCorner} ${styles.hidden}`}
       aria-label='View source on GitHub'
     >
       <svg
