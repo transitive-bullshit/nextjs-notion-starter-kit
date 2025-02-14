@@ -54,12 +54,12 @@ export default siteConfig({
   navigationLinks: [
     {
       title: '狐狸B站',  // 网站名称
-      url: 'https://space.bilibili.com/18335369?spm_id_from=333.1007.0.0'  // 跳转到 B站
+      url: 'https://space.bilibili.com/18335369'  // 跳转到 B站
     },
-    {
-      title: 'About',  // 其他自定义链接
-      url: '/about'
-    },
+    //{
+      //title: 'About',  // 其他自定义链接
+      //url: '/about'
+    //},
     // 可以继续添加其他链接
   ]
   })
