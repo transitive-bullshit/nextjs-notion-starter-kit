@@ -5,10 +5,10 @@ import styles from './styles.module.css'
 export const GitHubShareButton: React.FC = () => {
   return (
     <a
-      href='https://github.com/FoxSpain/nextjs-notion-starter-kit'
+      href='https://www.bilibili.com/'
       target='_blank'
       rel='noopener noreferrer'
-      className={`${styles.githubCorner} ${styles.hidden}`}
+      className={styles.githubCorner} 
       aria-label='View source on GitHub'
     >
       <svg
