@@ -50,16 +50,16 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
-  // navigationStyle: 'default'
-   navigationStyle: 'custom',
-   navigationLinks: [
-     {
-       title: '狐狸智航天',    //about
-       pageId: 'https://space.bilibili.com/18335369?spm_id_from=333.1007.0.0'   //f1199d37579b41cbabfc0b5174f4256a
-     },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
-  // ]
-})
+  navigationStyle: 'custom',
+  navigationLinks: [
+    {
+      title: '狐狸智航',  // 网站名称
+      url: 'https://www.foxnaut.com'  // 跳转到 www.foxnaut.com
+    },
+    {
+      title: 'About',  // 其他自定义链接
+      url: '/about'
+    },
+    // 可以继续添加其他链接
+  ]
+  })
