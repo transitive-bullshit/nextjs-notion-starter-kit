@@ -416,6 +416,11 @@
   align-items: center;
 }
 
+.notion-page-content-inner {
+  width: 100%;
+
+}
+
 .notion-page-content-inner .notion-text .notion-list {
   color: rgb(55 65 81/ 1);
   /* font-size: 0.875rem; */
@@ -469,6 +474,7 @@
   font-size: medium;
 }
 /* also see how this looks with the regular inter font here? */
+
 
 
 .why-page .notion-title {
@@ -543,7 +549,7 @@
   font-weight: 500;
 }
 
-.course-page .notion-blue {
+.course-page .notion-blue  {
   font-family: "PT Serif", serif;
   color: #4B5563;
 }
@@ -555,6 +561,11 @@
   font-weight: 500;
   font-size: small;
 }
+
+.course-page a {
+  color: #000000;
+}
+
 
 .dark-mode .custom-wrapper-class {
   border: 1px solid rgb(107 114 128 / 1);
@@ -934,3 +945,12 @@ summary .notion-h3 .notion-h-title {
   line-height: 1.9rem !important;
 }
 
+
+.fill-article-row {
+  width: 100%;
+  max-width: var(--notion-max-width); /* Ensures it matches Notion's content width */
+  margin: 0 auto; /* Centers it properly */
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}

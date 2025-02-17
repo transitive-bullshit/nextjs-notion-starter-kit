@@ -29,6 +29,8 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
 import ContentTable from './ContentTable'
+import { createRoot } from 'react-dom/client'  // React 18+
+import FilterRow from './FilterRow'
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -149,6 +151,63 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+
+// Example custom React component:
+function MyReactComponent() {
+  return (
+    <div style={{ background: '#ffe', padding: '1rem', marginTop: '1rem' }}>
+      <h3>Hello from MyReactComponent!</h3>
+      <p>This is inserted at the end of the article using React.</p>
+    </div>
+  )
+}
+
+// Helper function to append a React component:
+function addReactComponentAtEndOfArticle(
+  articleSelector: string, 
+  containerClassName: string, 
+  reactNode: React.ReactNode
+) {
+  const articleElement = document.querySelector(articleSelector)
+
+  if (articleElement) {
+    // Create a new div container
+    const newContainer = document.createElement('div')
+    newContainer.className = containerClassName
+    
+    // Append the new container as the last child of the article
+    articleElement.appendChild(newContainer)
+
+    // Render the passed-in React node using createRoot (React 18+)
+    const root = createRoot(newContainer)
+    root.render(reactNode)
+  } else {
+    console.warn(`Article element with selector "${articleSelector}" not found.`)
+  }
+}
+
+
+// Helper function to insert a React component after the Notion callout:
+function addReactComponentAfterCallout(reactNode: React.ReactNode) {
+  // Select the first notion-callout div
+  const notionCallout = document.querySelector('.notion-callout')
+
+  if (notionCallout) {
+    // Create a new container for our React component
+    const newContainer = document.createElement('div')
+    newContainer.className = 'fill-article-row'
+
+    // Insert the container right after the callout
+    notionCallout.insertAdjacentElement('afterend', newContainer) // also try beforebegin
+
+    // Render our React component into that container
+    const root = createRoot(newContainer)
+    root.render(reactNode)
+  } else {
+    console.warn(`No .notion-callout element found on the page.`)
+  }
+}
+
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
   recordMap,
@@ -159,6 +218,15 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const lite = useSearchParam('lite')
 
   const [sections, setSections] = React.useState([]) // state for sections to be used for toggles
+
+
+  
+
+  React.useEffect(() => {
+    addReactComponentAfterCallout(<FilterRow />)
+  }, [])
+  
+  
 
   let pageClass = '';
   
@@ -171,6 +239,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
   } else {
     pageClass = 'course-page';
   }
+
+  React.useEffect(() => {
+    // Once the Notion content is rendered on client side,
+    // you can insert your React component:
+    if (pageClass == 'course-page') {
+    addReactComponentAtEndOfArticle(
+      'article',
+      'fill-article-row',
+      <ContentTable sections={sections}/>
+    )
+    }
+  }, [router, sections])
 
 
   function wrapElementsBetweenBlanks() {
@@ -384,6 +464,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       })
     }
+
+
 
     //
     function addContainerAtEndOfArticle(
@@ -755,10 +837,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
         footer={footer}
       />
 
-      { (router.asPath != '/about' && router.asPath != '/') && 
+
+      {/* { (router.asPath != '/about' && router.asPath != '/') && 
     
       <ContentTable sections={sections} />
-      }
+      } */}
 
       {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
         router.asPath === '/about' ||
@@ -773,3 +856,5 @@ export const NotionPage: React.FC<types.PageProps> = ({
     </>
   )
 }
+
+
