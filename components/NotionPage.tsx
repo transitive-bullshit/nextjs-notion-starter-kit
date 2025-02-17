@@ -28,6 +28,7 @@ import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
+import ContentTable from './ContentTable'
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -151,6 +152,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const router = useRouter()
   const lite = useSearchParam('lite')
 
+  const [sections, setSections] = React.useState([]) // state for sections to be used for toggles
+
   function wrapElementsBetweenBlanks() {
     // Select all .notion-blank div elements
     const blankDivs = Array.from(document.querySelectorAll('.notion-blank'))
@@ -192,6 +195,78 @@ export const NotionPage: React.FC<types.PageProps> = ({
       }
     }
   }
+
+  //wrapElementsBetweenDividersToCreateToggleTable
+
+  // Function to wrap elements between dividers
+  function wrapElementsBetweenDividers() {
+    console.log('Running wrapElementsBetweenDividers...');
+  
+    // Select all <hr> dividers that define sections
+    const dividerElements = Array.from(document.querySelectorAll('hr.notion-hr'));
+  
+    if (dividerElements.length < 2) return; // Ensure there are enough dividers
+  
+    let sectionsArray: Section[] = [];
+  
+    let index = 0;
+    while (index < dividerElements.length - 1) {
+      const divider = dividerElements[index]; // Current divider
+      let elementsToWrap: HTMLElement[] = [];
+      let nextSibling = divider.nextElementSibling;
+  
+      // Collect all elements until we reach the next <hr> divider
+      while (nextSibling && !(nextSibling.tagName === 'HR' && nextSibling.classList.contains('notion-hr'))) {
+        elementsToWrap.push(nextSibling as HTMLElement);
+        nextSibling = nextSibling.nextElementSibling;
+      }
+  
+      // If we found elements, wrap them in a div
+      if (elementsToWrap.length > 0) {
+        const wrapperDiv = document.createElement('div');
+        wrapperDiv.classList.add('custom-divider-wrapper');
+        elementsToWrap.forEach((element) => wrapperDiv.appendChild(element));
+        divider.insertAdjacentElement('afterend', wrapperDiv);
+  
+        // Extract multiple headings and their corresponding links
+        let headingElements = Array.from(wrapperDiv.querySelectorAll('h3.notion-h2'));
+  
+        headingElements.forEach((headingElement) => {
+          const headingText = headingElement.textContent?.trim() || 'Untitled Section';
+  
+          let links: { text: string; href: string }[] = [];
+          let nextSibling = headingElement.nextElementSibling;
+  
+          // Collect links under the heading until another heading or <hr> is found
+          while (nextSibling && !nextSibling.matches('h3.notion-h2') && !nextSibling.matches('hr.notion-hr')) {
+            const linkElements = nextSibling.querySelectorAll('a.notion-link');
+            linkElements.forEach((link) => {
+              links.push({
+                text: link.textContent?.trim() || 'Unnamed Link',
+                href: link.getAttribute('href') || '#',
+              });
+            });
+  
+            nextSibling = nextSibling.nextElementSibling;
+          }
+  
+          // Add this section to the array if it has links
+          if (links.length > 0) {
+            sectionsArray.push({ heading: headingText, links });
+          }
+        });
+      }
+  
+      // Move to the next <hr> divider
+      index += 1;
+    }
+  
+    console.log('Extracted sections:', sectionsArray);
+    setSections(sectionsArray); // Update state
+  }
+  
+
+  
 
   function wrapHeadersAndContent() {
     // Select all .notion-h3 elements
@@ -245,7 +320,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       const links = [
         { href: '/', label: 'Coursetexts' },
         { href: '/about', label: 'About' },
-        { href: '/why', label: 'Why Coursetexts?' }
       ]
 
       links.forEach((link) => {
@@ -305,7 +379,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
 
     // Execute the function to wrap elements
-    if (router.pathname === '/') {
+    if (router.pathname === '/'  ) {
       //
       wrapElementsBetweenBlanks()
       // Select all elements with the 'notion-page-link' class
@@ -330,12 +404,17 @@ export const NotionPage: React.FC<types.PageProps> = ({
       addContainerAtEndOfArticle(
         'article',
         'custom-footer-container',
-        `<a href="/privacy-policy" class="footer-link">Privacy Policy</a>
-         <a href="/terms-of-service" class="footer-link">Terms of Service</a>`
+        `
+        <p>A free and open archive of Harvard & MIT course materials</p>
+        <div class="footer-links">
+          <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+          <a href="/terms-of-service" class="footer-link">Terms of Service</a>
+         </div>
+         `
       )
       removeNotionLinkWithText()
       //
-      const customWrappers = document.querySelectorAll('.custom-wrapper-class')
+      const customWrappers = document.querySelectorAll('.custom-wrapper-class, .custom-divider-wrapper')
       customWrappers.forEach((wrapper) => {
         if (wrapper.children.length === 0) {
           wrapper.remove()
@@ -348,7 +427,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       // Iterate through each notion-link
       notionLinks.forEach((notionLink) => {
         // Check if the parent of the notion-link has the 'custom-wrapper-class'
-        const parentWrapper = notionLink.closest('.custom-wrapper-class')
+        const parentWrapper = notionLink.closest('.custom-wrapper-class, .custom-divider-wrapper')
 
         if (parentWrapper) {
           // Clean up the page title text if it exists
@@ -422,6 +501,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       })
     } else {
       //
+      wrapElementsBetweenDividers()
+      
       document.querySelectorAll('.notion-title').forEach(function (summary) {
         // Select the <b> tag inside the <summary>
         const boldTag = summary.querySelector('b')
@@ -632,6 +713,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
 
+
+  console.log(sections)
+
   return (
     <>
       <PageHead
@@ -670,6 +754,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={null}
         footer={footer}
       />
+
+      <ContentTable sections={sections} />
+
       {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
         router.asPath === '/about' ||
         (router.asPath.split('/')[1]?.startsWith('about') &&
