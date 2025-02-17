@@ -59,6 +59,7 @@
 
 .notion-nav-header-rhs {
   gap: 0.5rem;
+
 }
 
 .notion-gallery-grid {
@@ -431,6 +432,7 @@
   font-size: small;
 }
 
+
 .notion-page-content-inner .notion-page-link {
   color: rgb(107 114 128 / 1);
   padding: 0rem 0.2rem;
@@ -468,6 +470,91 @@
 }
 /* also see how this looks with the regular inter font here? */
 
+
+.why-page .notion-title {
+  font-family: Inter;
+  font-weight: 500;
+  font-size: 2.4rem;
+}
+
+.why-page a{
+  color: #000000;
+}
+
+.why-page .notion-text {
+  font-family: Inter;
+  color: #000000;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.why-page li {
+  font-family: Inter;
+  color: #000000;
+  font-weight: 400;
+  font-size: 0.95rem;
+}
+
+.why-page .notion-h1 {
+  font-family: 'DM Mono', monospace;
+  color: #000000;
+  font-weight: 400;
+}
+
+.why-page .notion-h2 {
+  font-family: 'DM Mono', monospace;
+  color: #6B7280;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.why-page .notion-column {
+  display: flex; /* Enables flexbox */
+  flex-direction: column; /* Stacks image and text vertically */
+  align-items: center; /* Centers items horizontally */
+  justify-content: center; /* Centers items vertically within the parent */
+  text-align: center; /* Ensures text is centered */
+  height: 100%; /* Ensures full height of parent container */
+  font-family: Inter;
+}
+.why-page .notion-column .notion-h2 {
+  font-family: Inter;
+  font-weight: 500;
+  color: #000000;
+  text-transform: none;
+  font-size: 1.2rem;
+}
+
+.why-page .notion-column .notion-gray{
+  font-family: Inter;
+}
+
+.why-page .notion-column img{
+  border-radius: 100%;
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  margin: auto;
+}
+
+.course-page .notion-title {
+  font-family: Inter;
+  font-weight: 500;
+}
+
+.course-page .notion-blue {
+  font-family: "PT Serif", serif;
+  color: #4B5563;
+}
+
+.course-page .notion-h2 {
+  font-family: 'DM Mono', monospace;
+  color: #6B7280;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: small;
+}
 
 .dark-mode .custom-wrapper-class {
   border: 1px solid rgb(107 114 128 / 1);
@@ -514,6 +601,7 @@
   font-weight: 800;
   word-wrap: break-word;
   -ms-word-wrap: break-word;
+  
 }
 
 .notion-page-no-cover.notion-page-has-image-icon {
@@ -566,6 +654,7 @@
   border:  solid 1px #E5E7EB;
   border-radius: 1rem;
 }
+
 
 .notion-callout-text {
   margin-left: 0px;
@@ -628,6 +717,9 @@
   font-weight: 600;
   color: unset;
   opacity: 1;
+  /* font-family: "PT Serif", serif;
+  font-size: x-large;
+  font-weight: 500; */
 }
 
 .notion-text .notion-block {
@@ -692,6 +784,8 @@
   font-weight: 400;
   color: rgb(31 41 55 / 1);
 }
+
+
 
 /* about page styling */
 .notion-h2 .notion-h-title b {

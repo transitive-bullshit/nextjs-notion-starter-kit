@@ -98,6 +98,12 @@ const Modal = dynamic(
   }
 )
 
+type Section = {
+  heading: string;
+  links: { text: string; href: string }[];
+};
+
+
 const Tweet = ({ id }: { id: string }) => {
   return <TweetEmbed tweetId={id} />
 }
@@ -154,6 +160,19 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const [sections, setSections] = React.useState([]) // state for sections to be used for toggles
 
+  let pageClass = '';
+  
+  if (router.pathname === '/') {
+    pageClass = 'notion-home';
+  } else if (router.asPath.startsWith('/about')) {
+    pageClass = 'about-page';
+  } else if (router.asPath.startsWith('/why')) {
+    pageClass = 'why-page';
+  } else {
+    pageClass = 'course-page';
+  }
+
+
   function wrapElementsBetweenBlanks() {
     // Select all .notion-blank div elements
     const blankDivs = Array.from(document.querySelectorAll('.notion-blank'))
@@ -205,36 +224,41 @@ export const NotionPage: React.FC<types.PageProps> = ({
     // Select all <hr> dividers that define sections
     const dividerElements = Array.from(document.querySelectorAll('hr.notion-hr'));
   
-    if (dividerElements.length < 2) return; // Ensure there are enough dividers
+    if (dividerElements.length < 4) return; // Ensure there are enough dividers
   
-    let sectionsArray: Section[] = [];
+    const sectionsArray: Section[] = [];
   
     let index = 0;
-    while (index < dividerElements.length - 1) {
-      const divider = dividerElements[index]; // Current divider
-      let elementsToWrap: HTMLElement[] = [];
-      let nextSibling = divider.nextElementSibling;
+    while (index <= dividerElements.length - 4) { // Process in groups of 4
+      const firstDivider = dividerElements[index];
+      const secondDivider = dividerElements[index + 1];
+      const thirdDivider = dividerElements[index + 2];
+      const fourthDivider = dividerElements[index + 3];
   
-      // Collect all elements until we reach the next <hr> divider
-      while (nextSibling && !(nextSibling.tagName === 'HR' && nextSibling.classList.contains('notion-hr'))) {
-        elementsToWrap.push(nextSibling as HTMLElement);
-        nextSibling = nextSibling.nextElementSibling;
-      }
+      const elementsToWrap: HTMLElement[] = [];
+      let nextSibling = secondDivider.nextElementSibling;
+  
+    // Collect all elements until we reach the third <hr> divider
+    while (nextSibling && nextSibling !== thirdDivider) {
+      elementsToWrap.push(nextSibling as HTMLElement);
+      nextSibling = nextSibling.nextElementSibling;
+    }
+
   
       // If we found elements, wrap them in a div
       if (elementsToWrap.length > 0) {
         const wrapperDiv = document.createElement('div');
         wrapperDiv.classList.add('custom-divider-wrapper');
         elementsToWrap.forEach((element) => wrapperDiv.appendChild(element));
-        divider.insertAdjacentElement('afterend', wrapperDiv);
+        // divider.insertAdjacentElement('afterend', wrapperDiv);
   
         // Extract multiple headings and their corresponding links
-        let headingElements = Array.from(wrapperDiv.querySelectorAll('h3.notion-h2'));
+        const headingElements = Array.from(wrapperDiv.querySelectorAll('h3.notion-h2'));
   
         headingElements.forEach((headingElement) => {
           const headingText = headingElement.textContent?.trim() || 'Untitled Section';
   
-          let links: { text: string; href: string }[] = [];
+          const links: { text: string; href: string }[] = [];
           let nextSibling = headingElement.nextElementSibling;
   
           // Collect links under the heading until another heading or <hr> is found
@@ -256,9 +280,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
           }
         });
       }
+
+
+    // Remove all four <hr> elements
+    firstDivider.remove();
+    secondDivider.remove();
+    thirdDivider.remove();
+    fourthDivider.remove();
   
       // Move to the next <hr> divider
-      index += 1;
+      index += 4;
     }
   
     console.log('Extracted sections:', sectionsArray);
@@ -521,44 +552,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
           wrapper.remove()
         }
       })
-      // Find the parent container with the class 'notion-page-content-inner'
-      const notionPageContentInner = document.querySelector(
-        '.notion-page-content-inner'
-      )
+      // // Find the parent container with the class 'notion-page-content-inner'
+      // const notionPageContentInner = document.querySelector(
+      //   '.notion-page-content-inner'
+      // )
 
-      // Check if the parent container exists and the page ID is not the specified one
-      if (pageId !== '14d19a13-312a-80ab-a903-d49ab333bd38') {
-        if (notionPageContentInner) {
-          // Create a div for the horizontal line
-          const lineDiv = document.createElement('div')
-          lineDiv.style.borderTop = '1px solid rgba(229, 231, 235, 1)' // Light grey line
-          lineDiv.style.width = '100%' // Ensure the line spans the container
-          lineDiv.style.marginTop = '8px' // Space above the line
-          lineDiv.style.marginBottom = '8px' // Space below the line
 
-          // Create the main text div
-          const notionTextDiv = document.createElement('div')
-          notionTextDiv.className = 'notion-text'
-          notionTextDiv.textContent = 'All classes are licensed under the'
-
-          // Create the anchor element
-          const notionLink = document.createElement('a')
-          notionLink.className = 'notion-link'
-          notionLink.href =
-            'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
-          notionLink.target = '_blank'
-          notionLink.rel = 'noopener noreferrer'
-          notionLink.textContent = 'CC-BY-NC-SA license'
-          notionLink.style.marginLeft = '5px' // Space between text and link
-
-          // Append the link to the text div
-          notionTextDiv.appendChild(notionLink)
-
-          // Append the horizontal line and text div to the parent container
-          notionPageContentInner.appendChild(lineDiv)
-          notionPageContentInner.appendChild(notionTextDiv)
-        }
-      }
     }
 
     const addSeeAllClassesButton = () => {
@@ -727,8 +726,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         url={canonicalPageUrl}
       />
 
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+      {/* {isLiteMode && <BodyClassName className='notion-lite' />}
+      {isDarkMode && <BodyClassName className='dark-mode' />} */}
+      <BodyClassName className={pageClass} />
 
       <NotionRenderer
         bodyClassName={cs(
@@ -755,7 +755,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
         footer={footer}
       />
 
+      { (router.asPath != '/about' && router.asPath != '/') && 
+    
       <ContentTable sections={sections} />
+      }
 
       {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
         router.asPath === '/about' ||

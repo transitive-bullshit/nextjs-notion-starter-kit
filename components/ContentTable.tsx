@@ -61,7 +61,7 @@ export default function ContentTable({ sections }: Props) {
           <ul>
             {sections[activeTab].links.map((linkItem, linkIdx) => (
               <li key={linkIdx}>
-                <a href={linkItem.href} target='_blank' rel='noopener'>
+                <a href={linkItem.href} target='_blank' rel="noreferrer">
                   {linkItem.text}
                   {/* <span className={styles.fileInfo}>PDF · 243KB</span>  */}
                 </a>
@@ -70,7 +70,7 @@ export default function ContentTable({ sections }: Props) {
             ))}
           </ul>
         ) : (
-          <p>No links in this section.</p>
+          <p></p>
         )}
       </div>
     </div>
