@@ -477,6 +477,7 @@
 
 
 
+
 .why-page .notion-title {
   font-family: Inter;
   font-weight: 500;
@@ -546,12 +547,21 @@
 
 .course-page .notion-title {
   font-family: Inter;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.course-page .notion-gray {
+  font-family: 'DM Mono', monospace;
   font-weight: 500;
 }
+
 
 .course-page .notion-blue  {
   font-family: "PT Serif", serif;
   color: #4B5563;
+  font-size: 15px;
 }
 
 .course-page .notion-h2 {

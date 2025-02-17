@@ -153,11 +153,10 @@ const propertyTextValue = (
 
 
 // Example custom React component:
-function MyReactComponent() {
+function License() {
   return (
-    <div style={{ background: '#ffe', padding: '1rem', marginTop: '1rem' }}>
-      <h3>Hello from MyReactComponent!</h3>
-      <p>This is inserted at the end of the article using React.</p>
+    <div style={{ marginTop: '1rem', }}>
+      <p>All classes are licensed under the <i> <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en' target='_blank'>CC-BY-NC-SA license</a></i></p>
     </div>
   )
 }
@@ -208,6 +207,31 @@ function addReactComponentAfterCallout(reactNode: React.ReactNode) {
   }
 }
 
+
+
+// Helper function to insert a React component after the Notion callout:
+function addReactComponentBeforeTitle(reactNode: React.ReactNode) {
+  // Select the first notion-callout div
+  const notionCallout = document.querySelector('.notion-title')
+
+  if (notionCallout) {
+    // Create a new container for our React component
+    const newContainer = document.createElement('div')
+    newContainer.className = 'fill-article-row'
+
+    // Insert the container right after the callout
+    notionCallout.insertAdjacentElement('beforebegin', newContainer) // also try beforebegin
+
+    // Render our React component into that container
+    const root = createRoot(newContainer)
+    root.render(reactNode)
+  } else {
+    console.warn(`No .notion-callout element found on the page.`)
+  }
+}
+
+
+
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
   recordMap,
@@ -249,9 +273,55 @@ export const NotionPage: React.FC<types.PageProps> = ({
       'fill-article-row',
       <ContentTable sections={sections}/>
     )
+    addReactComponentAtEndOfArticle (
+      'article',
+      'fill-article-row',
+      <License/>
+    )
+
     }
   }, [router, sections])
 
+  React.useEffect(() => {
+    // Once the Notion content is rendered on client side,
+    // you can insert your React component:
+    if (pageClass == 'course-page') {
+
+    addReactComponentBeforeTitle( 
+      <a href="/" style={{ textDecoration: 'none' }}>   
+      <button style={{
+        background: 'none',
+        border: 'none',
+        color: '#757575', // Gray color
+        fontSize: '14px',
+        fontWeight: '400',
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        marginBottom: '1.5rem',
+        padding: 0,
+      }}>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="14" 
+          height="14" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="#757575" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          style={{ marginRight: '5px' }}
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />  {/* Horizontal Line */}
+          <polyline points="12 5 5 12 12 19" />  {/* Arrowhead */}
+        </svg>
+        Back to Archive
+      </button>
+      </a>
+      )
+    }
+  }, [router])
 
   function wrapElementsBetweenBlanks() {
     // Select all .notion-blank div elements

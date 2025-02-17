@@ -32,7 +32,7 @@
   /* Active tab styles */
   .active {
     color: #000; /* Black text */
-    font-weight: 600;
+    font-weight: 500;
     border-bottom: 2px solid #000; /* Bold black underline */
   }
   
