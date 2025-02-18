@@ -1,8 +1,24 @@
 import React, { useState } from 'react';
 
-const FilterRow: React.FC = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const [department, setDepartment] = useState('All Departments');
+
+
+interface FilterRowProps {
+  searchValue: string;
+  setSearchValue: (val: string) => void;
+  department: string;
+  setDepartment: (val: string) => void;
+}
+
+
+
+const FilterRow: React.FC<FilterRowProps> = ({
+  searchValue,
+  setSearchValue,
+  department,
+  setDepartment
+}) => {
+  // const [searchValue, setSearchValue] = useState('');
+  // const [department, setDepartment] = useState('All Departments');
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,12 +88,13 @@ export default FilterRow;
 // Inline styles with Full Width Support
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
+
     display: 'flex',
     alignItems: 'center',
     width: '100%', // Full width
     borderBottom: '1px solid #ccc',
     paddingBottom: '8px',
-    marginBottom: '16px',
+    marginBottom: '1rem',
     fontFamily: "'DM Mono', monospace",
   },
   searchContainer: {

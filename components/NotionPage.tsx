@@ -29,7 +29,7 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
 import ContentTable from './ContentTable'
-import { createRoot } from 'react-dom/client'  // React 18+
+import { createRoot, Root} from 'react-dom/client'  // React 18+
 import FilterRow from './FilterRow'
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -243,13 +243,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const [sections, setSections] = React.useState([]) // state for sections to be used for toggles
 
-
+  // 1) Lift the search and department states up here
+  const [searchValue, setSearchValue] = React.useState('')
+  const [department, setDepartment] = React.useState('All Departments')
   
 
-  React.useEffect(() => {
-    addReactComponentAfterCallout(<FilterRow />)
-  }, [])
-  
   
 
   let pageClass = '';
@@ -264,6 +262,45 @@ export const NotionPage: React.FC<types.PageProps> = ({
     pageClass = 'course-page';
   }
 
+
+    // 2) Keep a ref so we only create the root once
+    const filterRootRef = React.useRef<Root | null>(null)
+
+    
+    // 3) On mount, create the container + root *once*
+    React.useEffect(() => {
+      const notionCallout = document.querySelector('.notion-callout')
+      if (!notionCallout) return
+  
+      // Insert a container for FilterRow after the .notion-callout
+      const newContainer = document.createElement('div');
+      newContainer.className = 'fill-article-row';
+      
+      // Insert it after the callout
+      notionCallout.insertAdjacentElement('afterend', newContainer);
+  
+      // Create the React root
+      filterRootRef.current = createRoot(newContainer)
+      
+    }, [])
+
+
+    React.useEffect(() => {
+      if (!filterRootRef.current) return
+  
+      filterRootRef.current.render(
+        <FilterRow
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          department={department}
+          setDepartment={setDepartment}
+        />
+      )
+    }, [searchValue, department])
+
+  
+
+
   React.useEffect(() => {
     // Once the Notion content is rendered on client side,
     // you can insert your React component:
@@ -273,14 +310,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
       'fill-article-row',
       <ContentTable sections={sections}/>
     )
+    }
+  }, [router, sections])
+
+  React.useEffect(() => {
     addReactComponentAtEndOfArticle (
       'article',
       'fill-article-row',
       <License/>
     )
-
-    }
-  }, [router, sections])
+  }, [sections])
 
   React.useEffect(() => {
     // Once the Notion content is rendered on client side,
@@ -321,6 +360,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       </a>
       )
     }
+
   }, [router])
 
   function wrapElementsBetweenBlanks() {
@@ -866,6 +906,35 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
 
   console.log(sections)
+
+
+  if (pageClass == "notion-home") {
+    // 2) Filter .custom-wrapper-class each time searchValue or department changes
+    React.useEffect(() => {
+    
+      // Grab all custom-wrapper-class blocks
+      const customWrappers = document.querySelectorAll('.custom-wrapper-class')
+      customWrappers.forEach((wrapper) => {
+        const textContent = wrapper.textContent.toLowerCase()
+        const matchesSearch = textContent.includes(searchValue.toLowerCase())
+
+        // If you have a data attribute or some indicator of the department
+        // inside the wrapper's dataset, you can match it similarly.
+        // For example, if you stored data-dept="Department A", you'd do:
+        // const dept = (wrapper as HTMLElement).dataset.dept; 
+        // const matchesDept = department === 'All Departments' || dept === department;
+
+        // For simplicity, let's assume you only need a textual match for search
+        // plus ignoring department for now:
+        if (matchesSearch) {
+          (wrapper as HTMLElement).style.display = 'block'
+        } else {
+          (wrapper as HTMLElement).style.display = 'none'
+        }
+      })
+    }, [searchValue, department])
+  }
+
 
   return (
     <>
