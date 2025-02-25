@@ -25,10 +25,10 @@ export function getCanonicalPageId(
     })
 
     // Optionally append a short hash to ensure uniqueness
-    if (canonicalId) {
-      const shortHash = pageId.slice(0, 4)
-      return `${canonicalId}-${shortHash}`
-    }
+    // if (canonicalId) {
+    //   const shortHash = pageId.slice(0, 4)
+    //   return `${canonicalId}-${shortHash}`
+    // }
 
     return canonicalId
   }
