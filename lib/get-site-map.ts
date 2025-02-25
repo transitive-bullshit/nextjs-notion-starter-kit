@@ -16,9 +16,24 @@ export async function getSiteMap(): Promise<types.SiteMap> {
     config.rootNotionSpaceId
   )
 
+  // Add duplicate detection
+  const canonicalPageMap: { [canonicalPageId: string]: string } = {}
+  const seenCanonicalIds = new Set()
+
+  // Filter out duplicates while keeping the first occurrence
+  Object.entries(partialSiteMap.canonicalPageMap).forEach(([canonicalId, pageId]) => {
+    if (!seenCanonicalIds.has(canonicalId)) {
+      canonicalPageMap[canonicalId] = pageId
+      seenCanonicalIds.add(canonicalId)
+    } else {
+      console.warn(`Duplicate canonical ID detected: ${canonicalId}. Keeping first occurrence.`)
+    }
+  })
+
   return {
     site: config.site,
-    ...partialSiteMap
+    ...partialSiteMap,
+    canonicalPageMap // Use the de-duped map
   } as types.SiteMap
 }
 
