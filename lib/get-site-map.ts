@@ -68,25 +68,29 @@ async function getAllPagesImpl(
         return map
       }
 
-      const canonicalPageId = getCanonicalPageId(pageId, recordMap, {
+      let canonicalPageId = getCanonicalPageId(pageId, recordMap, {
         uuid
       })
 
+      // Keep first occurrence clean, add counter only to duplicates
+      const originalId = canonicalPageId
       if (map[canonicalPageId]) {
-        // you can have multiple pages in different collections that have the same id
-        // TODO: we may want to error if neither entry is a collection page
-        console.warn('error duplicate canonical page id', {
-          canonicalPageId,
-          pageId,
-          existingPageId: map[canonicalPageId]
+        let counter = 2
+        console.warn('Duplicate canonical ID detected:', {
+          originalId,
+          existingPageId: map[canonicalPageId],
+          newPageId: pageId
         })
+        do {
+          canonicalPageId = `${originalId}-${counter}`
+          counter++
+        } while (map[canonicalPageId])
+        console.log('Generated new canonical ID:', canonicalPageId)
+      }
 
-        return map
-      } else {
-        return {
-          ...map,
-          [canonicalPageId]: pageId
-        }
+      return {
+        ...map,
+        [canonicalPageId]: pageId
       }
     },
     {}
