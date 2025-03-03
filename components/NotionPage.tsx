@@ -156,7 +156,7 @@ const propertyTextValue = (
 function License() {
   return (
     <div style={{ marginTop: '1rem', }}>
-      <p>All classes are licensed under the <i> <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en' target='_blank'>CC-BY-NC-SA license</a></i></p>
+      <p>All classes are licensed under the <i> <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en' target='_blank' rel="noreferrer">CC-BY-NC-SA license</a></i></p>
     </div>
   )
 }
@@ -186,26 +186,26 @@ function addReactComponentAtEndOfArticle(
 }
 
 
-// Helper function to insert a React component after the Notion callout:
-function addReactComponentAfterCallout(reactNode: React.ReactNode) {
-  // Select the first notion-callout div
-  const notionCallout = document.querySelector('.notion-callout')
+// // Helper function to insert a React component after the Notion callout:
+// function addReactComponentAfterCallout(reactNode: React.ReactNode) {
+//   // Select the first notion-callout div
+//   const notionCallout = document.querySelector('.notion-callout')
 
-  if (notionCallout) {
-    // Create a new container for our React component
-    const newContainer = document.createElement('div')
-    newContainer.className = 'fill-article-row'
+//   if (notionCallout) {
+//     // Create a new container for our React component
+//     const newContainer = document.createElement('div')
+//     newContainer.className = 'fill-article-row'
 
-    // Insert the container right after the callout
-    notionCallout.insertAdjacentElement('afterend', newContainer) // also try beforebegin
+//     // Insert the container right after the callout
+//     notionCallout.insertAdjacentElement('afterend', newContainer) // also try beforebegin
 
-    // Render our React component into that container
-    const root = createRoot(newContainer)
-    root.render(reactNode)
-  } else {
-    console.warn(`No .notion-callout element found on the page.`)
-  }
-}
+//     // Render our React component into that container
+//     const root = createRoot(newContainer)
+//     root.render(reactNode)
+//   } else {
+//     console.warn(`No .notion-callout element found on the page.`)
+//   }
+// }
 
 
 
@@ -243,7 +243,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const [sections, setSections] = React.useState([]) // state for sections to be used for toggles
 
-  // 1) Lift the search and department states up here
+  // Lift the search and department states up here
   const [searchValue, setSearchValue] = React.useState('')
   const [department, setDepartment] = React.useState('All Departments')
   
@@ -263,11 +263,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
 
-    // 2) Keep a ref so we only create the root once
+    // Keep a ref so we only create the root once
     const filterRootRef = React.useRef<Root | null>(null)
 
     
-    // 3) On mount, create the container + root *once*
+    // On mount, create the container + root *once*
     React.useEffect(() => {
       const notionCallout = document.querySelector('.notion-callout')
       if (!notionCallout) return
@@ -281,7 +281,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   
       // Create the React root
       filterRootRef.current = createRoot(newContainer)
-      
     }, [])
 
 
@@ -311,7 +310,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <ContentTable sections={sections}/>
     )
     }
-  }, [router, sections])
+  }, [router, sections, pageClass])
 
   React.useEffect(() => {
     addReactComponentAtEndOfArticle (
@@ -362,6 +361,33 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
 
   }, [router])
+
+
+    // 2) Filter .custom-wrapper-class each time searchValue or department changes
+    React.useEffect(() => {
+      if (pageClass == "notion-home") {
+      // Grab all custom-wrapper-class blocks
+      const customWrappers = document.querySelectorAll('.custom-wrapper-class')
+      customWrappers.forEach((wrapper) => {
+        const textContent = wrapper.textContent.toLowerCase()
+        const matchesSearch = textContent.includes(searchValue.toLowerCase())
+
+        // If you have a data attribute or some indicator of the department
+        // inside the wrapper's dataset, you can match it similarly.
+        // For example, if you stored data-dept="Department A", you'd do:
+        // const dept = (wrapper as HTMLElement).dataset.dept; 
+        // const matchesDept = department === 'All Departments' || dept === department;
+
+        // For simplicity, let's assume you only need a textual match for search
+        // plus ignoring department for now:
+        if (matchesSearch) {
+          (wrapper as HTMLElement).style.display = 'block'
+        } else {
+          (wrapper as HTMLElement).style.display = 'none'
+        }
+      })
+    }
+    }, [searchValue, department])
 
   function wrapElementsBetweenBlanks() {
     // Select all .notion-blank div elements
@@ -701,6 +727,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       (router.asPath.split('/')[1]?.startsWith('about') &&
         router.asPath.split('/')[1])
     ) {
+      
       const titleElements =
         document.querySelectorAll<HTMLElement>('h1.notion-title')
 
@@ -724,6 +751,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       })
     } else {
       //
+      
       wrapElementsBetweenDividers()
       
       document.querySelectorAll('.notion-title').forEach(function (summary) {
@@ -908,32 +936,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   console.log(sections)
 
 
-  if (pageClass == "notion-home") {
-    // 2) Filter .custom-wrapper-class each time searchValue or department changes
-    React.useEffect(() => {
-    
-      // Grab all custom-wrapper-class blocks
-      const customWrappers = document.querySelectorAll('.custom-wrapper-class')
-      customWrappers.forEach((wrapper) => {
-        const textContent = wrapper.textContent.toLowerCase()
-        const matchesSearch = textContent.includes(searchValue.toLowerCase())
+  
 
-        // If you have a data attribute or some indicator of the department
-        // inside the wrapper's dataset, you can match it similarly.
-        // For example, if you stored data-dept="Department A", you'd do:
-        // const dept = (wrapper as HTMLElement).dataset.dept; 
-        // const matchesDept = department === 'All Departments' || dept === department;
-
-        // For simplicity, let's assume you only need a textual match for search
-        // plus ignoring department for now:
-        if (matchesSearch) {
-          (wrapper as HTMLElement).style.display = 'block'
-        } else {
-          (wrapper as HTMLElement).style.display = 'none'
-        }
-      })
-    }, [searchValue, department])
-  }
 
 
   return (
