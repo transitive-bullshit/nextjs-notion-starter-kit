@@ -537,12 +537,27 @@
   font-family: Inter;
 }
 
-.why-page .notion-column img{
-  border-radius: 100%;
-  height: 150px;
+/* Target the wrapping element around the image */
+.why-page .notion-column .notion-asset-wrapper,
+.why-page .notion-column .notion-asset-wrapper-image > div {
+  position: relative !important; 
   width: 150px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden; /* hides corners so it's a perfect circle */
+}
+
+/* Then make the child img fill that parent */
+.why-page .notion-column .notion-asset-wrapper img,
+.why-page .notion-column .notion-asset-wrapper-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin: auto;
+  border-radius: 50%;
 }
 
 .course-page .notion-title {
