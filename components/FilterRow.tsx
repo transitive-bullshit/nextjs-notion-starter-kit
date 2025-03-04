@@ -34,6 +34,19 @@ const FilterRow: React.FC<FilterRowProps> = ({
     setShowDropdown(false);
   };
 
+  const departments = [
+    'All Departments',
+    'MATH',
+    'COMPSCI',
+    'ASTRO',
+    'ENG',
+    'PHYSICS',
+    'CHEM',
+    'ECON',
+    'APPHY'
+  ];
+  
+
   return (
     <div style={styles.container}>
       {/* Search bar with icon */}
@@ -67,15 +80,15 @@ const FilterRow: React.FC<FilterRowProps> = ({
         {/* Dropdown menu */}
         {showDropdown && (
           <div style={styles.dropdown}>
-            <button style={styles.dropdownItem} onClick={() => selectDepartment('All Departments')}>
-              All Departments
-            </button>
-            <button style={styles.dropdownItem} onClick={() => selectDepartment('Department A')}>
-              Department A
-            </button>
-            <button style={styles.dropdownItem} onClick={() => selectDepartment('Department B')}>
-              Department B
-            </button>
+            {departments.map((dept) => (
+              <button
+                key={dept}
+                style={styles.dropdownItem}
+                onClick={() => selectDepartment(dept)}
+              >
+                {dept}
+              </button>
+            ))}
           </div>
         )}
       </div>

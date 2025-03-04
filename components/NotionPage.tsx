@@ -286,15 +286,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
     React.useEffect(() => {
       if (!filterRootRef.current) return
-  
-      filterRootRef.current.render(
-        <FilterRow
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          department={department}
-          setDepartment={setDepartment}
-        />
-      )
+      if (pageClass == "notion-home") {
+        filterRootRef.current.render(
+          <FilterRow
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            department={department}
+            setDepartment={setDepartment}
+          />
+        )
+    }
     }, [searchValue, department])
 
   
@@ -366,28 +367,27 @@ export const NotionPage: React.FC<types.PageProps> = ({
     // 2) Filter .custom-wrapper-class each time searchValue or department changes
     React.useEffect(() => {
       if (pageClass == "notion-home") {
-      // Grab all custom-wrapper-class blocks
-      const customWrappers = document.querySelectorAll('.custom-wrapper-class')
-      customWrappers.forEach((wrapper) => {
-        const textContent = wrapper.textContent.toLowerCase()
-        const matchesSearch = textContent.includes(searchValue.toLowerCase())
+        // Grab all custom-wrapper-class blocks
+        const customWrappers = document.querySelectorAll('.custom-wrapper-class');
+        customWrappers.forEach((wrapper) => {
+          const textContent = wrapper.textContent.toLowerCase();
+          const matchesSearch = textContent.includes(searchValue.toLowerCase());
 
-        // If you have a data attribute or some indicator of the department
-        // inside the wrapper's dataset, you can match it similarly.
-        // For example, if you stored data-dept="Department A", you'd do:
-        // const dept = (wrapper as HTMLElement).dataset.dept; 
-        // const matchesDept = department === 'All Departments' || dept === department;
-
-        // For simplicity, let's assume you only need a textual match for search
-        // plus ignoring department for now:
-        if (matchesSearch) {
-          (wrapper as HTMLElement).style.display = 'block'
-        } else {
-          (wrapper as HTMLElement).style.display = 'none'
-        }
-      })
-    }
-    }, [searchValue, department])
+          const subjectContent = wrapper.querySelector('a.notion-link').textContent.toLowerCase();
+          let matchesDepartment = true
+          if (department !=  'All Departments') {
+            matchesDepartment = subjectContent.includes(department.toLowerCase());
+          }
+    
+          // Display the wrapper if it matches both the search and department criteria
+          if (matchesSearch && matchesDepartment) {
+            (wrapper as HTMLElement).style.display = 'block';
+          } else {
+            (wrapper as HTMLElement).style.display = 'none';
+          }
+        });
+      }
+    }, [searchValue, department]);
 
   function wrapElementsBetweenBlanks() {
     // Select all .notion-blank div elements
