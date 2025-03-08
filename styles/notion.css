@@ -943,7 +943,10 @@ summary .notion-h3 .notion-h-title {
 .footer-link {
   color: rgba(15, 118, 110, 0.9);
   line-height: 1.25rem;
+  font-weight: 200;
+
 }
+
 
 .notion-text {
   margin-top: 0px !important;

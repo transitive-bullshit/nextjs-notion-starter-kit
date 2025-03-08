@@ -122,7 +122,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   searchInput: {
     width: '100%', // Makes the input take up full space
-    minWidth: '300px',
+    minWidth: '100px',
     fontSize: '16px',
     border: 'none',
     outline: 'none',
@@ -144,7 +144,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontFamily: "'DM Mono', monospace",
   },
   arrow: {
-    marginLeft: '6px',
+    marginLeft: '2px',
     fontSize: '12px',
   },
   dropdown: {

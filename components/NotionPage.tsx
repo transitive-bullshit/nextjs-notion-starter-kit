@@ -155,8 +155,9 @@ const propertyTextValue = (
 // Example custom React component:
 function License() {
   return (
-    <div style={{ marginTop: '1rem', }}>
-      <p>All classes are licensed under the <i> <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en' target='_blank' rel="noreferrer">CC-BY-NC-SA license</a></i></p>
+
+    <div style={{ marginTop: '1rem',  marginLeft:'15px', fontFamily:'DM Mono', color:'#6B7280'}}>
+      <p>All classes are licensed under the <i> <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en' target='_blank' rel="noreferrer">CC-BY-NC-SA</a></i> license</p>
     </div>
   )
 }
@@ -655,6 +656,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         'custom-footer-container',
         `
         <p>A free and open archive of Harvard & MIT course materials</p>
+
         <div class="footer-links">
           <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
           <a href="/terms-of-service" class="footer-link">Terms of Service</a>
