@@ -9,7 +9,7 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Foxnaut｜狐狸智航',
+  name: 'Foxnaut｜Zorro Zhihang',
   domain: 'foxnaut.com',
   author: 'Fox',
 
