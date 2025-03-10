@@ -46,8 +46,8 @@ export default siteConfig({
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
   pageUrlOverrides: {
-    '/why': '14d19a13312a80aba903d49ab333bd38',
-    '/about': '9a2ace4be0dc4d928e7d304a44a6afe8',
+    '/why': 'Coursetexts-is-open-sourcing-the-frontiers-of-knowledge-19dab1b19f368051ac74efcdc80e1449',
+    '/about': 'About-199ab1b19f3681ce8ab2d06bc1b17175',
   },
 
   // whether to use the default notion navigation style or a custom one with links to

@@ -28,6 +28,9 @@ import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
+import ContentTable from './ContentTable'
+import { createRoot, Root} from 'react-dom/client'  // React 18+
+import FilterRow from './FilterRow'
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -97,6 +100,12 @@ const Modal = dynamic(
   }
 )
 
+type Section = {
+  heading: string;
+  links: { text: string; href: string }[];
+};
+
+
 const Tweet = ({ id }: { id: string }) => {
   return <TweetEmbed tweetId={id} />
 }
@@ -142,6 +151,88 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+
+// Example custom React component:
+function License() {
+  return (
+
+    <div style={{ marginTop: '1rem',  marginLeft:'15px', fontFamily:'DM Mono', color:'#6B7280'}}>
+      <p>All classes are licensed under the <i> <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en' target='_blank' rel="noreferrer">CC-BY-NC-SA</a></i> license</p>
+    </div>
+  )
+}
+
+// Helper function to append a React component:
+function addReactComponentAtEndOfArticle(
+  articleSelector: string, 
+  containerClassName: string, 
+  reactNode: React.ReactNode
+) {
+  const articleElement = document.querySelector(articleSelector)
+
+  if (articleElement) {
+    // Create a new div container
+    const newContainer = document.createElement('div')
+    newContainer.className = containerClassName
+    
+    // Append the new container as the last child of the article
+    articleElement.appendChild(newContainer)
+
+    // Render the passed-in React node using createRoot (React 18+)
+    const root = createRoot(newContainer)
+    root.render(reactNode)
+  } else {
+    console.warn(`Article element with selector "${articleSelector}" not found.`)
+  }
+}
+
+
+// // Helper function to insert a React component after the Notion callout:
+// function addReactComponentAfterCallout(reactNode: React.ReactNode) {
+//   // Select the first notion-callout div
+//   const notionCallout = document.querySelector('.notion-callout')
+
+//   if (notionCallout) {
+//     // Create a new container for our React component
+//     const newContainer = document.createElement('div')
+//     newContainer.className = 'fill-article-row'
+
+//     // Insert the container right after the callout
+//     notionCallout.insertAdjacentElement('afterend', newContainer) // also try beforebegin
+
+//     // Render our React component into that container
+//     const root = createRoot(newContainer)
+//     root.render(reactNode)
+//   } else {
+//     console.warn(`No .notion-callout element found on the page.`)
+//   }
+// }
+
+
+
+// Helper function to insert a React component after the Notion callout:
+function addReactComponentBeforeTitle(reactNode: React.ReactNode) {
+  // Select the first notion-callout div
+  const notionCallout = document.querySelector('.notion-title')
+
+  if (notionCallout) {
+    // Create a new container for our React component
+    const newContainer = document.createElement('div')
+    newContainer.className = 'fill-article-row'
+
+    // Insert the container right after the callout
+    notionCallout.insertAdjacentElement('beforebegin', newContainer) // also try beforebegin
+
+    // Render our React component into that container
+    const root = createRoot(newContainer)
+    root.render(reactNode)
+  } else {
+    console.warn(`No .notion-callout element found on the page.`)
+  }
+}
+
+
+
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
   recordMap,
@@ -150,6 +241,154 @@ export const NotionPage: React.FC<types.PageProps> = ({
 }) => {
   const router = useRouter()
   const lite = useSearchParam('lite')
+
+  const [sections, setSections] = React.useState([]) // state for sections to be used for toggles
+
+  // Lift the search and department states up here
+  const [searchValue, setSearchValue] = React.useState('')
+  const [department, setDepartment] = React.useState('All Departments')
+  
+
+  
+
+  let pageClass = '';
+  
+  if (router.pathname === '/') {
+    pageClass = 'notion-home';
+  } else if (router.asPath.startsWith('/about')) {
+    pageClass = 'about-page';
+  } else if (router.asPath.startsWith('/why')) {
+    pageClass = 'why-page';
+  } else {
+    pageClass = 'course-page';
+  }
+
+
+    // Keep a ref so we only create the root once
+    const filterRootRef = React.useRef<Root | null>(null)
+
+    
+    // On mount, create the container + root *once*
+    React.useEffect(() => {
+      const notionCallout = document.querySelector('.notion-callout')
+      if (!notionCallout) return
+  
+      // Insert a container for FilterRow after the .notion-callout
+      const newContainer = document.createElement('div');
+      newContainer.className = 'fill-article-row';
+      
+      // Insert it after the callout
+      notionCallout.insertAdjacentElement('afterend', newContainer);
+  
+      // Create the React root
+      filterRootRef.current = createRoot(newContainer)
+    }, [])
+
+
+    React.useEffect(() => {
+      if (!filterRootRef.current) return
+      if (pageClass == "notion-home") {
+        filterRootRef.current.render(
+          <FilterRow
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            department={department}
+            setDepartment={setDepartment}
+          />
+        )
+    }
+    }, [searchValue, department])
+
+  
+
+
+  React.useEffect(() => {
+    // Once the Notion content is rendered on client side,
+    // you can insert your React component:
+    if (pageClass == 'course-page') {
+    addReactComponentAtEndOfArticle(
+      'article',
+      'fill-article-row',
+      <ContentTable sections={sections}/>
+    )
+    }
+  }, [router, sections, pageClass])
+
+  React.useEffect(() => {
+    addReactComponentAtEndOfArticle (
+      'article',
+      'fill-article-row',
+      <License/>
+    )
+  }, [sections])
+
+  React.useEffect(() => {
+    // Once the Notion content is rendered on client side,
+    // you can insert your React component:
+    if (pageClass == 'course-page') {
+
+    addReactComponentBeforeTitle( 
+      <a href="/" style={{ textDecoration: 'none' }}>   
+      <button style={{
+        background: 'none',
+        border: 'none',
+        color: '#757575', // Gray color
+        fontSize: '14px',
+        fontWeight: '400',
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        marginBottom: '1.5rem',
+        padding: 0,
+      }}>
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="14" 
+          height="14" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="#757575" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          style={{ marginRight: '5px' }}
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />  {/* Horizontal Line */}
+          <polyline points="12 5 5 12 12 19" />  {/* Arrowhead */}
+        </svg>
+        Back to Archive
+      </button>
+      </a>
+      )
+    }
+
+  }, [router])
+
+
+    // 2) Filter .custom-wrapper-class each time searchValue or department changes
+    React.useEffect(() => {
+      if (pageClass == "notion-home") {
+        // Grab all custom-wrapper-class blocks
+        const customWrappers = document.querySelectorAll('.custom-wrapper-class');
+        customWrappers.forEach((wrapper) => {
+          const textContent = wrapper.textContent.toLowerCase();
+          const matchesSearch = textContent.includes(searchValue.toLowerCase());
+
+          const subjectContent = wrapper.querySelector('a.notion-link').textContent.toLowerCase();
+          let matchesDepartment = true
+          if (department !=  'All Departments') {
+            matchesDepartment = subjectContent.includes(department.toLowerCase());
+          }
+    
+          // Display the wrapper if it matches both the search and department criteria
+          if (matchesSearch && matchesDepartment) {
+            (wrapper as HTMLElement).style.display = 'block';
+          } else {
+            (wrapper as HTMLElement).style.display = 'none';
+          }
+        });
+      }
+    }, [searchValue, department]);
 
   function wrapElementsBetweenBlanks() {
     // Select all .notion-blank div elements
@@ -192,6 +431,90 @@ export const NotionPage: React.FC<types.PageProps> = ({
       }
     }
   }
+
+  //wrapElementsBetweenDividersToCreateToggleTable
+
+  // Function to wrap elements between dividers
+  function wrapElementsBetweenDividers() {
+    console.log('Running wrapElementsBetweenDividers...');
+  
+    // Select all <hr> dividers that define sections
+    const dividerElements = Array.from(document.querySelectorAll('hr.notion-hr'));
+  
+    if (dividerElements.length < 4) return; // Ensure there are enough dividers
+  
+    const sectionsArray: Section[] = [];
+  
+    let index = 0;
+    while (index <= dividerElements.length - 4) { // Process in groups of 4
+      const firstDivider = dividerElements[index];
+      const secondDivider = dividerElements[index + 1];
+      const thirdDivider = dividerElements[index + 2];
+      const fourthDivider = dividerElements[index + 3];
+  
+      const elementsToWrap: HTMLElement[] = [];
+      let nextSibling = secondDivider.nextElementSibling;
+  
+    // Collect all elements until we reach the third <hr> divider
+    while (nextSibling && nextSibling !== thirdDivider) {
+      elementsToWrap.push(nextSibling as HTMLElement);
+      nextSibling = nextSibling.nextElementSibling;
+    }
+
+  
+      // If we found elements, wrap them in a div
+      if (elementsToWrap.length > 0) {
+        const wrapperDiv = document.createElement('div');
+        wrapperDiv.classList.add('custom-divider-wrapper');
+        elementsToWrap.forEach((element) => wrapperDiv.appendChild(element));
+        // divider.insertAdjacentElement('afterend', wrapperDiv);
+  
+        // Extract multiple headings and their corresponding links
+        const headingElements = Array.from(wrapperDiv.querySelectorAll('h3.notion-h2'));
+  
+        headingElements.forEach((headingElement) => {
+          const headingText = headingElement.textContent?.trim() || 'Untitled Section';
+  
+          const links: { text: string; href: string }[] = [];
+          let nextSibling = headingElement.nextElementSibling;
+  
+          // Collect links under the heading until another heading or <hr> is found
+          while (nextSibling && !nextSibling.matches('h3.notion-h2') && !nextSibling.matches('hr.notion-hr')) {
+            const linkElements = nextSibling.querySelectorAll('a.notion-link');
+            linkElements.forEach((link) => {
+              links.push({
+                text: link.textContent?.trim() || 'Unnamed Link',
+                href: link.getAttribute('href') || '#',
+              });
+            });
+  
+            nextSibling = nextSibling.nextElementSibling;
+          }
+  
+          // Add this section to the array if it has links
+          if (links.length > 0) {
+            sectionsArray.push({ heading: headingText, links });
+          }
+        });
+      }
+
+
+    // Remove all four <hr> elements
+    firstDivider.remove();
+    secondDivider.remove();
+    thirdDivider.remove();
+    fourthDivider.remove();
+  
+      // Move to the next <hr> divider
+      index += 4;
+    }
+  
+    console.log('Extracted sections:', sectionsArray);
+    setSections(sectionsArray); // Update state
+  }
+  
+
+  
 
   function wrapHeadersAndContent() {
     // Select all .notion-h3 elements
@@ -244,7 +567,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       const links = [
         { href: '/', label: 'Coursetexts' },
-        { href: '/about', label: 'About' }
+        { href: '/about', label: 'About' },
       ]
 
       links.forEach((link) => {
@@ -279,6 +602,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       })
     }
 
+
+
     //
     function addContainerAtEndOfArticle(
       articleSelector,
@@ -304,7 +629,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
 
     // Execute the function to wrap elements
-    if (router.pathname === '/') {
+    if (router.pathname === '/'  ) {
       //
       wrapElementsBetweenBlanks()
       // Select all elements with the 'notion-page-link' class
@@ -329,12 +654,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
       addContainerAtEndOfArticle(
         'article',
         'custom-footer-container',
-        `<a href="/privacy-policy" class="footer-link">Privacy Policy</a>
-         <a href="/terms-of-service" class="footer-link">Terms of Service</a>`
+        `
+        <p>A free and open archive of Harvard & MIT course materials</p>
+
+        <div class="footer-links">
+          <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+          <a href="/terms-of-service" class="footer-link">Terms of Service</a>
+         </div>
+         `
       )
       removeNotionLinkWithText()
       //
-      const customWrappers = document.querySelectorAll('.custom-wrapper-class')
+      const customWrappers = document.querySelectorAll('.custom-wrapper-class, .custom-divider-wrapper')
       customWrappers.forEach((wrapper) => {
         if (wrapper.children.length === 0) {
           wrapper.remove()
@@ -347,7 +678,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       // Iterate through each notion-link
       notionLinks.forEach((notionLink) => {
         // Check if the parent of the notion-link has the 'custom-wrapper-class'
-        const parentWrapper = notionLink.closest('.custom-wrapper-class')
+        const parentWrapper = notionLink.closest('.custom-wrapper-class, .custom-divider-wrapper')
 
         if (parentWrapper) {
           // Clean up the page title text if it exists
@@ -398,6 +729,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       (router.asPath.split('/')[1]?.startsWith('about') &&
         router.asPath.split('/')[1])
     ) {
+      
       const titleElements =
         document.querySelectorAll<HTMLElement>('h1.notion-title')
 
@@ -421,6 +753,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
       })
     } else {
       //
+      
+      wrapElementsBetweenDividers()
+      
       document.querySelectorAll('.notion-title').forEach(function (summary) {
         // Select the <b> tag inside the <summary>
         const boldTag = summary.querySelector('b')
@@ -439,44 +774,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
           wrapper.remove()
         }
       })
-      // Find the parent container with the class 'notion-page-content-inner'
-      const notionPageContentInner = document.querySelector(
-        '.notion-page-content-inner'
-      )
+      // // Find the parent container with the class 'notion-page-content-inner'
+      // const notionPageContentInner = document.querySelector(
+      //   '.notion-page-content-inner'
+      // )
 
-      // Check if the parent container exists and the page ID is not the specified one
-      if (pageId !== '14d19a13-312a-80ab-a903-d49ab333bd38') {
-        if (notionPageContentInner) {
-          // Create a div for the horizontal line
-          const lineDiv = document.createElement('div')
-          lineDiv.style.borderTop = '1px solid rgba(229, 231, 235, 1)' // Light grey line
-          lineDiv.style.width = '100%' // Ensure the line spans the container
-          lineDiv.style.marginTop = '8px' // Space above the line
-          lineDiv.style.marginBottom = '8px' // Space below the line
 
-          // Create the main text div
-          const notionTextDiv = document.createElement('div')
-          notionTextDiv.className = 'notion-text'
-          notionTextDiv.textContent = 'All classes are licensed under the'
-
-          // Create the anchor element
-          const notionLink = document.createElement('a')
-          notionLink.className = 'notion-link'
-          notionLink.href =
-            'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
-          notionLink.target = '_blank'
-          notionLink.rel = 'noopener noreferrer'
-          notionLink.textContent = 'CC-BY-NC-SA license'
-          notionLink.style.marginLeft = '5px' // Space between text and link
-
-          // Append the link to the text div
-          notionTextDiv.appendChild(notionLink)
-
-          // Append the horizontal line and text div to the parent container
-          notionPageContentInner.appendChild(lineDiv)
-          notionPageContentInner.appendChild(notionTextDiv)
-        }
-      }
     }
 
     const addSeeAllClassesButton = () => {
@@ -631,6 +934,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
     getPageProperty<string>('Description', block, recordMap) ||
     config.description
 
+
+  console.log(sections)
+
+
+  
+
+
+
   return (
     <>
       <PageHead
@@ -642,8 +953,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         url={canonicalPageUrl}
       />
 
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+      {/* {isLiteMode && <BodyClassName className='notion-lite' />}
+      {isDarkMode && <BodyClassName className='dark-mode' />} */}
+      <BodyClassName className={pageClass} />
 
       <NotionRenderer
         bodyClassName={cs(
@@ -669,6 +981,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageAside={null}
         footer={footer}
       />
+
+
+      {/* { (router.asPath != '/about' && router.asPath != '/') && 
+    
+      <ContentTable sections={sections} />
+      } */}
+
       {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
         router.asPath === '/about' ||
         (router.asPath.split('/')[1]?.startsWith('about') &&
@@ -682,3 +1001,5 @@ export const NotionPage: React.FC<types.PageProps> = ({
     </>
   )
 }
+
+
