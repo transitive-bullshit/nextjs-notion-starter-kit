@@ -846,6 +846,7 @@
 
 .button-container {
   display: flex;
+  gap: 2rem;
   justify-content: center;
   padding: 0rem 0rem 1.25rem 0rem;
 }
