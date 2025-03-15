@@ -46,6 +46,7 @@ export const FooterImpl: React.FC = () => {
           emitMetadata="0"
           inputPosition="top"
           theme={isDarkMode ? 'transparent_dark' : 'light'}
+          lang="zh-CN"
           loading="lazy"
         />
     <footer className={styles.footer}>
