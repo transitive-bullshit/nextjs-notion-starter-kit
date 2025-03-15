@@ -35,7 +35,8 @@ export const FooterImpl: React.FC = () => {
   }, [])
 
   return (
-    <Giscus
+    <div>
+      <Giscus
         repo="lemonorangeapple/lemonorangeapple.github.io"
         repoId="R_kgDOKvAL3w"
         category="General"
@@ -46,7 +47,8 @@ export const FooterImpl: React.FC = () => {
         inputPosition="top"
         theme="preferred_color_scheme"
         loading="lazy"
-    />
+      />
+    </div>
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright 2024 {config.author}</div>
 
