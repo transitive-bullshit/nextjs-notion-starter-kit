@@ -45,7 +45,7 @@ export const FooterImpl: React.FC = () => {
           reactionsEnabled="1"
           emitMetadata="0"
           inputPosition="top"
-          theme={isDarkMode ? 'transparent_dark' : 'light'}
+          theme={isDarkMode ? 'dark' : 'light'}
           lang="zh-CN"
           loading="lazy"
         />
