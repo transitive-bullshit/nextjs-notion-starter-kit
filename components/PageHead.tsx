@@ -18,7 +18,7 @@ export const PageHead: React.FC<
   title = title ?? site?.name
   description = description ?? site?.description
 
-  const socialImageUrl = getSocialImageUrl(pageId) || image
+  const socialImageUrl = `https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f1e8-1f1f3.svg`
 
   return (
     <Head>
