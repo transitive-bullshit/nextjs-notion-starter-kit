@@ -3,20 +3,22 @@ import Head from 'next/head'
 
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
+import { getSocialImageUrl } from '@/lib/get-social-image-url'
 
 export const PageHead: React.FC<
   types.PageProps & {
     title?: string
     description?: string
+    image?: string
     url?: string
   }
-> = ({ site, title, description, url }) => {
+> = ({ site, title, description, pageId, image, url }) => {
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
   description = description ?? site?.description
 
-  const socialImageUrl = `https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f1e8-1f1f3.svg`
+  const socialImageUrl = getSocialImageUrl(pageId) || image
 
   return (
     <Head>
