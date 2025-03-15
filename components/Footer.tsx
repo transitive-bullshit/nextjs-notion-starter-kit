@@ -35,7 +35,7 @@ export const FooterImpl: React.FC = () => {
   }, [])
 
   return (
-    <>
+    <div>
       <div id="comment" className="mx-auto max-w-prose py-6">
         <Giscus
           repo="lemonorangeapple/lemonorangeapple.github.io"
@@ -50,7 +50,6 @@ export const FooterImpl: React.FC = () => {
           loading="lazy"
         />
       </div>
-    </>
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright 2024 {config.author}</div>
 
@@ -153,6 +152,7 @@ export const FooterImpl: React.FC = () => {
         )}
       </div>
     </footer>
+      </div>
   )
 }
 
