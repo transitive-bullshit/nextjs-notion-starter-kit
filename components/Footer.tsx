@@ -36,7 +36,6 @@ export const FooterImpl: React.FC = () => {
 
   return (
     <div>
-      <div id="comment" className="mx-auto max-w-prose py-6">
         <Giscus
           repo="lemonorangeapple/lemonorangeapple.github.io"
           repoId="R_kgDOKvAL3w"
@@ -46,10 +45,9 @@ export const FooterImpl: React.FC = () => {
           reactionsEnabled="1"
           emitMetadata="0"
           inputPosition="top"
-          theme="preferred_color_scheme"
+          theme={isDarkMode ? 'transparent_dark' : 'light'}
           loading="lazy"
         />
-      </div>
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright 2024 {config.author}</div>
 
