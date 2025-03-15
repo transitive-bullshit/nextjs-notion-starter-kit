@@ -21,7 +21,22 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   window.self.parent.document.getElementsByClassName('notion-page-content-inner')[0].appendChild(tmp);
   var range = window.self.parent.document.createRange();
   range.selectNode(window.self.parent.document.getElementsByClassName('_giscus')[0]);
-  var documentFragment = range.createContextualFragment('<div class="giscus" style="width: 100%;"></div><script src="https://giscus.app/client.js" data-repo="lemonorangeapple/lemonorangeapple.github.io" data-repo-id="R_kgDOKvAL3w" data-category="Announcements" data-category-id="DIC_kwDOKvAL384Ccnt0" data-mapping="pathname" data-strict="0"data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async></scr' + 'ipt>');
+  var documentFragment = range.createContextualFragment('<div class="giscus" style="width: 100%;"></div><script src="https://giscus.app/client.js"
+        data-repo="lemonorangeapple/lemonorangeapple.github.io"
+        data-repo-id="R_kgDOKvAL3w"
+        data-category="[在此输入分类名]"
+        data-category-id="[在此输入分类 ID]"
+        data-mapping="og:title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</scr' + 'ipt>');
   window.self.parent.document.getElementsByClassName('_giscus')[0].appendChild(documentFragment);
   window.self.parent.document.querySelector("figure").style.display = 'none';
 </script>`)
