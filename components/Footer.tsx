@@ -37,6 +37,7 @@ export const FooterImpl: React.FC = () => {
   return (
     <div>
         <Giscus
+          id="comments"
           repo="lemonorangeapple/lemonorangeapple.github.io"
           repoId="R_kgDOKvAL3w"
           category="General"
