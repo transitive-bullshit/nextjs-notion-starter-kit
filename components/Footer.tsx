@@ -37,7 +37,6 @@ export function FooterImpl() {
   return (
     <div>
         <Giscus
-          id="comments"
           repo="lemonorangeapple/lemonorangeapple.github.io"
           repoId="R_kgDOKvAL3w"
           category="General"
