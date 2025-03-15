@@ -35,21 +35,21 @@ export const FooterImpl: React.FC = () => {
   }, [])
 
   return (
-    {(
-      <Giscus
-        repo="lemonorangeapple/lemonorangeapple.github.io"
-        repoId="R_kgDOKvAL3w"
-        category="General"
-        categoryId="DIC_kwDOKvAL384Ccnt1"
-        mapping="og:title"
-        reactionsEnabled="1"
-        emitMetadata="0"
-        inputPosition="top"
-        theme="preferred_color_scheme"
-        loading="lazy"
-      />
-    )}
     <footer className={styles.footer}>
+      <div id="comment" className="mx-auto max-w-prose py-6">
+        <Giscus
+          repo="lemonorangeapple/lemonorangeapple.github.io"
+          repoId="R_kgDOKvAL3w"
+          category="General"
+          categoryId="DIC_kwDOKvAL384Ccnt1"
+          mapping="og:title"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          inputPosition="top"
+          theme="preferred_color_scheme"
+          loading="lazy"
+        />
+      </div>
       <div className={styles.copyright}>Copyright 2024 {config.author}</div>
 
       <div className={styles.settings}>
