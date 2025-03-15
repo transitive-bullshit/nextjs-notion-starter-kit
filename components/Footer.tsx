@@ -14,6 +14,7 @@ import * as config from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
+import Giscus from '@giscus/react';
 
 // TODO: merge the data and icons from PageSocial with the social links in Footer
 
@@ -34,6 +35,18 @@ export const FooterImpl: React.FC = () => {
   }, [])
 
   return (
+    <Giscus
+        repo="lemonorangeapple/lemonorangeapple.github.io"
+        repoId="R_kgDOKvAL3w"
+        category="General"
+        categoryId="DIC_kwDOKvAL384Ccnt1"
+        mapping="og:title"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="top"
+        theme="preferred_color_scheme"
+        loading="lazy"
+    />
     <footer className={styles.footer}>
       <div className={styles.copyright}>Copyright 2024 {config.author}</div>
 
