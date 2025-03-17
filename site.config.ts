@@ -21,6 +21,7 @@ export default siteConfig({
   instagram: '1ziat_bbbam',
   github: 'https://github.com/cheungzt',
   linkedin: 'linkedin.com/in/ivan-cheung-b7613b310',
+  xiaohongshu: 'https://www.xiaohongshu.com/user/profile/599fa7df6a6a697c002627bc',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
