@@ -18,6 +18,7 @@ export interface SiteConfig {
   zhihu?: string
   mastodon?: string
   instagram?: string
+  xiaohongshu?: string
 
   defaultPageIcon?: string | null
   defaultPageCover?: string | null
