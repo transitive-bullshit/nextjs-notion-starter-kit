@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-
-
+import React from 'react';
 
 interface FilterRowProps {
   searchValue: string;
@@ -9,88 +7,77 @@ interface FilterRowProps {
   setDepartment: (val: string) => void;
 }
 
-
-
 const FilterRow: React.FC<FilterRowProps> = ({
   searchValue,
   setSearchValue,
   department,
   setDepartment
 }) => {
-  // const [searchValue, setSearchValue] = useState('');
-  // const [department, setDepartment] = useState('All Departments');
-  const [showDropdown, setShowDropdown] = useState(false);
+  const departments = [
+    'Harvard',
+    'MIT',
+    'Stanford',
+    'Math',
+    'Computer Science',
+    'Astronomy',
+    'Eng',
+    'Science',
+    // Add extras to demonstrate scrolling
+    'Science',
+    'Science',
+    'Science',
+    'Science',
+    'Science',
+  ];
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-
-  const selectDepartment = (dept: string) => {
-    setDepartment(dept);
-    setShowDropdown(false);
-  };
-
-  const departments = [
-    'All Departments',
-    'MATH',
-    'COMPSCI',
-    'ASTRO',
-    'ENG',
-    'PHYSICS',
-    'CHEM',
-    'ECON',
-    'APPHY'
-  ];
-  
-
   return (
     <div style={styles.container}>
-      {/* Search bar with icon */}
+      {/* Search Bar on its own row */}
       <div style={styles.searchContainer}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="20"
-          height="20"
-          fill="gray"
-          style={styles.searchIcon}
-        >
-          <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.91.91l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
-        </svg>
+        <div style={styles.iconWrapper}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="currentColor"
+          >
+            <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.91.91l.27.28v.79l5 4.99 1.49-1.49-4.99-5zm-6 0a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" />
+          </svg>
+        </div>
         <input
           type="text"
-          placeholder="Search course materials..."
+          placeholder="Search Course Materials"
           value={searchValue}
           onChange={handleSearchChange}
           style={styles.searchInput}
         />
       </div>
 
-      {/* Department toggle */}
-      <div style={styles.departmentWrapper}>
-        <button style={styles.departmentButton} onClick={toggleDropdown}>
-          {department}
-          <span style={styles.arrow}>▼</span>
-        </button>
-
-        {/* Dropdown menu */}
-        {showDropdown && (
-          <div style={styles.dropdown}>
-            {departments.map((dept) => (
-              <button
-                key={dept}
-                style={styles.dropdownItem}
-                onClick={() => selectDepartment(dept)}
-              >
-                {dept}
-              </button>
-            ))}
-          </div>
-        )}
+      {/* Filter Buttons with horizontal scroll, 
+          pinned to the parent width */}
+      <div style={styles.filtersOuter}>
+        <div style={styles.filtersContainer}>
+          {departments.map((dept) => (
+            <button
+              key={dept}
+              onClick={() => setDepartment(department === dept ? "" : dept)}
+              style={{
+                ...styles.filterButton,
+                ...(department === dept ? styles.activeFilterButton : {}),
+              }}
+            >
+              {dept}
+            </button>
+          ))}
+        </div>
+        {/* Fades on each side */}
+        <div style={styles.fadeLeft} />
+        <div style={styles.fadeRight} />
       </div>
     </div>
   );
@@ -98,75 +85,114 @@ const FilterRow: React.FC<FilterRowProps> = ({
 
 export default FilterRow;
 
-// Inline styles with Full Width Support
+// Inline styles
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
-
     display: 'flex',
-    alignItems: 'center',
-    width: '100%', // Full width
-    borderBottom: '1px solid #ccc',
-    paddingBottom: '8px',
-    marginBottom: '1rem',
+    flexDirection: 'column',
+    gap: '1rem',
     fontFamily: "'DM Mono', monospace",
+    width: '100%',
   },
+
+  // Search bar
   searchContainer: {
     display: 'flex',
     alignItems: 'center',
-    position: 'relative',
-    flex: 1, // Ensures the search bar takes up the available space
+    backgroundColor: '#fff',
+    border: '1px solid #E5E1D3',
+    borderRadius: '8px', // pill shape
+    padding: '0.5rem 1rem',
+    width: '100%',
+    boxSizing: 'border-box',
   },
-  searchIcon: {
-    position: 'absolute',
-    left: '10px',
-  },
-  searchInput: {
-    width: '100%', // Makes the input take up full space
-    minWidth: '100px',
-    fontSize: '16px',
-    border: 'none',
-    outline: 'none',
-    fontFamily: "'DM Mono', monospace",
-    paddingLeft: '35px', // Leaves space for the icon
-  },
-  departmentWrapper: {
-    position: 'relative',
-    marginLeft: '16px',
-  },
-  departmentButton: {
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    fontSize: '16px',
+  iconWrapper: {
+    width: '24px',
+    height: '24px',
+    borderRadius: '50%',
+    backgroundColor: '#E5E1D3',
     display: 'flex',
     alignItems: 'center',
-    outline: 'none',
-    fontFamily: "'DM Mono', monospace",
+    justifyContent: 'center',
+    marginRight: '0.5rem',
   },
-  arrow: {
-    marginLeft: '2px',
-    fontSize: '12px',
-  },
-  dropdown: {
-    position: 'absolute',
-    top: '100%',
-    right: 0,
-    backgroundColor: '#fff',
-    boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
-    marginTop: '4px',
-    borderRadius: '4px',
-    overflow: 'hidden',
-    zIndex: 10,
-  },
-  dropdownItem: {
-    display: 'block',
-    width: '100%',
-    padding: '8px 12px',
-    textAlign: 'left',
-    background: 'none',
+  searchInput: {
+    flex: 1,
     border: 'none',
+    outline: 'none',
+    fontSize: '14px',
+    backgroundColor: 'transparent',
+  },
+
+  // Horizontal scroll row (with fade) pinned to parent width
+  filtersOuter: {
+    position: 'relative',
+    width: '100%',
+    overflow: 'hidden', // ensures we don’t exceed parent & fade edges are visible
+  
+  },
+  filtersContainer: {
+    display: 'flex',
+    flexWrap: 'nowrap',
+    gap: '8px',
+    overflowX: 'auto',
+    overflowY: 'hidden',
+    whiteSpace: 'nowrap',
+    scrollBehavior: 'smooth',
+    boxSizing: 'border-box',
+    padding: '4px 0',
+    WebkitOverflowScrolling: 'touch',
+
+    /* Hide scrollbar in WebKit-based browsers (Chrome, Safari) */
+    WebkitMaskImage: 'linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,1))',
+    maskImage: 'linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,1))',
+  
+    /* Hide scrollbar for Firefox */
+    scrollbarWidth: 'none',
+
+    /* Hide scrollbar for Edge & Internet Explorer */
+    msOverflowStyle: 'none',
+  },
+
+
+  // Buttons
+  filterButton: {
+    backgroundColor: '#F3F2ED',
+    color: '#374151',
+    border: 'none',
+    borderRadius: '8px',
+    padding: '0.5rem 1rem',
     cursor: 'pointer',
     fontSize: '14px',
-    fontFamily: "'DM Mono', monospace",
+    transition: 'background-color 0.2s, color 0.2s',
+    whiteSpace: 'nowrap',
+    
+    // fontFamily: 'UntitledSans'
+  },
+  activeFilterButton: {
+    backgroundColor: '#000',
+    color: '#fff',
+  },
+
+  // Left & right fade overlays
+  fadeLeft: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: '40px',
+    pointerEvents: 'none',
+    background: 'linear-gradient(to right, #F7F7F5, rgba(255,255,255,0))',
+  },
+
+  fadeRight: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    bottom: 0,
+    width: '40px',
+    pointerEvents: 'none',
+    background: 'linear-gradient(to left, #F7F7F5, rgba(255,255,255,0))',
   },
 };
+

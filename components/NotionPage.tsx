@@ -568,6 +568,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
       const links = [
         { href: '/', label: 'Coursetexts' },
         { href: '/about', label: 'About' },
+        { href: '/why', label: 'Why' },
+
       ]
 
       links.forEach((link) => {
@@ -651,19 +653,19 @@ export const NotionPage: React.FC<types.PageProps> = ({
         // Remove 'notion-title' class
         element.classList.add('notion-home-title')
       })
-      addContainerAtEndOfArticle(
-        'article',
-        'custom-footer-container',
-        `
-        <p>A free and open archive of Harvard & MIT course materials</p>
+      // addContainerAtEndOfArticle(
+      //   'article',
+      //   'custom-footer-container',
+      //   `
+      //   <p>A free and open archive of Harvard & MIT course materials</p>
 
-        <div class="footer-links">
-          <a href="https://hcb.hackclub.com/donations/start/coursetexts" target='_blank' class="footer-link">Donate</a>
-          <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
-          <a href="/terms-of-service" class="footer-link">Terms of Service</a>
-         </div>
-         `
-      )
+      //   <div class="footer-links">
+      //     <a href="https://hcb.hackclub.com/donations/start/coursetexts" target='_blank' class="footer-link">Donate</a>
+      //     <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
+      //     <a href="/terms-of-service" class="footer-link">Terms of Service</a>
+      //    </div>
+      //    `
+      // )
       removeNotionLinkWithText()
       //
       const customWrappers = document.querySelectorAll('.custom-wrapper-class, .custom-divider-wrapper')
@@ -982,7 +984,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={null}
-        footer={footer}
+        // footer={footer}
       />
 
 
@@ -1008,7 +1010,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         </div>
       )}
 
-      
+
+      <Footer/>
       {/* <GitHubShareButton /> */}
     </>
   )

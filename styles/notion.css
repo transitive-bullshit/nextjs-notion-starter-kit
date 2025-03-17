@@ -7,6 +7,23 @@
  * places to add some flare.
  */
 
+
+ @font-face {
+  font-family: 'Tobias';
+  src: url('/fonts/TobiasTRIAL-Light.woff') format('woff');
+  font-weight: lighter;
+  font-style: normal;
+  letter-spacing: -4%;
+}
+
+@font-face {
+  font-family: 'UntitledSans';
+  src: url('/fonts/UntitledSans-Regular.woff') format('woff');
+  font-weight: normal;
+
+  font-style: normal;
+}
+
 .notion {
   --notion-max-width: 48rem;
   --notion-header-height: 54px;
@@ -44,18 +61,23 @@
   width: 100% !important;
 }
 
+
+.notion-header bold{
+  font-family: 'Tobias';
+}
+
 .notion-header .notion-nav-header {
   max-width: 100%;
   margin: 0 auto;
   overflow-x: auto;
   padding: 0 2px;
-  border-bottom: 1px solid#E5E7EB;
-  font-family: 'DM Mono', monospace; /* Add this line */
+  border-bottom: 1px solid#AAAEB3;
+  /* font-family: 'DM Mono', monospace; Add this line */
+  font-family: 'UntitledSans', sans-serif;
+  color: #000000;
 }
 
-.notion-header {
-  font-family: "PT Serif", serif;
-}
+
 
 .notion-nav-header-rhs {
   gap: 0.5rem;
@@ -143,6 +165,14 @@
   padding: 0 !important;
 }
 
+.notion-h1 {
+  font-family: "Tobias";
+  font-weight: 200;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 200;
+  line-height: 1.15;
+}
 
 
 .notion-callout {
@@ -154,10 +184,10 @@
   border-radius: 3px;
   margin-top: 1.25rem;
   margin-bottom: 2rem;
-
   color: #4B5563;
   font-family: 'DM Mono', monospace;
 }
+
 
 .notion-hr {
   margin: 2em 0;
@@ -380,6 +410,7 @@
   background: hsla(0, 0%, 100%, 0.8);
   backdrop-filter: saturate(180%) blur(16px);
   position: relative;
+  background-color: #F5F5F5;
 }
 
 .dark-mode .notion-header {
@@ -402,6 +433,7 @@
 
 .notion-search .searchBar {
   box-shadow: var(--fg-color-0) 0px 1px 0px;
+  font-family: 'UntitledSans', sans-serif;
 }
 
 .notion-search .noResults {
@@ -686,24 +718,29 @@
 }
 
 .notion-callout {
-  background-color: #F9FAFB;
+  background-color: #000000;
   border:  solid 1px #E5E7EB;
   border-radius: 1rem;
+  color: #FFFFFF;
 }
+
+
 
 
 .notion-callout-text {
   margin-left: 0px;
+  padding: 12px;
 }
 
-.notion-callout-text a[href*='about'] {
-  color: rgb(37 99 235 / 1) !important;
-  border-bottom: 1px solid rgb(37 99 235 / 1);
-}
+
 
 .notion-callout-text a[href*='about'] {
-  color: rgb(37 99 235 / 1) !important;
-  border-bottom: 1px solid rgb(37 99 235 / 1);
+  border-radius: 3px;
+  padding: 10px;
+  border:  solid 1px #E5E7EB;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  z-index: 10;
 }
 
 [data-id='12419a13312a80cbbe34d48ae26d5a9d'] {
@@ -742,21 +779,30 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  font-family: 'UntitledSans', sans-serif;
 }
+
 .breadcrumbs .nav-container .nav-link {
-  font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.75rem;
   opacity: 0.8;
+  font-weight: lighter; 
+  font-family: 'UntitledSans', sans-serif;
+  font-size: 17px;
+  
 }
 .breadcrumbs .nav-container a[href='/'] {
-  font-weight: 600;
+  font-weight: 900;
   color: unset;
   opacity: 1;
+  font-family: 'Tobias';
+  margin-right: 1.5rem;
   /* font-family: "PT Serif", serif;
   font-size: x-large;
   font-weight: 500; */
 }
+
+
 
 .notion-text .notion-block {
   display: none;
@@ -843,6 +889,7 @@
 .notion-list-disc {
   padding: 0 15px;
 }
+
 
 .button-container {
   display: flex;
