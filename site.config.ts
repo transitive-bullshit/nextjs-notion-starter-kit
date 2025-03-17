@@ -17,7 +17,7 @@ export default siteConfig({
   description: 'Example Next.js Notion Starter Kit Site',
 
   // social usernames (optional)
-  Rednote: 'transitive_bs',
+  twitter: 'transitive_bs',
   github: 'https://github.com/cheungzt',
   linkedin: 'linkedin.com/in/ivan-cheung-b7613b310',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
