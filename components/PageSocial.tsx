@@ -25,7 +25,7 @@ const socialLinks: SocialLink[] = [
   },
   config.xiaohongshu && {
     name: 'xiaohongshu',
-    href: `https://xiaohongshu.com/${config.xiaohongshu}`,
+    href: `https://www.xiaohongshu.com/user/profile/${config.xiaohongshu}`,
     title: `xiaohongshu @${config.xiaohongshu}`,
   icon: (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
