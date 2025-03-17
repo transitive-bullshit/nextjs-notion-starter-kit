@@ -18,7 +18,7 @@ export default siteConfig({
 
   // social usernames (optional)
   //twitter: 'transitive_bs',  
-  instagram: 'your_instagram_username',
+  instagram: 'instagram.com/1ziat_bbbam',
   github: 'https://github.com/cheungzt',
   linkedin: 'linkedin.com/in/ivan-cheung-b7613b310',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
