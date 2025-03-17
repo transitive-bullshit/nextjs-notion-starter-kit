@@ -606,29 +606,29 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
 
 
-    //
-    function addContainerAtEndOfArticle(
-      articleSelector,
-      containerClassName,
-      content = ''
-    ) {
-      // Select the article element
-      const articleElement = document.querySelector(articleSelector)
+  
+    // function addContainerAtEndOfArticle(
+    //   articleSelector,
+    //   containerClassName,
+    //   content = ''
+    // ) {
+    //   // Select the article element
+    //   const articleElement = document.querySelector(articleSelector)
 
-      if (articleElement) {
-        // Create a new div container
-        const newContainer = document.createElement('div')
-        newContainer.className = containerClassName // Assign a custom class
-        newContainer.innerHTML = content // Set the inner content
+    //   if (articleElement) {
+    //     // Create a new div container
+    //     const newContainer = document.createElement('div')
+    //     newContainer.className = containerClassName // Assign a custom class
+    //     newContainer.innerHTML = content // Set the inner content
 
-        // Append the new container as the last child of the article
-        articleElement.appendChild(newContainer)
-      } else {
-        console.warn(
-          `Article element with selector "${articleSelector}" not found.`
-        )
-      }
-    }
+    //     // Append the new container as the last child of the article
+    //     articleElement.appendChild(newContainer)
+    //   } else {
+    //     console.warn(
+    //       `Article element with selector "${articleSelector}" not found.`
+    //     )
+    //   }
+    // }
 
     // Execute the function to wrap elements
     if (router.pathname === '/'  ) {
@@ -902,7 +902,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   //   [block, recordMap, isBlogPost]
   // )
 
-  const footer = React.useMemo(() => <Footer />, [])
+
 
   if (router.isFallback) {
     return <Loading />
@@ -984,7 +984,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={null}
-        // footer={footer}
       />
 
 
