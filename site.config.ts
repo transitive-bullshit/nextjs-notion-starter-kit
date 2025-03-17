@@ -20,7 +20,7 @@ export default siteConfig({
   //twitter: 'transitive_bs',  
   instagram: '1ziat_bbbam',
   github: 'https://github.com/cheungzt',
-  linkedin: 'linkedin.com/in/ivan-cheung-b7613b310',
+  linkedin: 'ivan-cheung-b7613b310',
   xiaohongshu: '599fa7df6a6a697c002627bc',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
