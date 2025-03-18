@@ -1,3 +1,1 @@
-import { Page404 } from '@/components/Page404'
-
-export default Page404
+export { Page404 as default } from '@/components/Page404'
