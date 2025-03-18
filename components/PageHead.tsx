@@ -10,12 +10,14 @@ export function PageHead({
   description,
   pageId,
   image,
-  url
+  url,
+  isBlogPost
 }: types.PageProps & {
   title?: string
   description?: string
   image?: string
   url?: string
+  isBlogPost?: boolean
 }) {
   const rssFeedUrl = `${config.host}/feed`
 
@@ -99,6 +101,41 @@ export function PageHead({
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />
       <title>{title}</title>
+
+      { /* Better SEO for the blog posts */ }
+      { isBlogPost && (
+        // See more here: https://schema.org/BlogPosting
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "@id": `${url}#BlogPosting`,
+            "mainEntityOfPage": url,
+            url,
+            "headline": title,
+            "name": title,
+            description,
+            "author": {
+              "@type": "Person",
+              // TODO: Google Rich Search results recommends adding the url:
+              // "url": "..."
+              "name": config.author,
+            },
+            "image": socialImageUrl,
+            // TODO: Figure out how to pull these from the Notion content
+            //"datePublished": "2024-11-08",
+            //"dateModified": "2024-11-08",
+            //"wordCount": "488",
+            //"keywords": [
+            //    "tags",
+            //    "should",
+            //    "be"
+            //    "here"
+            //],
+            //"articleBody": "..."
+          })}
+        </script>
+      )}
     </Head>
   )
 }
