@@ -67,14 +67,12 @@ export function PageHead({
         <>
           <meta name='description' content={description} />
           <meta property='og:description' content={description} />
-          <meta name='twitter:description' content={description} />
         </>
       )}
 
       {socialImageUrl ? (
         <>
           <meta name='twitter:card' content='summary_large_image' />
-          <meta name='twitter:image' content={socialImageUrl} />
           <meta property='og:image' content={socialImageUrl} />
         </>
       ) : (
@@ -85,7 +83,6 @@ export function PageHead({
         <>
           <link rel='canonical' href={url} />
           <meta property='og:url' content={url} />
-          <meta property='twitter:url' content={url} />
         </>
       )}
 
@@ -97,7 +94,6 @@ export function PageHead({
       />
 
       <meta property='og:title' content={title} />
-      <meta name='twitter:title' content={title} />
       <title>{title}</title>
     </Head>
   )
