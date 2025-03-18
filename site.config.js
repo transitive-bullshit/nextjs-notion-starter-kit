@@ -55,5 +55,5 @@ export default {
   //   '/devpool': 'fd3d3861654f4b7b9c2702ff7842ade2',
   // }
   // ```
-  pageUrlOverrides: null,
+  pageUrlOverrides: null
 }

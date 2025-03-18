@@ -103,6 +103,6 @@ export async function search(params: SearchParams): Promise<SearchResults> {
   }
   return notion.fetch<SearchResults>({
     endpoint: 'search',
-    body,
-  });
+    body
+  })
 }

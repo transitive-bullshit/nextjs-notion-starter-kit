@@ -1,7 +1,6 @@
 import useDarkModeImpl from '@fisch0920/use-dark-mode'
 import { useEffect, useState } from 'react'
 
-
 export function useDarkMode() {
   // Use null as initial state to prevent hydration mismatch
   const [mounted, setMounted] = useState(false)

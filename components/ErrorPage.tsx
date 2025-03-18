@@ -11,8 +11,21 @@ export function ErrorPage({ statusCode }: { statusCode: number }) {
       <div className={styles.container}>
         <main className={styles.main}>
           <h1>Error Loading Page</h1>
-          <p className="page-error-message">We&apos;re sorry for the inconvenience. Devs are doing something, right now!</p>
-          <p className="page-error-message">Please try reading the source materials on our <a href="https://ubiquitydao.notion.site/Ubiquity-DAO-ff1a3cae900941e49cc4d4458cc2867d" target="_blank" rel="noreferrer">Notion</a>!</p>
+          <p className='page-error-message'>
+            We&apos;re sorry for the inconvenience. Devs are doing something,
+            right now!
+          </p>
+          <p className='page-error-message'>
+            Please try reading the source materials on our{' '}
+            <a
+              href='https://ubiquitydao.notion.site/Ubiquity-DAO-ff1a3cae900941e49cc4d4458cc2867d'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Notion
+            </a>
+            !
+          </p>
           {statusCode && <p>Error code: {statusCode}</p>}
           <img src='/error.png' alt='Error' className={styles.errorImage} />
         </main>
