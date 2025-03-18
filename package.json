@@ -35,6 +35,8 @@
     "@keyvhq/redis": "^1.6.10",
     "@react-icons/all-files": "^4.1.0",
     "classnames": "^2.5.1",
+    "@vercel/og": "^0.0.19",
+    "date-fns": "^2.28.0",
     "expiry-map": "^2.0.0",
     "fathom-client": "^3.4.1",
     "ky": "^1.7.2",
@@ -52,6 +54,8 @@
     "react-dom": "^18.2.0",
     "react-notion-x": "^7.2.3",
     "react-tweet": "^3.2.1",
+    "react-icons": "^4.7.1",
+    "react-tweet-embed": "^2.0.0",
     "react-use": "^17.4.2",
     "rss": "^1.2.2"
   },

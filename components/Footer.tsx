@@ -1,13 +1,19 @@
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
-import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
-import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
-import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
-import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 import * as React from 'react'
+import /* Font Awesome */
+{ 
+  FaDiscord,
+  FaEnvelopeOpenText,
+  FaGithub,
+  FaLinkedin,
+  FaMastodon,
+  FaTwitter,
+  FaYoutube,
+  FaZhihu} from "react-icons/fa";
+import /* Ionicons 5 */
+{ 
+  IoMoonSharp,
+  IoSunnyOutline
+} from 'react-icons/io5'
 
 import * as config from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -54,6 +60,17 @@ export function FooterImpl() {
       </div>
 
       <div className={styles.social}>
+        {config.discord_invite && (
+          <a
+            className={styles.discord}
+            href={`${config.discord_invite}`}
+            title={`${config.discord} on Discord`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaDiscord />
+          </a>
+        )}
         {config.twitter && (
           <a
             className={styles.twitter}
