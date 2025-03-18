@@ -1,17 +1,44 @@
-name: Build
+name: CI
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches: [main, ubiquity]
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-  Build:
+  test:
+    name: Test Node.js ${{ matrix.node-version }}
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache: yarn
+    strategy:
+      fail-fast: true
+      matrix:
+        node-version:
+          - 18
+          - 22
 
-      - run: yarn install
-      - name: build
-        run: yarn build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        id: pnpm-install
+        with:
+          version: 9.12.2
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --strict-peer-dependencies
+
+      - name: Run test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
