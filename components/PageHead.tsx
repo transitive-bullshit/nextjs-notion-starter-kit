@@ -1,13 +1,12 @@
 import Head from 'next/head'
 
-import * as config from '@/lib/config'
 import type * as types from '@/lib/types'
+import * as config from '@/lib/config'
 
 export function PageHead({
   site,
   title,
   description,
-  pageId,
   image,
   url
 }: types.PageProps & {
