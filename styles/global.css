@@ -40,7 +40,7 @@ html {
 }
 
 .notion-page {
-  max-width: 48rem;
+  max-width: 80%;
   width: 100%;
   padding: 0 2rem 2rem 2rem;
 }

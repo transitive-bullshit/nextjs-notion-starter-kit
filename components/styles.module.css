@@ -114,6 +114,8 @@
 
 .footerCol div{
   margin-bottom: 0.5rem;
+  font-size: small;
+  font-weight: lighter;
 }
 
 .footerColTitle {
@@ -129,16 +131,17 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
   border-top: 1px solid #333;
   padding-top: 1rem;
   font-size: 0.9rem;
 }
 
 .footerBottomLeft {
+  display: flex;
   font-weight: bold;
   font-family: 'Tobias';
   font-size: large;
+  gap: 5px;
 }
 
 .footerLinks a {
@@ -204,6 +207,19 @@
 }
 
 /* END FOOTER STYLES */
+
+
+
+
+/* UPDATE NOTICE  */
+.UpdateParent {
+  background: #0f0f10;
+  color: white;
+}
+
+/* UPDATE NOTICE END */
+
+
 
 
 .copyright {

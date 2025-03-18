@@ -17,12 +17,25 @@
 }
 
 @font-face {
+  font-family: 'TobiasMed';
+  src: url('/fonts/TobiasTRIAL-Medium.woff') format('woff');
+  font-weight: medium;
+  font-style: normal;
+  letter-spacing: -4%;
+}
+
+@font-face {
   font-family: 'UntitledSans';
   src: url('/fonts/UntitledSans-Regular.woff') format('woff');
   font-weight: normal;
 
   font-style: normal;
 }
+
+.notion-page-content-inner{
+  margin-top: 3rem;
+}
+
 
 .notion {
   --notion-max-width: 48rem;
@@ -172,6 +185,10 @@
   font-size: 2.5rem;
   font-weight: 200;
   line-height: 1.15;
+  padding-top: 5rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  max-width: 700px;
 }
 
 
@@ -187,6 +204,7 @@
   color: #4B5563;
   font-family: 'DM Mono', monospace;
 }
+
 
 
 .notion-hr {
@@ -285,8 +303,6 @@
 
 .notion-link:focus,
 .notion-link:hover {
-  border-bottom-color: transparent;
-
   /* background-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%); */
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -492,28 +508,76 @@
   display: none !important;
 }
 
+.custom-wrapper-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 1rem;
+}
+
+.custom-wrapper-class::-webkit-scrollbar {
+  display: none;
+}
+
 .custom-wrapper-class {
-  /* border: 1px solid rgb(229, 231, 235); */
+  flex-direction:column ;
   padding: 9px 15px;
   margin: 4px 0;
   width: 100%;
-  border-radius: calc(0.5rem - 4px);
+  border-radius: 3px;
+  border: 1px solid #E5E1D3;
+  max-height: 300px; /* Fixed height */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent text from wrapping */
+  display: flex; /* Helps ensure inline elements scroll properly */
+  align-items: center; /* Keeps text aligned */
+  position: relative; /* Needed for absolute positioning inside */
 }
 
 .custom-wrapper-class .notion-text {
-  font-family: "PT Serif", serif;
-  color: #4B5563;
-  font-size: medium;
+  font-family: 'UntitledSansLight', sans-serif;
+  color: #374151;
+  font-size: small;
+  font-weight: 100;
 }
 /* also see how this looks with the regular inter font here? */
+
+.custom-wrapper-class .notion-page-title-text {
+  font-family: 'UntitledSans', sans-serif;
+  color: #374151;
+  font-size: medium;
+}
+
+
+.custom-wrapper-class .notion-gray {
+  font-family: 'UntitledSansLight', sans-serif;
+  color: #374151;
+  font-size: xx-small;
+  font-weight: 100;
+  /* position: absolute; */
+  bottom: 5px; /* Adjust as needed */
+  transform: translateX(-50%); /* Centers horizontally */
+  background-color: #F7F7F5;
+  width: 100%;
+  text-transform: uppercase;
+}
+
+.custom-wrapper-class .notion-gray div{
+border-bottom: solid 1px #67bdfc;
+}
+
+
+
 
 
 
 
 .why-page .notion-title {
-  font-family: Inter;
+  font-family: 'TobiasMed';
   font-weight: 500;
-  font-size: 2.4rem;
+  font-size: 3rem;
+  margin-bottom: 0rem;
+  max-width: 700px;
+  margin-top: 5rem;
 }
 
 .why-page a{
@@ -541,11 +605,12 @@
 }
 
 .why-page .notion-h2 {
-  font-family: 'DM Mono', monospace;
-  color: #6B7280;
+  font-family: 'Tobias';
+  color: #000000;
   font-weight: 500;
   text-transform: uppercase;
-  font-size: 0.95rem;
+  font-size: 1.5rem;
+  margin-top: 3rem;
 }
 
 .why-page .notion-column {
@@ -555,7 +620,7 @@
   justify-content: center; /* Centers items vertically within the parent */
   text-align: center; /* Ensures text is centered */
   height: 100%; /* Ensures full height of parent container */
-  font-family: Inter;
+  font-family: 'UntitledSans', sans-serif;
 }
 .why-page .notion-column .notion-h2 {
   font-family: Inter;
@@ -610,6 +675,17 @@
   color: #4B5563;
   font-size: 15px;
 }
+
+.course-page .notion-h2 .notion-h-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+  font-family: 'Tobias';
+  text-align: center;
+  color: #000000;
+}
+
 
 .course-page .notion-h2 {
   font-family: 'DM Mono', monospace;
@@ -694,6 +770,11 @@
   line-height: 1.75rem;
 }
 
+
+.notion-h-title{
+  margin-top: 300px;
+}
+
 .notion-page-title-text {
   /* border-bottom: 1px solid rgba(15, 118, 110, 0.9) !important; */
   white-space: normal;
@@ -726,7 +807,6 @@
 
 
 
-
 .notion-callout-text {
   margin-left: 0px;
   padding: 12px;
@@ -735,10 +815,9 @@
 
 
 .notion-callout-text a[href*='about'] {
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 10px;
   border:  solid 1px #E5E7EB;
-  border-radius: 1rem;
   color: #FFFFFF;
   z-index: 10;
 }
@@ -748,9 +827,8 @@
 }
 
 .notion-callout-text a[target*='_blank'] {
-  color: #111827 !important;
+  color: #d1d4da !important;
   font-weight: 500;
-  border-color: #111827 !important;
 }
 
 .dark-mode .notion-callout-text a[target*='_blank'] {
@@ -792,14 +870,10 @@
   
 }
 .breadcrumbs .nav-container a[href='/'] {
-  font-weight: 900;
+  font-weight: bold;
   color: unset;
   opacity: 1;
-  font-family: 'Tobias';
-  margin-right: 1.5rem;
-  /* font-family: "PT Serif", serif;
-  font-size: x-large;
-  font-weight: 500; */
+  font-family: 'TobiasMed';
 }
 
 
@@ -870,12 +944,14 @@
 
 
 /* about page styling */
-.notion-h2 .notion-h-title b {
+.about-page .notion-h2 .notion-h-title b {
   font-weight: 700;
-  font-size: 24px !important;
+  font-size: 3rem;
   margin-top: 2em;
   margin-bottom: 1em;
   line-height: 1.3333333;
+  font-family: 'Tobias';
+  text-align: center;
 }
 
 .lecture-wrapper {
@@ -909,8 +985,8 @@
 .see-all {
   padding: 0.7rem 1rem;
   background-color: #fff;
-  color: rgb(59 130 246/ 1);
-  border: 1px solid rgb(59 130 246/ 1);
+  color: black;
+  border: 1px solid black;
   border-radius: 0.25rem;
   font-size: 1rem;
   line-height: 1.2;
@@ -925,7 +1001,7 @@
 }
 
 .see-all:hover {
-  color: rgb(29 78 216/1);
+  background-color: #F5F5F5;
 }
 
 .dark-mode .see-all:hover {

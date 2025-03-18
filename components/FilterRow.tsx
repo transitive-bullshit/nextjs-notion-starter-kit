@@ -102,7 +102,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     backgroundColor: '#fff',
     border: '1px solid #E5E1D3',
     borderRadius: '8px', // pill shape
-    padding: '0.5rem 1rem',
+    padding: '1rem 1rem',
     width: '100%',
     boxSizing: 'border-box',
   },
