@@ -744,7 +744,7 @@ div.notion-page-content a.notion-page-link::after {
     #00000000,
     #00000080
   );
-  background-image: url(//ubq.fi/image/grid-1.png);
+  background-image: url(https://ubq.fi/image/grid-1.png);
 }
 
 #__next > div > div.notion-frame > header > div > div.breadcrumbs > * > img {
@@ -837,7 +837,7 @@ footer {
 .notion-page-cover-background {
   position: fixed;
   -webkit-mask-image: radial-gradient(#ffffff80, #ffffff00);
-  background-image: url(//ubq.fi/image/grid-1.png);
+  background-image: url(https://ubq.fi/image/grid-1.png);
   height: calc(100vh - calc(2 * var(--header)));
   width: 100vw;
   pointer-events: none;
