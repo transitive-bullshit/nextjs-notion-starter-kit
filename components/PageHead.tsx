@@ -45,7 +45,7 @@ export function PageHead({
       <meta
         name='theme-color'
         media='(prefers-color-scheme: dark)'
-        content='272727'
+        content='#181818'
         key='theme-color-dark'
       />
 
