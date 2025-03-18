@@ -1,0 +1,61 @@
+# Ubiquity DAO Hub Project Rules
+
+## Package Management
+- Always use `bun` to install packages for package.json
+- Prefer `pnpm` commands for other package management tasks as defined in package.json scripts
+
+## TypeScript Execution
+- Always use `bun` to run TypeScript files directly
+- Never compile TypeScript files to JavaScript before running them
+
+## Environment Variables
+- Assume that .env files are already filled out with correct values when running the program
+- Use .env.example as a reference for required environment variables
+
+## Code Style
+- Don't modify ESLint rules unless specifically requested
+- Follow the existing code style patterns in the project
+- Use the provided .prettierrc configuration for formatting
+
+## Dependency Management
+- Be cautious when updating dependencies to avoid breaking changes
+- Use package.json overrides when necessary to fix dependency issues
+- Document any dependency changes in the Memory Bank
+
+## Development Workflow
+- Use `pnpm dev` for local development
+- Use `pnpm build` for production builds
+- Use `pnpm deploy` for deployment to Vercel
+
+## Project Structure
+- Follow the existing Next.js project structure:
+  - `/components`: React components
+  - `/lib`: Utility functions and shared code
+  - `/pages`: Next.js pages and API routes
+  - `/public`: Static assets
+  - `/styles`: Global styles
+
+## Notion Integration
+- Maintain compatibility with the Notion API
+- Ensure proper configuration in site.config.ts for Notion integration
+- Be aware of the limitations of using Notion as a CMS
+
+## Memory Bank Maintenance
+- Keep Memory Bank documentation up-to-date with any significant changes
+- Focus particularly on activeContext.md and progress.md for tracking current state
+- Update .clinerules when discovering new project patterns or preferences
+
+## Critical Implementation Paths
+- The Notion integration is central to the site's functionality
+- The site.config.ts file contains critical configuration for the site
+- The Next.js pages structure determines the routing of the site
+
+## Known Challenges
+- Deprecation warning for @react-icons/all-files package
+- Potential compatibility issues with Notion API changes
+- Balancing performance with rich content rendering
+
+## Tool Usage Patterns
+- Use browser-based testing for UI verification
+- Use console logging for debugging
+- Use Vercel for deployment and hosting

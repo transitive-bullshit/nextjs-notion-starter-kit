@@ -70,6 +70,9 @@
   "overrides": {
     "cacheable-request": {
       "keyv": "npm:@keyvhq/core@~1.6.6"
+    },
+    "@react-icons/all-files": {
+      "main": "./index.js"
     }
   }
 }
