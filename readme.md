@@ -47,6 +47,7 @@ This project requires a recent version of Node.js (we recommend >= 16).
 3. `npm install`
 4. `npm run dev` to test locally
 5. `npm run deploy` to deploy to vercel 💪
+6. Double check your [Vercel project settings](#vercel-configuration)
 
 I tried to make configuration as easy as possible — All you really need to do to get started is edit `rootNotionPageId`.
 
@@ -57,6 +58,16 @@ Make sure your root Notion page is **public** and then copy the link to your cli
 In order to find your Notion workspace ID (optional), just load any of your site's pages into your browser and open up the developer console. There will be a global variable that you can access called `block` which is the Notion data for the current page. If you enter `block.space_id`, it will print out your page's workspace ID.
 
 I recommend setting up a collection on your home page that contains all of your articles / projects / content. There are no structural constraints on your Notion workspace, however, so feel free to add content as you normally would in Notion.
+
+### Vercel Configuration
+
+**Social media preview images won't work by default on Vercel**. You'll need to ensure that your site doesn't require auth.
+
+From your Vercel project settings, you'll want to **disable Vercel Authentication** from `Project -> Settings -> Deployment Protection`.
+
+![How to disable Vercel Deployment Protection setting](https://github.com/user-attachments/assets/a1eb5a1f-da7a-497e-b4f6-f7e851a6cd8a 'How to disable Vercel Deployment Protection setting which causes social media preview image endpoint to return 401 Unauthorized')
+
+💡 If you forget to do this your site will return `401 Unauthorized` responses when crawlers are trying to retrieve the images.
 
 ## URL Paths
 

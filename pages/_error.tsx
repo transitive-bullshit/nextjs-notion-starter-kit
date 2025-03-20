@@ -1,3 +1,1 @@
-import { ErrorPage } from '@/components/ErrorPage'
-
-export default ErrorPage
+export { ErrorPage as default } from '@/components/ErrorPage'

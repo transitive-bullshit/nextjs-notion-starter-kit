@@ -1,5 +1,5 @@
 import rawSiteConfig from '../site.config'
-import { SiteConfig } from './site-config'
+import { type SiteConfig } from './site-config'
 
 if (!rawSiteConfig) {
   throw new Error(`Config error: invalid site.config.ts`)

@@ -1,47 +1,43 @@
-import * as React from 'react'
-import { NextRequest } from 'next/server'
+import ky from 'ky'
+import { type NextApiRequest, type NextApiResponse } from 'next'
+import { ImageResponse } from 'next/og'
+import { type PageBlock } from 'notion-types'
+import {
+  getBlockIcon,
+  getBlockTitle,
+  getPageProperty,
+  isUrl,
+  parsePageId
+} from 'notion-utils'
 
-import { ImageResponse } from '@vercel/og'
+import * as libConfig from '@/lib/config'
+import interSemiBoldFont from '@/lib/fonts/inter-semibold'
+import { mapImageUrl } from '@/lib/map-image-url'
+import { notion } from '@/lib/notion-api'
+import { type NotionPageInfo, type PageError } from '@/lib/types'
 
-import { api, apiHost, rootNotionPageId } from '@/lib/config'
-import { NotionPageInfo } from '@/lib/types'
+export const runtime = 'edge'
 
-const interRegularFontP = fetch(
-  new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
-).then((res) => res.arrayBuffer())
-
-const interBoldFontP = fetch(
-  new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
-).then((res) => res.arrayBuffer())
-
-export const config = {
-  runtime: 'experimental-edge'
-}
-
-export default async function OGImage(req: NextRequest) {
+export default async function OGImage(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { searchParams } = new URL(req.url)
-  const pageId = searchParams.get('id') || rootNotionPageId
+  const pageId = parsePageId(
+    searchParams.get('id') || libConfig.rootNotionPageId
+  )
   if (!pageId) {
     return new Response('Invalid notion page id', { status: 400 })
   }
 
-  const pageInfoRes = await fetch(`${apiHost}${api.getNotionPageInfo}`, {
-    method: 'POST',
-    body: JSON.stringify({ pageId }),
-    headers: {
-      'content-type': 'application/json'
-    }
-  })
-  if (!pageInfoRes.ok) {
-    return new Response(pageInfoRes.statusText, { status: pageInfoRes.status })
+  const pageInfoOrError = await getNotionPageInfo({ pageId })
+  if (pageInfoOrError.type === 'error') {
+    return res.status(pageInfoOrError.error.statusCode).send({
+      error: pageInfoOrError.error.message
+    })
   }
-  const pageInfo: NotionPageInfo = await pageInfoRes.json()
+  const pageInfo = pageInfoOrError.data
   console.log(pageInfo)
-
-  const [interRegularFont, interBoldFont] = await Promise.all([
-    interRegularFontP,
-    interBoldFontP
-  ])
 
   return new ImageResponse(
     (
@@ -55,7 +51,6 @@ export default async function OGImage(req: NextRequest) {
           backgroundColor: '#1F2027',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: '"Inter", sans-serif',
           color: 'black'
         }}
       >
@@ -163,17 +158,150 @@ export default async function OGImage(req: NextRequest) {
       fonts: [
         {
           name: 'Inter',
-          data: interRegularFont,
-          style: 'normal',
-          weight: 400
-        },
-        {
-          name: 'Inter',
-          data: interBoldFont,
+          data: interSemiBoldFont,
           style: 'normal',
           weight: 700
         }
       ]
     }
   )
+}
+
+export async function getNotionPageInfo({
+  pageId
+}: {
+  pageId: string
+}): Promise<
+  | { type: 'success'; data: NotionPageInfo }
+  | { type: 'error'; error: PageError }
+> {
+  const recordMap = await notion.getPage(pageId)
+
+  const keys = Object.keys(recordMap?.block || {})
+  const block = recordMap?.block?.[keys[0]]?.value
+
+  if (!block) {
+    throw new Error('Invalid recordMap for page')
+  }
+
+  const blockSpaceId = block.space_id
+
+  if (
+    blockSpaceId &&
+    libConfig.rootNotionSpaceId &&
+    blockSpaceId !== libConfig.rootNotionSpaceId
+  ) {
+    return {
+      type: 'error',
+      error: {
+        statusCode: 400,
+        message: `Notion page "${pageId}" belongs to a different workspace.`
+      }
+    }
+  }
+
+  const isBlogPost =
+    block.type === 'page' && block.parent_table === 'collection'
+  const title = getBlockTitle(block, recordMap) || libConfig.name
+
+  const imageCoverPosition =
+    (block as PageBlock).format?.page_cover_position ??
+    libConfig.defaultPageCoverPosition
+  const imageObjectPosition = imageCoverPosition
+    ? `center ${(1 - imageCoverPosition) * 100}%`
+    : null
+
+  const imageBlockUrl = mapImageUrl(
+    getPageProperty<string>('Social Image', block, recordMap) ||
+      (block as PageBlock).format?.page_cover,
+    block
+  )
+  const imageFallbackUrl = mapImageUrl(libConfig.defaultPageCover, block)
+
+  const blockIcon = getBlockIcon(block, recordMap)
+  const authorImageBlockUrl = mapImageUrl(
+    blockIcon && isUrl(blockIcon) ? blockIcon : null,
+    block
+  )
+  const authorImageFallbackUrl = mapImageUrl(libConfig.defaultPageIcon, block)
+  const [authorImage, image] = await Promise.all([
+    getCompatibleImageUrl(authorImageBlockUrl, authorImageFallbackUrl),
+    getCompatibleImageUrl(imageBlockUrl, imageFallbackUrl)
+  ])
+
+  const author =
+    getPageProperty<string>('Author', block, recordMap) || libConfig.author
+
+  // const socialDescription =
+  //   getPageProperty<string>('Description', block, recordMap) ||
+  //   libConfig.description
+
+  // const lastUpdatedTime = getPageProperty<number>(
+  //   'Last Updated',
+  //   block,
+  //   recordMap
+  // )
+  const publishedTime = getPageProperty<number>('Published', block, recordMap)
+  const datePublished = publishedTime ? new Date(publishedTime) : undefined
+  // const dateUpdated = lastUpdatedTime
+  //   ? new Date(lastUpdatedTime)
+  //   : publishedTime
+  //   ? new Date(publishedTime)
+  //   : undefined
+  const date =
+    isBlogPost && datePublished
+      ? `${datePublished.toLocaleString('en-US', {
+          month: 'long'
+        })} ${datePublished.getFullYear()}`
+      : undefined
+  const detail = date || author || libConfig.domain
+
+  const pageInfo: NotionPageInfo = {
+    pageId,
+    title,
+    image,
+    imageObjectPosition,
+    author,
+    authorImage,
+    detail
+  }
+
+  return {
+    type: 'success',
+    data: pageInfo
+  }
+}
+
+async function isUrlReachable(url: string | null): Promise<boolean> {
+  if (!url) {
+    return false
+  }
+
+  try {
+    await ky.head(url)
+    return true
+  } catch {
+    return false
+  }
+}
+
+async function getCompatibleImageUrl(
+  url: string | null,
+  fallbackUrl: string | null
+): Promise<string | null> {
+  const image = (await isUrlReachable(url)) ? url : fallbackUrl
+
+  if (image) {
+    const imageUrl = new URL(image)
+
+    if (imageUrl.host === 'images.unsplash.com') {
+      if (!imageUrl.searchParams.has('w')) {
+        imageUrl.searchParams.set('w', '1200')
+        imageUrl.searchParams.set('fit', 'max')
+        return imageUrl.toString()
+      }
+    }
+  }
+
+  return image
 }
