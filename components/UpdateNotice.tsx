@@ -16,7 +16,7 @@ export const UpdateNotice: React.FC = () => {
   );
 };
 
-const styles = {
+const styles: { [key: string]: React.CSSProperties } = {
   UpdateParent: {
     backgroundColor: "black",
     color: "white",
@@ -28,11 +28,11 @@ const styles = {
   },
   heading: {
     fontSize: "2rem",
-    fontFamily: "UntitledSans, sans-serif",
+    fontFamily: "'UntitledSans', sans-serif",
     fontWeight: "bold",
   },
   cursive: {
-    fontFamily: "Tobias, cursive",
+    fontFamily: "'Tobias', cursive",
   },
   smallText: {
     fontSize: "0.5rem",
@@ -40,7 +40,7 @@ const styles = {
   },
   paragraph: {
     fontSize: "1rem",
-    fontFamily: "UntitledSans, sans-serif",
+    fontFamily: "'UntitledSans', sans-serif",
   },
   button: {
     border: "1px solid white",
@@ -48,7 +48,7 @@ const styles = {
     color: "white",
     padding: "10px 20px",
     fontSize: "1rem",
-    fontFamily: "UntitledSans, sans-serif",
+    fontFamily: "'UntitledSans', sans-serif",
     borderRadius: "5px",
     cursor: "pointer",
     marginTop: "10px",
