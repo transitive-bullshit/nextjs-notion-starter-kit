@@ -58,6 +58,22 @@ export function PageHead({
           <meta property='twitter:domain' content={site.domain} />
         </>
       )}
+       <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=G-D04SMQ9HV8`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-D04SMQ9HV8', {
+          page_path: window.location.pathname,
+        });
+        `
+        }}
+      />
 
       {config.twitter && (
         <meta name='twitter:creator' content={`@${config.twitter}`} />
