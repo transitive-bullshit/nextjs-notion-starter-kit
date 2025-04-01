@@ -514,6 +514,24 @@
   gap: 1rem;
 }
 
+@media screen and (max-width: 1300px) {
+  .custom-wrapper-container {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .custom-wrapper-container {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .custom-wrapper-container {
+    grid-template-columns: auto;
+  }
+}
+
 .custom-wrapper-class::-webkit-scrollbar {
   display: none;
 }
@@ -523,14 +541,18 @@
   padding: 9px 15px;
   margin: 4px 0;
   width: 100%;
-  border-radius: 3px;
+  border-radius: 7px;
   border: 1px solid #E5E1D3;
+  background-color: #faf9f9;
   max-height: 300px; /* Fixed height */
-  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-x: hidden; /* Enable horizontal scrolling */
   white-space: nowrap; /* Prevent text from wrapping */
-  display: flex; /* Helps ensure inline elements scroll properly */
   align-items: center; /* Keeps text aligned */
   position: relative; /* Needed for absolute positioning inside */
+}
+
+.custom-wrapper-class:hover {
+  background-color: white;
 }
 
 .custom-wrapper-class .notion-text {
@@ -538,8 +560,16 @@
   color: #374151;
   font-size: small;
   font-weight: 100;
+  max-height: 300px; /* Fixed height */
+  overflow-x: hidden; /* Enable horizontal scrolling */
+  flex-direction: column;
+  align-items: center; /* Keeps text aligned */
 }
 /* also see how this looks with the regular inter font here? */
+
+.custom-wrapper-class .notion-text::-webkit-scrollbar {
+  display: none;
+}
 
 .custom-wrapper-class .notion-page-title-text {
   font-family: 'UntitledSans', sans-serif;
@@ -553,10 +583,7 @@
   color: #374151;
   font-size: xx-small;
   font-weight: 100;
-  /* position: absolute; */
-  bottom: 5px; /* Adjust as needed */
-  transform: translateX(-50%); /* Centers horizontally */
-  background-color: #F7F7F5;
+  bottom: 5px;
   width: 100%;
   text-transform: uppercase;
 }
@@ -801,9 +828,14 @@ border-bottom: solid 1px #67bdfc;
 .notion-callout {
   background-color: #000000;
   border:  solid 1px #E5E7EB;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   color: #FFFFFF;
 }
+
+.notion-callout notion-link {
+  width: 100%;
+}
+
 
 
 
@@ -820,6 +852,7 @@ border-bottom: solid 1px #67bdfc;
   border:  solid 1px #E5E7EB;
   color: #FFFFFF;
   z-index: 10;
+  border-bottom: 4px solid white;
 }
 
 [data-id='12419a13312a80cbbe34d48ae26d5a9d'] {
@@ -1100,7 +1133,6 @@ summary .notion-h3 .notion-h-title {
 
 .fill-article-row {
   width: 100%;
-  max-width: var(--notion-max-width); /* Ensures it matches Notion's content width */
   margin: 0 auto; /* Centers it properly */
   display: flex;
   align-items: center;

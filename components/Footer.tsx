@@ -62,9 +62,9 @@ export const Footer: React.FC = () => {
             CourseTexts
           </div>
           <div className={styles.footerLinks}>
-            <a href="#">Donate</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
+            <a href="https://hcb.hackclub.com/donations/start/coursetexts">Donate</a>
+            <a href="/terms-of-service">Terms of Service</a>
+            <a href="/privacy-policy">Privacy Policy</a>
             <a href="#">NCA License</a>
           </div>
         </div>
