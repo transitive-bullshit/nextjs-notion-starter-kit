@@ -267,8 +267,9 @@
   padding: 1.5rem 2rem;
   border-radius: 10px;
   text-align: left;
-  width: 100%;
+  width: 90%;
   margin: auto;
+  margin-bottom: 2rem;
 }
 
 .UpdateParent h1 {
@@ -292,7 +293,7 @@
   background-color: transparent;
   color: white;
   padding: 5px 20px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-family: 'Tobias', serif;
   border-radius: 5px;
   cursor: pointer;
@@ -300,13 +301,14 @@
   width: 160px;
   height: 40px;
   white-space: nowrap;
-  margin-left: 2rem;
+  margin-left: 1.5rem;
   justify-self: center;
 }
 
 @media (max-width: 800px) {
   .UpdateParent {
     flex-direction: column;
+    width: 100%;
   }
 
   .UpdateParent button {
@@ -317,7 +319,7 @@
 /* END UPDATE NOTICE STYLES */
 
 
-/* UPDATE NOTICE END */
+/* UPDATE NOTICE BANNER END */
 
 
 

@@ -564,17 +564,25 @@
   overflow-x: hidden; /* Enable horizontal scrolling */
   flex-direction: column;
   align-items: center; /* Keeps text aligned */
+  /* border-top: 1px solid rgb(203, 203, 203); */
 }
-/* also see how this looks with the regular inter font here? */
+.custom-wrapper-class *:not(:first-child) {
+  border-top: 1px solid rgb(203, 203, 203);
+
+}
+
 
 .custom-wrapper-class .notion-text::-webkit-scrollbar {
   display: none;
 }
 
 .custom-wrapper-class .notion-page-title-text {
-  font-family: 'UntitledSans', sans-serif;
-  color: #374151;
+  font-family: 'Tobias', serif;
+  color: #111213;
   font-size: medium;
+  font-weight: bolder;
+  border-top: none;
+  
 }
 
 
@@ -588,12 +596,8 @@
   bottom: 5px;
   width: 100%;
   text-transform: uppercase;
+  
 }
-
-.custom-wrapper-class .notion-gray div{
-border-bottom: solid 1px #67bdfc;
-}
-
 
 
 
