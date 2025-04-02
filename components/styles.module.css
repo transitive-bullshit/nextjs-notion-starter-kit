@@ -167,7 +167,7 @@
   }
 
   .footerContainer {
-    padding: 3rem;
+    padding: 2rem 3rem;
   }
 }
 
@@ -311,9 +311,13 @@
     width: 100%;
   }
 
+  .UpdateParent h1 {
+    line-height: 130%;
+    font-size: 1rem;
+  }
+
   .UpdateParent button {
     margin-left: 0;
-    align-self: flex-end; 
   }
 }
 /* END UPDATE NOTICE STYLES */

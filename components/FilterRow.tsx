@@ -109,12 +109,13 @@ const styles: { [key: string]: React.CSSProperties } = {
   iconWrapper: {
     width: '24px',
     height: '24px',
-    borderRadius: '50%',
+    borderRadius: '100%',
     backgroundColor: '#E5E1D3',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: '0.5rem',
+    padding: '0.2rem'
   },
   searchInput: {
     flex: 1,

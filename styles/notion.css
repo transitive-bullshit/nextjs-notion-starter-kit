@@ -631,6 +631,15 @@
   font-size: 0.95rem;
 }
 
+
+@media (max-width: 800px) {
+  .why-page .notion-h1 {
+    font-family: 'DM Mono', monospace;
+    color: #000000;
+    font-weight: 400;
+  }
+}
+
 .why-page .notion-h1 {
   font-family: 'DM Mono', monospace;
   color: #000000;
@@ -641,7 +650,6 @@
   font-family: 'Tobias';
   color: #000000;
   font-weight: 500;
-  text-transform: uppercase;
   font-size: 1.5rem;
   margin-top: 3rem;
 }
@@ -1143,4 +1151,34 @@ summary .notion-h3 .notion-h-title {
   display: flex;
   align-items: center;
   padding: 8px 0;
+}
+
+
+
+@media (max-width: 600px) {
+  .notion-h1 {
+    font-size: 2rem;
+  }
+
+  .about-page .notion-h2 .notion-h-title b {
+    font-size: 2rem;
+  }
+
+  .why-page .notion-title {
+    font-size: 2rem;
+  }
+
+  .breadcrumbs .nav-container .nav-link {
+
+    font-size: 0.75rem;
+  }
+
+.breadcrumb.button.notion-search-button{
+    font-size: 0.75rem;
+
+  }
+
+  .breadcrumbs .nav-container {
+    gap: 15px;
+  }
 }
