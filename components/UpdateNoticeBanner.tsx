@@ -6,7 +6,7 @@ export const UpdateNoticeBanner: React.FC = () => {
     <div className={styles.updateNoticeBanner}>
       <div>
         <h1>
-          <span className={styles.cursive}>🌱 We're always updating Coursetexts.</span>
+          <span className={styles.cursive}>🌱 We are always updating Coursetexts.</span>
         </h1>
         <p>
           These notes are drafts and meant to be more up-to-date than they are polished. If you spot a typo, please let us know at coursetexts@mit.edu!
