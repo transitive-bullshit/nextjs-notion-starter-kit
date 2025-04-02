@@ -33,7 +33,7 @@
 }
 
 .notion-page-content-inner{
-  margin-top: 3rem;
+  margin-top: 3.3rem;
 }
 
 
@@ -541,7 +541,7 @@
   padding: 9px 15px;
   margin: 4px 0;
   width: 100%;
-  border-radius: 7px;
+  border-radius: 5px;
   border: 1px solid #E5E1D3;
   background-color: #faf9f9;
   max-height: 300px; /* Fixed height */
@@ -579,10 +579,12 @@
 
 
 .custom-wrapper-class .notion-gray {
-  font-family: 'UntitledSansLight', sans-serif;
+  /* font-family: 'UntitledSansLight', sans-serif; */
+  font-family: 'DM Mono', monospace;
+
   color: #374151;
   font-size: xx-small;
-  font-weight: 100;
+  font-weight: 'medium';
   bottom: 5px;
   width: 100%;
   text-transform: uppercase;

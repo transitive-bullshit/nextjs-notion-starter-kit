@@ -258,11 +258,64 @@
 
 
 
-/* UPDATE NOTICE  */
+/* UPDATE NOTICE STYLES */
 .UpdateParent {
-  background: #0f0f10;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
   color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  text-align: left;
+  width: 100%;
+  margin: auto;
 }
+
+.UpdateParent h1 {
+  font-size: 1.5rem;
+  font-family: 'UntitledSans', sans-serif;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.UpdateParent .cursive {
+  font-family: 'Tobias', serif;
+}
+
+.UpdateParent p {
+  font-size: 0.7rem;
+  font-family: 'UntitledSans', sans-serif;
+}
+
+.UpdateParent button {
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  padding: 5px 20px;
+  font-size: 1rem;
+  font-family: 'Tobias', serif;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 160px;
+  height: 40px;
+  white-space: nowrap;
+  margin-left: 2rem;
+  justify-self: center;
+}
+
+@media (max-width: 800px) {
+  .UpdateParent {
+    flex-direction: column;
+  }
+
+  .UpdateParent button {
+    margin-left: 0;
+    align-self: flex-end; 
+  }
+}
+/* END UPDATE NOTICE STYLES */
+
 
 /* UPDATE NOTICE END */
 
@@ -364,6 +417,13 @@
     font-size: 1.5rem;
   }
 }
+
+
+
+
+
+
+
 
 .pageActions {
   display: flex;
