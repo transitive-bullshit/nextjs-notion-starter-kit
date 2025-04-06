@@ -31,6 +31,7 @@ import styles from './styles.module.css'
 import ContentTable from './ContentTable'
 import { createRoot, Root} from 'react-dom/client'  // React 18+
 import FilterRow from './FilterRow'
+import { UpdateNoticeBanner } from './UpdateNoticeBanner'
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -232,6 +233,28 @@ function addReactComponentBeforeTitle(reactNode: React.ReactNode) {
 }
 
 
+// Helper function to insert a React component after the Notion callout:
+function addReactComponentAfterHeader(reactNode: React.ReactNode) {
+  // Select the first notion-callout div
+  const notionCallout = document.querySelector('.notion-header')
+
+  if (notionCallout) {
+    // Create a new container for our React component
+    const newContainer = document.createElement('div')
+    newContainer.className = 'fill-article-row'
+
+    // Insert the container right after the callout
+    notionCallout.insertAdjacentElement('afterend', newContainer) // also try beforebegin
+
+    // Render our React component into that container
+    const root = createRoot(newContainer)
+    root.render(reactNode)
+  } else {
+    console.warn(`No .notion-callout element found on the page.`)
+  }
+}
+
+
 
 export const NotionPage: React.FC<types.PageProps> = ({
   site,
@@ -364,6 +387,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
       </a>
       )
     }
+
+
+    addReactComponentAfterHeader(
+      <UpdateNoticeBanner/>
+    )
 
   }, [router])
 

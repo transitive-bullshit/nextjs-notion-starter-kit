@@ -262,12 +262,12 @@
 .UpdateParent {
   display: flex;
   flex-direction: row;
-  background-color: black;
+  background-color: rgb(231, 231, 231);
   color: white;
-  padding: 1.5rem 2rem;
+  height: 1px;
   border-radius: 10px;
   text-align: left;
-  width: 90%;
+  width: 100%;
   margin: auto;
   margin-bottom: 2rem;
 }
@@ -323,9 +323,34 @@
 /* END UPDATE NOTICE STYLES */
 
 
-/* UPDATE NOTICE BANNER END */
 
 
+
+.UpdateNoticeBanner {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  background-color: #17221c;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  /* justify-content: space-between; */
+  gap: 1rem;
+}
+
+.UpdateNoticeBanner button {
+  outline: none;
+  color: white;
+  border: 0px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.UpdateNoticeBanner .textContent {
+  flex: 1;
+  text-align: center;
+}
 
 
 .copyright {
