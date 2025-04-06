@@ -283,6 +283,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   
       // Create the React root
       filterRootRef.current = createRoot(newContainer)
+
     }, [])
 
 
