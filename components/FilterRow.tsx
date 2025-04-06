@@ -4,31 +4,32 @@ import { UpdateNotice } from './UpdateNotice';
 interface FilterRowProps {
   searchValue: string;
   setSearchValue: (val: string) => void;
-  department: string;
-  setDepartment: (val: string) => void;
+  departments: string[];
+  setDepartments: (val: string[]) => void;
 }
+
 
 const FilterRow: React.FC<FilterRowProps> = ({
   searchValue,
   setSearchValue,
-  department,
-  setDepartment
+  departments,
+  setDepartments
 }) => {
-  const departments = [
+  const AllDepartments = [
     'Harvard',
     'MIT',
     'Stanford',
     'Math',
-    'Computer Science',
-    'Astronomy',
+    'CompSci',
+    'Astro',
     'Eng',
     'Science',
     // Add extras to demonstrate scrolling
-    'Science',
-    'Science',
-    'Science',
-    'Science',
-    'Science',
+    'Chem',
+    'Sociol',
+    'Econ',
+    'Phil',
+    'HAA',
   ];
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,17 +58,25 @@ const FilterRow: React.FC<FilterRowProps> = ({
           pinned to the parent width */}
       <div style={styles.filtersOuter}>
         <div style={styles.filtersContainer}>
-          {departments.map((dept) => (
+          {AllDepartments.map((dept) => (
             <button
               key={dept}
-              onClick={() => setDepartment(department === dept ? "" : dept)}
+              onClick={() => {
+                const newDepartments = departments.includes(dept)
+                  ? departments.filter(d => d !== dept) // remove if already selected
+                  : [...departments, dept]; // add if not selected
+                setDepartments(newDepartments);
+              }}
               style={{
                 ...styles.filterButton,
-                ...(department === dept ? styles.activeFilterButton : {}),
+                ...(departments.includes(dept) ? styles.activeFilterButton : {}),
               }}
             >
               {dept}
             </button>
+
+
+
           ))}
         </div>
         {/* Fades on each side */}

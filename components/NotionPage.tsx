@@ -246,7 +246,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // Lift the search and department states up here
   const [searchValue, setSearchValue] = React.useState('')
-  const [department, setDepartment] = React.useState('All Departments')
+  const [departments, setDepartments] = React.useState<string[]>([])
+
   
 
   
@@ -292,12 +293,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
           <FilterRow
             searchValue={searchValue}
             setSearchValue={setSearchValue}
-            department={department}
-            setDepartment={setDepartment}
+            departments={departments}
+            setDepartments={setDepartments}
           />
+
         )
     }
-    }, [searchValue, department])
+    }, [searchValue, departments])
 
   
 
@@ -367,20 +369,25 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
     // 2) Filter .custom-wrapper-class each time searchValue or department changes
     React.useEffect(() => {
-      if (pageClass == "notion-home") {
-        // Grab all custom-wrapper-class blocks
+      if (pageClass === "notion-home") {
         const customWrappers = document.querySelectorAll('.custom-wrapper-class');
+    
         customWrappers.forEach((wrapper) => {
           const textContent = wrapper.textContent.toLowerCase();
           const matchesSearch = textContent.includes(searchValue.toLowerCase());
-
-          const subjectContent = wrapper.querySelector('a.notion-link').textContent.toLowerCase();
-          let matchesDepartment = true
-          if (department !=  'All Departments') {
-            matchesDepartment = subjectContent.includes(department.toLowerCase());
+    
+          const subjectContent = wrapper.querySelector('a.notion-link')?.textContent?.toLowerCase() || '';
+          const schoolContent = wrapper.querySelector('span.notion-gray')?.textContent?.toLowerCase() || '';
+    
+          // Require ALL selected departments to be present in subject OR school content
+          let matchesDepartment = true;
+          if (departments.length > 0) {
+            matchesDepartment = departments.every((dept) =>
+              subjectContent.includes(dept.toLowerCase()) ||
+              schoolContent.includes(dept.toLowerCase())
+            );
           }
     
-          // Display the wrapper if it matches both the search and department criteria
           if (matchesSearch && matchesDepartment) {
             (wrapper as HTMLElement).style.display = 'block';
           } else {
@@ -388,7 +395,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
           }
         });
       }
-    }, [searchValue, department]);
+    }, [searchValue, departments]);
+    
+
+
 
   function wrapElementsBetweenBlanks() {
     // Select all .notion-blank div elements
