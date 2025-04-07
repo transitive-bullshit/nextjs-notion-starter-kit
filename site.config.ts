@@ -60,8 +60,8 @@ export default siteConfig({
        pageId: 'About-me-1b675f78cd20812c9999e72e36d6c15b'
      },
      {
-       title: 'CN/EN',
-       pageId: 'ZTSpace-Chinese-1ce75f78cd208070a1e1e086daac4211'
+       title: 'Contact',
+       pageId: 'Contact-1b675f78cd2081cbb7c7f0ec13339a5f'
      }
    ]
 })
