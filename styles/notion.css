@@ -377,6 +377,24 @@
   }
 }
 
+/* 修改黑夜模式下 notion-code 的背景颜色 */
+.dark-mode .notion-code {
+  background-color: #1B1B1B !important;
+  border-color: rgba(55, 65, 81, 1);
+}
+
+/* 修改黑夜模式下 notion 代码块内文字颜色，可根据实际情况调整对比度 */
+.dark-mode .notion code {
+  color: rgba(229, 231, 235, 1);
+}
+
+/* 修改黑夜模式下 notion 内联代码块的背景颜色 */
+.dark-mode .notion .notion-inline-code {
+  background: #1B1B1B !important;
+  color: #ff4081;
+  padding: 0.2em 0.4em !important;
+}
+
 .notion-bookmark:hover {
   border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
   border-image-slice: 1;
