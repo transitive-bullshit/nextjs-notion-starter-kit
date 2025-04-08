@@ -7,11 +7,29 @@
   padding: 1.5em !important;
 }
 
-.dark-mode .notion-code {
-/*   background-color: rgba(17, 24, 39, 1); */
+/* .dark-mode .notion-code {
   background-color: #1B1B1B;
   border-color: rgba(55, 65, 81, 1);
+} */
+
+/* 修改黑夜模式下代码块的背景颜色 */
+.dark-mode code[class*='language-'],
+.dark-mode pre[class*='language-'] {
+  background-color: #1B1B1B !important;
+  color: rgba(249, 250, 251, 1);
 }
+
+/* 修改黑夜模式下 token 的颜色，可根据实际情况调整对比度 */
+.dark-mode .token.cdata,
+.dark-mode .token.doctype,
+.dark-mode .token.prolog {
+  color: rgba(209, 213, 219, 1);
+}
+
+/* .dark-mode .token.punctuation {
+  color: rgba(209, 213, 219, 1);
+}
+ */
 .notion code {
   color: rgba(31, 41, 55, 1);
   border: 0 none !important;
