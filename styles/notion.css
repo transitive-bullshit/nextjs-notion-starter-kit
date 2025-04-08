@@ -344,7 +344,7 @@
   padding: 0;
   margin: 0;
   border-radius: 0;
-  background: #1B1B1B !important;
+  background: none !important;
 }
 
 /* if you don't want rounded page icon images, remove this */
@@ -364,7 +364,6 @@
 
 .dark-mode .notion-header {
   background: transparent;
-/*   background:#1B1B1B; */
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   backdrop-filter: saturate(180%) blur(20px);
 }
@@ -372,27 +371,8 @@
 /* Workaround for Firefox not supporting backdrop-filter yet */
 @-moz-document url-prefix() {
   .dark-mode .notion-header {
-    background:#1B1B1B;
-/*     background: hsla(203, 8%, 20%, 0.8); */
+    background: hsla(203, 8%, 20%, 0.8);
   }
-}
-
-/* 修改黑夜模式下 notion-code 的背景颜色 */
-.dark-mode .notion-code {
-  background-color: #1B1B1B !important;
-  border-color: rgba(55, 65, 81, 1);
-}
-
-/* 修改黑夜模式下 notion 代码块内文字颜色，可根据实际情况调整对比度 */
-.dark-mode .notion code {
-  color: rgba(229, 231, 235, 1);
-}
-
-/* 修改黑夜模式下 notion 内联代码块的背景颜色 */
-.dark-mode .notion .notion-inline-code {
-  background: #1B1B1B !important;
-  color: #ff4081;
-  padding: 0.2em 0.4em !important;
 }
 
 .notion-bookmark:hover {
