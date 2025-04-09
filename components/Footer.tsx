@@ -29,26 +29,43 @@ export const Footer: React.FC = () => {
           <div className={styles.footerRow}>
             <div className={styles.footerCol}>
               <div className={styles.footerColTitle}>Math</div>
-              <div>Mathematical Biology-Evolutionary</div>
-              <div>Dynamics</div>
+              <a href='/mathematical-biology-evolutionary-dynamics-math-242-dff30cb6404848a4bf2bf4d0ba385c46'>Mathematical Biology-Evolutionary Dynamics</a>
+              <a href='/automorphic-forms-and-arithmetic-statistics-math-288x-12d19a13312a8066bbd8dc21cfee3969'>Automorphic Forms and Arithmetic Statistics</a>
+              <a href='/vector-calculus-and-linear-algebra-ii-math-22b-12d19a13312a8096ad91cf37d6973355'>Vector Calculus and Linear Algebra II</a>
+              <a href='/differential-geometry-math230a-12d19a13312a8028b457f080d389cd06'>Differential Geometry</a>
+              <a href='/mathematics-and-the-world-math-157-12b19a13312a807ea697ffc87aab9f0d'>Mathematics and the World</a>
+              <a href='/algebraic-geometry-math137-9991b187ee4d4e66a900e4462dbd59c4'>Algebraic Geometry</a>
+              <a href='/commutative-algebra-math-221-1b519a13312a80acbc85d893f56e21e3'>Commutative Algebra</a>
+              <a href='/linear-algebraic-groups-and-their-representations-math-222-1ba19a13312a80a397a5d76fd4bd7098'>Linear Algebraic Groups and Their Representations </a>
             </div>
 
             <div className={styles.footerCol}>
-              <div className={styles.footerColTitle}>Science</div>
-              <div>Mathematical Biology-Evolutionary</div>
-              <div>Dynamics</div>
+              <div className={styles.footerColTitle}>Physics</div>
+              <a href='/advanced-electromagnetismphysics-232-d82e8352f9b24e738aa57720d06e8995'>Advanced Electromagnetism</a>
+              <a href='/modern-atomic-and-optical-physics-iphysics285a-4aeba2df8c1241ae9c7703c3d1d4ab63'>Modern Atomic and Optical Physics I</a>
+              <a href='/frontiers-in-biophysicschem163-153883e7e7094a2e8473b7c626b8aa58'>Frontiers in Biophysics </a>
+              <a href='/introduction-to-string-theory-physics287a-c19f266ff37a4ef38689a617fd29efa0'>Introduction to String Theory</a>
+              <a href='/advanced-quantum-mechanics-i-physics251a-81a8537fbb434c2e87419b3ca5e142ea'>Advanced Quantum Mechanics I</a>
+
             </div>
 
             <div className={styles.footerCol}>
-              <div className={styles.footerColTitle}>Math</div>
-              <div>Mathematical Biology-Evolutionary</div>
-              <div>Dynamics</div>
+             <div className={styles.footerColTitle}>Philosophy</div>
+             <a href='/intuitionphil248r-1c419a13312a80838259c63f7b7b5fd7'>Intuition</a>
+             <a href='/equality-phil248r-1c719a13312a8032816dc8ac014b7e8d'>Equality</a>
+             <a href='/truth-phil248-1c719a13312a8070bba8e0b4116e06f4'>Truth</a>
+             <a href='/objectivity-and-subjectivity-phil-273o-1c919a13312a809ba548e1e6771d9782'>Objectivity and Subjectivity</a>
+             <a href='/special-topics-in-post-kantian-european-philosophyphil239-1c919a13312a8046aaacc61e96027244'>Special Topics in Post-Kantian European Philosophy </a>
             </div>
 
             <div className={styles.footerCol}>
-              <div className={styles.footerColTitle}>English</div>
-              <div>Mathematical Biology-Evolutionary</div>
-              <div>Dynamics</div>
+              <div className={styles.footerColTitle}>Econ</div>
+              <a href='/asset-pricing-econ-2723-12d19a13312a802eb692ea5ab429e8ce'>Asset Pricing</a>
+              <a href='/personal-finance-econ-70-12d19a13312a8082b5a6df41a0a1b7aa'>Personal Finance</a>
+              <a href='/economic-theory-econ-2010c-8abae2232e2445dd91c1c69c8d377ef0'>Economic Theory </a>
+              <a href='/history-and-human-capital-econ2330-1b919a13312a8000a884f0ea39fab756'>History and Human Capital</a>
+
+
             </div>
           </div>
         </div>

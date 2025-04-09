@@ -605,17 +605,19 @@
 
 
 
-.why-page .notion-title {
-  font-family: 'TobiasMed';
-  font-weight: 500;
+.why-page .notion-title{
+  font-family: 'Tobias';
+  font-weight: bolder;
   font-size: 3rem;
   margin-bottom: 0rem;
   max-width: 700px;
   margin-top: 5rem;
+  line-height: 1.1111111;
 }
 
 .why-page a{
   color: #000000;
+  font-size: 0.95rem;
 }
 
 .why-page .notion-text {
@@ -650,9 +652,10 @@
 .why-page .notion-h2 {
   font-family: 'Tobias';
   color: #000000;
-  font-weight: 500;
-  font-size: 1.5rem;
+  font-weight: bolder;
+  font-size: 1.6rem;
   margin-top: 3rem;
+  margin-bottom: 0.5rem;
 }
 
 .why-page .notion-column {
@@ -993,15 +996,16 @@
 
 
 /* about page styling */
-.about-page .notion-h2 .notion-h-title b {
-  font-weight: 700;
-  font-size: 3rem;
+
+.about-page .notion-h2 .notion-h-title b{
+  font-weight: 600;
+  font-size: 2.5rem;
   margin-top: 2em;
   margin-bottom: 1em;
-  line-height: 1.3333333;
   font-family: 'Tobias';
   text-align: center;
 }
+
 
 .lecture-wrapper {
   width: 100%;
@@ -1021,6 +1025,15 @@
   gap: 2rem;
   justify-content: center;
   padding: 0rem 0rem 1.25rem 0rem;
+  background-color: #F5F5F5;
+}
+
+.button-container button {
+  background-color: #faf9f9bc;
+}
+
+.button-container button:hover{
+  background-color: white;
 }
 
 .dark-mode .button-container {
@@ -1157,6 +1170,11 @@ summary .notion-h3 .notion-h-title {
 
 
 @media (max-width: 600px) {
+
+  .button-container {
+    gap: 1rem;
+  } 
+
   .notion-h1 {
     font-size: 2rem;
   }
@@ -1167,6 +1185,7 @@ summary .notion-h3 .notion-h-title {
 
   .why-page .notion-title {
     font-size: 2rem;
+    margin-top: 3rem;
   }
 
   .breadcrumbs .nav-container .nav-link {

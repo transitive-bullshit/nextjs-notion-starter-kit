@@ -23,8 +23,7 @@ const FilterRow: React.FC<FilterRowProps> = ({
     'CompSci',
     'Astro',
     'Eng',
-    'Science',
-    // Add extras to demonstrate scrolling
+    'Physics',
     'Chem',
     'Sociol',
     'Econ',

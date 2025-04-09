@@ -108,8 +108,21 @@
   min-width: 180px;
 }
 
-.footerCol {
-  margin-bottom: 1rem;
+
+
+.footerCol a {
+  color: #ffffff;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-size: small;
+  font-weight: lighter;  
+  display: flex;
+  width: 100%;
+  padding-right: 10px;
+}
+
+.footerCol a:hover {
+  text-decoration: underline;
 }
 
 .footerCol div{
@@ -119,7 +132,8 @@
 }
 
 .footerColTitle {
-  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
   font-size: 1rem;
   color: #D4CBAD;
 }
@@ -352,6 +366,10 @@
   text-align: center;
 }
 
+.UpdateNoticeBanner a {
+  color: white;
+}
+
 
 .copyright {
   font-size: 80%;
@@ -426,6 +444,12 @@
     flex-direction: row-reverse;
     flex-wrap: wrap;
     row-gap: 1em;
+  }
+
+  
+
+  .footerContainer {
+    padding: 2rem 2rem;
   }
 
   /* .footer > div {

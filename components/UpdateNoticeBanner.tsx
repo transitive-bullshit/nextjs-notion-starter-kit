@@ -1,8 +1,20 @@
 import * as React from 'react';
-import styles from './styles.module.css'; // ensure this file includes the CSS below
+import styles from './styles.module.css';
 
 export const UpdateNoticeBanner: React.FC = () => {
   const [visible, setVisible] = React.useState(true);
+
+  React.useEffect(() => {
+    const storedValue = localStorage.getItem('updateNoticeDismissed');
+    if (storedValue === 'true') {
+      setVisible(false);
+    }
+  }, []);
+
+  const handleClose = () => {
+    setVisible(false);
+    localStorage.setItem('updateNoticeDismissed', 'true');
+  };
 
   if (!visible) return null;
 
@@ -16,12 +28,11 @@ export const UpdateNoticeBanner: React.FC = () => {
 
       <button
         className={styles.closeButton}
-        onClick={() => setVisible(false)}
+        onClick={handleClose}
         aria-label="Close banner"
       >
         ×
       </button>
     </div>
-    
   );
 };

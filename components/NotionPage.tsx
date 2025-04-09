@@ -1086,15 +1086,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         router.asPath === '/about' ||
         (router.asPath.split('/')[1]?.startsWith('about') &&
           router.asPath.split('/')[1]) ||
-        pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0') && (
+        pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0' ||  router.asPath === '/why')   && (
         <div className='button-container'>
           <a href='./'><button className='see-all'>See All Classes →</button></a>
-          <a href='https://hcb.hackclub.com/donations/start/coursetexts' target='_blank' rel="noreferrer" ><button className='see-all'>Donate →</button></a>
-        </div>
-      )}
-
-      {( router.asPath === '/why' ) && (
-        <div className='button-container'>
           <a href='https://hcb.hackclub.com/donations/start/coursetexts' target='_blank' rel="noreferrer" ><button className='see-all'>Donate →</button></a>
         </div>
       )}
