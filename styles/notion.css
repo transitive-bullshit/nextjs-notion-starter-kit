@@ -709,6 +709,8 @@
   margin: 0;
 }
 
+
+
 .course-page .notion-gray {
   font-family: 'DM Mono', monospace;
   font-weight: 500;
@@ -735,10 +737,25 @@
 .course-page .notion-h2 {
   font-family: 'DM Mono', monospace;
   color: #6B7280;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 500;
   font-size: small;
+  margin-top: 2rem;
 }
+
+.course-page .notion-text:nth-of-type(n+3) {
+  margin-left: 2%;
+}
+
+.course-page .notion-list {
+  margin-left: 2%;
+}
+
+.course-page .notion-toggle {
+  margin-left: 2%;
+}
+
+
 
 .course-page a {
   color: #000000;
@@ -1149,6 +1166,10 @@ summary .notion-h3 .notion-h-title {
 
 .notion-page-scroller {
   padding: 0 3%;
+}
+
+.course-page .notion-page-scroller {
+  padding: 0 10%;
 }
 
 .notion-callout-text > b {
