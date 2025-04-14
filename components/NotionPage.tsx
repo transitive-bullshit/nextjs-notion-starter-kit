@@ -658,6 +658,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         <p>A free and open archive of Harvard & MIT course materials</p>
 
         <div class="footer-links">
+          <a href="https://hcb.hackclub.com/donations/start/coursetexts" target='_blank' class="footer-link">Donate</a>
           <a href="/privacy-policy" class="footer-link">Privacy Policy</a>
           <a href="/terms-of-service" class="footer-link">Terms of Service</a>
          </div>
@@ -805,6 +806,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         notionCallout.insertAdjacentElement('afterend', buttonContainer)
       }
     }
+
+
 
     function setDropdownOpen() {
       // Select all details elements
@@ -993,10 +996,19 @@ export const NotionPage: React.FC<types.PageProps> = ({
         (router.asPath.split('/')[1]?.startsWith('about') &&
           router.asPath.split('/')[1]) ||
         pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0') && (
-        <div onClick={() => router.push('/')} className='button-container'>
-          <button className='see-all'>See All Classes →</button>
+        <div className='button-container'>
+          <a href='./'><button className='see-all'>See All Classes →</button></a>
+          <a href='https://hcb.hackclub.com/donations/start/coursetexts' target='_blank' rel="noreferrer" ><button className='see-all'>Donate →</button></a>
         </div>
       )}
+
+      {( router.asPath === '/why' ) && (
+        <div className='button-container'>
+          <a href='https://hcb.hackclub.com/donations/start/coursetexts' target='_blank' rel="noreferrer" ><button className='see-all'>Donate →</button></a>
+        </div>
+      )}
+
+      
       {/* <GitHubShareButton /> */}
     </>
   )

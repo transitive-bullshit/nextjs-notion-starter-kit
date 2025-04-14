@@ -581,10 +581,15 @@
 
 .course-page .notion-h2 {
   font-family: 'DM Mono', monospace;
-  color: #6B7280;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: small;
+  font-size: large;
+}
+
+.course-page .notion-h3 {
+  color: #6B7280;
+  font-weight: 500;
+  font-size: medium;
 }
 
 .course-page a {
@@ -846,6 +851,7 @@
 
 .button-container {
   display: flex;
+  gap: 2rem;
   justify-content: center;
   padding: 0rem 0rem 1.25rem 0rem;
 }
