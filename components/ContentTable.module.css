@@ -10,9 +10,16 @@
   /* Tab buttons container */
   .tabButtons {
     display: flex;
-    border-bottom: 1px solid #e0e0e0; /* Light gray bottom border */
+    border-bottom: 1px solid #e0e0e0;
     margin-bottom: 16px;
-    font-family: 'DM Mono', monospace; /* Add this line */
+    font-family: 'DM Mono', monospace;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  }
+  
+  .tabButtons::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
   
   /* Individual tab buttons */
@@ -50,6 +57,7 @@
   
   /* Individual list item */
   .contentTable li {
+    margin-left: 2%;
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -7,8 +7,38 @@
  * places to add some flare.
  */
 
+
+ @font-face {
+  font-family: 'Tobias';
+  src: url('/fonts/TobiasTRIAL-Light.woff') format('woff');
+  font-weight: lighter;
+  font-style: normal;
+  letter-spacing: -4%;
+}
+
+@font-face {
+  font-family: 'TobiasMed';
+  src: url('/fonts/TobiasTRIAL-Medium.woff') format('woff');
+  font-weight: medium;
+  font-style: normal;
+  letter-spacing: -4%;
+}
+
+@font-face {
+  font-family: 'UntitledSans';
+  src: url('/fonts/UntitledSans-Regular.woff') format('woff');
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+.notion-page-content-inner{
+  margin-top: 2.0rem;
+}
+
+
 .notion {
-  --notion-max-width: 48rem;
+  --notion-max-width: 800rem;
   --notion-header-height: 54px;
 }
 
@@ -23,7 +53,7 @@
 }
 
 .index-page {
-  --notion-max-width: 48rem;
+  --notion-max-width: 100rem;
 }
 
 /* .notion-text {
@@ -44,18 +74,23 @@
   width: 100% !important;
 }
 
+
+.notion-header bold{
+  font-family: 'Tobias';
+}
+
 .notion-header .notion-nav-header {
   max-width: 100%;
   margin: 0 auto;
   overflow-x: auto;
   padding: 0 2px;
-  border-bottom: 1px solid#E5E7EB;
-  font-family: 'DM Mono', monospace; /* Add this line */
+  border-bottom: 1px solid#AAAEB3;
+  /* font-family: 'DM Mono', monospace; Add this line */
+  font-family: 'UntitledSans', sans-serif;
+  color: #000000;
 }
 
-.notion-header {
-  font-family: "PT Serif", serif;
-}
+
 
 .notion-nav-header-rhs {
   gap: 0.5rem;
@@ -143,6 +178,19 @@
   padding: 0 !important;
 }
 
+.notion-h1 {
+  font-family: "Tobias";
+  font-weight: 200;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 200;
+  line-height: 1.15;
+  padding-top: 5rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
 
 
 .notion-callout {
@@ -154,10 +202,16 @@
   border-radius: 3px;
   margin-top: 1.25rem;
   margin-bottom: 2rem;
-
   color: #4B5563;
   font-family: 'DM Mono', monospace;
 }
+
+
+.notion-home .notion-callout {
+  display: none
+}
+
+
 
 .notion-hr {
   margin: 2em 0;
@@ -255,8 +309,6 @@
 
 .notion-link:focus,
 .notion-link:hover {
-  border-bottom-color: transparent;
-
   /* background-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%); */
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -380,6 +432,7 @@
   background: hsla(0, 0%, 100%, 0.8);
   backdrop-filter: saturate(180%) blur(16px);
   position: relative;
+  background-color: #F5F5F5;
 }
 
 .dark-mode .notion-header {
@@ -402,6 +455,7 @@
 
 .notion-search .searchBar {
   box-shadow: var(--fg-color-0) 0px 1px 0px;
+  font-family: 'UntitledSans', sans-serif;
 }
 
 .notion-search .noResults {
@@ -460,32 +514,110 @@
   display: none !important;
 }
 
+.custom-wrapper-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 1.5rem;
+}
+
+@media screen and (max-width: 1300px) {
+  .custom-wrapper-container {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .custom-wrapper-container {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .custom-wrapper-container {
+    grid-template-columns: auto;
+  }
+}
+
+.custom-wrapper-class::-webkit-scrollbar {
+  display: none;
+}
+
 .custom-wrapper-class {
-  /* border: 1px solid rgb(229, 231, 235); */
-  padding: 9px 15px;
+  flex-direction:column ;
+  padding: 15px 20px;
   margin: 4px 0;
   width: 100%;
-  border-radius: calc(0.5rem - 4px);
+  border-radius: 4px;
+  border: 1px solid #E5E1D3;
+  background-color: #faf9f9bc;
+  max-height: 300px; /* Fixed height */
+  overflow-x: hidden; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent text from wrapping */
+  align-items: center; /* Keeps text aligned */
+  position: relative; /* Needed for absolute positioning inside */
+}
+
+.custom-wrapper-class:hover {
+  background-color: white;
 }
 
 .custom-wrapper-class .notion-text {
-  font-family: "PT Serif", serif;
-  color: #4B5563;
-  font-size: medium;
+  font-family: 'UntitledSansLight', sans-serif;
+  color: #374151;
+  font-size: small;
+  font-weight: 100;
+  max-height: 300px; /* Fixed height */
+  overflow-x: hidden; /* Enable horizontal scrolling */
+  flex-direction: column;
+  align-items: center; /* Keeps text aligned */
+  /* border-top: 1px solid rgb(203, 203, 203); */
 }
-/* also see how this looks with the regular inter font here? */
+.custom-wrapper-class *:not(:first-child) {
+  border-top: 1px solid rgb(203, 203, 203);
+}
+
+
+.custom-wrapper-class .notion-text::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-wrapper-class .notion-page-title-text {
+  font-family: 'TobiasMed';
+  color: #000000;
+  font-size: large;
+  border-top: none;
+}
+
+
+.custom-wrapper-class .notion-gray {
+  /* font-family: 'UntitledSansLight', sans-serif; */
+  font-family: 'DM Mono', monospace;
+  color: #374151;
+  font-size: xx-small;
+  font-weight: 'medium';
+  bottom: 5px;
+  width: 100%;
+  text-transform: uppercase;
+}
 
 
 
 
-.why-page .notion-title {
-  font-family: Inter;
-  font-weight: 500;
-  font-size: 2.4rem;
+
+
+.why-page .notion-title{
+  font-family: 'Tobias';
+  font-weight: bolder;
+  font-size: 3rem;
+  margin-bottom: 0rem;
+  max-width: 700px;
+  margin-top: 5rem;
+  line-height: 1.1111111;
 }
 
 .why-page a{
   color: #000000;
+  font-size: 0.95rem;
 }
 
 .why-page .notion-text {
@@ -502,6 +634,15 @@
   font-size: 0.95rem;
 }
 
+
+@media (max-width: 800px) {
+  .why-page .notion-h1 {
+    font-family: 'DM Mono', monospace;
+    color: #000000;
+    font-weight: 400;
+  }
+}
+
 .why-page .notion-h1 {
   font-family: 'DM Mono', monospace;
   color: #000000;
@@ -509,11 +650,12 @@
 }
 
 .why-page .notion-h2 {
-  font-family: 'DM Mono', monospace;
-  color: #6B7280;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-size: 0.95rem;
+  font-family: 'Tobias';
+  color: #000000;
+  font-weight: bolder;
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
 }
 
 .why-page .notion-column {
@@ -523,7 +665,7 @@
   justify-content: center; /* Centers items vertically within the parent */
   text-align: center; /* Ensures text is centered */
   height: 100%; /* Ensures full height of parent container */
-  font-family: Inter;
+  font-family: 'UntitledSans', sans-serif;
 }
 .why-page .notion-column .notion-h2 {
   font-family: Inter;
@@ -567,6 +709,8 @@
   margin: 0;
 }
 
+
+
 .course-page .notion-gray {
   font-family: 'DM Mono', monospace;
   font-weight: 500;
@@ -579,18 +723,40 @@
   font-size: 15px;
 }
 
-.course-page .notion-h2 {
-  font-family: 'DM Mono', monospace;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: large;
+.course-page .notion-h2 .notion-h-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+  font-family: 'Tobias';
+  text-align: center;
+  color: #000000;
 }
 
-.course-page .notion-h3 {
+
+.course-page .notion-h2 {
+  font-family: 'DM Mono', monospace;
   color: #6B7280;
+  /* text-transform: uppercase; */
   font-weight: 500;
-  font-size: medium;
+  font-size: small;
+  margin-top: 2rem;
 }
+
+.course-page .notion-text:nth-of-type(n+3) {
+  margin-left: 2%;
+}
+
+.course-page .notion-list {
+  margin-left: 2%;
+
+}
+
+.course-page .notion-toggle {
+  margin-left: 2%;
+}
+
+
 
 .course-page a {
   color: #000000;
@@ -667,6 +833,12 @@
   line-height: 1.75rem;
 }
 
+
+.notion-h-title{
+  margin-top: 300px;
+  color: #000000;
+}
+
 .notion-page-title-text {
   /* border-bottom: 1px solid rgba(15, 118, 110, 0.9) !important; */
   white-space: normal;
@@ -691,24 +863,33 @@
 }
 
 .notion-callout {
-  background-color: #F9FAFB;
+  background-color: #000000;
   border:  solid 1px #E5E7EB;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
+  color: #FFFFFF;
 }
+
+.notion-callout notion-link {
+  width: 100%;
+}
+
+
 
 
 .notion-callout-text {
   margin-left: 0px;
+  padding: 12px;
 }
 
-.notion-callout-text a[href*='about'] {
-  color: rgb(37 99 235 / 1) !important;
-  border-bottom: 1px solid rgb(37 99 235 / 1);
-}
+
 
 .notion-callout-text a[href*='about'] {
-  color: rgb(37 99 235 / 1) !important;
-  border-bottom: 1px solid rgb(37 99 235 / 1);
+  border-radius: 5px;
+  padding: 10px;
+  border:  solid 1px #E5E7EB;
+  color: #FFFFFF;
+  z-index: 10;
+  border-bottom: 4px solid white;
 }
 
 [data-id='12419a13312a80cbbe34d48ae26d5a9d'] {
@@ -716,9 +897,8 @@
 }
 
 .notion-callout-text a[target*='_blank'] {
-  color: #111827 !important;
+  color: #d1d4da !important;
   font-weight: 500;
-  border-color: #111827 !important;
 }
 
 .dark-mode .notion-callout-text a[target*='_blank'] {
@@ -747,21 +927,26 @@
   display: flex;
   align-items: center;
   gap: 32px;
+  font-family: 'UntitledSans', sans-serif;
 }
+
 .breadcrumbs .nav-container .nav-link {
-  font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.75rem;
   opacity: 0.8;
+  font-weight: lighter; 
+  font-family: 'UntitledSans', sans-serif;
+  font-size: 17px;
+  
 }
 .breadcrumbs .nav-container a[href='/'] {
-  font-weight: 600;
+  font-weight: bold;
   color: unset;
   opacity: 1;
-  /* font-family: "PT Serif", serif;
-  font-size: x-large;
-  font-weight: 500; */
+  font-family: 'TobiasMed';
 }
+
+
 
 .notion-text .notion-block {
   display: none;
@@ -829,13 +1014,16 @@
 
 
 /* about page styling */
-.notion-h2 .notion-h-title b {
-  font-weight: 700;
-  font-size: 24px !important;
+
+.about-page .notion-h2 .notion-h-title b{
+  font-weight: 600;
+  font-size: 2.5rem;
   margin-top: 2em;
   margin-bottom: 1em;
-  line-height: 1.3333333;
+  font-family: 'Tobias';
+  text-align: center;
 }
+
 
 .lecture-wrapper {
   width: 100%;
@@ -849,11 +1037,21 @@
   padding: 0 15px;
 }
 
+
 .button-container {
   display: flex;
   gap: 2rem;
   justify-content: center;
   padding: 0rem 0rem 1.25rem 0rem;
+  background-color: #F5F5F5;
+}
+
+.button-container button {
+  background-color: #faf9f9bc;
+}
+
+.button-container button:hover{
+  background-color: white;
 }
 
 .dark-mode .button-container {
@@ -867,8 +1065,8 @@
 .see-all {
   padding: 0.7rem 1rem;
   background-color: #fff;
-  color: rgb(59 130 246/ 1);
-  border: 1px solid rgb(59 130 246/ 1);
+  color: black;
+  border: 1px solid black;
   border-radius: 0.25rem;
   font-size: 1rem;
   line-height: 1.2;
@@ -883,7 +1081,7 @@
 }
 
 .see-all:hover {
-  color: rgb(29 78 216/1);
+  background-color: #F5F5F5;
 }
 
 .dark-mode .see-all:hover {
@@ -971,6 +1169,10 @@ summary .notion-h3 .notion-h-title {
   padding: 0 3%;
 }
 
+.course-page .notion-page-scroller {
+  padding: 0 10%;
+}
+
 .notion-callout-text > b {
   line-height: 1.5rem !important;
 }
@@ -982,9 +1184,43 @@ summary .notion-h3 .notion-h-title {
 
 .fill-article-row {
   width: 100%;
-  max-width: var(--notion-max-width); /* Ensures it matches Notion's content width */
   margin: 0 auto; /* Centers it properly */
   display: flex;
   align-items: center;
-  padding: 8px 0;
+}
+
+
+
+@media (max-width: 600px) {
+
+  .button-container {
+    gap: 1rem;
+  } 
+
+  .notion-h1 {
+    font-size: 2rem;
+  }
+
+  .about-page .notion-h2 .notion-h-title b {
+    font-size: 2rem;
+  }
+
+  .why-page .notion-title {
+    font-size: 2rem;
+    margin-top: 3rem;
+  }
+
+  .breadcrumbs .nav-container .nav-link {
+
+    font-size: 0.75rem;
+  }
+
+.breadcrumb.button.notion-search-button{
+    font-size: 0.75rem;
+
+  }
+
+  .breadcrumbs .nav-container {
+    gap: 15px;
+  }
 }
