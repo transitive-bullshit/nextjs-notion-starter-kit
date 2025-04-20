@@ -1,4 +1,4 @@
-import { getAllPagesInSpace, uuidToId, getPageProperty } from 'notion-utils'
+import { getAllPagesInSpace, uuidToId, getPageProperty, getBlockTitle } from 'notion-utils'
 import pMemoize from 'p-memoize'
 import { ExtendedRecordMap } from 'notion-types'
 
@@ -10,25 +10,46 @@ import { notion } from './notion-api'
 
 const uuid = !!includeNotionIdInUrls
 
+// Helper function to convert a title to a URL-friendly slug
+function titleToSlug(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '') // Replace spaces with empty string
+    .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+}
+
 export async function getSiteMap(): Promise<types.SiteMap> {
   const partialSiteMap = await getAllPages(
     config.rootNotionPageId,
     config.rootNotionSpaceId
   )
 
-  // Add duplicate detection
-  const canonicalPageMap: { [canonicalPageId: string]: string } = {}
-  const seenCanonicalIds = new Set()
+  // Don't modify existing canonicalPageMap entries from notion-utils
+  const canonicalPageMap = {...partialSiteMap.canonicalPageMap}
 
-  // Filter out duplicates while keeping the first occurrence
-  Object.entries(partialSiteMap.canonicalPageMap).forEach(([canonicalId, pageId]) => {
-    if (!seenCanonicalIds.has(canonicalId)) {
-      canonicalPageMap[canonicalId] = pageId
-      seenCanonicalIds.add(canonicalId)
-    } else {
-      console.warn(`Duplicate canonical ID detected: ${canonicalId}. Keeping first occurrence.`)
+  // Process all pages and create clean URL mappings
+  for (const pageId in partialSiteMap.pageMap) {
+    const page = partialSiteMap.pageMap[pageId]
+    const recordMap = page as unknown as ExtendedRecordMap
+    const block = recordMap?.block?.[pageId]?.value
+
+    if (block) {
+      // Get the page title
+      const title = getBlockTitle(block, recordMap)
+
+      if (title) {
+        const slug = titleToSlug(title)
+        // Only add if it doesn't exist and isn't already mapped to another page
+        if (slug && !canonicalPageMap[slug] && !Object.values(canonicalPageMap).includes(pageId)) {
+          canonicalPageMap[slug] = pageId
+        }
+      }
     }
-  })
+  }
+
+  // Update the canonical page map
+  partialSiteMap.canonicalPageMap = canonicalPageMap
 
   return {
     site: config.site,

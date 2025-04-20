@@ -70,11 +70,28 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
           }
         }
       } else {
-        // note: we're purposefully not caching URI to pageId mappings for 404s
-        return {
-          error: {
-            message: `Not found "${rawPageId}"`,
-            statusCode: 404
+        // Try to find in site map with auto-generated slugs
+        const siteMap = await getSiteMap()
+        pageId = siteMap?.canonicalPageMap[rawPageId]
+
+        if (pageId) {
+          recordMap = await getPage(pageId)
+
+          // If caching is enabled, update the cache
+          if (useUriToPageIdCache) {
+            try {
+              await db.set(cacheKey, pageId, cacheTTL)
+            } catch (err) {
+              console.warn(`redis error set "${cacheKey}"`, err.message)
+            }
+          }
+        } else {
+          // note: we're purposefully not caching URI to pageId mappings for 404s
+          return {
+            error: {
+              message: `Not found "${rawPageId}"`,
+              statusCode: 404
+            }
           }
         }
       }
