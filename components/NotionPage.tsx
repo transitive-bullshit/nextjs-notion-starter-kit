@@ -156,7 +156,6 @@ const propertyTextValue = (
 // Example custom React component:
 function License() {
   return (
-
     <div style={{ paddingTop:'3rem',  margin:'auto', fontFamily:'DM Mono', color:'#6B7280'}}>
       <p>All classes are licensed under the <i> <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en' target='_blank' rel="noreferrer">CC-BY-NC-SA</a></i> license</p>
     </div>
@@ -265,7 +264,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const router = useRouter()
   const lite = useSearchParam('lite')
 
-  const [sections, setSections] = React.useState([]) // state for sections to be used for toggles
+  const [sections, setSections] = React.useState([]) // state for sections to be used for tabs
 
   // Lift the search and department states up here
   const [searchValue, setSearchValue] = React.useState('')
@@ -341,12 +340,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }, [router, sections, pageClass])
 
   React.useEffect(() => {
+    if (sections.length <0) {
     addReactComponentAtEndOfArticle (
       'article',
       'fill-article-row',
       <License/>
-    )
-  }, [sections])
+    ) 
+    }
+  }, [router])
 
   React.useEffect(() => {
     // Once the Notion content is rendered on client side,
@@ -606,7 +607,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       const links = [
         { href: '/', label: 'Coursetexts' },
-        { href: '/about', label: 'About' },
+        // { href: '/about', label: 'About' },
         { href: '/why', label: 'Why' },
       ];
       

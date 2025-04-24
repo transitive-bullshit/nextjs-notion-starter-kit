@@ -543,6 +543,7 @@
 }
 
 .custom-wrapper-class {
+  display:flex; 
   flex-direction:column ;
   padding: 15px 20px;
   margin: 4px 0;
@@ -550,10 +551,7 @@
   border-radius: 4px;
   border: 1px solid #E5E1D3;
   background-color: #faf9f9bc;
-  max-height: 300px; /* Fixed height */
-  overflow-x: hidden; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent text from wrapping */
-  align-items: center; /* Keeps text aligned */
+  height: 300px; /* Fixed height */
   position: relative; /* Needed for absolute positioning inside */
 }
 
@@ -566,14 +564,32 @@
   color: #374151;
   font-size: small;
   font-weight: 100;
-  max-height: 300px; /* Fixed height */
-  overflow-x: hidden; /* Enable horizontal scrolling */
-  flex-direction: column;
-  align-items: center; /* Keeps text aligned */
   /* border-top: 1px solid rgb(203, 203, 203); */
 }
-.custom-wrapper-class *:not(:first-child) {
+
+
+.custom-wrapper-class  > *:first-child{
+  border-bottom: 1px solid rgb(203, 203, 203);
+}
+
+.custom-wrapper-class > *:not(:first-child):not(:last-child){
+  flex: 1 1 auto;     
+  overflow-y: auto;    
+  padding-right: 4px;  
+}
+
+.custom-wrapper-class  > *:last-child{
   border-top: 1px solid rgb(203, 203, 203);
+  font-family: 'DM Mono', monospace;
+  color: #374151;
+  font-weight: 'medium';
+  width: 100%;
+  text-transform: uppercase;
+  height: fit-content;
+}
+
+.custom-wrapper-class .notion-gray {
+  font-size: xx-small;
 }
 
 
@@ -586,19 +602,14 @@
   color: #000000;
   font-size: large;
   border-top: none;
+  flex: 0 0 auto;       /* don’t shrink */
+  white-space: normal;  /* let it wrap instead of clipping */
 }
 
 
-.custom-wrapper-class .notion-gray {
-  /* font-family: 'UntitledSansLight', sans-serif; */
-  font-family: 'DM Mono', monospace;
-  color: #374151;
-  font-size: xx-small;
-  font-weight: 'medium';
-  bottom: 5px;
-  width: 100%;
-  text-transform: uppercase;
-}
+
+
+
 
 
 

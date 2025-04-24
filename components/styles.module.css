@@ -446,7 +446,9 @@
     row-gap: 1em;
   }
 
-  
+  .UpdateNoticeBanner {
+    font-size: xx-small;
+  }
 
   .footerContainer {
     padding: 2rem 2rem;
