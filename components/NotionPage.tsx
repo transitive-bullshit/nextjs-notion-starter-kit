@@ -32,6 +32,7 @@ import ContentTable from './ContentTable'
 import { createRoot, Root} from 'react-dom/client'  // React 18+
 import FilterRow from './FilterRow'
 import { UpdateNoticeBanner } from './UpdateNoticeBanner'
+import { HeroButterflies } from './HeroButterflies'
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
@@ -327,17 +328,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   
 
 
-  React.useEffect(() => {
-    // Once the Notion content is rendered on client side,
-    // you can insert your React component:
-    if (pageClass == 'course-page') {
-    addReactComponentAtEndOfArticle(
-      'article',
-      'fill-article-row',
-      <ContentTable sections={sections}/>
-    )
-    }
-  }, [router, sections, pageClass])
 
   React.useEffect(() => {
     if (sections.length <0) {
@@ -472,87 +462,144 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
   }
 
-  //wrapElementsBetweenDividersToCreateToggleTable
 
-  // Function to wrap elements between dividers
-  function wrapElementsBetweenDividers() {
-    console.log('Running wrapElementsBetweenDividers...');
-  
-    // Select all <hr> dividers that define sections
-    const dividerElements = Array.from(document.querySelectorAll('hr.notion-hr'));
-  
-    if (dividerElements.length < 4) return; // Ensure there are enough dividers
-  
-    const sectionsArray: Section[] = [];
-  
-    let index = 0;
-    while (index <= dividerElements.length - 4) { // Process in groups of 4
-      const firstDivider = dividerElements[index];
-      const secondDivider = dividerElements[index + 1];
-      const thirdDivider = dividerElements[index + 2];
-      const fourthDivider = dividerElements[index + 3];
-  
-      const elementsToWrap: HTMLElement[] = [];
-      let nextSibling = secondDivider.nextElementSibling;
-  
-    // Collect all elements until we reach the third <hr> divider
-    while (nextSibling && nextSibling !== thirdDivider) {
-      elementsToWrap.push(nextSibling as HTMLElement);
-      nextSibling = nextSibling.nextElementSibling;
-    }
 
-  
-      // If we found elements, wrap them in a div
-      if (elementsToWrap.length > 0) {
-        const wrapperDiv = document.createElement('div');
-        wrapperDiv.classList.add('custom-divider-wrapper');
-        elementsToWrap.forEach((element) => wrapperDiv.appendChild(element));
-        // divider.insertAdjacentElement('afterend', wrapperDiv);
-  
-        // Extract multiple headings and their corresponding links
-        const headingElements = Array.from(wrapperDiv.querySelectorAll('h3.notion-h2'));
-  
-        headingElements.forEach((headingElement) => {
-          const headingText = headingElement.textContent?.trim() || 'Untitled Section';
-  
-          const links: { text: string; href: string }[] = [];
-          let nextSibling = headingElement.nextElementSibling;
-  
-          // Collect links under the heading until another heading or <hr> is found
-          while (nextSibling && !nextSibling.matches('h3.notion-h2') && !nextSibling.matches('hr.notion-hr')) {
-            const linkElements = nextSibling.querySelectorAll('a.notion-link');
-            linkElements.forEach((link) => {
-              links.push({
-                text: link.textContent?.trim() || 'Unnamed Link',
-                href: link.getAttribute('href') || '#',
-              });
-            });
-  
-            nextSibling = nextSibling.nextElementSibling;
-          }
-  
-          // Add this section to the array if it has links
-          if (links.length > 0) {
-            sectionsArray.push({ heading: headingText, links });
-          }
-        });
+
+/**
+ * Same goal, new structure:
+ *
+ * <div class="content-table">                ← master container
+ *   <div class="content-table__tabs">        ← one block: tabs + panels
+ *     <div class="custom-divider-tabbar">…</div>
+ *     <div>                                 ← panelContainer
+ *       <div class="custom-divider-wrapper-tabcontent" …>…</div>
+ *       …
+ *     </div>
+ *   </div>
+ *
+ *   <div class="content-table__rest">        ← all remaining stuff
+ *      … stray nodes that were not part of a tab section …
+ *   </div>
+ * </div>
+ */
+function wrapElementsBetweenDividers(): void {
+  const headingSelector =
+    'h1[class*="notion-"], h2[class*="notion-"], h3[class*="notion-"]';
+  const isHeading = (el: Element | null): el is HTMLElement =>
+    !!el && el.matches(headingSelector);
+
+  /* ---------- 1 · find the delimiting <hr> ---------------------------- */
+  const dividers = Array.from(document.querySelectorAll('hr.notion-hr'));
+  if (dividers.length < 4) return;         // page layout must have changed
+  const startDivider = dividers[1];        // 2nd <hr>
+  const endDivider   = dividers[2];        // 3rd <hr>
+
+  /* ---------- 2 · build the three shells ----------------------------- */
+  const gridWrapper  = document.createElement('div');
+  gridWrapper.className = 'content-table';
+
+  const tabsBlock    = document.createElement('div');
+  tabsBlock.className = 'content-table-tabs';
+
+  const restBlock    = document.createElement('div');
+  restBlock.className = 'content-table-rest';
+
+  /* ---------- 3 · tab-bar + panel container -------------------------- */
+  const tabBar        = document.createElement('div');
+  tabBar.className    = 'custom-divider-tabbar';
+
+  const panelContainer = document.createElement('div');   // holds the panels
+  tabsBlock.append(tabBar, panelContainer);               // keep them together
+
+  /* ---------- 4 · walk through the nodes between the two <hr> -------- */
+  let node: Element | null = startDivider.nextElementSibling;
+  let tabIndex = 0;
+
+  while (node && node !== endDivider) {
+    if (isHeading(node)) {
+      /* ----- create a new tab-panel ---------------------------------- */
+      const afterHeading = node.nextElementSibling;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'custom-divider-wrapper-tabcontent';
+      wrapper.dataset.tab = String(tabIndex);
+      if (tabIndex !== 0) wrapper.style.display = 'none';
+
+      wrapper.appendChild(node);                       // move the heading in
+
+      /* swallow everything until next heading or the end divider ----- */
+      let sib = afterHeading;
+      while (sib && !isHeading(sib) && sib !== endDivider) {
+        const nxt = sib.nextElementSibling;
+        wrapper.appendChild(sib);
+        sib = nxt;
       }
+      panelContainer.appendChild(wrapper);
 
+      /* ----- matching tab button ------------------------------------ */
+      const btn = document.createElement('button');
+      btn.className = tabIndex === 0 ? 'tab-btn active' : 'tab-btn';
+      btn.textContent = node.textContent?.trim() || `Tab ${tabIndex + 1}`;
+      btn.addEventListener('click', () => {
+        /* hide all panels + deactivate all buttons */
+        panelContainer
+          .querySelectorAll<HTMLElement>('.custom-divider-wrapper-tabcontent')
+          .forEach(p => (p.style.display = 'none'));
+        tabBar
+          .querySelectorAll<HTMLButtonElement>('.tab-btn')
+          .forEach(b => b.classList.remove('active'));
 
-    // Remove all four <hr> elements
-    firstDivider.remove();
-    secondDivider.remove();
-    thirdDivider.remove();
-    fourthDivider.remove();
-  
-      // Move to the next <hr> divider
-      index += 4;
+        /* show selected */
+        wrapper.style.display = '';
+        btn.classList.add('active');
+      });
+      tabBar.appendChild(btn);
+
+      node = sib;
+      tabIndex += 1;
+    } else {
+      /* anything that isn’t part of a section -> shove into restBlock */
+      const nxt = node.nextElementSibling;
+      restBlock.appendChild(node);
+      node = nxt;
     }
-  
-    console.log('Extracted sections:', sectionsArray);
-    setSections(sectionsArray); // Update state
   }
+
+  /* ---------- 5 · compose & inject into the DOM ---------------------- */
+  gridWrapper.append(tabsBlock, restBlock);
+  startDivider.parentElement?.insertBefore(gridWrapper, startDivider.nextSibling);
+
+  /* ---------- 6 · clean up delimiters -------------------------------- */
+  dividers.forEach(d => d.remove());
+}
+
   
+
+
+
+// NotionPage.tsx  ── after you already have `pageContent` in the DOM
+React.useEffect(() => {
+  const contentInner = document.querySelector(
+    '.course-page .notion-page-content-inner'
+  );
+  if (!contentInner) return;
+
+  // build a <div class="left-pane">…</div>
+  const leftPane = document.createElement('div');
+  leftPane.className = 'left-pane';
+
+  // move every child that is NOT the content-table into that wrapper
+  [...contentInner.children].forEach((child) => {
+    if (!child.classList.contains('content-table')) {
+      leftPane.appendChild(child);
+    }
+  });
+
+  // insert the wrapper as the first grid item
+  contentInner.prepend(leftPane);
+}, []);
+
+
 
   
 
@@ -1034,7 +1081,37 @@ export const NotionPage: React.FC<types.PageProps> = ({
   console.log(sections)
 
 
-  
+
+// /* Run once per page load */
+// React.useEffect(() => {
+//   //  create an overlay container
+//   const overlay = document.createElement('div');
+//   overlay.className = 'butterfly-overlay pointer-events-none';
+//   Object.assign(overlay.style, {
+//     position: 'absolute',
+//     inset: '0',            // top:0 right:0 bottom:0 left:0
+//     zIndex: '10',          // above the block content
+//     overflow: 'visible',
+//   });
+
+//   if (pageClass === "notion-home") {
+//   const hero = document.querySelector(
+//     '.notion-home .notion-block-1a519a13312a8036a624e4732734ce6a'
+//   );
+
+//   /* only if the hero exists and we haven’t already added butterflies */
+//   if (hero && !hero.querySelector('.butterfly-overlay')) {
+//     // 1️⃣ make sure the block can act as the positioning context
+//     (hero as HTMLElement).style.position ||= 'relative';
+//     hero.appendChild(overlay);
+
+//     // 3️⃣ mount React *into the overlay*, not the block itself
+//     createRoot(overlay).render(<HeroButterflies />);
+//   } 
+// } else {
+//   createRoot(overlay).render(<HeroButterflies />) 
+// }
+// }, [pageClass]);
 
 
 

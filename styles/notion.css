@@ -213,6 +213,57 @@
 
 
 
+/* BUTTERFLIES ──────────────────────────── */
+/* ─── shared butterfly style ─────────────────────────────── */
+.butterfly {
+  position: absolute;
+  width: 64px;              /* ← fixed size, never shrinks      */
+  height: 22px;
+  color: #2b2b2b;           /* inherits currentColor by default */
+  pointer-events: none;
+  z-index: -1;              /* stay behind the text             */
+}
+
+/* The heading wrapper must be relative to anchor them */
+.notion-home
+.notion-block-1a519a13312a8036a624e4732734ce6a {
+  position: relative;
+}
+
+/* ─── individual corners ────────────────────────────────── */
+/* tweak the translate() numbers until they look perfect     */
+
+.butterfly.tl {            /* top-left */
+  bottom: 20px;
+  left: -50px;
+  transform: scaleX(1.7);
+}
+
+.butterfly.tr {            /* top-right (mirror X) */
+  top: -12px;
+  right: -52px;
+  transform: scaleX(-1);
+}
+
+.butterfly.bl {            /* bottom-left (mirror Y) */
+  bottom: -12px;
+  left: -20px;
+}
+
+.butterfly.br {            /* bottom-right (no transform) */
+  bottom: -12px;
+  right: -52px;
+}
+
+/* optional: hide on very small screens */
+@media (max-width: 420px) {
+  .butterfly { display: none; }
+}
+
+
+
+
+
 .notion-hr {
   margin: 2em 0;
 }
@@ -714,10 +765,13 @@
 }
 
 .course-page .notion-title {
-  font-family: Inter;
+  font-family: Tobias;
   font-weight: 600;
   color: #000000;
   margin: 0;
+  margin-bottom: 2rem;
+  max-width: 900px;
+  font-size: 2.5rem;
 }
 
 
@@ -784,6 +838,98 @@
   color: #67bdfc;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+
+
+
+
+
+/* For tabbs in the course page table */
+
+.content-table {
+margin-left: 3rem;
+grid-column:2;
+overflow-y:scroll;
+max-height:100%;
+padding-right:0.5rem;
+}
+
+.content-table::-webkit-scrollbar{ /* Chrome / Safari */
+  width:0; height:0;
+}
+
+
+
+.custom-divider-tabbar {
+  display: flex;
+  border-bottom: 1px solid #E5E1D3;
+  position: sticky;
+  top: 0;
+  background-color: #F5F5F5;
+  z-index: 10;
+}
+
+.tab-btn {
+  padding: 0.25rem 0.75rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-weight: 300;
+  opacity: 0.6;
+  text-wrap: nowrap;
+  background-color: #F8F8F8;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: 'Untitled Sans';
+  padding: 8px 18px;
+
+}
+
+.tab-btn.active {
+  opacity: 1;
+  border-bottom: 2px solid currentColor;
+  background-color: #050D1D;
+  color: #fff;
+  border: 1px solid rgba(229, 225, 211, 0.32);
+}
+
+
+
+/* ─── COURSE PAGE 4-COLUMN LAYOUT ───────────────────────────────────────── */
+/* ─── COURSE PAGE · 2-COLUMN LAYOUT ───────────────────────────── */
+.course-page .notion-page-content-inner{
+  display:grid;
+  grid-template-columns: 320px 1fr;     /* left grows, right is fixed */
+  overflow:hidden;                  /* grid itself never scrolls */
+}
+
+
+
+/* the table lives in the right-hand column */
+.course-page .notion-page-content-inner > .content-table{
+  grid-column: 2;       /* = second column of the grid            */
+  position: absolute;
+}
+
+/* every *other* direct child stays in the left column */
+.course-page .notion-page-content-inner > *:not(.content-table){
+  grid-column: 1;
+}
+
+
+/* LEFT column = the single wrapper you just injected */
+.course-page .left-pane{
+  grid-column:1;
+  position:sticky;
+  top:0;                 /* flush under the header            */
+  align-self:start;
+  display:flex;          /* keeps the children flowing normally */
+  flex-direction:column;
+}
+
+
+
+
+
 
 
 .dark-mode .notion-page-content-inner .notion-page-title,
