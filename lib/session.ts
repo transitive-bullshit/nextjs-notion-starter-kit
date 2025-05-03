@@ -1,4 +1,4 @@
-import { getIronSession, IronSession } from 'iron-session';
+import { getIronSession, IronSession, IronSessionData } from 'iron-session';
 import {
   GetServerSidePropsContext,
   GetServerSidePropsResult,
@@ -74,7 +74,7 @@ export function withSessionSsr<
   P extends { [key: string]: unknown } = { [key: string]: unknown }
 >(
   handler: (
-    context: GetServerSidePropsContext & { req: { session: IronSession } } // Add session to context.req type
+    context: GetServerSidePropsContext & { req: { session: IronSession<IronSessionData> } }
   ) => GetServerSidePropsResult<P> | Promise<GetServerSidePropsResult<P>>
 ) {
   return async (
@@ -92,6 +92,6 @@ export function withSessionSsr<
 
     // Call the original handler, passing the augmented context
     // We need to cast context because we dynamically added context.req.session
-    return handler(context as GetServerSidePropsContext & { req: { session: IronSession } });
+    return handler(context as GetServerSidePropsContext & { req: { session: IronSession<IronSessionData> } });
   };
 }
