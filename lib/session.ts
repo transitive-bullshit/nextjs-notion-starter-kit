@@ -30,19 +30,23 @@ function getPropertyDescriptorForReqSession(session: IronSession<IronSessionData
     get() {
       return session;
     },
-    set(value) {
+    set(value: Record<string, unknown>) {
       // Allow assigning new object or modifying existing one
       const keys = Object.keys(value);
       const currentKeys = Object.keys(session);
+
+      // Remove keys that aren't in the new value
       currentKeys.forEach((key) => {
         if (!keys.includes(key)) {
-          // @ts-ignore because we are deleting a key
-          delete session[key];
+          // Use type assertion instead of @ts-ignore
+          delete (session as unknown as Record<string, unknown>)[key];
         }
       });
+
+      // Add/update keys from the new value
       keys.forEach((key) => {
-        // @ts-ignore because we are assigning a key
-        session[key] = value[key];
+        // Use type assertion instead of @ts-ignore
+        (session as unknown as Record<string, unknown>)[key] = value[key];
       });
     },
   };
