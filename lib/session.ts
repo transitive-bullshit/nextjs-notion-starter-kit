@@ -24,7 +24,7 @@ declare module 'iron-session' {
 }
 
 // Helper function to get the property descriptor, mimicking the internal logic
-function getPropertyDescriptorForReqSession(session: IronSession): PropertyDescriptor {
+function getPropertyDescriptorForReqSession(session: IronSession<IronSessionData>): PropertyDescriptor {
   return {
     enumerable: true,
     get() {
