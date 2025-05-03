@@ -4,7 +4,6 @@ import Head from 'next/head';
 
 export default function SignIn() {
   const router = useRouter();
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +17,7 @@ export default function SignIn() {
       const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ password }),
       });
 
       if (res.ok) {
@@ -27,7 +26,7 @@ export default function SignIn() {
         await router.push(redirectUrl);
       } else {
         const data = await res.json();
-        setError(data.message || 'Invalid username or password');
+        setError(data.message || 'Invalid password');
       }
     } catch (err) {
       console.error('Login error:', err);
@@ -86,15 +85,6 @@ export default function SignIn() {
       <div style={styles.container}>
         <h2>Preview Site Sign In</h2>
         <form onSubmit={handleSubmit} style={styles.form}>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            style={styles.input}
-            disabled={isLoading}
-          />
           <input
             type="password"
             placeholder="Password"
