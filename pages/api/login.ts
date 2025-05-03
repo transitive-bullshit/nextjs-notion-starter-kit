@@ -9,13 +9,12 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  const { username, password } = req.body;
+  const { password } = req.body;
 
-  const correctUsername = process.env.PREVIEW_USERNAME;
   const correctPassword = process.env.PREVIEW_PASSWORD;
 
   // Basic validation
-  if (!username || !password || !correctUsername || !correctPassword) {
+  if (!password || !correctPassword) {
     console.error('Missing credentials in request body or environment variables');
     return res.status(400).json({ message: 'Missing credentials' });
   }
@@ -28,7 +27,7 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
   }
 
   // Validate credentials
-  const isCorrectCredentials = username === correctUsername && password === correctPassword;
+  const isCorrectCredentials = password === correctPassword;
 
   if (isCorrectCredentials) {
     // Get/create the session
@@ -37,10 +36,10 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
     // Set session data
     session.isAuthenticated = true;
     await session.save();
-    console.log(`User '${username}' successfully logged in.`);
+    console.log(`User successfully logged in.`);
     res.status(200).json({ message: 'Login successful' });
   } else {
-    console.warn(`Failed login attempt for user '${username}'.`);
+    console.warn(`Failed login attempt.`);
     res.status(401).json({ message: 'Invalid username or password' });
   }
 }
