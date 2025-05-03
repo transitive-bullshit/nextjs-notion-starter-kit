@@ -1,4 +1,4 @@
-import { getIronSession } from 'iron-session';
+import { getIronSession, IronSessionData } from 'iron-session';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { sessionOptions } from '@/lib/session-config';
 
@@ -32,7 +32,7 @@ export default async function loginRoute(req: NextApiRequest, res: NextApiRespon
 
   if (isCorrectCredentials) {
     // Get/create the session
-    const session = await getIronSession(req, res, sessionOptions);
+    const session = await getIronSession<IronSessionData>(req, res, sessionOptions);
 
     // Set session data
     session.isAuthenticated = true;
