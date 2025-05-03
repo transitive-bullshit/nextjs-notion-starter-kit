@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getIronSession } from 'iron-session'
+import { getIronSession, IronSessionData } from 'iron-session'
 import { sessionOptions } from '@/lib/session-config'
 
 export const config = {
@@ -21,7 +21,7 @@ export async function middleware(req: NextRequest) {
 
   // If protection is enabled, check for a valid session
   const res = NextResponse.next() // Prepare response object for session handling
-  const session = await getIronSession(req, res, sessionOptions)
+  const session = await getIronSession<IronSessionData>(req, res, sessionOptions)
 
   // Check if the user is authenticated
   if (!session.isAuthenticated) {
