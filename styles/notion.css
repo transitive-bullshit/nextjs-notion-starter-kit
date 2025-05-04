@@ -781,11 +781,34 @@
   font-weight: 500;
 }
 
+.course-page .notion-link {
+  border-bottom: none;
+}
 
-.course-page .notion-blue  {
-  font-family: "PT Serif", serif;
-  color: #4B5563;
-  font-size: 15px;
+.course-page .notion-link:hover {
+  opacity: 80%;
+}
+
+.course-page .notion-page-content-inner > :nth-child(1){
+  color: #616774;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+}
+.course-page .notion-page-content-inner  > :nth-child(3){
+  border-bottom: 1px solid rgb(203, 203, 203);
+  border-top: 1px solid rgb(203, 203, 203);
+  padding-top: 4rem;
+}
+
+
+.course-page .notion-blue .notion-link{
+  font-family: "TobiasMed";
+  color: #1F2A37;
+  font-size: 16px;
+  border-bottom: none;
+  letter-spacing: -0.16px;
 }
 
 .course-page .notion-h2 .notion-h-title {
@@ -847,12 +870,18 @@
 /* For tabbs in the course page table */
 
 .content-table {
-margin-left: 3rem;
+margin-left: 5rem;
 grid-column:2;
 overflow-y:scroll;
 max-height:100%;
 padding-right:0.5rem;
 }
+
+.content-table  .notion-link {
+  text-decoration: none;
+  border-bottom: none;  /*maybe keep the green underline */
+  }
+  
 
 .content-table::-webkit-scrollbar{ /* Chrome / Safari */
   width:0; height:0;
@@ -893,41 +922,45 @@ padding-right:0.5rem;
 }
 
 
-
 /* ─── COURSE PAGE 4-COLUMN LAYOUT ───────────────────────────────────────── */
 /* ─── COURSE PAGE · 2-COLUMN LAYOUT ───────────────────────────── */
-.course-page .notion-page-content-inner{
-  display:grid;
-  grid-template-columns: 320px 1fr;     /* left grows, right is fixed */
-  overflow:hidden;                  /* grid itself never scrolls */
+.course-page .notion-page-content-inner {
+  display: grid;
+  grid-template-columns: 320px 1fr;  /* left fixed, right grows */
+  overflow: hidden;                 /* grid itself never scrolls */
 }
 
-
-
 /* the table lives in the right-hand column */
-.course-page .notion-page-content-inner > .content-table{
-  grid-column: 2;       /* = second column of the grid            */
+.course-page .notion-page-content-inner > .content-table {
+  grid-column: 2;
   position: absolute;
 }
 
 /* every *other* direct child stays in the left column */
-.course-page .notion-page-content-inner > *:not(.content-table){
+.course-page .notion-page-content-inner > *:not(.content-table) {
   grid-column: 1;
 }
 
+/* ─── SINGLE-COLUMN LAYOUT FOR SMALL SCREENS ───────────────────── */
+@media only screen and (max-width: 800px) {
+  .course-page .notion-page-content-inner {
+    grid-template-columns: 1fr;     /* single column */
+  }
 
-/* LEFT column = the single wrapper you just injected */
-.course-page .left-pane{
-  grid-column:1;
-  position:sticky;
-  top:0;                 /* flush under the header            */
-  align-self:start;
-  display:flex;          /* keeps the children flowing normally */
-  flex-direction:column;
+  .course-page .notion-page-content-inner > .content-table {
+    grid-column: 1;
+    position: static;               /* allow normal flow */
+  }
+
+  .course-page .notion-page-content-inner > *:not(.content-table) {
+    grid-column: 1;
+  }
+
+  .content-table {
+    margin-left: 0px;
+    margin-top: 3rem;
+  }
 }
-
-
-
 
 
 
@@ -1327,7 +1360,7 @@ summary .notion-h3 .notion-h-title {
 }
 
 .course-page .notion-page-scroller {
-  padding: 0 10%;
+  padding: 0 4%;
 }
 
 .notion-callout-text > b {
