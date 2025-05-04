@@ -483,6 +483,11 @@ function wrapElementsBetweenDividers(): void {
   const gridWrapper  = document.createElement('div');
   gridWrapper.className = 'content-table';
 
+  /* ✨ NEW: the heading element */
+  const tableHeading = document.createElement('h1');
+  tableHeading.textContent = 'Course Materials';
+  tableHeading.className   = 'content-table-heading';  
+
   const tabsBlock    = document.createElement('div');
   tabsBlock.className = 'content-table-tabs';
 
@@ -551,7 +556,7 @@ function wrapElementsBetweenDividers(): void {
   }
 
   /* ---------- 5 · compose & inject into the DOM ---------------------- */
-  gridWrapper.append(tabsBlock, restBlock);
+  gridWrapper.append(tableHeading, tabsBlock, restBlock);
   startDivider.parentElement?.insertBefore(gridWrapper, startDivider.nextSibling);
 
   /* ---------- 6 · clean up delimiters -------------------------------- */
@@ -581,12 +586,15 @@ React.useEffect(() => {
     svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttribute('width', '20');
     svg.setAttribute('height', '20');
-    svg.setAttribute('viewBox', '0 0 14 14');
+    svg.setAttribute('viewBox', '0 0 16 16');
     svg.setAttribute('fill', 'none');
     svg.style.marginRight = '6px';
     svg.style.background = '#E5E1D3';
     svg.style.borderRadius = '100%';
-    svg.style.padding = '5px';
+    svg.style.verticalAlign = 'middle'; 
+    svg.style.padding = '4px'; 
+    
+
 
 
     
@@ -605,7 +613,7 @@ React.useEffect(() => {
   customPaths.forEach(d => {
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', d);
-    path.setAttribute('fill', 'black'); 
+    path.setAttribute('fill', '#111928'); 
     svg.appendChild(path);
   });
 

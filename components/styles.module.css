@@ -220,12 +220,11 @@
 .footerForm {
   display: flex;
   align-items: center;
-  background-color: #e6e2d6;
   border-radius: 12px;
   overflow: hidden;
   width: 100%;
   max-width: 400px;
-  background-color: #E5E1D3;
+  background-color: #eeede8;
   border-radius: 8px;
 }
 
@@ -235,7 +234,7 @@
 }
 
 .footerInput {
-  background-color: #E5E1D3;
+  background-color: #eeede8;
   border-radius: 8px;
   border: none;
   padding: 12px 20px;
@@ -360,10 +359,10 @@
   color: white;
   padding: 10px 16px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
-  margin-top: 10px;
+  font-size: 12px;
+  font-family: 'Tobias';
 }
 
 .submitButtonRow {

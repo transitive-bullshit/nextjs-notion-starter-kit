@@ -602,8 +602,10 @@
   border-radius: 4px;
   border: 1px solid #E5E1D3;
   background-color: #faf9f9bc;
-  height: 300px; /* Fixed height */
+  height: 330px; /* Fixed height */
   position: relative; /* Needed for absolute positioning inside */
+  gap: 10px;
+  overflow: hidden;
 }
 
 .custom-wrapper-class:hover {
@@ -611,16 +613,18 @@
 }
 
 .custom-wrapper-class .notion-text {
-  font-family: 'UntitledSansLight', sans-serif;
   color: #374151;
-  font-size: small;
+  font-size: 14px;
   font-weight: 100;
-  /* border-top: 1px solid rgb(203, 203, 203); */
+  line-height: 25px; /* 178.571% */
+  text-overflow: ellipsis;
+  font-family: "Untitled Sans";
+
 }
 
 
 .custom-wrapper-class  > *:first-child{
-  border-bottom: 1px solid rgb(203, 203, 203);
+  border-bottom: 1px solid #E5E1D3;
 }
 
 .custom-wrapper-class > *:not(:first-child):not(:last-child){
@@ -630,17 +634,22 @@
 }
 
 .custom-wrapper-class  > *:last-child{
-  border-top: 1px solid rgb(203, 203, 203);
+  /* border-top: 1px solid #E5E1D3; */
   font-family: 'DM Mono', monospace;
   color: #374151;
   font-weight: 'medium';
   width: 100%;
   text-transform: uppercase;
   height: fit-content;
+
 }
 
 .custom-wrapper-class .notion-gray {
-  font-size: xx-small;
+  font-size: 11px;
+  color: #948f80;
+  text-transform: uppercase;
+  letter-spacing: 0.88px;
+  line-height: 160%; /* 17.6px */
 }
 
 
@@ -650,11 +659,12 @@
 
 .custom-wrapper-class .notion-page-title-text {
   font-family: 'TobiasMed';
-  color: #000000;
+  color: #374151;
   font-size: large;
   border-top: none;
   flex: 0 0 auto;       /* don’t shrink */
   white-space: normal;  /* let it wrap instead of clipping */
+  letter-spacing: -0.2px;
 }
 
 
@@ -767,11 +777,21 @@
 .course-page .notion-title {
   font-family: Tobias;
   font-weight: 600;
-  color: #000000;
+  color: #140C00;
   margin: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   max-width: 900px;
   font-size: 2.5rem;
+  line-height: 120%;
+  letter-spacing: -0.3px;
+}
+
+.course-page .content-table-heading {
+  font-size: 24px;
+  font-family: 'Tobias';
+  padding: 20px 0px;
+  color: #374151;
+  font-weight: 350;
 }
 
 .course-page .notion-text {
@@ -788,6 +808,9 @@
 .course-page .notion-link {
   border-bottom: none;
   color: #374151;
+  display: inline;      /* stay inline, but become a flex container   */
+  align-items: center;       /* vertical centering of icon + text           */
+  line-height: 150%;
 }
 
 
@@ -805,7 +828,6 @@
 .course-page .notion-page-content-inner  > :nth-child(3){
   border-bottom: 1px solid #E5E1D3;
   border-top: 1px solid #E5E1D3;
-  padding-top: 4rem;
 }
 
 .course-page .notion-page-content-inner:not(:has(.content-table)) {

@@ -111,7 +111,7 @@ const FeedbackForm = ({ courseName }) => {
               required
             />
             <div className={styles.submitButtonRow}>
-                <button type="submit" className={styles.FeedbackFormSubmitBtn}>Submit</button>
+                <button type="submit" className={styles.FeedbackFormSubmitBtn}>→</button>
             </div>
 
           </form>
