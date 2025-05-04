@@ -774,7 +774,11 @@
   font-size: 2.5rem;
 }
 
-
+.course-page .notion-text {
+  color: #374151;
+  line-height: 25px;
+  font-size: 14px;
+}
 
 .course-page .notion-gray {
   font-family: 'DM Mono', monospace;
@@ -783,7 +787,9 @@
 
 .course-page .notion-link {
   border-bottom: none;
+  color: #374151;
 }
+
 
 .course-page .notion-link:hover {
   opacity: 80%;
@@ -797,11 +803,14 @@
   letter-spacing: 1.1px;
 }
 .course-page .notion-page-content-inner  > :nth-child(3){
-  border-bottom: 1px solid rgb(203, 203, 203);
-  border-top: 1px solid rgb(203, 203, 203);
+  border-bottom: 1px solid #E5E1D3;
+  border-top: 1px solid #E5E1D3;
   padding-top: 4rem;
 }
 
+.course-page .notion-page-content-inner:not(:has(.content-table)) {
+  grid-template-columns: 1fr !important;   /* single column */
+}
 
 .course-page .notion-blue .notion-link{
   font-family: "TobiasMed";
@@ -809,8 +818,9 @@
   font-size: 16px;
   border-bottom: none;
   letter-spacing: -0.16px;
+  text-transform: none;
 }
-
+/* 
 .course-page .notion-h2 .notion-h-title {
   font-weight: 700;
   font-size: 1.5rem;
@@ -819,32 +829,43 @@
   font-family: 'Tobias';
   text-align: center;
   color: #000000;
+} */
+
+.course-page .notion-h2 .notion-h-title {
+  font-weight: 400;
+  font-size: 11px;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  text-align: center;
+  color: #616774;
 }
 
 
+/* 
 .course-page .notion-h2 {
   font-family: 'DM Mono', monospace;
   color: #6B7280;
-  /* text-transform: uppercase; */
   font-weight: 500;
   font-size: small;
   margin-top: 2rem;
 }
+ */
 
-.course-page .notion-text:nth-of-type(n+3) {
-  margin-left: 2%;
+
+.course-page .notion-text b{
+  font-weight: 400;
+  font-size: 11px;
+  margin-bottom: 1em;
+  line-height: 1.3333333;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  text-align: center;
+  color: #616774;
 }
-
-.course-page .notion-list {
-  margin-left: 2%;
-
-}
-
-.course-page .notion-toggle {
-  margin-left: 2%;
-}
-
-
 
 .course-page a {
   color: #000000;

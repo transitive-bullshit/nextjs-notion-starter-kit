@@ -28,12 +28,11 @@ import { Page404 } from './Page404'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
-import ContentTable from './ContentTable'
 import { createRoot, Root} from 'react-dom/client'  // React 18+
 import FilterRow from './FilterRow'
 import { UpdateNoticeBanner } from './UpdateNoticeBanner'
 import { HeroButterflies } from './HeroButterflies'
-import { IconCircle } from './IconCircle'
+import FeedbackForm from './FeedbackForm'
 
 
 // -----------------------------------------------------------------------------
@@ -343,6 +342,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }, [router])
 
   React.useEffect(() => {
+      if (pageClass=='course-page') {
+      addReactComponentAtEndOfArticle (
+        'article',
+        'fill-article-row',
+        <FeedbackForm courseName={title}/>
+      ) 
+    }
+  }, [router])
+
+  React.useEffect(() => {
     // Once the Notion content is rendered on client side,
     // you can insert your React component:
     if (pageClass == 'course-page') {
@@ -352,29 +361,19 @@ export const NotionPage: React.FC<types.PageProps> = ({
       <button style={{
         background: 'none',
         border: 'none',
-        color: '#757575', // Gray color
+        color: '#58534A', // Gray color
         fontSize: '14px',
-        fontWeight: '400',
+        fontWeight: '500',
+        fontFamily: 'Tobias',
         display: 'flex',
         alignItems: 'center',
         cursor: 'pointer',
         marginBottom: '1.5rem',
         padding: 0,
       }}>
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          width="14" 
-          height="14" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="#757575" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          style={{ marginRight: '5px' }}
-        >
-          <line x1="5" y1="12" x2="19" y2="12" />  {/* Horizontal Line */}
-          <polyline points="12 5 5 12 12 19" />  {/* Arrowhead */}
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 9 15" fill="none" style={{ marginRight: '10px' }}>
+          <path d="M7.5 14L1.25 7.75L7.5 1.5" stroke="#B2A371" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         Back to Archive
       </button>
@@ -468,23 +467,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
 
 
-/**
- * Same goal, new structure:
- *
- * <div class="content-table">                ← master container
- *   <div class="content-table__tabs">        ← one block: tabs + panels
- *     <div class="custom-divider-tabbar">…</div>
- *     <div>                                 ← panelContainer
- *       <div class="custom-divider-wrapper-tabcontent" …>…</div>
- *       …
- *     </div>
- *   </div>
- *
- *   <div class="content-table__rest">        ← all remaining stuff
- *      … stray nodes that were not part of a tab section …
- *   </div>
- * </div>
- */
 function wrapElementsBetweenDividers(): void {
   const headingSelector =
     'h1[class*="notion-"], h2[class*="notion-"], h3[class*="notion-"]';
@@ -1190,12 +1172,6 @@ React.useEffect(() => {
         searchNotion={config.isSearchEnabled ? searchNotion : null}
         pageAside={null}
       />
-
-
-      {/* { (router.asPath != '/about' && router.asPath != '/') && 
-    
-      <ContentTable sections={sections} />
-      } */}
 
       {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
         router.asPath === '/about' ||
