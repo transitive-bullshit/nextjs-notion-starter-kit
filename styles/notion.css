@@ -618,7 +618,7 @@
   font-weight: 100;
   line-height: 25px; /* 178.571% */
   text-overflow: ellipsis;
-  font-family: "Untitled Sans";
+  font-family: 'UntitledSans', sans-serif;
 
 }
 
@@ -918,6 +918,7 @@ grid-column:2;
 overflow-y:scroll;
 max-height:100%;
 padding-right:0.5rem;
+width: 100%;
 }
 
 .content-table  .notion-link {
@@ -951,8 +952,9 @@ padding-right:0.5rem;
   text-wrap: nowrap;
   background-color: #F8F8F8;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  font-family: 'Untitled Sans';
+  font-family: 'UntitledSans', sans-serif;
   padding: 8px 18px;
+  color: #000000;
 
 }
 
@@ -1002,6 +1004,12 @@ padding-right:0.5rem;
   .content-table {
     margin-left: 0px;
     margin-top: 3rem;
+  }
+
+
+  .course-page .notion-title {
+    margin-bottom: 0rem;
+    font-size: 2rem;
   }
 }
 

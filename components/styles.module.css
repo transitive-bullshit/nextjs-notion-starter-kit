@@ -275,7 +275,7 @@
 /* Feedback Comment Form*/
 
 .FeedbackFormContainer {
-  font-family: 'Untitled Sans';
+  font-family: 'UntitledSans', sans-serif;
   width: 100%;
   margin: 20px 0px;
   border: none;
@@ -341,7 +341,7 @@
   border: 1px solid #E5E1D3;
   border-radius: 8px;
   font-size: 12px;
-  font-family: 'Inter';
+  font-family: 'UntitledSans', sans-serif;
   color: #959697;
   background-color: #F8F8F8;
 }
@@ -349,7 +349,7 @@
 .FeedbackFormForm textarea {
   min-height: 80px;
   resize: vertical;
-  font-family: 'Untitled Sans';
+  font-family: 'UntitledSans', sans-serif;
   color: #959697;
   line-height: 140%;
 }

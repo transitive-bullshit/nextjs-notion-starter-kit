@@ -159,7 +159,7 @@ const propertyTextValue = (
 // Example custom React component:
 function License() {
   return (
-    <div style={{ paddingTop:'3rem',  margin:'auto', fontFamily:'DM Mono', color:'#6B7280'}}>
+    <div style={{ paddingTop:'2rem',margin:'auto', fontFamily:'DM Mono', color:'#374151'}}>
       <p>All classes are licensed under the <i> <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en' target='_blank' rel="noreferrer">CC-BY-NC-SA</a></i> license</p>
     </div>
   )
@@ -332,7 +332,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
 
   React.useEffect(() => {
-    if (sections.length <0) {
+    if (pageClass=='notion-home') {
     addReactComponentAtEndOfArticle (
       'article',
       'fill-article-row',
@@ -347,6 +347,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
         'article',
         'fill-article-row',
         <FeedbackForm courseName={title}/>
+      ) 
+      addReactComponentAtEndOfArticle (
+        'article',
+        'fill-article-row',
+        <License/>
       ) 
     }
   }, [router])
