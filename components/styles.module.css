@@ -220,12 +220,11 @@
 .footerForm {
   display: flex;
   align-items: center;
-  background-color: #e6e2d6;
   border-radius: 12px;
   overflow: hidden;
   width: 100%;
   max-width: 400px;
-  background-color: #E5E1D3;
+  background-color: #eeede8;
   border-radius: 8px;
 }
 
@@ -235,7 +234,7 @@
 }
 
 .footerInput {
-  background-color: #E5E1D3;
+  background-color: #eeede8;
   border-radius: 8px;
   border: none;
   padding: 12px 20px;
@@ -270,6 +269,107 @@
 /* END FOOTER STYLES */
 
 
+
+
+
+/* Feedback Comment Form*/
+
+.FeedbackFormContainer {
+  font-family: 'UntitledSans', sans-serif;
+  width: 100%;
+  margin: 20px 0px;
+  border: none;
+  font-size: 12px;
+  padding-top: 1.5rem;
+  border-top: 1px solid #E5E1D3;
+}
+
+
+
+.FeedbackFormHeader {
+  background-color: #0b0f1a;
+  color: white;
+  padding: 10px 20px;
+  width: fit-content;
+}
+
+.FeedbackFormBody {
+  padding: 16px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.FeedbackFormCommentBtn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: #0b0f1a;
+  font-size: 12px;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.FeedbackFormCommentBtn span {
+  margin-right: 8px;
+}
+
+.FeedbackFormForm {
+  background-color: #F8F8F8;
+  padding: 20px;
+  border: 1px solid #E4E4E4;
+}
+
+
+.FeedbackFormForm label {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 12px;
+  gap: 30px;
+  align-items: center;
+}
+
+.FeedbackFormForm label div{
+  display: flex;
+}
+
+.FeedbackFormForm input,
+.FeedbackFormForm textarea {
+  width: 100%;
+  padding: 6px 10px;
+  margin-top: 6px;
+  border: 1px solid #E5E1D3;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: 'UntitledSans', sans-serif;
+  color: #959697;
+  background-color: #F8F8F8;
+}
+
+.FeedbackFormForm textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: 'UntitledSans', sans-serif;
+  color: #959697;
+  line-height: 140%;
+}
+
+.FeedbackFormSubmitBtn {
+  background-color: #0b0f1a;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'Tobias';
+}
+
+.submitButtonRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
 
 
 /* UPDATE NOTICE STYLES */
@@ -446,7 +546,9 @@
     row-gap: 1em;
   }
 
-  
+  .UpdateNoticeBanner {
+    font-size: xx-small;
+  }
 
   .footerContainer {
     padding: 2rem 2rem;

@@ -20,12 +20,12 @@ const PrivacyAndPolicy = () => {
                   <a href='/' className='nav-link'>
                     Coursetexts
                   </a>
-                  <a
+                  {/* <a
                     href='/about-9a2ace4be0dc4d928e7d304a44a6afe8'
                     className='nav-link'
                   >
                     About
-                  </a>
+                  </a> */}
                   <a
                     href='/why'
                     className='nav-link'

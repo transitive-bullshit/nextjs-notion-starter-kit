@@ -16,18 +16,18 @@ const FilterRow: React.FC<FilterRowProps> = ({
   setDepartments
 }) => {
   const AllDepartments = [
-    'Harvard',
-    'MIT',
-    'Stanford',
+    // 'Harvard',
+    // 'MIT',
+    // 'Stanford',
     'Math',
-    'CompSci',
-    'Astro',
+    // 'CompSci',
+    // 'Astro',
     'Eng',
     'Physics',
     'Chem',
     'Sociol',
-    'Econ',
-    'Phil',
+    // 'Econ',
+    // 'Phil',
     'HAA',
   ];
 
