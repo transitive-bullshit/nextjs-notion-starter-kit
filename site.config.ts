@@ -46,10 +46,10 @@ export default siteConfig({
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
   pageUrlOverrides: {
-    '/why': 'Coursetexts-is-open-sourcing-the-frontiers-of-knowledge-19dab1b19f368051ac74efcdc80e1449',
+    // '/why': 'Coursetexts-is-open-sourcing-the-frontiers-of-knowledge-19dab1b19f368051ac74efcdc80e1449',
     '/about': 'About-199ab1b19f3681ce8ab2d06bc1b17175',
     '/proseminar-in-social-psychologypsy2500': 'Proseminar-in-Social-Psychology-PSY-2500-1d819a13312a80029367cbd949d47920',
-    '/classical-social-theory-sociol2204': 'Classical-Social-Theory-SOCIOL-2204-1c219a13312a8020b47dc2ac02b5adb0',
+    // '/classical-social-theory-sociol2204': 'Classical-Social-Theory-SOCIOL-2204-1c219a13312a8020b47dc2ac02b5adb0',
     '/wwii-american-and-european-painting-and-mass-culture-haa272m': 'WWII-American-and-European-Painting-and-Mass-Culture-HAA-272M-1c919a13312a80fcbbd8e928fe96c8cd',
   },
 
