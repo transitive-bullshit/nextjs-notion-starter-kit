@@ -190,26 +190,6 @@ function addReactComponentAtEndOfArticle(
 }
 
 
-// // Helper function to insert a React component after the Notion callout:
-// function addReactComponentAfterCallout(reactNode: React.ReactNode) {
-//   // Select the first notion-callout div
-//   const notionCallout = document.querySelector('.notion-callout')
-
-//   if (notionCallout) {
-//     // Create a new container for our React component
-//     const newContainer = document.createElement('div')
-//     newContainer.className = 'fill-article-row'
-
-//     // Insert the container right after the callout
-//     notionCallout.insertAdjacentElement('afterend', newContainer) // also try beforebegin
-
-//     // Render our React component into that container
-//     const root = createRoot(newContainer)
-//     root.render(reactNode)
-//   } else {
-//     console.warn(`No .notion-callout element found on the page.`)
-//   }
-// }
 
 
 
@@ -682,6 +662,8 @@ React.useEffect(() => {
         { href: '/', label: 'Coursetexts' },
         // { href: '/about', label: 'About' },
         { href: '/why', label: 'Why' },
+        { href: 'https://hcb.hackclub.com/donations/start/coursetexts', label: 'Donate' },
+
       ];
       
       links.forEach((link, index) => {
@@ -1108,6 +1090,9 @@ React.useEffect(() => {
 
 
 
+
+
+
 // /* Run once per page load */
 // React.useEffect(() => {
 //   //  create an overlay container
@@ -1135,9 +1120,18 @@ React.useEffect(() => {
 //     createRoot(overlay).render(<HeroButterflies />);
 //   } 
 // } else {
-//   createRoot(overlay).render(<HeroButterflies />) 
+//   // Find a general container to attach the overlay to
+//   const container = document.querySelector('.notion-frame') || document.body;
+
+//   // Avoid duplicate overlays
+//   if (container && !container.querySelector('.butterfly-overlay')) {
+//     (container as HTMLElement).style.position ||= 'relative';
+//     container.appendChild(overlay);
+//     createRoot(overlay).render(<HeroButterflies />);
+//   }
 // }
-// }, [pageClass]);
+
+// }, [router, pageClass]);
 
 
  
