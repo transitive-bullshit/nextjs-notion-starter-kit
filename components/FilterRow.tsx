@@ -6,6 +6,7 @@ interface FilterRowProps {
   setSearchValue: (val: string) => void;
   departments: string[];
   setDepartments: (val: string[]) => void;
+  allDepartmentTags: string[];
 }
 
 
@@ -13,27 +14,15 @@ const FilterRow: React.FC<FilterRowProps> = ({
   searchValue,
   setSearchValue,
   departments,
-  setDepartments
+  setDepartments,
+  allDepartmentTags
 }) => {
-  const AllDepartments = [
-    // 'Harvard',
-    // 'MIT',
-    // 'Stanford',
-    'Math',
-    // 'CompSci',
-    // 'Astro',
-    'Eng',
-    'Physics',
-    'Chem',
-    'Sociol',
-    // 'Econ',
-    // 'Phil',
-    'HAA',
-  ];
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
   };
+
+  console.log (allDepartmentTags)
 
   return (
     <div style={styles.container}>
@@ -57,7 +46,7 @@ const FilterRow: React.FC<FilterRowProps> = ({
           pinned to the parent width */}
       <div style={styles.filtersOuter}>
         <div style={styles.filtersContainer}>
-          {AllDepartments.map((dept) => (
+          {allDepartmentTags.map((dept) => (
             <button
               key={dept}
               onClick={() => {
@@ -136,8 +125,8 @@ const styles: { [key: string]: React.CSSProperties } = {
   // Horizontal scroll row (with fade) pinned to parent width
   filtersOuter: {
     position: 'relative',
-    width: '100%',
-    maxWidth: '650px',
+    width: '90%',
+    maxWidth: 'fit',
     margin:'auto',
     overflow: 'hidden', // ensures we don’t exceed parent & fade edges are visible
   
