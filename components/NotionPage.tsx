@@ -480,49 +480,62 @@ React.useEffect(() => {
 
 
 
-  function wrapElementsBetweenBlanks() {
-    // Select all .notion-blank div elements
-    const blankDivs = Array.from(document.querySelectorAll('.notion-blank'))
-
-    // Exit if there are less than 2 .notion-blank divs, as no wrapping is needed
-    if (blankDivs.length < 2) return
-
-    // We will use a while loop to iterate over all .notion-blank elements
-    let index = 0
-    while (index < blankDivs.length - 1) {
-      const blankDiv = blankDivs[index]
-      const elementsToWrap = []
-      let nextSibling = blankDiv.nextElementSibling
-
-      // Collect all elements until reaching the next .notion-blank div
-      while (nextSibling && !nextSibling.classList.contains('notion-blank')) {
-        elementsToWrap.push(nextSibling)
-        nextSibling = nextSibling.nextElementSibling
-      }
-
-      // If there are elements to wrap, create a custom-wrapper div
-      if (elementsToWrap.length > 0) {
-        const wrapperDiv = document.createElement('div')
-        wrapperDiv.classList.add('custom-wrapper-class')
-
-        // Move each collected element into the custom-wrapper
-        elementsToWrap.forEach((element) => {
-          wrapperDiv.appendChild(element)
-        })
-
-        // Insert the custom-wrapper div after the current .notion-blank div
-        blankDiv.insertAdjacentElement('afterend', wrapperDiv)
-
-        // Since we inserted a wrapper, the next .notion-blank should be skipped
-        index += 1
-      } else {
-        // Otherwise, move to the next .notion-blank
-        index += 1
+    function wrapElementsBetweenBlanks() {
+      // Select all .notion-blank div elements
+      const blankDivs = Array.from(document.querySelectorAll('.notion-blank'))
+    
+      // Exit if there are less than 2 .notion-blank divs, as no wrapping is needed
+      if (blankDivs.length < 2) return
+    
+      // We will use a while loop to iterate over all .notion-blank elements
+      let index = 0
+      while (index < blankDivs.length - 1) {
+        const blankDiv = blankDivs[index]
+        const elementsToWrap = []
+        let nextSibling = blankDiv.nextElementSibling
+    
+        // Collect all elements until reaching the next .notion-blank div
+        while (nextSibling && !nextSibling.classList.contains('notion-blank')) {
+          elementsToWrap.push(nextSibling)
+          nextSibling = nextSibling.nextElementSibling
+        }
+    
+        // If there are elements to wrap, create a custom-wrapper div
+        if (elementsToWrap.length > 0) {
+          const wrapperDiv = document.createElement('div')
+          wrapperDiv.classList.add('custom-wrapper-class')
+    
+          // Move each collected element into the custom-wrapper
+          elementsToWrap.forEach((element) => {
+            wrapperDiv.appendChild(element)
+          })
+    
+          // Insert the custom-wrapper div after the current .notion-blank div
+          blankDiv.insertAdjacentElement('afterend', wrapperDiv)
+    
+          // AFTER inserting into DOM, find the notion-link inside this specific wrapper
+          const notionLink = wrapperDiv.querySelector('a')
+          console.log(notionLink)
+          if (notionLink) {
+            const linkUrl = notionLink.getAttribute('href')
+            if (linkUrl) {
+              wrapperDiv.style.cursor = 'pointer'
+              wrapperDiv.addEventListener('click', () => {
+                  window.location.href = linkUrl
+              })
+            }
+          }
+    
+          // Since we inserted a wrapper, the next .notion-blank should be skipped
+          index += 1
+        } else {
+          // Otherwise, move to the next .notion-blank
+          index += 1
+        }
       }
     }
-  }
 
-
+    
 
 
 function wrapElementsBetweenDividers(): void {
