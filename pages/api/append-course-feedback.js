@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     const { courseName, name, email, comment } = req.body;
     if (!courseName) return res.status(400).json({ message: 'courseName required' });
 
-    // 1 – Google auth
+    // 1 – Google auth
     const auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth });
     const spreadsheetId = process.env.SPREADSHEET_ID;
 
-    // 2 – Does the sheet already exist?
+    // 2 – Does the sheet already exist?
     const meta = await sheets.spreadsheets.get({ spreadsheetId });
     const sheet = meta.data.sheets.find(
       (s) => s.properties.title === courseName,
@@ -50,7 +50,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // 3 – Append the feedback
+    // 3 – Append the feedback
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: `'${courseName}'!A:D`,
