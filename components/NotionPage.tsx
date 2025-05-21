@@ -31,7 +31,7 @@ import styles from './styles.module.css'
 import { createRoot, Root} from 'react-dom/client'  // React 18+
 import FilterRow from './FilterRow'
 import { UpdateNoticeBanner } from './UpdateNoticeBanner'
-import { HeroButterflies } from './HeroButterflies'
+// import { HeroButterflies } from './HeroButterflies'
 import FeedbackForm from './FeedbackForm'
 
 
@@ -104,10 +104,10 @@ const Modal = dynamic(
   }
 )
 
-type Section = {
-  heading: string;
-  links: { text: string; href: string }[];
-};
+// type Section = {
+//   heading: string;
+//   links: { text: string; href: string }[];
+// };
 
 
 const Tweet = ({ id }: { id: string }) => {
@@ -247,7 +247,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const router = useRouter()
   const lite = useSearchParam('lite')
 
-  const [sections, setSections] = React.useState([]) // state for sections to be used for tabs
+  // const [sections, setSections] = React.useState([]) // state for sections to be used for tabs
 
   // Lift the search and department states up here
   const [searchValue, setSearchValue] = React.useState('')
@@ -418,7 +418,7 @@ React.useEffect(() => {
       }}>
 
         <svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 9 15" fill="none" style={{ marginRight: '10px' }}>
-          <path d="M7.5 14L1.25 7.75L7.5 1.5" stroke="#B2A371" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7.5 14L1.25 7.75L7.5 1.5" stroke="#B2A371" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         Back to Archive
       </button>
@@ -1214,7 +1214,7 @@ React.useEffect(() => {
     config.description
 
 
-  console.log(sections)
+  // console.log(sections)
 
 
 
