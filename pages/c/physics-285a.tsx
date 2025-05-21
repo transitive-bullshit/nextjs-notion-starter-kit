@@ -7,7 +7,7 @@ export default function Chem163() {
   useEffect(() => {
     router.push('/modern-atomic-and-optical-physics-iphysics285a')
     window.location.href = '/modern-atomic-and-optical-physics-iphysics285a'
-  }, [])
+  }, [router])
 
   return null
 }

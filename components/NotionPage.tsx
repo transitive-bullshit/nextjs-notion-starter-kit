@@ -379,7 +379,7 @@ React.useEffect(() => {
       <License/>
     ) 
     }
-  }, [router])
+  }, [pageClass])
 
   React.useEffect(() => {
       if (pageClass=='course-page') {
@@ -394,7 +394,7 @@ React.useEffect(() => {
         <License/>
       ) 
     }
-  }, [router])
+  }, [pageClass])
 
   React.useEffect(() => {
     // Once the Notion content is rendered on client side,
@@ -431,7 +431,7 @@ React.useEffect(() => {
       <UpdateNoticeBanner/>
     )
 
-  }, [router])
+  }, [pageClass])
 
 
 
@@ -474,7 +474,7 @@ React.useEffect(() => {
 
         
       }
-    }, [searchValue, departments]);
+    }, [searchValue, departments, pageClass]);
     
 
 
@@ -619,7 +619,7 @@ function wrapElementsBetweenDividers(): void {
       node = sib;
       tabIndex += 1;
     } else {
-      /* anything that isn’t part of a section -> shove into restBlock */
+      /* anything that isn't part of a section -> shove into restBlock */
       const nxt = node.nextElementSibling;
       restBlock.appendChild(node);
       node = nxt;
@@ -1214,12 +1214,6 @@ React.useEffect(() => {
     config.description
 
 
-  // console.log(sections)
-
-
-
-
-
 
 // /* Run once per page load */
 // React.useEffect(() => {
@@ -1238,7 +1232,7 @@ React.useEffect(() => {
 //     '.notion-home .notion-block-1a519a13312a8036a624e4732734ce6a'
 //   );
 
-//   /* only if the hero exists and we haven’t already added butterflies */
+//   /* only if the hero exists and we haven't already added butterflies */
 //   if (hero && !hero.querySelector('.butterfly-overlay')) {
 //     // 1️⃣ make sure the block can act as the positioning context
 //     (hero as HTMLElement).style.position ||= 'relative';

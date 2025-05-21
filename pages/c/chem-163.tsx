@@ -7,7 +7,7 @@ export default function Chem163() {
   useEffect(() => {
     router.push('/frontiers-in-biophysicschem163')
     window.location.href = '/frontiers-in-biophysicschem163'
-  }, [])
+  }, [router])
 
   return null
 }
