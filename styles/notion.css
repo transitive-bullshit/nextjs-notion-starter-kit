@@ -606,6 +606,13 @@
   position: relative; /* Needed for absolute positioning inside */
   gap: 10px;
   overflow: hidden;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.custom-wrapper-class.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .custom-wrapper-class:hover {
@@ -662,7 +669,7 @@
   color: #374151;
   font-size: large;
   border-top: none;
-  flex: 0 0 auto;       /* don’t shrink */
+  flex: 0 0 auto;       /* don't shrink */
   white-space: normal;  /* let it wrap instead of clipping */
   letter-spacing: -0.2px;
 }

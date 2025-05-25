@@ -329,20 +329,23 @@ React.useEffect(() => {
   
   // Cleanup function when component unmounts
   return () => {
-    if (filterRootRef.current.root) {
-      try {
-        filterRootRef.current.root.unmount();
-      } catch (e) {
-        console.error("Error unmounting filter root:", e);
+    // Use requestAnimationFrame to ensure we're not unmounting during render
+    requestAnimationFrame(() => {
+      if (filterRootRef.current.root) {
+        try {
+          filterRootRef.current.root.unmount();
+        } catch (e) {
+          console.error("Error unmounting filter root:", e);
+        }
+        filterRootRef.current.root = null;
       }
-      filterRootRef.current.root = null;
-    }
-    
-    if (filterRootRef.current.container) {
-      filterRootRef.current.container = null;
-    }
+      
+      if (filterRootRef.current.container) {
+        filterRootRef.current.container = null;
+      }
+    });
   };
-}, [pageClass, searchValue, department, allDepartmentTags]); // Include all dependencies
+}, [pageClass]); // Only depend on pageClass
 
 
 
@@ -443,20 +446,21 @@ React.useEffect(() => {
     React.useEffect(() => {
       if (pageClass === "notion-home") {
         const cards = document.querySelectorAll('.custom-wrapper-class');
-    
+        
         cards.forEach((card) => {
           const cardText = card.textContent.toLowerCase();
           const matchesSearch = cardText.includes(searchValue.toLowerCase());
-    
-          const subjectContent = card.querySelector('a.notion-link')?.textContent?.toLowerCase().match(/\(([^)]+)\)/)?.[1] || '';
           
-          // Check if the department matches (if one is selected)
+          const subjectContent = card.querySelector('a.notion-link')?.textContent?.toLowerCase().match(/\(([^)]+)\)/)?.[1] || '';
           const matchesDepartment = !department || subjectContent.includes(department.toLowerCase());
-    
+          
+          // Use both classList and style to ensure proper hiding
           if (matchesSearch && matchesDepartment) {
             (card as HTMLElement).style.display = 'block';
+            card.classList.remove('hidden');
           } else {
             (card as HTMLElement).style.display = 'none';
+            card.classList.add('hidden');
           }
         });
       }
@@ -1078,20 +1082,18 @@ React.useEffect(() => {
     parentContainer.appendChild(wrapper);
   });
 
-  if (pageClass === 'notion-home') {
+  // Only generate department tags if we're on the home page and haven't set them yet
+  if (pageClass === 'notion-home' && allDepartmentTags.length === 0) {
     const cards = document.querySelectorAll('.custom-wrapper-class');
     const departmentSet = new Set<string>();
     
     cards.forEach((card) => {
       // Grab the text inside the parentheses of the course card title
       const parenthesesContent = card.querySelector('a.notion-link')?.textContent?.match(/\(([^)]+)\)/)?.[1] || '';
-      console.log('parenthesesContent', parenthesesContent)
       
       if (parenthesesContent) {
         // Extract department code (alphabetical prefix before any numbers)
-        // This regex gets all letters at the beginning of the string
         const departmentCode = parenthesesContent.trim().match(/^[A-Za-z]+/)?.[0] || '';
-        console.log('departmentCode', departmentCode)
         
         // Only add if it's not empty
         if (departmentCode) {
@@ -1101,13 +1103,12 @@ React.useEffect(() => {
     });
     
     const extractedDepartments = Array.from(departmentSet).sort();
-    console.log('Extracted department codes:', extractedDepartments);
     
     if (extractedDepartments.length > 0) {
       setAllDepartmentTags(extractedDepartments);
     }
   }
-  }, [pageClass]); // Add pageClass as dependency to ensure this runs when it changes
+}, []); // Remove pageClass from dependencies to run only once on mount
 
 
 
