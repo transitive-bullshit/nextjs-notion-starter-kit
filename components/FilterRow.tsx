@@ -4,8 +4,8 @@ import { UpdateNotice } from './UpdateNotice';
 interface FilterRowProps {
   searchValue: string;
   setSearchValue: (val: string) => void;
-  departments: string[];
-  setDepartments: (val: string[]) => void;
+  department: string;
+  setDepartment: (val: string) => void;
   allDepartmentTags: string[];
 }
 
@@ -13,8 +13,8 @@ interface FilterRowProps {
 const FilterRow: React.FC<FilterRowProps> = ({
   searchValue,
   setSearchValue,
-  departments,
-  setDepartments,
+  department,
+  setDepartment,
   allDepartmentTags
 }) => {
 
@@ -45,26 +45,22 @@ const FilterRow: React.FC<FilterRowProps> = ({
       {/* Filter Buttons with horizontal scroll, 
           pinned to the parent width */}
       <div style={styles.filtersOuter}>
-        <div style={styles.filtersContainer}>
+      <div style={styles.filtersContainer}>
           {allDepartmentTags.map((dept) => (
             <button
               key={dept}
               onClick={() => {
-                const newDepartments = departments.includes(dept)
-                  ? departments.filter(d => d !== dept) // remove if already selected
-                  : [...departments, dept]; // add if not selected
-                setDepartments(newDepartments);
+                // If the clicked department is already selected, deselect it
+                // Otherwise, select the new department
+                setDepartment(department === dept ? '' : dept);
               }}
               style={{
                 ...styles.filterButton,
-                ...(departments.includes(dept) ? styles.activeFilterButton : {}),
+                ...(department === dept ? styles.activeFilterButton : {}),
               }}
             >
               {dept}
             </button>
-
-
-
           ))}
         </div>
         {/* Fades on each side */}
@@ -125,8 +121,8 @@ const styles: { [key: string]: React.CSSProperties } = {
   // Horizontal scroll row (with fade) pinned to parent width
   filtersOuter: {
     position: 'relative',
-    width: '90%',
-    maxWidth: 'fit',
+    width: '95%',
+    maxWidth: '700px',
     margin:'auto',
     overflow: 'hidden', // ensures we don’t exceed parent & fade edges are visible
   

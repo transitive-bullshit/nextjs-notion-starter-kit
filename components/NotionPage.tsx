@@ -249,9 +249,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   // const [sections, setSections] = React.useState([]) // state for sections to be used for tabs
 
-  // Lift the search and department states up here
+  // Change departments array to single department string
   const [searchValue, setSearchValue] = React.useState('')
-  const [departments, setDepartments] = React.useState<string[]>([])
+  const [department, setDepartment] = React.useState<string>('')  // Changed from departments array
   const [allDepartmentTags, setAllDepartmentTags] = React.useState<string[]>([]);
 
 
@@ -319,8 +319,8 @@ React.useEffect(() => {
         <FilterRow 
           searchValue={searchValue}
           setSearchValue={setSearchValue}
-          departments={departments}
-          setDepartments={setDepartments}
+          department={department}
+          setDepartment={setDepartment}
           allDepartmentTags={allDepartmentTags}
         />
       );
@@ -342,26 +342,25 @@ React.useEffect(() => {
       filterRootRef.current.container = null;
     }
   };
-}, [pageClass, searchValue, departments, allDepartmentTags]); // Include all dependencies
+}, [pageClass, searchValue, department, allDepartmentTags]); // Include all dependencies
 
 
 
 
-// Separate effect for updating the FilterRow when state changes (but not remounting it)
+// Update the FilterRow rendering
 React.useEffect(() => {
-  // Only update if we have a root and we're on the home page
-  if (pageClass === "notion-home" && filterRootRef.current.root) {
+  if (filterRootRef.current.root) {
     filterRootRef.current.root.render(
       <FilterRow 
         searchValue={searchValue}
         setSearchValue={setSearchValue}
-        departments={departments}
-        setDepartments={setDepartments}
+        department={department}
+        setDepartment={setDepartment}
         allDepartmentTags={allDepartmentTags}
       />
     );
   }
-}, [searchValue, departments, allDepartmentTags]); // Only deps that trigger updates to existing component
+}, [searchValue, department, allDepartmentTags]);
 
 
 
@@ -443,27 +442,16 @@ React.useEffect(() => {
     // 2) Filter .custom-wrapper-class i.e. the course cards each time searchValue or department changes
     React.useEffect(() => {
       if (pageClass === "notion-home") {
-
         const cards = document.querySelectorAll('.custom-wrapper-class');
     
         cards.forEach((card) => {
           const cardText = card.textContent.toLowerCase();
           const matchesSearch = cardText.includes(searchValue.toLowerCase());
     
-          //search for the subject by looking at the title of the card and then looking for only the stuff inside the parentsis  
           const subjectContent = card.querySelector('a.notion-link')?.textContent?.toLowerCase().match(/\(([^)]+)\)/)?.[1] || '';
           
-          // const schoolContent = card.querySelector('span.notion-gray')?.textContent?.toLowerCase() || '';
-    
-          // Require ALL selected departments to be present in subject OR school content
-          let matchesDepartment = true;
-          if (departments.length > 0) {
-            matchesDepartment = departments.some((dept) =>
-              subjectContent.includes(dept.toLowerCase()) 
-            // ||
-            //   schoolContent.includes(dept.toLowerCase())
-            );
-          }
+          // Check if the department matches (if one is selected)
+          const matchesDepartment = !department || subjectContent.includes(department.toLowerCase());
     
           if (matchesSearch && matchesDepartment) {
             (card as HTMLElement).style.display = 'block';
@@ -471,10 +459,8 @@ React.useEffect(() => {
             (card as HTMLElement).style.display = 'none';
           }
         });
-
-        
       }
-    }, [searchValue, departments, pageClass]);
+    }, [searchValue, department, pageClass]);
     
 
 
@@ -673,7 +659,7 @@ React.useEffect(() => {
   if (href.startsWith('https://storage.googleapis.com')) {
     customPaths = [ 'M11.0866 1.6875H4.13944C3.70632 1.68885 3.29134 1.8615 2.98508 2.16776C2.67882 2.47401 2.50617 2.889 2.50482 3.32212V11.9038C2.50482 12.0122 2.54788 12.1162 2.62451 12.1928C2.70115 12.2694 2.80509 12.3125 2.91348 12.3125H10.2692C10.3776 12.3125 10.4816 12.2694 10.5582 12.1928C10.6348 12.1162 10.6779 12.0122 10.6779 11.9038C10.6779 11.7955 10.6348 11.6915 10.5582 11.6149C10.4816 11.5382 10.3776 11.4952 10.2692 11.4952H3.32213C3.32213 11.2784 3.40824 11.0705 3.56151 10.9173C3.71479 10.764 3.92267 10.6779 4.13944 10.6779H11.0866C11.1949 10.6779 11.2989 10.6348 11.3755 10.5582C11.4522 10.4816 11.4952 10.3776 11.4952 10.2692V2.09615C11.4952 1.98777 11.4522 1.88383 11.3755 1.80719C11.2989 1.73055 11.1949 1.6875 11.0866 1.6875ZM9.86059 6.59135L8.5529 5.61058C8.51788 5.58324 8.47473 5.56839 8.4303 5.56839C8.38588 5.56839 8.34272 5.58324 8.30771 5.61058L7.00001 6.59135V2.50481H9.86059V6.59135Z'];
   } else if (href.startsWith('https://youtu.be')) {
-    customPaths= ["M9.45191 5.16094V10.0648C9.45191 10.2816 9.3658 10.4894 9.21253 10.6427C9.05925 10.796 8.85137 10.8821 8.6346 10.8821H2.91345C2.64512 10.8821 2.37942 10.8292 2.13152 10.7266C1.88362 10.6239 1.65837 10.4734 1.46864 10.2836C1.08545 9.90045 0.870178 9.38074 0.870178 8.83883V3.93498C0.870178 3.71822 0.956287 3.51033 1.10956 3.35706C1.26284 3.20378 1.47072 3.11768 1.68749 3.11768H7.40864C7.95055 3.11768 8.47026 3.33295 8.85345 3.71614C9.23664 4.09932 9.45191 4.61904 9.45191 5.16094ZM12.9255 4.1955C12.8639 4.15806 12.7932 4.13826 12.7211 4.13826C12.6491 4.13826 12.5784 4.15806 12.5168 4.1955L10.4735 5.36016C10.4109 5.39634 10.3589 5.4485 10.323 5.51133C10.2871 5.57415 10.2686 5.64538 10.2692 5.71774V8.28204C10.2686 8.35439 10.2871 8.42562 10.323 8.48845C10.3589 8.55127 10.4109 8.60344 10.4735 8.63961L12.5168 9.80427C12.5791 9.84 12.6494 9.85933 12.7211 9.86046C12.793 9.86003 12.8635 9.84064 12.9255 9.80427C12.9881 9.76935 13.0401 9.71817 13.0761 9.65613C13.112 9.5941 13.1306 9.52351 13.1298 9.45181V4.54796C13.1306 4.47626 13.112 4.40568 13.0761 4.34364C13.0401 4.28161 12.9881 4.23043 12.9255 4.1955Z"];
+    customPaths= ["M9.45191 5.16094V10.0648C9.45191 10.2816 9.3658 10.4894 9.21253 10.6427C9.05925 10.796 8.85137 10.8821 8.6346 10.8821H2.91345C2.64512 10.8821 2.37942 10.8292 2.13152 10.7266C1.88362 10.6239 1.65837 10.4734 1.46864 10.2836C1.08545 9.90045 0.870178 9.38074 0.870178 8.83883V3.93498C0.870178 3.71822 0.956287 3.51033 1.10956 3.35706C1.26284 3.20378 1.47072 3.11768H7.40864C7.95055 3.11768 8.47026 3.33295 8.85345 3.71614C9.23664 4.09932 9.45191 4.61904 9.45191 5.16094ZM12.9255 4.1955C12.8639 4.15806 12.7932 4.13826 12.7211 4.13826C12.6491 4.13826 12.5784 4.15806 12.5168 4.1955L10.4735 5.36016C10.4109 5.39634 10.3589 5.4485 10.323 5.51133C10.2871 5.57415 10.2686 5.64538 10.2692 5.71774V8.28204C10.2686 8.35439 10.2871 8.42562 10.323 8.48845C10.3589 8.55127 10.4109 8.60344 10.4735 8.63961L12.5168 9.80427C12.5791 9.84 12.6494 9.85933 12.7211 9.86046C12.793 9.86003 12.8635 9.84064 12.9255 9.80427C12.9881 9.76935 13.0401 9.71817 13.0761 9.65613C13.112 9.5941 13.1306 9.52351 13.1298 9.45181V4.54796C13.1306 4.47626 13.112 4.40568 13.0761 4.34364C13.0401 4.28161 12.9881 4.23043 12.9255 4.1955Z"];
   } 
 
   if (isProf) {
