@@ -594,8 +594,8 @@
 }
 
 .custom-wrapper-class {
-  display:flex; 
-  flex-direction:column ;
+  display: flex !important;
+  flex-direction: column !important;
   padding: 15px 20px;
   margin: 4px 0;
   width: 100%;
@@ -611,6 +611,7 @@
 }
 
 .custom-wrapper-class.hidden {
+  display: none !important;
   opacity: 0;
   pointer-events: none;
 }
