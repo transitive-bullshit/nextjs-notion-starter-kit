@@ -594,8 +594,8 @@
 }
 
 .custom-wrapper-class {
-  display:flex; 
-  flex-direction:column ;
+  display: flex !important;
+  flex-direction: column !important;
   padding: 15px 20px;
   margin: 4px 0;
   width: 100%;
@@ -606,6 +606,14 @@
   position: relative; /* Needed for absolute positioning inside */
   gap: 10px;
   overflow: hidden;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.custom-wrapper-class.hidden {
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .custom-wrapper-class:hover {
@@ -662,7 +670,7 @@
   color: #374151;
   font-size: large;
   border-top: none;
-  flex: 0 0 auto;       /* don’t shrink */
+  flex: 0 0 auto;       /* don't shrink */
   white-space: normal;  /* let it wrap instead of clipping */
   letter-spacing: -0.2px;
 }
