@@ -906,12 +906,15 @@ React.useEffect(() => {
 
       const removeNearestContainersForLink = (linkHref: string) => {
         document.querySelectorAll(`a[href="${linkHref}"]`).forEach((link) => {
-          let container = link.closest('div') as HTMLElement // Find the nearest container (first parent div)
+          let container = link.closest('div, .notion-text') as HTMLElement // Find the nearest container (first parent div)
           let count = 0 // Track how many containers are removed
 
           while (container && count < 2) {
             const parent = container.parentElement // Get the parent container
-            console.log('parent being removed:', parent)
+            console.log('container being removed:', container.classList)
+            if (container.classList.contains('notion-page-content-inner')) {
+              break
+            }
             container.remove() // Remove the current container
             container = parent // Move to the next parent container
             count++ // Increment the counter
@@ -1075,7 +1078,11 @@ React.useEffect(() => {
 
     // Move all custom wrappers into the parent container
     customWrappers.forEach(wrapper => {
-      parentContainer.appendChild(wrapper);
+      // Only append if the wrapper is not already child of the parent container
+      // Only append if new child element does not contain the parent container
+      if (wrapper.parentNode !== parentContainer && !wrapper.contains(parentContainer)) {
+        parentContainer.appendChild(wrapper);
+      }
     });
 
     // Only generate department tags if we're on the home page and haven't set them yet
