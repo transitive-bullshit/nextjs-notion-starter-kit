@@ -23,7 +23,6 @@ import { bootstrap } from '@/lib/bootstrap-client'
 import {
   fathomConfig,
   fathomId,
-  googleAnalyticsId,
   isServer,
   posthogConfig,
   posthogId
@@ -45,13 +44,6 @@ export default function App({ Component, pageProps }: AppProps) {
       if (posthogId) {
         posthog.capture('$pageview')
       }
-
-      // Track Google Analytics page views
-      if (googleAnalyticsId && window.gtag) {
-        window.gtag('config', googleAnalyticsId, {
-          page_path: router.asPath
-        })
-      }
     }
 
     if (fathomId) {
@@ -67,7 +59,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return () => {
       router.events.off('routeChangeComplete', onRouteChangeComplete)
     }
-  }, [router.events, router.asPath])
+  }, [router.events])
 
   return <Component {...pageProps} />
 }
