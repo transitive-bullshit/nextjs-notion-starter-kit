@@ -167,8 +167,8 @@ function License() {
 
 // Helper function to append a React component:
 function addReactComponentAtEndOfArticle(
-  articleSelector: string, 
-  containerClassName: string, 
+  articleSelector: string,
+  containerClassName: string,
   reactNode: React.ReactNode
 ) {
   const articleElement = document.querySelector(articleSelector)
@@ -177,7 +177,7 @@ function addReactComponentAtEndOfArticle(
     // Create a new div container
     const newContainer = document.createElement('div')
     newContainer.className = containerClassName
-    
+
     // Append the new container as the last child of the article
     articleElement.appendChild(newContainer)
 
@@ -256,10 +256,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
 
 
-  
+
 
   let pageClass = '';
-  
+
   if (router.pathname === '/') {
     pageClass = 'notion-home';
   } else if (router.asPath.startsWith('/about')) {
@@ -274,7 +274,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const filterRootRef = React.useRef<{root: Root | null, container: HTMLElement | null}>({
     root: null,
     container: null
-  });  
+  });
 
 
 // Clean up when the component unmounts or pageClass changes
@@ -287,14 +287,14 @@ React.useEffect(() => {
     } catch (e) {
       console.error("Error unmounting filter root:", e);
     }
-    
+
     // Remove container if it exists
     if (filterRootRef.current.container && filterRootRef.current.container.parentNode) {
       filterRootRef.current.container.remove();
     }
     filterRootRef.current.container = null;
   }
-  
+
   // Only create the container and root on the home page
   if (pageClass === "notion-home") {
     // Look for a good container to place the filter row
@@ -303,20 +303,20 @@ React.useEffect(() => {
       // Insert a container for FilterRow
       const newContainer = document.createElement('div');
       newContainer.className = 'fill-article-row filter-row-container';
-      
+
       // Insert it in the DOM
       notionCallout.insertAdjacentElement('beforebegin', newContainer);
-      
+
       // Store the container reference
       filterRootRef.current.container = newContainer;
-      
+
       // Create and store the React root
       const newRoot = createRoot(newContainer);
       filterRootRef.current.root = newRoot;
-      
+
       // Render the FilterRow component immediately
       newRoot.render(
-        <FilterRow 
+        <FilterRow
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           department={department}
@@ -326,7 +326,7 @@ React.useEffect(() => {
       );
     }
   }
-  
+
   // Cleanup function when component unmounts
   return () => {
     // Use requestAnimationFrame to ensure we're not unmounting during render
@@ -339,7 +339,7 @@ React.useEffect(() => {
         }
         filterRootRef.current.root = null;
       }
-      
+
       if (filterRootRef.current.container) {
         filterRootRef.current.container = null;
       }
@@ -354,7 +354,7 @@ React.useEffect(() => {
 React.useEffect(() => {
   if (filterRootRef.current.root) {
     filterRootRef.current.root.render(
-      <FilterRow 
+      <FilterRow
         searchValue={searchValue}
         setSearchValue={setSearchValue}
         department={department}
@@ -379,7 +379,7 @@ React.useEffect(() => {
       'article',
       'fill-article-row',
       <License/>
-    ) 
+    )
     }
   }, [pageClass])
 
@@ -389,12 +389,12 @@ React.useEffect(() => {
         'article',
         'fill-article-row',
         <FeedbackForm courseName={title}/>
-      ) 
+      )
       addReactComponentAtEndOfArticle (
         'article',
         'fill-article-row',
         <License/>
-      ) 
+      )
     }
   }, [pageClass])
 
@@ -403,8 +403,8 @@ React.useEffect(() => {
     // you can insert your React component:
     if (pageClass == 'course-page') {
 
-    addReactComponentBeforeTitle( 
-      <a href="/" style={{ textDecoration: 'none' }}>   
+    addReactComponentBeforeTitle(
+      <a href="/" style={{ textDecoration: 'none' }}>
       <button style={{
         background: 'none',
         border: 'none',
@@ -440,20 +440,20 @@ React.useEffect(() => {
 
 
 
-  
+
 
     // 2) Filter .custom-wrapper-class i.e. the course cards each time searchValue or department changes
     React.useEffect(() => {
       if (pageClass === "notion-home") {
         const cards = document.querySelectorAll('.custom-wrapper-class');
-        
+
         cards.forEach((card) => {
           const cardText = card.textContent.toLowerCase();
           const matchesSearch = cardText.includes(searchValue.toLowerCase());
-          
+
           const subjectContent = card.querySelector('a.notion-link')?.textContent?.toLowerCase().match(/\(([^)]+)\)/)?.[1] || '';
           const matchesDepartment = !department || subjectContent.includes(department.toLowerCase());
-          
+
           // Use both classList and style to ensure proper hiding
           if (matchesSearch && matchesDepartment) {
             (card as HTMLElement).style.display = 'block';
@@ -465,7 +465,7 @@ React.useEffect(() => {
         });
       }
     }, [searchValue, department, pageClass]);
-    
+
 
 
 
@@ -473,36 +473,36 @@ React.useEffect(() => {
     function wrapElementsBetweenBlanks() {
       // Select all .notion-blank div elements
       const blankDivs = Array.from(document.querySelectorAll('.notion-blank'))
-    
+
       // Exit if there are less than 2 .notion-blank divs, as no wrapping is needed
       if (blankDivs.length < 2) return
-    
+
       // We will use a while loop to iterate over all .notion-blank elements
       let index = 0
       while (index < blankDivs.length - 1) {
         const blankDiv = blankDivs[index]
         const elementsToWrap = []
         let nextSibling = blankDiv.nextElementSibling
-    
+
         // Collect all elements until reaching the next .notion-blank div
         while (nextSibling && !nextSibling.classList.contains('notion-blank')) {
           elementsToWrap.push(nextSibling)
           nextSibling = nextSibling.nextElementSibling
         }
-    
+
         // If there are elements to wrap, create a custom-wrapper div
         if (elementsToWrap.length > 0) {
           const wrapperDiv = document.createElement('div')
           wrapperDiv.classList.add('custom-wrapper-class')
-    
+
           // Move each collected element into the custom-wrapper
           elementsToWrap.forEach((element) => {
             wrapperDiv.appendChild(element)
           })
-    
+
           // Insert the custom-wrapper div after the current .notion-blank div
           blankDiv.insertAdjacentElement('afterend', wrapperDiv)
-    
+
           // AFTER inserting into DOM, find the notion-link inside this specific wrapper
           const notionLink = wrapperDiv.querySelector('a')
           console.log(notionLink)
@@ -515,7 +515,7 @@ React.useEffect(() => {
               })
             }
           }
-    
+
           // Since we inserted a wrapper, the next .notion-blank should be skipped
           index += 1
         } else {
@@ -525,7 +525,7 @@ React.useEffect(() => {
       }
     }
 
-    
+
 
 
 function wrapElementsBetweenDividers(): void {
@@ -547,7 +547,7 @@ function wrapElementsBetweenDividers(): void {
   /* ✨ NEW: the heading element */
   const tableHeading = document.createElement('h1');
   tableHeading.textContent = 'Course Materials';
-  tableHeading.className   = 'content-table-heading';  
+  tableHeading.className   = 'content-table-heading';
 
   const tabsBlock    = document.createElement('div');
   tabsBlock.className = 'content-table-tabs';
@@ -582,7 +582,7 @@ function wrapElementsBetweenDividers(): void {
       let sib = afterHeading;
       while (sib && !isHeading(sib) && sib !== endDivider) {
         const nxt = sib.nextElementSibling;
-        wrapper.appendChild(sib);        
+        wrapper.appendChild(sib);
         sib = nxt;
       }
       panelContainer.appendChild(wrapper);
@@ -624,70 +624,77 @@ function wrapElementsBetweenDividers(): void {
   dividers.forEach(d => d.remove());
 }
 
-  
+
 
 
 
 
 // Adds Icon SVGs to links!
 React.useEffect(() => {
-  const page = document.querySelector('.course-page');
-  if (!page) return;
+  // Add a small delay to ensure DOM is ready
+  const timeoutId = setTimeout(() => {
+    const page = document.querySelector('.course-page');
+    if (!page) return;
 
-  const notionLinks = page.querySelectorAll('.notion-link');
-  const processedLinks = new Set<string>(); // Track processed links
-  
-  notionLinks?.forEach((link) => {
-    // Skip if SVG already added
-    if (link.querySelector('svg')) return;
+    const notionLinks = page.querySelectorAll('.notion-link');
+    if (!notionLinks?.length) return;
 
-    const href = link.getAttribute('href') || '';
-    
-    // Skip if we've already processed this link
-    if (processedLinks.has(href)) return;
-    
+    const processedLinks = new Set<string>();
+
+    notionLinks.forEach((link) => {
+      // Skip if already processed
+      if (link.querySelector('svg')) return;
+
+      const href = link.getAttribute('href') || '';
+
+      // Skip if we've already processed this link
+      if (processedLinks.has(href)) return;
+
     // Add this link to our processed set
-    processedLinks.add(href);
+      processedLinks.add(href);
 
-    const isProf = !!link.closest('.notion-blue'); // <-- this checks if the link is blue for the profs sites
+      const isProf = !!link.closest('.notion-blue'); // <-- this checks if the link is blue for the profs sites
 
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-    svg.setAttribute('width', '20');
-    svg.setAttribute('height', '20');
-    svg.setAttribute('viewBox', '0 0 16 16');
-    svg.setAttribute('fill', 'none');
-    svg.style.marginRight = '6px';
-    svg.style.background = '#E5E1D3';
-    svg.style.borderRadius = '100%';
-    svg.style.verticalAlign = 'middle'; 
-    svg.style.padding = '4px'; 
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      svg.setAttribute('width', '20');
+      svg.setAttribute('height', '20');
+      svg.setAttribute('viewBox', '0 0 16 16');
+      svg.setAttribute('fill', 'none');
+      svg.style.marginRight = '6px';
+      svg.style.background = '#E5E1D3';
+      svg.style.borderRadius = '100%';
+      svg.style.verticalAlign = 'middle';
+      svg.style.padding = '4px';
 
-    let customPaths = ["M11.1887 2.81104C10.9428 2.56346 10.6503 2.36697 10.3281 2.23289C10.0059 2.09881 9.6604 2.02979 9.31144 2.02979C8.96247 2.02979 8.61695 2.09881 8.29477 2.23289C7.97259 2.36697 7.68012 2.56346 7.43418 2.81104L6.42277 3.82245C6.35233 3.90019 6.31449 4.00204 6.31707 4.1069C6.31965 4.21177 6.36246 4.31163 6.43664 4.38581C6.51081 4.45998 6.61067 4.50279 6.71554 4.50538C6.82041 4.50796 6.92225 4.47011 6.99999 4.39968L8.01141 3.38826C8.35691 3.04482 8.82428 2.85205 9.31144 2.85205C9.7986 2.85205 10.266 3.04482 10.6115 3.38826C10.7828 3.55867 10.9187 3.76124 11.0114 3.98435C11.1042 4.20745 11.1519 4.44668 11.1519 4.68829C11.1519 4.9299 11.1042 5.16913 11.0114 5.39224C10.9187 5.61534 10.7828 5.81791 10.6115 5.98832L9.16586 7.43393C8.82035 7.77737 8.35298 7.97014 7.86583 7.97014C7.37867 7.97014 6.9113 7.77737 6.5658 7.43393C6.52862 7.39291 6.48351 7.35987 6.43318 7.33681C6.38285 7.31375 6.32836 7.30116 6.27302 7.29979C6.21768 7.29843 6.16264 7.30833 6.11124 7.32888C6.05983 7.34943 6.01315 7.38022 5.974 7.41936C5.93486 7.45851 5.90407 7.5052 5.88352 7.5566C5.86297 7.608 5.85307 7.66304 5.85443 7.71838C5.8558 7.77373 5.86839 7.82821 5.89145 7.87854C5.9145 7.92887 5.94755 7.97399 5.98857 8.01116C6.48663 8.50869 7.16183 8.78816 7.86583 8.78816C8.56982 8.78816 9.24502 8.50869 9.74308 8.01116L11.1887 6.56554C11.4363 6.31961 11.6328 6.02714 11.7668 5.70496C11.9009 5.38278 11.9699 5.03726 11.9699 4.68829C11.9699 4.33932 11.9009 3.9938 11.7668 3.67162C11.6328 3.34944 11.4363 3.05697 11.1887 2.81104Z", "M7.00001 9.5999L5.98859 10.6113C5.64134 10.944 5.17759 11.1274 4.69672 11.1223C4.21586 11.1171 3.75614 10.9238 3.4161 10.5838C3.07605 10.2437 2.88274 9.784 2.87759 9.30313C2.87244 8.82227 3.05585 8.35851 3.38853 8.01126L4.83415 6.56565C5.17965 6.22221 5.64702 6.02944 6.13418 6.02944C6.62134 6.02944 7.0887 6.22221 7.43421 6.56565C7.51194 6.63608 7.61379 6.67393 7.71866 6.67135C7.82353 6.66876 7.92339 6.62595 7.99756 6.55178C8.07174 6.4776 8.11455 6.37774 8.11713 6.27287C8.11971 6.16801 8.08187 6.06616 8.01143 5.98842C7.51337 5.49089 6.83817 5.21143 6.13418 5.21143C5.43019 5.21143 4.75499 5.49089 4.25692 5.98842L2.81131 7.43404C2.55142 7.6775 2.34314 7.97074 2.19886 8.29632C2.05457 8.62189 1.97723 8.97316 1.97142 9.32922C1.96562 9.68529 2.03147 10.0389 2.16506 10.369C2.29865 10.6991 2.49726 10.999 2.74907 11.2508C3.00088 11.5026 3.30075 11.7012 3.63086 11.8348C3.96097 11.9684 4.31457 12.0342 4.67063 12.0284C5.0267 12.0226 5.37796 11.9453 5.70354 11.801C6.02911 11.6567 6.32235 11.4484 6.56582 11.1885L7.57724 10.1771C7.64767 10.0994 7.68552 9.99755 7.68293 9.89268C7.68035 9.78781 7.63754 9.68795 7.56337 9.61377C7.48919 9.5396 7.38933 9.49679 7.28446 9.49421C7.17959 9.49162 7.07775 9.52947 7.00001 9.5999Z"]
-    if (href.startsWith('https://storage.googleapis.com')) {
-      customPaths = [ 'M11.0866 1.6875H4.13944C3.70632 1.68885 3.29134 1.8615 2.98508 2.16776C2.67882 2.47401 2.50617 2.889 2.50482 3.32212V11.9038C2.50482 12.0122 2.54788 12.1162 2.62451 12.1928C2.70115 12.2694 2.80509 12.3125 2.91348 12.3125H10.2692C10.3776 12.3125 10.4816 12.2694 10.5582 12.1928C10.6348 12.1162 10.6779 12.0122 10.6779 11.9038C10.6779 11.7955 10.6348 11.6915 10.5582 11.6149C10.4816 11.5382 10.3776 11.4952 10.2692 11.4952H3.32213C3.32213 11.2784 3.40824 11.0705 3.56151 10.9173C3.71479 10.764 3.92267 10.6779 4.13944 10.6779H11.0866C11.1949 10.6779 11.2989 10.6348 11.3755 10.5582C11.4522 10.4816 11.4952 10.3776 11.4952 10.2692V2.09615C11.4952 1.98777 11.4522 1.88383 11.3755 1.80719C11.2989 1.73055 11.1949 1.6875 11.0866 1.6875ZM9.86059 6.59135L8.5529 5.61058C8.51788 5.58324 8.47473 5.56839 8.4303 5.56839C8.38588 5.56839 8.34272 5.58324 8.30771 5.61058L7.00001 6.59135V2.50481H9.86059V6.59135Z'];
-    } else if (href.startsWith('https://youtu.be')) {
-      customPaths= ["M9.45191 5.16094V10.0648C9.45191 10.2816 9.3658 10.4894 9.21253 10.6427C9.05925 10.796 8.85137 10.8821 8.6346 10.8821H2.91345C2.64512 10.8821 2.37942 10.8292 2.13152 10.7266C1.88362 10.6239 1.65837 10.4734 1.46864 10.2836C1.08545 9.90045 0.870178 9.38074 0.870178 8.83883V3.93498C0.870178 3.71822 0.956287 3.51033 1.10956 3.35706C1.26284 3.20378 1.47072 3.11768H7.40864C7.95055 3.11768 8.47026 3.33295 8.85345 3.71614C9.23664 4.09932 9.45191 4.61904 9.45191 5.16094ZM12.9255 4.1955C12.8639 4.15806 12.7932 4.13826 12.7211 4.13826C12.6491 4.13826 12.5784 4.15806 12.5168 4.1955L10.4735 5.36016C10.4109 5.39634 10.3589 5.4485 10.323 5.51133C10.2871 5.57415 10.2686 5.64538 10.2692 5.71774V8.28204C10.2686 8.35439 10.2871 8.42562 10.323 8.48845C10.3589 8.55127 10.4109 8.60344 10.4735 8.63961L12.5168 9.80427C12.5791 9.84 12.6494 9.85933 12.7211 9.86046C12.793 9.86003 12.8635 9.84064 12.9255 9.80427C12.9881 9.76935 13.0401 9.71817 13.0761 9.65613C13.112 9.5941 13.1306 9.52351 13.1298 9.45181V4.54796C13.1306 4.47626 13.112 4.40568 13.0761 4.34364C13.0401 4.28161 12.9881 4.23043 12.9255 4.1955Z"];
-    } 
+      let customPaths = ["M11.1887 2.81104C10.9428 2.56346 10.6503 2.36697 10.3281 2.23289C10.0059 2.09881 9.6604 2.02979 9.31144 2.02979C8.96247 2.02979 8.61695 2.09881 8.29477 2.23289C7.97259 2.36697 7.68012 2.56346 7.43418 2.81104L6.42277 3.82245C6.35233 3.90019 6.31449 4.00204 6.31707 4.1069C6.31965 4.21177 6.36246 4.31163 6.43664 4.38581C6.51081 4.45998 6.61067 4.50279 6.71554 4.50538C6.82041 4.50796 6.92225 4.47011 6.99999 4.39968L8.01141 3.38826C8.35691 3.04482 8.82428 2.85205 9.31144 2.85205C9.7986 2.85205 10.266 3.04482 10.6115 3.38826C10.7828 3.55867 10.9187 3.76124 11.0114 3.98435C11.1042 4.20745 11.1519 4.44668 11.1519 4.68829C11.1519 4.9299 11.1042 5.16913 11.0114 5.39224C10.9187 5.61534 10.7828 5.81791 10.6115 5.98832L9.16586 7.43393C8.82035 7.77737 8.35298 7.97014 7.86583 7.97014C7.37867 7.97014 6.9113 7.77737 6.5658 7.43393C6.52862 7.39291 6.48351 7.35987 6.43318 7.33681C6.38285 7.31375 6.32836 7.30116 6.27302 7.29979C6.21768 7.29843 6.16264 7.30833 6.11124 7.32888C6.05983 7.34943 6.01315 7.38022 5.974 7.41936C5.93486 7.45851 5.90407 7.5052 5.88352 7.5566C5.86297 7.608 5.85307 7.66304 5.85443 7.71838C5.8558 7.77373 5.86839 7.82821 5.89145 7.87854C5.9145 7.92887 5.94755 7.97399 5.98857 8.01116C6.48663 8.50869 7.16183 8.78816 7.86583 8.78816C8.56982 8.78816 9.24502 8.50869 9.74308 8.01116L11.1887 6.56554C11.4363 6.31961 11.6328 6.02714 11.7668 5.70496C11.9009 5.38278 11.9699 5.03726 11.9699 4.68829C11.9699 4.33932 11.9009 3.9938 11.7668 3.67162C11.6328 3.34944 11.4363 3.05697 11.1887 2.81104Z", "M7.00001 9.5999L5.98859 10.6113C5.64134 10.944 5.17759 11.1274 4.69672 11.1223C4.21586 11.1171 3.75614 10.9238 3.4161 10.5838C3.07605 10.2437 2.88274 9.784 2.87759 9.30313C2.87244 8.82227 3.05585 8.35851 3.38853 8.01126L4.83415 6.56565C5.17965 6.22221 5.64702 6.02944 6.13418 6.02944C6.62134 6.02944 7.0887 6.22221 7.43421 6.56565C7.51194 6.63608 7.61379 6.67393 7.71866 6.67135C7.82353 6.66876 7.92339 6.62595 7.99756 6.55178C8.07174 6.4776 8.11455 6.37774 8.11713 6.27287C8.11971 6.16801 8.08187 6.06616 8.01143 5.98842C7.51337 5.49089 6.83817 5.21143 6.13418 5.21143C5.43019 5.21143 4.75499 5.49089 4.25692 5.98842L2.81131 7.43404C2.55142 7.6775 2.34314 7.97074 2.19886 8.29632C2.05457 8.62189 1.97723 8.97316 1.97142 9.32922C1.96562 9.68529 2.03147 10.0389 2.16506 10.369C2.29865 10.6991 2.49726 10.999 2.74907 11.2508C3.00088 11.5026 3.30075 11.7012 3.63086 11.8348C3.96097 11.9684 4.31457 12.0342 4.67063 12.0284C5.0267 12.0226 5.37796 11.9453 5.70354 11.801C6.02911 11.6567 6.32235 11.4484 6.56582 11.1885L7.57724 10.1771C7.64767 10.0994 7.68552 9.99755 7.68293 9.89268C7.68035 9.78781 7.63754 9.68795 7.56337 9.61377C7.48919 9.5396 7.38933 9.49679 7.28446 9.49421C7.17959 9.49162 7.07775 9.52947 7.00001 9.5999Z"]
+      if (href.startsWith('https://storage.googleapis.com')) {
+        customPaths = [ 'M11.0866 1.6875H4.13944C3.70632 1.68885 3.29134 1.8615 2.98508 2.16776C2.67882 2.47401 2.50617 2.889 2.50482 3.32212V11.9038C2.50482 12.0122 2.54788 12.1162 2.62451 12.1928C2.70115 12.2694 2.80509 12.3125 2.91348 12.3125H10.2692C10.3776 12.3125 10.4816 12.2694 10.5582 12.1928C10.6348 12.1162 10.6779 12.0122 10.6779 11.9038C10.6779 11.7955 10.6348 11.6915 10.5582 11.6149C10.4816 11.5382 10.3776 11.4952 10.2692 11.4952H3.32213C3.32213 11.2784 3.40824 11.0705 3.56151 10.9173C3.71479 10.764 3.92267 10.6779 4.13944 10.6779H11.0866C11.1949 10.6779 11.2989 10.6348 11.3755 10.5582C11.4522 10.4816 11.4952 10.3776 11.4952 10.2692V2.09615C11.4952 1.98777 11.4522 1.88383 11.3755 1.80719C11.2989 1.73055 11.1949 1.6875 11.0866 1.6875ZM9.86059 6.59135L8.5529 5.61058C8.51788 5.58324 8.47473 5.56839 8.4303 5.56839C8.38588 5.56839 8.34272 5.58324 8.30771 5.61058L7.00001 6.59135V2.50481H9.86059V6.59135Z'];
+      } else if (href.startsWith('https://youtu.be')) {
+        customPaths= ["M9.45191 5.16094V10.0648C9.45191 10.2816 9.3658 10.4894 9.21253 10.6427C9.05925 10.796 8.85137 10.8821 8.6346 10.8821H2.91345C2.64512 10.8821 2.37942 10.8292 2.13152 10.7266C1.88362 10.6239 1.65837 10.4734 1.46864 10.2836C1.08545 9.90045 0.870178 9.38074 0.870178 8.83883V3.93498C0.870178 3.71822 0.956287 3.51033 1.10956 3.35706C1.26284 3.20378 1.47072 3.11768H7.40864C7.95055 3.11768 8.47026 3.33295 8.85345 3.71614C9.23664 4.09932 9.45191 4.61904 9.45191 5.16094ZM12.9255 4.1955C12.8639 4.15806 12.7932 4.13826 12.7211 4.13826C12.6491 4.13826 12.5784 4.15806 12.5168 4.1955L10.4735 5.36016C10.4109 5.39634 10.3589 5.4485 10.323 5.51133C10.2871 5.57415 10.2686 5.64538 10.2692 5.71774V8.28204C10.2686 8.35439 10.2871 8.42562 10.323 8.48845C10.3589 8.55127 10.4109 8.60344 10.4735 8.63961L12.5168 9.80427C12.5791 9.84 12.6494 9.85933 12.7211 9.86046C12.793 9.86003 12.8635 9.84064 12.9255 9.80427C12.9881 9.76935 13.0401 9.71817 13.0761 9.65613C13.112 9.5941 13.1306 9.52351 13.1298 9.45181V4.54796C13.1306 4.47626 13.112 4.40568 13.0761 4.34364C13.0401 4.28161 12.9881 4.23043 12.9255 4.1955Z"];
+      }
 
-    if (isProf) {
-      customPaths =["M5.66707 7.72769C6.68667 7.72769 7.51321 6.90114 7.51321 5.88155C7.51321 4.86195 6.68667 4.0354 5.66707 4.0354C4.64747 4.0354 3.82092 4.86195 3.82092 5.88155C3.82092 6.90114 4.64747 7.72769 5.66707 7.72769Z","M5.66709 1.85376C4.80404 1.85376 3.96038 2.10968 3.24279 2.58916C2.5252 3.06864 1.9659 3.75015 1.63563 4.54749C1.30536 5.34484 1.21894 6.22222 1.38731 7.06868C1.55569 7.91514 1.97128 8.69266 2.58154 9.30292C3.19181 9.91318 3.96933 10.3288 4.81579 10.4971C5.66225 10.6655 6.53962 10.5791 7.33697 10.2488C8.13432 9.91856 8.81582 9.35927 9.2953 8.64167C9.77478 7.92408 10.0307 7.08042 10.0307 6.21738C10.0285 5.06076 9.56804 3.95214 8.75018 3.13428C7.93232 2.31643 6.82371 1.85598 5.66709 1.85376ZM8.42791 8.66772C8.1562 8.27796 7.80607 7.94926 7.39995 7.70268C6.93365 8.14941 6.31284 8.3988 5.66709 8.3988C5.02133 8.3988 4.40052 8.14941 3.93423 7.70268C3.5281 7.94926 3.17797 8.27796 2.90626 8.66772C2.43372 8.1356 2.12502 7.47826 2.01732 6.7748C1.90962 6.07135 2.0075 5.35176 2.29919 4.70264C2.59088 4.05351 3.06394 3.50251 3.66144 3.11594C4.25895 2.72938 4.95544 2.52372 5.66709 2.52372C6.37874 2.52372 7.07522 2.72938 7.67273 3.11594C8.27023 3.50251 8.74329 4.05351 9.03498 4.70264C9.32667 5.35176 9.42455 6.07135 9.31685 6.7748C9.20915 7.47826 8.90045 8.1356 8.42791 8.66772Z"]
-      svg.setAttribute('viewBox', '0 0 12 12');
-    }
+      if (isProf) {
+        customPaths =["M5.66707 7.72769C6.68667 7.72769 7.51321 6.90114 7.51321 5.88155C7.51321 4.86195 6.68667 4.0354 5.66707 4.0354C4.64747 4.0354 3.82092 4.86195 3.82092 5.88155C3.82092 6.90114 4.64747 7.72769 5.66707 7.72769Z","M5.66709 1.85376C4.80404 1.85376 3.96038 2.10968 3.24279 2.58916C2.5252 3.06864 1.9659 3.75015 1.63563 4.54749C1.30536 5.34484 1.21894 6.22222 1.38731 7.06868C1.55569 7.91514 1.97128 8.69266 2.58154 9.30292C3.19181 9.91318 3.96933 10.3288 4.81579 10.4971C5.66225 10.6655 6.53962 10.5791 7.33697 10.2488C8.13432 9.91856 8.81582 9.35927 9.2953 8.64167C9.77478 7.92408 10.0307 7.08042 10.0307 6.21738C10.0285 5.06076 9.56804 3.95214 8.75018 3.13428C7.93232 2.31643 6.82371 1.85598 5.66709 1.85376ZM8.42791 8.66772C8.1562 8.27796 7.80607 7.94926 7.39995 7.70268C6.93365 8.14941 6.31284 8.3988 5.66709 8.3988C5.02133 8.3988 4.40052 8.14941 3.93423 7.70268C3.5281 7.94926 3.17797 8.27796 2.90626 8.66772C2.43372 8.1356 2.12502 7.47826 2.01732 6.7748C1.90962 6.07135 2.0075 5.35176 2.29919 4.70264C2.59088 4.05351 3.06394 3.50251 3.66144 3.11594C4.25895 2.72938 4.95544 2.52372 5.66709 2.52372C6.37874 2.52372 7.07522 2.72938 7.67273 3.11594C8.27023 3.50251 8.74329 4.05351 9.03498 4.70264C9.32667 5.35176 9.42455 6.07135 9.31685 6.7748C9.20915 7.47826 8.90045 8.1356 8.42791 8.66772Z"]
+        svg.setAttribute('viewBox', '0 0 12 12');
+      }
 
-    customPaths.forEach(d => {
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', d);
-      path.setAttribute('fill', '#111928'); 
-      svg.appendChild(path);
+      customPaths.forEach(d => {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', d);
+        path.setAttribute('fill', '#111928');
+        svg.appendChild(path);
+      });
+
+      link.insertBefore(svg, link.firstChild);
     });
+  }, 200); // Small delay to ensure DOM is ready
 
-    link.insertBefore(svg, link.firstChild);
-  });
-}, [router]); 
+  return () => clearTimeout(timeoutId);
+}, [router]);
 
 
-  
+
 
   function wrapHeadersAndContent() {
     // Select all .notion-h3 elements
@@ -745,12 +752,12 @@ React.useEffect(() => {
         { href: 'https://hcb.hackclub.com/donations/start/coursetexts', label: 'Donate' },
 
       ];
-      
+
       links.forEach((link, index) => {
         const anchor = document.createElement('a');
         anchor.href = link.href;
         anchor.classList.add('nav-link'); // Add styling class to <a> tag
-      
+
         // Apply flexbox to align vertically
         anchor.style.display = 'flex';
         anchor.style.flexDirection = 'row'; // Stack SVG and text vertically
@@ -758,7 +765,7 @@ React.useEffect(() => {
         anchor.style.textDecoration = 'none'; // Remove underline
         anchor.style.color = 'black'; // Set text color
         anchor.style.gap = '4px'; // Space between SVG and text
-      
+
         // If it's the first link, insert the SVG
         if (index === 0) {
           const svgIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -767,23 +774,23 @@ React.useEffect(() => {
           svgIcon.setAttribute('height', '25');
           svgIcon.setAttribute('viewBox', '0 0 24 25');
           svgIcon.setAttribute('fill', 'none');
-      
+
           const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
           path.setAttribute('d', 'M21.9 18.8375L18.0187 4.34375C17.9155 3.95963 17.6639 3.63225 17.3194 3.43358C16.9748 3.23492 16.5654 3.18125 16.1813 3.28438L13.2844 4.0625L13.1906 4.09062C13.0509 3.90732 12.8708 3.75868 12.6643 3.65625C12.4578 3.55382 12.2305 3.50035 12 3.5H9C8.73609 3.50071 8.47716 3.57191 8.25 3.70625C8.02284 3.57191 7.76391 3.50071 7.5 3.5H4.5C4.10218 3.5 3.72064 3.65804 3.43934 3.93934C3.15804 4.22064 3 4.60218 3 5V20C3 20.3978 3.15804 20.7794 3.43934 21.0607C3.72064 21.342 4.10218 21.5 4.5 21.5H7.5C7.76391 21.4993 8.02284 21.4281 8.25 21.2938C8.47716 21.4281 8.73609 21.4993 9 21.5H12C12.3978 21.5 12.7794 21.342 13.0607 21.0607C13.342 20.7794 13.5 20.3978 13.5 20V10.6625L16.1063 20.3844C16.1912 20.7047 16.3798 20.988 16.6427 21.1898C16.9056 21.3916 17.2279 21.5007 17.5594 21.5C17.6888 21.4978 17.8176 21.482 17.9437 21.4531L20.8406 20.675C21.2247 20.5718 21.5521 20.3202 21.7508 19.9756C21.9495 19.631 22.0031 19.2216 21.9 18.8375ZM16.5656 4.7375L17.1562 6.90313L14.2594 7.68125L13.6688 5.51563L16.5656 4.7375ZM12 5V16.25H9V5H12ZM7.5 5V7.25H4.5V5H7.5ZM12 20H9V17.75H12V20ZM20.4562 19.2219L17.5594 20L16.9688 17.825L19.875 17.0469L20.4562 19.2219Z');
           path.setAttribute('fill', 'black');
-      
+
           svgIcon.appendChild(path);
           anchor.appendChild(svgIcon); // Append SVG before text
         }
-      
+
         const textNode = document.createTextNode(link.label);
         anchor.appendChild(textNode);
-      
+
         nav.appendChild(anchor); // Append each <a> to the <nav>
       });
-      
+
       header.appendChild(nav); // Append <nav> to the .notion-nav-header
-      
+
     }
 
     //
@@ -809,7 +816,7 @@ React.useEffect(() => {
 
 
 
-  
+
     // function addContainerAtEndOfArticle(
     //   articleSelector,
     //   containerClassName,
@@ -932,7 +939,7 @@ React.useEffect(() => {
 
 
 
-      
+
     } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
       wrapHeadersAndContent()
     } else if (
@@ -941,7 +948,7 @@ React.useEffect(() => {
       (router.asPath.split('/')[1]?.startsWith('about') &&
         router.asPath.split('/')[1])
     ) {
-      
+
       const titleElements =
         document.querySelectorAll<HTMLElement>('h1.notion-title')
 
@@ -965,9 +972,9 @@ React.useEffect(() => {
       })
     } else {
       //
-      
+
       wrapElementsBetweenDividers()
-      
+
       document.querySelectorAll('.notion-title').forEach(function (summary) {
         // Select the <b> tag inside the <summary>
         const boldTag = summary.querySelector('b')
@@ -1067,20 +1074,20 @@ React.useEffect(() => {
 React.useEffect(() => {
   // Select all custom wrapper elements i.e. all the course cards
   const customWrappers = document.querySelectorAll('.custom-wrapper-class');
-  
+
   if (customWrappers.length === 0) return;
-  
+
   // Check if the container already exists to prevent duplication
   let parentContainer = document.querySelector('.custom-wrapper-container');
-  
+
   if (!parentContainer) {
     parentContainer = document.createElement('div');
     parentContainer.className = 'custom-wrapper-container';
-    
+
     // Insert the container before the first custom wrapper
     customWrappers[0].parentNode.insertBefore(parentContainer, customWrappers[0]);
   }
-  
+
   // Move all custom wrappers into the parent container
   customWrappers.forEach(wrapper => {
     parentContainer.appendChild(wrapper);
@@ -1090,24 +1097,24 @@ React.useEffect(() => {
   if (pageClass === 'notion-home' && allDepartmentTags.length === 0) {
     const cards = document.querySelectorAll('.custom-wrapper-class');
     const departmentSet = new Set<string>();
-    
+
     cards.forEach((card) => {
       // Grab the text inside the parentheses of the course card title
       const parenthesesContent = card.querySelector('a.notion-link')?.textContent?.match(/\(([^)]+)\)/)?.[1] || '';
-      
+
       if (parenthesesContent) {
         // Extract department code (alphabetical prefix before any numbers)
         const departmentCode = parenthesesContent.trim().match(/^[A-Za-z]+/)?.[0] || '';
-        
+
         // Only add if it's not empty
         if (departmentCode) {
           departmentSet.add(departmentCode.toUpperCase());
         }
       }
     });
-    
+
     const extractedDepartments = Array.from(departmentSet).sort();
-    
+
     if (extractedDepartments.length > 0) {
       setAllDepartmentTags(extractedDepartments);
     }
@@ -1231,7 +1238,7 @@ React.useEffect(() => {
 
 //     // 3️⃣ mount React *into the overlay*, not the block itself
 //     createRoot(overlay).render(<HeroButterflies />);
-//   } 
+//   }
 // } else {
 //   // Find a general container to attach the overlay to
 //   const container = document.querySelector('.notion-frame') || document.body;
