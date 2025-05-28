@@ -277,45 +277,83 @@ export const NotionPage: React.FC<types.PageProps> = ({
   });
 
 
-// Clean up when the component unmounts or pageClass changes
-React.useEffect(() => {
-  // First, clean up any existing root when the page type changes
-  if (filterRootRef.current.root) {
-    try {
-      filterRootRef.current.root.unmount();
-      filterRootRef.current.root = null;
-    } catch (e) {
-      console.error("Error unmounting filter root:", e);
+  // Clean up when the component unmounts or pageClass changes
+  React.useEffect(() => {
+    // First, clean up any existing root when the page type changes
+    if (filterRootRef.current.root) {
+      try {
+        filterRootRef.current.root.unmount();
+        filterRootRef.current.root = null;
+      } catch (e) {
+        console.error("Error unmounting filter root:", e);
+      }
+
+      // Remove container if it exists
+      if (filterRootRef.current.container && filterRootRef.current.container.parentNode) {
+        filterRootRef.current.container.remove();
+      }
+      filterRootRef.current.container = null;
     }
 
-    // Remove container if it exists
-    if (filterRootRef.current.container && filterRootRef.current.container.parentNode) {
-      filterRootRef.current.container.remove();
+    // Only create the container and root on the home page
+    if (pageClass === "notion-home") {
+      // Look for a good container to place the filter row
+      const notionCallout = document.querySelector('.notion-callout');
+      if (notionCallout) {
+        // Insert a container for FilterRow
+        const newContainer = document.createElement('div');
+        newContainer.className = 'fill-article-row filter-row-container';
+
+        // Insert it in the DOM
+        notionCallout.insertAdjacentElement('beforebegin', newContainer);
+
+        // Store the container reference
+        filterRootRef.current.container = newContainer;
+
+        // Create and store the React root
+        const newRoot = createRoot(newContainer);
+        filterRootRef.current.root = newRoot;
+
+        // Render the FilterRow component immediately
+        newRoot.render(
+          <FilterRow
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            department={department}
+            setDepartment={setDepartment}
+            allDepartmentTags={allDepartmentTags}
+          />
+        );
+      }
     }
-    filterRootRef.current.container = null;
-  }
 
-  // Only create the container and root on the home page
-  if (pageClass === "notion-home") {
-    // Look for a good container to place the filter row
-    const notionCallout = document.querySelector('.notion-callout');
-    if (notionCallout) {
-      // Insert a container for FilterRow
-      const newContainer = document.createElement('div');
-      newContainer.className = 'fill-article-row filter-row-container';
+    // Cleanup function when component unmounts
+    return () => {
+      // Use requestAnimationFrame to ensure we're not unmounting during render
+      requestAnimationFrame(() => {
+        if (filterRootRef.current.root) {
+          try {
+            filterRootRef.current.root.unmount();
+          } catch (e) {
+            console.error("Error unmounting filter root:", e);
+          }
+          filterRootRef.current.root = null;
+        }
 
-      // Insert it in the DOM
-      notionCallout.insertAdjacentElement('beforebegin', newContainer);
+        if (filterRootRef.current.container) {
+          filterRootRef.current.container = null;
+        }
+      });
+    };
+  }, [pageClass]); // Only depend on pageClass
 
-      // Store the container reference
-      filterRootRef.current.container = newContainer;
 
-      // Create and store the React root
-      const newRoot = createRoot(newContainer);
-      filterRootRef.current.root = newRoot;
 
-      // Render the FilterRow component immediately
-      newRoot.render(
+
+  // Update the FilterRow rendering
+  React.useEffect(() => {
+    if (filterRootRef.current.root) {
+      filterRootRef.current.root.render(
         <FilterRow
           searchValue={searchValue}
           setSearchValue={setSearchValue}
@@ -325,53 +363,7 @@ React.useEffect(() => {
         />
       );
     }
-  }
-
-  // Cleanup function when component unmounts
-  return () => {
-    // Use requestAnimationFrame to ensure we're not unmounting during render
-    requestAnimationFrame(() => {
-      if (filterRootRef.current.root) {
-        try {
-          filterRootRef.current.root.unmount();
-        } catch (e) {
-          console.error("Error unmounting filter root:", e);
-        }
-        filterRootRef.current.root = null;
-      }
-
-      if (filterRootRef.current.container) {
-        filterRootRef.current.container = null;
-      }
-    });
-  };
-}, [pageClass]); // Only depend on pageClass
-
-
-
-
-// Update the FilterRow rendering
-React.useEffect(() => {
-  if (filterRootRef.current.root) {
-    filterRootRef.current.root.render(
-      <FilterRow
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        department={department}
-        setDepartment={setDepartment}
-        allDepartmentTags={allDepartmentTags}
-      />
-    );
-  }
-}, [searchValue, department, allDepartmentTags]);
-
-
-
-
-
-
-
-
+  }, [searchValue, department, allDepartmentTags]);
 
   React.useEffect(() => {
     if (pageClass=='notion-home') {
@@ -435,36 +427,29 @@ React.useEffect(() => {
 
   }, [pageClass])
 
+  // 2) Filter .custom-wrapper-class i.e. the course cards each time searchValue or department changes
+  React.useEffect(() => {
+    if (pageClass === "notion-home") {
+      const cards = document.querySelectorAll('.custom-wrapper-class');
 
+      cards.forEach((card) => {
+        const cardText = card.textContent.toLowerCase();
+        const matchesSearch = cardText.includes(searchValue.toLowerCase());
 
+        const subjectContent = card.querySelector('a.notion-link')?.textContent?.toLowerCase().match(/\(([^)]+)\)/)?.[1] || '';
+        const matchesDepartment = !department || subjectContent.includes(department.toLowerCase());
 
-
-
-
-
-    // 2) Filter .custom-wrapper-class i.e. the course cards each time searchValue or department changes
-    React.useEffect(() => {
-      if (pageClass === "notion-home") {
-        const cards = document.querySelectorAll('.custom-wrapper-class');
-
-        cards.forEach((card) => {
-          const cardText = card.textContent.toLowerCase();
-          const matchesSearch = cardText.includes(searchValue.toLowerCase());
-
-          const subjectContent = card.querySelector('a.notion-link')?.textContent?.toLowerCase().match(/\(([^)]+)\)/)?.[1] || '';
-          const matchesDepartment = !department || subjectContent.includes(department.toLowerCase());
-
-          // Use both classList and style to ensure proper hiding
-          if (matchesSearch && matchesDepartment) {
-            (card as HTMLElement).style.display = 'block';
-            card.classList.remove('hidden');
-          } else {
-            (card as HTMLElement).style.display = 'none';
-            card.classList.add('hidden');
-          }
-        });
-      }
-    }, [searchValue, department, pageClass]);
+        // Use both classList and style to ensure proper hiding
+        if (matchesSearch && matchesDepartment) {
+          (card as HTMLElement).style.display = 'block';
+          card.classList.remove('hidden');
+        } else {
+          (card as HTMLElement).style.display = 'none';
+          card.classList.add('hidden');
+        }
+      });
+    }
+  }, [searchValue, department, pageClass]);
 
 
 
@@ -524,8 +509,6 @@ React.useEffect(() => {
         }
       }
     }
-
-
 
 
 function wrapElementsBetweenDividers(): void {
@@ -926,6 +909,7 @@ React.useEffect(() => {
 
           while (container && count < 2) {
             const parent = container.parentElement // Get the parent container
+            console.log('parent being removed:', parent)
             container.remove() // Remove the current container
             container = parent // Move to the next parent container
             count++ // Increment the counter
@@ -990,6 +974,7 @@ React.useEffect(() => {
           wrapper.children.length === 0 &&
           wrapper.textContent.trim() === ''
         ) {
+          console.log('wrapper being removed:', wrapper)
           wrapper.remove()
         }
       })
@@ -1069,57 +1054,55 @@ React.useEffect(() => {
     }
   }, [router])
 
+  React.useEffect(() => {
+    // Select all custom wrapper elements i.e. all the course cards
+    const customWrappers = document.querySelectorAll('.custom-wrapper-class');
 
+    if (customWrappers.length === 0) return;
 
-React.useEffect(() => {
-  // Select all custom wrapper elements i.e. all the course cards
-  const customWrappers = document.querySelectorAll('.custom-wrapper-class');
+    // Check if the container already exists to prevent duplication
+    let parentContainer = document.querySelector('.custom-wrapper-container');
 
-  if (customWrappers.length === 0) return;
+    if (!parentContainer) {
+      parentContainer = document.createElement('div');
+      parentContainer.className = 'custom-wrapper-container';
 
-  // Check if the container already exists to prevent duplication
-  let parentContainer = document.querySelector('.custom-wrapper-container');
+      // Insert the container before the first custom wrapper
+      customWrappers[0].parentNode.insertBefore(parentContainer, customWrappers[0]);
+    }
 
-  if (!parentContainer) {
-    parentContainer = document.createElement('div');
-    parentContainer.className = 'custom-wrapper-container';
-
-    // Insert the container before the first custom wrapper
-    customWrappers[0].parentNode.insertBefore(parentContainer, customWrappers[0]);
-  }
-
-  // Move all custom wrappers into the parent container
-  customWrappers.forEach(wrapper => {
-    parentContainer.appendChild(wrapper);
-  });
-
-  // Only generate department tags if we're on the home page and haven't set them yet
-  if (pageClass === 'notion-home' && allDepartmentTags.length === 0) {
-    const cards = document.querySelectorAll('.custom-wrapper-class');
-    const departmentSet = new Set<string>();
-
-    cards.forEach((card) => {
-      // Grab the text inside the parentheses of the course card title
-      const parenthesesContent = card.querySelector('a.notion-link')?.textContent?.match(/\(([^)]+)\)/)?.[1] || '';
-
-      if (parenthesesContent) {
-        // Extract department code (alphabetical prefix before any numbers)
-        const departmentCode = parenthesesContent.trim().match(/^[A-Za-z]+/)?.[0] || '';
-
-        // Only add if it's not empty
-        if (departmentCode) {
-          departmentSet.add(departmentCode.toUpperCase());
-        }
-      }
+    // Move all custom wrappers into the parent container
+    customWrappers.forEach(wrapper => {
+      parentContainer.appendChild(wrapper);
     });
 
-    const extractedDepartments = Array.from(departmentSet).sort();
+    // Only generate department tags if we're on the home page and haven't set them yet
+    if (pageClass === 'notion-home' && allDepartmentTags.length === 0) {
+      const cards = document.querySelectorAll('.custom-wrapper-class');
+      const departmentSet = new Set<string>();
 
-    if (extractedDepartments.length > 0) {
-      setAllDepartmentTags(extractedDepartments);
+      cards.forEach((card) => {
+        // Grab the text inside the parentheses of the course card title
+        const parenthesesContent = card.querySelector('a.notion-link')?.textContent?.match(/\(([^)]+)\)/)?.[1] || '';
+
+        if (parenthesesContent) {
+          // Extract department code (alphabetical prefix before any numbers)
+          const departmentCode = parenthesesContent.trim().match(/^[A-Za-z]+/)?.[0] || '';
+
+          // Only add if it's not empty
+          if (departmentCode) {
+            departmentSet.add(departmentCode.toUpperCase());
+          }
+        }
+      });
+
+      const extractedDepartments = Array.from(departmentSet).sort();
+
+      if (extractedDepartments.length > 0) {
+        setAllDepartmentTags(extractedDepartments);
+      }
     }
-  }
-}, []); // Remove pageClass from dependencies to run only once on mount
+  }, []); // Remove pageClass from dependencies to run only once on mount
 
 
 
