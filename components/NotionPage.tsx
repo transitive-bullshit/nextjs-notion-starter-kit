@@ -290,6 +290,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       // Remove container if it exists
       if (filterRootRef.current.container && filterRootRef.current.container.parentNode) {
+        console.log('removing container', filterRootRef.current.container)
         filterRootRef.current.container.remove();
       }
       filterRootRef.current.container = null;
@@ -791,6 +792,7 @@ React.useEffect(() => {
           // Remove the parent container of the anchor tag
           const parentContainer = anchor.closest('.notion-text') // Adjust the selector if needed
           if (parentContainer) {
+            console.log('removing container for anchor', parentContainer)
             parentContainer.remove()
           }
         }
