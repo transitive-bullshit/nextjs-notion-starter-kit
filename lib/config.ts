@@ -172,6 +172,8 @@ export const posthogConfig: Partial<PostHogConfig> = {
   api_host: 'https://app.posthog.com'
 }
 
+export const googleAnalyticsId = isDev ? null : process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+
 function cleanPageUrlMap(
   pageUrlMap: PageUrlOverridesMap,
   {
