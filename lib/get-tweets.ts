@@ -38,7 +38,7 @@ async function getTweetImpl(tweetId: string): Promise<any> {
       if (cachedTweet || cachedTweet === null) {
         return cachedTweet
       }
-    } catch (err) {
+    } catch (err: any) {
       // ignore redis errors
       console.warn(`redis error get "${cacheKey}"`, err.message)
     }
@@ -47,7 +47,7 @@ async function getTweetImpl(tweetId: string): Promise<any> {
 
     try {
       await db.set(cacheKey, tweetData)
-    } catch (err) {
+    } catch (err: any) {
       // ignore redis errors
       console.warn(`redis error set "${cacheKey}"`, err.message)
     }
