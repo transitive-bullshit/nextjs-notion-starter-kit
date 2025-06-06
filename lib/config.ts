@@ -113,21 +113,22 @@ export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 // ----------------------------------------------------------------------------
 
 // Optional redis instance for persisting preview images
-export const isRedisEnabled: boolean = getSiteConfig('isRedisEnabled', false)
+export const isRedisEnabled: boolean =
+  getSiteConfig('isRedisEnabled', false) || !!getEnv('REDIS_ENABLED')
 
 // (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
 // we recommend that you store these in a local `.env` file
-export const redisHost: string | undefined = getEnv('REDIS_HOST')
-export const redisPassword: string | undefined = getEnv('REDIS_PASSWORD')
-export const redisUser: string | undefined = getEnv('REDIS_USER', 'default')
+export const redisHost = getEnv('REDIS_HOST', isRedisEnabled ? undefined : null)
+export const redisPassword = getEnv(
+  'REDIS_PASSWORD',
+  isRedisEnabled ? undefined : null
+)
+export const redisUser: string = getEnv('REDIS_USER', 'default')
 export const redisUrl = getEnv(
   'REDIS_URL',
-  `redis://${redisUser}:${redisPassword}@${redisHost}`
+  isRedisEnabled ? `redis://${redisUser}:${redisPassword}@${redisHost}` : null
 )
-export const redisNamespace: string | undefined = getEnv(
-  'REDIS_NAMESPACE',
-  'preview-images'
-)
+export const redisNamespace = getEnv('REDIS_NAMESPACE', 'preview-images')
 
 // ----------------------------------------------------------------------------
 

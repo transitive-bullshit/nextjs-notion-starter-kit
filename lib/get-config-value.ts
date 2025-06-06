@@ -49,15 +49,15 @@ export function getRequiredSiteConfig<T>(key: string): T {
 
 export const isServer = typeof window === 'undefined'
 
-export function getEnv(
+export function getEnv<T>(
   key: string,
-  defaultValue?: string,
+  defaultValue?: string | T,
   env = process.env
-): string | undefined {
+): string | T {
   const value = env[key]
 
   if (value !== undefined) {
-    return value
+    return value as string
   }
 
   if (defaultValue !== undefined) {
@@ -67,4 +67,6 @@ export function getEnv(
   if (isServer) {
     throw new Error(`Config error: missing required env variable "${key}"`)
   }
+
+  return null as unknown as T
 }
