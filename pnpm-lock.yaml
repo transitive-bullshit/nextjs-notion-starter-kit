@@ -39,14 +39,14 @@ importers:
         specifier: ^15.3.3
         version: 15.3.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       notion-client:
-        specifier: ^7.4.1
-        version: 7.4.1
+        specifier: ^7.4.2
+        version: 7.4.2
       notion-types:
-        specifier: ^7.4.1
-        version: 7.4.1
+        specifier: ^7.4.2
+        version: 7.4.2
       notion-utils:
-        specifier: ^7.4.1
-        version: 7.4.1
+        specifier: ^7.4.2
+        version: 7.4.2
       p-map:
         specifier: ^7.0.3
         version: 7.0.3
@@ -69,8 +69,8 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
       react-notion-x:
-        specifier: ^7.4.1
-        version: 7.4.1(@babel/runtime@7.27.6)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^7.4.2
+        version: 7.4.2(@babel/runtime@7.27.6)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-tweet:
         specifier: ^3.2.2
         version: 3.2.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1715,16 +1715,16 @@ packages:
     resolution: {integrity: sha512-IO9QvjUMWxPQQhs60oOu10CRkWCiZzSUkzbXGGV9pviYl1fXYcvkzQ5jV9z8Y6un8ARoVRl4EtC6v6jNqbaJ/w==}
     engines: {node: '>=14.16'}
 
-  notion-client@7.4.1:
-    resolution: {integrity: sha512-sqSm529BmbXSIv3/9GHVvy+lF+BMKHfyickxCVT4vIpk+/umBw2vb+YDcmO1PWsYLvSPQP5JyA//rL0Ju8eSGQ==}
+  notion-client@7.4.2:
+    resolution: {integrity: sha512-cicASuxTL+ZuDe66Uyz90J4/y53EoNUwdrXEePX4KlBbvIkn23wPCfZGdToTmMJfovV2MPRxZuBQJ2UYPcwv2A==}
     engines: {node: '>=18'}
 
-  notion-types@7.4.1:
-    resolution: {integrity: sha512-b/gO0iUPb1/OxRR5DB4sdekBM2iLb+RDtq/wByDhiq8MB7ZaBYz80PaoHDbjtSG1qG4lXEypOQNj1b2dgqpisQ==}
+  notion-types@7.4.2:
+    resolution: {integrity: sha512-mCFra6z7DUcNXV11ypufmqcZL8poYAfSwSSyPBnuvzauGfH9MLDJ2Uv31H/0MFtn9qqddDdxV5lHkIzY1IRysg==}
     engines: {node: '>=18'}
 
-  notion-utils@7.4.1:
-    resolution: {integrity: sha512-g+u7eSGZmHzo6joRy+MR0dnEPtefqZsZurhOAe69llDnEm4Mvylei7LvKVWIOid15OcJEnZzbOkZsiJ284Q0mQ==}
+  notion-utils@7.4.2:
+    resolution: {integrity: sha512-ga1+bhs9GLEpeYtP+gfc/PPgiVSTsyVtlZpArfjmNcPADMZdHCfZdVEjqW5NFMbVGsCMp7y7oabvuWqJvkAVnw==}
     engines: {node: '>=18'}
 
   npm-normalize-package-bin@4.0.0:
@@ -1970,8 +1970,8 @@ packages:
       react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
       react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
 
-  react-notion-x@7.4.1:
-    resolution: {integrity: sha512-8kAXv8+o0WThrBKUpIGF7gkoh6FHit7i2VE2z6Hf78Sbx1b2YUUXyMNODmfAzTE6mao8N+E9ZE9pc0OxQ0JkdA==}
+  react-notion-x@7.4.2:
+    resolution: {integrity: sha512-fST9c72FWg92ayfYgI5WQe6ad4c33s+8Zk6h2pfND3cLTtkD2m+Y0yCs6jJbP8E+I7hbFyg1J4QbPD/d5qkV6A==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=18'
@@ -4148,21 +4148,21 @@ snapshots:
 
   normalize-url@8.0.1: {}
 
-  notion-client@7.4.1:
+  notion-client@7.4.2:
     dependencies:
       ky: 1.8.1
-      notion-types: 7.4.1
-      notion-utils: 7.4.1
+      notion-types: 7.4.2
+      notion-utils: 7.4.2
       p-map: 7.0.3
 
-  notion-types@7.4.1: {}
+  notion-types@7.4.2: {}
 
-  notion-utils@7.4.1:
+  notion-utils@7.4.2:
     dependencies:
       is-url-superb: 6.1.0
       memoize: 10.1.0
       normalize-url: 8.0.1
-      notion-types: 7.4.1
+      notion-types: 7.4.2
       p-queue: 8.1.0
 
   npm-normalize-package-bin@4.0.0: {}
@@ -4419,13 +4419,13 @@ snapshots:
       react-lifecycles-compat: 3.0.4
       warning: 4.0.3
 
-  react-notion-x@7.4.1(@babel/runtime@7.27.6)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-notion-x@7.4.2(@babel/runtime@7.27.6)(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@fisch0920/medium-zoom': 1.0.7
       '@matejmazur/react-katex': 3.1.3(katex@0.16.22)(react@19.1.0)
       katex: 0.16.22
-      notion-types: 7.4.1
-      notion-utils: 7.4.1
+      notion-types: 7.4.2
+      notion-utils: 7.4.2
       prismjs: 1.30.0
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
