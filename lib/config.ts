@@ -114,7 +114,7 @@ export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
 
 // Optional redis instance for persisting preview images
 export const isRedisEnabled: boolean =
-  getSiteConfig('isRedisEnabled', false) || !!getEnv('REDIS_ENABLED')
+  getSiteConfig('isRedisEnabled', false) || !!getEnv('REDIS_ENABLED', null)
 
 // (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
 // we recommend that you store these in a local `.env` file
