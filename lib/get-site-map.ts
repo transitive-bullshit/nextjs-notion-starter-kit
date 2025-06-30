@@ -6,7 +6,7 @@ import * as config from './config'
 import * as types from './types'
 import { includeNotionIdInUrls } from './config'
 import { getCanonicalPageId } from './get-canonical-page-id'
-import { notion } from './notion-api'
+import { getPageWithRetry } from './notion-api'
 
 const uuid = !!includeNotionIdInUrls
 
@@ -16,24 +16,9 @@ export async function getSiteMap(): Promise<types.SiteMap> {
     config.rootNotionSpaceId
   )
 
-  // Add duplicate detection
-  const canonicalPageMap: { [canonicalPageId: string]: string } = {}
-  const seenCanonicalIds = new Set()
-
-  // Filter out duplicates while keeping the first occurrence
-  Object.entries(partialSiteMap.canonicalPageMap).forEach(([canonicalId, pageId]) => {
-    if (!seenCanonicalIds.has(canonicalId)) {
-      canonicalPageMap[canonicalId] = pageId
-      seenCanonicalIds.add(canonicalId)
-    } else {
-      console.warn(`Duplicate canonical ID detected: ${canonicalId}. Keeping first occurrence.`)
-    }
-  })
-
   return {
     site: config.site,
-    ...partialSiteMap,
-    canonicalPageMap // Use the de-duped map
+    ...partialSiteMap
   } as types.SiteMap
 }
 
@@ -46,21 +31,21 @@ async function getAllPagesImpl(
   rootNotionSpaceId: string
 ): Promise<Partial<types.SiteMap>> {
   const getPage = async (pageId: string): Promise<ExtendedRecordMap> => {
-    console.log('\nnotion getPage', uuidToId(pageId))
-    return notion.getPage(pageId)
+    return getPageWithRetry(pageId)
   }
 
   const pageMap = await getAllPagesInSpace(
     rootNotionPageId,
     rootNotionSpaceId,
-    getPage as any // Using type assertion to bypass the type conflict
+    getPage as any
   )
 
   const canonicalPageMap = Object.keys(pageMap).reduce(
     (map, pageId: string) => {
       const recordMap = pageMap[pageId]
       if (!recordMap) {
-        throw new Error(`Error loading page "${pageId}"`)
+        console.warn(`Skipping page "${pageId}" - failed to load`)
+        return map
       }
 
       const block = recordMap.block[pageId]?.value
@@ -72,20 +57,22 @@ async function getAllPagesImpl(
         uuid
       })
 
-      // Keep first occurrence clean, add counter only to duplicates
+      if (!canonicalPageId) {
+        console.warn(`Skipping page "${pageId}" - no canonical ID generated`)
+        return map
+      }
+
+      // Handle duplicates by appending page ID suffix
       const originalId = canonicalPageId
       if (map[canonicalPageId]) {
-        let counter = 2
+        const shortPageId = pageId.slice(-8) // Use last 8 chars of page ID
+        canonicalPageId = `${originalId}-${shortPageId}`
         console.warn('Duplicate canonical ID detected:', {
           originalId,
-          existingPageId: map[canonicalPageId],
-          newPageId: pageId
+          existingPageId: map[originalId],
+          newPageId: pageId,
+          newCanonicalId: canonicalPageId
         })
-        do {
-          canonicalPageId = `${originalId}-${counter}`
-          counter++
-        } while (map[canonicalPageId])
-        console.log('Generated new canonical ID:', canonicalPageId)
       }
 
       return {
@@ -96,6 +83,8 @@ async function getAllPagesImpl(
     {}
   )
 
+  console.log(`Successfully processed ${Object.keys(canonicalPageMap).length} pages`)
+  
   return {
     pageMap,
     canonicalPageMap
