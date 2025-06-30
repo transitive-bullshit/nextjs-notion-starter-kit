@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import styles from './styles.module.css';
+import { discord, donate } from '@/lib/config';
 
 export const Footer: React.FC = () => {
   // --- form logic integration ------------------------------------------------
@@ -140,7 +141,8 @@ export const Footer: React.FC = () => {
             CourseTexts
           </div>
           <div className={styles.footerLinks}>
-            <a href="https://hcb.hackclub.com/donations/start/coursetexts">Donate</a>
+            <a href={donate} target='_blank' rel="noreferrer">Donate</a>
+            <a href={discord} target='_blank' rel="noreferrer">Contribute</a>
             <a href="/terms-of-service">Terms of Service</a>
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="#">NCA License</a>

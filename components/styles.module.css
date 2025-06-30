@@ -95,6 +95,12 @@
   justify-content: right;
   border-right: #ffffff;
   gap: 1rem;
+  white-space: nowrap;
+}
+
+.footerLinks a {
+  flex: 1;
+  text-align: center;
 }
 
 
@@ -150,7 +156,7 @@
   font-size: 0.9rem;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .footerBottom {
     display: flex;
     flex-direction: column;
@@ -173,6 +179,11 @@
     justify-content: space-between;
     gap: 0.5rem;
     text-align: center;
+    white-space: wrap;
+  }
+
+  .footerLinks a {
+    font-size: 0.75rem;
   }
   
 
@@ -191,6 +202,7 @@
   .footerLinks {
     display: grid;
     grid-template-columns: auto auto;
+    white-space: wrap;
   }
 
   .footerRow {
@@ -210,6 +222,9 @@
 .footerLinks a {
   color: #ffffff;
   text-decoration: none;
+  flex: 1;
+  text-align: center;
+
 }
 
 .footerLinks a:hover {

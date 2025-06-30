@@ -16,12 +16,11 @@ export default siteConfig({
   // open graph metadata (optional)
   description: 'Coursetexts is a modern, open library of MIT and Harvard course notes.',
 
-  // social usernames (optional)
-  // twitter: 'yush_g',
+  // social accounts
   github: 'coursetexts',
-  // mastodon: '#', // optional mastodon profile URL, provides link verification
-  newsletter: 'mailto:coursetexts@mit.edu', // optional newsletter URL
-  // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  newsletter: 'mailto:coursetexts@mit.edu',
+  donate: 'https://hcb.hackclub.com/donations/start/coursetexts',
+  discord: 'https://discord.gg/6xBECjtC55',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults

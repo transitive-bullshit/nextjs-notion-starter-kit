@@ -61,6 +61,8 @@ export const youtube: string | null = getSiteConfig('youtube', null)
 export const linkedin: string | null = getSiteConfig('linkedin', null)
 export const newsletter: string | null = getSiteConfig('newsletter', null)
 export const zhihu: string | null = getSiteConfig('zhihu', null)
+export const donate: string | null = getSiteConfig('donate', null)
+export const discord: string | null = getSiteConfig('discord', null)
 
 export const getMastodonHandle = (): string | null => {
   if (!mastodon) {
