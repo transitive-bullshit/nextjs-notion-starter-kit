@@ -6,7 +6,7 @@ const withBundleAnalyzer = process.env.ANALYZE === 'true'
   : (config) => config
 
 module.exports = withBundleAnalyzer({
-  staticPageGenerationTimeout: 300,
+  staticPageGenerationTimeout: 600,
   images: {
     domains: [
       'www.notion.so',
@@ -20,5 +20,9 @@ module.exports = withBundleAnalyzer({
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
+  },
+  experimental: {
+    workerThreads: false,
+    cpus: 1
   }
 })
