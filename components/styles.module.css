@@ -44,7 +44,7 @@
 .footerContainer {
   width: 100%;
   background-color: #0f0f10; /* Dark background */
-  color: #ffffff;           /* White text */
+  color: #ffffff; /* White text */
   padding: 3rem 4rem;
   font-family: sans-serif;
   display: flex;
@@ -69,8 +69,6 @@
   line-height: 1.4;
   font-family: 'Tobias';
 }
-
-
 
 /* Footer Columns */
 /* .footerColumns {
@@ -103,9 +101,6 @@
   text-align: center;
 }
 
-
-
-
 .footerRow {
   display: grid;
   grid-template-columns: auto auto;
@@ -114,14 +109,12 @@
   min-width: 180px;
 }
 
-
-
 .footerCol a {
   color: #ffffff;
   cursor: pointer;
   margin-bottom: 0.5rem;
   font-size: small;
-  font-weight: lighter;  
+  font-weight: lighter;
   display: flex;
   width: 100%;
   padding-right: 10px;
@@ -131,7 +124,7 @@
   text-decoration: underline;
 }
 
-.footerCol div{
+.footerCol div {
   margin-bottom: 0.5rem;
   font-size: small;
   font-weight: lighter;
@@ -141,9 +134,8 @@
   margin-top: 1.5rem;
   margin-bottom: 1rem;
   font-size: 1rem;
-  color: #D4CBAD;
+  color: #d4cbad;
 }
-
 
 /* Bottom Section */
 .footerBottom {
@@ -154,17 +146,34 @@
   border-top: 1px solid #333;
   padding-top: 1rem;
   font-size: 0.9rem;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 750px) {
   .footerBottom {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
   }
 
   .footerBottomLeft {
     align-self: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footerBottomRight {
+    flex-direction: column;
+    gap: 1.23rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .footerSocials {
+    order: 3;
+    align-self: flex-start;
+    margin-top: 0.5rem;
   }
 
   .footerTop {
@@ -176,16 +185,19 @@
   .footerLinks {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 0.5rem;
-    text-align: center;
+    text-align: left;
     white-space: wrap;
   }
 
   .footerLinks a {
     font-size: 0.75rem;
+    text-align: left !important;
+    justify-content: flex-start;
+    flex: none;
+    width: auto;
   }
-  
 
   .footerRow {
     width: 100%;
@@ -197,7 +209,6 @@
   }
 }
 
-
 @media screen and (max-width: 350px) {
   .footerLinks {
     display: grid;
@@ -208,8 +219,25 @@
   .footerRow {
     display: none;
   }
+
+  .footerSocials {
+    order: 3;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
 }
 
+@media screen and (max-width: 600px) {
+  .footerBottom {
+    gap: 1rem;
+  }
+
+  .footerSocials {
+    order: 3;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+}
 
 .footerBottomLeft {
   display: flex;
@@ -219,19 +247,42 @@
   gap: 5px;
 }
 
+.footerBottomRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .footerLinks a {
   color: #ffffff;
   text-decoration: none;
   flex: 1;
   text-align: center;
-
 }
 
 .footerLinks a:hover {
   text-decoration: underline;
 }
 
+.footerSocials {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+}
 
+.footerSocials a {
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.footerSocials a:hover {
+  opacity: 0.8;
+}
 
 .footerForm {
   display: flex;
@@ -244,8 +295,7 @@
   border-radius: 8px;
 }
 
-
-.footerForm :focus{
+.footerForm :focus {
   outline: none;
 }
 
@@ -258,9 +308,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-
 }
-
 
 .footerButton {
   background-color: #d6ceb8;
@@ -284,10 +332,6 @@
 
 /* END FOOTER STYLES */
 
-
-
-
-
 /* Feedback Comment Form*/
 
 .FeedbackFormContainer {
@@ -297,10 +341,8 @@
   border: none;
   font-size: 12px;
   padding-top: 1.5rem;
-  border-top: 1px solid #E5E1D3;
+  border-top: 1px solid #e5e1d3;
 }
-
-
 
 .FeedbackFormHeader {
   background-color: #0b0f1a;
@@ -331,11 +373,10 @@
 }
 
 .FeedbackFormForm {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   padding: 20px;
-  border: 1px solid #E4E4E4;
+  border: 1px solid #e4e4e4;
 }
-
 
 .FeedbackFormForm label {
   display: flex;
@@ -345,7 +386,7 @@
   align-items: center;
 }
 
-.FeedbackFormForm label div{
+.FeedbackFormForm label div {
   display: flex;
 }
 
@@ -354,12 +395,12 @@
   width: 100%;
   padding: 6px 10px;
   margin-top: 6px;
-  border: 1px solid #E5E1D3;
+  border: 1px solid #e5e1d3;
   border-radius: 8px;
   font-size: 12px;
   font-family: 'UntitledSans', sans-serif;
   color: #959697;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .FeedbackFormForm textarea {
@@ -386,7 +427,6 @@
   justify-content: flex-end;
   margin-top: 10px;
 }
-
 
 /* UPDATE NOTICE STYLES */
 .UpdateParent {
@@ -452,10 +492,6 @@
 }
 /* END UPDATE NOTICE STYLES */
 
-
-
-
-
 .UpdateNoticeBanner {
   display: flex;
   justify-content: center;
@@ -485,7 +521,6 @@
 .UpdateNoticeBanner a {
   color: white;
 }
-
 
 .copyright {
   font-size: 80%;
@@ -591,13 +626,6 @@
   }
 }
 
-
-
-
-
-
-
-
 .pageActions {
   display: flex;
   flex-direction: row;
@@ -672,4 +700,3 @@
 .hidden {
   visibility: hidden;
 }
-
