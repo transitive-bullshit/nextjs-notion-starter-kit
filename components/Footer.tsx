@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { discord, donate, github, twitter } from '@/lib/config'
 
-import { DiscordIcon, GithubIcon, TwitterXIcon } from './icons'
+import { DiscordIcon, GithubIcon, TwitterXIcon } from './custom-icons'
 import styles from './styles.module.css'
 
 export const Footer: React.FC = () => {
