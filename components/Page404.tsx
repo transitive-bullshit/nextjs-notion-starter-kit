@@ -13,11 +13,13 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
       <PageHead site={site} title={title} />
 
       <div className={styles.container}>
-        <main className={styles.main}>
-          <h1>Notion Page Not Found</h1>
+        <main className={styles.notFoundPage}>
+          <h1>Lost?</h1>
+          <h2>We haven't made this page yet...</h2>  
+          <button onClick={() => window.location.href = '/'}>GO BACK HOME 🌱</button>
 
           {error ? (
-            <p>{error.message}</p>
+            <p>Problem: {error.message}</p>
           ) : (
             pageId && (
               <p>
@@ -27,11 +29,7 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
             )
           )}
 
-          <img
-            src='/404.png'
-            alt='404 Not Found'
-            className={styles.errorImage}
-          />
+
         </main>
       </div>
     </>

@@ -520,7 +520,53 @@
 
 .UpdateNoticeBanner a {
   color: white;
+  font-size: 12px;
 }
+
+
+
+
+
+/* 404 notion not found page */
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Tobias', serif;
+  gap: 0.75rem;
+}
+
+.notFoundPage h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+  font-style:italic;
+  margin-bottom: 0.5rem;
+}
+
+.notFoundPage button {
+  border-radius: 7px;
+  padding: 12px 18px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 10px;
+  background-color: #e5dfcc;
+  border: none;
+  color: #473b09;
+  font-size: 1rem;
+  border: solid 0.5px #e0dac7;
+}
+
+.notFoundPage button:hover{
+  background-color: #d5cfba;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
 
 .copyright {
   font-size: 80%;
@@ -598,6 +644,10 @@
   }
 
   .UpdateNoticeBanner {
+    font-size: xx-small;
+  }
+
+  .UpdateNoticeBanner a {
     font-size: xx-small;
   }
 
