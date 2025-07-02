@@ -34,6 +34,7 @@ import { UpdateNoticeBanner } from './UpdateNoticeBanner'
 // import { HeroButterflies } from './HeroButterflies'
 import FeedbackForm from './FeedbackForm'
 import { LINK_ICON_METADATA, LinkIconKey } from '@/lib/link-icons'
+import { donate } from '@/lib/config'
 
 
 // -----------------------------------------------------------------------------
@@ -736,7 +737,7 @@ React.useEffect(() => {
         { href: '/', label: 'Coursetexts' },
         // { href: '/about', label: 'About' },
         { href: '/why', label: 'Why' },
-        { href: 'https://hcb.hackclub.com/donations/start/coursetexts', label: 'Donate' },
+        { href: donate, label: 'Donate', target: '_blank', rel: 'noreferrer' },
 
       ];
 
@@ -744,6 +745,14 @@ React.useEffect(() => {
         const anchor = document.createElement('a');
         anchor.href = link.href;
         anchor.classList.add('nav-link'); // Add styling class to <a> tag
+
+        // Apply target and rel attributes if they exist
+        if (link.target) {
+          anchor.target = link.target;
+        }
+        if (link.rel) {
+          anchor.rel = link.rel;
+        }
 
         // Apply flexbox to align vertically
         anchor.style.display = 'flex';
@@ -909,6 +918,12 @@ React.useEffect(() => {
 
       const removeNearestContainersForLink = (linkHref: string) => {
         document.querySelectorAll(`a[href="${linkHref}"]`).forEach((link) => {
+          // Skip any matches that are not part of the Notion-rendered page
+          // (e.g. links inside the site footer).
+          if (!link.closest('.notion-frame')) {
+            return
+          }
+
           let container = link.closest('div, .notion-text') as HTMLElement // Find the nearest container (first parent div)
           let count = 0 // Track how many containers are removed
 
@@ -1297,7 +1312,7 @@ React.useEffect(() => {
         pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0' ||  router.asPath === '/why')   && (
         <div className='button-container'>
           <a href='./'><button className='see-all'>See All Classes →</button></a>
-          <a href='https://hcb.hackclub.com/donations/start/coursetexts' target='_blank' rel="noreferrer" ><button className='see-all'>Donate →</button></a>
+          <a href={donate} target='_blank' rel="noreferrer" ><button className='see-all'>Donate →</button></a>
         </div>
       )}
 
