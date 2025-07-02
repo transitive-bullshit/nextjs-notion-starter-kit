@@ -918,6 +918,12 @@ React.useEffect(() => {
 
       const removeNearestContainersForLink = (linkHref: string) => {
         document.querySelectorAll(`a[href="${linkHref}"]`).forEach((link) => {
+          // Skip any matches that are not part of the Notion-rendered page
+          // (e.g. links inside the site footer).
+          if (!link.closest('.notion-frame')) {
+            return
+          }
+
           let container = link.closest('div, .notion-text') as HTMLElement // Find the nearest container (first parent div)
           let count = 0 // Track how many containers are removed
 

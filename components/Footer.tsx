@@ -151,7 +151,13 @@ export const Footer: React.FC = () => {
               </a>
               <a href='/terms-of-service'>Terms of Service</a>
               <a href='/privacy-policy'>Privacy Policy</a>
-              {/* <a href="#">NCA License</a> */}
+              <a
+                href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
+                target='_blank'
+                rel='noreferrer'
+              >
+                Creative Commons License
+              </a>
             </div>
             <div className={styles.footerSocials}>
               <a href={discord} target='_blank' rel='noreferrer'>

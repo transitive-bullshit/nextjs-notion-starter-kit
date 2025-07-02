@@ -91,7 +91,6 @@
   flex-direction: row;
   min-width: 180px;
   justify-content: right;
-  border-right: #ffffff;
   gap: 1rem;
   white-space: nowrap;
 }
