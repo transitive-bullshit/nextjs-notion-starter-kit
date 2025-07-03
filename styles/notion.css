@@ -7,8 +7,7 @@
  * places to add some flare.
  */
 
-
- @font-face {
+@font-face {
   font-family: 'Tobias';
   src: url('/fonts/TobiasTRIAL-Light.woff') format('woff');
   font-weight: lighter;
@@ -32,10 +31,9 @@
   font-style: normal;
 }
 
-.notion-page-content-inner{
-  margin-top: 2.0rem;
+.notion-page-content-inner {
+  margin-top: 2rem;
 }
-
 
 .notion {
   --notion-max-width: 800rem;
@@ -74,8 +72,7 @@
   width: 100% !important;
 }
 
-
-.notion-header bold{
+.notion-header bold {
   font-family: 'Tobias';
 }
 
@@ -90,11 +87,8 @@
   color: #000000;
 }
 
-
-
 .notion-nav-header-rhs {
   gap: 0.5rem;
-
 }
 
 .notion-gallery-grid {
@@ -179,7 +173,7 @@
 }
 
 .notion-h1 {
-  font-family: "Tobias";
+  font-family: 'Tobias';
   font-weight: 200;
   text-align: center;
   font-size: 2.5rem;
@@ -191,8 +185,6 @@
   max-width: 700px;
 }
 
-
-
 .notion-callout {
   padding: 1.2rem;
   /* max-width: 24rem; */
@@ -202,67 +194,65 @@
   border-radius: 3px;
   margin-top: 1.25rem;
   margin-bottom: 2rem;
-  color: #4B5563;
+  color: #4b5563;
   font-family: 'DM Mono', monospace;
 }
 
-
 .notion-home .notion-callout {
-  display: none
+  display: none;
 }
-
-
 
 /* BUTTERFLIES ──────────────────────────── */
 /* ─── shared butterfly style ─────────────────────────────── */
 .butterfly {
   position: absolute;
-  width: 64px;              /* ← fixed size, never shrinks      */
+  width: 64px; /* ← fixed size, never shrinks      */
   height: 22px;
-  color: #2b2b2b;           /* inherits currentColor by default */
+  color: #2b2b2b; /* inherits currentColor by default */
   pointer-events: none;
-  z-index: -1;              /* stay behind the text             */
+  z-index: -1; /* stay behind the text             */
 }
 
 /* The heading wrapper must be relative to anchor them */
-.notion-home
-.notion-block-1a519a13312a8036a624e4732734ce6a {
+.notion-home .notion-block-1a519a13312a8036a624e4732734ce6a {
   position: relative;
 }
 
 /* ─── individual corners ────────────────────────────────── */
 /* tweak the translate() numbers until they look perfect     */
 
-.butterfly.tl {            /* top-left */
+.butterfly.tl {
+  /* top-left */
   bottom: 20px;
   left: -50px;
   transform: scaleX(1.7);
 }
 
-.butterfly.tr {            /* top-right (mirror X) */
+.butterfly.tr {
+  /* top-right (mirror X) */
   top: -12px;
   right: -52px;
   transform: scaleX(-1);
 }
 
-.butterfly.bl {            /* bottom-left (mirror Y) */
+.butterfly.bl {
+  /* bottom-left (mirror Y) */
   bottom: -12px;
   left: -20px;
 }
 
-.butterfly.br {            /* bottom-right (no transform) */
+.butterfly.br {
+  /* bottom-right (no transform) */
   bottom: -12px;
   right: -52px;
 }
 
 /* optional: hide on very small screens */
 @media (max-width: 420px) {
-  .butterfly { display: none; }
+  .butterfly {
+    display: none;
+  }
 }
-
-
-
-
 
 .notion-hr {
   margin: 2em 0;
@@ -483,7 +473,7 @@
   background: hsla(0, 0%, 100%, 0.8);
   backdrop-filter: saturate(180%) blur(16px);
   position: relative;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .dark-mode .notion-header {
@@ -523,7 +513,6 @@
 
 .notion-page-content-inner {
   width: 100%;
-
 }
 
 .notion-page-content-inner .notion-text .notion-list {
@@ -541,7 +530,6 @@
   font-family: 'DM Mono', monospace;
   font-size: small;
 }
-
 
 .notion-page-content-inner .notion-page-link {
   color: rgb(107 114 128 / 1);
@@ -565,7 +553,7 @@
   display: none !important;
 }
 
-.custom-wrapper-container{
+.custom-wrapper-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 1.5rem;
@@ -600,7 +588,7 @@
   margin: 4px 0;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid #E5E1D3;
+  border: 1px solid #e5e1d3;
   background-color: #faf9f9bc;
   height: 330px; /* Fixed height */
   position: relative; /* Needed for absolute positioning inside */
@@ -627,21 +615,19 @@
   line-height: 25px; /* 178.571% */
   text-overflow: ellipsis;
   font-family: 'UntitledSans', sans-serif;
-
 }
 
-
-.custom-wrapper-class  > *:first-child{
-  border-bottom: 1px solid #E5E1D3;
+.custom-wrapper-class > *:first-child {
+  border-bottom: 1px solid #e5e1d3;
 }
 
-.custom-wrapper-class > *:not(:first-child):not(:last-child){
-  flex: 1 1 auto;     
-  overflow-y: auto;    
-  padding-right: 4px;  
+.custom-wrapper-class > *:not(:first-child):not(:last-child) {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
-.custom-wrapper-class  > *:last-child{
+.custom-wrapper-class > *:last-child {
   /* border-top: 1px solid #E5E1D3; */
   font-family: 'DM Mono', monospace;
   color: #374151;
@@ -649,7 +635,6 @@
   width: 100%;
   text-transform: uppercase;
   height: fit-content;
-
 }
 
 .custom-wrapper-class .notion-gray {
@@ -660,7 +645,6 @@
   line-height: 160%; /* 17.6px */
 }
 
-
 .custom-wrapper-class .notion-text::-webkit-scrollbar {
   display: none;
 }
@@ -670,22 +654,12 @@
   color: #374151;
   font-size: large;
   border-top: none;
-  flex: 0 0 auto;       /* don't shrink */
-  white-space: normal;  /* let it wrap instead of clipping */
+  flex: 0 0 auto; /* don't shrink */
+  white-space: normal; /* let it wrap instead of clipping */
   letter-spacing: -0.2px;
 }
 
-
-
-
-
-
-
-
-
-
-
-.why-page .notion-title{
+.why-page .notion-title {
   font-family: 'Tobias';
   font-weight: bolder;
   font-size: 3rem;
@@ -695,7 +669,7 @@
   line-height: 1.1111111;
 }
 
-.why-page a{
+.why-page a {
   color: #000000;
   font-size: 0.95rem;
 }
@@ -713,7 +687,6 @@
   font-weight: 400;
   font-size: 0.95rem;
 }
-
 
 @media (max-width: 800px) {
   .why-page .notion-h1 {
@@ -755,14 +728,14 @@
   font-size: 1.2rem;
 }
 
-.why-page .notion-column .notion-gray{
+.why-page .notion-column .notion-gray {
   font-family: Inter;
 }
 
 /* Target the wrapping element around the image */
 .why-page .notion-column .notion-asset-wrapper,
 .why-page .notion-column .notion-asset-wrapper-image > div {
-  position: relative !important; 
+  position: relative !important;
   width: 150px;
   height: 200px;
   margin: 0 auto;
@@ -785,7 +758,7 @@
 .course-page .notion-title {
   font-family: Tobias;
   font-weight: 600;
-  color: #140C00;
+  color: #140c00;
   margin: 0;
   margin-bottom: 1.5rem;
   max-width: 900px;
@@ -816,35 +789,34 @@
 .course-page .notion-link {
   border-bottom: none;
   color: #374151;
-  display: inline;      /* stay inline, but become a flex container   */
-  align-items: center;       /* vertical centering of icon + text           */
+  display: inline; /* stay inline, but become a flex container   */
+  align-items: center; /* vertical centering of icon + text           */
   line-height: 150%;
 }
-
 
 .course-page .notion-link:hover {
   opacity: 80%;
 }
 
-.course-page .notion-page-content-inner > :nth-child(1){
+.course-page .notion-page-content-inner > :nth-child(1) {
   color: #616774;
   font-size: 11px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1.1px;
 }
-.course-page .notion-page-content-inner  > :nth-child(3){
-  border-bottom: 1px solid #E5E1D3;
-  border-top: 1px solid #E5E1D3;
+.course-page .notion-page-content-inner > :nth-child(3) {
+  border-bottom: 1px solid #e5e1d3;
+  border-top: 1px solid #e5e1d3;
 }
 
 .course-page .notion-page-content-inner:not(:has(.content-table)) {
-  grid-template-columns: 1fr !important;   /* single column */
+  grid-template-columns: 1fr !important; /* single column */
 }
 
-.course-page .notion-blue .notion-link{
-  font-family: "TobiasMed";
-  color: #1F2A37;
+.course-page .notion-blue .notion-link {
+  font-family: 'TobiasMed';
+  color: #1f2a37;
   font-size: 16px;
   border-bottom: none;
   letter-spacing: -0.16px;
@@ -873,7 +845,6 @@
   color: #616774;
 }
 
-
 /* 
 .course-page .notion-h2 {
   font-family: 'DM Mono', monospace;
@@ -884,8 +855,7 @@
 }
  */
 
-
-.course-page .notion-text b{
+.course-page .notion-text b {
   font-weight: 400;
   font-size: 11px;
   margin-bottom: 1em;
@@ -901,7 +871,6 @@
   color: #000000;
 }
 
-
 .dark-mode .custom-wrapper-class {
   border: 1px solid rgb(107 114 128 / 1);
 }
@@ -913,44 +882,61 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-
-
-
-
-
 /* For tabbs in the course page table */
 
 .content-table {
-margin-left: 5rem;
-grid-column:2;
-overflow-y:scroll;
-max-height:100%;
-padding-right:0.5rem;
-width: 100%;
+  margin-left: 0;
+  padding-left: 5rem;
+  width: 100%;
+  /* Ensure padding is included in total width to prevent page overflow */
+  box-sizing: border-box;
+  /* Prevent the right column from causing horizontal scroll; tab bar handles its own scrolling */
+  overflow-x: hidden;
 }
 
-.content-table  .notion-link {
+.content-table .notion-link {
   text-decoration: none;
-  border-bottom: none;  /*maybe keep the green underline */
-  }
-  
-
-.content-table::-webkit-scrollbar{ /* Chrome / Safari */
-  width:0; height:0;
+  border-bottom: none; /*maybe keep the green underline */
 }
 
-
+.content-table::-webkit-scrollbar {
+  /* Chrome / Safari */
+  width: 0;
+  height: 0;
+}
 
 .custom-divider-tabbar {
+  /* Allow horizontal scrolling when there are too many tabs */
+  overflow-x: auto;
+  /* Hide native scrollbars for a cleaner look */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+
+  /* ensure the tab bar itself never exceeds the viewport width */
+  width: 100%;
+  max-width: 100%;
+  overflow-y: hidden; /* prevent vertical overflow */
+  flex-wrap: nowrap; /* keep all tabs on a single line */
+
+  /* existing properties remain */
   display: flex;
-  border-bottom: 1px solid #E5E1D3;
+  border-bottom: 1px solid #e5e1d3;
   position: sticky;
   top: 0;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   z-index: 10;
 }
 
+/* Hide scrollbars in WebKit based browsers */
+.custom-divider-tabbar::-webkit-scrollbar {
+  display: none;
+}
+
 .tab-btn {
+  /* Prevent shrinking so each tab keeps its width within the scroll container */
+  flex: 0 0 auto;
+  white-space: nowrap;
+  /* existing properties remain */
   padding: 0.25rem 0.75rem;
   border: none;
   background: none;
@@ -958,35 +944,33 @@ width: 100%;
   font-weight: 300;
   opacity: 0.6;
   text-wrap: nowrap;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border: 1px solid rgba(0, 0, 0, 0.08);
   font-family: 'UntitledSans', sans-serif;
   padding: 8px 18px;
   color: #000000;
-
 }
 
 .tab-btn.active {
   opacity: 1;
   border-bottom: 2px solid currentColor;
-  background-color: #050D1D;
+  background-color: #050d1d;
   color: #fff;
   border: 1px solid rgba(229, 225, 211, 0.32);
 }
-
 
 /* ─── COURSE PAGE 4-COLUMN LAYOUT ───────────────────────────────────────── */
 /* ─── COURSE PAGE · 2-COLUMN LAYOUT ───────────────────────────── */
 .course-page .notion-page-content-inner {
   display: grid;
-  grid-template-columns: 320px 1fr;  /* left fixed, right grows */
-  overflow: hidden;                 /* grid itself never scrolls */
+  grid-template-columns: 320px 1fr; /* left fixed, right grows */
+  overflow: visible !important;
 }
 
 /* the table lives in the right-hand column */
 .course-page .notion-page-content-inner > .content-table {
   grid-column: 2;
-  position: absolute;
+  grid-row: 1; /* ensure it starts at the first row */
 }
 
 /* every *other* direct child stays in the left column */
@@ -997,12 +981,13 @@ width: 100%;
 /* ─── SINGLE-COLUMN LAYOUT FOR SMALL SCREENS ───────────────────── */
 @media only screen and (max-width: 800px) {
   .course-page .notion-page-content-inner {
-    grid-template-columns: 1fr;     /* single column */
+    grid-template-columns: 1fr; /* single column */
   }
 
   .course-page .notion-page-content-inner > .content-table {
     grid-column: 1;
-    position: static;               /* allow normal flow */
+    position: static; /* allow normal flow */
+    grid-row: 2;
   }
 
   .course-page .notion-page-content-inner > *:not(.content-table) {
@@ -1010,19 +995,14 @@ width: 100%;
   }
 
   .content-table {
-    margin-left: 0px;
-    margin-top: 3rem;
+    padding-left: 0;
   }
-
 
   .course-page .notion-title {
     margin-bottom: 0rem;
     font-size: 2rem;
   }
 }
-
-
-
 
 .dark-mode .notion-page-content-inner .notion-page-title,
 .dark-mode .notion-page-content-inner .notion-page-link {
@@ -1032,7 +1012,11 @@ width: 100%;
   line-height: 1.25rem;
 }
 
-.dark-mode .notion-page-content-inner .notion-text .notion-text .notion-block-13519a13312a81df989fdbfc623a767b {
+.dark-mode
+  .notion-page-content-inner
+  .notion-text
+  .notion-text
+  .notion-block-13519a13312a81df989fdbfc623a767b {
   color: #c0c0c0 !important;
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1057,7 +1041,6 @@ width: 100%;
   font-weight: 800;
   word-wrap: break-word;
   -ms-word-wrap: break-word;
-  
 }
 
 .notion-page-no-cover.notion-page-has-image-icon {
@@ -1082,8 +1065,7 @@ width: 100%;
   line-height: 1.75rem;
 }
 
-
-.notion-h-title{
+.notion-h-title {
   margin-top: 300px;
   color: #000000;
 }
@@ -1099,8 +1081,6 @@ width: 100%;
   font-family: Inter;
 }
 
-
-
 .dark-mode .notion-page-title-text {
   color: rgba(50, 168, 145, 1) !important;
   border-bottom: 1px solid rgba(50, 168, 145, 1) !important;
@@ -1113,30 +1093,25 @@ width: 100%;
 
 .notion-callout {
   background-color: #000000;
-  border:  solid 1px #E5E7EB;
+  border: solid 1px #e5e7eb;
   border-radius: 0.5rem;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .notion-callout notion-link {
   width: 100%;
 }
 
-
-
-
 .notion-callout-text {
   margin-left: 0px;
   padding: 12px;
 }
 
-
-
 .notion-callout-text a[href*='about'] {
   border-radius: 5px;
   padding: 10px;
-  border:  solid 1px #E5E7EB;
-  color: #FFFFFF;
+  border: solid 1px #e5e7eb;
+  color: #ffffff;
   z-index: 10;
   border-bottom: 4px solid white;
 }
@@ -1183,10 +1158,9 @@ width: 100%;
   font-size: 1.125rem;
   line-height: 1.75rem;
   opacity: 0.8;
-  font-weight: lighter; 
+  font-weight: lighter;
   font-family: 'UntitledSans', sans-serif;
   font-size: 17px;
-  
 }
 .breadcrumbs .nav-container a[href='/'] {
   font-weight: bold;
@@ -1195,13 +1169,9 @@ width: 100%;
   font-family: 'TobiasMed';
 }
 
-
-
 .notion-text .notion-block {
   display: none;
 }
-
-
 
 .breadcrumbs .breadcrumb {
   display: none;
@@ -1260,11 +1230,9 @@ width: 100%;
   color: rgb(31 41 55 / 1);
 }
 
-
-
 /* about page styling */
 
-.about-page .notion-h2 .notion-h-title b{
+.about-page .notion-h2 .notion-h-title b {
   font-weight: 600;
   font-size: 2.5rem;
   margin-top: 2em;
@@ -1272,7 +1240,6 @@ width: 100%;
   font-family: 'Tobias';
   text-align: center;
 }
-
 
 .lecture-wrapper {
   width: 100%;
@@ -1286,20 +1253,19 @@ width: 100%;
   padding: 0 15px;
 }
 
-
 .button-container {
   display: flex;
   gap: 2rem;
   justify-content: center;
   padding: 0rem 0rem 1.25rem 0rem;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .button-container button {
   background-color: #faf9f9bc;
 }
 
-.button-container button:hover{
+.button-container button:hover {
   background-color: white;
 }
 
@@ -1330,7 +1296,7 @@ width: 100%;
 }
 
 .see-all:hover {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .dark-mode .see-all:hover {
@@ -1376,15 +1342,15 @@ summary .notion-h3 .notion-h-title {
   padding: 3rem 0rem 0rem 0rem;
   gap: 2.2rem;
   display: table-column;
-  border-top: 1px solid #E5E7EB;
+  border-top: 1px solid #e5e7eb;
   text-align: center;
   font-family: 'DM Mono', monospace;
-  color: #6B7280;
+  color: #6b7280;
   font-size: 0.9rem;
   margin-top: 4rem;
 }
 
-.custom-footer-container .footer-links{
+.custom-footer-container .footer-links {
   /* border-top: 1px solid rgb(229 231 235/1); */
   width: 100%;
   padding: 1.5rem 0rem 0rem 0rem;
@@ -1397,9 +1363,7 @@ summary .notion-h3 .notion-h-title {
   color: rgba(15, 118, 110, 0.9);
   line-height: 1.25rem;
   font-weight: 200;
-
 }
-
 
 .notion-text {
   margin-top: 0px !important;
@@ -1430,7 +1394,6 @@ summary .notion-h3 .notion-h-title {
   line-height: 1.9rem !important;
 }
 
-
 .fill-article-row {
   width: 100%;
   margin: 0 auto; /* Centers it properly */
@@ -1438,13 +1401,10 @@ summary .notion-h3 .notion-h-title {
   align-items: center;
 }
 
-
-
 @media (max-width: 600px) {
-
   .button-container {
     gap: 1rem;
-  } 
+  }
 
   .notion-h1 {
     font-size: 2rem;
@@ -1460,16 +1420,37 @@ summary .notion-h3 .notion-h-title {
   }
 
   .breadcrumbs .nav-container .nav-link {
-
     font-size: 0.75rem;
   }
 
-.breadcrumb.button.notion-search-button{
+  .breadcrumb.button.notion-search-button {
     font-size: 0.75rem;
-
   }
 
   .breadcrumbs .nav-container {
     gap: 15px;
   }
+}
+
+/* ===== Overrides to prevent independent scrolling of the right column ===== */
+.course-page .content-table {
+  overflow-y: visible !important;
+  max-height: none !important;
+}
+
+.course-page .notion-page-content-inner > .course-left-column {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.course-left-column {
+  display: block;
+  text-transform: none !important;
+  font-size: initial !important;
+  font-weight: initial !important;
+  letter-spacing: normal !important;
+}
+
+.course-left-column .notion-gray {
+  text-transform: uppercase !important;
 }
