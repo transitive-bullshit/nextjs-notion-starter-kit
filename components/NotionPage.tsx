@@ -155,34 +155,6 @@ const propertyTextValue = (
   return defaultFn()
 }
 
-function License() {
-  return (
-    <div
-      style={{
-        paddingTop: '2rem',
-        margin: 'auto',
-        fontFamily: 'DM Mono',
-        color: '#374151'
-      }}
-    >
-      <p>
-        All classes are licensed under the{' '}
-        <i>
-          {' '}
-          <a
-            href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
-            target='_blank'
-            rel='noreferrer'
-          >
-            CC-BY-NC-SA
-          </a>
-        </i>{' '}
-        license
-      </p>
-    </div>
-  )
-}
-
 // Helper to wait for an element to appear in the DOM
 function waitForElement(selector: string, timeout = 5000): Promise<Element> {
   return new Promise((resolve, reject) => {
@@ -376,33 +348,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }, [searchValue, department, allDepartmentTags])
 
   React.useEffect(() => {
-    if (pageClass == 'notion-home') {
-      addReactComponentAtEndOfArticle(
-        'article',
-        'fill-article-row',
-        <License />
-      )
-    }
-  }, [pageClass])
-
-  React.useEffect(() => {
     if (pageClass == 'course-page') {
       addReactComponentAtEndOfArticle(
         'article',
         'fill-article-row',
         <FeedbackForm courseName={title} />
       )
-      addReactComponentAtEndOfArticle(
-        'article',
-        'fill-article-row',
-        <License />
-      )
     }
   }, [pageClass])
 
   React.useEffect(() => {
-    // Once the Notion content is rendered on client side,
-    // you can insert your React component:
     if (pageClass == 'course-page') {
       addReactComponentBeforeTitle(
         <a href='/' style={{ textDecoration: 'none' }}>
@@ -821,7 +776,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
       const anchorTags = document.querySelectorAll('a.notion-link')
 
       // Define the target texts to match
-      const targetTexts = ['Privacy Policy', 'Terms of Service', 'About']
+      const targetTexts = [
+        'Privacy Policy',
+        'Terms of Service',
+        'About',
+        'CC-BY-NC-SA license'
+      ]
 
       // Iterate over all anchor tags
       anchorTags.forEach((anchor) => {
@@ -942,34 +902,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
           }
         }
       })
-
-      const removeNearestContainersForLink = (linkHref: string) => {
-        document.querySelectorAll(`a[href="${linkHref}"]`).forEach((link) => {
-          // Skip any matches that are not part of the Notion-rendered page
-          // (e.g. links inside the site footer).
-          if (!link.closest('.notion-frame')) {
-            return
-          }
-
-          let container = link.closest('div, .notion-text') as HTMLElement // Find the nearest container (first parent div)
-          let count = 0 // Track how many containers are removed
-
-          while (container && count < 2) {
-            const parent = container.parentElement // Get the parent container
-            console.log('container being removed:', container.classList)
-            if (container.classList.contains('notion-page-content-inner')) {
-              break
-            }
-            container.remove() // Remove the current container
-            container = parent // Move to the next parent container
-            count++ // Increment the counter
-          }
-        })
-      }
-
-      removeNearestContainersForLink(
-        'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
-      )
     } else if (router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8') {
       wrapHeadersAndContent()
     } else if (
