@@ -1450,3 +1450,7 @@ summary .notion-h3 .notion-h-title {
   font-weight: initial !important;
   letter-spacing: normal !important;
 }
+
+.course-left-column .notion-gray {
+  text-transform: uppercase !important;
+}
