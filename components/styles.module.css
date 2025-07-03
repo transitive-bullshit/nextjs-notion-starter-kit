@@ -365,6 +365,7 @@
   font-size: 12px;
   margin-top: 12px;
   cursor: pointer;
+  padding: 0;
 }
 
 .FeedbackFormCommentBtn span {
