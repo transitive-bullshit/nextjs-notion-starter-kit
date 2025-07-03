@@ -581,76 +581,74 @@ export const NotionPage: React.FC<types.PageProps> = ({
     dividers.forEach((d) => d.remove())
   }
 
-  // Adds Icon SVGs to links!
+  // Add circular SVG icons to links
   React.useEffect(() => {
-    // Add a small delay to ensure DOM is ready
-    const timeoutId = setTimeout(() => {
-      const page = document.querySelector('.course-page')
-      if (!page) return
+    waitForElement('.course-page')
+      .then((page) => {
+        const notionLinks = page.querySelectorAll('.notion-link')
+        if (!notionLinks?.length) return
 
-      const notionLinks = page.querySelectorAll('.notion-link')
-      if (!notionLinks?.length) return
+        notionLinks.forEach((link) => {
+          const href = link.getAttribute('href') || ''
 
-      notionLinks.forEach((link) => {
-        const href = link.getAttribute('href') || ''
+          // If the link is already processed (has an svg), skip
+          if (link.querySelector('svg')) return
 
-        // If the link is already processed (has an svg), skip
-        if (link.querySelector('svg')) return
+          const isProf = !!link.closest('.notion-blue') // Checks if the link is blue for the profs sites
 
-        const isProf = !!link.closest('.notion-blue') // Checks if the link is blue for the profs sites
-
-        const svg = document.createElementNS(
-          'http://www.w3.org/2000/svg',
-          'svg'
-        )
-        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
-        svg.setAttribute('width', '20')
-        svg.setAttribute('height', '20')
-        svg.setAttribute('fill', 'none')
-
-        svg.style.marginRight = '6px' // Space between icon and text link
-        svg.style.verticalAlign = 'middle'
-
-        // Circular icon background
-        svg.style.background = '#E5E1D3'
-        svg.style.borderRadius = '100%'
-        svg.style.padding = '4px'
-
-        let iconKey: LinkIconKey = 'DEFAULT'
-        let viewBoxWidth = 16
-        let viewBoxHeight = 16
-
-        if (isProf) {
-          iconKey = 'PROF'
-          // Prof icon is designed to be 12x12
-          viewBoxWidth = 12
-          viewBoxHeight = 12
-        } else if (href.startsWith('https://storage.googleapis.com')) {
-          iconKey = 'BOOK'
-        } else if (href.startsWith('https://youtu.be')) {
-          iconKey = 'PLAY'
-        }
-
-        const customIconPath = LINK_ICON_METADATA[iconKey].path
-        svg.setAttribute('viewBox', `0 0 ${viewBoxWidth} ${viewBoxHeight}`)
-
-        // Add all of the icon's paths directly to the SVG
-        customIconPath.forEach((d) => {
-          const path = document.createElementNS(
+          const svg = document.createElementNS(
             'http://www.w3.org/2000/svg',
-            'path'
+            'svg'
           )
-          path.setAttribute('d', d) // Use the pre-transformed path
-          path.setAttribute('fill', '#111928')
-          svg.appendChild(path)
+          svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+          svg.setAttribute('width', '20')
+          svg.setAttribute('height', '20')
+          svg.setAttribute('fill', 'none')
+
+          svg.style.marginRight = '6px' // Space between icon and text link
+          svg.style.verticalAlign = 'middle'
+
+          // Circular icon background
+          svg.style.background = '#E5E1D3'
+          svg.style.borderRadius = '100%'
+          svg.style.padding = '4px'
+
+          let iconKey: LinkIconKey = 'DEFAULT'
+          let viewBoxWidth = 16
+          let viewBoxHeight = 16
+
+          if (isProf) {
+            iconKey = 'PROF'
+            // Prof icon is designed to be 12x12
+            viewBoxWidth = 12
+            viewBoxHeight = 12
+          } else if (href.startsWith('https://storage.googleapis.com')) {
+            iconKey = 'BOOK'
+          } else if (href.startsWith('https://youtu.be')) {
+            iconKey = 'PLAY'
+          }
+
+          const customIconPath = LINK_ICON_METADATA[iconKey].path
+          svg.setAttribute('viewBox', `0 0 ${viewBoxWidth} ${viewBoxHeight}`)
+
+          // Add all of the icon's paths directly to the SVG
+          customIconPath.forEach((d) => {
+            const path = document.createElementNS(
+              'http://www.w3.org/2000/svg',
+              'path'
+            )
+            path.setAttribute('d', d) // Use the pre-transformed path
+            path.setAttribute('fill', '#111928')
+            svg.appendChild(path)
+          })
+
+          // Insert the SVG before the link's first child
+          link.insertBefore(svg, link.firstChild)
         })
-
-        // Insert the SVG before the link's first child
-        link.insertBefore(svg, link.firstChild)
       })
-    }, 200) // Small delay to ensure DOM is ready
-
-    return () => clearTimeout(timeoutId)
+      .catch((err) =>
+        console.warn('Could not find .course-page element:', err.message)
+      )
   }, [router])
 
   function wrapHeadersAndContent() {
