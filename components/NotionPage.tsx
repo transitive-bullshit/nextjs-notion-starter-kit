@@ -105,11 +105,6 @@ const Modal = dynamic(
   }
 )
 
-// type Section = {
-//   heading: string;
-//   links: { text: string; href: string }[];
-// };
-
 const Tweet = ({ id }: { id: string }) => {
   return <TweetEmbed tweetId={id} />
 }
@@ -533,9 +528,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         wrapper.dataset.tab = String(tabIndex)
         if (tabIndex !== 0) wrapper.style.display = 'none'
 
-        wrapper.appendChild(node) // move the heading in
-        // add a line break after the heading for better spacing inside each tab panel
-        wrapper.appendChild(document.createElement('br'))
+        // Remove duplicate tab text (heading) and add consistent top padding for content
+        node.remove()
+        wrapper.style.paddingTop = '12px'
 
         /* swallow everything until next heading or the end divider ----- */
         let sib = afterHeading
@@ -770,7 +765,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
       header.appendChild(nav) // Append <nav> to the .notion-nav-header
     }
 
-    //
     function removeNotionLinkWithText() {
       // Select all anchor tags with the class 'notion-link'
       const anchorTags = document.querySelectorAll('a.notion-link')
