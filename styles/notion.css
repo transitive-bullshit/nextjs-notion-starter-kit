@@ -885,12 +885,13 @@
 /* For tabbs in the course page table */
 
 .content-table {
-  margin-left: 5rem;
-  grid-column: 2;
-  overflow-y: scroll;
-  max-height: 100%;
-  padding-right: 0.5rem;
+  margin-left: 0;
+  padding-left: 5rem;
   width: 100%;
+  /* Ensure padding is included in total width to prevent page overflow */
+  box-sizing: border-box;
+  /* Prevent the right column from causing horizontal scroll; tab bar handles its own scrolling */
+  overflow-x: hidden;
 }
 
 .content-table .notion-link {
@@ -905,6 +906,19 @@
 }
 
 .custom-divider-tabbar {
+  /* Allow horizontal scrolling when there are too many tabs */
+  overflow-x: auto;
+  /* Hide native scrollbars for a cleaner look */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+
+  /* ensure the tab bar itself never exceeds the viewport width */
+  width: 100%;
+  max-width: 100%;
+  overflow-y: hidden; /* prevent vertical overflow */
+  flex-wrap: nowrap; /* keep all tabs on a single line */
+
+  /* existing properties remain */
   display: flex;
   border-bottom: 1px solid #e5e1d3;
   position: sticky;
@@ -913,7 +927,16 @@
   z-index: 10;
 }
 
+/* Hide scrollbars in WebKit based browsers */
+.custom-divider-tabbar::-webkit-scrollbar {
+  display: none;
+}
+
 .tab-btn {
+  /* Prevent shrinking so each tab keeps its width within the scroll container */
+  flex: 0 0 auto;
+  white-space: nowrap;
+  /* existing properties remain */
   padding: 0.25rem 0.75rem;
   border: none;
   background: none;
@@ -941,13 +964,13 @@
 .course-page .notion-page-content-inner {
   display: grid;
   grid-template-columns: 320px 1fr; /* left fixed, right grows */
-  overflow: hidden; /* grid itself never scrolls */
+  overflow: visible !important;
 }
 
 /* the table lives in the right-hand column */
 .course-page .notion-page-content-inner > .content-table {
   grid-column: 2;
-  position: absolute;
+  grid-row: 1; /* ensure it starts at the first row */
 }
 
 /* every *other* direct child stays in the left column */
@@ -964,6 +987,7 @@
   .course-page .notion-page-content-inner > .content-table {
     grid-column: 1;
     position: static; /* allow normal flow */
+    grid-row: 2;
   }
 
   .course-page .notion-page-content-inner > *:not(.content-table) {
@@ -971,8 +995,7 @@
   }
 
   .content-table {
-    margin-left: 0px;
-    margin-top: 3rem;
+    padding-left: 0;
   }
 
   .course-page .notion-title {
@@ -1407,4 +1430,23 @@ summary .notion-h3 .notion-h-title {
   .breadcrumbs .nav-container {
     gap: 15px;
   }
+}
+
+/* ===== Overrides to prevent independent scrolling of the right column ===== */
+.course-page .content-table {
+  overflow-y: visible !important;
+  max-height: none !important;
+}
+
+.course-page .notion-page-content-inner > .course-left-column {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.course-left-column {
+  display: block;
+  text-transform: none !important;
+  font-size: initial !important;
+  font-weight: initial !important;
+  letter-spacing: normal !important;
 }

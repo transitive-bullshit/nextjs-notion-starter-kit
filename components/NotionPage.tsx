@@ -155,7 +155,6 @@ const propertyTextValue = (
   return defaultFn()
 }
 
-// Example custom React component:
 function License() {
   return (
     <div
@@ -184,72 +183,71 @@ function License() {
   )
 }
 
-// Helper function to append a React component:
+// Helper to wait for an element to appear in the DOM
+function waitForElement(selector: string, timeout = 5000): Promise<Element> {
+  return new Promise((resolve, reject) => {
+    const el = document.querySelector(selector)
+    if (el) return resolve(el)
+
+    const observer = new MutationObserver(() => {
+      const el = document.querySelector(selector)
+      if (el) {
+        observer.disconnect()
+        resolve(el)
+      }
+    })
+    observer.observe(document.documentElement || document.body, {
+      childList: true,
+      subtree: true
+    })
+
+    setTimeout(() => {
+      observer.disconnect()
+      reject(new Error(`Element with selector "${selector}" not found.`))
+    }, timeout)
+  })
+}
+
 function addReactComponentAtEndOfArticle(
   articleSelector: string,
   containerClassName: string,
   reactNode: React.ReactNode
 ) {
-  const articleElement = document.querySelector(articleSelector)
+  waitForElement(articleSelector)
+    .then((articleElement) => {
+      // Prevent duplicate insertion
+      if (articleElement.querySelector(`.${containerClassName}`)) return
 
-  if (articleElement) {
-    // Create a new div container
-    const newContainer = document.createElement('div')
-    newContainer.className = containerClassName
-
-    // Append the new container as the last child of the article
-    articleElement.appendChild(newContainer)
-
-    // Render the passed-in React node using createRoot (React 18+)
-    const root = createRoot(newContainer)
-    root.render(reactNode)
-  } else {
-    console.warn(
-      `Article element with selector "${articleSelector}" not found.`
-    )
-  }
+      const newContainer = document.createElement('div')
+      newContainer.className = containerClassName
+      articleElement.appendChild(newContainer)
+      createRoot(newContainer).render(reactNode)
+    })
+    .catch((err) => console.warn(err.message))
 }
 
-// Helper function to insert a React component after the Notion callout:
 function addReactComponentBeforeTitle(reactNode: React.ReactNode) {
-  // Select the first notion-callout div
-  const notionCallout = document.querySelector('.notion-title')
-
-  if (notionCallout) {
-    // Create a new container for our React component
-    const newContainer = document.createElement('div')
-    newContainer.className = 'fill-article-row'
-
-    // Insert the container right after the callout
-    notionCallout.insertAdjacentElement('beforebegin', newContainer) // also try beforebegin
-
-    // Render our React component into that container
-    const root = createRoot(newContainer)
-    root.render(reactNode)
-  } else {
-    console.warn(`No .notion-callout element found on the page.`)
-  }
+  waitForElement('.notion-title')
+    .then((notionTitle) => {
+      if (!notionTitle) return
+      const newContainer = document.createElement('div')
+      newContainer.className = 'fill-article-row'
+      notionTitle.insertAdjacentElement('beforebegin', newContainer)
+      createRoot(newContainer).render(reactNode)
+    })
+    .catch((err) => console.warn(err.message))
 }
 
-// Helper function to insert a React component after the Notion callout:
 function addReactComponentAfterHeader(reactNode: React.ReactNode) {
-  // Select the first notion-callout div
-  const notionCallout = document.querySelector('.notion-header')
-
-  if (notionCallout) {
-    // Create a new container for our React component
-    const newContainer = document.createElement('div')
-    newContainer.className = 'fill-article-row'
-
-    // Insert the container right after the callout
-    notionCallout.insertAdjacentElement('afterend', newContainer) // also try beforebegin
-
-    // Render our React component into that container
-    const root = createRoot(newContainer)
-    root.render(reactNode)
-  } else {
-    console.warn(`No .notion-callout element found on the page.`)
-  }
+  waitForElement('.notion-header')
+    .then((notionHeader) => {
+      if (!notionHeader) return
+      const newContainer = document.createElement('div')
+      newContainer.className = 'fill-article-row'
+      notionHeader.insertAdjacentElement('afterend', newContainer)
+      createRoot(newContainer).render(reactNode)
+    })
+    .catch((err) => console.warn(err.message))
 }
 
 export const NotionPage: React.FC<types.PageProps> = ({
@@ -889,8 +887,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
       // addContainerAtEndOfArticle(
       //   'article',
       //   'custom-footer-container',
-      //   `
-      //   <p>A free and open archive of Harvard & MIT course materials</p>
+      //   `      //   <p>A free and open archive of Harvard & MIT course materials</p>
 
       //   <div class="footer-links">
       //     <a href="https://hcb.hackclub.com/donations/start/coursetexts" target='_blank' class="footer-link">Donate</a>
@@ -1210,6 +1207,44 @@ export const NotionPage: React.FC<types.PageProps> = ({
   //   ),
   //   [block, recordMap, isBlogPost]
   // )
+
+  React.useEffect(() => {
+    if (pageClass !== 'course-page') return
+
+    let cancelled = false
+
+    // Wait for the inner grid and the content-table to exist in the DOM
+    waitForElement('.course-page .notion-page-content-inner')
+      .then((contentInner) => {
+        if (cancelled) return
+        return waitForElement('.course-page .content-table').then((table) => {
+          if (cancelled) return
+
+          // Create the left-column wrapper if it doesn't exist
+          let leftWrapper = contentInner.querySelector(
+            '.course-left-column'
+          ) as HTMLElement | null
+          if (!leftWrapper) {
+            leftWrapper = document.createElement('div')
+            leftWrapper.className = 'course-left-column'
+            contentInner.insertBefore(leftWrapper, contentInner.firstChild)
+          }
+
+          // Move every direct child (except the table + wrapper itself) into the wrapper
+          Array.from(contentInner.children).forEach((child) => {
+            if (child === table || child === leftWrapper) return
+            leftWrapper!.appendChild(child)
+          })
+        })
+      })
+      .catch(() => {
+        /* silently ignore if elements never appear */
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [pageClass])
 
   if (router.isFallback) {
     return <Loading />
