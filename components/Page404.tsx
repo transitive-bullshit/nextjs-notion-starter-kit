@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import * as types from '@/lib/types'
 
+import { Footer } from './Footer'
 import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 
@@ -12,12 +13,18 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
     <>
       <PageHead site={site} title={title} />
 
-      <div className={styles.container}>
-        <main className={styles.main}>
-          <h1>Notion Page Not Found</h1>
+      <div className={styles.notFoundPageContainer}>
+        <main className={styles.notFoundPage}>
+          <h1>Lost?</h1>
+          <h2>We haven&apos;t made this page yet...</h2>
+          {/* we can't use next/link here because it breaks dom manipulation for home page,
+          specifically the back button, so we set window.location.href instead */}
+          <button onClick={() => (window.location.href = '/')}>
+            GO HOME ➚
+          </button>
 
           {error ? (
-            <p>{error.message}</p>
+            <p>Problem: {error.message}</p>
           ) : (
             pageId && (
               <p>
@@ -26,13 +33,8 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
               </p>
             )
           )}
-
-          <img
-            src='/404.png'
-            alt='404 Not Found'
-            className={styles.errorImage}
-          />
         </main>
+        <Footer />
       </div>
     </>
   )
