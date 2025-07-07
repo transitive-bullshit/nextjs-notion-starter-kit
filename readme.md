@@ -97,7 +97,7 @@ REDIS_PASSWORD='TODO'
 
 If you're not sure which Redis provider to use, we recommend [Redis Labs](https://redis.com), which provides a free plan.
 
-Note that preview images and redis caching are both optional features. If you’d rather not deal with them, just disable them in your site config.
+Note that preview images and redis caching are both optional features. If you'd rather not deal with them, just disable them in your site config.
 
 ## Styles
 
