@@ -212,9 +212,10 @@
 
 @media screen and (max-width: 350px) {
   .footerLinks {
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    flex-direction: column;
     white-space: wrap;
+    gap: 1rem;
   }
 
   .footerRow {
@@ -525,20 +526,12 @@
   font-size: 12px;
 }
 
-
-
-
-
 /* 404 notion not found page */
-
-
 
 .notFoundPageContainer {
   display: flex;
   flex-direction: column;
 }
-
-
 
 .notFoundPage {
   display: flex;
@@ -554,7 +547,7 @@
 .notFoundPage h1 {
   font-size: 3rem;
   font-weight: bolder;
-  font-style:italic;
+  font-style: italic;
   margin-bottom: 0.1rem;
 }
 
@@ -571,14 +564,10 @@
   border: solid 0.5px #e0dac7;
 }
 
-.notFoundPage button:hover{
+.notFoundPage button:hover {
   background-color: #d5cfba;
   transition: all 0.3s ease-in-out;
 }
-
-
-
-
 
 .copyright {
   font-size: 80%;
