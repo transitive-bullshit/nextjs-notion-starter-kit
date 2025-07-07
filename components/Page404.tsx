@@ -16,7 +16,7 @@ export const Page404: React.FC<types.PageProps> = ({ site, pageId, error }) => {
       <div className={styles.notFoundPageContainer}>
         <main className={styles.notFoundPage}>
           <h1>Lost?</h1>
-          <h2>We haven't made this page yet...</h2>  
+          <h2>We haven&apos;t made this page yet...</h2>  
           <button onClick={() => window.location.href = '/'}>GO HOME ➚</button>
 
           {error ? (
