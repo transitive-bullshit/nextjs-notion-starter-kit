@@ -751,3 +751,50 @@
 .hidden {
   visibility: hidden;
 }
+
+/* License notice at the bottom */
+.footerLicense {
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #cccccc;
+}
+
+.footerLicense p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.footerLicense a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footerLicense a:hover {
+  color: #d4cbad;
+}
+
+/* Responsive license text */
+@media screen and (max-width: 750px) {
+  .footerLicense {
+    font-size: 0.75rem;
+    padding-top: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 566px) {
+  .footerLicense {
+    font-size: 0.7rem;
+    padding-top: 0.5rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .footerLicense {
+    font-size: 0.65rem;
+  }
+}
