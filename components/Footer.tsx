@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
           <div className={styles.footerTop}>
             <h2>
               A free and open archive of
-              <br /> Harvard & MIT course materials
+              <br /> advanced course materials
             </h2>
             {/* Styled form for input with button */}
             <div>
