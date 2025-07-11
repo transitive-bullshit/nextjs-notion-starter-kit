@@ -165,21 +165,6 @@ export const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-
-        {/* License notice */}
-        <div className={styles.footerLicense}>
-          <p>
-            Except where otherwise noted, content on this site is licensed under
-            a{' '}
-            <a
-              href='https://creativecommons.org/licenses/by-nc-sa/4.0/'
-              target='_blank'
-              rel='noreferrer'
-            >
-              Creative Commons BY-NC-SA 4.0 License
-            </a>
-          </p>
-        </div>
       </footer>
     </>
   )
