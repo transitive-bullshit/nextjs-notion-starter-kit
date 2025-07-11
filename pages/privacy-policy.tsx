@@ -26,10 +26,7 @@ const PrivacyAndPolicy = () => {
                   >
                     About
                   </a> */}
-                  <a
-                    href='/why'
-                    className='nav-link'
-                  >
+                  <a href='/why' className='nav-link'>
                     Why Coursetexts?
                   </a>
                 </nav>
@@ -135,12 +132,16 @@ const PrivacyAndPolicy = () => {
                 internet or electronic storage is 100% secure, and we cannot
                 guarantee absolute security.
               </p>
-              <h2 style={{ marginBottom: '1rem' }}>6. Data Retention and Deletion</h2>
+              <h2 style={{ marginBottom: '1rem' }}>
+                6. Data Retention and Deletion
+              </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
-                We only retain user Google email addresses, and only for as long as necessary to provide our services.
-                Users may request deletion of their Google-associated account data at any time
-                by contacting us at coursetexts@mit.edu, or revoking access via Google settings.
-                Upon verification, we will permanently delete all associated personal data from our systems within 30 days.
+                We only retain user Google email addresses, and only for as long
+                as necessary to provide our services. Users may request deletion
+                of their Google-associated account data at any time by
+                contacting us at coursetexts@mit.edu, or revoking access via
+                Google settings. Upon verification, we will permanently delete
+                all associated personal data from our systems within 30 days.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>7. Third-Party Links</h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
@@ -169,9 +170,9 @@ const PrivacyAndPolicy = () => {
                 10. Consent and Authorization
               </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
-                We operate with explicit consent and authorization from both
-                Canvas and Harvard University. They do not have access to any
-                personal information from this site.
+                We operate with explicit consent and authorization from Canvas
+                and the faculty members whose course material we host. They do
+                not have access to any personal information from this site.
               </p>
 
               <h2 style={{ marginBottom: '1rem' }}>11. Contact Us</h2>
