@@ -172,11 +172,11 @@ export const Footer: React.FC = () => {
             Except where otherwise noted, content on this site is licensed under
             a{' '}
             <a
-              href='https://creativecommons.org/licenses/by/4.0/'
+              href='https://creativecommons.org/licenses/by-nc-sa/4.0/'
               target='_blank'
               rel='noreferrer'
             >
-              Creative Commons Attribution 4.0 License
+              Creative Commons BY-NC-SA 4.0 License
             </a>
           </p>
         </div>
