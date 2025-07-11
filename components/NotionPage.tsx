@@ -150,6 +150,21 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+function License() {
+  return (
+    <p className={styles.licenseText}>
+      Except where otherwise noted, content on this site is licensed under a{' '}
+      <a
+        href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en'
+        target='_blank'
+        rel='noreferrer'
+      >
+        Creative Commons BY-NC-SA 4.0 License
+      </a>
+    </p>
+  )
+}
+
 // Helper to wait for an element to appear in the DOM
 function waitForElement(selector: string, timeout = 5000): Promise<Element> {
   return new Promise((resolve, reject) => {
@@ -1300,6 +1315,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
         </div>
       )}
 
+      {pageClass === 'notion-home' && <License />}
       <Footer />
       {/* <GitHubShareButton /> */}
     </>
