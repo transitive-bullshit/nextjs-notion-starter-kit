@@ -14,8 +14,7 @@ export default siteConfig({
   author: 'Coursetexts',
 
   // open graph metadata (optional)
-  description:
-    'Coursetexts is a modern, open library of MIT and Harvard course notes.',
+  description: 'Coursetexts is open library of advanced course notes.',
 
   // social accounts
   github: 'https://github.com/coursetexts',
