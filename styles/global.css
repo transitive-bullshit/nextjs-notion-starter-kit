@@ -1,13 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: 'Tobias';
   src: url('/fonts/TobiasTRIAL-Regular.woff') format('woff2'),
-       url('/fonts/TobiasTRIAL-Regular.woff') format('woff');
+    url('/fonts/TobiasTRIAL-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
-
-
 
 * {
   box-sizing: border-box;
@@ -26,13 +27,12 @@ html {
 }
 .dark-mode {
   --bg-color: #1e1e1e;
-  
 }
 
 .notion {
   padding-left: 3%;
   padding-right: 3%;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   @media only screen and (max-width: 920px) {
     padding-left: 3%;
     padding-right: 3%;
