@@ -95,3 +95,12 @@ body {
 ::-webkit-scrollbar-track {
   background-color: var(--bg-color);
 }
+
+/* Patch: hide scrollbar */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
