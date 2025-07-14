@@ -1185,6 +1185,37 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
   }, [pageClass])
 
+  React.useEffect(() => {
+    // New: After wrapping courses, check if none exist and add maintenance message
+    const cards = document.querySelectorAll('.custom-wrapper-class');
+    if (cards.length === 0) {
+      const filterContainer = document.querySelector('.filter-row-container');
+      if (filterContainer) {
+        // Prevent duplicate insertion
+        if (document.querySelector('.maintenance-message')) return;
+
+        const messageContainer = document.createElement('div');
+        messageContainer.className = 'maintenance-message';
+        // Use flexbox to center the message horizontally
+        messageContainer.style.display = 'flex';
+        messageContainer.style.justifyContent = 'center';
+        messageContainer.style.alignItems = 'center';
+        messageContainer.style.width = '100%';
+        messageContainer.style.marginTop = '20px';
+        messageContainer.style.color = '#58534A';
+        messageContainer.style.fontSize = '18px'; // Increased from 16px for bigger text
+
+        // Inner span for text, so the text itself is centered in the flex container
+        const innerSpan = document.createElement('span');
+        innerSpan.innerHTML = 'We are updating the site this week. <a href="mailto:admin@coursetexs.org" style="text-decoration: underline;">Email us</a> with any questions till then!';
+        innerSpan.style.textAlign = 'center';
+        messageContainer.appendChild(innerSpan);
+
+        filterContainer.insertAdjacentElement('afterend', messageContainer);
+      }
+    }
+  }, [router]);
+
   if (router.isFallback) {
     return <Loading />
   }

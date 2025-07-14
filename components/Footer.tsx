@@ -90,44 +90,6 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          <div className={styles.footerRow}>
-            <div className={styles.footerCol}>
-              <div className={styles.footerColTitle}>Math</div>
-              <a href='/mathematical-biology-evolutionary-dynamics-math-242-dff30cb6404848a4bf2bf4d0ba385c46'>
-                Mathematical Biology-Evolutionary Dynamics
-              </a>
-              <a href='/automorphic-forms-and-arithmetic-statistics-math-288x-12d19a13312a8066bbd8dc21cfee3969'>
-                Automorphic Forms and Arithmetic Statistics
-              </a>
-              <a href='/vector-calculus-and-linear-algebra-ii-math-22b-12d19a13312a8096ad91cf37d6973355'>
-                Vector Calculus and Linear Algebra II
-              </a>
-              <a href='/differential-geometry-math230a-12d19a13312a8028b457f080d389cd06'>
-                Differential Geometry
-              </a>
-              <a href='/mathematics-and-the-world-math-157-12b19a13312a807ea697ffc87aab9f0d'>
-                Mathematics and the World
-              </a>
-              <a href='/algebraic-geometry-math137-9991b187ee4d4e66a900e4462dbd59c4'>
-                Algebraic Geometry
-              </a>
-            </div>
-
-            <div className={styles.footerCol}>
-              <div className={styles.footerColTitle}>Physics</div>
-              <a href='/advanced-electromagnetismphysics-232-d82e8352f9b24e738aa57720d06e8995'>
-                Advanced Electromagnetism
-              </a>
-              <a href='/modern-atomic-and-optical-physics-iphysics285a-4aeba2df8c1241ae9c7703c3d1d4ab63'>
-                Modern Atomic and Optical Physics I
-              </a>
-              <a href='/frontiers-in-biophysicschem163-153883e7e7094a2e8473b7c626b8aa58'>
-                Frontiers in Biophysics
-              </a>
-            </div>
-          </div>
-        </div>
-
         <div className={styles.footerBottom}>
           <div className={styles.footerBottomLeft}>
             <svg
@@ -162,6 +124,7 @@ export const Footer: React.FC = () => {
               <a href={github} target='_blank' rel='noreferrer'>
                 <GithubIcon />
               </a>
+            </div>
             </div>
           </div>
         </div>
