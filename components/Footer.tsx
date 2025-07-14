@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
               )}
             </div>
           </div>
-
+          {/*
           <div className={styles.footerRow}>
             <div className={styles.footerCol}>
               <div className={styles.footerColTitle}>Math</div>
@@ -126,6 +126,8 @@ export const Footer: React.FC = () => {
               </a>
             </div>
           </div>
+          */}
+        </div>
         </div>
 
         <div className={styles.footerBottom}>
