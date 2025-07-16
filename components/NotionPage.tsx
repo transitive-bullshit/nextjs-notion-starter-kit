@@ -272,7 +272,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
-  const title = getBlockTitle(block, recordMap) || site.name
+  let title = 'Untitled'
+  if (block && (block as any).properties) {
+    title = getBlockTitle(block, recordMap)
+  }
   const isProduction = !title.endsWith('(Preview)')
 
   // Clean up when the component unmounts or pageClass changes
