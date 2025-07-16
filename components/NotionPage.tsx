@@ -270,6 +270,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
     container: null
   })
 
+  const keys = Object.keys(recordMap?.block || {})
+  const block = recordMap?.block?.[keys[0]]?.value
+  const title = getBlockTitle(block, recordMap) || site.name
+  const isProduction = !title.endsWith('(Preview)')
+
   // Clean up when the component unmounts or pageClass changes
   React.useEffect(() => {
     // First, clean up any existing root when the page type changes
@@ -462,8 +467,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
         nextSibling = nextSibling.nextElementSibling
       }
 
-      // If UNLISTED is true, delete all course cards and content instead of wrapping them
-      if (UNLISTED && elementsToWrap.length > 0) {
+      // If UNLISTED is true and Notion is production,
+      // delete all course cards and content instead of wrapping them
+      if (UNLISTED && isProduction && elementsToWrap.length > 0) {
         elementsToWrap.forEach((element) => {
           element.remove()
         })
@@ -1140,9 +1146,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     return mapPageUrl(site, recordMap, searchParams)
   }, [site, recordMap, lite])
 
-  const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
-
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
@@ -1235,8 +1238,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   if (error || !site || !block) {
     return <Page404 site={site} pageId={pageId} error={error} />
   }
-
-  const title = getBlockTitle(block, recordMap) || site.name
 
   console.log('notion page', {
     isDev: config.isDev,
