@@ -276,7 +276,11 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
-  const title = getBlockTitle(block, recordMap)
+
+  let title = 'Untitled'
+  if (block && (block as any).properties) {
+    title = getBlockTitle(block, recordMap)
+  }
 
   // Clean up when the component unmounts or pageClass changes
   React.useEffect(() => {
