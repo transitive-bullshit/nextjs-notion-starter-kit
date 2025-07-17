@@ -16,6 +16,7 @@ import { useSearchParam } from 'react-use'
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
 import { donate } from '@/lib/config'
+import { NOTION_PRODUCTION_URL } from '@/lib/consts'
 import { LINK_ICON_METADATA, LinkIconKey } from '@/lib/link-icons'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
@@ -270,13 +271,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
     container: null
   })
 
+  const isProduction =
+    process.env.NEXT_PUBLIC_NOTION_PAGE_ID === NOTION_PRODUCTION_URL
+
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
-  let title = 'Untitled'
-  if (block && (block as any).properties) {
-    title = getBlockTitle(block, recordMap)
-  }
-  const isProduction = !title.endsWith('(Preview)')
+  const title = getBlockTitle(block, recordMap)
 
   // Clean up when the component unmounts or pageClass changes
   React.useEffect(() => {
