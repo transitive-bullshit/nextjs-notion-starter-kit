@@ -16,6 +16,7 @@ import { useSearchParam } from 'react-use'
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
 import { donate } from '@/lib/config'
+import { NOTION_PRODUCTION_URL } from '@/lib/consts'
 import { LINK_ICON_METADATA, LinkIconKey } from '@/lib/link-icons'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
@@ -238,6 +239,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   error,
   pageId
 }) => {
+  const UNLISTED = true
+
   const router = useRouter()
   const lite = useSearchParam('lite')
 
@@ -267,6 +270,17 @@ export const NotionPage: React.FC<types.PageProps> = ({
     root: null,
     container: null
   })
+
+  const isProduction =
+    process.env.NEXT_PUBLIC_NOTION_PAGE_ID === NOTION_PRODUCTION_URL
+
+  const keys = Object.keys(recordMap?.block || {})
+  const block = recordMap?.block?.[keys[0]]?.value
+
+  let title = 'Untitled'
+  if (block && (block as any).properties) {
+    title = getBlockTitle(block, recordMap)
+  }
 
   // Clean up when the component unmounts or pageClass changes
   React.useEffect(() => {
@@ -458,6 +472,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
       while (nextSibling && !nextSibling.classList.contains('notion-blank')) {
         elementsToWrap.push(nextSibling)
         nextSibling = nextSibling.nextElementSibling
+      }
+
+      // If UNLISTED is true and Notion is production,
+      // delete all course cards and content instead of wrapping them
+      if (UNLISTED && isProduction && elementsToWrap.length > 0) {
+        elementsToWrap.forEach((element) => {
+          element.remove()
+        })
+        index += 1
+        continue
       }
 
       // If there are elements to wrap, create a custom-wrapper div
@@ -1130,9 +1154,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
     return mapPageUrl(site, recordMap, searchParams)
   }, [site, recordMap, lite])
 
-  const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
-
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
@@ -1187,7 +1208,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }, [pageClass])
 
   React.useEffect(() => {
-    // New: After wrapping courses, check if none exist and add maintenance message
+    // After wrapping courses, check if none exist and add maintenance message
     const cards = document.querySelectorAll('.custom-wrapper-class')
     if (cards.length === 0) {
       const filterContainer = document.querySelector('.filter-row-container')
@@ -1218,6 +1239,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
     }
   }, [router])
 
+  const [isMounted, setIsMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    const delay = setTimeout(() => setIsMounted(true), 200)
+    return () => clearTimeout(delay)
+  }, [])
+
   if (router.isFallback) {
     return <Loading />
   }
@@ -1225,8 +1253,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   if (error || !site || !block) {
     return <Page404 site={site} pageId={pageId} error={error} />
   }
-
-  const title = getBlockTitle(block, recordMap) || site.name
 
   console.log('notion page', {
     isDev: config.isDev,
@@ -1308,47 +1334,53 @@ export const NotionPage: React.FC<types.PageProps> = ({
       {isDarkMode && <BodyClassName className='dark-mode' />} */}
       <BodyClassName className={pageClass} />
 
-      <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
+      <div
+        style={{
+          visibility: isMounted ? 'visible' : 'hidden'
+        }}
+      >
+        <NotionRenderer
+          bodyClassName={cs(
+            styles.notion,
+            pageId === site.rootNotionPageId && 'index-page'
+          )}
+          darkMode={isDarkMode}
+          components={components}
+          recordMap={recordMap}
+          rootPageId={site.rootNotionPageId}
+          rootDomain={site.domain}
+          fullPage={!isLiteMode}
+          previewImages={!!recordMap.preview_images}
+          showCollectionViewDropdown={false}
+          showTableOfContents={showTableOfContents}
+          minTableOfContentsItems={minTableOfContentsItems}
+          defaultPageIcon={null}
+          defaultPageCover={config.defaultPageCover}
+          defaultPageCoverPosition={config.defaultPageCoverPosition}
+          mapPageUrl={siteMapPageUrl}
+          mapImageUrl={mapImageUrl}
+          searchNotion={config.isSearchEnabled ? searchNotion : null}
+          pageAside={null}
+        />
+
+        {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
+          router.asPath === '/about' ||
+          (router.asPath.split('/')[1]?.startsWith('about') &&
+            router.asPath.split('/')[1]) ||
+          pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0' ||
+          router.asPath === '/why') && (
+          <div className='button-container'>
+            <a href='./'>
+              <button className='see-all'>See All Classes →</button>
+            </a>
+            <a href={donate} target='_blank' rel='noreferrer'>
+              <button className='see-all'>Donate →</button>
+            </a>
+          </div>
         )}
-        darkMode={isDarkMode}
-        components={components}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={null}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : null}
-        pageAside={null}
-      />
 
-      {(router.asPath === '/about-9a2ace4be0dc4d928e7d304a44a6afe8' ||
-        router.asPath === '/about' ||
-        (router.asPath.split('/')[1]?.startsWith('about') &&
-          router.asPath.split('/')[1]) ||
-        pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0' ||
-        router.asPath === '/why') && (
-        <div className='button-container'>
-          <a href='./'>
-            <button className='see-all'>See All Classes →</button>
-          </a>
-          <a href={donate} target='_blank' rel='noreferrer'>
-            <button className='see-all'>Donate →</button>
-          </a>
-        </div>
-      )}
-
-      {pageClass === 'notion-home' && <License />}
+        {pageClass === 'notion-home' && <License />}
+      </div>
       <Footer />
       {/* <GitHubShareButton /> */}
     </>
