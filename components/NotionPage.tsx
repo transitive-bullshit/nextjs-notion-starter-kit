@@ -646,6 +646,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
           svg.style.marginRight = '6px' // Space between icon and text link
           svg.style.verticalAlign = 'middle'
+          svg.style.display = 'inline-block'
 
           // Circular icon background
           svg.style.background = '#E5E1D3'
