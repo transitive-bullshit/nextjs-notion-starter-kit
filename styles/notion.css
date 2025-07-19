@@ -78,12 +78,12 @@
 }
 
 .notion-collection-card {
-  border-radius: 16px;
+  border-radius: 0px;
   box-shadow: none;
 }
 
 .notion-collection-card-cover img {
-  border-radius: 16px;
+  border-radius: 0px;
 }
 
 .notion-collection-card {
@@ -91,7 +91,7 @@
 }
 
 .notion-collection-card-cover {
-  border-radius: 16px;
+  border-radius: 0px;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
