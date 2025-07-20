@@ -10,12 +10,14 @@ export function PageHead({
   description,
   pageId,
   image,
-  url
+  url,
+  isBlogPost
 }: types.PageProps & {
   title?: string
   description?: string
   image?: string
   url?: string
+  isBlogPost?: boolean
 }) {
   const rssFeedUrl = `${config.host}/feed`
 
