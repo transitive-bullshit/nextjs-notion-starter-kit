@@ -54,16 +54,12 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: 'About',
-      pageId: '2362430d971980979bdeef748a2e9b8e'
-    },
-    {
       title: 'Work',
       pageId: '2362430d971980e0a14dd5b710812780'
     },
     {
       title: 'Recipes',
-      pageId: '2362430d9719801db732d31f70a4fb3f'
+      pageId: '2372430d9719801a9519f50951c7fea0'
     }
   ]
 })
