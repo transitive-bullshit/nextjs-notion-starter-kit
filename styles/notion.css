@@ -8,7 +8,7 @@
  */
 
 .notion {
-  --notion-max-width: 720px;
+  --notion-max-width: 680px;
   --notion-header-height: 54px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .index-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 680px;
 }
 
 /* Major Third Typography Scale (1.25 ratio) - 16px base */
@@ -30,8 +30,8 @@
 /* Base text styles */
 .notion-text {
   padding: 0.5em 2px;
-  font-size: 1rem; /* 16px */
-  line-height: 1.6;
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.4;
   font-weight: 400;
 }
 
@@ -39,20 +39,20 @@
 .notion-text small,
 .caption,
 .footnote {
-  font-size: 0.8rem; /* 12.8px */
+  font-size: 0.9rem; /* 14.4px */
   line-height: 1.5;
 }
 
 /* Lead paragraph / large text */
 .notion-text.lead {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.406rem; /* 22.5px */
   line-height: 1.5;
   font-weight: 400;
 }
 
 /* Headings with Major Third scale */
 .notion-h6 {
-  font-size: 1.25rem; /* 20px */
+  font-size: 1.406rem; /* 22.5px */
   line-height: 1.3;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -60,7 +60,7 @@
 }
 
 .notion-h5 {
-  font-size: 1.563rem; /* 25px */
+  font-size: 1.758rem; /* 28.13px */
   line-height: 1.3;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -68,7 +68,7 @@
 }
 
 .notion-h4 {
-  font-size: 1.953rem; /* 31.25px */
+  font-size: 2.197rem; /* 35.16px */
   line-height: 1.2;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -82,14 +82,14 @@
 }
 
 .notion-h3 {
-  font-size: 2.441rem; /* 39.06px */
+  font-size: 2.746rem; /* 43.95px */
   line-height: 1.2;
   font-weight: 600;
   margin-top: 2rem;
 }
 
 .notion-h2 {
-  font-size: 3.052rem; /* 48.83px */
+  font-size: 3.433rem; /* 54.93px */
   line-height: 1.1;
   font-weight: 600;
   margin-bottom: 0.75rem;
@@ -97,7 +97,7 @@
 }
 
 .notion-h1 {
-  font-size: 3.815rem; /* 61.04px */
+  font-size: 4.291rem; /* 68.66px */
   line-height: 1.1;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -119,9 +119,10 @@
 }
 
 .notion-header .notion-nav-header {
-  max-width: 1100px;
+  max-width: 680px;
   margin: 0 auto;
   overflow-x: auto;
+  font-size: 0.9rem;
 }
 
 .notion-nav-header-rhs {
@@ -129,9 +130,9 @@
 }
 
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  grid-gap: 6vmin;
-  gap: 6vmin;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  /* grid-gap: 6vmin; */
+  gap: 3vmin;
 }
 
 .notion-gallery-grid .notion-page-icon-inline {
@@ -167,7 +168,7 @@
 
 .notion-collection-card-cover {
   border-radius: 0px;
-  box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+  /* box-shadow: 2px 2px 8px 4px rgba(102, 102, 128, 0.03); */
 }
 
 .notion-collection-card-cover {
@@ -199,7 +200,7 @@
   line-height: 1.5;
   font-style: italic;
   font-size: 1.2em;
-  border-left: 4px solid #9685b7;
+  border-left: 4px solid #67bdfc;
 }
 
 .notion-callout {
@@ -238,8 +239,8 @@
 /* Page title / hero title */
 .notion-title {
   display: block;
-  text-align: center;
-  font-size: 4.768rem; /* 76.29px */
+  text-align: left;
+  font-size: 5.364rem; /* 85.83px */
   line-height: 1.0;
   font-weight: 700;
   margin-bottom: 1.5rem;

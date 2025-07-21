@@ -60,6 +60,10 @@ export default siteConfig({
     {
       title: 'Work',
       pageId: '2362430d971980e0a14dd5b710812780'
+    },
+    {
+      title: 'Recipes',
+      pageId: '2362430d9719801db732d31f70a4fb3f'
     }
   ]
 })
