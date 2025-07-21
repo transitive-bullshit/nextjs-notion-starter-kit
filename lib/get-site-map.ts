@@ -21,8 +21,12 @@ export async function getSiteMap(): Promise<types.SiteMap> {
   } as types.SiteMap
 }
 
+/**
+ * Returns a memoized version of `getAllPagesImpl` that caches results for 5 minutes in stead of indefinitely.
+ * This is useful to avoid hitting the Notion API too frequently, while ensuring new content gets picked up by site.
+ */
 const getAllPages = pMemoize(getAllPagesImpl, {
-  cacheKey: (...args) => JSON.stringify(args)
+  cacheKey: (...args) => JSON.stringify([...args, Math.floor(Date.now() / (1000 * 60 * 5))]) // 5-minute cache
 })
 
 const getPage = async (pageId: string, opts?: any) => {
