@@ -259,6 +259,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
     pageClass = 'about-page'
   } else if (router.asPath.startsWith('/why')) {
     pageClass = 'why-page'
+  } else if (router.asPath.startsWith('/process')) {
+    pageClass = 'why-page process-page'
   } else {
     pageClass = 'course-page'
   }
@@ -1368,7 +1370,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
           (router.asPath.split('/')[1]?.startsWith('about') &&
             router.asPath.split('/')[1]) ||
           pageId == '2636f19a-6ceb-4d8d-b057-f0b166b05ce0' ||
-          router.asPath === '/why') && (
+          router.asPath === '/why' ||
+          router.asPath === '/process') && (
           <div className='button-container'>
             <a href='./'>
               <button className='see-all'>See All Classes →</button>
