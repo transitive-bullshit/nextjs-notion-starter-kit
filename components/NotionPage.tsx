@@ -1106,9 +1106,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
             ?.textContent?.match(/\(([^)]+)\)/)?.[1] || ''
 
         if (parenthesesContent) {
-          // Extract department code (alphabetical prefix before any numbers)
+          // Extract department code (all text after opening parenthesis and before the first number)
           const departmentCode =
-            parenthesesContent.trim().match(/^[A-Za-z]+/)?.[0] || ''
+            parenthesesContent.trim().match(/^([A-Za-z\s]+)(?=\s*\d|$)/)?.[1]?.trim() || ''
 
           // Only add if it's not empty
           if (departmentCode) {
