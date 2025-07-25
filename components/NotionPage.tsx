@@ -239,8 +239,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   error,
   pageId
 }) => {
-  const UNLISTED = true
-
   const router = useRouter()
   const lite = useSearchParam('lite')
 
@@ -474,9 +472,13 @@ export const NotionPage: React.FC<types.PageProps> = ({
         nextSibling = nextSibling.nextElementSibling
       }
 
-      // If UNLISTED is true and Notion is production,
-      // delete all course cards and content instead of wrapping them
-      if (UNLISTED && isProduction && elementsToWrap.length > 0) {
+      const contentText = elementsToWrap
+        .map((el) => el.textContent)
+        .join(' ')
+        .toLowerCase()
+
+      // Hide courses by Adam Cohen in production
+      if (contentText.includes('adam cohen') && isProduction) {
         elementsToWrap.forEach((element) => {
           element.remove()
         })
