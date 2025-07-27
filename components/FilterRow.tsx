@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { UpdateNotice } from './UpdateNotice'
 
@@ -17,9 +17,36 @@ const FilterRow: React.FC<FilterRowProps> = ({
   setDepartment,
   allDepartmentTags
 }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [isPaused, setIsPaused] = useState(false)
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value)
   }
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current
+    if (!scrollContainer || isPaused) return
+
+    const scrollStep = 1
+    const scrollDelay = 50
+
+    const autoScroll = () => {
+      if (scrollContainer) {
+        const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth
+        
+        if (scrollContainer.scrollLeft >= maxScrollLeft) {
+          scrollContainer.scrollLeft = 0
+        } else {
+          scrollContainer.scrollLeft += scrollStep
+        }
+      }
+    }
+
+    const interval = setInterval(autoScroll, scrollDelay)
+
+    return () => clearInterval(interval)
+  }, [isPaused])
 
   console.log(allDepartmentTags)
 
@@ -53,7 +80,12 @@ const FilterRow: React.FC<FilterRowProps> = ({
       {/* Filter Buttons with horizontal scroll, 
           pinned to the parent width */}
       <div className='relative w-[95%] max-w-[700px] mx-auto overflow-hidden'>
-        <div className='flex flex-nowrap gap-2 overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-smooth py-1 touch-pan-x scrollbar-hide'>
+        <div 
+          ref={scrollContainerRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className='flex flex-nowrap gap-2 overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-smooth py-1 pl-10 pr-10 touch-pan-x scrollbar-hide'
+        >
           {allDepartmentTags.map((dept) => (
             <button
               key={dept}
