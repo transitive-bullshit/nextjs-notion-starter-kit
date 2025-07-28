@@ -26,6 +26,7 @@ const FilterRow: React.FC<FilterRowProps> = ({
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [isPaused, setIsPaused] = useState(false)
+  const [enableLoopingScroll, setEnableLoopingScroll] = useState(false)
 
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,25 +38,36 @@ const FilterRow: React.FC<FilterRowProps> = ({
   // Duplicate the tag array into 3 blocks, such that block 1 and 3 act as buffers for infinite scrolling
   const dynamicTagArray = useMemo(
     () =>
-      allDepartmentTags
+      enableLoopingScroll && allDepartmentTags
         ? [...allDepartmentTags, ...allDepartmentTags, ...allDepartmentTags]
-        : [],
-    [allDepartmentTags]
+        : allDepartmentTags || [],
+    [allDepartmentTags, enableLoopingScroll]
   )
+
+  useLayoutEffect(() => {
+    const scrollContainer = scrollContainerRef.current
+    if (scrollContainer && !enableLoopingScroll) {
+      const hasOverflow =
+        scrollContainer.scrollWidth > scrollContainer.clientWidth
+      if (hasOverflow) {
+        setEnableLoopingScroll(true)
+      }
+    }
+  }, [allDepartmentTags, enableLoopingScroll])
 
   // Set the start position of the scroll container to the middle (block 2) of the dynamic tag array
   useLayoutEffect(() => {
     const scrollContainer = scrollContainerRef.current
-    if (scrollContainer && dynamicTagArray.length > 0) {
+    if (scrollContainer && dynamicTagArray.length > 0 && enableLoopingScroll) {
       const oneThirdWidth = scrollContainer.scrollWidth / 3
       scrollContainer.scrollLeft = oneThirdWidth
     }
-  }, [dynamicTagArray])
+  }, [dynamicTagArray, enableLoopingScroll])
 
   // Upon entering block 1 or 3, instantly scroll / snap to the proper position in block 2
   const handleInfiniteScroll = useCallback(() => {
     const scrollContainer = scrollContainerRef.current
-    if (!scrollContainer) return
+    if (!scrollContainer || !enableLoopingScroll) return
 
     const { scrollLeft, scrollWidth } = scrollContainer
     const blockWidth = scrollWidth / 3
@@ -71,11 +83,11 @@ const FilterRow: React.FC<FilterRowProps> = ({
         scrollContainer.scrollLeft += blockWidth
       }
     }
-  }, [])
+  }, [enableLoopingScroll])
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current
-    if (!scrollContainer || isPaused) return
+    if (!scrollContainer || isPaused || !enableLoopingScroll) return
 
     // srollStep px per scrollDelay ms
     const scrollStep = 1
@@ -97,7 +109,7 @@ const FilterRow: React.FC<FilterRowProps> = ({
     const interval = setInterval(autoScroll, scrollDelay)
 
     return () => clearInterval(interval)
-  }, [isPaused])
+  }, [isPaused, enableLoopingScroll])
 
   const onDepartmentClick = useCallback(
     (dept: string) => {
@@ -160,8 +172,12 @@ const FilterRow: React.FC<FilterRowProps> = ({
           ))}
         </div>
         {/* Fades on each side */}
-        <div className='absolute left-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-r from-[#F7F7F5] to-transparent' />
-        <div className='absolute right-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-l from-[#F7F7F5] to-transparent' />
+        {enableLoopingScroll && (
+          <>
+            <div className='absolute left-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-r from-[#F7F7F5] to-transparent' />
+            <div className='absolute right-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-l from-[#F7F7F5] to-transparent' />
+          </>
+        )}
       </div>
 
       <UpdateNotice />
