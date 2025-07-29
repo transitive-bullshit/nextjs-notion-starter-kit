@@ -1,4 +1,11 @@
-import React from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 
 import { UpdateNotice } from './UpdateNotice'
 
@@ -17,11 +24,101 @@ const FilterRow: React.FC<FilterRowProps> = ({
   setDepartment,
   allDepartmentTags
 }) => {
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value)
-  }
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const [isPaused, setIsPaused] = useState(false)
+  const [enableLoopingScroll, setEnableLoopingScroll] = useState(false)
 
-  console.log(allDepartmentTags)
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value)
+    },
+    [setSearchValue]
+  )
+
+  // Duplicate the tag array into 3 blocks, such that block 1 and 3 act as buffers for infinite scrolling
+  const dynamicTagArray = useMemo(
+    () =>
+      enableLoopingScroll && allDepartmentTags
+        ? [...allDepartmentTags, ...allDepartmentTags, ...allDepartmentTags]
+        : allDepartmentTags || [],
+    [allDepartmentTags, enableLoopingScroll]
+  )
+
+  useLayoutEffect(() => {
+    const scrollContainer = scrollContainerRef.current
+    if (scrollContainer && !enableLoopingScroll) {
+      const hasOverflow =
+        scrollContainer.scrollWidth > scrollContainer.clientWidth
+      if (hasOverflow) {
+        setEnableLoopingScroll(true)
+      }
+    }
+  }, [allDepartmentTags, enableLoopingScroll])
+
+  // Set the start position of the scroll container to the middle (block 2) of the dynamic tag array
+  useLayoutEffect(() => {
+    const scrollContainer = scrollContainerRef.current
+    if (scrollContainer && dynamicTagArray.length > 0 && enableLoopingScroll) {
+      const oneThirdWidth = scrollContainer.scrollWidth / 3
+      scrollContainer.scrollLeft = oneThirdWidth
+    }
+  }, [dynamicTagArray, enableLoopingScroll])
+
+  // Upon entering block 1 or 3, instantly scroll / snap to the proper position in block 2
+  const handleInfiniteScroll = useCallback(() => {
+    const scrollContainer = scrollContainerRef.current
+    if (!scrollContainer || !enableLoopingScroll) return
+
+    const { scrollLeft, scrollWidth } = scrollContainer
+    const blockWidth = scrollWidth / 3
+
+    if (scrollWidth === 0 || blockWidth === 0) return
+
+    if (scrollLeft >= blockWidth * 2) {
+      // Greater than block 3
+      scrollContainer.scrollLeft -= blockWidth
+    } else if (scrollLeft <= blockWidth) {
+      if (Math.abs(scrollLeft - blockWidth) > 1) {
+        // Less than block 1
+        scrollContainer.scrollLeft += blockWidth
+      }
+    }
+  }, [enableLoopingScroll])
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current
+    if (!scrollContainer || isPaused || !enableLoopingScroll) return
+
+    // srollStep px per scrollDelay ms
+    const scrollStep = 1
+    const scrollDelay = 50
+
+    const autoScroll = () => {
+      if (scrollContainer) {
+        const maxScrollLeft =
+          scrollContainer.scrollWidth - scrollContainer.clientWidth
+
+        if (scrollContainer.scrollLeft >= maxScrollLeft) {
+          scrollContainer.scrollLeft = 0
+        } else {
+          scrollContainer.scrollLeft += scrollStep
+        }
+      }
+    }
+
+    const interval = setInterval(autoScroll, scrollDelay)
+
+    return () => clearInterval(interval)
+  }, [isPaused, enableLoopingScroll])
+
+  const onDepartmentClick = useCallback(
+    (dept: string) => {
+      // If the clicked department is already selected, deselect it
+      // Otherwise, select the new department
+      setDepartment(department === dept ? '' : dept)
+    },
+    [department, setDepartment]
+  )
 
   return (
     <div className='flex flex-col gap-4 w-full'>
@@ -53,15 +150,17 @@ const FilterRow: React.FC<FilterRowProps> = ({
       {/* Filter Buttons with horizontal scroll, 
           pinned to the parent width */}
       <div className='relative w-[95%] max-w-[700px] mx-auto overflow-hidden'>
-        <div className='flex flex-nowrap gap-2 overflow-x-auto overflow-y-hidden whitespace-nowrap scroll-smooth py-1 touch-pan-x scrollbar-hide'>
-          {allDepartmentTags.map((dept) => (
+        <div
+          ref={scrollContainerRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className='flex flex-nowrap gap-2 overflow-x-auto overflow-y-hidden whitespace-nowrap py-1 pl-10 pr-10 touch-pan-x scrollbar-hide'
+          onScroll={handleInfiniteScroll}
+        >
+          {dynamicTagArray.map((dept, index) => (
             <button
-              key={dept}
-              onClick={() => {
-                // If the clicked department is already selected, deselect it
-                // Otherwise, select the new department
-                setDepartment(department === dept ? '' : dept)
-              }}
+              key={`${dept}-${index}`}
+              onClick={() => onDepartmentClick(dept)}
               className={`px-4 py-2 border-none rounded-lg cursor-pointer text-sm transition-colors duration-200 whitespace-nowrap ${
                 department === dept
                   ? 'bg-black text-white'
@@ -73,8 +172,12 @@ const FilterRow: React.FC<FilterRowProps> = ({
           ))}
         </div>
         {/* Fades on each side */}
-        <div className='absolute left-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-r from-[#F7F7F5] to-transparent' />
-        <div className='absolute right-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-l from-[#F7F7F5] to-transparent' />
+        {enableLoopingScroll && (
+          <>
+            <div className='absolute left-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-r from-[#F7F7F5] to-transparent' />
+            <div className='absolute right-0 top-0 bottom-0 w-10 pointer-events-none bg-gradient-to-l from-[#F7F7F5] to-transparent' />
+          </>
+        )}
       </div>
 
       <UpdateNotice />
@@ -82,4 +185,4 @@ const FilterRow: React.FC<FilterRowProps> = ({
   )
 }
 
-export default FilterRow
+export default React.memo(FilterRow)
