@@ -48,7 +48,9 @@ export default siteConfig({
   pageUrlOverrides: {
     '/why':
       'https://www.notion.so/snaz/Coursetexts-is-open-sourcing-the-frontiers-of-knowledge-14d19a13312a80aba903d49ab333bd38',
-    '/about': 'About-199ab1b19f3681ce8ab2d06bc1b17175'
+    '/about': 'About-199ab1b19f3681ce8ab2d06bc1b17175',
+    '/process':
+      'https://www.notion.so/snaz/Process-23b19a13312a8045a30bfc70e968ba51'
     // '/proseminar-in-social-psychologypsy2500': 'Proseminar-in-Social-Psychology-PSY-2500-1d819a13312a80029367cbd949d47920',
     // '/classical-social-theory-sociol2204': 'Classical-Social-Theory-SOCIOL-2204-1c219a13312a8020b47dc2ac02b5adb0',
     // '/wwii-american-and-european-painting-and-mass-culture-haa272m': 'WWII-American-and-European-Painting-and-Mass-Culture-HAA-272M-1c919a13312a80fcbbd8e928fe96c8cd',
