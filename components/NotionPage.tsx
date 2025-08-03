@@ -652,6 +652,17 @@ export const NotionPage: React.FC<types.PageProps> = ({
             isFirstElementInText = firstElement === link
           }
 
+          // There is a bug where inline links beginning with text 'http(s)://' are treated as beginning/icon links,
+          // we will just assume all links with text 'http(s)://' are inline links
+          const linkText = link.textContent || ''
+          if (
+            linkText.startsWith('https://') ||
+            linkText.startsWith('http://')
+          ) {
+            ;(link as HTMLElement).style.textDecoration = 'underline'
+            return
+          }
+
           // If the link is inline (not first element in notion-text), just make it underlined
           if (notionTextParent && !isFirstElementInText && !isProf) {
             ;(link as HTMLElement).style.textDecoration = 'underline'
