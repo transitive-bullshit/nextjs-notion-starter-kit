@@ -684,15 +684,16 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 'svg'
               )
               lockSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
-              lockSvg.setAttribute('width', '14')
-              lockSvg.setAttribute('height', '14')
+              lockSvg.setAttribute('width', '16')
+              lockSvg.setAttribute('height', '16')
               lockSvg.setAttribute('fill', 'none')
-              lockSvg.setAttribute('viewBox', '0 0 16 16')
+              lockSvg.setAttribute('viewBox', '0 0 24 24')
               lockSvg.classList.add('lock-icon')
 
-              lockSvg.style.marginRight = '4px'
-              lockSvg.style.verticalAlign = 'middle'
+              lockSvg.style.marginRight = '2px'
+              lockSvg.style.verticalAlign = 'baseline'
               lockSvg.style.display = 'inline-block'
+              lockSvg.style.transform = 'translateY(2px)'
 
               const customIconPath = LINK_ICON_METADATA[lockIconKey].path
               customIconPath.forEach((d) => {
@@ -701,7 +702,18 @@ export const NotionPage: React.FC<types.PageProps> = ({
                   'path'
                 )
                 path.setAttribute('d', d)
-                path.setAttribute('fill', '#6B7280')
+                if (
+                  lockIconKey === 'LOCK_CLOSED' ||
+                  lockIconKey === 'LOCK_OPEN'
+                ) {
+                  path.setAttribute('stroke', '#6B7280')
+                  path.setAttribute('stroke-width', '2')
+                  path.setAttribute('stroke-linecap', 'round')
+                  path.setAttribute('stroke-linejoin', 'round')
+                  path.setAttribute('fill', 'none')
+                } else {
+                  path.setAttribute('fill', '#6B7280')
+                }
                 lockSvg.appendChild(path)
               })
 
