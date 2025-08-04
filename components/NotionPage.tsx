@@ -631,6 +631,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
         const notionLinks = page.querySelectorAll('.notion-link')
         if (!notionLinks?.length) return
 
+        console.log('[DEBUG] notionLinks:', notionLinks)
+
         notionLinks.forEach((link) => {
           const href = link.getAttribute('href') || ''
 
@@ -638,6 +640,109 @@ export const NotionPage: React.FC<types.PageProps> = ({
           if (link.querySelector('svg')) return
 
           const isProf = !!link.closest('.notion-blue') // Checks if the link is blue for the profs sites
+
+          // Check if this link is inside a notion-text element
+          const notionTextParent = link.closest('.notion-text')
+
+          // If link is inside notion-text, check if it's the first element
+          let isFirstElementInText = false
+          if (notionTextParent) {
+            // Get the first element child of the notion-text parent
+            const firstElement = notionTextParent.firstElementChild
+            isFirstElementInText = firstElement === link
+          }
+
+          // There is a bug where inline links beginning with text 'http(s)://' are treated as beginning/icon links,
+          // we will just assume all links with text 'http(s)://' are inline links
+          const linkText = link.textContent || ''
+          if (
+            linkText.startsWith('https://') ||
+            linkText.startsWith('http://')
+          ) {
+            ;(link as HTMLElement).style.textDecoration = 'underline'
+            return
+          }
+
+          // If the link is inline (not first element in notion-text), just make it underlined
+          if (notionTextParent && !isFirstElementInText && !isProf) {
+            ;(link as HTMLElement).style.textDecoration = 'underline'
+
+            // Check for lock patterns in the notion-text parent
+            const textContent = notionTextParent.textContent || ''
+            let lockIconKey: LinkIconKey | null = null
+
+            if (textContent.includes('[\\c]')) {
+              lockIconKey = 'LOCK_CLOSED'
+            } else if (textContent.includes('[\\o]')) {
+              lockIconKey = 'LOCK_OPEN'
+            }
+
+            if (lockIconKey && !notionTextParent.querySelector('.lock-icon')) {
+              // Create lock icon
+              const lockSvg = document.createElementNS(
+                'http://www.w3.org/2000/svg',
+                'svg'
+              )
+              lockSvg.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+              lockSvg.setAttribute('width', '16')
+              lockSvg.setAttribute('height', '16')
+              lockSvg.setAttribute('fill', 'none')
+              lockSvg.setAttribute('viewBox', '0 0 24 24')
+              lockSvg.classList.add('lock-icon')
+
+              lockSvg.style.marginRight = '2px'
+              lockSvg.style.verticalAlign = 'baseline'
+              lockSvg.style.display = 'inline-block'
+              lockSvg.style.transform = 'translateY(2px)'
+
+              const customIconPath = LINK_ICON_METADATA[lockIconKey].path
+              customIconPath.forEach((d) => {
+                const path = document.createElementNS(
+                  'http://www.w3.org/2000/svg',
+                  'path'
+                )
+                path.setAttribute('d', d)
+                if (
+                  lockIconKey === 'LOCK_CLOSED' ||
+                  lockIconKey === 'LOCK_OPEN'
+                ) {
+                  path.setAttribute('stroke', '#6B7280')
+                  path.setAttribute('stroke-width', '2')
+                  path.setAttribute('stroke-linecap', 'round')
+                  path.setAttribute('stroke-linejoin', 'round')
+                  path.setAttribute('fill', 'none')
+                } else {
+                  path.setAttribute('fill', '#6B7280')
+                }
+                lockSvg.appendChild(path)
+              })
+
+              // Insert the lock icon at the beginning of the notion-text
+              notionTextParent.insertBefore(
+                lockSvg,
+                notionTextParent.firstChild
+              )
+
+              // Remove the pattern from the text content
+              const walker = document.createTreeWalker(
+                notionTextParent,
+                NodeFilter.SHOW_TEXT,
+                null
+              )
+
+              let textNode
+              while ((textNode = walker.nextNode())) {
+                const nodeValue = textNode.nodeValue || ''
+                if (nodeValue.includes('[\\c]')) {
+                  textNode.nodeValue = nodeValue.replace('[\\c]', '')
+                } else if (nodeValue.includes('[\\o]')) {
+                  textNode.nodeValue = nodeValue.replace('[\\o]', '')
+                }
+              }
+            }
+
+            return
+          }
 
           const svg = document.createElementNS(
             'http://www.w3.org/2000/svg',
@@ -1110,7 +1215,10 @@ export const NotionPage: React.FC<types.PageProps> = ({
         if (parenthesesContent) {
           // Extract department code (all text after opening parenthesis and before the first number)
           const departmentCode =
-            parenthesesContent.trim().match(/^([A-Za-z\s]+)(?=\s*\d|$)/)?.[1]?.trim() || ''
+            parenthesesContent
+              .trim()
+              .match(/^([A-Za-z\s]+)(?=\s*\d|$)/)?.[1]
+              ?.trim() || ''
 
           // Only add if it's not empty
           if (departmentCode) {
