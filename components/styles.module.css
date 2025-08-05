@@ -45,18 +45,6 @@
   width: 640px;
 }
 
-.footer {
-  width: 100%;
-  max-width: 1100px;
-  margin: auto auto 0;
-  padding: 8px;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .copyright {
   font-size: 80%;
   padding: 0.5em;
@@ -125,26 +113,6 @@
   border-top: 1px solid var(--fg-color-0);
 }
 
-@media only screen and (max-width: 566px) {
-  .footer {
-    flex-direction: column;
-  }
-
-  .footer > div {
-    margin-top: 1em;
-  }
-
-  .footer .settings {
-    order: 1;
-  }
-  .footer .social {
-    order: 2;
-  }
-  .footer .copyright {
-    order: 3;
-  }
-}
-
 .pageActions {
   display: flex;
   flex-direction: row;
@@ -192,14 +160,17 @@
 }
 
 @keyframes octocat-wave {
+
   0%,
   100% {
     transform: rotate(0);
   }
+
   20%,
   60% {
     transform: rotate(-25deg);
   }
+
   40%,
   80% {
     transform: rotate(10deg);

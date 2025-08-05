@@ -3,6 +3,7 @@ import type * as types from './types'
 export interface SiteConfig {
   rootNotionPageId: string
   rootNotionSpaceId?: string | null
+  rootNotionProjectPageId: string
 
   name: string
   domain: string
@@ -10,13 +11,10 @@ export interface SiteConfig {
   description?: string
   language?: string
 
-  twitter?: string
   github?: string
   linkedin?: string
-  newsletter?: string
   youtube?: string
-  zhihu?: string
-  mastodon?: string
+  linktree?: string
 
   defaultPageIcon?: string | null
   defaultPageCover?: string | null

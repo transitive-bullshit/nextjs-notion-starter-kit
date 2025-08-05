@@ -77,9 +77,9 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       description,
       enclosure: socialImageUrl
         ? {
-            url: socialImageUrl,
-            type: 'image/jpeg'
-          }
+          url: socialImageUrl,
+          type: 'image/jpeg'
+        }
         : undefined
     })
   }

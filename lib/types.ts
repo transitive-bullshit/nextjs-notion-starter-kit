@@ -32,6 +32,7 @@ export interface Site {
 
   rootNotionPageId: string
   rootNotionSpaceId: string | null
+  rootNotionProjectPageId: string
 
   // settings
   html?: string

@@ -29,6 +29,11 @@ if (!rootNotionPageId) {
   throw new Error('Config error invalid "rootNotionPageId"')
 }
 
+export const rootNotionProjectPageId: string = parsePageId(
+  getSiteConfig('rootNotionProjectPageId'),
+  { uuid: false }
+)!
+
 // if you want to restrict pages to a single notion workspace (optional)
 export const rootNotionSpaceId: string | null =
   parsePageId(getSiteConfig('rootNotionSpaceId'), { uuid: true }) ?? null
@@ -52,28 +57,16 @@ export const isDev = environment === 'development'
 export const name: string = getRequiredSiteConfig('name')
 export const author: string = getRequiredSiteConfig('author')
 export const domain: string = getRequiredSiteConfig('domain')
+export const projectDomain: string = getRequiredSiteConfig('domain') + '/projects'
 export const description: string = getSiteConfig('description', 'Notion Blog')
 export const language: string = getSiteConfig('language', 'en')
 
 // social accounts
 export const twitter: string | undefined = getSiteConfig('twitter')
-export const mastodon: string | undefined = getSiteConfig('mastodon')
 export const github: string | undefined = getSiteConfig('github')
 export const youtube: string | undefined = getSiteConfig('youtube')
 export const linkedin: string | undefined = getSiteConfig('linkedin')
-export const newsletter: string | undefined = getSiteConfig('newsletter')
-export const zhihu: string | undefined = getSiteConfig('zhihu')
-
-export const getMastodonHandle = (): string | undefined => {
-  if (!mastodon) {
-    return
-  }
-
-  // Since Mastodon is decentralized, handles include the instance domain name.
-  // e.g. @example@mastodon.social
-  const url = new URL(mastodon)
-  return `${url.pathname.slice(1)}@${url.hostname}`
-}
+export const linktree: string | undefined = getSiteConfig('linktree')
 
 // default notion values for site-wide consistency (optional; may be overridden on a per-page basis)
 export const defaultPageIcon: string | undefined =
@@ -108,7 +101,7 @@ export const navigationLinks: Array<NavigationLink | undefined> = getSiteConfig(
 )
 
 // Optional site search
-export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', true)
+export const isSearchEnabled: boolean = getSiteConfig('isSearchEnabled', false)
 
 // ----------------------------------------------------------------------------
 
@@ -155,14 +148,15 @@ export const site: Site = {
   name,
   rootNotionPageId,
   rootNotionSpaceId,
+  rootNotionProjectPageId,
   description
 }
 
 export const fathomId = isDev ? undefined : process.env.NEXT_PUBLIC_FATHOM_ID
 export const fathomConfig = fathomId
   ? {
-      excludedDomains: ['localhost', 'localhost:3000']
-    }
+    excludedDomains: ['localhost', 'localhost:3000']
+  }
   : undefined
 
 export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID

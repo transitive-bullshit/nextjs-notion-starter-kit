@@ -1,12 +1,12 @@
 import { type ExtendedRecordMap } from 'notion-types'
 import { parsePageId } from 'notion-utils'
 
-import type { PageProps } from './types'
 import * as acl from './acl'
 import { environment, pageUrlAdditions, pageUrlOverrides, site } from './config'
 import { db } from './db'
 import { getSiteMap } from './get-site-map'
 import { getPage } from './notion'
+import type { PageProps } from './types'
 
 export async function resolveNotionPage(
   domain: string,
@@ -86,7 +86,6 @@ export async function resolveNotionPage(
   } else {
     pageId = site.rootNotionPageId
 
-    console.log(site)
     recordMap = await getPage(pageId)
   }
 

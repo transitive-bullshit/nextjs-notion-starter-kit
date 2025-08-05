@@ -1,7 +1,7 @@
-import type { PageProps } from '@/lib/types'
 import { NotionPage } from '@/components/NotionPage'
 import { domain } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
+import type { PageProps } from '@/lib/types'
 
 export const getStaticProps = async () => {
   try {
