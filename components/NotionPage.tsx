@@ -644,30 +644,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
           // Check if this link is inside a notion-text element
           const notionTextParent = link.closest('.notion-text')
 
-          // If link is inside notion-text, check if it's the first element
-          let isFirstElementInText = false
+          // Always handle lock tokens at the parent level, regardless of link position
           if (notionTextParent) {
-            // Get the first element child of the notion-text parent
-            const firstElement = notionTextParent.firstElementChild
-            isFirstElementInText = firstElement === link
-          }
-
-          // There is a bug where inline links beginning with text 'http(s)://' are treated as beginning/icon links,
-          // we will just assume all links with text 'http(s)://' are inline links
-          const linkText = link.textContent || ''
-          if (
-            linkText.startsWith('https://') ||
-            linkText.startsWith('http://')
-          ) {
-            ;(link as HTMLElement).style.textDecoration = 'underline'
-            return
-          }
-
-          // If the link is inline (not first element in notion-text), just make it underlined
-          if (notionTextParent && !isFirstElementInText && !isProf) {
-            ;(link as HTMLElement).style.textDecoration = 'underline'
-
-            // Check for lock patterns in the notion-text parent
             const textContent = notionTextParent.textContent || ''
             let lockIconKey: LinkIconKey | null = null
 
@@ -678,7 +656,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
             }
 
             if (lockIconKey && !notionTextParent.querySelector('.lock-icon')) {
-              // Create lock icon
               const lockSvg = document.createElementNS(
                 'http://www.w3.org/2000/svg',
                 'svg'
@@ -717,13 +694,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 lockSvg.appendChild(path)
               })
 
-              // Insert the lock icon at the beginning of the notion-text
               notionTextParent.insertBefore(
                 lockSvg,
                 notionTextParent.firstChild
               )
 
-              // Remove the pattern from the text content
+              // Remove the pattern tokens from text nodes
               const walker = document.createTreeWalker(
                 notionTextParent,
                 NodeFilter.SHOW_TEXT,
@@ -740,7 +716,29 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 }
               }
             }
+          }
 
+          // If link is inside notion-text, check if it's the first element
+          let isFirstElementInText = false
+          if (notionTextParent) {
+            const firstElement = notionTextParent.firstElementChild
+            isFirstElementInText = firstElement === link
+          }
+
+          // There is a bug where inline links beginning with text 'http(s)://' are treated as beginning/icon links
+          // We will just assume all links with text 'http(s)://' are inline links
+          const linkText = link.textContent || ''
+          if (
+            linkText.startsWith('https://') ||
+            linkText.startsWith('http://')
+          ) {
+            ;(link as HTMLElement).style.textDecoration = 'underline'
+            return
+          }
+
+          // If the link is inline (not first element in notion-text), just make it underlined
+          if (notionTextParent && !isFirstElementInText && !isProf) {
+            ;(link as HTMLElement).style.textDecoration = 'underline'
             return
           }
 
