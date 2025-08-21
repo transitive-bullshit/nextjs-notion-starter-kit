@@ -32,6 +32,11 @@ module.exports = withBundleAnalyzer({
         destination: 'https://forms.gle/NZvm9Cbooz3NWkqe7',
         permanent: true,
       },
+      {
+        source: '/alpha-mixers',
+        destination: 'https://forms.gle/2CjNd8pRjuCqjRNh6',
+        permanent: true,
+      },
     ]
   },
 })
