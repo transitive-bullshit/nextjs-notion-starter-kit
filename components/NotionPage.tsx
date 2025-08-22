@@ -17,7 +17,11 @@ import * as config from '@/lib/config'
 import * as types from '@/lib/types'
 import { donate } from '@/lib/config'
 import { NOTION_PRODUCTION_URL } from '@/lib/consts'
-import { LINK_ICON_METADATA, LinkIconKey } from '@/lib/link-icons'
+import {
+  LINK_ICON_METADATA,
+  LinkIconKey,
+  TOKEN_TO_ICON_KEY
+} from '@/lib/link-icons'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
@@ -649,10 +653,12 @@ export const NotionPage: React.FC<types.PageProps> = ({
             const textContent = notionTextParent.textContent || ''
             let lockIconKey: LinkIconKey | null = null
 
-            if (textContent.includes('[\\c]')) {
-              lockIconKey = 'LOCK_CLOSED'
-            } else if (textContent.includes('[\\o]')) {
-              lockIconKey = 'LOCK_OPEN'
+            // Determine icon from token map
+            for (const [token, iconKey] of Object.entries(TOKEN_TO_ICON_KEY)) {
+              if (textContent.includes(token)) {
+                lockIconKey = iconKey
+                break
+              }
             }
 
             if (lockIconKey && !notionTextParent.querySelector('.lock-icon')) {
@@ -681,7 +687,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
                 path.setAttribute('d', d)
                 if (
                   lockIconKey === 'LOCK_CLOSED' ||
-                  lockIconKey === 'LOCK_OPEN'
+                  lockIconKey === 'LOCK_OPEN' ||
+                  lockIconKey === 'INSTITUTION'
                 ) {
                   path.setAttribute('stroke', '#6B7280')
                   path.setAttribute('stroke-width', '2')
@@ -709,10 +716,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
               let textNode
               while ((textNode = walker.nextNode())) {
                 const nodeValue = textNode.nodeValue || ''
-                if (nodeValue.includes('[\\c]')) {
-                  textNode.nodeValue = nodeValue.replace('[\\c]', '')
-                } else if (nodeValue.includes('[\\o]')) {
-                  textNode.nodeValue = nodeValue.replace('[\\o]', '')
+                let updatedValue = nodeValue
+                for (const token of Object.keys(TOKEN_TO_ICON_KEY)) {
+                  if (updatedValue.includes(token)) {
+                    updatedValue = updatedValue.split(token).join('')
+                  }
+                }
+                if (updatedValue !== nodeValue) {
+                  textNode.nodeValue = updatedValue
                 }
               }
             }

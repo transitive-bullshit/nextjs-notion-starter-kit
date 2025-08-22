@@ -5,6 +5,7 @@ export type LinkIconKey =
   | 'PROF'
   | 'LOCK_CLOSED'
   | 'LOCK_OPEN'
+  | 'INSTITUTION'
 
 export const LINK_ICON_METADATA: { [key in LinkIconKey]: { path: string[] } } =
   {
@@ -41,5 +42,22 @@ export const LINK_ICON_METADATA: { [key in LinkIconKey]: { path: string[] } } =
         'M5 10h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z',
         'M7 10V7a5 5 0 0 1 9.33-2.5'
       ]
+    },
+    INSTITUTION: {
+      path: [
+        'M10 18v-7',
+        'M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z',
+        'M14 18v-7',
+        'M18 18v-7',
+        'M3 22h18',
+        'M6 18v-7'
+      ]
     }
   }
+
+// Map of inline text tokens to icon keys. Edit here to add/change tokens.
+export const TOKEN_TO_ICON_KEY: Record<string, LinkIconKey> = {
+  '[\\c]': 'LOCK_CLOSED',
+  '[\\o]': 'LOCK_OPEN',
+  '[\\a]': 'INSTITUTION'
+}
