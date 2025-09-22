@@ -21,7 +21,7 @@ export default siteConfig({
   twitter: 'KujiraTiku',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
-  mastodon: 'https://fedibird.com/@kujiTake', // optional mastodon profile URL, provides link verification
+  mastodon: 'https://fedibird.com/@TikuTalk', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
   pixiv: '2781527',

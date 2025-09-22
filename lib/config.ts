@@ -20,6 +20,10 @@ import {
   type Site
 } from './types'
 
+export const config = {
+  myCat: "https://seto-life.vercel.app/"
+}
+
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),
   { uuid: false }
