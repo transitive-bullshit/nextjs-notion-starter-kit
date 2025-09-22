@@ -12,6 +12,7 @@ export interface SiteConfig {
 
   twitter?: string
   myCat?: string
+  pixiv?: string
   github?: string
   linkedin?: string
   newsletter?: string
