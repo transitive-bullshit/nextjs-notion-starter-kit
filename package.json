@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-notion-starter-kit",
+  "name": "japantechcareerlab",
   "version": "2.0.0",
   "private": true,
   "description": "The perfect starter kit for building beautiful websites with Next.js and Notion.",
@@ -16,6 +16,7 @@
     "build": "next build",
     "start": "next start",
     "deploy": "vercel deploy",
+    "deploy:prod": "vercel deploy --prod",
     "deps:upgrade": "[ -z $GITHUB_ACTIONS ] && pnpm up -L notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:update on CI'",
     "deps:link": "[ -z $GITHUB_ACTIONS ] && run-s deps:link:* || echo 'Skipping deps:update on CI'",
     "deps:unlink": "[ -z $GITHUB_ACTIONS ] && pnpm add notion-client notion-types notion-utils react-notion-x || echo 'Skipping deps:update on CI'",
