@@ -60,6 +60,19 @@ export function PageHead({
         content='9XqpZQWD7-m5d0ZhXrspN03D57jXu_iSiWsFty005_8'
       />
 
+      {/* SEO Keywords */}
+      <meta
+        name='keywords'
+        content='일본 IT 취업, 일본 개발자, 일본 취업, 일본 이직, 일본 IT 커리어, 일본 IT 커뮤니티, 재일 한국인, 일본 외국계 기업, 일본 빅테크, 일본 스타트업, 일본 개발자 취업, 일본 개발자 커뮤니티, Japan Tech Career, Japan IT Jobs, Japan IT Community, 일본 취업 준비, 일본 이력서, 일본 면접, 일본 워킹 비자, 일본 취업 멘토링, 일본 커리어 상담'
+      />
+
+      {/* Additional SEO Meta Tags */}
+      <meta name='author' content={config.author} />
+      <meta name='language' content='ko' />
+      <meta property='og:locale' content='ko_KR' />
+      <meta property='og:locale:alternate' content='ja_JP' />
+      <meta property='og:locale:alternate' content='en_US' />
+
       {site && (
         <>
           <meta property='og:site_name' content={site.name} />
@@ -108,6 +121,25 @@ export function PageHead({
       <meta name='twitter:title' content={title} />
       <title>{title}</title>
 
+      {/* Structured Data - JSON-LD */}
+      {!isBlogPost && site && (
+        <script type='application/ld+json'>
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: site.name,
+            url: `https://${site.domain}`,
+            logo: `https://${site.domain}/apple-touch-icon.png`,
+            description: site.description,
+            sameAs: [
+              config.twitter && `https://twitter.com/${config.twitter}`,
+              config.github && `https://github.com/${config.github}`,
+              config.linkedin && `https://www.linkedin.com/in/${config.linkedin}`
+            ].filter(Boolean)
+          })}
+        </script>
+      )}
+
       {/* Better SEO for the blog posts */}
       {isBlogPost && (
         <script type='application/ld+json'>
@@ -124,7 +156,15 @@ export function PageHead({
               '@type': 'Person',
               name: config.author
             },
-            image: socialImageUrl
+            image: socialImageUrl,
+            publisher: {
+              '@type': 'Organization',
+              name: config.author,
+              logo: {
+                '@type': 'ImageObject',
+                url: `https://${site?.domain}/apple-touch-icon.png`
+              }
+            }
           })}
         </script>
       )}

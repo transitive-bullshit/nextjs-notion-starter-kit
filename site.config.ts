@@ -9,13 +9,13 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Japan Tech Career Lab',
+  name: 'Japan Tech Career Lab | 일본 IT 커뮤니티',
   domain: 'japantechcareerlab.vercel.app',
   author: 'Japan Tech Career Lab',
 
   // open graph metadata (optional)
   description:
-    '일본에서 IT 커리어를 시작하거나, 성장하고 싶은 한국인을 위한 실전형 커뮤니티. 일본 현직자들과 함께 취업, 이직, 커리어 성장이라는 목표를 현실로 만들어가는 공간입니다.',
+    '일본 IT 취업·이직을 위한 한국인 커뮤니티. 일본 대기업, 외국계, 빅테크 현직자 600명과 함께하는 멘토링, 이벤트, 커리어 인사이트를 제공합니다.',
 
   // language setting
   language: 'ko',
@@ -53,7 +53,8 @@ export default siteConfig({
     '/events': '2388ad37c99e80d4b62add89b4f71758',
     '/webinars': '1c58ad37c99e8031a8a3c8b802c004de',
     '/interviews': '1c78ad37c99e80f9ac86fc24ffbe37d5',
-    '/insights': '20e8ad37c99e80708258d1ab34ef949e'
+    '/insights': '20e8ad37c99e80708258d1ab34ef949e',
+    '/guidelines': '2688ad37c99e801086d8c6ce310bde76'
   },
 
   // whether to use the default notion navigation style or a custom one with links to
