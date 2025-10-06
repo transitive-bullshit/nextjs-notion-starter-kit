@@ -12,5 +12,6 @@ export function getSocialImageUrl(pageId: string | undefined) {
     console.warn('error invalid social image url', pageId, err.message)
   }
 
-  return null
+  // Return default OGP image if no page-specific image exists
+  return `${host}/ogp.png`
 }
