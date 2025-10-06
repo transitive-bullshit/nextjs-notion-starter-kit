@@ -134,7 +134,7 @@ export function PageHead({
             sameAs: [
               config.twitter && `https://twitter.com/${config.twitter}`,
               config.github && `https://github.com/${config.github}`,
-              config.linkedin && `https://www.linkedin.com/in/${config.linkedin}`
+              config.linkedin && `https://www.linkedin.com/groups/${config.linkedin}`
             ].filter(Boolean)
           })}
         </script>

@@ -23,7 +23,7 @@ export default siteConfig({
   // social usernames (optional)
   // twitter: 'your_twitter',
   // github: 'your_github',
-  // linkedin: 'your_linkedin',
+  linkedin: '14783072',
   // newsletter: 'https://your-newsletter-url',
   // youtube: 'your_channel',
 
@@ -59,8 +59,7 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'default',
-  // navigationStyle: 'custom',
+  navigationStyle: 'custom',
   navigationLinks: [
     {
       title: '운영진 소개',
