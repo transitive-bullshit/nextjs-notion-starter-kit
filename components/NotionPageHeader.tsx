@@ -13,10 +13,41 @@ export function NotionPageHeader({
   block: types.CollectionViewPageBlock | types.PageBlock
 }) {
   const { components, mapPageUrl } = useNotionContext()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
   if (navigationStyle === 'default') {
     return <Header block={block} />
   }
+
+  const navigationLinksContent = navigationLinks
+    ?.map((link, index) => {
+      if (!link?.pageId && !link?.url) {
+        return null
+      }
+
+      if (link.pageId) {
+        return (
+          <components.PageLink
+            href={mapPageUrl(link.pageId)}
+            key={index}
+            className={cs(styles.navLink, 'breadcrumb', 'button')}
+          >
+            {link.title}
+          </components.PageLink>
+        )
+      } else {
+        return (
+          <components.Link
+            href={link.url}
+            key={index}
+            className={cs(styles.navLink, 'breadcrumb', 'button')}
+          >
+            {link.title}
+          </components.Link>
+        )
+      }
+    })
+    .filter(Boolean)
 
   return (
     <header className='notion-header'>
@@ -24,37 +55,33 @@ export function NotionPageHeader({
         <Breadcrumbs block={block} rootOnly={true} />
 
         <div className='notion-nav-header-rhs breadcrumbs'>
-          {navigationLinks
-            ?.map((link, index) => {
-              if (!link?.pageId && !link?.url) {
-                return null
-              }
+          {/* Desktop Navigation - navigationLinks then Search */}
+          <div className={styles.desktopNav}>
+            {navigationLinksContent}
+            {isSearchEnabled && <Search block={block} title={null} />}
+          </div>
 
-              if (link.pageId) {
-                return (
-                  <components.PageLink
-                    href={mapPageUrl(link.pageId)}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.PageLink>
-                )
-              } else {
-                return (
-                  <components.Link
-                    href={link.url}
-                    key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
-                  >
-                    {link.title}
-                  </components.Link>
-                )
-              }
-            })
-            .filter(Boolean)}
+          {/* Mobile Navigation - Search then hamburger menu */}
+          <div className={styles.mobileNav}>
+            {isSearchEnabled && <Search block={block} title={null} />}
 
-          {isSearchEnabled && <Search block={block} title={null} />}
+            <button
+              className={styles.hamburgerButton}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+            {isMobileMenuOpen && (
+              <div className={styles.mobileNavOpen}>
+                {navigationLinksContent}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </header>
