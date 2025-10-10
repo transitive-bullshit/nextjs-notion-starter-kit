@@ -29,7 +29,7 @@ async function searchNotionImpl(
       error.response = res
       throw error
     })
-    .then((res) => res.json())
+    .then((res) => res.json() as Promise<types.SearchResults>)
 
   // return ky
   //   .post(api.searchNotion, {

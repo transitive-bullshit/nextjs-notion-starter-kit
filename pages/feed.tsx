@@ -35,12 +35,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   })
 
   for (const pagePath of Object.keys(siteMap.canonicalPageMap)) {
-    const pageId = siteMap.canonicalPageMap[pagePath]
+    const pageId = siteMap.canonicalPageMap[pagePath]!
     const recordMap = siteMap.pageMap[pageId] as ExtendedRecordMap
     if (!recordMap) continue
 
     const keys = Object.keys(recordMap?.block || {})
-    const block = recordMap?.block?.[keys[0]]?.value
+    const block = recordMap?.block?.[keys[0]!]?.value
     if (!block) continue
 
     const parentPage = getBlockParentPage(block, recordMap)
@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       ? new Date(lastUpdatedTime)
       : publishedTime
         ? new Date(publishedTime)
-        : undefined
+        : new Date()
     const socialImageUrl = getSocialImageUrl(pageId)
 
     feed.item({

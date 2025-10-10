@@ -22,7 +22,7 @@ export default async function OGImage(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { searchParams } = new URL(req.url)
+  const { searchParams } = new URL(req.url!)
   const pageId = parsePageId(
     searchParams.get('id') || libConfig.rootNotionPageId
   )
@@ -178,7 +178,7 @@ export async function getNotionPageInfo({
   const recordMap = await notion.getPage(pageId)
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
+  const block = recordMap?.block?.[keys[0]!]?.value
 
   if (!block) {
     throw new Error('Invalid recordMap for page')
@@ -209,7 +209,7 @@ export async function getNotionPageInfo({
     libConfig.defaultPageCoverPosition
   const imageObjectPosition = imageCoverPosition
     ? `center ${(1 - imageCoverPosition) * 100}%`
-    : null
+    : undefined
 
   const imageBlockUrl = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
@@ -220,7 +220,7 @@ export async function getNotionPageInfo({
 
   const blockIcon = getBlockIcon(block, recordMap)
   const authorImageBlockUrl = mapImageUrl(
-    blockIcon && isUrl(blockIcon) ? blockIcon : null,
+    blockIcon && isUrl(blockIcon) ? blockIcon : undefined,
     block
   )
   const authorImageFallbackUrl = mapImageUrl(libConfig.defaultPageIcon, block)
@@ -272,7 +272,9 @@ export async function getNotionPageInfo({
   }
 }
 
-async function isUrlReachable(url: string | null): Promise<boolean> {
+async function isUrlReachable(
+  url: string | undefined | null
+): Promise<boolean> {
   if (!url) {
     return false
   }
@@ -286,9 +288,9 @@ async function isUrlReachable(url: string | null): Promise<boolean> {
 }
 
 async function getCompatibleImageUrl(
-  url: string | null,
-  fallbackUrl: string | null
-): Promise<string | null> {
+  url: string | undefined | null,
+  fallbackUrl: string | undefined | null
+): Promise<string | undefined> {
   const image = (await isUrlReachable(url)) ? url : fallbackUrl
 
   if (image) {
@@ -303,5 +305,5 @@ async function getCompatibleImageUrl(
     }
   }
 
-  return image
+  return image ?? undefined
 }

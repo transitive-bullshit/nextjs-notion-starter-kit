@@ -10,12 +10,14 @@ export function PageHead({
   description,
   pageId,
   image,
-  url
+  url,
+  isBlogPost
 }: types.PageProps & {
   title?: string
   description?: string
   image?: string
   url?: string
+  isBlogPost?: boolean
 }) {
   const rssFeedUrl = `${config.host}/feed`
 
@@ -99,6 +101,27 @@ export function PageHead({
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />
       <title>{title}</title>
+
+      {/* Better SEO for the blog posts */}
+      {isBlogPost && (
+        <script type='application/ld+json'>
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            '@id': `${url}#BlogPosting`,
+            mainEntityOfPage: url,
+            url,
+            headline: title,
+            name: title,
+            description,
+            author: {
+              '@type': 'Person',
+              name: config.author
+            },
+            image: socialImageUrl
+          })}
+        </script>
+      )}
     </Head>
   )
 }
