@@ -54,10 +54,10 @@ export default siteConfig({
    navigationStyle: 'custom',
    navigationLinks: [
     {
-       title: 'Home',
-       pageId: '1d1dd21a4999807dae4bed5066a845d9'
-     },
-     {
+       title: 'Pagine',
+       pageId: '297dd21a4999806480f3f1c72b707d19'
+     } 
+    /* {
        title: 'Eplorazioni',
        pageId: '25add21a49998056839ceff880208b0b'
      },
@@ -76,6 +76,6 @@ export default siteConfig({
      {
        title: 'Contattami',
        pageId: '20ddd21a4999800fa9c6dc3d5421fd7e'
-     }
+     }*/
    ]
 })
