@@ -13,6 +13,36 @@ interface SocialLink {
 }
 
 const socialLinks: SocialLink[] = [
+  config.instagram && {
+    name: 'instagram',
+    href: `https://instagram.com/${config.instagram}`,
+    title: `instagram @${config.instagram}`,
+    icon: (
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+        <path d='M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3a5.75 5.75 0 1 1 0 11.5 5.75 5.75 0 0 1 0-11.5zm0 1.5a4.25 4.25 0 1 0 0 8.5 4.25 4.25 0 0 0 0-8.5zM17.5 6.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z' />
+      </svg>
+    )
+  },
+  config.facebook && {
+    name: 'facebook',
+    href: `https://facebook.com/${config.facebook}`,
+    title: `Facebook @${config.facebook}`,
+    icon: (
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+        <path d='M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 5 3.66 9.13 8.44 9.88v-6.99H8.08v-2.89h2.36V9.41c0-2.33 1.39-3.61 3.52-3.61.72 0 1.76.13 2.2.19v2.42h-1.24c-1.22 0-1.6.76-1.6 1.54v1.84h2.72l-.43 2.89h-2.29v6.99C18.34 21.13 22 17 22 12z' />
+      </svg>
+    )
+  },
+  config.website && {
+    name: 'website',
+    href: config.website,
+    title: `Pagina web`,
+    icon: (
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+        <path d='M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm1 17.93V20a8 8 0 1 1 0-16v.07A6 6 0 0 0 12 18z' />
+      </svg>
+    )
+  },
   config.twitter && {
     name: 'twitter',
     href: `https://twitter.com/${config.twitter}`,

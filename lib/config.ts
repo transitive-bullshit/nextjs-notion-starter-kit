@@ -56,6 +56,9 @@ export const description: string = getSiteConfig('description', 'Notion Blog')
 export const language: string = getSiteConfig('language', 'en')
 
 // social accounts
+export const instagram: string | undefined = getSiteConfig('instagram')
+export const facebook: string | undefined = getSiteConfig('facebook')
+export const website: string | undefined = getSiteConfig('website')
 export const twitter: string | undefined = getSiteConfig('twitter')
 export const mastodon: string | undefined = getSiteConfig('mastodon')
 export const github: string | undefined = getSiteConfig('github')

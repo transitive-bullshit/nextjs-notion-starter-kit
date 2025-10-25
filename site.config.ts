@@ -17,9 +17,11 @@ export default siteConfig({
   description: 'Esploratore, scienziato, innovatore e storyteller. Vieni a scoprire il mio mondo',
 
   // social usernames (optional)
-  //twitter: 'username',
-  //github: 'username',
-  linkedin: 'pietro-de-finis-explorer',
+  //github: 'pit-def',
+  linkedin: 'pietro-de-finis',
+  instagram: 'pit.def',
+  facebook: 'pit.definis',
+  website: 'https://pietrodefinis.com',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
@@ -42,13 +44,13 @@ export default siteConfig({
   // any pages defined here will override their default URL paths
   // example:
   //
-   pageUrlOverrides: {
+  /* pageUrlOverrides: {
      '/esplorazioni': '297dd21a499980d38730fe4eed6c4fdf',
      '/progetti': '258dd21a499980b9a59bcd26c5f52a8e',
      '/storie': '25add21a499980adb8b3e6bc430bcb16',
      '/contenuti': '25add21a49998089b9d0c68767824318'
-   },
-  //pageUrlOverrides: null,
+   },*/
+  pageUrlOverrides: null,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.

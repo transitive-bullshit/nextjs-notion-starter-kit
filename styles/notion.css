@@ -53,10 +53,20 @@
   gap: 0.5rem;
 }
 
+.notion-nav-header .notion-breadcrumb:first-child .notion-page-icon {
+  display: none !important;
+}
+.notion-nav-header [class*="breadcrumb"]:first-child .notion-page-icon {
+  display: none !important;
+}
+.notion-nav-header .notion-breadcrumb:first-child .notion-page-title {
+  margin-left: 0 !important;
+}
+
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  grid-gap: 6vmin;
-  gap: 6vmin;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 4vmin;
+  gap: 4vmin;
 }
 
 .notion-gallery-grid .notion-page-icon-inline {
@@ -64,7 +74,7 @@
 }
 
 .notion-gallery-grid .notion-page-title-text {
-  font-size: 2em;
+  font-size: 1.2em;
   white-space: unset;
 }
 
