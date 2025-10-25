@@ -42,11 +42,13 @@ export default siteConfig({
   // any pages defined here will override their default URL paths
   // example:
   //
-  // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
-  pageUrlOverrides: null,
+   pageUrlOverrides: {
+     '/esplorazioni': '25add21a49998056839ceff880208b0b',
+     '/progetti': '258dd21a499980b9a59bcd26c5f52a8e',
+     '/storie': '25add21a499980adb8b3e6bc430bcb16',
+     '/contenuti': '25add21a49998089b9d0c68767824318',
+   }
+  //pageUrlOverrides: null,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
