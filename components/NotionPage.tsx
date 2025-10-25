@@ -265,13 +265,22 @@ export function NotionPage({
     recordMap
   })
 
-  if (!config.isServer) {
+  /*if (!config.isServer) {
     // add important objects to the window global for easy debugging
     const g = window as any
     g.pageId = pageId
     g.recordMap = recordMap
     g.block = block
+  }*/
+  // add important objects to the window global for easy debugging (dev only)
+React.useEffect(() => {
+  if (typeof window !== 'undefined') {
+    const g = window as any
+    g.pageId = pageId
+    g.recordMap = recordMap
+    g.block = block
   }
+}, [pageId, recordMap, block])
 
   const canonicalPageUrl = config.isDev
     ? undefined
