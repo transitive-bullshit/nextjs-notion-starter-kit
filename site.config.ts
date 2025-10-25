@@ -46,7 +46,7 @@ export default siteConfig({
      '/esplorazioni': '25add21a49998056839ceff880208b0b',
      '/progetti': '258dd21a499980b9a59bcd26c5f52a8e',
      '/storie': '25add21a499980adb8b3e6bc430bcb16',
-     '/contenuti': '25add21a49998089b9d0c68767824318',
+     '/contenuti': '25add21a49998089b9d0c68767824318'
    }
   //pageUrlOverrides: null,
 
