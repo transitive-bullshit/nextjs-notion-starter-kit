@@ -9,17 +9,17 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
-  author: 'Travis Fischer',
+  name: 'Explore - Pietro De Finis',
+  domain: 'explore.pietrodefinis.com',
+  author: 'Pietro De Finis',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Esploratore, scienziato, innovatore e storyteller. Vieni a scoprire il mio mondo',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
-  linkedin: 'fisch2',
+  //twitter: 'username',
+  //github: 'username',
+  linkedin: 'pietro-de-finis-explorer',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
@@ -50,16 +50,32 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
-  // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
-  // ]
+  //navigationStyle: 'default'
+   navigationStyle: 'custom',
+   navigationLinks: [
+    {
+       title: 'Home',
+       pageId: '1d1dd21a4999807dae4bed5066a845d9'
+     },
+     {
+       title: 'Eplorazioni',
+       pageId: '25add21a49998056839ceff880208b0b'
+     },
+     {
+       title: 'Progetti',
+       pageId: '258dd21a499980b9a59bcd26c5f52a8e'
+     },
+     {
+       title: 'Storie',
+       pageId: '25add21a499980adb8b3e6bc430bcb16'
+     },
+     {
+       title: 'Contenuti',
+       pageId: '25add21a49998089b9d0c68767824318'
+     },
+     {
+       title: 'Contattami',
+       pageId: '20ddd21a4999800fa9c6dc3d5421fd7e'
+     }
+   ]
 })
