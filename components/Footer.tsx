@@ -57,6 +57,19 @@ export function FooterImpl() {
       </div>
 
       <div className={styles.social}>
+
+        {config.linkedin && (
+          <a
+            className={styles.linkedin}
+            href={`https://www.linkedin.com/in/${config.linkedin}`}
+            title={`LinkedIn ${config.author}`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaLinkedin />
+          </a>
+        )}
+        
         {config.instagram && (
           <a
             className={styles.instagram}
@@ -125,18 +138,6 @@ export function FooterImpl() {
             rel='noopener noreferrer'
           >
             <FaGithub />
-          </a>
-        )}
-
-        {config.linkedin && (
-          <a
-            className={styles.linkedin}
-            href={`https://www.linkedin.com/in/${config.linkedin}`}
-            title={`LinkedIn ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaLinkedin />
           </a>
         )}
 

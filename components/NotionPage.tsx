@@ -23,7 +23,6 @@ import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
-import { GitHubShareButton } from './GitHubShareButton'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
@@ -105,6 +104,16 @@ const Code = dynamic(() =>
     return m.Code
   })
 )
+// Clean databases property selector
+const HIDE_PROP_NAMES = new Set<string>([
+  'Cover'
+  // by name of property
+])
+
+const HIDE_PROP_TYPES = new Set<string>([
+  'relation'
+  // by notion type of property: 'files', 'url' 
+]) 
 
 const Collection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then(
@@ -226,6 +235,35 @@ export function NotionPage({
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]!]?.value
 
+  
+const filteredRecordMap = React.useMemo(() => {
+  if (!recordMap) return recordMap
+
+  // clone 
+  const clone = (globalThis as any).structuredClone
+    ? (structuredClone as any)(recordMap)
+    : JSON.parse(JSON.stringify(recordMap))
+
+  const collections = clone?.collection
+  if (!collections) return clone
+
+  for (const collId of Object.keys(collections)) {
+    const coll = collections[collId]?.value
+    const schema = coll?.schema
+    if (!schema) continue
+
+    // remove property selected in the databases filter on top
+    for (const propId of Object.keys(schema)) {
+      const { name, type } = schema[propId] || {}
+      if (HIDE_PROP_TYPES.has(type) || HIDE_PROP_NAMES.has(name)) {
+        delete schema[propId]
+      }
+    }
+  }
+
+  return clone
+}, [recordMap])
+
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
@@ -321,7 +359,7 @@ React.useEffect(() => {
         )}
         darkMode={isDarkMode}
         components={components}
-        recordMap={recordMap}
+        recordMap={filteredRecordMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
         fullPage={!isLiteMode}
@@ -339,7 +377,6 @@ React.useEffect(() => {
         footer={footer}
       />
 
-      <GitHubShareButton />
     </>
   )
 }

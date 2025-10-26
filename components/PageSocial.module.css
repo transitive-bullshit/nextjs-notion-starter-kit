@@ -79,6 +79,20 @@
   border-color: #3b5998;
 }
 
+.instagram .actionBgPane {
+  background: #ba0dc7;
+}
+.instagram:hover {
+  border-color: #ba0dc7;
+}
+
+.website .actionBgPane {
+  background: #c79c0d;
+}
+.website:hover {
+  border-color: #c79c0d;
+}
+
 .twitter .actionBgPane {
   background: #2795e9;
 }

@@ -8,7 +8,7 @@
  */
 
 .notion {
-  --notion-max-width: 720px;
+  --notion-max-width: 800px;
   --notion-header-height: 54px;
 }
 
@@ -22,12 +22,15 @@
 }
 
 .index-page {
-  --notion-max-width: 900px;
+  --notion-max-width: 1000px;
 }
 
 .notion-text {
   padding: 0.5em 2px;
 }
+
+.notion-page-content { padding-right: 2rem; }
+
 
 .notion-asset-caption {
   text-align: center;
@@ -216,7 +219,7 @@
   .notion-page-cover-wrapper,
   .notion-page-cover-wrapper span,
   .notion-page-cover-wrapper img {
-    border-radius: 0;
+    border-radius: 20px;
   }
 }
 

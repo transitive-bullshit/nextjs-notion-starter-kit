@@ -95,6 +95,19 @@
   color: #2795e9;
 }
 
+.instagram:hover {
+  color: #ba0dc7;
+}
+
+.facebook:hover {
+  color: #3b5998;
+}
+
+.website:hover {
+  color: #c79c0d;
+}
+
+
 .mastodon:hover {
   color: #5a4be1;
 }
