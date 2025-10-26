@@ -239,10 +239,8 @@ export function NotionPage({
 const filteredRecordMap = React.useMemo(() => {
   if (!recordMap) return recordMap
 
-  // clone 
-  const clone = (globalThis as any).structuredClone
-    ? (structuredClone as any)(recordMap)
-    : JSON.parse(JSON.stringify(recordMap))
+  // deep clone moderno (Node 18+/browser): niente stringify/parse
+  const clone = (globalThis as any).structuredClone(recordMap)
 
   const collections = clone?.collection
   if (!collections) return clone
@@ -252,7 +250,6 @@ const filteredRecordMap = React.useMemo(() => {
     const schema = coll?.schema
     if (!schema) continue
 
-    // remove property selected in the databases filter on top
     for (const propId of Object.keys(schema)) {
       const { name, type } = schema[propId] || {}
       if (HIDE_PROP_TYPES.has(type) || HIDE_PROP_NAMES.has(name)) {
@@ -263,6 +260,7 @@ const filteredRecordMap = React.useMemo(() => {
 
   return clone
 }, [recordMap])
+
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
