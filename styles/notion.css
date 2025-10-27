@@ -29,9 +29,6 @@
   padding: 0.5em 2px;
 }
 
-.notion-page-content { padding-right: 2rem; }
-
-
 .notion-asset-caption {
   text-align: center;
 }
@@ -152,6 +149,12 @@
 
 .notion-hr {
   margin: 2em 0;
+}
+
+@media (min-width: 1024px) {
+  .notion-page-content {
+    padding-right: 2rem;
+  }
 }
 
 @media only screen and (max-width: 920px) {
