@@ -10,10 +10,11 @@ export const getStaticProps = async () => {
     return { props, revalidate: 10 }
   } catch (err) {
     console.error('page error', domain, err)
-
-    // we don't want to publish the error version of this page, so
-    // let next.js know explicitly that incremental SSG failed
-    throw err
+    // Gracefully return an error page instead of failing the build (e.g. Notion 429)
+    const props: PageProps = {
+      error: { message: 'Failed to load Notion content', statusCode: 503 }
+    }
+    return { props, revalidate: 10 }
   }
 }
 
