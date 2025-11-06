@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
             />
 
             <link rel='manifest' href='/manifest.json' />
+            <script defer src="https://cloud.umami.is/script.js" data-website-id="51b374ec-33b5-409a-bf1a-8dc81a579ab4"></script>
           </Head>
 
           <body>
