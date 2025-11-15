@@ -11,7 +11,7 @@ export default siteConfig({
   // basic site info (required)
   name: 'Open Almond Studios',
   domain: 'www.openalmond.com',
-  author: 'Benjamin J. Schmidt',
+  author: 'Open Almond Studios, LLC',
 
   // open graph metadata (optional)
   description: 'Open Almond Studios - Rooted in Scripture, Branching into Creativity',
