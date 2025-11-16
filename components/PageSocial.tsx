@@ -15,7 +15,7 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   config.twitter && {
     name: 'twitter',
-    href: `https://twitter.com/${config.twitter}`,
+    href: `https://x.com/${config.twitter}`,
     title: `Twitter @${config.twitter}`,
     icon: (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
