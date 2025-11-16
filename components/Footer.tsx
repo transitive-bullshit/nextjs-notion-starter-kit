@@ -1,3 +1,4 @@
+// eslint-disable-next-line simple-import-sort/imports
 import * as React from 'react'
 
 import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
