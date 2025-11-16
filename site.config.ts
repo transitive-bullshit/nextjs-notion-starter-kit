@@ -17,9 +17,9 @@ export default siteConfig({
   description: 'Open Almond Studios - Rooted in Scripture, Branching into Creativity',
 
   // social usernames (optional)
-  twitter: 'transitive_bs',
-  github: 'transitive-bullshit',
-  linkedin: 'fisch2',
+  twitter: 'openalmond',
+  // github: 'transitive-bullshit',
+  linkedin: 'open-almond-studios',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
