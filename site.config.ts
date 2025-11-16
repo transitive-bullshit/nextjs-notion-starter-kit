@@ -19,7 +19,7 @@ export default siteConfig({
   // social usernames (optional)
   twitter: 'Open_Almond',
   // github: '#',
-  linkedin: 'company/open-almond-studios',
+  linkedin: 'open-almond-studios',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   youtube: '@OpenAlmondStudios', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
