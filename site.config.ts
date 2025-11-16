@@ -17,12 +17,12 @@ export default siteConfig({
   description: 'Open Almond Studios - Rooted in Scripture, Branching into Creativity',
 
   // social usernames (optional)
-  twitter: 'openalmond',
-  // github: 'transitive-bullshit',
-  linkedin: 'open-almond-studios',
+  twitter: 'Open_Almond',
+  // github: '#',
+  linkedin: 'company/open-almond-studios',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
-  youtube: 'OpenAlmondStudios', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  youtube: '@OpenAlmondStudios', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
