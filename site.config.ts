@@ -18,7 +18,6 @@ export default siteConfig({
 
   // social usernames (optional)
   twitter: 'openalmond',
-  facebook: 'openalmond',
   // github: 'transitive-bullshit',
   linkedin: 'open-almond-studios',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
