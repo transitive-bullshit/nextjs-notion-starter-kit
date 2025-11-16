@@ -37,7 +37,7 @@ const socialLinks: SocialLink[] = [
 
   config.linkedin && {
     name: 'linkedin',
-    href: `https://www.linkedin.com/in/${config.linkedin}`,
+    href: `https://www.linkedin.com/company/${config.linkedin}`,
     title: `LinkedIn ${config.author}`,
     icon: (
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
