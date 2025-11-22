@@ -213,6 +213,13 @@ export function NotionPage({
   const isLiteMode = lite === 'true'
 
   const { isDarkMode } = useDarkMode()
+  const [hasMounted, setHasMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  const resolvedDarkMode = hasMounted ? isDarkMode : false
 
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
@@ -300,14 +307,14 @@ export function NotionPage({
       />
 
       {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+      {resolvedDarkMode && <BodyClassName className='dark-mode' />}
 
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
           pageId === site.rootNotionPageId && 'index-page'
         )}
-        darkMode={isDarkMode}
+        darkMode={resolvedDarkMode}
         components={components}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
