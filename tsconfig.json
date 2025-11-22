@@ -1,6 +1,9 @@
 {
   "extends": "@fisch0920/config/tsconfig-react",
   "compilerOptions": {
+    "jsx": "react",
+    "jsx": "react",
+    "jsx": "react",
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
