@@ -36,6 +36,7 @@
     "@keyvhq/redis": "^1.6.10",
     "@react-icons/all-files": "^4.1.0",
     "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "classnames": "^2.5.1",
     "expiry-map": "^2.0.0",
     "fathom-client": "^3.4.1",
