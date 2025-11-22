@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
 
         <body>
           <Analytics />
+          <SpeedInsights />
           <script
             dangerouslySetInnerHTML={{
               __html: `
