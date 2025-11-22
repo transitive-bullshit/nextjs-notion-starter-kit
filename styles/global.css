@@ -1,78 +1,88 @@
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import Document, { Head, Html, Main, NextScript } from 'next/document'
+/* ------------------------------
+   Base Reset
+--------------------------------*/
+* {
+  box-sizing: border-box;
+}
 
-export default class MyDocument extends Document {
-  override render() {
-    return (
-      <Html lang="en">
-        <Head>
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
-          <link rel="manifest" href="/manifest.json" />
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 
-          {/* Google Fonts: Alice (headings) + Nunito (body) */}
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Alice&family=Nunito:wght@300;400;600;700&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
+/* ------------------------------
+   Typography
+   Nunito = body, Notion content
+   Alice  = headings
+--------------------------------*/
+:root {
+  --notion-font: 'Nunito', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif;
+}
 
-        <body>
-          <Analytics />
-          <SpeedInsights />
+body {
+  font-family: 'Nunito', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif;
+  overflow-x: hidden;
+}
 
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-/** Inlined version of noflash.js from use-dark-mode */
-;(function () {
-  var storageKey = 'darkMode'
-  var classNameDark = 'dark-mode'
-  var classNameLight = 'light-mode'
-  function setClassOnDocumentBody(darkMode) {
-    document.body.classList.add(darkMode ? classNameDark : classNameLight)
-    document.body.classList.remove(darkMode ? classNameLight : classNameDark)
-  }
-  var preferDarkQuery = '(prefers-color-scheme: dark)'
-  var mql = window.matchMedia(preferDarkQuery)
-  var supportsColorSchemeQuery = mql.media === preferDarkQuery
-  var localStorageTheme = null
-  try {
-    localStorageTheme = localStorage.getItem(storageKey)
-  } catch (err) {}
-  var localStorageExists = localStorageTheme !== null
-  if (localStorageExists) {
-    localStorageTheme = JSON.parse(localStorageTheme)
-  }
-  // Determine the source of truth
-  if (localStorageExists) {
-    // source of truth from localStorage
-    setClassOnDocumentBody(localStorageTheme)
-  } else if (supportsColorSchemeQuery) {
-    // source of truth from system
-    setClassOnDocumentBody(mql.matches)
-    localStorage.setItem(storageKey, mql.matches)
-  } else {
-    // source of truth from document.body
-    var isDarkMode = document.body.classList.contains(classNameDark)
-    localStorage.setItem(storageKey, JSON.stringify(isDarkMode))
-  }
-})();
-`
-            }}
-          />
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Alice', 'Times New Roman', serif;
+  font-weight: 400;
+  line-height: 1.25;
+}
 
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+/* ------------------------------
+   Links
+--------------------------------*/
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ------------------------------
+   Search Input
+--------------------------------*/
+.searchInput {
+  color: var(--fg-color);
+  caret-color: var(--fg-color);
+}
+
+/* ------------------------------
+   Static Tweet Overrides
+--------------------------------*/
+.static-tweet blockquote {
+  margin: 0;
+}
+
+.static-tweet-emoji {
+  height: 1.2em !important;
+  width: 1.2em !important;
+}
+
+/* ------------------------------
+   Scrollbar (WebKit)
+--------------------------------*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: var(--bg-color-1);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--fg-color-1);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-color);
 }
