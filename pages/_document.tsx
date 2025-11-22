@@ -12,6 +12,7 @@ export default class MyDocument extends Document {
         </Head>
 
         <body>
+          <Analytics />
           <script
             dangerouslySetInnerHTML={{
               __html: `
