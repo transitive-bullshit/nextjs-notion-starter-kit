@@ -14,7 +14,7 @@ export default siteConfig({
   author: 'Open Almond Studios, LLC',
 
   // open graph metadata (optional)
-  description: 'Open Almond Studios - Rooted in Scripture, Branching into Creativity',
+  description: 'A faith-driven studio creating tabletop worlds, stories, and resources shaped by Scripture and imagination. Discover our games, follow our progress, and join us on the journey.',
 
   // social usernames (optional)
   twitter: 'Open_Almond',
