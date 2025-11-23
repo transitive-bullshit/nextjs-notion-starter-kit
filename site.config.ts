@@ -50,44 +50,16 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'custom',
-  navigationLinks: [
-    {
-      // Root “home” page – already known
-      title: 'Home',
-      pageId: '1b3498833139808ebe9afc6028b2a5e6'
-    },
-    {
-      // Main blog index: "The Almond Branch Blog"
-      // Replace this ID with the Notion ID for your Almond Branch Blog page
-      title: 'Almond Branch Blog',
-      pageId: '26449883313980758e9df71e17fd52bc'
-    },
-    {
-      // Warriors of the Covenant hub or SRD page
-      // Use the Notion page that your /srd or Warriors overview URL maps to
-      title: 'Warriors of the Covenant',
-      pageId: '2b1498833139809c9895d8a4d4293fca'
-    },
-    {
-      // Legacy of the Remnant overview page
-      title: 'Legacy of the Remnant',
-      pageId: '2b24988331398032a741d74d7147871c'
-    },
-    {
-      // “Become a Playtester” / Join Our Playtest
-      title: 'Playtest',
-      pageId: '2af49883313980baaf8dca0bcc4837d1'
-    },
-    {
-      // “Connect a Ministry” page
-      title: 'Connect a Ministry',
-      pageId: '2b049883313980d49cabd5745b13d03f'
-    },
-    {
-      // Privacy / Legal page
-      title: 'Privacy Policy',
-      pageId: '2b14988331398033bcbdfcdc2bb6d6db'
-    }
-  ]
+  navigationStyle: 'default'
+  // navigationStyle: 'custom',
+  // navigationLinks: [
+  //   {
+  //     title: 'About',
+  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
+  //   },
+  //   {
+  //     title: 'Contact',
+  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
+  //   }
+  // ]
 })
