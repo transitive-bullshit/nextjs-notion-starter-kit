@@ -47,7 +47,7 @@ export function FooterImpl() {
             <a href='/' aria-label={`${config.name} home`}>
               {/* Light-mode logo (blue) */}
               <Image
-                src='/open almond logo plain blue.svg'
+                src='/open-almond-logo-plain-blue.svg'
                 alt='Open Almond Studios logo'
                 width={72}
                 height={72}
@@ -55,7 +55,7 @@ export function FooterImpl() {
               />
               {/* Dark-mode logo (plain) */}
               <Image
-                src='/open almond logo plain.svg'
+                src='/open-almond-logo-plain.svg'
                 alt='Open Almond Studios logo'
                 width={72}
                 height={72}
