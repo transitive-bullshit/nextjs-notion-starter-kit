@@ -12,14 +12,9 @@ export default siteConfig({
   domain: 'www.openalmond.com',
   author: 'Open Almond Studios, LLC',
 
-<<<<<<< HEAD
-  // open graph metadata (optional)
-  description: 'A faith-driven studio creating tabletop worlds, stories, and resources shaped by Scripture and imagination. Discover our games, follow our progress, and join us on the journey.',
-=======
   // open graph metadata
   description:
     'A faith-driven studio creating tabletop worlds, stories, and resources shaped by Scripture and imagination. Discover our games, follow our progress, and join us on the journey.',
->>>>>>> testing
 
   // social links (optional)
   twitter: 'Open_Almond',
