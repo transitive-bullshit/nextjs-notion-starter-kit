@@ -45,19 +45,22 @@ export function FooterImpl() {
           {/* Logo block */}
           <div className={styles.footerNavLogo}>
             <a href='/' aria-label={`${config.name} home`}>
-              {hasMounted && (
-                <Image
-                  src={
-                    isDarkMode
-                      ? '/open-almond-logo-plain.svg'
-                      : '/open-almond-logo-plain-blue.svg'
-                  }
-                  alt='Open Almond Studios logo'
-                  width={72}
-                  height={72}
-                  className={styles.footerNavLogoImage}
-                />
-              )}
+              {/* Light-mode logo (blue) */}
+              <Image
+                src='/open almond logo plain blue.svg'
+                alt='Open Almond Studios logo'
+                width={72}
+                height={72}
+                className={`${styles.footerNavLogoImage} ${styles.lightModeLogo}`}
+              />
+              {/* Dark-mode logo (plain) */}
+              <Image
+                src='/open almond logo plain.svg'
+                alt='Open Almond Studios logo'
+                width={72}
+                height={72}
+                className={`${styles.footerNavLogoImage} ${styles.darkModeLogo}`}
+              />
             </a>
           </div>
 
@@ -104,148 +107,146 @@ export function FooterImpl() {
 
       {/* LOWER FOOTER STRIP */}
       <footer className={styles.footer}>
-        <div className={styles.footerInner}>
-          {/* COPYRIGHT */}
-          <div className={styles.copyright}>
-            © {currentYear} {config.author}. All Rights Reserved.
-          </div>
+        {/* COPYRIGHT */}
+        <div className={styles.copyright}>
+          © {currentYear} {config.author}. All Rights Reserved.
+        </div>
 
-          {/* DARK MODE TOGGLE */}
-          <div className={styles.settings}>
-            {hasMounted && (
-              <a
-                className={styles.toggleDarkMode}
-                href='#'
-                role='button'
-                onClick={onToggleDarkMode}
-                title='Toggle dark mode'
-              >
-                {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
-              </a>
-            )}
-          </div>
+        {/* DARK MODE TOGGLE */}
+        <div className={styles.settings}>
+          {hasMounted && (
+            <a
+              className={styles.toggleDarkMode}
+              href='#'
+              role='button'
+              onClick={onToggleDarkMode}
+              title='Toggle dark mode'
+            >
+              {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+            </a>
+          )}
+        </div>
 
-          {/* SOCIAL ICONS */}
-          <div className={styles.social}>
-            {config.twitter && (
-              <a
-                className={styles.twitter}
-                href={`https://x.com/${config.twitter}`}
-                title={`X (Twitter) @${config.twitter}`}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaXTwitter />
-              </a>
-            )}
+        {/* SOCIAL ICONS */}
+        <div className={styles.social}>
+          {config.twitter && (
+            <a
+              className={styles.twitter}
+              href={`https://x.com/${config.twitter}`}
+              title={`X (Twitter) @${config.twitter}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaXTwitter />
+            </a>
+          )}
 
-            {config.mastodon && (
-              <a
-                className={styles.mastodon}
-                href={config.mastodon}
-                title={`Mastodon ${config.getMastodonHandle()}`}
-                rel='me'
-              >
-                <FaMastodon />
-              </a>
-            )}
+          {config.mastodon && (
+            <a
+              className={styles.mastodon}
+              href={config.mastodon}
+              title={`Mastodon ${config.getMastodonHandle()}`}
+              rel='me'
+            >
+              <FaMastodon />
+            </a>
+          )}
 
-            {config.zhihu && (
-              <a
-                className={styles.zhihu}
-                href={`https://zhihu.com/people/${config.zhihu}`}
-                title={`Zhihu @${config.zhihu}`}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaZhihu />
-              </a>
-            )}
+          {config.zhihu && (
+            <a
+              className={styles.zhihu}
+              href={`https://zhihu.com/people/${config.zhihu}`}
+              title={`Zhihu @${config.zhihu}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaZhihu />
+            </a>
+          )}
 
-            {config.github && (
-              <a
-                className={styles.github}
-                href={`https://github.com/${config.github}`}
-                title={`GitHub @${config.github}`}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaGithub />
-              </a>
-            )}
+          {config.github && (
+            <a
+              className={styles.github}
+              href={`https://github.com/${config.github}`}
+              title={`GitHub @${config.github}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaGithub />
+            </a>
+          )}
 
-            {config.discord && (
-              <a
-                className={styles.discord}
-                href={config.discord}
-                title='Discord'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaDiscord />
-              </a>
-            )}
+          {config.discord && (
+            <a
+              className={styles.discord}
+              href={config.discord}
+              title='Discord'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaDiscord />
+            </a>
+          )}
 
-            {config.facebook && (
-              <a
-                className={styles.facebook}
-                href={config.facebook}
-                title='Facebook'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaFacebook />
-              </a>
-            )}
+          {config.facebook && (
+            <a
+              className={styles.facebook}
+              href={config.facebook}
+              title='Facebook'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaFacebook />
+            </a>
+          )}
 
-            {config.instagram && (
-              <a
-                className={styles.instagram}
-                href={config.instagram}
-                title='Instagram'
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaInstagram />
-              </a>
-            )}
+          {config.instagram && (
+            <a
+              className={styles.instagram}
+              href={config.instagram}
+              title='Instagram'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaInstagram />
+            </a>
+          )}
 
-            {config.linkedin && (
-              <a
-                className={styles.linkedin}
-                href={`https://www.linkedin.com/company/${config.linkedin}`}
-                title={`LinkedIn ${config.author}`}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaLinkedin />
-              </a>
-            )}
+          {config.linkedin && (
+            <a
+              className={styles.linkedin}
+              href={`https://www.linkedin.com/company/${config.linkedin}`}
+              title={`LinkedIn ${config.author}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaLinkedin />
+            </a>
+          )}
 
-            {config.newsletter && (
-              <a
-                className={styles.newsletter}
-                href={config.newsletter}
-                title={`Newsletter ${config.author}`}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaEnvelopeOpenText />
-              </a>
-            )}
+          {config.newsletter && (
+            <a
+              className={styles.newsletter}
+              href={config.newsletter}
+              title={`Newsletter ${config.author}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaEnvelopeOpenText />
+            </a>
+          )}
 
-            {config.youtube && (
-              <a
-                className={styles.youtube}
-                href={`https://www.youtube.com/${config.youtube}`}
-                title={`YouTube ${config.author}`}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <FaYoutube />
-              </a>
-            )}
-          </div>
+          {config.youtube && (
+            <a
+              className={styles.youtube}
+              href={`https://www.youtube.com/${config.youtube}`}
+              title={`YouTube ${config.author}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FaYoutube />
+            </a>
+          )}
         </div>
       </footer>
     </>

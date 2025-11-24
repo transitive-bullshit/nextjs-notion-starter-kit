@@ -148,20 +148,22 @@
   }
 
   .footerNavInner {
-    gap: 1.5rem;
+    /* keep row layout, just pull logo + menu closer together */
+    gap: 0.5rem;          /* was 1.5rem – almost no gap now */
     padding: 0 8px;
   }
 
   .footerNavColumns {
-    gap: 1.5rem;
+    gap: 1rem;            /* tighten space between the two columns a bit */
   }
 
+  /* keep logo and text basically full-size at this breakpoint */
   .footerNavLogoImage {
-    height: 52px;
+    height: 64px;         /* same as desktop */
   }
 
   .footerNavLink {
-    font-size: 0.8rem;
+    font-size: 0.95rem;   /* same as desktop */
   }
 }
 
@@ -331,4 +333,43 @@
 .retweet:hover {
   color: #19bf64;
   background: #e5f2e8;
+}
+
+@media (max-width: 1360px) {
+  .githubCorner {
+    display: none;
+  }
+}
+
+.githubCorner:hover .octoArm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .githubCorner:hover .octoArm {
+    animation: none;
+  }
+
+  .githubCorner .octoArm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
+
+.hidden {
+  visibility: hidden;
 }
