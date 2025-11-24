@@ -46,11 +46,34 @@ export default siteConfig({
   // URL overrides for specific Notion pages
   pageUrlOverrides: null,
 
-  // navigation style
-  navigationStyle: 'default'
-  // navigationStyle: 'custom',
-  // navigationLinks: [
-  //   { title: 'About', pageId: 'f1199d37579b41cbabfc0b5174f4256a' },
-  //   { title: 'Contact', pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1' }
-  // ]
+  // whether to use the default notion navigation style or a custom one with links to
+  // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
+  navigationStyle: 'default',
+  navigationLinks: [
+    {
+      title: 'About OAS',
+      pageId: '2af498833139801f8c1fdefef66be1e5'
+    },
+    {
+      title: 'Warriors',
+      pageId: '2b1498833139809c9895d8a4d4293fca'
+    },
+    {
+      title: 'Legacy',
+      pageId: '2b24988331398032a741d74d7147871c'
+    },
+    {
+      title: 'Playtests',
+      pageId: '2af49883313980baaf8dca0bcc4837d1'
+    },
+    {
+      title: 'Blog',
+      pageId: '26449883313980758e9df71e17fd52bc'
+    },
+    {
+      title: 'Contact Us',
+      pageId: '2af49883313980019f0af9e6866bc254'
+    }
+  ]
 })
+

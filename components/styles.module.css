@@ -1,375 +1,296 @@
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* ========================== */
+/*        HEADER BAR          */
+/* ========================== */
 
-.container {
-  position: absolute;
+.pageHeader {
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2vmin;
+  z-index: 40;
 
-  font-size: 16px;
-  line-height: 1.5;
-  color: rgb(55, 53, 47);
-  caret-color: rgb(55, 53, 47);
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
-    'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
-  background-color: var(--bg-color);
+  /* light mode base */
+  background: rgba(250, 251, 253, 0.95);
+  backdrop-filter: saturate(180%) blur(18px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.loadingIcon {
-  animation: spinner 0.6s linear infinite;
-  display: block;
-  width: 24px;
-  height: 24px;
-  color: rgba(55, 53, 47, 0.4);
+/* dark mode header */
+:global(.dark-mode) .pageHeader {
+  background: rgba(22, 30, 38, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.errorImage {
-  max-width: 100%;
-  width: 640px;
-}
-
-/* ========================== */
-/*   TOP FOOTER NAV SECTION   */
-/* ========================== */
-
-.footerNav {
-  width: 100%;
-  background-color: var(--bg-color);
-  border-top: 1px solid var(--fg-color-0);
-  padding: 24px 0;
-}
-
-.footerNavInner {
+.headerInner {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 16px;
+  height: 56px;
 
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-
-  /* IMPORTANT: keep everything on one horizontal line */
-  flex-wrap: nowrap;
-  gap: 3rem;
 }
 
 /* LOGO */
 
-.footerNavLogo a {
-  text-decoration: none;
-}
-
-.footerNavLogoImage {
-  height: 64px;
-  width: auto;
-  display: block;
-}
-
-/* Default: light-mode logo visible, dark-mode hidden */
-.lightModeLogo {
-  display: block;
-}
-
-.darkModeLogo {
-  display: none;
-}
-
-/* Swap in dark mode */
-:global(.dark-mode) .lightModeLogo {
-  display: none;
-}
-
-:global(.dark-mode) .darkModeLogo {
-  display: block;
-}
-
-/* COLUMNS: sit to the right of the logo */
-
-.footerNavColumns {
+.logoWrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 4rem;
+  align-items: center;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 40px;
+  width: auto;
+}
+
+/* DESKTOP NAV */
+
+.desktopNav {
+  margin-left: 32px;
   flex: 1 1 auto;
 }
 
-/* remove bullets / extra padding */
-.footerNavColumn {
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* LINKS WITH BRAND GRADIENT UNDERLINE */
+.navItem {
+  margin: 0;
+}
 
-.footerNavLink {
+.navLink {
   font-size: 0.95rem;
-  color: var(--fg-color);
   text-decoration: none;
+  color: var(--fg-color);
   position: relative;
   padding-bottom: 2px;
 
   background-image: linear-gradient(90deg, #336699 0%, #99bbee 100%);
   background-size: 0% 0.1rem;
-  background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size 300ms ease-out, color 200ms ease-out;
+  background-position: 0 100%;
+  transition: background-size 250ms ease-out, color 200ms ease-out;
 }
 
-.footerNavLink:hover,
-.footerNavLink:focus {
+.navLink:hover,
+.navLink:focus {
   background-size: 100% 0.1rem;
-  text-decoration: none;
 }
 
-/* RESPONSIVE: keep row layout, just tighten spacing & font size */
+/* HEADER CONTROLS (SEARCH + THEME + HAMBURGER) */
 
-@media only screen and (max-width: 720px) {
-  .footerNav {
-    padding: 16px 0;
-  }
-
-  .footerNavInner {
-    /* keep row layout, just pull logo + menu closer together */
-    gap: 0.5rem;          /* was 1.5rem – almost no gap now */
-    padding: 0 8px;
-  }
-
-  .footerNavColumns {
-    gap: 1rem;            /* tighten space between the two columns a bit */
-  }
-
-  /* keep logo and text basically full-size at this breakpoint */
-  .footerNavLogoImage {
-    height: 64px;         /* same as desktop */
-  }
-
-  .footerNavLink {
-    font-size: 0.95rem;   /* same as desktop */
-  }
-}
-
-/* ========================== */
-/*   LOWER FOOTER STRIP       */
-/* ========================== */
-
-.footer {
-  width: 100%;
-  max-width: 1100px;
-  margin: auto auto 0;
-  padding: 8px;
-
+.headerControls {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
 }
 
-.copyright {
-  font-size: 80%;
-  padding: 0.5em;
-}
-
-.settings,
-.social {
-  user-select: none;
-}
-
-.settings a,
-.social a {
-  cursor: pointer;
-  font-size: 2em;
-  display: inline-flex;
-  padding: 0.25em;
-  margin-right: 1vw;
-  transition: color 250ms ease-out;
-}
-
-.settings a:last-of-type,
-.social a:last-of-type {
-  margin-right: 0;
-}
-
-.settings a:hover,
-.social a:hover {
-  transition: color 50ms ease-out;
-}
-
-.toggleDarkMode:hover {
-  color: #2795e9;
-}
-
-.twitter:hover {
-  color: #2795e9;
-}
-
-.mastodon:hover {
-  color: #5a4be1;
-}
-
-.zhihu:hover {
-  color: #0066ff;
-}
-
-.github:hover {
-  color: #c9510c;
-}
-
-.youtube:hover {
-  color: #ff0000;
-}
-
-.linkedin:hover {
-  color: #0077b5;
-}
-
-.newsletter:hover {
-  color: #777777;
-}
-
-/* New socials with explicit svg color */
-
-.discord:hover {
-  color: #5865f2;
-}
-
-.discord:hover svg {
-  fill: #5865f2;
-}
-
-.facebook:hover {
-  color: #1877f2;
-}
-
-.facebook:hover svg {
-  fill: #1877f2;
-}
-
-.instagram:hover {
-  color: #e1306c;
-}
-
-.instagram:hover svg {
-  fill: #e1306c;
-}
-
-.comments {
-  width: 100%;
-  margin-top: 2em;
-  border-top: 1px solid var(--fg-color-0);
-}
-
-@media only screen and (max-width: 566px) {
-  .footer {
-    flex-direction: column;
-  }
-
-  .footer > div {
-    margin-top: 1em;
-  }
-
-  .footer .settings {
-    order: 1;
-  }
-
-  .footer .social {
-    order: 2;
-  }
-
-  .footer .copyright {
-    order: 3;
-  }
-}
-
-.pageActions {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 6px 12px 12px;
-}
-
-.pageActions a {
-  cursor: pointer;
-  font-size: 24px;
-  display: inline-flex;
-  padding: 12px;
-  margin-right: 1vw;
-  border-radius: 50%;
+.iconButton {
+  border: none;
   background: transparent;
-  transition: all 250ms ease-out;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--fg-color);
 }
 
-.pageActions a:last-of-type {
-  margin-right: 0;
+.iconButton:hover {
+  opacity: 0.85;
 }
 
-.pageActions a:hover {
-  transition: all 50ms ease-out;
+.searchButton {
+  font-size: 1.2rem;
 }
 
-.likeTweet:hover {
-  background: #f6e3e8;
-  color: #e0265e;
+.searchIcon {
+  line-height: 1;
 }
 
-.retweet:hover {
-  color: #19bf64;
-  background: #e5f2e8;
+/* THEME TOGGLE */
+.themeToggle svg {
+  width: 1.1em;
+  height: 1.1em;
 }
 
-@media (max-width: 1360px) {
-  .githubCorner {
+/* HAMBURGER */
+
+.menuToggle {
+  display: none; /* shown only on mobile */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menuToggle:hover {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:global(.dark-mode) .menuToggle:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.menuBar {
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--fg-color);
+}
+
+/* MOBILE RESPONSIVE BREAKPOINT */
+
+@media (max-width: 768px) {
+  .desktopNav {
     display: none;
   }
-}
 
-.githubCorner:hover .octoArm {
-  animation: octocat-wave 560ms ease-in-out;
-}
+  .headerInner {
+    height: 52px;
+  }
 
-@keyframes octocat-wave {
-  0%,
-  100% {
-    transform: rotate(0);
+  .logoImg {
+    height: 34px;
   }
-  20%,
-  60% {
-    transform: rotate(-25deg);
-  }
-  40%,
-  80% {
-    transform: rotate(10deg);
+
+  .menuToggle {
+    display: inline-flex;
   }
 }
 
-@media (max-width: 500px) {
-  .githubCorner:hover .octoArm {
-    animation: none;
-  }
+/* ========================== */
+/*    MOBILE SLIDE-IN MENU    */
+/* ========================== */
 
-  .githubCorner .octoArm {
-    animation: octocat-wave 560ms ease-in-out;
-  }
+.mobileMenuOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
 }
 
-.hidden {
-  visibility: hidden;
+.mobileMenuOpen {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* semi-transparent backdrop so content dims behind */
+.mobileMenuOverlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* PANEL ITSELF */
+
+.mobileMenuPanel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(280px, 80vw);
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(250, 251, 253, 0.98);
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  color: var(--fg-color);
+
+  transform: translateX(100%);
+  transition: transform 250ms ease-out;
+}
+
+/* dark mode panel */
+:global(.dark-mode) .mobileMenuPanel {
+  background: rgba(22, 30, 38, 0.98);
+  border-left-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobileMenuOpen .mobileMenuPanel {
+  transform: translateX(0);
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+:global(.dark-mode) .mobileMenuHeader {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.mobileMenuTitle {
+  font-weight: 600;
+}
+
+.closeButton {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--fg-color);
+}
+
+.closeButton:hover {
+  opacity: 0.8;
+}
+
+.mobileNavList {
+  list-style: none;
+  padding: 8px 0 16px;
+  margin: 0;
+}
+
+.mobileNavItem {
+  margin: 0;
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 10px 18px;
+  text-decoration: none;
+  color: var(--fg-color);
+  font-size: 1rem;
+}
+
+.mobileNavLink:hover,
+.mobileNavLink:focus {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+:global(.dark-mode) .mobileNavLink:hover,
+:global(.dark-mode) .mobileNavLink:focus {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* hide the real notion search button – we trigger it from the icon */
+.hiddenSearch {
+  display: none;
 }

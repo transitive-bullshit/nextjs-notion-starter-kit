@@ -86,3 +86,15 @@ a {
 ::-webkit-scrollbar-track {
   background-color: var(--bg-color);
 }
+
+:root {
+  --oa-header-footer-bg-light: #f1f2f5;
+  --oa-header-footer-border-light: rgba(0, 0, 0, 0.08);
+  --oa-header-footer-bg-dark: #23272b;
+  --oa-header-footer-border-dark: rgba(255, 255, 255, 0.08);
+}
+
+.dark-mode {
+  --oa-header-footer-bg-light: #23272b;
+  --oa-header-footer-border-light: rgba(255, 255, 255, 0.08);
+}

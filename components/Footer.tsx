@@ -39,28 +39,25 @@ export function FooterImpl() {
 
   return (
     <>
-      {/* TOP FOOTER NAV BAND */}
+     {/* TOP FOOTER NAV BAND */}
       <div className={styles.footerNav}>
         <div className={styles.footerNavInner}>
           {/* Logo block */}
           <div className={styles.footerNavLogo}>
             <a href='/' aria-label={`${config.name} home`}>
-              {/* Light-mode logo (blue) */}
-              <Image
-                src='/open almond logo plain blue.svg'
-                alt='Open Almond Studios logo'
-                width={72}
-                height={72}
-                className={`${styles.footerNavLogoImage} ${styles.lightModeLogo}`}
-              />
-              {/* Dark-mode logo (plain) */}
-              <Image
-                src='/open almond logo plain.svg'
-                alt='Open Almond Studios logo'
-                width={72}
-                height={72}
-                className={`${styles.footerNavLogoImage} ${styles.darkModeLogo}`}
-              />
+              {hasMounted && (
+                <Image
+                  src={
+                    isDarkMode
+                      ? '/open-almond-logo-plain.svg'
+                      : '/open-almond-logo-plain-blue.svg'
+                  }
+                  alt='Open Almond Studios logo'
+                  width={72}
+                  height={72}
+                  className={styles.footerNavLogoImage}
+                />
+              )}
             </a>
           </div>
 
