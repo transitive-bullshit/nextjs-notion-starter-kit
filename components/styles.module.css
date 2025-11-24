@@ -87,10 +87,12 @@
   transition: color 50ms ease-out;
 }
 
+/* Dark mode toggle */
 .toggleDarkMode:hover {
   color: #2795e9;
 }
 
+/* Existing social colors */
 .twitter:hover {
   color: #2795e9;
 }
@@ -118,6 +120,33 @@
 .newsletter:hover {
   color: #777777;
 }
+
+/* ----------------------------- */
+/* Added: Discord, Facebook, Instagram */
+/* ----------------------------- */
+
+.discord:hover {
+  color: #5865f2;
+}
+.discord:hover svg {
+  fill: #5865f2;
+}
+
+.facebook:hover {
+  color: #1877f2;
+}
+.facebook:hover svg {
+  fill: #1877f2;
+}
+
+.instagram:hover {
+  color: #e1306c;
+}
+.instagram:hover svg {
+  fill: #e1306c;
+}
+
+/* ---------------------------------- */
 
 .comments {
   width: 100%;
