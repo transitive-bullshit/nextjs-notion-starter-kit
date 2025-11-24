@@ -53,19 +53,25 @@
   width: 100%;
   background-color: var(--bg-color);
   border-top: 1px solid var(--fg-color-0);
+  padding: 24px 0;
 }
 
 .footerNavInner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 24px 8px;
+  padding: 0 16px;
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
+
+  /* IMPORTANT: keep everything on one horizontal line */
+  flex-wrap: nowrap;
   gap: 3rem;
 }
+
+/* LOGO */
 
 .footerNavLogo a {
   text-decoration: none;
@@ -81,6 +87,7 @@
 .lightModeLogo {
   display: block;
 }
+
 .darkModeLogo {
   display: none;
 }
@@ -89,49 +96,74 @@
 :global(.dark-mode) .lightModeLogo {
   display: none;
 }
+
 :global(.dark-mode) .darkModeLogo {
   display: block;
 }
 
+/* COLUMNS: sit to the right of the logo */
+
 .footerNavColumns {
   display: flex;
   flex-direction: row;
-  gap: 3rem;
-  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4rem;
+  flex: 1 1 auto;
 }
 
+/* remove bullets / extra padding */
 .footerNavColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+/* LINKS WITH BRAND GRADIENT UNDERLINE */
 
 .footerNavLink {
   font-size: 0.95rem;
   color: var(--fg-color);
   text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+
+  background-image: linear-gradient(90deg, #336699 0%, #99bbee 100%);
+  background-size: 0% 0.1rem;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 300ms ease-out, color 200ms ease-out;
 }
 
 .footerNavLink:hover,
 .footerNavLink:focus {
-  text-decoration: underline;
-  text-decoration-thickness: 0.08em;
+  background-size: 100% 0.1rem;
+  text-decoration: none;
 }
 
-/* Stack logo + links on smaller screens */
+/* RESPONSIVE: keep row layout, just tighten spacing & font size */
+
 @media only screen and (max-width: 720px) {
+  .footerNav {
+    padding: 16px 0;
+  }
+
   .footerNavInner {
-    flex-direction: column;
-    align-items: flex-start;
+    /* keep row layout, just pull logo + menu closer together */
+    gap: 0.5rem;          /* was 1.5rem – almost no gap now */
+    padding: 0 8px;
   }
 
   .footerNavColumns {
-    width: 100%;
-    justify-content: flex-start;
+    gap: 1rem;            /* tighten space between the two columns a bit */
   }
 
+  /* keep logo and text basically full-size at this breakpoint */
   .footerNavLogoImage {
-    height: 48px;
+    height: 64px;         /* same as desktop */
+  }
+
+  .footerNavLink {
+    font-size: 0.95rem;   /* same as desktop */
   }
 }
 
@@ -214,9 +246,11 @@
 }
 
 /* New socials with explicit svg color */
+
 .discord:hover {
   color: #5865f2;
 }
+
 .discord:hover svg {
   fill: #5865f2;
 }
@@ -224,6 +258,7 @@
 .facebook:hover {
   color: #1877f2;
 }
+
 .facebook:hover svg {
   fill: #1877f2;
 }
@@ -231,6 +266,7 @@
 .instagram:hover {
   color: #e1306c;
 }
+
 .instagram:hover svg {
   fill: #e1306c;
 }
@@ -253,9 +289,11 @@
   .footer .settings {
     order: 1;
   }
+
   .footer .social {
     order: 2;
   }
+
   .footer .copyright {
     order: 3;
   }

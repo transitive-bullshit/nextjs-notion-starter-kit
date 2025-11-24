@@ -10,10 +10,8 @@ import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
-
-// Using react-icons for the new social platforms
-import { FaXTwitter } from 'react-icons/fa6'
 import { FaDiscord, FaFacebook, FaInstagram } from 'react-icons/fa'
+import { FaXTwitter } from 'react-icons/fa6'
 
 import * as config from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -27,6 +25,10 @@ export function FooterImpl() {
   const { isDarkMode, toggleDarkMode } = useDarkMode()
   const currentYear = new Date().getFullYear()
 
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
   const onToggleDarkMode = React.useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault()
@@ -35,67 +37,75 @@ export function FooterImpl() {
     [toggleDarkMode]
   )
 
-  React.useEffect(() => {
-    setHasMounted(true)
-  }, [])
-
   return (
     <>
       {/* TOP FOOTER NAV BAND */}
       <div className={styles.footerNav}>
         <div className={styles.footerNavInner}>
-          {/* Logo / Studio mark */}
+          {/* Logo block */}
           <div className={styles.footerNavLogo}>
             <a href='/' aria-label={`${config.name} home`}>
               {/* Light-mode logo (blue) */}
               <Image
                 src='/open almond logo plain blue.svg'
                 alt='Open Almond Studios logo'
-                className={`${styles.footerNavLogoImage} ${styles.lightModeLogo}`}
                 width={72}
                 height={72}
+                className={`${styles.footerNavLogoImage} ${styles.lightModeLogo}`}
               />
               {/* Dark-mode logo (plain) */}
               <Image
                 src='/open almond logo plain.svg'
                 alt='Open Almond Studios logo'
-                className={`${styles.footerNavLogoImage} ${styles.darkModeLogo}`}
                 width={72}
                 height={72}
+                className={`${styles.footerNavLogoImage} ${styles.darkModeLogo}`}
               />
             </a>
           </div>
 
-          {/* Two columns of footer nav links */}
+          {/* Two columns of links */}
           <div className={styles.footerNavColumns}>
-            <div className={styles.footerNavColumn}>
-              <a href='/about-the-studio' className={styles.footerNavLink}>
-                About the Studio
-              </a>
-              <a href='/contact-us' className={styles.footerNavLink}>
-                Contact Us
-              </a>
-              <a href='/customer-service' className={styles.footerNavLink}>
-                Customer Service
-              </a>
-            </div>
+            <ul className={styles.footerNavColumn}>
+              <li>
+                <a href='/about-the-studio' className={styles.footerNavLink}>
+                  About the Studio
+                </a>
+              </li>
+              <li>
+                <a href='/contact-us' className={styles.footerNavLink}>
+                  Contact Us
+                </a>
+              </li>
+              <li>
+                <a href='/customer-service' className={styles.footerNavLink}>
+                  Customer Service
+                </a>
+              </li>
+            </ul>
 
-            <div className={styles.footerNavColumn}>
-              <a href='/terms-of-use' className={styles.footerNavLink}>
-                Terms of Use
-              </a>
-              <a href='/privacy-policy' className={styles.footerNavLink}>
-                Privacy Policy
-              </a>
-              <a href='/licensing' className={styles.footerNavLink}>
-                Licensing
-              </a>
-            </div>
+            <ul className={styles.footerNavColumn}>
+              <li>
+                <a href='/terms-of-use' className={styles.footerNavLink}>
+                  Terms of Use
+                </a>
+              </li>
+              <li>
+                <a href='/privacy-policy' className={styles.footerNavLink}>
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href='/licensing' className={styles.footerNavLink}>
+                  Licensing
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
-      {/* LOWER FOOTER STRIP (copyright + dark mode + socials) */}
+      {/* LOWER FOOTER STRIP */}
       <footer className={styles.footer}>
         {/* COPYRIGHT */}
         <div className={styles.copyright}>
