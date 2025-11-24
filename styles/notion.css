@@ -223,28 +223,25 @@
 
 .notion-link {
   position: relative;
-  transition: unset;
-  opacity: 1;
-  border-bottom-width: 0.1rem;
-  background: transparent;
-  background-origin: border-box;
+  color: inherit;
+  text-decoration: none;
+
+  /* REMOVE THE DEFAULT WHITE UNDERLINE */
+  border-bottom: none !important;
+
+  /* your custom underline animation */
+  background-image: linear-gradient(90deg, #336699 0%, #99bbee 100%);
+  background-size: 0% 2px;
+  background-position: 0 100%;
   background-repeat: no-repeat;
-  background-position: 50% 100%;
-  background-size: 0 0.1rem;
+  padding-bottom: 2px;
+  transition: background-size 220ms ease-out;
 }
 
-/* Branded link underline gradient */
-.notion-link:focus,
-.notion-link:hover {
-  border-bottom-color: transparent;
-
-  background-image: linear-gradient(90deg, #336699 0%, #99bbee 100%);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 100% 0.1rem;
-
-  transition-property: background-position, background-size;
-  transition-duration: 300ms;
+.notion-link:hover,
+.notion-link:focus {
+  background-size: 100% 2px;
+  text-decoration: none;
 }
 
 .notion-red_background,
@@ -376,9 +373,47 @@
   }
 }
 
+/* Base bookmark */
+.notion-bookmark {
+  position: relative;
+  border: 1px solid var(--fg-color-1);
+  border-radius: 8px;
+  transition: border-color 200ms ease-out;
+  overflow: hidden;
+}
+
+/* Gradient outline layer (always full-size, just invisible at first) */
+.notion-bookmark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;               /* outline thickness */
+  border-radius: inherit;
+  pointer-events: none;
+
+  background: linear-gradient(90deg, #336699 0%, #99bbee 100%) border-box;
+
+  /* mask trick to make it only show as a border */
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0) padding-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0) padding-box;
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}
+
+/* Hover: fade the border on instead of resizing it */
 .notion-bookmark:hover {
-  border-image: linear-gradient(90.68deg, #336699 0.26%, #99ccee 102.37%);
-  border-image-slice: 1;
+  border-color: transparent;
+}
+
+.notion-bookmark:hover::after {
+  opacity: 1;
 }
 
 .notion-block-ab9a258d6cf444f3bb40dc2600feae91 .notion-column {
