@@ -63,6 +63,9 @@ export const youtube: string | undefined = getSiteConfig('youtube')
 export const linkedin: string | undefined = getSiteConfig('linkedin')
 export const newsletter: string | undefined = getSiteConfig('newsletter')
 export const zhihu: string | undefined = getSiteConfig('zhihu')
+export const discord: string | undefined = getSiteConfig('discord')
+export const facebook: string | undefined = getSiteConfig('facebook')
+export const instagram: string | undefined = getSiteConfig('instagram')
 
 export const getMastodonHandle = (): string | undefined => {
   if (!mastodon) {

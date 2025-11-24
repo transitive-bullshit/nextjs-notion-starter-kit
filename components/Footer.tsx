@@ -9,7 +9,10 @@ import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+
+// Using react-icons for the new social platforms
 import { FaXTwitter } from 'react-icons/fa6'
+import { FaDiscord, FaFacebook, FaInstagram } from 'react-icons/fa'
 
 import * as config from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -37,32 +40,37 @@ export function FooterImpl() {
 
   return (
     <footer className={styles.footer}>
+      
+      {/* COPYRIGHT */}
       <div className={styles.copyright}>
         © {currentYear} {config.author}. All Rights Reserved.
       </div>
 
+      {/* DARK MODE TOGGLE */}
       <div className={styles.settings}>
         {hasMounted && (
           <a
             className={styles.toggleDarkMode}
-            href='#'
-            role='button'
+            href="#"
+            role="button"
             onClick={onToggleDarkMode}
-            title='Toggle dark mode'
+            title="Toggle dark mode"
           >
             {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
         )}
       </div>
 
+      {/* SOCIAL ICONS */}
       <div className={styles.social}>
+
         {config.twitter && (
           <a
             className={styles.twitter}
             href={`https://x.com/${config.twitter}`}
             title={`X (Twitter) @${config.twitter}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaXTwitter />
           </a>
@@ -73,7 +81,7 @@ export function FooterImpl() {
             className={styles.mastodon}
             href={config.mastodon}
             title={`Mastodon ${config.getMastodonHandle()}`}
-            rel='me'
+            rel="me"
           >
             <FaMastodon />
           </a>
@@ -84,8 +92,8 @@ export function FooterImpl() {
             className={styles.zhihu}
             href={`https://zhihu.com/people/${config.zhihu}`}
             title={`Zhihu @${config.zhihu}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaZhihu />
           </a>
@@ -96,10 +104,46 @@ export function FooterImpl() {
             className={styles.github}
             href={`https://github.com/${config.github}`}
             title={`GitHub @${config.github}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaGithub />
+          </a>
+        )}
+
+        {config.discord && (
+          <a
+            className={styles.discord}
+            href={config.discord}
+            title="Discord"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaDiscord />
+          </a>
+        )}
+
+        {config.facebook && (
+          <a
+            className={styles.facebook}
+            href={config.facebook}
+            title="Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook />
+          </a>
+        )}
+
+        {config.instagram && (
+          <a
+            className={styles.instagram}
+            href={config.instagram}
+            title="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram />
           </a>
         )}
 
@@ -108,8 +152,8 @@ export function FooterImpl() {
             className={styles.linkedin}
             href={`https://www.linkedin.com/company/${config.linkedin}`}
             title={`LinkedIn ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaLinkedin />
           </a>
@@ -118,10 +162,10 @@ export function FooterImpl() {
         {config.newsletter && (
           <a
             className={styles.newsletter}
-            href={`${config.newsletter}`}
+            href={config.newsletter}
             title={`Newsletter ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaEnvelopeOpenText />
           </a>
@@ -132,12 +176,13 @@ export function FooterImpl() {
             className={styles.youtube}
             href={`https://www.youtube.com/${config.youtube}`}
             title={`YouTube ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaYoutube />
           </a>
         )}
+
       </div>
     </footer>
   )

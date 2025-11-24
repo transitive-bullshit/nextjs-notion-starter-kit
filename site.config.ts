@@ -4,62 +4,58 @@ export default siteConfig({
   // the site's root Notion page (required)
   rootNotionPageId: '1b3498833139808ebe9afc6028b2a5e6',
 
-  // if you want to restrict pages to a single notion workspace (optional)
-  // (this should be a Notion ID; see the docs for how to extract this)
+  // optionally restrict pages to a single Notion workspace
   rootNotionSpaceId: null,
 
-  // basic site info (required)
+  // basic site info
   name: 'Open Almond Studios',
   domain: 'www.openalmond.com',
   author: 'Open Almond Studios, LLC',
 
+<<<<<<< HEAD
   // open graph metadata (optional)
   description: 'A faith-driven studio creating tabletop worlds, stories, and resources shaped by Scripture and imagination. Discover our games, follow our progress, and join us on the journey.',
+=======
+  // open graph metadata
+  description:
+    'A faith-driven studio creating tabletop worlds, stories, and resources shaped by Scripture and imagination. Discover our games, follow our progress, and join us on the journey.',
+>>>>>>> testing
 
-  // social usernames (optional)
+  // social links (optional)
   twitter: 'Open_Almond',
-  // github: '#',
   linkedin: 'open-almond-studios',
-  // mastodon: '#', // optional mastodon profile URL, provides link verification
-  // newsletter: '#', // optional newsletter URL
-  youtube: '@OpenAlmondStudios', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
-  // default notion icon and cover images for site-wide consistency (optional)
-  // page-specific values will override these site-wide defaults
+  // Newly added socials
+  discord: 'https://discord.gg/q3gF29fFX9',
+  facebook:
+    'https://www.facebook.com/profile.php?id=61558229720571&mibextid=ZbWKwL',
+  instagram: 'https://instagram.com/openalmond',
+
+  // optional profiles
+  // mastodon: '#',
+  // newsletter: '#',
+
+  youtube: '@OpenAlmondStudios',
+
+  // default site-wide notion images (optional)
   defaultPageIcon: null,
   defaultPageCover: null,
   defaultPageCoverPosition: 0.5,
 
-  // whether or not to enable support for LQIP preview images (optional)
+  // preview image settings
   isPreviewImageSupportEnabled: true,
 
-  // whether or not redis is enabled for caching generated preview images (optional)
-  // NOTE: if you enable redis, you need to set the `REDIS_HOST` and `REDIS_PASSWORD`
-  // environment variables. see the readme for more info
+  // redis cache for preview images
   isRedisEnabled: false,
 
-  // map of notion page IDs to URL paths (optional)
-  // any pages defined here will override their default URL paths
-  // example:
-  //
-  // pageUrlOverrides: {
-  //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
-  //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
-  // }
+  // URL overrides for specific Notion pages
   pageUrlOverrides: null,
 
-  // whether to use the default notion navigation style or a custom one with links to
-  // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
+  // navigation style
   navigationStyle: 'default'
   // navigationStyle: 'custom',
   // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
+  //   { title: 'About', pageId: 'f1199d37579b41cbabfc0b5174f4256a' },
+  //   { title: 'Contact', pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1' }
   // ]
 })

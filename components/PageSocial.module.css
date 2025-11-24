@@ -72,6 +72,8 @@
   fill: var(--fg-color);
 }
 
+/* SOCIAL THEMES */
+
 .facebook .actionBgPane {
   background: #3b5998;
 }
@@ -126,6 +128,23 @@
 }
 .email:hover {
   border-color: #777;
+
+/* NEW: Discord */
+.discord .actionBgPane {
+  background: #5865f2;
+}
+.discord:hover {
+  border-color: #5865f2;
+}
+
+/* NEW: Instagram */
+.instagram .actionBgPane {
+  background: #e1306c;
+}
+.instagram:hover {
+  border-color: #e1306c;
+}
+
 }
 
 @media only screen and (max-width: 768px) {
