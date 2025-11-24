@@ -45,6 +45,100 @@
   width: 640px;
 }
 
+/* ========================== */
+/*   TOP FOOTER NAV SECTION   */
+/* ========================== */
+
+.footerNav {
+  width: 100%;
+  background-color: var(--bg-color);
+  border-top: 1px solid var(--fg-color-0);
+}
+
+.footerNavInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.footerNavLogo a {
+  text-decoration: none;
+}
+
+.footerNavLogoImage {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+
+/* Default: light-mode logo visible, dark-mode hidden */
+.lightModeLogo {
+  display: block;
+}
+.darkModeLogo {
+  display: none;
+}
+
+/* Swap in dark mode */
+:global(.dark-mode) .lightModeLogo {
+  display: none;
+}
+:global(.dark-mode) .darkModeLogo {
+  display: block;
+}
+
+.footerNavColumns {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.footerNavColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footerNavLink {
+  font-size: 0.95rem;
+  color: var(--fg-color);
+  text-decoration: none;
+}
+
+.footerNavLink:hover,
+.footerNavLink:focus {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+}
+
+/* Stack logo + links on smaller screens */
+@media only screen and (max-width: 720px) {
+  .footerNavInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footerNavColumns {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .footerNavLogoImage {
+    height: 48px;
+  }
+}
+
+/* ========================== */
+/*   LOWER FOOTER STRIP       */
+/* ========================== */
+
 .footer {
   width: 100%;
   max-width: 1100px;
@@ -87,12 +181,10 @@
   transition: color 50ms ease-out;
 }
 
-/* Dark mode toggle */
 .toggleDarkMode:hover {
   color: #2795e9;
 }
 
-/* Existing social colors */
 .twitter:hover {
   color: #2795e9;
 }
@@ -121,10 +213,7 @@
   color: #777777;
 }
 
-/* ----------------------------- */
-/* Added: Discord, Facebook, Instagram */
-/* ----------------------------- */
-
+/* New socials with explicit svg color */
 .discord:hover {
   color: #5865f2;
 }
@@ -145,8 +234,6 @@
 .instagram:hover svg {
   fill: #e1306c;
 }
-
-/* ---------------------------------- */
 
 .comments {
   width: 100%;

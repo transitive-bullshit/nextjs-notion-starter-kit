@@ -6,6 +6,7 @@
  */
 import { parsePageId } from 'notion-utils'
 import { type PostHogConfig } from 'posthog-js'
+import Image from 'next/image'
 
 import {
   getEnv,
