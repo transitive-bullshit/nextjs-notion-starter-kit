@@ -233,11 +233,12 @@
   background-size: 0 0.1rem;
 }
 
+/* Branded link underline gradient */
 .notion-link:focus,
 .notion-link:hover {
   border-bottom-color: transparent;
 
-  background-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
+  background-image: linear-gradient(90deg, #336699 0%, #99bbee 100%);
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 100% 0.1rem;
@@ -376,7 +377,7 @@
 }
 
 .notion-bookmark:hover {
-  border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
+  border-image: linear-gradient(90.68deg, #336699 0.26%, #99ccee 102.37%);
   border-image-slice: 1;
 }
 
