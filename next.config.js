@@ -24,6 +24,16 @@ export default withBundleAnalyzer({
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
   },
 
+    async redirects() {
+    return [
+      {
+        source: '/all-posts/:slug*',
+        destination: '/archivio',          // o '/archivio-contenuti' se è il path giusto
+        permanent: true                    // 308/301 per Google, va benissimo
+      }
+    ]
+  },
+  
   webpack: (config) => {
     // Workaround for ensuring that `react` and `react-dom` resolve correctly
     // when using a locally-linked version of `react-notion-x`.
