@@ -1,10 +1,8 @@
-import * as React from 'react'
+import { IconContext } from '@react-icons/all-files'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
-import { IconContext } from '@react-icons/all-files'
-
 export default class MyDocument extends Document {
-  render() {
+  override render() {
     return (
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
         <Html lang='en'>

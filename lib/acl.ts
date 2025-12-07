@@ -1,10 +1,10 @@
-import { PageProps } from './types'
+import { type PageProps } from './types'
 
 export async function pageAcl({
   site,
   recordMap,
   pageId
-}: PageProps): Promise<PageProps> {
+}: PageProps): Promise<PageProps | undefined> {
   if (!site) {
     return {
       error: {

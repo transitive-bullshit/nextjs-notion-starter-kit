@@ -21,7 +21,9 @@ export default siteConfig({
   // twitter: 'KujiraTiku',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
-  //  mastodon: 'https://fedibird.com/@kujiTake', // optional mastodon profile URL, provides link verification
+
+  mastodon: 'https://fedibird.com/@TikuTalk', // optional mastodon profile URL, provides link verification
+
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
   // pixiv: '2781527',
@@ -53,6 +55,8 @@ export default siteConfig({
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
   // navigationStyle: 'default'
+
   navigationStyle: 'default',
   navigationLinks: []
+
 })

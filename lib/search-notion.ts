@@ -1,14 +1,12 @@
-// import ky from 'ky'
 import ExpiryMap from 'expiry-map'
-import fetch from 'isomorphic-unfetch'
 import pMemoize from 'p-memoize'
 
-import * as types from './types'
+import type * as types from './types'
 import { api } from './config'
 
 export const searchNotion = pMemoize(searchNotionImpl, {
   cacheKey: (args) => args[0]?.query,
-  cache: new ExpiryMap(10000)
+  cache: new ExpiryMap(10_000)
 })
 
 async function searchNotionImpl(
@@ -29,9 +27,9 @@ async function searchNotionImpl(
       // convert non-2xx HTTP responses into errors
       const error: any = new Error(res.statusText)
       error.response = res
-      return Promise.reject(error)
+      throw error
     })
-    .then((res) => res.json())
+    .then((res) => res.json() as Promise<types.SearchResults>)
 
   // return ky
   //   .post(api.searchNotion, {
