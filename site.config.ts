@@ -2,29 +2,31 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '858447c91db0434282b31b8d08d8df83',
+  rootNotionPageId: '3e2f077098284288ae4778c0070e652f',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'KujiraTiku',
+  name: 'SetoLife',
   domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
   author: 'KujiraTiku',
 
   // open graph metadata (optional)
-  description: '清熱鯨騰草',
+  description: '赛东的日常',
 
   // social usernames (optional)
-  myCat:'https://seto-life.vercel.app/',
-  twitter: 'KujiraTiku',
+  // myCat:'https://seto-life.vercel.app/',
+  // twitter: 'KujiraTiku',
   // github: 'transitive-bullshit',
   // linkedin: 'fisch2',
+
   mastodon: 'https://fedibird.com/@TikuTalk', // optional mastodon profile URL, provides link verification
+
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
-  pixiv: '2781527',
+  // pixiv: '2781527',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
@@ -53,23 +55,8 @@ export default siteConfig({
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
   // navigationStyle: 'default'
-  navigationStyle: 'custom',
-  navigationLinks: [
-    {
-      title: 'Home',
-      pageId: '858447c91db0434282b31b8d08d8df83'
-    },
-    {
-      title: 'About',
-      pageId: 'About-8ff57d87b0654b0b8c38b5e05947d5d7'
-    },
-    {
-      title: 'Blog',
-      pageId: 'Blog-6d3fa135bc944d3d93d5c71007f874c9'
-    },
-    {
-      title: 'Gallery',
-      pageId: 'Gallery-8135fc5f12fb4115970586bd53484963'
-    }
-  ]
+
+  navigationStyle: 'default',
+  navigationLinks: []
+
 })
