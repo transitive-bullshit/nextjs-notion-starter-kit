@@ -40,7 +40,7 @@
     "fathom-client": "^3.4.1",
     "ky": "^1.8.1",
     "lqip-modern": "^2.2.1",
-    "next": "^15.5.3",
+    "next": "15.5.9",
     "notion-client": "^7.7.0",
     "notion-types": "^7.7.0",
     "notion-utils": "^7.7.0",
