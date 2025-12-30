@@ -2,13 +2,15 @@ import { type GetStaticPaths, type GetStaticProps } from 'next'
 import Link from 'next/link'
 
 import { NotionPage } from '@/components/NotionPage'
-import { domain, tagArchiveNotionPageId } from '@/lib/config'
+import { domain } from '@/lib/config'
 import { getPublishedPosts } from '@/lib/get-published-posts'
+import { getSiteMap } from '@/lib/get-site-map'
+import { mapPageUrl } from '@/lib/map-page-url'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { type PageProps } from '@/lib/types'
 import { isHiddenTag, normalizeTag, slugToTag, tagToSlug } from '@/lib/tags'
 
-const BLOG_INDEX_PAGE_ID = '26449883313980758e9df71e17fd52bc'
+const BLOG_INDEX_PAGE_ID = '2d949883313980b891eddda34009e3b5'
 
 interface TagArchiveProps extends PageProps {
   tag: string
@@ -19,9 +21,7 @@ interface TagArchiveProps extends PageProps {
     tags: string[]
     cover?: string | null
     published?: string | null
-    publishedTime?: number | null
     summary?: string | null
-    author?: string | null
   }[]
   allTags: string[]
   blogIndexUrl: string
@@ -44,9 +44,12 @@ export const getStaticProps: GetStaticProps<TagArchiveProps> = async (
     return { notFound: true, revalidate: 60 }
   }
 
-  const [posts] = await Promise.all([getPublishedPosts()])
+  const [posts, siteMap] = await Promise.all([
+    getPublishedPosts(),
+    getSiteMap()
+  ])
 
-  const shellPageId = tagArchiveNotionPageId || BLOG_INDEX_PAGE_ID
+  const shellPageId = BLOG_INDEX_PAGE_ID
   const shellProps = await resolveNotionPage(domain, shellPageId)
 
   if (!shellProps?.recordMap || !shellProps.site) {
@@ -55,9 +58,6 @@ export const getStaticProps: GetStaticProps<TagArchiveProps> = async (
 
   const filtered = posts.filter((p) =>
     p.tags.some((t) => normalizeTag(t) === tag)
-  )
-  filtered.sort(
-    (a, b) => (b.publishedTime ?? 0) - (a.publishedTime ?? 0)
   )
 
   if (!filtered.length) {
@@ -75,7 +75,15 @@ export const getStaticProps: GetStaticProps<TagArchiveProps> = async (
     .filter((t) => !isHiddenTag(t))
     .sort((a, b) => a.localeCompare(b))
 
-  const blogIndexUrl = 'https://www.openalmond.com/the-almond-branch-blog'
+  let blogIndexUrl = '/'
+  const blogRecordMap = siteMap.pageMap[BLOG_INDEX_PAGE_ID]
+  if (blogRecordMap) {
+    blogIndexUrl = mapPageUrl(
+      siteMap.site,
+      blogRecordMap,
+      new URLSearchParams()
+    )(BLOG_INDEX_PAGE_ID)
+  }
 
   return {
     props: {
@@ -108,47 +116,51 @@ export default function TagArchivePage(props: TagArchiveProps) {
                 <Link
                   key={t}
                   href={`/tag/${slug}`}
-                  className={`notion-link tag-archive-tagLink ${isActive ? 'tag-archive-tagLink--active' : ''}`}
+                  className={`notion-tag-link ${isActive ? 'is-active-tag' : ''}`}
                 >
-                  {t}
+                  <span className='notion-property-multi_select-item'>{t}</span>
                 </Link>
               )
             })}
           </div>
         )}
 
-        <ul className='tag-archive-list'>
+        <div className='notion-gallery-grid' style={{ marginTop: 24 }}>
           {posts.map((post) => (
-            <li key={post.pageId} className='tag-card'>
-              <Link href={post.url} className='tag-card__coverLink'>
-                <div className='tag-card__cover'>
-                  {post.cover ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={post.cover} alt={post.title} />
-                  ) : null}
-                  <div className='tag-card__coverTitle'>{post.title}</div>
-                  {post.author ? (
-                    <div className='tag-card__author'>{post.author}</div>
-                  ) : null}
-                  {post.published ? (
-                    <div className='tag-card__date'>{post.published}</div>
-                  ) : null}
+            <Link
+              key={post.pageId}
+              href={post.url}
+              className='notion-collection-card'
+              style={{ display: 'block' }}
+            >
+              {post.cover ? (
+                <div className='notion-collection-card-cover'>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={post.cover} alt='' />
                 </div>
-              </Link>
+              ) : null}
 
-              <div className='tag-card__body'>
+              <div className='notion-collection-card-body'>
+                <div className='notion-page-title-text'>{post.title}</div>
+
+                {post.published ? (
+                  <div className='notion-property-text' style={{ marginTop: 6 }}>
+                    {post.published}
+                  </div>
+                ) : null}
+
                 {post.summary ? (
-                  <div className='tag-card__summary'>{post.summary}</div>
+                  <div className='notion-property-text' style={{ marginTop: 8 }}>
+                    {post.summary}
+                  </div>
                 ) : null}
               </div>
-            </li>
+            </Link>
           ))}
-        </ul>
+        </div>
 
         <div className='tag-archive-back'>
-          <Link href={blogIndexUrl} className='notion-link'>
-            ← All Posts
-          </Link>
+          <Link href={blogIndexUrl}>{'←'} All Posts</Link>
         </div>
       </div>
     </NotionPage>
