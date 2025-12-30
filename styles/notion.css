@@ -539,20 +539,23 @@
 
 .tag-card__coverTitle {
   position: absolute;
-  left: 12px;
-  right: 12px;
-  top: 12px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.18)
-  );
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 12px 16px;
+  border-radius: 0;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
   color: #fff;
-  font-size: 14px;
-  line-height: 1.2;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.15;
   backdrop-filter: blur(6px);
+}
+
+.notion .tag-card__coverTitle {
+  font-family: 'Alice', 'Times New Roman', serif;
 }
 
 .tag-card__author {
