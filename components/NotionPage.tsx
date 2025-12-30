@@ -165,20 +165,19 @@ const propertyLastEditedTimeValue = (
 }
 
 const propertyDateValue = (
-  { data, schema, pageHeader }: any,
+  { data }: any,
   defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && schema?.name?.toLowerCase() === 'published') {
-    const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
+  const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
+  if (!publishDate) return defaultFn()
 
-    if (publishDate) {
-      return `${formatDate(publishDate, {
-        month: 'long'
-      })}`
-    }
-  }
+  const pretty = new Date(publishDate).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  })
 
-  return defaultFn()
+  return pretty
 }
 
 const propertyTextValue = (
