@@ -4,7 +4,12 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { type PageBlock } from 'notion-types'
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import {
+  formatDate,
+  getBlockTitle,
+  getPageProperty,
+  parsePageId
+} from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
@@ -21,9 +26,12 @@ import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
+import { isHiddenTag, tagToSlug } from '@/lib/tags'
 
+import { ClickableCollection } from './ClickableCollection'
 import { Footer } from './Footer'
 import { Loading } from './Loading'
+import { NextLink } from './NextLink'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
@@ -105,10 +113,11 @@ const Code = dynamic(() =>
   })
 )
 
-const Collection = dynamic(() =>
+const DefaultCollection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then(
     (m) => m.Collection
-  )
+  ),
+  { ssr: false }
 )
 const Equation = dynamic(() =>
   import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
@@ -182,21 +191,86 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+const propertySelectValue = (
+  { schema }: any,
+  defaultFn: () => React.ReactNode
+) => {
+  const name = schema?.name?.toLowerCase()
+  const node = defaultFn()
+
+  let textContent = ''
+  if (typeof node === 'string') {
+    textContent = node.trim()
+  } else if (React.isValidElement(node)) {
+    const child = (node as any).props?.children
+    if (typeof child === 'string') {
+      textContent = child.trim()
+    } else if (Array.isArray(child)) {
+      textContent = child.join('').trim()
+    }
+  }
+
+  if (name === 'author') {
+    return textContent ? (
+      <span className='notion-author-inline'>By {textContent}</span>
+    ) : (
+      node
+    )
+  }
+
+  if (name !== 'tags') return node
+
+  if (!textContent || isHiddenTag(textContent)) return node
+
+  const slug = tagToSlug(textContent)
+  if (!slug) return node
+
+  return (
+    <Link href={`/tag/${slug}`} className='notion-tag-link'>
+      {node}
+    </Link>
+  )
+}
+
+const BLOG_INDEX_PAGE_ID = '26449883313980758e9df71e17fd52bc'
+
 export function NotionPage({
   site,
   recordMap,
   error,
-  pageId
-}: types.PageProps) {
+  pageId,
+  children
+}: types.PageProps & { children?: React.ReactNode }) {
   const router = useRouter()
   const lite = useSearchParam('lite')
+
+  const isBlogIndexPage = React.useMemo(
+    () =>
+      parsePageId(pageId) === parsePageId(BLOG_INDEX_PAGE_ID) &&
+      !!BLOG_INDEX_PAGE_ID,
+    [pageId]
+  )
+
+  const collectionComponent = React.useMemo(() => {
+    if (!isBlogIndexPage) {
+      return DefaultCollection
+    }
+
+    const BlogCollection = (props: any) => (
+      <ClickableCollection>
+        <DefaultCollection {...props} />
+      </ClickableCollection>
+    )
+
+    return BlogCollection
+  }, [isBlogIndexPage])
 
   const components = React.useMemo<Partial<NotionComponents>>(
     () => ({
       nextLegacyImage: Image,
-      nextLink: Link,
+      nextLink: NextLink,
       Code,
-      Collection,
+      Collection: collectionComponent,
       Equation,
       Pdf,
       Modal,
@@ -204,9 +278,10 @@ export function NotionPage({
       Header: NotionPageHeader,
       propertyLastEditedTimeValue,
       propertyTextValue,
-      propertyDateValue
+      propertyDateValue,
+      propertySelectValue
     }),
-    []
+    [collectionComponent]
   )
 
   // lite mode is for oembed
@@ -250,8 +325,6 @@ export function NotionPage({
     ),
     [block, recordMap, isBlogPost]
   )
-
-  const footer = React.useMemo(() => <Footer />, [])
 
   if (router.isFallback) {
     return <Loading />
@@ -309,31 +382,37 @@ export function NotionPage({
       {isLiteMode && <BodyClassName className='notion-lite' />}
       {resolvedDarkMode && <BodyClassName className='dark-mode' />}
 
-      <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
-        )}
-        darkMode={resolvedDarkMode}
-        components={components}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : undefined}
-        pageAside={pageAside}
-        footer={footer}
-      />
-
+      <div className={styles.notionFrame}>
+        <NotionRenderer
+          bodyClassName={cs(
+            styles.notion,
+            pageId === site.rootNotionPageId && 'index-page'
+          )}
+          darkMode={resolvedDarkMode}
+          components={components}
+          recordMap={recordMap}
+          rootPageId={site.rootNotionPageId}
+          rootDomain={site.domain}
+          fullPage={!isLiteMode}
+          previewImages={!!recordMap.preview_images}
+          showCollectionViewDropdown={false}
+          showTableOfContents={showTableOfContents}
+          minTableOfContentsItems={minTableOfContentsItems}
+          defaultPageIcon={config.defaultPageIcon}
+          defaultPageCover={config.defaultPageCover}
+          defaultPageCoverPosition={config.defaultPageCoverPosition}
+          mapPageUrl={siteMapPageUrl}
+          mapImageUrl={mapImageUrl}
+          searchNotion={config.isSearchEnabled ? searchNotion : undefined}
+          pageAside={pageAside}
+          footer={
+            <>
+              {children ? <div className='tag-injected'>{children}</div> : null}
+              <Footer />
+            </>
+          }
+        />
+      </div>
     </>
   )
 }

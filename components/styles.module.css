@@ -57,7 +57,7 @@
 }
 
 .footerNavInner {
-  max-width: 1100px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 0 16px;
 
@@ -173,7 +173,7 @@
 
 .footer {
   width: 100%;
-  max-width: 1100px;
+  max-width: 960px;
   margin: auto auto 0;
   padding: 8px;
 
@@ -323,6 +323,10 @@
 
 .pageActions a:hover {
   transition: all 50ms ease-out;
+}
+
+.notionFrame {
+  background: var(--bg-color);
 }
 
 .likeTweet:hover {

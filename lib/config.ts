@@ -173,6 +173,9 @@ export const posthogConfig: Partial<PostHogConfig> = {
   api_host: 'https://app.posthog.com'
 }
 
+// Notion page used as the shell for tag archive pages
+export const tagArchiveNotionPageId = '2d949883313980b891eddda34009e3b5'
+
 function cleanPageUrlMap(
   pageUrlMap: PageUrlOverridesMap,
   {

@@ -244,6 +244,24 @@
   text-decoration: none;
 }
 
+.notion-tag-link {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.notion-tag-link:hover .notion-property-multi_select-item,
+.notion-tag-link:hover .notion-property-select-item {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  transition: filter 120ms ease, transform 120ms ease;
+}
+
+.notion-tag-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .notion-red_background,
 .notion-pink_background,
 .notion-blue_background,
@@ -378,8 +396,9 @@
   position: relative;
   border: 1px solid var(--fg-color-1);
   border-radius: 8px;
-  transition: border-color 200ms ease-out;
   overflow: hidden;
+  transform: translateZ(0);
+  transition: box-shadow 180ms ease, filter 180ms ease, border-color 200ms ease-out;
 }
 
 /* Gradient outline layer (always full-size, just invisible at first) */
@@ -410,10 +429,56 @@
 /* Hover: fade the border on instead of resizing it */
 .notion-bookmark:hover {
   border-color: transparent;
+  filter: brightness(1.06);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
 }
 
 .notion-bookmark:hover::after {
   opacity: 1;
+}
+
+/* Bookmark hover “glow up” like notion gallery covers */
+/* Bookmark hover glow up */
+.notion-bookmark *,
+.notion-bookmark img {
+  border-radius: inherit;
+}
+
+.notion-bookmark .notion-bookmark-image,
+.notion-bookmark .notion-bookmark-image img,
+.notion-bookmark .notion-bookmark-cover,
+.notion-bookmark .notion-bookmark-cover img {
+  border-radius: inherit;
+}
+
+.notion-bookmark:hover .notion-bookmark-image img,
+.notion-bookmark:hover .notion-bookmark-cover img {
+  filter: brightness(1.1);
+  transition: filter 180ms ease;
+}
+
+.notion-author-inline {
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font-weight: 600;
+}
+
+.dark-mode .notion-bookmark:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+
+/* Remove any lingering bookmark shadows/filters */
+.notion-bookmark,
+.notion-bookmark *,
+.notion-bookmark::before,
+.notion-bookmark::after,
+.notion-bookmark > a::before,
+.notion-bookmark > a::after {
+  box-shadow: none !important;
+  filter: none !important;
 }
 
 .notion-block-ab9a258d6cf444f3bb40dc2600feae91 .notion-column {
@@ -438,4 +503,149 @@
 
 .notion-equation.notion-equation-block{
   align-items: center;
+}
+
+/* ---------- Tag archive layout ---------- */
+
+.tag-injected {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2vw 48px;
+}
+
+.tag-injected,
+.tag-injected * {
+  color: var(--fg-color);
+}
+
+.tag-archive-title {
+  text-align: center;
+  margin: 24px 0 8px;
+}
+
+.tag-archive-tags {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 8px 0 18px;
+}
+
+.tag-archive-tagLink {
+  padding-bottom: 2px;
+  font-size: 14px;
+}
+
+.tag-archive-tagLink--active {
+  font-weight: 700;
+  opacity: 1;
+}
+
+.tag-archive-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 6vmin;
+}
+
+.tag-card {
+  border-radius: 16px;
+}
+
+.tag-card__coverLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tag-card__cover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+  transition: filter 150ms linear;
+  filter: none;
+}
+
+.tag-card:hover .tag-card__cover {
+  filter: brightness(120%);
+}
+
+.tag-card__cover img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.tag-card__coverTitle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 12px 16px;
+  border-radius: 0;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.15;
+  backdrop-filter: blur(6px);
+}
+
+.notion .tag-card__coverTitle {
+  font-family: 'Alice', 'Times New Roman', serif;
+}
+
+.tag-card__author {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.15)
+  );
+  color: #fff;
+  font-size: 13px;
+  line-height: 1;
+  backdrop-filter: blur(6px);
+}
+
+.tag-card__date {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.15)
+  );
+  color: #fff;
+  font-size: 13px;
+  line-height: 1;
+  backdrop-filter: blur(6px);
+}
+
+.tag-card__body {
+  padding: 10px;
+  text-align: left;
+}
+
+.tag-card__summary {
+  margin: 0;
+  text-align: left;
+}
+
+.tag-archive-back {
+  margin-top: 18px;
+  text-align: center;
 }

@@ -29,6 +29,51 @@ body {
   overflow-x: hidden;
 }
 
+/* --- Light mode palette softening --- */
+:root {
+  --oa-bg: #e3e6eb;
+  --oa-surface: #ffffff;
+  --oa-text: #1f2937;
+  --oa-muted: #4b5563;
+  --oa-border: rgba(31, 41, 55, 0.12);
+  --oa-accent: #336699;
+  --oa-accent-soft: #99bbee;
+}
+
+body:not(.dark-mode) {
+  background: var(--oa-bg);
+  color: var(--oa-text);
+}
+
+body:not(.dark-mode) .notion,
+body:not(.dark-mode) .notion-frame,
+body:not(.dark-mode) .notion-page,
+body:not(.dark-mode) .notion-page-content {
+  --bg-color: var(--oa-bg);
+  background: var(--oa-bg);
+}
+
+body:not(.dark-mode) .notion {
+  --fg-color: var(--oa-text);
+  --fg-color-1: var(--oa-border);
+  --fg-color-2: var(--oa-muted);
+  --fg-color-3: var(--oa-muted);
+}
+
+body:not(.dark-mode) .notion-collection-card,
+body:not(.dark-mode) .notion-collection-card {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: var(--oa-border);
+  backdrop-filter: saturate(140%) blur(6px);
+}
+
+/* keep bookmarks transparent (no shaded background) in light mode */
+body:not(.dark-mode) .notion-bookmark {
+  background: transparent;
+  border-color: var(--fg-color-1);
+  backdrop-filter: none;
+}
+
 h1,
 h2,
 h3,
