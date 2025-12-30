@@ -2,6 +2,7 @@
 import { type GetStaticPaths, type GetStaticProps } from 'next'
 import Link from 'next/link'
 
+import { BlogCard } from '@/components/BlogCard'
 import { NotionPage } from '@/components/NotionPage'
 import { domain, tagArchiveNotionPageId } from '@/lib/config'
 import { getPublishedPosts } from '@/lib/get-published-posts'
@@ -121,26 +122,7 @@ export default function TagArchivePage(props: TagArchiveProps) {
 
         <ul className='tag-archive-list'>
           {posts.map((post) => (
-            <li key={post.pageId} className='tag-card'>
-              <Link href={post.url} className='tag-card__coverLink'>
-                <div className='tag-card__cover'>
-                  {post.cover ? <img src={post.cover} alt={post.title} /> : null}
-                  <div className='tag-card__coverTitle'>{post.title}</div>
-                  {post.author ? (
-                    <div className='tag-card__author'>By {post.author}</div>
-                  ) : null}
-                  {post.published ? (
-                    <div className='tag-card__date'>{post.published}</div>
-                  ) : null}
-                </div>
-              </Link>
-
-              <div className='tag-card__body'>
-                {post.summary ? (
-                  <div className='tag-card__summary'>{post.summary}</div>
-                ) : null}
-              </div>
-            </li>
+            <BlogCard key={post.pageId} post={post} />
           ))}
         </ul>
 
