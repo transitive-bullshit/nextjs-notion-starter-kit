@@ -95,7 +95,9 @@ export default function TagArchivePage(props: TagArchiveProps) {
   return (
     <NotionPage {...(notionPageProps as PageProps)}>
       <div className='tag-injected'>
-        <h1 className='tag-archive-title'>Posts tagged "{tag}"</h1>
+        <h1 id='tag-content' className='tag-archive-title'>
+          Posts tagged "{tag}"
+        </h1>
 
         {!!allTags.length && (
           <div className='tag-archive-tags'>
@@ -107,7 +109,7 @@ export default function TagArchivePage(props: TagArchiveProps) {
               return (
                 <Link
                   key={t}
-                  href={`/tag/${slug}`}
+                  href={`/tag/${slug}#tag-content`}
                   className={`notion-link tag-archive-tagLink ${isActive ? 'tag-archive-tagLink--active' : ''}`}
                 >
                   {t}

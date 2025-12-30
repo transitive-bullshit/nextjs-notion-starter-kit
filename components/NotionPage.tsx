@@ -227,7 +227,7 @@ const propertySelectValue = (
   if (!slug) return node
 
   return (
-    <Link href={`/tag/${slug}`} className='notion-tag-link'>
+    <Link href={`/tag/${slug}#tag-content`} className='notion-tag-link'>
       {node}
     </Link>
   )
