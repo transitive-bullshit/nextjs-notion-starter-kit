@@ -41,6 +41,7 @@ export async function getPublishedPosts(): Promise<PublishedPost[]> {
 
   for (const canonicalPageId of Object.keys(siteMap.canonicalPageMap)) {
     const pageId = siteMap.canonicalPageMap[canonicalPageId]
+    if (!pageId) continue
     const recordMap: ExtendedRecordMap | undefined = siteMap.pageMap[pageId]
     if (!recordMap) continue
 
