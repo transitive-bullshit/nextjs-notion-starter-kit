@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import cs from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/legacy/image'
@@ -20,13 +21,13 @@ import {
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
 import { useSearchParam } from 'react-use'
 
-import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
 import { isHiddenTag, tagToSlug } from '@/lib/tags'
+import type * as types from '@/lib/types'
 
 import { ClickableCollection } from './ClickableCollection'
 import { Footer } from './Footer'
@@ -256,11 +257,13 @@ export function NotionPage({
       return DefaultCollection
     }
 
-    const BlogCollection = (props: any) => (
-      <ClickableCollection>
-        <DefaultCollection {...props} />
-      </ClickableCollection>
-    )
+    function BlogCollection(props: any) {
+      return (
+        <ClickableCollection>
+          <DefaultCollection {...props} />
+        </ClickableCollection>
+      )
+    }
 
     return BlogCollection
   }, [isBlogIndexPage])

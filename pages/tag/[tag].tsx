@@ -1,3 +1,4 @@
+/* eslint-disable simple-import-sort/imports */
 import { type GetStaticPaths, type GetStaticProps } from 'next'
 import Link from 'next/link'
 
@@ -44,7 +45,7 @@ export const getStaticProps: GetStaticProps<TagArchiveProps> = async (
     return { notFound: true, revalidate: 60 }
   }
 
-  const [posts] = await Promise.all([getPublishedPosts()])
+  const posts = await getPublishedPosts()
 
   const shellPageId = tagArchiveNotionPageId || BLOG_INDEX_PAGE_ID
   const shellProps = await resolveNotionPage(domain, shellPageId)
@@ -67,13 +68,12 @@ export const getStaticProps: GetStaticProps<TagArchiveProps> = async (
   const allTags = Array.from(
     new Set(
       posts
-        .map((p) => p.tags.map((t) => normalizeTag(t)))
-        .flat()
+        .flatMap((p) => p.tags.map((t) => normalizeTag(t)))
         .filter(Boolean)
     )
   )
     .filter((t) => !isHiddenTag(t))
-    .sort((a, b) => a.localeCompare(b))
+    .toSorted((a, b) => a.localeCompare(b))
 
   const blogIndexUrl = 'https://www.openalmond.com/the-almond-branch-blog'
 
@@ -122,10 +122,7 @@ export default function TagArchivePage(props: TagArchiveProps) {
             <li key={post.pageId} className='tag-card'>
               <Link href={post.url} className='tag-card__coverLink'>
                 <div className='tag-card__cover'>
-                  {post.cover ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={post.cover} alt={post.title} />
-                  ) : null}
+                  {post.cover ? <img src={post.cover} alt={post.title} /> : null}
                   <div className='tag-card__coverTitle'>{post.title}</div>
                   {post.author ? (
                     <div className='tag-card__author'>By {post.author}</div>

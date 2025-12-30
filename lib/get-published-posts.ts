@@ -1,11 +1,11 @@
 import { type PageBlock } from 'notion-types'
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import { getBlockTitle, getPageProperty } from 'notion-utils'
 
-import { type ExtendedRecordMap } from './types'
 import { getSiteMap } from './get-site-map'
-import { mapPageUrl } from './map-page-url'
 import { mapImageUrl } from './map-image-url'
+import { mapPageUrl } from './map-page-url'
 import { normalizeTag } from './tags'
+import { type ExtendedRecordMap } from './types'
 
 export interface PublishedPost {
   pageId: string
@@ -76,7 +76,7 @@ export async function getPublishedPosts(): Promise<PublishedPost[]> {
           : null
 
     const published = publishedTime
-      ? formatDate(publishedTime, {
+      ? new Date(publishedTime).toLocaleDateString('en-US', {
           month: 'short',
           day: 'numeric',
           year: 'numeric'

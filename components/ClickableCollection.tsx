@@ -5,9 +5,7 @@ import { isHiddenTag, tagToSlug } from '@/lib/tags'
 
 const TAG_SELECTOR = '.notion-property-multi_select .notion-property-select'
 
-export const ClickableCollection = (
-  props: React.HTMLAttributes<HTMLDivElement>
-) => {
+export function ClickableCollection(props: React.HTMLAttributes<HTMLDivElement>) {
   const router = useRouter()
   const rootRef = React.useRef<HTMLDivElement>(null)
 
@@ -37,7 +35,7 @@ export const ClickableCollection = (
       event.preventDefault()
       event.stopPropagation()
 
-      router.push(`/tag/${slug}`)
+      void router.push(`/tag/${slug}`)
     }
 
     rootEl.addEventListener('click', handleClick, true)
