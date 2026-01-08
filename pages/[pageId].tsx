@@ -40,7 +40,7 @@ export async function getStaticPaths() {
     ...new Set([
       ...Object.keys(siteMap.canonicalPageMap),
       ...Object.keys(pageUrlOverrides)
-    ])  
+    ])
   ]
 
   const staticPaths = {
