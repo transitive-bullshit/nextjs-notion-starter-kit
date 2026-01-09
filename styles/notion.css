@@ -1139,7 +1139,7 @@
   font-family: 'DM Mono', monospace;
 }
 
-.notion-callout notion-link {
+.notion-callout .notion-link {
   width: 100%;
 }
 
