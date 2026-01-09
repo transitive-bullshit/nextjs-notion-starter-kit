@@ -429,6 +429,62 @@ export const NotionPage: React.FC<types.PageProps> = ({
     addReactComponentAfterHeader(<UpdateNoticeBanner />)
   }, [pageClass])
 
+  React.useEffect(() => {
+    const gapToken = '[[tight-heading-gap]]'
+    const blankToken = '[[blank-line]]'
+    const textBlocks = Array.from(
+      document.querySelectorAll<HTMLElement>('.notion-text')
+    )
+    let hasGapToken = false
+
+    textBlocks.forEach((block) => {
+      const textContent = block.textContent || ''
+      const hasGap = textContent.includes(gapToken)
+      const hasBlank = textContent.includes(blankToken)
+      if (!hasGap && !hasBlank) return
+
+      if (hasGap) {
+        hasGapToken = true
+      }
+
+      const walker = document.createTreeWalker(
+        block,
+        NodeFilter.SHOW_TEXT,
+        null
+      )
+      let textNode: Text | null
+      while ((textNode = walker.nextNode() as Text | null)) {
+        const nodeValue = textNode.nodeValue || ''
+        let updatedValue = nodeValue
+        if (updatedValue.includes(gapToken)) {
+          updatedValue = updatedValue.split(gapToken).join('')
+        }
+        if (updatedValue.includes(blankToken)) {
+          updatedValue = updatedValue.split(blankToken).join('')
+        }
+        if (updatedValue !== nodeValue) {
+          textNode.nodeValue = updatedValue
+        }
+      }
+
+      const cleaned = (block.textContent || '').replace(/\s+/g, '')
+      if (hasBlank && cleaned.length === 0) {
+        block.classList.add('notion-blank-line')
+        block.innerHTML =
+          '<span class="notion-blank-line-spacer" aria-hidden="true"></span>'
+      }
+      if (hasGap && cleaned.length === 0) {
+        block.style.display = 'none'
+      }
+    })
+
+    document.body.classList.toggle('page-tight-heading-gap', hasGapToken)
+
+    return () => {
+      document.body.classList.remove('page-tight-heading-gap')
+    }
+  }, [pageId])
+
   // 2) Filter .custom-wrapper-class i.e. the course cards each time searchValue or department changes
   React.useEffect(() => {
     if (pageClass === 'notion-home') {

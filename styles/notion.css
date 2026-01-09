@@ -173,6 +173,26 @@
   display: block;
 }
 
+.page-tight-heading-gap .notion-text + .notion-h1,
+.page-tight-heading-gap .notion-text + .notion-h2,
+.page-tight-heading-gap .notion-text + .notion-h3,
+.page-tight-heading-gap .notion-list + .notion-h1,
+.page-tight-heading-gap .notion-list + .notion-h2,
+.page-tight-heading-gap .notion-list + .notion-h3 {
+  margin-top: 0.15rem;
+}
+
+.notion-text.notion-blank-line {
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.notion-text.notion-blank-line .notion-blank-line-spacer {
+  display: block;
+  height: 1rem;
+}
+
 .notion-h1 {
   font-family: 'Tobias';
   font-weight: 200;
@@ -1119,7 +1139,7 @@
   font-family: 'DM Mono', monospace;
 }
 
-.notion-callout notion-link {
+.notion-callout .notion-link {
   width: 100%;
 }
 
