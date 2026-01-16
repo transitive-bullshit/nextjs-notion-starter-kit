@@ -51,7 +51,7 @@ export function PageHead({
         key='theme-color-dark'
       />
 
-      <meta name='robots' content='index,follow' />
+      <meta name='robots' content={process.env.NEXT_PUBLIC_DISABLE_SEO === 'true' ? 'noindex,nofollow' : 'index,follow'} />
       <meta property='og:type' content='website' />
 
       {site && (

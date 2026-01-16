@@ -18,18 +18,18 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   res.setHeader('Cache-Control', 'public, max-age=86400, immutable')
   res.setHeader('Content-Type', 'text/plain')
 
-  // only allow the site to be crawlable on the production deployment
-  if (process.env.VERCEL_ENV === 'production') {
+  // Disable SEO if DISABLE_SEO env var is set, or if not production
+  const disableSeo = process.env.DISABLE_SEO === 'true' || process.env.VERCEL_ENV !== 'production'
+  
+  if (disableSeo) {
+    res.write(`User-agent: *
+Disallow: /
+`)
+  } else {
     res.write(`User-agent: *
 Allow: /
 Disallow: /api/get-tweet-ast/*
 Disallow: /api/search-notion
-
-Sitemap: ${host}/sitemap.xml
-`)
-  } else {
-    res.write(`User-agent: *
-Disallow: /
 
 Sitemap: ${host}/sitemap.xml
 `)
