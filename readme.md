@@ -43,11 +43,50 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 This project requires a recent version of Node.js (we recommend >= 16).
 
 1. Fork / clone this repo
-2. Change a few values in [site.config.ts](./site.config.ts)
+2. Configure your site by either:
+   - Editing [site.config.ts](./site.config.ts) directly
+   - Creating a `.env` file based on `.env.example` to override default values
 3. `npm install`
 4. `npm run dev` to test locally
 5. `npm run deploy` to deploy to vercel 💪
 6. Double check your [Vercel project settings](#vercel-configuration)
+
+### Environment Variables Configuration
+
+The easiest way to configure your site is by creating a `.env` file. Copy `.env.example` to `.env` and customize the values:
+
+```bash
+# Basic site configuration
+NEXT_PUBLIC_SITE_NAME="Your Site Name"
+NEXT_PUBLIC_SITE_DOMAIN="yoursite.com"
+NEXT_PUBLIC_SITE_AUTHOR="Your Name"
+NEXT_PUBLIC_SITE_DESCRIPTION="Your site description"
+
+# Social media handles
+NEXT_PUBLIC_SOCIAL_TWITTER="yourtwitter"
+NEXT_PUBLIC_SOCIAL_GITHUB="yourgithub"
+NEXT_PUBLIC_SOCIAL_LINKEDIN="yourlinkedin"
+NEXT_PUBLIC_SOCIAL_YOUTUBE="@youryoutube"
+
+# Notion configuration
+NOTION_ROOT_PAGE_ID="your-notion-page-id"
+NOTION_ROOT_SPACE_ID="optional-workspace-id"
+
+# Feature flags
+PREVIEW_IMAGES_ENABLED="true"
+REDIS_ENABLED="false"
+
+# Optional customization
+DEFAULT_PAGE_ICON="optional-default-icon"
+DEFAULT_PAGE_COVER="optional-cover-image-url"
+DEFAULT_PAGE_COVER_POSITION="0.5"
+
+# Custom navigation (optional)
+NAVIGATION_STYLE="default"  # or "custom"
+NAVIGATION_LINKS='[{"title": "About", "pageId": "page-id"}, {"title": "Contact", "pageId": "page-id"}]'
+```
+
+Any values not defined in your `.env` file will use the defaults from `site.config.ts`.
 
 I tried to make configuration as easy as possible — All you really need to do to get started is edit `rootNotionPageId`.
 
@@ -108,7 +147,7 @@ REDIS_PASSWORD='TODO'
 
 If you're not sure which Redis provider to use, we recommend [Redis Labs](https://redis.com), which provides a free plan.
 
-Note that preview images and redis caching are both optional features. If you’d rather not deal with them, just disable them in your site config.
+Note that preview images and redis caching are both optional features. If you'd rather not deal with them, just disable them in your site config.
 
 ## Styles
 

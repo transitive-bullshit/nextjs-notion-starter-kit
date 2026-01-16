@@ -40,7 +40,7 @@
     "fathom-client": "^3.4.1",
     "ky": "^1.8.1",
     "lqip-modern": "^2.2.1",
-    "next": "^15.5.3",
+    "next": "^15.5.9",
     "notion-client": "^7.7.0",
     "notion-types": "^7.7.0",
     "notion-utils": "^7.7.0",
@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@fisch0920/config": "^1.2.1",
-    "@next/bundle-analyzer": "^15.3.3",
+    "@next/bundle-analyzer": "^15.5.9",
     "@types/node": "^24.5.2",
     "@types/prismjs": "^1.26.5",
     "@types/react": "^19.1.13",
