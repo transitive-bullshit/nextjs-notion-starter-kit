@@ -53,9 +53,14 @@ const TermsOfService = () => {
               </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
                 Coursetexts provides access to course materials and notes with
-                authorization from Canvas and Harvard University. The service
-                allows professors to update their course pages and students to
-                access course materials. All course materials are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) license.
+                authorization from Canvas only. The service allows professors to
+                update their course pages and students to access course
+                materials. Coursetexts has neither sought nor received
+                permission from any university to open-source courses that were
+                taught at that university. It is not affiliated with, sponsored
+                by, or endorsed by any university. All course materials are
+                licensed under the Creative Commons
+                Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) license.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>3. User Responsibilities</h2>
               <p className='notion-text'>Users of the Site agree to:</p>
@@ -71,7 +76,10 @@ const TermsOfService = () => {
                 <li>Not interfere with the proper functioning of the Site</li>
                 <li>Not distribute or share access credentials</li>
                 <li>Respect intellectual property rights</li>
-                <li>Comply with the CC BY-NC-SA license terms when using course materials</li>
+                <li>
+                  Comply with the CC BY-NC-SA license terms when using course
+                  materials
+                </li>
               </ul>
               <h2
                 style={{ marginBottom: '1rem' }}
@@ -80,7 +88,16 @@ const TermsOfService = () => {
                 4. Intellectual Property
               </h2>
               <p style={{ marginBottom: '2rem' }}>
-                All course content on the Site is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) license. This means you are free to share and adapt the materials for non-commercial purposes, as long as you give appropriate credit, indicate if changes were made, and distribute your contributions under the same license. All other content on the Site, including but not limited to text, graphics, logos, and software, is the property of Coursetexts or its content providers and is protected by copyright and other intellectual property laws.
+                All course content on the Site is licensed under the Creative
+                Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+                license. This means you are free to share and adapt the
+                materials for non-commercial purposes, as long as you give
+                appropriate credit, indicate if changes were made, and
+                distribute your contributions under the same license. All other
+                content on the Site, including but not limited to text,
+                graphics, logos, and software, is the property of Coursetexts or
+                its content providers and is protected by copyright and other
+                intellectual property laws.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>5. Professor Access</h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
