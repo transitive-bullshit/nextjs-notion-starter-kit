@@ -51,9 +51,11 @@ const PrivacyAndPolicy = () => {
                 is committed to protecting your privacy. This Privacy Policy
                 explains how we collect, use, disclose, and safeguard your
                 information when you visit our website coursetexts.com (
-                <span>&quot;the Site&quot;</span>) or use our services. We
-                operate with explicit consent from both Canvas and Harvard
-                University to provide our services.
+                <span>&quot;the Site&quot;</span>) or use our services.
+                Coursetexts has neither sought nor received permission from any
+                university to open-source courses that were taught at that
+                university. It is not affiliated with, sponsored by, or endorsed
+                by any university.
               </p>
               <h2 style={{ marginBottom: '1rem' }}>
                 2. Information We Collect
@@ -171,8 +173,12 @@ const PrivacyAndPolicy = () => {
               </h2>
               <p style={{ marginBottom: '2rem' }} className='notion-text'>
                 We operate with explicit consent and authorization from Canvas
-                and the faculty members whose course material we host. They do
-                not have access to any personal information from this site.
+                for our platform operations and from the faculty members whose
+                course materials we host. Coursetexts has neither sought nor
+                received permission from any university to open-source courses
+                that were taught at that university. Faculty members and
+                universities do not have access to any personal information from
+                this site.
               </p>
 
               <h2 style={{ marginBottom: '1rem' }}>11. Contact Us</h2>
