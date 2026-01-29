@@ -89,16 +89,6 @@ export function FooterImpl() {
           </a>
         )}
 
-        {config.pixiv && (
-          <a
-            className={styles.pixiv}
-            href={`https://www.pixiv.net/users/${config.pixiv}`}
-            rel='me'
-          >
-            <SiPixiv />
-          </a>
-        )}
-
         {config.zhihu && (
           <a
             className={styles.zhihu}
