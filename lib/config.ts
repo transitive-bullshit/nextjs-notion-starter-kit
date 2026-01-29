@@ -20,7 +20,6 @@ import {
   type Site
 } from './types'
 
-export const pixiv = '2781527'
 export const myCat = "https://seto-life.vercel.app/"
 
 export const rootNotionPageId: string = parsePageId(
