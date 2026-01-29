@@ -65,11 +65,11 @@ export default siteConfig({
     },
      {
        title: 'BLOG',
-       pageId: 'Blog-1d5ee83bb5cc4956b1544d578e92beb6'
+       pageId: 'Blog-6d3fa135bc944d3d93d5c71007f874c9'
      },
      {
        title: 'GALLERY',
-       pageId: 'Gallery-ef6cd60929ab4ba097569da47d42a903'
+       pageId: 'Gallery-8135fc5f12fb4115970586bd53484963'
      }
    ]
 })
