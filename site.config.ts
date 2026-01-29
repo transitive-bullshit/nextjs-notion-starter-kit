@@ -13,7 +13,6 @@ export default siteConfig({
   domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
   author: 'KujiraTiku',
   // open graph metadata (optional)
-  // open graph metadata (optional)
   description: '清熱鯨騰草',
 
   // social usernames (optional)
@@ -24,7 +23,6 @@ export default siteConfig({
   mastodon: 'https://fedibird.com/@TikuTalk', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
-  // pixiv: '2781527',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults

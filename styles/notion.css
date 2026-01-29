@@ -27,7 +27,6 @@ img{
 
 .notion-page {
   padding-bottom: calc(max(5vh, 32px)) !important;
-  line-height: 1.65;
 }
 
 .index-page {
@@ -60,14 +59,18 @@ img{
   overflow-x: auto;
 }
 
+/*blog 不显示标题*/
+.notion-collection-header {
+  display: none;
+}
+
 .notion-nav-header-rhs {
   gap: 0.5rem;
 }
 
 .notion-gallery-grid {
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  grid-gap: 6vmin;
-  gap: 6vmin;
+  gap: 2vmin;
 }
 
 .notion-gallery-grid .notion-page-icon-inline {
@@ -77,6 +80,10 @@ img{
 .notion-gallery-grid .notion-page-title-text {
   font-size: 2em;
   white-space: unset;
+}
+
+.notion-collection-card-property {
+  padding: 2px 0;
 }
 
 .notion-gallery-grid .notion-collection-card-property {
@@ -101,6 +108,16 @@ img{
   overflow: visible;
 }
 
+/* 列表状态影藏多余的标题 */
+.notion-list-item-body .notion-property-title {
+  display: none;
+}
+
+/* 看板布局 影响下方左右拉动条*/
+.notion-board {
+  overflow: hidden;
+}
+
 .notion-collection-card-cover {
   border-radius: 16px;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
@@ -117,7 +134,7 @@ img{
 }
 
 .notion-collection-card-body {
-  padding: 10px;
+  padding: 3px;
 }
 
 /* only target safari */
