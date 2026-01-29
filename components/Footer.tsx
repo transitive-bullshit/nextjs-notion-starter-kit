@@ -8,7 +8,6 @@ import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
 import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
 import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
-import { SiPixiv } from '@react-icons/all-files/si/SiPixiv'
 import * as React from 'react'
 
 import * as config from '@/lib/config'
