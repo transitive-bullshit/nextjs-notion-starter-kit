@@ -12,7 +12,7 @@ export default siteConfig({
   name: 'KujiraTiku',
   domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
   author: 'KujiraTiku',
-
+  // open graph metadata (optional)
   // open graph metadata (optional)
   description: '清熱鯨騰草',
 
