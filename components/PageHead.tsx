@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
@@ -19,6 +20,10 @@ export function PageHead({
   url?: string
   isBlogPost?: boolean
 }) {
+  const router = useRouter()
+  const path = router?.asPath?.split('#')[0]?.split('?')[0] ?? ''
+  const canonicalUrl = url ?? `${config.host}${path}`
+
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
@@ -83,11 +88,11 @@ export function PageHead({
         <meta name='twitter:card' content='summary' />
       )}
 
-      {url && (
+      {canonicalUrl && (
         <>
-          <link rel='canonical' href={url} />
-          <meta property='og:url' content={url} />
-          <meta property='twitter:url' content={url} />
+          <link rel='canonical' href={canonicalUrl} />
+          <meta property='og:url' content={canonicalUrl} />
+          <meta property='twitter:url' content={canonicalUrl} />
         </>
       )}
 
@@ -103,14 +108,14 @@ export function PageHead({
       <title>{title}</title>
 
       {/* Better SEO for the blog posts */}
-      {isBlogPost && (
+      {isBlogPost && canonicalUrl && (
         <script type='application/ld+json'>
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'BlogPosting',
-            '@id': `${url}#BlogPosting`,
-            mainEntityOfPage: url,
-            url,
+            '@id': `${canonicalUrl}#BlogPosting`,
+            mainEntityOfPage: canonicalUrl,
+            url: canonicalUrl,
             headline: title,
             name: title,
             description,
