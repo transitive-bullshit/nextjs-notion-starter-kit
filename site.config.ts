@@ -9,12 +9,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Next.js Notion Starter Kit',
-  domain: 'nextjs-notion-starter-kit.christopherleecyber.com',
+  name: 'Personal Site for Christopher John Lee',
+  domain: 'www.christopherleecyber.com',
   author: 'Christopher John Lee',
 
   // open graph metadata (optional)
-  description: 'Example Next.js Notion Starter Kit Site',
+  description: 'Personal Site for Christopher John Lee',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
