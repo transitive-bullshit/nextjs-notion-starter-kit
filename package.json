@@ -6,7 +6,7 @@
   "author": "Travis Fischer <travis@transitivebullsh.it>",
   "repository": "transitive-bullshit/nextjs-notion-starter-kit",
   "license": "MIT",
-  "packageManager": "pnpm@10.11.1",
+  "packageManager": "pnpm@10.28.2",
   "engines": {
     "node": ">=18"
   },
