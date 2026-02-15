@@ -57,8 +57,8 @@ export function FooterImpl() {
         {config.twitter && (
           <a
             className={styles.twitter}
-            href={`https://twitter.com/${config.twitter}`}
-            title={`Twitter @${config.twitter}`}
+            href={`https://x.com/${config.twitter}`}
+            title={`X @${config.twitter}`}
             target='_blank'
             rel='noopener noreferrer'
           >
