@@ -61,7 +61,6 @@
     "@types/react": "^19.2.14",
     "@types/react-body-classname": "^1.1.10",
     "@types/rss": "^0.0.32",
-    "cross-env": "^10.1.0",
     "eslint": "^9.39.2",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.8.1",
