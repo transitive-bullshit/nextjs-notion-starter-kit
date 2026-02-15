@@ -1,5 +1,5 @@
-import { AiOutlineRetweet } from '@react-icons/all-files/ai/AiOutlineRetweet'
-import { IoHeartOutline } from '@react-icons/all-files/io5/IoHeartOutline'
+import { LikeIcon } from '@/lib/icons/like'
+import { RetweetIcon } from '@/lib/icons/retweet'
 
 import styles from './styles.module.css'
 
@@ -16,7 +16,7 @@ export function PageActions({ tweet }: { tweet: string }) {
         rel='noopener noreferrer'
         title='Like this post on Twitter'
       >
-        <IoHeartOutline />
+        <LikeIcon />
       </a>
 
       <a
@@ -26,7 +26,7 @@ export function PageActions({ tweet }: { tweet: string }) {
         rel='noopener noreferrer'
         title='Retweet this post on Twitter'
       >
-        <AiOutlineRetweet />
+        <RetweetIcon />
       </a>
     </div>
   )
