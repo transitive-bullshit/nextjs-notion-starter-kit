@@ -260,57 +260,75 @@
   border-radius: 0.5rem;
   border-bottom-left-radius: 0.125rem;
   box-decoration-break: clone;
-
   background-color: none;
-
-  /* light yellow */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
-    #fff697 10.5%,
-    #fdf59d 85.29%,
+    #fdeed2 10.5%,
+    #fde4b5 85.29%,
     var(--bg-color)
   );
 }
 
-.notion-purple_background,
+.notion-purple_background {
+  background-image: linear-gradient(
+    119deg,
+    var(--bg-color),
+    #e4d3fd 10.5%,
+    #d3b6ff 85.29%,
+    var(--bg-color)
+  );
+}
 .notion-pink_background {
-  /* light pink */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
-    #f5b8d1 10.5%,
-    #f9bcd3 85.29%,
+    #ffd2e7 10.5%,
+    #ffadd3 85.29%,
     var(--bg-color)
   );
 }
 
-.notion-blue_background,
+.notion-blue_background {
+  background-image: linear-gradient(
+    119deg,
+    var(--bg-color),
+    #d9eafd 10.5%,
+    #b3d6ff 85.29%,
+    var(--bg-color)
+  );
+}
+
 .notion-gray_background {
-  /* light blue */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
-    #adedfc 10.5%,
-    #adebfd 85.29%,
+    #cfcfcf 10.5%,
+    #a0a0a0 85.29%,
     var(--bg-color)
   );
 }
 
-.notion-red_background,
+.notion-red_background {
+   background-image: linear-gradient(
+    119deg,
+    var(--bg-color),
+    #ffc3c3 10.5%,
+    #fba6a3 85.29%,
+    var(--bg-color)
+  );
+}
 .notion-orange_background {
-  /* light red */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
-    #f5c4ff 10.5%,
-    #e7a8fc 85.29%,
+    #ffe6b1 10.5%,
+    #ffd09b 85.29%,
     var(--bg-color)
   );
 }
 
 .notion-teal_background {
-  /* light green */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
@@ -321,12 +339,11 @@
 }
 
 .notion-brown_background {
-  /* dark blue */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
-    #96b8ec 10.5%,
-    #a6c3f0 85.29%,
+    #cab7ae 10.5%,
+    #b1998d 85.29%,
     var(--bg-color)
   );
 }
