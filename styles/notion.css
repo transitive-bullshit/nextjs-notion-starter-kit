@@ -66,6 +66,7 @@
 .notion-gallery-grid .notion-page-title-text {
   font-size: 2em;
   white-space: unset;
+  font-family: 'Alice', 'Times New Roman', serif;
 }
 
 .notion-gallery-grid .notion-collection-card-property {
