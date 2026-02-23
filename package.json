@@ -40,7 +40,7 @@
     "next": "^16.1.6",
     "notion-client": "^7.8.1",
     "notion-types": "^7.8.1",
-    "notion-utils": "^7.8.1",
+    "notion-utils": "^7.1.2",
     "p-map": "^7.0.4",
     "p-memoize": "^8.0.0",
     "posthog-js": "^1.249.4",
@@ -48,7 +48,7 @@
     "react": "^19.2.4",
     "react-body-classname": "^1.3.1",
     "react-dom": "^19.2.4",
-    "react-notion-x": "^7.8.1",
+    "react-notion-x": "^7.2.2",
     "react-tweet": "^3.3.0",
     "react-use": "^17.6.0",
     "rss": "^1.2.2"
