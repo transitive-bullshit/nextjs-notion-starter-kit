@@ -56,17 +56,6 @@ export const description: string = getSiteConfig('description', 'Notion Blog')
 export const language: string = getSiteConfig('language', 'en')
 
 // social accounts
-<<<<<<< HEAD
-export const twitter: string | null = getSiteConfig('twitter', null)
-export const mastodon: string | null = getSiteConfig('mastodon', null)
-export const github: string | null = getSiteConfig('github', null)
-export const youtube: string | null = getSiteConfig('youtube', null)
-export const linkedin: string | null = getSiteConfig('linkedin', null)
-export const newsletter: string | null = getSiteConfig('newsletter', null)
-export const zhihu: string | null = getSiteConfig('zhihu', null)
-export const instagram: string | null = getSiteConfig('instagram', null)
-export const xiaohongshu: string | null = getSiteConfig('xiaohongshu', null)
-=======
 export const twitter: string | undefined = getSiteConfig('twitter')
 export const mastodon: string | undefined = getSiteConfig('mastodon')
 export const github: string | undefined = getSiteConfig('github')
@@ -74,7 +63,8 @@ export const youtube: string | undefined = getSiteConfig('youtube')
 export const linkedin: string | undefined = getSiteConfig('linkedin')
 export const newsletter: string | undefined = getSiteConfig('newsletter')
 export const zhihu: string | undefined = getSiteConfig('zhihu')
->>>>>>> upstream/main
+export const instagram: string | undefined = getSiteConfig('instagram')
+export const xiaohongshu: string | undefined = getSiteConfig('xiaohongshu')
 
 export const getMastodonHandle = (): string | undefined => {
   if (!mastodon) {

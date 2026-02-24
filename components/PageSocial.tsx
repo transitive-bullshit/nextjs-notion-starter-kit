@@ -13,8 +13,6 @@ interface SocialLink {
 }
 
 const socialLinks: SocialLink[] = [
-<<<<<<< HEAD
-=======
   config.twitter && {
     name: 'twitter',
     href: `https://x.com/${config.twitter}`,
@@ -36,8 +34,6 @@ const socialLinks: SocialLink[] = [
       </svg>
     )
   },
-
->>>>>>> upstream/main
   config.linkedin && {
     name: 'linkedin',
     href: `https://www.linkedin.com/in/${config.linkedin}`,
