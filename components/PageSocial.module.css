@@ -128,6 +128,20 @@
   border-color: #777;
 }
 
+.instagram .actionBgPane {
+  background: #e1306c; /* Instagram 主色 */
+}
+.instagram:hover {
+  border-color: #e1306c;
+}
+
+.xiaohongshu .actionBgPane {
+  background: #E52E38;
+}
+.xiaohongshu:hover {
+  border-color: #E52E38;
+}
+
 @media only screen and (max-width: 768px) {
   .links {
     position: relative;
