@@ -4,6 +4,4 @@ dist/
 node_modules/
 .next/
 .vercel/
-
-.demo/
-.renderer/
+next-env.d.ts

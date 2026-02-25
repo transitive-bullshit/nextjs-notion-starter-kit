@@ -1,10 +1,12 @@
-import { PageProps } from './types'
+import { getBlockValue } from 'notion-utils'
+
+import { type PageProps } from './types'
 
 export async function pageAcl({
   site,
   recordMap,
   pageId
-}: PageProps): Promise<PageProps> {
+}: PageProps): Promise<PageProps | undefined> {
   if (!site) {
     return {
       error: {
@@ -35,7 +37,7 @@ export async function pageAcl({
     }
   }
 
-  const rootValue = recordMap.block[rootKey]?.value
+  const rootValue = getBlockValue(recordMap.block[rootKey])
   const rootSpaceId = rootValue?.space_id
 
   if (
