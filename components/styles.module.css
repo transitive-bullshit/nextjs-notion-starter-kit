@@ -183,6 +183,11 @@
   background: #e5f2e8;
 }
 
+/* Hide the GitHub corner ribbon on all viewports */
+.githubCorner {
+  display: none;
+}
+
 @media (max-width: 1360px) {
   .githubCorner {
     display: none;
