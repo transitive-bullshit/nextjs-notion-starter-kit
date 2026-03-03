@@ -9,7 +9,7 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Orbits Insights',
+  name: 'Insights - orbits.design',
   domain: 'orbits.notion.site',
   author: 'Orbits',
 
