@@ -22,7 +22,7 @@ import { useSearchParam } from 'react-use'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
-import { mapImageUrl } from '@/lib/map-image-url'
+import { customMapImageUrl, mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -216,7 +216,29 @@ export function NotionPage({
       nextLegacyImage: Image,
       nextLink: Link,
       Code,
-      Collection,
+      Collection: (props: any) => {
+        // Notion api does not fetch child blocks for page_content gallery images.
+        // If the gallery_cover is set to page_content or page_content_first, we override it to page_cover.
+        if (props.block?.type === 'collection_view') {
+          const viewIds = props.block.view_ids
+          if (viewIds && viewIds.length > 0) {
+            viewIds.forEach((viewId: string) => {
+              const view = recordMap?.collection_view?.[viewId]?.value as any
+              if (
+                view?.format?.gallery_cover?.type === 'page_content' ||
+                view?.format?.gallery_cover?.type === 'page_content_first' ||
+                view?.format?.gallery_cover?.type === 'none' ||
+                view?.format?.gallery_cover === undefined
+              ) {
+                if (view && view.format) {
+                  view.format.gallery_cover = { type: 'page_cover' }
+                }
+              }
+            })
+          }
+        }
+        return <Collection {...props} />
+      },
       Equation,
       Pdf,
       Modal,
@@ -226,7 +248,7 @@ export function NotionPage({
       propertyTextValue,
       propertyDateValue
     }),
-    []
+    [recordMap]
   )
 
   // lite mode is for oembed
@@ -297,11 +319,12 @@ export function NotionPage({
     ? undefined
     : getCanonicalPageUrl(site, recordMap)(pageId)
 
-  const socialImage = mapImageUrl(
+  const socialImage = customMapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
     (block as PageBlock).format?.page_cover ||
     config.defaultPageCover,
-    block
+    block,
+    recordMap
   )
 
   const socialDescription =
@@ -344,7 +367,7 @@ export function NotionPage({
             defaultPageCover={config.defaultPageCover}
             defaultPageCoverPosition={config.defaultPageCoverPosition}
             mapPageUrl={siteMapPageUrl}
-            mapImageUrl={mapImageUrl}
+            mapImageUrl={(url, block) => customMapImageUrl(url, block, recordMap)}
             searchNotion={config.isSearchEnabled ? searchNotion : undefined}
             pageAside={pageAside}
             footer={footer}
