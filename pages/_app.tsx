@@ -25,8 +25,11 @@ import {
   fathomId,
   isServer,
   posthogConfig,
-  posthogId
+  posthogId,
+  umamiScriptUrl,
+  umamiWebsiteId
 } from '@/lib/config'
+import Script from 'next/script'
 
 if (!isServer) {
   bootstrap()
@@ -44,6 +47,13 @@ export default function App({ Component, pageProps }: AppProps) {
       if (posthogId) {
         posthog.capture('$pageview')
       }
+
+      if (umamiWebsiteId && (window as any).umami) {
+        (window as any).umami.track((props: any) => ({
+          ...props,
+          url: window.location.hostname + window.location.pathname,
+        }))
+      }
     }
 
     if (fathomId) {
@@ -54,6 +64,22 @@ export default function App({ Component, pageProps }: AppProps) {
       posthog.init(posthogId, posthogConfig)
     }
 
+    if (umamiWebsiteId) {
+      // First hit tracking
+      const trackUmami = () => {
+        if ((window as any).umami) {
+          (window as any).umami.track((props: any) => ({
+            ...props,
+            url: window.location.hostname + window.location.pathname,
+          }))
+        } else {
+          // script hasn't loaded yet, retry
+          setTimeout(trackUmami, 300)
+        }
+      }
+      trackUmami()
+    }
+
     router.events.on('routeChangeComplete', onRouteChangeComplete)
 
     return () => {
@@ -61,5 +87,18 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      {umamiWebsiteId && (
+        <Script
+          async
+          src={umamiScriptUrl}
+          data-website-id={umamiWebsiteId}
+          data-auto-track='false'
+          strategy='afterInteractive'
+        />
+      )}
+      <Component {...pageProps} />
+    </>
+  )
 }

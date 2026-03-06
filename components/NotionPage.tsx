@@ -22,7 +22,7 @@ import { useSearchParam } from 'react-use'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
-import { mapImageUrl } from '@/lib/map-image-url'
+import { customMapImageUrl, mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
@@ -152,9 +152,14 @@ const propertyLastEditedTimeValue = (
   defaultFn: () => React.ReactNode
 ) => {
   if (pageHeader && block?.last_edited_time) {
-    return `Last updated ${formatDate(block?.last_edited_time, {
-      month: 'long'
-    })}`
+    return (
+      <span suppressHydrationWarning={true}>
+        Last updated{' '}
+        {formatDate(block?.last_edited_time, {
+          month: 'long'
+        })}
+      </span>
+    )
   }
 
   return defaultFn()
@@ -168,9 +173,13 @@ const propertyDateValue = (
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
     if (publishDate) {
-      return `${formatDate(publishDate, {
-        month: 'long'
-      })}`
+      return (
+        <span suppressHydrationWarning={true}>
+          {formatDate(publishDate, {
+            month: 'long'
+          })}
+        </span>
+      )
     }
   }
 
@@ -194,15 +203,42 @@ export function NotionPage({
   error,
   pageId
 }: types.PageProps) {
+  const [hasMounted, setHasMounted] = React.useState(false)
   const router = useRouter()
   const lite = useSearchParam('lite')
+
+  React.useEffect(() => {
+    setHasMounted(true)
+  }, [])
 
   const components = React.useMemo<Partial<NotionComponents>>(
     () => ({
       nextLegacyImage: Image,
       nextLink: Link,
       Code,
-      Collection,
+      Collection: (props: any) => {
+        // Notion api does not fetch child blocks for page_content gallery images.
+        // If the gallery_cover is set to page_content or page_content_first, we override it to page_cover.
+        if (props.block?.type === 'collection_view') {
+          const viewIds = props.block.view_ids
+          if (viewIds && viewIds.length > 0) {
+            viewIds.forEach((viewId: string) => {
+              const view = recordMap?.collection_view?.[viewId]?.value as any
+              if (
+                view?.format?.gallery_cover?.type === 'page_content' ||
+                view?.format?.gallery_cover?.type === 'page_content_first' ||
+                view?.format?.gallery_cover?.type === 'none' ||
+                view?.format?.gallery_cover === undefined
+              ) {
+                if (view && view.format) {
+                  view.format.gallery_cover = { type: 'page_cover' }
+                }
+              }
+            })
+          }
+        }
+        return <Collection {...props} />
+      },
       Equation,
       Pdf,
       Modal,
@@ -212,13 +248,14 @@ export function NotionPage({
       propertyTextValue,
       propertyDateValue
     }),
-    []
+    [recordMap]
   )
 
   // lite mode is for oembed
-  const isLiteMode = lite === 'true'
+  const isLiteMode = hasMounted && lite === 'true'
 
-  const { isDarkMode } = useDarkMode()
+  const { isDarkMode: isDarkModeReal } = useDarkMode()
+  const isDarkMode = hasMounted && isDarkModeReal
 
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
@@ -282,11 +319,12 @@ export function NotionPage({
     ? undefined
     : getCanonicalPageUrl(site, recordMap)(pageId)
 
-  const socialImage = mapImageUrl(
+  const socialImage = customMapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
-    block
+    (block as PageBlock).format?.page_cover ||
+    config.defaultPageCover,
+    block,
+    recordMap
   )
 
   const socialDescription =
@@ -305,35 +343,41 @@ export function NotionPage({
         isBlogPost={isBlogPost}
       />
 
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+      {hasMounted ? (
+        <>
+          {isLiteMode && <BodyClassName className='notion-lite' />}
+          {isDarkMode && <BodyClassName className='dark-mode' />}
 
-      <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
-        )}
-        darkMode={isDarkMode}
-        components={components}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : undefined}
-        pageAside={pageAside}
-        footer={footer}
-      />
+          <NotionRenderer
+            bodyClassName={cs(
+              styles.notion,
+              pageId === site.rootNotionPageId && 'index-page'
+            )}
+            darkMode={isDarkMode}
+            components={components}
+            recordMap={recordMap}
+            rootPageId={site.rootNotionPageId}
+            rootDomain={site.domain}
+            fullPage={!isLiteMode}
+            previewImages={!!recordMap.preview_images}
+            showCollectionViewDropdown={false}
+            showTableOfContents={showTableOfContents}
+            minTableOfContentsItems={minTableOfContentsItems}
+            defaultPageIcon={config.defaultPageIcon}
+            defaultPageCover={config.defaultPageCover}
+            defaultPageCoverPosition={config.defaultPageCoverPosition}
+            mapPageUrl={siteMapPageUrl}
+            mapImageUrl={(url, block) => customMapImageUrl(url, block, recordMap)}
+            searchNotion={config.isSearchEnabled ? searchNotion : undefined}
+            pageAside={pageAside}
+            footer={footer}
+          />
 
-      <GitHubShareButton />
+          <GitHubShareButton />
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   )
 }

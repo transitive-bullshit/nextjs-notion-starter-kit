@@ -11,13 +11,13 @@ import pMemoize from 'p-memoize'
 
 import { defaultPageCover, defaultPageIcon } from './config'
 import { db } from './db'
-import { mapImageUrl } from './map-image-url'
+import { customMapImageUrl } from './map-image-url'
 
 export async function getPreviewImageMap(
   recordMap: ExtendedRecordMap
 ): Promise<PreviewImageMap> {
   const urls: string[] = getPageImageUrls(recordMap, {
-    mapImageUrl
+    mapImageUrl: (url, block) => customMapImageUrl(url, block, recordMap)
   })
     .concat([defaultPageIcon, defaultPageCover].filter(Boolean))
     .filter(Boolean)

@@ -2,6 +2,9 @@
 // import { fileURLToPath } from 'node:url'
 
 export default {
+  env: {
+    NOTION_PAGE_ID: process.env.NOTION_PAGE_ID
+  },
   staticPageGenerationTimeout: 300,
   images: {
     remotePatterns: [
@@ -10,7 +13,10 @@ export default {
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'abs.twimg.com' },
       { protocol: 'https', hostname: 'pbs.twimg.com' },
-      { protocol: 'https', hostname: 's3.us-west-2.amazonaws.com' }
+      { protocol: 'https', hostname: 's3.us-west-2.amazonaws.com' },
+      { protocol: 'https', hostname: 'prod-files-secure.s3.us-west-2.amazonaws.com' },
+      { protocol: 'https', hostname: 'file.notion.so' },
+      { protocol: 'https', hostname: 'files.notion.so' }
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,

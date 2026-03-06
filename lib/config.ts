@@ -161,14 +161,18 @@ export const site: Site = {
 export const fathomId = isDev ? undefined : process.env.NEXT_PUBLIC_FATHOM_ID
 export const fathomConfig = fathomId
   ? {
-      excludedDomains: ['localhost', 'localhost:3000']
-    }
+    excludedDomains: ['localhost', 'localhost:3000']
+  }
   : undefined
 
 export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID
 export const posthogConfig: Partial<PostHogConfig> = {
   api_host: 'https://app.posthog.com'
 }
+
+export const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
+export const umamiScriptUrl =
+  process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL || 'https://cloud.umami.is/script.js'
 
 function cleanPageUrlMap(
   pageUrlMap: PageUrlOverridesMap,

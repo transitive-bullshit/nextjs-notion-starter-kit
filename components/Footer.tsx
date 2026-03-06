@@ -29,7 +29,7 @@ export function FooterImpl() {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>
+      <div className={styles.copyright} suppressHydrationWarning={true}>
         Copyright {currentYear} {config.author}
       </div>
 
