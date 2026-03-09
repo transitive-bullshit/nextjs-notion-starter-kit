@@ -1,4 +1,19 @@
 import * as React from 'react'
+import /* Font Awesome */
+{ 
+  FaDiscord,
+  FaEnvelopeOpenText,
+  FaGithub,
+  FaLinkedin,
+  FaMastodon,
+  FaTwitter,
+  FaYoutube,
+  FaZhihu} from "react-icons/fa";
+import /* Ionicons 5 */
+{ 
+  IoMoonSharp,
+  IoSunnyOutline
+} from 'react-icons/io5'
 
 import * as config from '@/lib/config'
 import { GitHubIcon } from '@/lib/icons/github'
@@ -48,6 +63,17 @@ export function FooterImpl() {
       </div>
 
       <div className={styles.social}>
+        {config.discord_invite && (
+          <a
+            className={styles.discord}
+            href={`${config.discord_invite}`}
+            title={`${config.discord} on Discord`}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaDiscord />
+          </a>
+        )}
         {config.twitter && (
           <a
             className={styles.twitter}
