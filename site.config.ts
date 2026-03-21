@@ -2,7 +2,8 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '1d2fe6fa899280b087fff187979d7b89',
+  // rootNotionPageId: '1d2fe6fa899280b087fff187979d7b89',
+  rootNotionPageId: '1d3fe6fa89928016b161d69be3a74cd6',
 
 
   // if you want to restrict pages to a single notion workspace (optional)
@@ -47,17 +48,19 @@ export default siteConfig({
   //   '/foo': '067dd719a912471ea9a3ac10710e7fdf',
   //   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
   // }
+//   pageUrlOverrides: {
+//   '/blogs': '1d2fe6fa899280afb3a6fc3fa8d4ca4b'
+// },
   pageUrlOverrides: null,
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  //navigationStyle: 'default'
-  includeNotionIdInUrls: true,
-  navigationStyle: 'custom',
-  navigationLinks: [
-    {
-      title: 'Blogs',
-      url: 'https://flint-larch-633.notion.site/1d2fe6fa899280afb3a6fc3fa8d4ca4b?v=1d2fe6fa899280a59cd9000c3fa31e58'
-    }
-  ]
+  // includeNotionIdInUrls: true,
+  navigationStyle: 'default',
+  // navigationLinks: [
+  //   {
+  //     title: 'Blogs',
+  //     pageId: '1d2fe6fa899280afb3a6fc3fa8d4ca4b'
+  //   }
+  // ]
 })
