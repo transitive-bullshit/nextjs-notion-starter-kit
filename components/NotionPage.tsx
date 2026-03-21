@@ -4,7 +4,12 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { type PageBlock } from 'notion-types'
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import {
+  formatDate,
+  getBlockTitle,
+  getBlockValue,
+  getPageProperty
+} from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
@@ -36,39 +41,70 @@ import styles from './styles.module.css'
 // -----------------------------------------------------------------------------
 
 const Code = dynamic(() =>
-  import('react-notion-x/build/third-party/code').then(async (m) => {
+  import('react-notion-x/third-party/code').then(async (m) => {
     // add / remove any prism syntaxes here
     await Promise.allSettled([
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-markup-templating.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-markup.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-bash.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-c.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-cpp.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-csharp.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-docker.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-java.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-js-templates.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-coffeescript.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-diff.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-git.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-go.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-graphql.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-handlebars.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-less.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-makefile.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-markdown.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-objectivec.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-ocaml.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-python.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-reason.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-rust.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-sass.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-scss.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-solidity.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-sql.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-stylus.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-swift.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-wasm.js'),
+      // @ts-expect-error Ignore prisma types
       import('prismjs/components/prism-yaml.js')
     ])
     return m.Code
@@ -76,22 +112,20 @@ const Code = dynamic(() =>
 )
 
 const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then(
-    (m) => m.Collection
-  )
+  import('react-notion-x/third-party/collection').then((m) => m.Collection)
 )
 const Equation = dynamic(() =>
-  import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
+  import('react-notion-x/third-party/equation').then((m) => m.Equation)
 )
 const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
+  () => import('react-notion-x/third-party/pdf').then((m) => m.Pdf),
   {
     ssr: false
   }
 )
 const Modal = dynamic(
   () =>
-    import('react-notion-x/build/third-party/modal').then((m) => {
+    import('react-notion-x/third-party/modal').then((m) => {
       m.Modal.setAppElement('.notion-viewport')
       return m.Modal
     }),
@@ -112,7 +146,7 @@ function Tweet({ id }: { id: string }) {
 }
 
 const propertyLastEditedTimeValue = (
-  { block, pageHeader },
+  { block, pageHeader }: any,
   defaultFn: () => React.ReactNode
 ) => {
   if (pageHeader && block?.last_edited_time) {
@@ -125,7 +159,7 @@ const propertyLastEditedTimeValue = (
 }
 
 const propertyDateValue = (
-  { data, schema, pageHeader },
+  { data, schema, pageHeader }: any,
   defaultFn: () => React.ReactNode
 ) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'published') {
@@ -142,7 +176,7 @@ const propertyDateValue = (
 }
 
 const propertyTextValue = (
-  { schema, pageHeader },
+  { schema, pageHeader }: any,
   defaultFn: () => React.ReactNode
 ) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'author') {
@@ -150,6 +184,21 @@ const propertyTextValue = (
   }
 
   return defaultFn()
+}
+
+const notionRendererComponents: Partial<NotionComponents> = {
+  nextLegacyImage: Image,
+  nextLink: Link,
+  Code,
+  Collection,
+  Equation,
+  Pdf,
+  Modal,
+  Tweet,
+  Header: NotionPageHeader,
+  propertyLastEditedTimeValue,
+  propertyTextValue,
+  propertyDateValue
 }
 
 export function NotionPage({
@@ -161,24 +210,6 @@ export function NotionPage({
   const router = useRouter()
   const lite = useSearchParam('lite')
 
-  const components = React.useMemo<Partial<NotionComponents>>(
-    () => ({
-      nextLegacyImage: Image,
-      nextLink: Link,
-      Code,
-      Collection,
-      Equation,
-      Pdf,
-      Modal,
-      Tweet,
-      Header: NotionPageHeader,
-      propertyLastEditedTimeValue,
-      propertyTextValue,
-      propertyDateValue
-    }),
-    []
-  )
-
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
 
@@ -189,11 +220,11 @@ export function NotionPage({
     if (lite) params.lite = lite
 
     const searchParams = new URLSearchParams(params)
-    return mapPageUrl(site, recordMap, searchParams)
+    return site ? mapPageUrl(site, recordMap!, searchParams) : undefined
   }, [site, recordMap, lite])
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
+  const block = getBlockValue(recordMap?.block?.[keys[0]!])
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
@@ -205,18 +236,20 @@ export function NotionPage({
 
   const pageAside = React.useMemo(
     () => (
-      <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />
+      <PageAside
+        block={block!}
+        recordMap={recordMap!}
+        isBlogPost={isBlogPost}
+      />
     ),
     [block, recordMap, isBlogPost]
   )
-
-  const footer = React.useMemo(() => <Footer />, [])
 
   if (router.isFallback) {
     return <Loading />
   }
 
-  if (error || !site || !block) {
+  if (error || !site || !block || !recordMap) {
     return <Page404 site={site} pageId={pageId} error={error} />
   }
 
@@ -238,8 +271,9 @@ export function NotionPage({
     g.block = block
   }
 
-  const canonicalPageUrl =
-    !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
+  const canonicalPageUrl = config.isDev
+    ? undefined
+    : getCanonicalPageUrl(site, recordMap)(pageId)
 
   const socialImage = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
@@ -261,6 +295,7 @@ export function NotionPage({
         description={socialDescription}
         image={socialImage}
         url={canonicalPageUrl}
+        isBlogPost={isBlogPost}
       />
 
       {isLiteMode && <BodyClassName className='notion-lite' />}
@@ -272,7 +307,7 @@ export function NotionPage({
           pageId === site.rootNotionPageId && 'index-page'
         )}
         darkMode={isDarkMode}
-        components={components}
+        components={notionRendererComponents}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
@@ -286,9 +321,9 @@ export function NotionPage({
         defaultPageCoverPosition={config.defaultPageCoverPosition}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : null}
+        searchNotion={config.isSearchEnabled ? searchNotion : undefined}
         pageAside={pageAside}
-        footer={footer}
+        footer={<Footer />}
       />
 
       <GitHubShareButton />

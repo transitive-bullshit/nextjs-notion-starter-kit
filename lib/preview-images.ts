@@ -19,7 +19,7 @@ export async function getPreviewImageMap(
   const urls: string[] = getPageImageUrls(recordMap, {
     mapImageUrl
   })
-    .concat([defaultPageIcon, defaultPageCover])
+    .concat([defaultPageIcon, defaultPageCover].filter(Boolean))
     .filter(Boolean)
 
   const previewImagesMap = Object.fromEntries(
@@ -48,7 +48,7 @@ async function createPreviewImage(
       if (cachedPreviewImage) {
         return cachedPreviewImage
       }
-    } catch (err) {
+    } catch (err: any) {
       // ignore redis errors
       console.warn(`redis error get "${cacheKey}"`, err.message)
     }
@@ -65,13 +65,13 @@ async function createPreviewImage(
 
     try {
       await db.set(cacheKey, previewImage)
-    } catch (err) {
+    } catch (err: any) {
       // ignore redis errors
       console.warn(`redis error set "${cacheKey}"`, err.message)
     }
 
     return previewImage
-  } catch (err) {
+  } catch (err: any) {
     console.warn('failed to create preview image', url, err.message)
     return null
   }

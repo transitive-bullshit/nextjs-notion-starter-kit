@@ -19,7 +19,8 @@
   line-height: 1.5;
   color: rgb(55, 53, 47);
   caret-color: rgb(55, 53, 47);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
     'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
   background-color: var(--bg-color);
 }
@@ -66,19 +67,21 @@
   user-select: none;
 }
 
+.social,
+.settings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25em;
+}
+
 .settings a,
 .social a {
   cursor: pointer;
   font-size: 2em;
   display: inline-flex;
   padding: 0.25em;
-  margin-right: 1vw;
   transition: color 250ms ease-out;
-}
-
-.settings a:last-of-type,
-.social a:last-of-type {
-  margin-right: 0;
 }
 
 .settings a:hover,

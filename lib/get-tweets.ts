@@ -2,7 +2,7 @@ import { type ExtendedRecordMap } from 'notion-types'
 import { getPageTweetIds } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
-import { getTweet as getTweetData } from 'react-tweet/api'
+import { getTweet as getTweetData, type Tweet } from 'react-tweet/api'
 
 import type { ExtendedTweetRecordMap } from './types'
 import { db } from './db'
@@ -27,7 +27,7 @@ export async function getTweetsMap(
   ;(recordMap as ExtendedTweetRecordMap).tweets = tweetsMap
 }
 
-async function getTweetImpl(tweetId: string): Promise<any> {
+async function getTweetImpl(tweetId: string): Promise<Tweet | null> {
   if (!tweetId) return null
 
   const cacheKey = `tweet:${tweetId}`
@@ -38,7 +38,7 @@ async function getTweetImpl(tweetId: string): Promise<any> {
       if (cachedTweet || cachedTweet === null) {
         return cachedTweet
       }
-    } catch (err) {
+    } catch (err: any) {
       // ignore redis errors
       console.warn(`redis error get "${cacheKey}"`, err.message)
     }
@@ -47,7 +47,7 @@ async function getTweetImpl(tweetId: string): Promise<any> {
 
     try {
       await db.set(cacheKey, tweetData)
-    } catch (err) {
+    } catch (err: any) {
       // ignore redis errors
       console.warn(`redis error set "${cacheKey}"`, err.message)
     }

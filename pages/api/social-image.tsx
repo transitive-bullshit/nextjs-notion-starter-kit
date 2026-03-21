@@ -5,6 +5,7 @@ import { type PageBlock } from 'notion-types'
 import {
   getBlockIcon,
   getBlockTitle,
+  getBlockValue,
   getPageProperty,
   isUrl,
   parsePageId
@@ -22,7 +23,7 @@ export default async function OGImage(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { searchParams } = new URL(req.url)
+  const { searchParams } = new URL(req.url!)
   const pageId = parsePageId(
     searchParams.get('id') || libConfig.rootNotionPageId
   )
@@ -40,118 +41,114 @@ export default async function OGImage(
   console.log(pageInfo)
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#1F2027',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'black'
+      }}
+    >
+      {pageInfo.image && (
+        <img
+          src={pageInfo.image}
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+            // TODO: satori doesn't support background-size: cover and seems to
+            // have inconsistent support for filter + transform to get rid of the
+            // blurred edges. For now, we'll go without a blur filter on the
+            // background, but Satori is still very new, so hopefully we can re-add
+            // the blur soon.
+
+            // backgroundImage: pageInfo.image
+            //   ? `url(${pageInfo.image})`
+            //   : undefined,
+            // backgroundSize: '100% 100%'
+            // TODO: pageInfo.imageObjectPosition
+            // filter: 'blur(8px)'
+            // transform: 'scale(1.05)'
+          }}
+        />
+      )}
+
       <div
         style={{
           position: 'relative',
-          width: '100%',
-          height: '100%',
+          width: 900,
+          height: 465,
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: '#1F2027',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'black'
+          border: '16px solid rgba(0,0,0,0.3)',
+          borderRadius: 8,
+          zIndex: '1'
         }}
       >
-        {pageInfo.image && (
-          <img
-            src={pageInfo.image}
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-              // TODO: satori doesn't support background-size: cover and seems to
-              // have inconsistent support for filter + transform to get rid of the
-              // blurred edges. For now, we'll go without a blur filter on the
-              // background, but Satori is still very new, so hopefully we can re-add
-              // the blur soon.
-
-              // backgroundImage: pageInfo.image
-              //   ? `url(${pageInfo.image})`
-              //   : undefined,
-              // backgroundSize: '100% 100%'
-              // TODO: pageInfo.imageObjectPosition
-              // filter: 'blur(8px)'
-              // transform: 'scale(1.05)'
-            }}
-          />
-        )}
-
         <div
           style={{
-            position: 'relative',
-            width: 900,
-            height: 465,
+            width: '100%',
+            height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            border: '16px solid rgba(0,0,0,0.3)',
-            borderRadius: 8,
-            zIndex: '1'
+            justifyContent: 'space-around',
+            backgroundColor: '#fff',
+            padding: 24,
+            alignItems: 'center',
+            textAlign: 'center'
           }}
         >
+          {pageInfo.detail && (
+            <div style={{ fontSize: 32, opacity: 0 }}>{pageInfo.detail}</div>
+          )}
+
           <div
+            style={{
+              fontSize: 70,
+              fontWeight: 700,
+              fontFamily: 'Inter'
+            }}
+          >
+            {pageInfo.title}
+          </div>
+
+          {pageInfo.detail && (
+            <div style={{ fontSize: 32, opacity: 0.6 }}>{pageInfo.detail}</div>
+          )}
+        </div>
+      </div>
+
+      {pageInfo.authorImage && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 47,
+            left: 104,
+            height: 128,
+            width: 128,
+            display: 'flex',
+            borderRadius: '50%',
+            border: '4px solid #fff',
+            zIndex: '5'
+          }}
+        >
+          <img
+            src={pageInfo.authorImage}
             style={{
               width: '100%',
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-around',
-              backgroundColor: '#fff',
-              padding: 24,
-              alignItems: 'center',
-              textAlign: 'center'
+              height: '100%'
+              // transform: 'scale(1.04)'
             }}
-          >
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0 }}>{pageInfo.detail}</div>
-            )}
-
-            <div
-              style={{
-                fontSize: 70,
-                fontWeight: 700,
-                fontFamily: 'Inter'
-              }}
-            >
-              {pageInfo.title}
-            </div>
-
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0.6 }}>
-                {pageInfo.detail}
-              </div>
-            )}
-          </div>
+          />
         </div>
-
-        {pageInfo.authorImage && (
-          <div
-            style={{
-              position: 'absolute',
-              top: 47,
-              left: 104,
-              height: 128,
-              width: 128,
-              display: 'flex',
-              borderRadius: '50%',
-              border: '4px solid #fff',
-              zIndex: '5'
-            }}
-          >
-            <img
-              src={pageInfo.authorImage}
-              style={{
-                width: '100%',
-                height: '100%'
-                // transform: 'scale(1.04)'
-              }}
-            />
-          </div>
-        )}
-      </div>
-    ),
+      )}
+    </div>,
     {
       width: 1200,
       height: 630,
@@ -178,7 +175,7 @@ export async function getNotionPageInfo({
   const recordMap = await notion.getPage(pageId)
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
+  const block = getBlockValue(recordMap?.block?.[keys[0]!])
 
   if (!block) {
     throw new Error('Invalid recordMap for page')
@@ -209,7 +206,7 @@ export async function getNotionPageInfo({
     libConfig.defaultPageCoverPosition
   const imageObjectPosition = imageCoverPosition
     ? `center ${(1 - imageCoverPosition) * 100}%`
-    : null
+    : undefined
 
   const imageBlockUrl = mapImageUrl(
     getPageProperty<string>('Social Image', block, recordMap) ||
@@ -220,7 +217,7 @@ export async function getNotionPageInfo({
 
   const blockIcon = getBlockIcon(block, recordMap)
   const authorImageBlockUrl = mapImageUrl(
-    blockIcon && isUrl(blockIcon) ? blockIcon : null,
+    blockIcon && isUrl(blockIcon) ? blockIcon : undefined,
     block
   )
   const authorImageFallbackUrl = mapImageUrl(libConfig.defaultPageIcon, block)
@@ -272,7 +269,9 @@ export async function getNotionPageInfo({
   }
 }
 
-async function isUrlReachable(url: string | null): Promise<boolean> {
+async function isUrlReachable(
+  url: string | undefined | null
+): Promise<boolean> {
   if (!url) {
     return false
   }
@@ -286,9 +285,9 @@ async function isUrlReachable(url: string | null): Promise<boolean> {
 }
 
 async function getCompatibleImageUrl(
-  url: string | null,
-  fallbackUrl: string | null
-): Promise<string | null> {
+  url: string | undefined | null,
+  fallbackUrl: string | undefined | null
+): Promise<string | undefined> {
   const image = (await isUrlReachable(url)) ? url : fallbackUrl
 
   if (image) {
@@ -303,5 +302,5 @@ async function getCompatibleImageUrl(
     }
   }
 
-  return image
+  return image ?? undefined
 }

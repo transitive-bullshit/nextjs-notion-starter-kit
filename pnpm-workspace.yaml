@@ -1,0 +1,15 @@
+onlyBuiltDependencies:
+  - sharp
+  - simple-git-hooks
+
+enablePrePostScripts: true
+
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - '@fisch0920/config'
+  - react-notion-x
+  - notion-client
+  - notion-types
+  - notion-utils
+
+packageManagerStrict: false

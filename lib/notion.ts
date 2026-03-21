@@ -19,7 +19,7 @@ import { getPreviewImageMap } from './preview-images'
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
     const navigationLinkPageIds = (navigationLinks || [])
-      .map((link) => link.pageId)
+      .map((link) => link?.pageId)
       .filter(Boolean)
 
     if (navigationStyle !== 'default' && navigationLinkPageIds.length) {
