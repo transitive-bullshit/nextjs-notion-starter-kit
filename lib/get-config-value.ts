@@ -70,6 +70,3 @@ export function getEnv<T>(
 
   return null as unknown as T
 }
-
-  return null as unknown as T
-}
