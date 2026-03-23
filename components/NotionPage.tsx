@@ -114,8 +114,9 @@ const Code = dynamic(() =>
 const Collection = dynamic(() =>
   import('react-notion-x/third-party/collection').then((m) => m.Collection)
 )
-const Equation = dynamic(() =>
-  import('react-notion-x/third-party/equation').then((m) => m.Equation)
+const Equation = dynamic(
+  () => import('react-notion-x/third-party/equation').then((m) => m.Equation),
+  { ssr: false }
 )
 const Pdf = dynamic(
   () => import('react-notion-x/third-party/pdf').then((m) => m.Pdf),
