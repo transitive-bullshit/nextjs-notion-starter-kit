@@ -418,7 +418,7 @@ function splitTextIntoSpans() {
       const frag = document.createDocumentFragment()
 
       for (let i = 0; i < text.length; i++) {
-        const ch = text[i]
+        const ch = text[i]!
         if (ch === ' ') {
           const s = document.createElement('span')
           s.textContent = ' '
@@ -570,6 +570,7 @@ function spawnAmbientSpirit() {
   if (textBlocks.length === 0) return
 
   const block = textBlocks[Math.floor(Math.random() * textBlocks.length)]
+  if (!block) return
   const rect = block.getBoundingClientRect()
   const vh = window.innerHeight
 
@@ -592,7 +593,7 @@ function spawnAmbientSpirit() {
   const spirit = document.createElement('div')
   spirit.className = 'ambient-spirit'
 
-  const shape = AMBIENT_SHAPES[Math.floor(Math.random() * AMBIENT_SHAPES.length)]
+  const shape = AMBIENT_SHAPES[Math.floor(Math.random() * AMBIENT_SHAPES.length)]!
   spirit.textContent = shape
 
   const driftX = (Math.random() - 0.5) * 40
