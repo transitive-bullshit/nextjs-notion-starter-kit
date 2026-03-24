@@ -289,6 +289,10 @@ function spawnAmbient() {
   el.addEventListener('animationend', () => el.remove(), { once: true })
 }
 
-// Polyfill requestIdleCallback
-const ric = window.requestIdleCallback || ((cb: () => void) => setTimeout(cb, 1))
-function requestIdleCallback(cb: () => void, opts?: { timeout: number }) { return ric.call(window, cb, opts as any) }
+// Polyfill requestIdleCallback (only in browser)
+function requestIdleCallback(cb: () => void, opts?: { timeout: number }) {
+  if (typeof window !== 'undefined' && window.requestIdleCallback) {
+    return window.requestIdleCallback(cb, opts as any)
+  }
+  return setTimeout(cb, 1) as unknown as number
+}
