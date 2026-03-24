@@ -3,6 +3,10 @@
 
 export default {
   staticPageGenerationTimeout: 300,
+  experimental: {
+    workerThreads: false,
+    cpus: 1
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'www.notion.so' },
