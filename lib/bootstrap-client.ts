@@ -289,5 +289,6 @@ function spawnAmbient() {
   el.addEventListener('animationend', () => el.remove(), { once: true })
 }
 
-declare global { interface Window { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number } }
-if (!window.requestIdleCallback) window.requestIdleCallback = ((cb: () => void) => setTimeout(cb, 1)) as any
+// Polyfill requestIdleCallback
+const ric = window.requestIdleCallback || ((cb: () => void) => setTimeout(cb, 1))
+function requestIdleCallback(cb: () => void, opts?: { timeout: number }) { return ric.call(window, cb, opts as any) }
