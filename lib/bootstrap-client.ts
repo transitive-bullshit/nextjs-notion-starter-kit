@@ -2,188 +2,119 @@ export function bootstrap() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
   initCursorSystem()
   initSoundEngine()
-  initLetterSpirits()
-  initAmbientSpirits()
+  // Letter spirits + ambient: defer until idle, skip on low-end devices
+  if (navigator.hardwareConcurrency > 2) {
+    requestIdleCallback(() => initLetterSpirits(), { timeout: 2000 })
+    requestIdleCallback(() => initAmbientSpirits(), { timeout: 3000 })
+  }
 }
 
 // ─────────────────────────────────────────────────────────
-// Cursor System: smooth follower + trail + magnetic + morph
-// FIX #2: --mx/--my set on dedicated spotlight element, not :root
+// Cursor System: follower + spotlight + trail
 // ─────────────────────────────────────────────────────────
-let spotlightEl: HTMLDivElement | null = null
-
 function initCursorSystem() {
   const isTouch = 'ontouchstart' in window
-  const root = document.documentElement
+  if (isTouch) { initTouchEffects(); return }
 
-  if (isTouch) {
-    initTouchEffects()
-    return
-  }
+  document.documentElement.classList.add('has-pointer')
 
-  root.classList.add('has-pointer')
-
-  // FIX #2: Create dedicated spotlight overlay for --mx/--my
-  spotlightEl = document.createElement('div')
+  const spotlightEl = document.createElement('div')
   spotlightEl.className = 'cursor-spotlight'
-  document.body.appendChild(spotlightEl)
-
-  // Create cursor follower elements
   const dot = document.createElement('div')
   dot.className = 'cursor-dot'
   const ring = document.createElement('div')
   ring.className = 'cursor-ring'
-  document.body.appendChild(dot)
-  document.body.appendChild(ring)
+  document.body.append(spotlightEl, dot, ring)
 
-  let mx = -100
-  let my = -100
-  let dx = -100
-  let dy = -100
-  let rx = -100
-  let ry = -100
+  let mx = -100, my = -100
+  let dx = -100, dy = -100, rx = -100, ry = -100
   let magnetTarget: HTMLElement | null = null
   let isHovering = false
+  let cursorMoving = false
+  let idleTimer: ReturnType<typeof setTimeout> | null = null
 
-  // Track mouse position — update spotlight element only, not :root
-  document.addEventListener(
-    'mousemove',
-    (e: MouseEvent) => {
-      mx = e.clientX
-      my = e.clientY
-      spotlightEl!.style.setProperty('--mx', `${mx}px`)
-      spotlightEl!.style.setProperty('--my', `${my}px`)
-    },
-    { passive: true }
-  )
+  document.addEventListener('mousemove', (e: MouseEvent) => {
+    mx = e.clientX
+    my = e.clientY
+    spotlightEl.style.setProperty('--mx', `${mx}px`)
+    spotlightEl.style.setProperty('--my', `${my}px`)
+    if (!cursorMoving) { cursorMoving = true; animateCursor() }
+    if (idleTimer) clearTimeout(idleTimer)
+    idleTimer = setTimeout(() => { cursorMoving = false }, 100)
+  }, { passive: true })
 
-  // Smooth animation loop — dot follows instantly, ring lags behind
-  function animate() {
+  function animateCursor() {
+    if (!cursorMoving) return
     dx += (mx - dx) * 0.25
     dy += (my - dy) * 0.25
-
-    let targetX = mx
-    let targetY = my
+    let tx = mx, ty = my
     if (magnetTarget) {
-      const rect = magnetTarget.getBoundingClientRect()
-      const cx = rect.left + rect.width / 2
-      const cy = rect.top + rect.height / 2
-      targetX = mx + (cx - mx) * 0.4
-      targetY = my + (cy - my) * 0.4
+      const r = magnetTarget.getBoundingClientRect()
+      tx = mx + (r.left + r.width / 2 - mx) * 0.4
+      ty = my + (r.top + r.height / 2 - my) * 0.4
     }
-    rx += (targetX - rx) * 0.12
-    ry += (targetY - ry) * 0.12
-
-    dot.style.transform = `translate(${dx}px, ${dy}px)`
-    ring.style.transform = `translate(${rx}px, ${ry}px) scale(${isHovering ? 1.8 : 1})`
-
-    requestAnimationFrame(animate)
+    rx += (tx - rx) * 0.12
+    ry += (ty - ry) * 0.12
+    dot.style.transform = `translate(${dx}px,${dy}px)`
+    ring.style.transform = `translate(${rx}px,${ry}px) scale(${isHovering ? 1.8 : 1})`
+    requestAnimationFrame(animateCursor)
   }
-  requestAnimationFrame(animate)
 
-  // Hover detection
-  document.addEventListener(
-    'mouseover',
-    (e: MouseEvent) => {
-      const target = (e.target as HTMLElement)?.closest?.(
-        'a, button, [role="button"], .notion-collection-card, input, textarea, .notion-search-button'
-      ) as HTMLElement | null
-      if (target) {
-        isHovering = true
-        magnetTarget = target
-        ring.classList.add('cursor-ring--active')
-        dot.classList.add('cursor-dot--active')
-      }
-    },
-    { passive: true }
-  )
+  document.addEventListener('mouseover', (e: MouseEvent) => {
+    const t = (e.target as HTMLElement)?.closest?.('a,button,[role="button"],.notion-collection-card,input,textarea') as HTMLElement | null
+    if (t) { isHovering = true; magnetTarget = t; ring.classList.add('cursor-ring--active'); dot.classList.add('cursor-dot--active') }
+  }, { passive: true })
 
-  document.addEventListener(
-    'mouseout',
-    (e: MouseEvent) => {
-      const target = (e.target as HTMLElement)?.closest?.(
-        'a, button, [role="button"], .notion-collection-card, input, textarea, .notion-search-button'
-      )
-      if (target) {
-        isHovering = false
-        magnetTarget = null
-        ring.classList.remove('cursor-ring--active')
-        dot.classList.remove('cursor-dot--active')
-      }
-    },
-    { passive: true }
-  )
+  document.addEventListener('mouseout', (e: MouseEvent) => {
+    const t = (e.target as HTMLElement)?.closest?.('a,button,[role="button"],.notion-collection-card,input,textarea')
+    if (t) { isHovering = false; magnetTarget = null; ring.classList.remove('cursor-ring--active'); dot.classList.remove('cursor-dot--active') }
+  }, { passive: true })
 
-  // Click effect
-  document.addEventListener('mousedown', () => {
-    ring.classList.add('cursor-ring--click')
-    spawnRipple(mx, my)
-  })
-  document.addEventListener('mouseup', () => {
-    ring.classList.remove('cursor-ring--click')
-  })
+  document.addEventListener('mousedown', () => { ring.classList.add('cursor-ring--click'); spawnRipple(mx, my) })
+  document.addEventListener('mouseup', () => ring.classList.remove('cursor-ring--click'))
 
-  // Trail particles on fast movement
+  // Trail: throttled, max 5 alive at once
   let lastTrailTime = 0
-  document.addEventListener(
-    'mousemove',
-    (e: MouseEvent) => {
-      const now = performance.now()
-      const speed = Math.sqrt(e.movementX ** 2 + e.movementY ** 2)
-      if (speed > 8 && now - lastTrailTime > 50) {
-        lastTrailTime = now
-        spawnTrailParticle(e.clientX, e.clientY)
+  document.addEventListener('mousemove', (e: MouseEvent) => {
+    const now = performance.now()
+    if (Math.sqrt(e.movementX ** 2 + e.movementY ** 2) > 10 && now - lastTrailTime > 80) {
+      lastTrailTime = now
+      if (document.querySelectorAll('.cursor-trail').length < 5) {
+        spawnParticle('cursor-trail', e.clientX, e.clientY)
       }
-    },
-    { passive: true }
-  )
+    }
+  }, { passive: true })
 }
 
-function spawnRipple(x: number, y: number) {
-  const ripple = document.createElement('div')
-  ripple.className = 'click-ripple'
-  ripple.style.left = `${x}px`
-  ripple.style.top = `${y}px`
-  document.body.appendChild(ripple)
-  ripple.addEventListener('animationend', () => ripple.remove())
-}
+function spawnRipple(x: number, y: number) { spawnParticle('click-ripple', x, y) }
 
-function spawnTrailParticle(x: number, y: number) {
-  const p = document.createElement('div')
-  p.className = 'cursor-trail'
-  p.style.left = `${x}px`
-  p.style.top = `${y}px`
-  document.body.appendChild(p)
-  p.addEventListener('animationend', () => p.remove())
+function spawnParticle(cls: string, x: number, y: number, props?: Record<string, string>) {
+  const el = document.createElement('div')
+  el.className = cls
+  el.style.left = `${x}px`
+  el.style.top = `${y}px`
+  if (props) for (const [k, v] of Object.entries(props)) el.style.setProperty(k, v)
+  document.body.appendChild(el)
+  el.addEventListener('animationend', () => el.remove(), { once: true })
 }
 
 function initTouchEffects() {
-  // FIX #2: Touch also uses dedicated spotlight element
-  const touchSpot = document.createElement('div')
-  touchSpot.className = 'cursor-spotlight'
-  document.body.appendChild(touchSpot)
-  spotlightEl = touchSpot
+  const spot = document.createElement('div')
+  spot.className = 'cursor-spotlight'
+  document.body.appendChild(spot)
 
-  document.addEventListener(
-    'touchmove',
-    (e: TouchEvent) => {
-      const t = e.touches[0]
-      if (!t) return
-      touchSpot.style.setProperty('--mx', `${t.clientX}px`)
-      touchSpot.style.setProperty('--my', `${t.clientY}px`)
-    },
-    { passive: true }
-  )
+  document.addEventListener('touchmove', (e: TouchEvent) => {
+    const t = e.touches[0]
+    if (!t) return
+    spot.style.setProperty('--mx', `${t.clientX}px`)
+    spot.style.setProperty('--my', `${t.clientY}px`)
+  }, { passive: true })
 
-  document.addEventListener(
-    'touchstart',
-    (e: TouchEvent) => {
-      document.documentElement.classList.add('touch-active')
-      const t = e.touches[0]
-      if (t) spawnRipple(t.clientX, t.clientY)
-    },
-    { passive: true }
-  )
+  document.addEventListener('touchstart', (e: TouchEvent) => {
+    document.documentElement.classList.add('touch-active')
+    const t = e.touches[0]
+    if (t) spawnRipple(t.clientX, t.clientY)
+  }, { passive: true })
 
   document.addEventListener('touchend', () => {
     document.documentElement.classList.remove('touch-active')
@@ -191,434 +122,235 @@ function initTouchEffects() {
 }
 
 // ─────────────────────────────────────────────────────────
-// Sound Engine: warm synthesized micro-sounds via Web Audio
-// FIX #3: disconnect temp nodes, suspend AudioContext when idle
+// Sound Engine: lightweight, suspends when idle
 // ─────────────────────────────────────────────────────────
 let audioCtx: AudioContext | null = null
 let soundEnabled = false
 let masterGain: GainNode | null = null
 let suspendTimer: ReturnType<typeof setTimeout> | null = null
 
-function ensureAudioResumed() {
+function ensureAudio() {
   if (audioCtx?.state === 'suspended') audioCtx.resume()
   if (suspendTimer) clearTimeout(suspendTimer)
-  suspendTimer = setTimeout(() => {
-    if (audioCtx?.state === 'running') audioCtx.suspend()
-  }, 5000)
+  suspendTimer = setTimeout(() => { if (audioCtx?.state === 'running') audioCtx.suspend() }, 5000)
 }
 
 function initSoundEngine() {
   const unlock = () => {
     if (audioCtx) return
     audioCtx = new AudioContext()
-
     masterGain = audioCtx.createGain()
     masterGain.gain.value = 0.35
     masterGain.connect(audioCtx.destination)
-
     soundEnabled = true
-    document.removeEventListener('click', unlock)
-    document.removeEventListener('touchstart', unlock)
   }
   document.addEventListener('click', unlock, { once: true })
   document.addEventListener('touchstart', unlock, { once: true })
 
-  document.addEventListener('click', () => {
-    if (soundEnabled) playClickSound()
-  })
+  document.addEventListener('click', () => { if (soundEnabled) playClick() })
 
-  let lastHoverTarget: EventTarget | null = null
-  document.addEventListener(
-    'mouseover',
-    (e: MouseEvent) => {
-      const target = (e.target as HTMLElement)?.closest?.(
-        'a, button, [role="button"]'
-      )
-      if (target && target !== lastHoverTarget && soundEnabled) {
-        lastHoverTarget = target
-        playHoverSound()
-      }
-      if (!target) lastHoverTarget = null
-    },
-    { passive: true }
-  )
+  let lastHover: EventTarget | null = null
+  document.addEventListener('mouseover', (e: MouseEvent) => {
+    const t = (e.target as HTMLElement)?.closest?.('a,button,[role="button"]')
+    if (t && t !== lastHover && soundEnabled) { lastHover = t; playHover() }
+    if (!t) lastHover = null
+  }, { passive: true })
 }
 
-function playClickSound() {
+function playClick() {
   if (!audioCtx || !masterGain) return
-  ensureAudioResumed()
+  ensureAudio()
   const t = audioCtx.currentTime
-
-  const osc1 = audioCtx.createOscillator()
-  const g1 = audioCtx.createGain()
-  osc1.type = 'triangle'
-  osc1.frequency.setValueAtTime(220, t)
-  osc1.frequency.exponentialRampToValueAtTime(80, t + 0.1)
-  g1.gain.setValueAtTime(0.045, t)
-  g1.gain.exponentialRampToValueAtTime(0.001, t + 0.12)
-  osc1.connect(g1)
-  g1.connect(masterGain)
-  osc1.start(t)
-  osc1.stop(t + 0.12)
-  osc1.onended = () => { osc1.disconnect(); g1.disconnect() }
-
-  const bufSize = audioCtx.sampleRate * 0.025
-  const buf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate)
-  const data = buf.getChannelData(0)
-  for (let i = 0; i < bufSize; i++) {
-    data[i] = (Math.random() * 2 - 1) * (1 - i / bufSize) ** 2
-  }
-  const noise = audioCtx.createBufferSource()
-  noise.buffer = buf
-  const nFilter = audioCtx.createBiquadFilter()
-  nFilter.type = 'lowpass'
-  nFilter.frequency.value = 800
-  nFilter.Q.value = 0.7
-  const nGain = audioCtx.createGain()
-  nGain.gain.setValueAtTime(0.025, t)
-  nGain.gain.exponentialRampToValueAtTime(0.001, t + 0.03)
-  noise.connect(nFilter)
-  nFilter.connect(nGain)
-  nGain.connect(masterGain)
-  noise.start(t)
-  noise.stop(t + 0.03)
-  noise.onended = () => { noise.disconnect(); nFilter.disconnect(); nGain.disconnect() }
-
-  const osc2 = audioCtx.createOscillator()
-  const g2 = audioCtx.createGain()
-  osc2.type = 'sine'
-  osc2.frequency.setValueAtTime(330, t)
-  osc2.frequency.exponentialRampToValueAtTime(120, t + 0.08)
-  g2.gain.setValueAtTime(0.015, t)
-  g2.gain.exponentialRampToValueAtTime(0.001, t + 0.08)
-  osc2.connect(g2)
-  g2.connect(masterGain)
-  osc2.start(t)
-  osc2.stop(t + 0.08)
-  osc2.onended = () => { osc2.disconnect(); g2.disconnect() }
+  const o = audioCtx.createOscillator(), g = audioCtx.createGain()
+  o.type = 'triangle'; o.frequency.setValueAtTime(220, t); o.frequency.exponentialRampToValueAtTime(80, t + 0.1)
+  g.gain.setValueAtTime(0.045, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.12)
+  o.connect(g); g.connect(masterGain!); o.start(t); o.stop(t + 0.12)
+  o.onended = () => { o.disconnect(); g.disconnect() }
 }
 
-function playHoverSound() {
+function playHover() {
   if (!audioCtx || !masterGain) return
-  ensureAudioResumed()
+  ensureAudio()
   const t = audioCtx.currentTime
-
-  const osc1 = audioCtx.createOscillator()
-  const osc2 = audioCtx.createOscillator()
-  const g = audioCtx.createGain()
-
-  osc1.type = 'sine'
-  osc1.frequency.setValueAtTime(400, t)
-  osc1.frequency.exponentialRampToValueAtTime(550, t + 0.08)
-
-  osc2.type = 'sine'
-  osc2.frequency.setValueAtTime(403, t)
-  osc2.frequency.exponentialRampToValueAtTime(553, t + 0.08)
-
-  g.gain.setValueAtTime(0.008, t)
-  g.gain.setValueAtTime(0.008, t + 0.03)
-  g.gain.exponentialRampToValueAtTime(0.001, t + 0.12)
-
-  osc1.connect(g)
-  osc2.connect(g)
-  g.connect(masterGain)
-
-  osc1.start(t)
-  osc2.start(t)
-  osc1.stop(t + 0.12)
-  osc2.stop(t + 0.12)
-  // FIX #3: Disconnect on end
-  osc2.onended = () => { osc1.disconnect(); osc2.disconnect(); g.disconnect() }
+  const o1 = audioCtx.createOscillator(), o2 = audioCtx.createOscillator(), g = audioCtx.createGain()
+  o1.type = 'sine'; o1.frequency.setValueAtTime(400, t); o1.frequency.exponentialRampToValueAtTime(550, t + 0.08)
+  o2.type = 'sine'; o2.frequency.setValueAtTime(403, t); o2.frequency.exponentialRampToValueAtTime(553, t + 0.08)
+  g.gain.setValueAtTime(0.008, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.12)
+  o1.connect(g); o2.connect(g); g.connect(masterGain!); o1.start(t); o2.start(t); o1.stop(t + 0.12); o2.stop(t + 0.12)
+  o2.onended = () => { o1.disconnect(); o2.disconnect(); g.disconnect() }
 }
 
 // ─────────────────────────────────────────────────────────
-// Letter Spirits: each character reacts to cursor proximity
-// FIX #1: Use cached positions + scrollY offset, no per-frame gBCR
-// FIX #5: MutationObserver with subtree:true + debounce
+// Letter Spirits: per-char proximity glow on titles ONLY
+// PERF: runs at 30fps, pauses when tab hidden, no DOM spam
 // ─────────────────────────────────────────────────────────
-interface SpiritChar {
-  el: HTMLSpanElement
-  x: number  // center X at scroll=0 (page coords)
-  y: number  // center Y at scroll=0 (page coords)
-}
-
+interface SpiritChar { el: HTMLSpanElement; x: number; y: number }
 let spiritChars: SpiritChar[] = []
-let spiritMx = -9999
-let spiritMy = -9999
-const SPIRIT_RADIUS = 150
-const MAX_LIFT = -8
-const PARTICLE_CHANCE = 0.03
+let spiritMx = -9999, spiritMy = -9999
+let spiritRunning = false
+const SPIRIT_RADIUS = 120
+const MAX_LIFT = -6
 
 function initLetterSpirits() {
   const setup = () => {
-    splitTextIntoSpans()
+    splitText()
     if (spiritChars.length === 0) return
 
-    document.addEventListener(
-      'mousemove',
-      (e) => {
-        spiritMx = e.clientX
-        spiritMy = e.clientY
-      },
-      { passive: true }
-    )
+    document.addEventListener('mousemove', (e) => {
+      spiritMx = e.clientX; spiritMy = e.clientY
+    }, { passive: true })
 
-    // Recache positions on resize/scroll (debounced)
-    let recacheTimer: ReturnType<typeof setTimeout> | null = null
-    const recache = () => {
-      if (recacheTimer) clearTimeout(recacheTimer)
-      recacheTimer = setTimeout(cachePositions, 200)
-    }
-    window.addEventListener('resize', recache, { passive: true })
+    // Recache on resize (debounced)
+    let resizeTimer: ReturnType<typeof setTimeout> | null = null
+    window.addEventListener('resize', () => {
+      if (resizeTimer) clearTimeout(resizeTimer)
+      resizeTimer = setTimeout(cachePos, 300)
+    }, { passive: true })
 
-    animateSpirits()
+    // Pause when tab hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) { spiritRunning = false }
+      else if (spiritChars.length > 0) startSpirits()
+    })
+
+    startSpirits()
   }
 
-  if (document.readyState === 'complete') {
-    setTimeout(setup, 500)
-  } else {
-    window.addEventListener('load', () => setTimeout(setup, 500))
-  }
+  if (document.readyState === 'complete') setTimeout(setup, 800)
+  else window.addEventListener('load', () => setTimeout(setup, 800))
 
-  // FIX #5: subtree:true + debounced to detect SPA route changes
-  let mutationTimer: ReturnType<typeof setTimeout> | null = null
-  const observer = new MutationObserver(() => {
-    if (mutationTimer) clearTimeout(mutationTimer)
-    mutationTimer = setTimeout(() => {
-      spiritChars = []
-      splitTextIntoSpans()
-    }, 500)
-  })
-  observer.observe(document.body, { childList: true, subtree: true })
+  // SPA navigation: observe only #__next direct children, debounced
+  let mutTimer: ReturnType<typeof setTimeout> | null = null
+  const target = document.getElementById('__next') || document.body
+  new MutationObserver(() => {
+    if (mutTimer) clearTimeout(mutTimer)
+    mutTimer = setTimeout(() => { spiritChars = []; splitText() }, 600)
+  }).observe(target, { childList: true })
 }
 
-function splitTextIntoSpans() {
-  const selectors = [
-    '.notion-title',
-    '.notion-gallery-grid .notion-page-title-text',
-    '.notion-h1 .notion-h-title',
-    '.notion-h2 .notion-h-title',
-  ]
-
-  const elements = document.querySelectorAll(selectors.join(', '))
-  elements.forEach((el) => {
+function splitText() {
+  const els = document.querySelectorAll('.notion-title, .notion-gallery-grid .notion-page-title-text')
+  els.forEach((el) => {
     if (el.querySelector('.spirit-char')) return
-
     const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT)
-    const textNodes: Text[] = []
-    let node: Text | null
-    while ((node = walker.nextNode() as Text | null)) {
-      if (node.textContent && node.textContent.trim()) {
-        textNodes.push(node)
-      }
-    }
+    const nodes: Text[] = []
+    let n: Text | null
+    while ((n = walker.nextNode() as Text | null)) { if (n.textContent?.trim()) nodes.push(n) }
 
-    textNodes.forEach((textNode) => {
-      const text = textNode.textContent || ''
+    nodes.forEach((tn) => {
+      const text = tn.textContent || ''
       const frag = document.createDocumentFragment()
-
       for (let i = 0; i < text.length; i++) {
         const ch = text[i]!
-        if (ch === ' ') {
-          const s = document.createElement('span')
-          s.textContent = ' '
-          s.style.display = 'inline'
-          frag.appendChild(s)
-          continue
-        }
-
-        const span = document.createElement('span')
-        span.className = 'spirit-char'
-        span.textContent = ch
-        span.style.display = 'inline-block'
-        span.style.willChange = 'transform, color, text-shadow'
-        frag.appendChild(span)
+        const s = document.createElement('span')
+        s.textContent = ch
+        if (ch !== ' ') { s.className = 'spirit-char'; s.style.display = 'inline-block' }
+        frag.appendChild(s)
       }
-
-      textNode.parentNode?.replaceChild(frag, textNode)
+      tn.parentNode?.replaceChild(frag, tn)
     })
   })
-
-  cachePositions()
+  cachePos()
 }
 
-// FIX #1: Cache positions once (page coords), not per frame
-function cachePositions() {
+function cachePos() {
   spiritChars = []
-  const scrollY = window.scrollY
+  const sy = window.scrollY
   document.querySelectorAll('.spirit-char').forEach((el) => {
-    const htmlEl = el as HTMLSpanElement
-    const rect = htmlEl.getBoundingClientRect()
-    spiritChars.push({
-      el: htmlEl,
-      x: rect.left + rect.width / 2,
-      // Store as page coordinate (viewport Y + scrollY)
-      y: rect.top + rect.height / 2 + scrollY,
-    })
+    const r = (el as HTMLElement).getBoundingClientRect()
+    spiritChars.push({ el: el as HTMLSpanElement, x: r.left + r.width / 2, y: r.top + r.height / 2 + sy })
   })
 }
 
-function animateSpirits() {
-  const primary = getComputedStyle(document.documentElement)
-    .getPropertyValue('--primary').trim()
-  const cta = getComputedStyle(document.documentElement)
-    .getPropertyValue('--cta').trim()
+function startSpirits() {
+  if (spiritRunning) return
+  spiritRunning = true
+  const primary = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim()
+  const cta = getComputedStyle(document.documentElement).getPropertyValue('--cta').trim()
+  let last = 0
 
-  function tick() {
-    const vh = window.innerHeight
-    const scrollY = window.scrollY
+  function tick(now: number) {
+    if (!spiritRunning) return
+    // Throttle to ~30fps
+    if (now - last < 33) { requestAnimationFrame(tick); return }
+    last = now
 
-    // FIX #1: Batch reads first (no gBCR), then batch writes
+    const vh = window.innerHeight, sy = window.scrollY
+
     for (const ch of spiritChars) {
-      // Convert cached page-Y to viewport-Y
-      const cy = ch.y - scrollY
-      const cx = ch.x
-
-      // Viewport cull
+      const cy = ch.y - sy
       if (cy < -SPIRIT_RADIUS || cy > vh + SPIRIT_RADIUS) {
-        if (ch.el.style.transform) {
-          ch.el.style.transform = ''
-          ch.el.style.color = ''
-          ch.el.style.textShadow = ''
-        }
+        if (ch.el.style.transform) { ch.el.style.transform = ''; ch.el.style.color = ''; ch.el.style.textShadow = '' }
         continue
       }
 
-      const dx = spiritMx - cx
-      const dy = spiritMy - cy
-      const dist = Math.sqrt(dx * dx + dy * dy)
+      const ddx = spiritMx - ch.x, ddy = spiritMy - cy
+      const dist = Math.sqrt(ddx * ddx + ddy * ddy)
 
       if (dist < SPIRIT_RADIUS) {
-        const intensity = 1 - dist / SPIRIT_RADIUS
-        const eased = intensity * intensity
-
-        const lift = MAX_LIFT * eased
-        const pushX = (-dx / dist) * 2 * eased
-
-        ch.el.style.transform = `translate(${pushX}px, ${lift}px) scale(${1 + eased * 0.12})`
-
-        if (eased > 0.5) {
-          ch.el.style.color = cta || '#f97316'
-        } else if (eased > 0.2) {
-          ch.el.style.color = primary || '#2563eb'
-        } else {
-          ch.el.style.color = ''
-        }
-
-        const glowSize = Math.round(4 + eased * 16)
-        const glowOpacity = (eased * 0.7).toFixed(2)
-        ch.el.style.textShadow = `0 0 ${glowSize}px rgba(37,99,235,${glowOpacity}), 0 0 ${glowSize * 2}px rgba(249,115,22,${(eased * 0.3).toFixed(2)})`
-
-        if (eased > 0.6 && Math.random() < PARTICLE_CHANCE) {
-          spawnLetterSpark(cx, cy)
-        }
-      } else {
-        if (ch.el.style.transform) {
-          ch.el.style.transform = ''
-          ch.el.style.color = ''
-          ch.el.style.textShadow = ''
-        }
+        const e = ((1 - dist / SPIRIT_RADIUS) ** 2)
+        ch.el.style.transform = `translate(${(-ddx / dist) * 2 * e}px,${MAX_LIFT * e}px) scale(${1 + e * 0.1})`
+        ch.el.style.color = e > 0.5 ? (cta || '#f97316') : e > 0.2 ? (primary || '#2563eb') : ''
+        const gs = Math.round(4 + e * 12)
+        ch.el.style.textShadow = `0 0 ${gs}px rgba(37,99,235,${(e * 0.5).toFixed(2)})`
+      } else if (ch.el.style.transform) {
+        ch.el.style.transform = ''; ch.el.style.color = ''; ch.el.style.textShadow = ''
       }
     }
-
     requestAnimationFrame(tick)
   }
-
   requestAnimationFrame(tick)
 }
 
-function spawnLetterSpark(x: number, y: number) {
-  const spark = document.createElement('div')
-  spark.className = 'letter-spark'
-  const angle = Math.random() * Math.PI * 2
-  const dist = 8 + Math.random() * 16
-  const tx = Math.cos(angle) * dist
-  const ty = Math.sin(angle) * dist - 10
-  spark.style.left = `${x}px`
-  spark.style.top = `${y}px`
-  spark.style.setProperty('--tx', `${tx}px`)
-  spark.style.setProperty('--ty', `${ty}px`)
-  document.body.appendChild(spark)
-  spark.addEventListener('animationend', () => spark.remove())
-}
-
 // ─────────────────────────────────────────────────────────
-// Ambient Spirits: random floating particles near text
+// Ambient Spirits: fewer, pause when hidden
 // ─────────────────────────────────────────────────────────
-const AMBIENT_SHAPES = ['●', '✦', '◆', '✧', '○', '·', '✶', '⬥']
-const AMBIENT_INTERVAL = 2500
-const MAX_AMBIENT = 12
+const AMBIENT_SHAPES = ['✦', '✧', '·', '○']
+let ambientInterval: ReturnType<typeof setInterval> | null = null
 
 function initAmbientSpirits() {
-  const setup = () => {
-    setInterval(spawnAmbientSpirit, AMBIENT_INTERVAL)
+  const start = () => {
+    if (ambientInterval) return
+    ambientInterval = setInterval(spawnAmbient, 4000)
+  }
+  const stop = () => {
+    if (ambientInterval) { clearInterval(ambientInterval); ambientInterval = null }
   }
 
-  if (document.readyState === 'complete') {
-    setTimeout(setup, 1000)
-  } else {
-    window.addEventListener('load', () => setTimeout(setup, 1000))
-  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start()
+  })
+
+  if (document.readyState === 'complete') setTimeout(start, 2000)
+  else window.addEventListener('load', () => setTimeout(start, 2000))
 }
 
-function spawnAmbientSpirit() {
-  if (document.querySelectorAll('.ambient-spirit').length >= MAX_AMBIENT) return
-
-  const textBlocks = document.querySelectorAll(
-    '.notion-text, .notion-quote, .notion-callout, .notion-h1, .notion-h2, .notion-h3, .notion-gallery-grid .notion-collection-card-body'
-  )
-  if (textBlocks.length === 0) return
-
-  const block = textBlocks[Math.floor(Math.random() * textBlocks.length)]
+function spawnAmbient() {
+  if (document.querySelectorAll('.ambient-spirit').length >= 6) return
+  const blocks = document.querySelectorAll('.notion-text, .notion-quote, .notion-h1, .notion-h2, .notion-gallery-grid .notion-collection-card-body')
+  if (blocks.length === 0) return
+  const block = blocks[Math.floor(Math.random() * blocks.length)]
   if (!block) return
   const rect = block.getBoundingClientRect()
-  const vh = window.innerHeight
+  if (rect.bottom < 0 || rect.top > window.innerHeight) return
 
-  if (rect.bottom < 0 || rect.top > vh) return
-
-  const side = Math.random()
-  let x: number, y: number
-
-  if (side < 0.3) {
-    x = rect.left - 20 - Math.random() * 30
-    y = rect.top + Math.random() * rect.height
-  } else if (side < 0.6) {
-    x = rect.right + 10 + Math.random() * 30
-    y = rect.top + Math.random() * rect.height
-  } else {
-    x = rect.left + Math.random() * rect.width
-    y = rect.top + Math.random() * rect.height
-  }
-
-  const spirit = document.createElement('div')
-  spirit.className = 'ambient-spirit'
-
+  const x = rect.left + Math.random() * rect.width
+  const y = rect.top + Math.random() * rect.height
   const shape = AMBIENT_SHAPES[Math.floor(Math.random() * AMBIENT_SHAPES.length)]!
-  spirit.textContent = shape
+  const dx = (Math.random() - 0.5) * 30
+  const dy = -(10 + Math.random() * 25)
+  const cls = Math.random() < 0.5 ? 'ambient-spirit--primary' : 'ambient-spirit--cta'
 
-  const driftX = (Math.random() - 0.5) * 40
-  const driftY = -(15 + Math.random() * 35)
-
-  spirit.style.left = `${x}px`
-  spirit.style.top = `${y}px`
-  spirit.style.setProperty('--drift-x', `${driftX}px`)
-  spirit.style.setProperty('--drift-y', `${driftY}px`)
-
-  const duration = 3000 + Math.random() * 3000
-  spirit.style.animationDuration = `${duration}ms`
-
-  const variant = Math.random()
-  if (variant < 0.4) {
-    spirit.classList.add('ambient-spirit--primary')
-  } else if (variant < 0.7) {
-    spirit.classList.add('ambient-spirit--cta')
-  } else {
-    spirit.classList.add('ambient-spirit--muted')
-  }
-
-  const size = 6 + Math.random() * 8
-  spirit.style.fontSize = `${size}px`
-
-  document.body.appendChild(spirit)
-  spirit.addEventListener('animationend', () => spirit.remove())
+  const el = document.createElement('div')
+  el.className = `ambient-spirit ${cls}`
+  el.textContent = shape
+  el.style.cssText = `left:${x}px;top:${y}px;font-size:${6 + Math.random() * 6}px;animation-duration:${3 + Math.random() * 2}s`
+  el.style.setProperty('--drift-x', `${dx}px`)
+  el.style.setProperty('--drift-y', `${dy}px`)
+  document.body.appendChild(el)
+  el.addEventListener('animationend', () => el.remove(), { once: true })
 }
+
+// Polyfill for requestIdleCallback
+declare global { interface Window { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number } }
+if (!window.requestIdleCallback) window.requestIdleCallback = ((cb: () => void) => setTimeout(cb, 1)) as any
