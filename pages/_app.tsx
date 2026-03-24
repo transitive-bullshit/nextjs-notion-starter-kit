@@ -3,7 +3,7 @@ import 'katex/dist/katex.min.css'
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-coy.css'
 // core styles shared by all of react-notion-x (required)
-import 'react-notion-x/src/styles.css'
+import 'react-notion-x/styles.css'
 // global styles shared across the entire site
 import 'styles/global.css'
 // this might be better for dark mode
@@ -15,6 +15,11 @@ import 'styles/prism-theme.css'
 
 import type { AppProps } from 'next/app'
 import * as Fathom from 'fathom-client'
+import {
+  Momo_Signature,
+  Momo_Trust_Display,
+  Momo_Trust_Sans
+} from 'next/font/google'
 import { useRouter } from 'next/router'
 import { posthog } from 'posthog-js'
 import * as React from 'react'
@@ -27,6 +32,26 @@ import {
   posthogConfig,
   posthogId
 } from '@/lib/config'
+
+const momoDisplay = Momo_Trust_Display({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400'],
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const momoSans = Momo_Trust_Sans({
+  subsets: ['latin', 'vietnamese'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+const momoSignature = Momo_Signature({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400'],
+  variable: '--font-signature',
+  display: 'swap',
+})
 
 if (!isServer) {
   bootstrap()
@@ -60,6 +85,14 @@ export default function App({ Component, pageProps }: AppProps) {
       router.events.off('routeChangeComplete', onRouteChangeComplete)
     }
   }, [router.events])
+
+  React.useEffect(() => {
+    document.documentElement.classList.add(
+      momoDisplay.variable,
+      momoSans.variable,
+      momoSignature.variable
+    )
+  }, [])
 
   return <Component {...pageProps} />
 }

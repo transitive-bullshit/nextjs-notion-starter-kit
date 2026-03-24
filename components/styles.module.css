@@ -19,9 +19,7 @@
   line-height: 1.5;
   color: rgb(55, 53, 47);
   caret-color: rgb(55, 53, 47);
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
-    'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
   background-color: var(--bg-color);
 }
 
@@ -47,19 +45,20 @@
 
 .footer {
   width: 100%;
-  max-width: 1100px;
+  max-width: var(--page-max, 1200px);
   margin: auto auto 0;
-  padding: 8px;
-
+  padding: 32px 24px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-top: 1px solid var(--line, rgba(30,41,59,0.10));
 }
 
 .copyright {
-  font-size: 80%;
+  font-size: 0.85rem;
   padding: 0.5em;
+  color: var(--muted, #64748b);
 }
 
 .settings,
@@ -67,24 +66,28 @@
   user-select: none;
 }
 
+.social,
+.settings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+
 .settings a,
 .social a {
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1.75em;
   display: inline-flex;
-  padding: 0.25em;
-  margin-right: 1vw;
-  transition: color 250ms ease-out;
-}
-
-.settings a:last-of-type,
-.social a:last-of-type {
-  margin-right: 0;
+  padding: 0.35em;
+  color: var(--muted, #64748b);
+  transition: color 200ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)), transform 200ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
 .settings a:hover,
 .social a:hover {
-  transition: color 50ms ease-out;
+  transform: translateY(-2px);
+  transition: color 100ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)), transform 100ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
 .toggleDarkMode:hover {
@@ -160,7 +163,7 @@
   margin-right: 1vw;
   border-radius: 50%;
   background: transparent;
-  transition: all 250ms ease-out;
+  transition: all 200ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
 .pageActions a:last-of-type {
@@ -168,7 +171,7 @@
 }
 
 .pageActions a:hover {
-  transition: all 50ms ease-out;
+  transition: all 100ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
 }
 
 .likeTweet:hover {
@@ -218,4 +221,21 @@
 
 .hidden {
   visibility: hidden;
+}
+
+.backToTop {
+  font-size: 0.8rem;
+  font-family: inherit;
+  color: var(--muted, #64748b);
+  background: transparent;
+  cursor: pointer;
+  padding: 0.4em 0.8em;
+  border-radius: 9999px;
+  border: 1px solid var(--line, rgba(30,41,59,0.10));
+  transition: color 200ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)), border-color 200ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.backToTop:hover {
+  color: var(--primary, #2563eb);
+  border-color: var(--primary, #2563eb);
 }
