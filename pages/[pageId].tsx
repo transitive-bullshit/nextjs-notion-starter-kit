@@ -32,10 +32,10 @@ export async function getStaticPaths() {
     }
   }
 
+  // Only prerender a small batch to avoid Notion API 429 rate limits.
+  // Remaining pages are built on-demand with fallback: 'blocking'.
   const siteMap = await getSiteMap()
 
-  // Combine sitemap paths with URL overrides (e.g., /articles, /notes)
-  // URL overrides might not be in the sitemap if not directly linked from root
   const allPageIds = [
     ...new Set([
       ...Object.keys(siteMap.canonicalPageMap),
@@ -44,11 +44,11 @@ export async function getStaticPaths() {
   ]
 
   const staticPaths = {
-    paths: allPageIds.map((pageId) => ({ params: { pageId } })),
-    fallback: true
+    paths: allPageIds.slice(0, 5).map((pageId) => ({ params: { pageId } })),
+    fallback: 'blocking' as const
   }
 
-  console.log(staticPaths.paths)
+  console.log('prerendering', staticPaths.paths.length, 'of', allPageIds.length, 'pages')
   return staticPaths
 }
 
