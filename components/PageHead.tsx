@@ -47,7 +47,7 @@ export function PageHead({
       <meta
         name='theme-color'
         media='(prefers-color-scheme: dark)'
-        content='#2d3439'
+        content='#2D3439'
         key='theme-color-dark'
       />
 
@@ -60,6 +60,22 @@ export function PageHead({
           <meta property='twitter:domain' content={site.domain} />
         </>
       )}
+       <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=G-D04SMQ9HV8`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-D04SMQ9HV8', {
+          page_path: window.location.pathname,
+        });
+        `
+        }}
+      />
 
       {config.twitter && (
         <meta name='twitter:creator' content={`@${config.twitter}`} />

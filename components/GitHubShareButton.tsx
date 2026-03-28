@@ -3,13 +3,13 @@ import styles from './styles.module.css'
 export function GitHubShareButton() {
   return (
     <a
-      href='https://github.com/transitive-bullshit/nextjs-notion-starter-kit'
+      href='https://github.com/cheungzt'
       target='_blank'
       rel='noopener noreferrer'
       className={styles.githubCorner}
       aria-label='View source on GitHub'
     >
-      <svg
+{/*       <svg
         width='80'
         height='80'
         viewBox='0 0 250 250'
@@ -40,7 +40,7 @@ export function GitHubShareButton() {
           fill='currentColor'
           className={styles.octoBody}
         />
-      </svg>
+      </svg> */}
     </a>
   )
 }

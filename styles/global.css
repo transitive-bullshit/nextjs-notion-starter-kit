@@ -60,3 +60,17 @@ body {
 ::-webkit-scrollbar-track {           
     background-color: var(--bg-color);
 }
+
+:root {
+  --bg-color: #fff;
+  --bg-color-0: #fff;
+  --bg-color-1: #fff;
+  --bg-color-2: #fff;
+}
+
+.dark-mode {
+  --bg-color: #0F0F0F;
+  --bg-color-0: #0F0F0F;
+  --bg-color-1: #0F0F0F;
+  --bg-color-2: #0F0F0F;
+}
