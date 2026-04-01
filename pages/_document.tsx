@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document'
+import Script from 'next/script'
 
 export default class MyDocument extends Document {
   override render() {
@@ -9,6 +10,10 @@ export default class MyDocument extends Document {
           <link rel='icon' type='image/png' sizes='32x32' href='favicon.png' />
 
           <link rel='manifest' href='/manifest.json' />
+
+          <Script src="/assets/scripts/lang-config.js" strategy="beforeInteractive" />
+          <Script src="/assets/scripts/translation.js" strategy="beforeInteractive" />
+          <Script src="//translate.google.com/translate_a/element.js?cb=TranslateInit" strategy="afterInteractive" />
         </Head>
 
         <body>

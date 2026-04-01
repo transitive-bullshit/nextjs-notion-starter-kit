@@ -83,7 +83,7 @@ async function getAllPagesImpl(
 
       const block = getBlockValue(recordMap.block[pageId])
       if (
-        !(getPageProperty<boolean | null>('Public', block!, recordMap) ?? true)
+        !(getPageProperty<boolean | null>('Public', block!, recordMap) ?? false)
       ) {
         return map
       }
