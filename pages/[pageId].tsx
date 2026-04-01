@@ -1,8 +1,7 @@
 import { type GetStaticProps } from 'next'
 
 import { NotionPage } from '@/components/NotionPage'
-import { domain, isDev, pageUrlOverrides } from '@/lib/config'
-import { getSiteMap } from '@/lib/get-site-map'
+import { domain } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 import { type PageProps, type Params } from '@/lib/types'
 
@@ -24,32 +23,14 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async (
   }
 }
 
+// No pages prerendered at build time — all built on-demand via ISR.
+// This avoids Notion API 429 rate limits during builds entirely.
+// Pages are cached after first visit (revalidate: 10s above).
 export async function getStaticPaths() {
-  if (isDev) {
-    return {
-      paths: [],
-      fallback: true
-    }
-  }
-
-  // Only prerender a small batch to avoid Notion API 429 rate limits.
-  // Remaining pages are built on-demand with fallback: 'blocking'.
-  const siteMap = await getSiteMap()
-
-  const allPageIds = [
-    ...new Set([
-      ...Object.keys(siteMap.canonicalPageMap),
-      ...Object.keys(pageUrlOverrides)
-    ])
-  ]
-
-  const staticPaths = {
-    paths: allPageIds.slice(0, 5).map((pageId) => ({ params: { pageId } })),
+  return {
+    paths: [],
     fallback: 'blocking' as const
   }
-
-  console.log('prerendering', staticPaths.paths.length, 'of', allPageIds.length, 'pages')
-  return staticPaths
 }
 
 export default function NotionDomainDynamicPage(props: PageProps) {

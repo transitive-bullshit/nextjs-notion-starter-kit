@@ -3,7 +3,7 @@ import {
   type SearchParams,
   type SearchResults
 } from 'notion-types'
-import { mergeRecordMaps } from 'notion-utils'
+import { getBlockValue, mergeRecordMaps } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
 
@@ -67,7 +67,64 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 
   await getTweetsMap(recordMap)
 
+  // Filter non-public pages from collection views (gallery/table on homepage)
+  filterNonPublicPages(recordMap)
+
   return recordMap
+}
+
+/**
+ * Removes pages where the "Public" checkbox is unchecked from all
+ * collection_query results so they don't render in gallery/table views.
+ */
+function filterNonPublicPages(recordMap: ExtendedRecordMap): void {
+  const collectionQuery = recordMap.collection_query
+  if (!collectionQuery) return
+
+  for (const collectionId of Object.keys(collectionQuery)) {
+    // Find the "Public" property ID from the collection schema
+    const collection = getBlockValue(recordMap.collection?.[collectionId])
+    if (!collection?.schema) continue
+
+    const publicPropId = Object.keys(collection.schema).find(
+      (key) =>
+        collection.schema[key]?.name === 'Public' &&
+        collection.schema[key]?.type === 'checkbox'
+    )
+    if (!publicPropId) continue
+
+    // Check if a block's "Public" property is "Yes"
+    const isPublic = (blockId: string): boolean => {
+      const block = getBlockValue(recordMap.block[blockId])
+      const val = block?.properties?.[publicPropId]
+      return val?.[0]?.[0] === 'Yes'
+    }
+
+    for (const viewId of Object.keys(collectionQuery[collectionId]!)) {
+      const data = collectionQuery[collectionId]![viewId] as any
+      if (!data) continue
+
+      // Filter flat blockIds
+      if (data.blockIds) {
+        data.blockIds = data.blockIds.filter(isPublic)
+      }
+
+      // Filter grouped results (board/gallery)
+      if (data.collection_group_results?.blockIds) {
+        data.collection_group_results.blockIds =
+          data.collection_group_results.blockIds.filter(isPublic)
+      }
+
+      // Filter per-group results (board columns)
+      if (data.groupResults) {
+        for (const group of data.groupResults) {
+          if (group.blockIds) {
+            group.blockIds = group.blockIds.filter(isPublic)
+          }
+        }
+      }
+    }
+  }
 }
 
 export async function search(params: SearchParams): Promise<SearchResults> {

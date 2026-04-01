@@ -239,3 +239,32 @@
   color: var(--primary, #2563eb);
   border-color: var(--primary, #2563eb);
 }
+
+.langSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.langButton {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+.langButton:hover {
+  opacity: 1;
+}
+
+.langButtonActive {
+  opacity: 1;
+  font-weight: 600;
+}
+
+.langSeparator {
+  opacity: 0.3;
+  font-size: 14px;
+  user-select: none;
+}

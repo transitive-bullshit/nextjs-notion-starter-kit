@@ -8,6 +8,7 @@ import { MoonIcon } from '@/lib/icons/moon'
 import { SunIcon } from '@/lib/icons/sun'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
+import { LanguageSwitcher } from './LanguageSwitcher'
 import styles from './styles.module.css'
 
 function ToggleThemeButton() {
@@ -40,7 +41,25 @@ export function NotionPageHeader({
   const { components, mapPageUrl } = useNotionContext()
 
   if (navigationStyle === 'default') {
-    return <Header block={block} />
+    return (
+      <>
+        <Header block={block} />
+        <div
+          className='notion-header'
+          style={{
+            position: 'fixed',
+            top: 8,
+            right: 16,
+            zIndex: 101,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8
+          }}
+        >
+          <LanguageSwitcher />
+        </div>
+      </>
+    )
   }
 
   return (
@@ -79,6 +98,7 @@ export function NotionPageHeader({
             })
             .filter(Boolean)}
 
+          <LanguageSwitcher />
           <ToggleThemeButton />
 
           {isSearchEnabled && <Search block={block} title={null} />}
