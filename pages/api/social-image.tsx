@@ -12,7 +12,6 @@ import {
 } from 'notion-utils'
 
 import * as libConfig from '@/lib/config'
-import interSemiBoldFont from '@/lib/fonts/inter-semibold'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
 import { type NotionPageInfo, type PageError } from '@/lib/types'
@@ -155,13 +154,24 @@ export default async function OGImage(
       fonts: [
         {
           name: 'Inter',
-          data: interSemiBoldFont,
-          style: 'normal',
-          weight: 700
+          data: await fetchInterFont(),
+          style: 'normal' as const,
+          weight: 700 as const
         }
       ]
     }
   )
+}
+
+const fontCache: { data: ArrayBuffer | null } = { data: null }
+
+async function fetchInterFont(): Promise<ArrayBuffer> {
+  if (fontCache.data) return fontCache.data
+  const res = await fetch(
+    'https://fonts.gstatic.com/s/inter/v21/UcCo3FwrK3iLTcviYwY.woff2'
+  )
+  fontCache.data = await res.arrayBuffer()
+  return fontCache.data
 }
 
 export async function getNotionPageInfo({

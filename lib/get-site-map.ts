@@ -32,12 +32,27 @@ const getAllPages = pMemoize(getAllPagesImpl, {
 
 const getPage = async (pageId: string, opts?: any) => {
   console.log('\nnotion getPage', uuidToId(pageId))
-  return notion.getPage(pageId, {
-    kyOptions: {
-      timeout: 30_000
-    },
-    ...opts
-  })
+  // Retry with exponential backoff for 429 rate limits
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      return await notion.getPage(pageId, {
+        kyOptions: {
+          timeout: 30_000
+        },
+        ...opts
+      })
+    } catch (err: any) {
+      const is429 = err?.message?.includes('429') || err?.status === 429
+      if (is429 && attempt < 2) {
+        const delay = (attempt + 1) * 2000
+        console.warn(`Rate limited on ${uuidToId(pageId)}, retrying in ${delay}ms...`)
+        await new Promise((r) => setTimeout(r, delay))
+        continue
+      }
+      throw err
+    }
+  }
+  throw new Error(`Failed to load page ${pageId} after retries`)
 }
 
 async function getAllPagesImpl(
@@ -54,6 +69,7 @@ async function getAllPagesImpl(
     rootNotionSpaceId,
     getPage,
     {
+      concurrency: 1,
       maxDepth
     }
   )
@@ -67,7 +83,7 @@ async function getAllPagesImpl(
 
       const block = getBlockValue(recordMap.block[pageId])
       if (
-        !(getPageProperty<boolean | null>('Public', block!, recordMap) ?? true)
+        !(getPageProperty<boolean | null>('Public', block!, recordMap) ?? false)
       ) {
         return map
       }

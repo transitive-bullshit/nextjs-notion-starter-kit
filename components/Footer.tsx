@@ -23,6 +23,10 @@ export function FooterImpl() {
     [toggleDarkMode]
   )
 
+  const onScrollToTop = React.useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
+
   React.useEffect(() => {
     setHasMounted(true)
   }, [])
@@ -34,6 +38,15 @@ export function FooterImpl() {
       </div>
 
       <div className={styles.settings}>
+        <button
+          type='button'
+          className={styles.backToTop}
+          onClick={onScrollToTop}
+          title='Back to top'
+        >
+          ↑ Top
+        </button>
+
         {hasMounted && (
           <a
             className={styles.toggleDarkMode}

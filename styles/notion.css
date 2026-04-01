@@ -18,7 +18,8 @@
 
 .notion-page {
   padding-bottom: calc(max(5vh, 32px)) !important;
-  line-height: 1.65;
+  line-height: 1.75;
+  color: var(--text);
 }
 
 .index-page {
@@ -27,6 +28,8 @@
 
 .notion-text {
   padding: 0.5em 2px;
+  font-family: var(--font-sans);
+  line-height: 1.75;
 }
 
 .notion-asset-caption {
@@ -66,6 +69,9 @@
 .notion-gallery-grid .notion-page-title-text {
   font-size: 2em;
   white-space: unset;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
 }
 
 .notion-gallery-grid .notion-collection-card-property {
@@ -74,35 +80,83 @@
 }
 
 .notion-gallery-grid .notion-property-text {
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .notion-collection-card {
-  border-radius: 16px;
+  border-radius: var(--radius-md);
   box-shadow: none;
-}
-
-.notion-collection-card-cover img {
-  border-radius: 16px;
-}
-
-.notion-collection-card {
   overflow: visible;
+  transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out);
+  position: relative;
+}
+
+.notion-collection-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary), var(--cta));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 300ms var(--ease-out);
+  filter: blur(12px);
+}
+
+.notion-collection-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.notion-collection-card:hover::before {
+  opacity: 0.15;
 }
 
 .notion-collection-card-cover {
-  border-radius: 16px;
-  box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
-}
-
-.notion-collection-card-cover {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
   border-bottom: 0 none;
   transition: filter 150ms linear;
   filter: none;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
 .notion-collection-card:hover .notion-collection-card-cover {
-  filter: brightness(120%);
+  filter: brightness(105%);
+}
+
+.notion-collection-card-cover img {
+  border-radius: var(--radius-md);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient placeholder for cards without thumbnails */
+.notion-collection-card-cover:empty {
+  background: linear-gradient(135deg, var(--primary), var(--cta));
+  opacity: 0.15;
+}
+
+.dark-mode .notion-collection-card-cover:empty {
+  opacity: 0.22;
+}
+
+.notion-collection-card-cover .notion-collection-card-cover-empty {
+  background: linear-gradient(135deg, var(--primary), var(--cta)) !important;
+  opacity: 0.18;
+  box-shadow: none;
+}
+
+.dark-mode .notion-collection-card-cover .notion-collection-card-cover-empty {
+  opacity: 0.25;
 }
 
 .notion-collection-card-body {
@@ -121,20 +175,26 @@
 
 .notion-quote {
   padding: 0.2em 0.75em;
-  line-height: 1.5;
-  font-style: italic;
+  line-height: 1.65;
+  font-style: normal;
+  font-family: var(--font-signature);
   font-size: 1.2em;
-  border-left: 4px solid #67bdfc;
+  border-left: 4px solid var(--primary);
 }
 
 .notion-h1,
 .notion-h2,
 .notion-h3 {
   margin-bottom: 0.25em;
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .notion-callout {
   margin: 0.75em 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
 }
 
 .notion-hr {
@@ -169,6 +229,9 @@
 .notion-title {
   display: block;
   text-align: center;
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
 }
 
 .notion-collection-row {
@@ -199,7 +262,7 @@
 }
 
 .notion-page-cover-wrapper {
-  box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+  box-shadow: var(--shadow-soft);
 }
 
 @media only screen and (max-width: 1200px) {
@@ -216,9 +279,9 @@
 }
 
 .notion-code {
-  background: rgba(249, 250, 251, 1);
-  border: 1px solid rgba(229, 231, 235, 1);
-  border-radius: 0.375rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
 }
 
 .notion-link {
@@ -236,12 +299,10 @@
 .notion-link:focus,
 .notion-link:hover {
   border-bottom-color: transparent;
-
-  background-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
+  background-image: linear-gradient(90deg, var(--primary), var(--cta));
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 100% 0.1rem;
-
   transition-property: background-position, background-size;
   transition-duration: 300ms;
 }
@@ -358,13 +419,13 @@
 }
 
 .notion-header {
-  background: hsla(0, 0%, 100%, 0.8);
+  background: var(--surface);
   backdrop-filter: saturate(180%) blur(16px);
 }
 
 .dark-mode .notion-header {
-  background: transparent;
-  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+  background: var(--surface);
+  box-shadow: inset 0 -1px 0 0 var(--line);
   backdrop-filter: saturate(180%) blur(20px);
 }
 
@@ -376,7 +437,7 @@
 }
 
 .notion-bookmark:hover {
-  border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
+  border-image: linear-gradient(90deg, var(--primary), var(--cta));
   border-image-slice: 1;
 }
 
@@ -400,6 +461,228 @@
   color: var(--fg-color-2);
 }
 
+/* ── @property for animatable custom props (2024+ CSS) ── */
+@property --aurora-x1 {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: -10%;
+}
+@property --aurora-y1 {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: -30%;
+}
+@property --aurora-x2 {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 110%;
+}
+@property --aurora-y2 {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 120%;
+}
+@property --header-shimmer {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: -100%;
+}
+
+/* ── Homepage Aurora Effect — Animated ── */
+@keyframes aurora-drift {
+  0%   { --aurora-x1: -10%; --aurora-y1: -30%; --aurora-x2: 110%; --aurora-y2: 120%; }
+  25%  { --aurora-x1:  10%; --aurora-y1: -20%; --aurora-x2:  90%; --aurora-y2: 110%; }
+  50%  { --aurora-x1:   0%; --aurora-y1: -10%; --aurora-x2: 105%; --aurora-y2: 130%; }
+  75%  { --aurora-x1: -15%; --aurora-y1: -25%; --aurora-x2: 115%; --aurora-y2: 115%; }
+  100% { --aurora-x1: -10%; --aurora-y1: -30%; --aurora-x2: 110%; --aurora-y2: 120%; }
+}
+
+.index-page.notion-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(
+      ellipse 60% 60% at var(--aurora-x1) var(--aurora-y1),
+      rgba(37, 99, 235, 0.09) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 50% at var(--aurora-x2) var(--aurora-y2),
+      rgba(249, 115, 22, 0.06) 0%,
+      transparent 70%
+    );
+  pointer-events: none;
+  z-index: -1;
+  animation: aurora-drift 20s ease-in-out infinite;
+}
+
+.index-page.notion-page::after {
+  content: none;
+}
+
+/* Dark mode aurora - richer colors */
+.dark-mode .index-page.notion-page::before {
+  background:
+    radial-gradient(
+      ellipse 60% 60% at var(--aurora-x1) var(--aurora-y1),
+      rgba(96, 165, 250, 0.12) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 50% at var(--aurora-x2) var(--aurora-y2),
+      rgba(251, 146, 60, 0.08) 0%,
+      transparent 70%
+    );
+}
+
+/* Disable effects for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .index-page.notion-page::before {
+    animation: none;
+  }
+  .notion-collection-card {
+    animation: none !important;
+  }
+  .notion-title {
+    animation: none !important;
+  }
+  .notion-header::after {
+    animation: none !important;
+  }
+}
+
+/* ── Scroll-Driven Card Reveal (2024+ CSS) ── */
+@keyframes card-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.notion-gallery-grid .notion-collection-card {
+  animation: card-reveal linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* ── Blog Post Title Entrance ── */
+@keyframes title-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.notion-title {
+  animation: title-rise 600ms var(--ease-out) both;
+}
+
+/* ── Header Shimmer Line ── */
+@keyframes header-shimmer {
+  0%   { --header-shimmer: -100%; }
+  100% { --header-shimmer: 200%; }
+}
+
+.notion-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    transparent calc(var(--header-shimmer) - 10%),
+    var(--primary) var(--header-shimmer),
+    var(--cta) calc(var(--header-shimmer) + 10%),
+    transparent calc(var(--header-shimmer) + 20%),
+    transparent
+  );
+  animation: header-shimmer 4s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.notion-header {
+  position: relative;
+}
+
+/* ── Scroll Progress Bar ── */
+@keyframes scroll-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.notion-page::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--cta));
+  transform-origin: left;
+  animation: scroll-progress linear;
+  animation-timeline: scroll();
+  z-index: 100;
+}
+
+/* Don't show scroll progress on homepage (has aurora ::before) */
+.index-page.notion-page::after {
+  content: none;
+}
+
 .notion-equation.notion-equation-block{
   align-items: center;
+}
+
+/* ── Card Tag/Multi-select Polish ── */
+.notion-gallery-grid .notion-property-multi_select-item,
+.notion-gallery-grid .notion-property-select-item {
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.notion-gallery-grid .notion-property-multi_select,
+.notion-gallery-grid .notion-property-select {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ── Card Body Spacing ── */
+.notion-gallery-grid .notion-collection-card-body {
+  padding: 14px 12px 16px;
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ── Equal-height card grid rows ── */
+.notion-gallery-grid .notion-collection-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.notion-gallery-grid .notion-collection-card-property {
+  overflow: visible;
+  white-space: normal;
 }
