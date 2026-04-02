@@ -1,10 +1,11 @@
 import type * as types from 'notion-types'
 import cs from 'classnames'
 import * as React from 'react'
-import { IoMoonSharp, IoSunnyOutline } from 'react-icons/io5'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
+import { MoonIcon } from '@/lib/icons/moon'
+import { SunIcon } from '@/lib/icons/sun'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
@@ -26,7 +27,7 @@ function ToggleThemeButton() {
       className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)}
       onClick={onToggleTheme}
     >
-      {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+      {hasMounted && isDarkMode ? <MoonIcon /> : <SunIcon />}
     </div>
   )
 }

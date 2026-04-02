@@ -4,11 +4,31 @@
   </a>
 </p>
 
-# Next.js Notion Starter Kit
+# Next.js Notion Starter Kit <!-- omit from toc -->
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
 [![Build Status](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/actions/workflows/build.yml/badge.svg)](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/actions/workflows/build.yml) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
+
+- [Intro](#intro)
+- [Features](#features)
+- [Demos](#demos)
+- [Setup](#setup)
+  - [Vercel Configuration](#vercel-configuration)
+- [URL Paths](#url-paths)
+- [Preview Images](#preview-images)
+  - [Redis](#redis)
+- [Styles](#styles)
+- [Dark Mode](#dark-mode)
+- [Automatic Social Images](#automatic-social-images)
+- [Automatic Table of Contents](#automatic-table-of-contents)
+- [Responsive](#responsive)
+- [Analytics](#analytics)
+  - [Fathom Analytics](#fathom-analytics)
+  - [PostHog Analytics](#posthog-analytics)
+- [Environment Variables](#environment-variables)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Intro
 
@@ -194,4 +214,4 @@ See the [contribution guide](contributing.md) and join our amazing list of [cont
 
 MIT © [Travis Fischer](https://transitivebullsh.it)
 
-Support my open source work by <a href="https://twitter.com/transitive_bs">following me on twitter <img src="https://storage.googleapis.com/saasify-assets/twitter-logo.svg" alt="twitter" height="24px" align="center"></a>
+Support my open source work by <a href="https://x.com/transitive_bs">following me on twitter <img src="https://storage.googleapis.com/saasify-assets/twitter-logo.svg" alt="twitter" height="24px" align="center"></a>

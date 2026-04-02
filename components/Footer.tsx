@@ -1,22 +1,15 @@
 import * as React from 'react'
-import {
-  FaEnvelopeOpenText,
-  FaGithub,
-  FaLinkedin,
-  FaMastodon,
-  FaTwitter,
-  FaYoutube,
-  FaZhihu
-} from 'react-icons/fa'
-import { IoMoonSharp, IoSunnyOutline } from 'react-icons/io5'
 import { useNotionContext } from 'react-notion-x'
 
 import * as config from '@/lib/config'
+import { GitHubIcon } from '@/lib/icons/github'
+import { LinkedInIcon } from '@/lib/icons/linkedin'
+import { MoonIcon } from '@/lib/icons/moon'
+import { SunIcon } from '@/lib/icons/sun'
+import { TwitterIcon } from '@/lib/icons/twitter'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
-
-// TODO: merge the data and icons from PageSocial with the social links in Footer
 
 export function FooterImpl() {
   const [hasMounted, setHasMounted] = React.useState(false)
@@ -61,7 +54,7 @@ export function FooterImpl() {
             onClick={onToggleDarkMode}
             title='Toggle dark mode'
           >
-            {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+            {isDarkMode ? <MoonIcon /> : <SunIcon />}
           </a>
         )}
       </div>
@@ -70,35 +63,12 @@ export function FooterImpl() {
         {config.twitter && (
           <a
             className={styles.twitter}
-            href={`https://twitter.com/${config.twitter}`}
-            title={`Twitter @${config.twitter}`}
+            href={`https://x.com/${config.twitter}`}
+            title={`X @${config.twitter}`}
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaTwitter />
-          </a>
-        )}
-
-        {config.mastodon && (
-          <a
-            className={styles.mastodon}
-            href={config.mastodon}
-            title={`Mastodon ${config.getMastodonHandle()}`}
-            rel='me'
-          >
-            <FaMastodon />
-          </a>
-        )}
-
-        {config.zhihu && (
-          <a
-            className={styles.zhihu}
-            href={`https://zhihu.com/people/${config.zhihu}`}
-            title={`Zhihu @${config.zhihu}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaZhihu />
+            <TwitterIcon />
           </a>
         )}
 
@@ -110,7 +80,7 @@ export function FooterImpl() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaGithub />
+            <GitHubIcon />
           </a>
         )}
 
@@ -122,31 +92,7 @@ export function FooterImpl() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaLinkedin />
-          </a>
-        )}
-
-        {config.newsletter && (
-          <a
-            className={styles.newsletter}
-            href={`${config.newsletter}`}
-            title={`Newsletter ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaEnvelopeOpenText />
-          </a>
-        )}
-
-        {config.youtube && (
-          <a
-            className={styles.youtube}
-            href={`https://www.youtube.com/${config.youtube}`}
-            title={`YouTube ${config.author}`}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FaYoutube />
+            <LinkedInIcon />
           </a>
         )}
       </div>
