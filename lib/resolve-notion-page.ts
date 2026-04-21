@@ -8,6 +8,34 @@ import { db } from './db'
 import { getSiteMap } from './get-site-map'
 import { getPage } from './notion'
 
+const PAGE_RECORD_MAP_CACHE_TTL_MS = 300_000
+
+async function getCachedPageRecordMap(
+  domain: string,
+  pageId: string
+): Promise<ExtendedRecordMap> {
+  const cacheKey = `page-record-map:${domain}:${environment}:${pageId}`
+
+  try {
+    const cached = (await db.get(cacheKey)) as ExtendedRecordMap | undefined
+    if (cached) {
+      return cached
+    }
+  } catch (err: any) {
+    console.warn(`redis error get "${cacheKey}"`, err.message)
+  }
+
+  const recordMap = await getPage(pageId)
+
+  try {
+    await db.set(cacheKey, recordMap, PAGE_RECORD_MAP_CACHE_TTL_MS)
+  } catch (err: any) {
+    console.warn(`redis error set "${cacheKey}"`, err.message)
+  }
+
+  return recordMap
+}
+
 export async function resolveNotionPage(
   domain: string,
   rawPageId?: string
@@ -48,7 +76,7 @@ export async function resolveNotionPage(
     }
 
     if (pageId) {
-      recordMap = await getPage(pageId)
+      recordMap = await getCachedPageRecordMap(domain, pageId)
     } else {
       // handle mapping of user-friendly canonical page paths to Notion page IDs
       // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
@@ -60,7 +88,7 @@ export async function resolveNotionPage(
         // cached aggressively
         // recordMap = siteMap.pageMap[pageId]
 
-        recordMap = await getPage(pageId)
+        recordMap = await getCachedPageRecordMap(domain, pageId)
 
         if (useUriToPageIdCache) {
           try {
@@ -86,8 +114,13 @@ export async function resolveNotionPage(
   } else {
     pageId = site.rootNotionPageId
 
-    console.log(site)
-    recordMap = await getPage(pageId)
+    if (process.env.NODE_ENV === 'development') {
+      console.log('resolve root notion page', {
+        domain: site.domain,
+        rootNotionPageId: site.rootNotionPageId
+      })
+    }
+    recordMap = await getCachedPageRecordMap(domain, pageId)
   }
 
   const props: PageProps = { site, recordMap, pageId }

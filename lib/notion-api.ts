@@ -37,9 +37,16 @@ class AppNotionAPI extends NotionAPI {
       throwOnCollectionErrors = false,
       collectionReducerLimit = 999,
       fetchRelationPages = false,
-      ofetchOptions
+      ofetchOptions: incomingOfetchOptions
     }: any = {}
   ) {
+    const ofetchOptions = {
+      timeout: 30_000,
+      retry: 2,
+      retryDelay: 500,
+      ...incomingOfetchOptions
+    }
+
     const page = await this.getPageRaw(pageId, {
       chunkLimit,
       chunkNumber,

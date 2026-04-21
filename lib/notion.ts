@@ -16,6 +16,18 @@ import { getTweetsMap } from './get-tweets'
 import { notion } from './notion-api'
 import { getPreviewImageMap } from './preview-images'
 
+const PAGE_CACHE_TTL_MS = 60_000
+const PAGE_CACHE_STALE_MS = 86_400_000
+
+const pageCache = new Map<
+  string,
+  {
+    recordMap: ExtendedRecordMap
+    expiresAt: number
+    staleUntil: number
+  }
+>()
+
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
     const navigationLinkPageIds = (navigationLinks || [])
@@ -43,8 +55,33 @@ const getNavigationLinkPages = pMemoize(
 )
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
-  let recordMap = await notion.getPage(pageId)
-  recordMap = normalizeRecordMap(recordMap)
+  const now = Date.now()
+  const cached = pageCache.get(pageId)
+  if (cached && cached.expiresAt > now) {
+    return cached.recordMap
+  }
+
+  let recordMap: ExtendedRecordMap
+  try {
+    recordMap = await notion.getPage(pageId, {
+      ofetchOptions: {
+        timeout: 30_000,
+        retry: 2,
+        retryDelay: 500
+      }
+    })
+    recordMap = normalizeRecordMap(recordMap)
+  } catch (err: any) {
+    if (cached && cached.staleUntil > now) {
+      console.warn('notion getPage fallback to stale cache', {
+        pageId,
+        message: err?.message
+      })
+      return cached.recordMap
+    }
+
+    throw err
+  }
 
   if (navigationStyle !== 'default') {
     // ensure that any pages linked to in the custom navigation header have
@@ -67,6 +104,12 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   }
 
   await getTweetsMap(recordMap)
+
+  pageCache.set(pageId, {
+    recordMap,
+    expiresAt: now + PAGE_CACHE_TTL_MS,
+    staleUntil: now + PAGE_CACHE_STALE_MS
+  })
 
   return recordMap
 }

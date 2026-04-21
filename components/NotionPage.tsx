@@ -290,13 +290,14 @@ export function NotionPage({
 
   const title = getBlockTitle(block, normalizedRecordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+  if (config.isDev) {
+    console.log('notion page', {
+      isDev: config.isDev,
+      title,
+      pageId,
+      rootNotionPageId: site.rootNotionPageId
+    })
+  }
 
 
   const canonicalPageUrl = config.isDev

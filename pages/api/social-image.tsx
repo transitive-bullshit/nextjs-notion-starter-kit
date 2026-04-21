@@ -22,6 +22,11 @@ export default async function OGImage(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=86400, max-age=3600, stale-while-revalidate=604800, stale-if-error=604800'
+  )
+
   const { searchParams } = new URL(req.url!)
   const pageId = parsePageId(
     searchParams.get('id') || libConfig.rootNotionPageId
@@ -37,7 +42,12 @@ export default async function OGImage(
     })
   }
   const pageInfo = pageInfoOrError.data
-  console.log(pageInfo)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('social image page info', {
+      pageId: pageInfo.pageId,
+      title: pageInfo.title
+    })
+  }
 
   return new ImageResponse(
     (

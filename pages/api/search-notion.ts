@@ -13,13 +13,20 @@ export default async function searchNotion(
 
   const searchParams: types.SearchParams = req.body
 
-  console.log('<<< lambda search-notion', searchParams)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('<<< lambda search-notion', searchParams)
+  }
   const results = await search(searchParams)
-  console.log('>>> lambda search-notion', results)
+  if (process.env.NODE_ENV === 'development') {
+    console.log('>>> lambda search-notion', {
+      query: searchParams?.query,
+      total: results?.total
+    })
+  }
 
   res.setHeader(
     'Cache-Control',
-    'public, s-maxage=60, max-age=60, stale-while-revalidate=60'
+    'public, s-maxage=60, max-age=60, stale-while-revalidate=300, stale-if-error=86400'
   )
   res.status(200).json(results)
 }
