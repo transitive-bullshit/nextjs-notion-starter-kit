@@ -183,6 +183,27 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+function normalizeRecordMap(recordMap?: types.ExtendedRecordMap) {
+  if (!recordMap) return recordMap
+
+  return {
+    ...recordMap,
+    block: unwrapEntries(recordMap.block),
+    collection: unwrapEntries(recordMap.collection),
+    collection_view: unwrapEntries(recordMap.collection_view),
+    notion_user: unwrapEntries(recordMap.notion_user)
+  } as types.ExtendedRecordMap
+}
+
+function unwrapEntries(entries: Record<string, any> | undefined) {
+  return Object.fromEntries(
+    Object.entries(entries ?? {}).map(([key, entry]) => {
+      const normalizedValue = entry?.value?.value ?? entry?.value
+      return [key, { ...entry, value: normalizedValue }]
+    })
+  )
+}
+
 export function NotionPage({
   site,
   recordMap,
@@ -191,6 +212,10 @@ export function NotionPage({
 }: types.PageProps) {
   const router = useRouter()
   const lite = useSearchParam('lite')
+  const normalizedRecordMap = React.useMemo(
+    () => normalizeRecordMap(recordMap),
+    [recordMap]
+  )
 
   const components = React.useMemo<Partial<NotionComponents>>(
     () => ({
@@ -220,11 +245,11 @@ export function NotionPage({
     if (lite) params.lite = lite
 
     const searchParams = new URLSearchParams(params)
-    return site ? mapPageUrl(site, recordMap!, searchParams) : undefined
-  }, [site, recordMap, lite])
+    return site ? mapPageUrl(site, normalizedRecordMap!, searchParams) : undefined
+  }, [site, normalizedRecordMap, lite])
 
-  const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]!]?.value
+  const keys = Object.keys(normalizedRecordMap?.block || {})
+  const block = normalizedRecordMap?.block?.[keys[0]!]?.value
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
@@ -238,11 +263,11 @@ export function NotionPage({
     () => (
       <PageAside
         block={block!}
-        recordMap={recordMap!}
+        recordMap={normalizedRecordMap!}
         isBlogPost={isBlogPost}
       />
     ),
-    [block, recordMap, isBlogPost]
+    [block, normalizedRecordMap, isBlogPost]
   )
 
   const footer = React.useMemo(() => <Footer />, [])
@@ -251,9 +276,9 @@ export function NotionPage({
     if (config.isServer) return
     const g = window as any
     g.pageId = pageId
-    g.recordMap = recordMap
+    g.recordMap = normalizedRecordMap
     g.block = block
-  }, [pageId, recordMap, block])
+  }, [pageId, normalizedRecordMap, block])
 
   if (router.isFallback) {
     return <Loading />
@@ -263,7 +288,7 @@ export function NotionPage({
     return <Page404 site={site} pageId={pageId} error={error} />
   }
 
-  const title = getBlockTitle(block, recordMap) || site.name
+  const title = getBlockTitle(block, normalizedRecordMap) || site.name
 
   console.log('notion page', {
     isDev: config.isDev,
@@ -276,17 +301,17 @@ export function NotionPage({
 
   const canonicalPageUrl = config.isDev
     ? undefined
-    : getCanonicalPageUrl(site, recordMap)(pageId)
+    : getCanonicalPageUrl(site, normalizedRecordMap)(pageId)
 
   const socialImage = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
+    getPageProperty<string>('Social Image', block, normalizedRecordMap) ||
       (block as PageBlock).format?.page_cover ||
       config.defaultPageCover,
     block
   )
 
   const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) ||
+    getPageProperty<string>('Description', block, normalizedRecordMap) ||
     config.description
 
   return (
@@ -311,11 +336,11 @@ export function NotionPage({
         )}
         darkMode={isDarkMode}
         components={components}
-        recordMap={recordMap}
+        recordMap={normalizedRecordMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
         fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
+        previewImages={!!normalizedRecordMap.preview_images}
         showCollectionViewDropdown={false}
         showTableOfContents={showTableOfContents}
         minTableOfContentsItems={minTableOfContentsItems}

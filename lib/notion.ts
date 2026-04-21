@@ -44,6 +44,7 @@ const getNavigationLinkPages = pMemoize(
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   let recordMap = await notion.getPage(pageId)
+  recordMap = normalizeRecordMap(recordMap)
 
   if (navigationStyle !== 'default') {
     // ensure that any pages linked to in the custom navigation header have
@@ -68,6 +69,25 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   await getTweetsMap(recordMap)
 
   return recordMap
+}
+
+function normalizeRecordMap(recordMap: ExtendedRecordMap): ExtendedRecordMap {
+  return {
+    ...recordMap,
+    block: unwrapEntries(recordMap.block),
+    collection: unwrapEntries(recordMap.collection),
+    collection_view: unwrapEntries(recordMap.collection_view),
+    notion_user: unwrapEntries(recordMap.notion_user)
+  } as ExtendedRecordMap
+}
+
+function unwrapEntries(entries: Record<string, any> | undefined) {
+  return Object.fromEntries(
+    Object.entries(entries ?? {}).map(([key, entry]) => {
+      const normalizedValue = entry?.value?.value ?? entry?.value
+      return [key, { ...entry, value: normalizedValue }]
+    })
+  )
 }
 
 export async function search(params: SearchParams): Promise<SearchResults> {

@@ -84,5 +84,10 @@
       "prettier --ignore-unknown --write",
       "eslint --fix"
     ]
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "notion-utils@7.7.0": "patches/notion-utils@7.7.0.patch"
+    }
   }
 }
