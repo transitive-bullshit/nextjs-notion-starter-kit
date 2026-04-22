@@ -1,6 +1,6 @@
 import { api, host } from './config'
 
-export function getSocialImageUrl(pageId: string) {
+export function getSocialImageUrl(pageId: string | undefined) {
   try {
     const url = new URL(api.getSocialImage, host)
 
@@ -8,7 +8,7 @@ export function getSocialImageUrl(pageId: string) {
       url.searchParams.set('id', pageId)
       return url.toString()
     }
-  } catch (err) {
+  } catch (err: any) {
     console.warn('error invalid social image url', pageId, err.message)
   }
 

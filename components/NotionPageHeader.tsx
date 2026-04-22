@@ -1,17 +1,16 @@
-import * as React from 'react'
-
-import * as types from 'notion-types'
-import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
-import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+import type * as types from 'notion-types'
 import cs from 'classnames'
+import * as React from 'react'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
+import { MoonIcon } from '@/lib/icons/moon'
+import { SunIcon } from '@/lib/icons/sun'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
 
-const ToggleThemeButton = () => {
+function ToggleThemeButton() {
   const [hasMounted, setHasMounted] = React.useState(false)
   const { isDarkMode, toggleDarkMode } = useDarkMode()
 
@@ -28,14 +27,16 @@ const ToggleThemeButton = () => {
       className={cs('breadcrumb', 'button', !hasMounted && styles.hidden)}
       onClick={onToggleTheme}
     >
-      {hasMounted && isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
+      {hasMounted && isDarkMode ? <MoonIcon /> : <SunIcon />}
     </div>
   )
 }
 
-export const NotionPageHeader: React.FC<{
+export function NotionPageHeader({
+  block
+}: {
   block: types.CollectionViewPageBlock | types.PageBlock
-}> = ({ block }) => {
+}) {
   const { components, mapPageUrl } = useNotionContext()
 
   if (navigationStyle === 'default') {
@@ -50,7 +51,7 @@ export const NotionPageHeader: React.FC<{
         <div className='notion-nav-header-rhs breadcrumbs'>
           {navigationLinks
             ?.map((link, index) => {
-              if (!link.pageId && !link.url) {
+              if (!link?.pageId && !link?.url) {
                 return null
               }
 
