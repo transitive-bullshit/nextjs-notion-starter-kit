@@ -23,15 +23,15 @@
 }
 
 .dark-mode .notion .notion-inline-code {
-  background: rgb(71,76,80) !important;
+  background: rgb(71, 76, 80) !important;
   color: #ff4081;
-  padding: .2em .4em !important;
+  padding: 0.2em 0.4em !important;
 }
 
-.light-mode .notion .notion-inline-code {
+.notion .notion-inline-code {
   color: #ff4081;
-  background: rgba(55,53,47, .1) !important;
-  padding: .2em .4em !important;
+  background: rgba(127, 122, 107, 0.1) !important;
+  padding: 0.2em 0.4em !important;
 }
 
 .token.cdata,
@@ -117,4 +117,9 @@ pre[class*='language-'] > code {
   border-left: 0 none !important;
   box-shadow: none !important;
   background: none !important;
+}
+
+pre[class*='language-']:before,
+pre[class*='language-']:after {
+  display: none !important;
 }

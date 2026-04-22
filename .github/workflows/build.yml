@@ -1,0 +1,22 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+
+      - run: yarn install --frozen-lockfile
+      - name: build
+        #        TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
+        #        env:
+        #          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+        #          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+        run: yarn build

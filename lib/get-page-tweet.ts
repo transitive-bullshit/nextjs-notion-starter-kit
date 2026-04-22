@@ -1,5 +1,6 @@
-import * as types from './types'
 import { getPageProperty } from 'notion-utils'
+
+import * as types from './types'
 
 export function getPageTweet(
   block: types.Block,

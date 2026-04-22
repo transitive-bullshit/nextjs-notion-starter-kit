@@ -1,7 +1,7 @@
 import { ExtendedRecordMap } from 'notion-types'
 import {
-  parsePageId,
-  getCanonicalPageId as getCanonicalPageIdImpl
+  getCanonicalPageId as getCanonicalPageIdImpl,
+  parsePageId
 } from 'notion-utils'
 
 import { inversePageUrlOverrides } from './config'
