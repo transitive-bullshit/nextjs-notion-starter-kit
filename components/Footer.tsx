@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
+import { FaEnvelope } from '@react-icons/all-files/fa/FaEnvelope'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
@@ -120,7 +120,7 @@ export const FooterImpl: React.FC = () => {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <FaEnvelopeOpenText />
+            <FaEnvelope />
           </a>
         )}
 
