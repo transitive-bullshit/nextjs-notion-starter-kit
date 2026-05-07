@@ -3,7 +3,7 @@ import 'katex/dist/katex.min.css'
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-coy.css'
 // core styles shared by all of react-notion-x (required)
-import 'react-notion-x/src/styles.css'
+import 'react-notion-x/styles.css'
 // global styles shared across the entire site
 import 'styles/global.css'
 // this might be better for dark mode

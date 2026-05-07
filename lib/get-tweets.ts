@@ -2,7 +2,7 @@ import { type ExtendedRecordMap } from 'notion-types'
 import { getPageTweetIds } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
-import { getTweet as getTweetData } from 'react-tweet/api'
+import { getTweet as getTweetData, type Tweet } from 'react-tweet/api'
 
 import type { ExtendedTweetRecordMap } from './types'
 import { db } from './db'
@@ -27,7 +27,7 @@ export async function getTweetsMap(
   ;(recordMap as ExtendedTweetRecordMap).tweets = tweetsMap
 }
 
-async function getTweetImpl(tweetId: string): Promise<any> {
+async function getTweetImpl(tweetId: string): Promise<Tweet | null> {
   if (!tweetId) return null
 
   const cacheKey = `tweet:${tweetId}`
