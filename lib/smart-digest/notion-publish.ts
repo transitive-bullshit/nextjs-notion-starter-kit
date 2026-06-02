@@ -19,6 +19,14 @@ interface CompactBlock {
   language?: string
 }
 
+export interface PublishedDigestPage {
+  id: string
+  title: string
+  description: string
+  tags: string[]
+  hasCover: boolean
+}
+
 /**
  * Split a string with inline **bold** and *italic* markers into an array
  * of segments that notion-helper can parse individually.
@@ -183,6 +191,14 @@ export async function findExistingPublicPage(
   databaseId: string,
   slug: string
 ): Promise<string | null> {
+  return (await findPublishedDigestPage(config, databaseId, slug))?.id ?? null
+}
+
+export async function findPublishedDigestPage(
+  config: DigestConfig,
+  databaseId: string,
+  slug: string
+): Promise<PublishedDigestPage | null> {
   try {
     const res = await fetch(
       `https://api.notion.com/v1/databases/${databaseId}/query`,
@@ -205,13 +221,23 @@ export async function findExistingPublicPage(
       }
     )
     if (!res.ok) return null
-    const data = (await res.json()) as { results: Array<{ id: string }> }
-    const pageId = data.results[0]?.id
-    if (!pageId) return null
+    const data = (await res.json()) as {
+      results: Array<{
+        id: string
+        cover?: unknown
+        properties: {
+          Name?: { title?: Array<{ plain_text: string }> }
+          Description?: { rich_text?: Array<{ plain_text: string }> }
+          Tags?: { multi_select?: Array<{ name: string }> }
+        }
+      }>
+    }
+    const page = data.results[0]
+    if (!page) return null
 
     // Check if the page has actual content — archive and regen if empty
     const blocksRes = await fetch(
-      `https://api.notion.com/v1/blocks/${pageId}/children?page_size=5`,
+      `https://api.notion.com/v1/blocks/${page.id}/children?page_size=5`,
       {
         headers: {
           Authorization: `Bearer ${config.notionApiKey}`,
@@ -222,8 +248,10 @@ export async function findExistingPublicPage(
     if (blocksRes.ok) {
       const blocks = (await blocksRes.json()) as { results: unknown[] }
       if (blocks.results.length <= 1) {
-        console.log(`🗑️  Empty page "${slug}" (${pageId}), archiving for regen...`)
-        await fetch(`https://api.notion.com/v1/pages/${pageId}`, {
+        console.log(
+          `🗑️  Empty page "${slug}" (${page.id}), archiving for regen...`
+        )
+        await fetch(`https://api.notion.com/v1/pages/${page.id}`, {
           method: 'PATCH',
           headers: {
             Authorization: `Bearer ${config.notionApiKey}`,
@@ -236,7 +264,14 @@ export async function findExistingPublicPage(
       }
     }
 
-    return pageId
+    return {
+      id: page.id,
+      title: page.properties.Name?.title?.[0]?.plain_text ?? slug,
+      description:
+        page.properties.Description?.rich_text?.[0]?.plain_text ?? '',
+      tags: page.properties.Tags?.multi_select?.map((tag) => tag.name) ?? [],
+      hasCover: Boolean(page.cover)
+    }
   } catch {
     return null
   }
@@ -298,6 +333,19 @@ async function updateSitemapKV(
   slug: string,
   notionPageId: string
 ): Promise<void> {
+  const pendingUpdate = sitemapKvUpdateQueue.then(() =>
+    writeSitemapKV(slug, notionPageId)
+  )
+  sitemapKvUpdateQueue = pendingUpdate.catch(() => {})
+  await pendingUpdate
+}
+
+let sitemapKvUpdateQueue = Promise.resolve()
+
+async function writeSitemapKV(
+  slug: string,
+  notionPageId: string
+): Promise<void> {
   const kvNamespaceId = '7249cd7e8dca4af2bf19a2b5e76392a8'
   const kvKey = 'sitemap:canonicalPageMap'
 
@@ -309,7 +357,8 @@ async function updateSitemapKV(
         `wrangler kv key get --remote --namespace-id="${kvNamespaceId}" "${kvKey}"`,
         { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
       ).trim()
-      if (current) canonicalPageMap = JSON.parse(current) as Record<string, string>
+      if (current)
+        canonicalPageMap = JSON.parse(current) as Record<string, string>
     } catch {
       // Key may not exist yet — start fresh
     }
