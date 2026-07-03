@@ -38,7 +38,6 @@ export default async function OGImage(
     })
   }
   const pageInfo = pageInfoOrError.data
-  console.log(pageInfo)
 
   // @wustep: Hack to avoid double Stephen Wu / Stephen Wu on homepage.
   let detail = pageInfo.detail
@@ -47,117 +46,113 @@ export default async function OGImage(
   }
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#2f3437',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: 'black'
+      }}
+    >
+      {pageInfo.image && (
+        <img
+          src={pageInfo.image}
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+            // TODO: satori doesn't support background-size: cover and seems to
+            // have inconsistent support for filter + transform to get rid of the
+            // blurred edges. For now, we'll go without a blur filter on the
+            // background, but Satori is still very new, so hopefully we can re-add
+            // the blur soon.
+
+            // backgroundImage: pageInfo.image
+            //   ? `url(${pageInfo.image})`
+            //   : undefined,
+            // backgroundSize: '100% 100%'
+            // TODO: pageInfo.imageObjectPosition
+            // filter: 'blur(8px)'
+            // transform: 'scale(1.05)'
+          }}
+        />
+      )}
+
       <div
         style={{
           position: 'relative',
-          width: '100%',
-          height: '100%',
+          width: 900,
+          height: 465,
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: '#2f3437',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'black'
+          borderRadius: 64,
+          zIndex: 1
         }}
       >
-        {pageInfo.image && (
-          <img
-            src={pageInfo.image}
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-              // TODO: satori doesn't support background-size: cover and seems to
-              // have inconsistent support for filter + transform to get rid of the
-              // blurred edges. For now, we'll go without a blur filter on the
-              // background, but Satori is still very new, so hopefully we can re-add
-              // the blur soon.
-
-              // backgroundImage: pageInfo.image
-              //   ? `url(${pageInfo.image})`
-              //   : undefined,
-              // backgroundSize: '100% 100%'
-              // TODO: pageInfo.imageObjectPosition
-              // filter: 'blur(8px)'
-              // transform: 'scale(1.05)'
-            }}
-          />
-        )}
-
         <div
           style={{
-            position: 'relative',
-            width: 900,
-            height: 465,
+            width: '100%',
+            height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            borderRadius: 64,
-            zIndex: 1
+            justifyContent: 'space-around',
+            backgroundColor: '#fff',
+            padding: 24,
+            alignItems: 'center',
+            textAlign: 'center',
+            borderRadius: 18,
+            boxShadow: '4px 6px 12px 2px rgba(0, 0, 0, 0.4)'
           }}
         >
           <div
             style={{
+              fontSize: 66,
+              fontWeight: 600,
+              fontFamily: 'Inter',
+              letterSpacing: '-1px',
+              marginTop: 64
+            }}
+          >
+            {pageInfo.title}
+          </div>
+
+          {detail && <div style={{ fontSize: 38, opacity: 0.6 }}>{detail}</div>}
+        </div>
+      </div>
+
+      {pageInfo.authorImage && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 32,
+            left: 82,
+            height: 144,
+            width: 144,
+            display: 'flex',
+            borderRadius: '50%',
+            border: '6px solid #fff',
+            boxShadow: '0 4px 12px 0 rgba(0,0,0,.4)',
+            zIndex: 5,
+            backgroundColor: '#fff'
+          }}
+        >
+          <img
+            src={pageInfo.authorImage}
+            style={{
               width: '100%',
               height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-around',
-              backgroundColor: '#fff',
-              padding: 24,
-              alignItems: 'center',
-              textAlign: 'center',
-              borderRadius: 18,
-              boxShadow: '4px 6px 12px 2px rgba(0, 0, 0, 0.4)'
+              borderRadius: '50%'
             }}
-          >
-            <div
-              style={{
-                fontSize: 66,
-                fontWeight: 600,
-                fontFamily: 'Inter',
-                letterSpacing: '-1px',
-                marginTop: 64
-              }}
-            >
-              {pageInfo.title}
-            </div>
-
-            {detail && (
-              <div style={{ fontSize: 38, opacity: 0.6 }}>{detail}</div>
-            )}
-          </div>
+          />
         </div>
-
-        {pageInfo.authorImage && (
-          <div
-            style={{
-              position: 'absolute',
-              top: 32,
-              left: 82,
-              height: 144,
-              width: 144,
-              display: 'flex',
-              borderRadius: '50%',
-              border: '6px solid #fff',
-              boxShadow: '0 4px 12px 0 rgba(0,0,0,.4)',
-              zIndex: 5,
-              backgroundColor: '#fff'
-            }}
-          >
-            <img
-              src={pageInfo.authorImage}
-              style={{
-                width: '100%',
-                height: '100%',
-                borderRadius: '50%'
-              }}
-            />
-          </div>
-        )}
-      </div>
-    ),
+      )}
+    </div>,
     {
       width: 1200,
       height: 630,

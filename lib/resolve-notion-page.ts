@@ -52,7 +52,6 @@ export async function resolveNotionPage(
   } else {
     pageId = site.rootNotionPageId
 
-    console.log(site)
     recordMap = await getPage(pageId)
   }
 
