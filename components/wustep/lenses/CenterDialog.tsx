@@ -113,7 +113,10 @@ export function CenterDialog({
               {groups.map(([category, lenses], gi) => (
                 <section key={category} className={styles.dialogGroup}>
                   <h3 className={styles.dialogGroupHead}>{category}</h3>
-                  <ul className={styles.dialogList}>
+                  <ul
+                    className={styles.dialogList}
+                    aria-label={`${category} lenses`}
+                  >
                     {lenses.map((lens, i) => (
                       <DialogJumpItem
                         key={lens.id}
@@ -127,7 +130,10 @@ export function CenterDialog({
               ))}
             </div>
           ) : (
-            <ul className={styles.dialogList}>
+            <ul
+              className={styles.dialogList}
+              aria-label={`All ${LENSES.length} lenses`}
+            >
               {LENSES.map((lens, i) => (
                 <DialogJumpItem
                   key={lens.id}
@@ -161,6 +167,7 @@ function DialogJumpItem({
       <button
         type='button'
         className={styles.dialogJumpBtn}
+        aria-label={`Open the ${lens.title} lens`}
         onClick={() => onOpenLens(lens.id)}
         style={
           {
