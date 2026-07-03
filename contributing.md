@@ -22,6 +22,17 @@ pnpm dev
 
 You should now be able to open `http://localhost:3000` to view the webapp.
 
+## Git hooks
+
+`pnpm install` sets up [`simple-git-hooks`](https://github.com/toplenboren/simple-git-hooks):
+
+- **pre-commit** runs `lint-staged`: Prettier + ESLint `--fix` on staged `.ts`/`.tsx` files, and regenerates `components/wustep/lenses/lenses.json` (and re-stages it) whenever `lenses.md` is staged.
+- **pre-push** runs `pnpm typecheck`.
+
+Avoid committing with `--no-verify`: CI runs the same checks (lint, format, unit tests, typecheck, build) plus a drift-check that regenerates `lenses.json` and fails if it differs from what's committed. If that check fails, run `pnpm lenses:sync` and commit the result.
+
+> This repo is a customized fork; the accurate, project-specific command and convention reference lives in [docs/development.md](docs/development.md). The sections below are inherited from the upstream starter kit.
+
 ## Production
 
 To build for production, you can run:

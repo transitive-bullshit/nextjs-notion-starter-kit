@@ -37,6 +37,13 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      # Fail if the committed lenses.json drifts from lenses.md (the source of
+      # truth). Contributors should run `pnpm lenses:sync` and commit the result.
+      - name: Check generated artifacts are in sync
+        run: |
+          pnpm lenses:sync
+          git diff --exit-code components/wustep/lenses/lenses.json
+
       # Verify the Next.js build compiles. We run `next build` directly to skip
       # the `prebuild` Notion index crawl, and SKIP_NOTION_STATIC_BUILD makes
       # getStaticPaths pre-render nothing so no page hits Notion at build time.
