@@ -2,6 +2,7 @@
   "extends": "@fisch0920/config/tsconfig-react",
   "compilerOptions": {
     "baseUrl": ".",
+    "noUncheckedIndexedAccess": true,
     "paths": {
       "@/components/*": ["components/*"],
       "@/lib/*": ["lib/*"],

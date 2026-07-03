@@ -27,9 +27,18 @@ class RetryNotionAPI extends NotionAPI {
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
         return await super.fetch<T>(args)
-      } catch (err: any) {
-        const status = err?.statusCode ?? err?.status ?? err?.response?.status
-        if (attempt < maxRetries && RETRY_STATUS_CODES.has(status)) {
+      } catch (err: unknown) {
+        const e = err as {
+          statusCode?: number
+          status?: number
+          response?: { status?: number }
+        }
+        const status = e?.statusCode ?? e?.status ?? e?.response?.status
+        if (
+          attempt < maxRetries &&
+          status !== undefined &&
+          RETRY_STATUS_CODES.has(status)
+        ) {
           const delay = Math.min(initialDelay * 2 ** attempt, maxDelay)
           console.warn(
             `Notion API ${args.endpoint} returned ${status}, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`

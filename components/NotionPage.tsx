@@ -233,7 +233,7 @@ export function NotionPage({
   )
 
   const siteMapPageUrl = React.useMemo(() => {
-    const params: any = {}
+    const params: Record<string, string> = {}
     if (lite) params.lite = lite
 
     const searchParams = new URLSearchParams(params)
@@ -374,7 +374,7 @@ export function NotionPage({
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
-    const g = window as any
+    const g = window as unknown as Record<string, unknown>
     g.pageId = pageId
     g.recordMap = recordMap
     g.block = block

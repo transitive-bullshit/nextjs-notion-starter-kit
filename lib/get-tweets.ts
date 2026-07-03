@@ -6,6 +6,7 @@ import { getTweet as getTweetData } from 'react-tweet/api'
 
 import type { ExtendedTweetRecordMap } from './types'
 import { db } from './db'
+import { getErrorMessage } from './utils'
 
 /**
  * react-tweet's enrichTweet iterates entities.hashtags, .urls, etc. without
@@ -63,9 +64,9 @@ async function getTweetImpl(tweetId: string): Promise<any> {
       if (cachedTweet || cachedTweet === null) {
         return normalizeTweetEntities(cachedTweet)
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       // ignore redis errors
-      console.warn(`redis error get "${cacheKey}"`, err.message)
+      console.warn(`redis error get "${cacheKey}"`, getErrorMessage(err))
     }
 
     const tweetData = normalizeTweetEntities(
@@ -74,14 +75,14 @@ async function getTweetImpl(tweetId: string): Promise<any> {
 
     try {
       await db.set(cacheKey, tweetData)
-    } catch (err: any) {
+    } catch (err: unknown) {
       // ignore redis errors
-      console.warn(`redis error set "${cacheKey}"`, err.message)
+      console.warn(`redis error set "${cacheKey}"`, getErrorMessage(err))
     }
 
     return tweetData
-  } catch (err: any) {
-    console.warn('failed to get tweet', tweetId, err.message)
+  } catch (err: unknown) {
+    console.warn('failed to get tweet', tweetId, getErrorMessage(err))
     return null
   }
 }

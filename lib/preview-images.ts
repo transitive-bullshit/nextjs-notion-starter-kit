@@ -12,6 +12,7 @@ import pMemoize from 'p-memoize'
 import { defaultPageCover, defaultPageIcon } from './config'
 import { db } from './db'
 import { mapImageUrl } from './map-image-url'
+import { getErrorMessage } from './utils'
 
 export async function getPreviewImageMap(
   recordMap: ExtendedRecordMap
@@ -48,9 +49,9 @@ async function createPreviewImage(
       if (cachedPreviewImage) {
         return cachedPreviewImage
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       // ignore redis errors
-      console.warn(`redis error get "${cacheKey}"`, err.message)
+      console.warn(`redis error get "${cacheKey}"`, getErrorMessage(err))
     }
 
     const body = await ky(url).arrayBuffer()
@@ -64,14 +65,14 @@ async function createPreviewImage(
 
     try {
       await db.set(cacheKey, previewImage)
-    } catch (err: any) {
+    } catch (err: unknown) {
       // ignore redis errors
-      console.warn(`redis error set "${cacheKey}"`, err.message)
+      console.warn(`redis error set "${cacheKey}"`, getErrorMessage(err))
     }
 
     return previewImage
-  } catch (err: any) {
-    console.warn('failed to create preview image', url, err.message)
+  } catch (err: unknown) {
+    console.warn('failed to create preview image', url, getErrorMessage(err))
     return null
   }
 }

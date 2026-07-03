@@ -1,4 +1,5 @@
 import { api, host } from './config'
+import { getErrorMessage } from './utils'
 
 export function getSocialImageUrl(pageId: string | undefined) {
   try {
@@ -8,8 +9,8 @@ export function getSocialImageUrl(pageId: string | undefined) {
       url.searchParams.set('id', pageId)
       return url.toString()
     }
-  } catch (err: any) {
-    console.warn('error invalid social image url', pageId, err.message)
+  } catch (err: unknown) {
+    console.warn('error invalid social image url', pageId, getErrorMessage(err))
   }
 
   return null

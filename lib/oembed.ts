@@ -35,7 +35,7 @@ export const oembed = async ({
     .trim()
   if (name) authorName = name
 
-  const params: any = { lite: 'true' }
+  const params: Record<string, string> = { lite: 'true' }
   if (dark) {
     params.dark = 'true'
   }
