@@ -1731,11 +1731,8 @@
   }
 }
 
-.readingsLink:focus-visible {
-  outline: 2px solid var(--panel-bg, currentColor);
-  outline-offset: 4px;
-  border-radius: 2px;
-}
+/* Focus ring intentionally omitted here — the shared `.panel a:focus-visible`
+   rule (top of file) governs all panel links for a consistent neutral outline. */
 
 :global(html[data-design-related='off']) .readingsBlock {
   display: none;
@@ -1842,11 +1839,8 @@
   }
 }
 
-.quoteCiteLink:focus-visible {
-  outline: 2px solid var(--panel-bg, currentColor);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
+/* Focus ring intentionally omitted here — see the shared `.panel a:focus-visible`
+   rule at the top of this file. */
 
 /* Related-lenses block at bottom of panel body. */
 .relatedBlock {
