@@ -1,5 +1,6 @@
-import cs from 'classnames'
 import { type ComponentPropsWithoutRef } from 'react'
+
+import { cn } from '@/lib/utils'
 
 import styles from './styles.module.css'
 
@@ -7,7 +8,7 @@ export function LoadingIcon(props: ComponentPropsWithoutRef<'svg'>) {
   const { className, ...rest } = props
   return (
     <svg
-      className={cs(styles.loadingIcon, className)}
+      className={cn(styles.loadingIcon, className)}
       {...rest}
       viewBox='0 0 24 24'
     >

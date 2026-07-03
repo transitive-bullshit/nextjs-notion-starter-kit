@@ -1,4 +1,3 @@
-import cs from 'classnames'
 import {
   Blocks,
   CheckCircle2,
@@ -13,6 +12,8 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import * as React from 'react'
+
+import { cn } from '@/lib/utils'
 
 import styles from './DesignWorkbench.module.css'
 
@@ -53,7 +54,7 @@ export function DesignWorkbenchNav({
             <Link
               key={tool.id}
               href={tool.href}
-              className={cs(
+              className={cn(
                 styles.toolLink,
                 tool.id === activeTool && styles.activeTool
               )}
@@ -66,7 +67,7 @@ export function DesignWorkbenchNav({
         })}
       </nav>
       <div
-        className={cs(styles.status, isLoading && styles.loadingStatus)}
+        className={cn(styles.status, isLoading && styles.loadingStatus)}
         role='status'
       >
         <StatusIcon aria-hidden='true' />
@@ -111,7 +112,7 @@ export function DesignWorkbench({
   return (
     <div className={styles.workbench}>
       <DesignWorkbenchNav activeTool={activeTool} status={status} />
-      <div className={cs(styles.body, !panelOpen && styles.panelClosed)}>
+      <div className={cn(styles.body, !panelOpen && styles.panelClosed)}>
         <aside className={styles.panel} aria-label={`${title} controls`}>
           <div className={styles.panelHeader}>
             <div>
@@ -133,7 +134,7 @@ export function DesignWorkbench({
           )}
         </aside>
 
-        <main className={cs(styles.stage, stageClassName)}>
+        <main className={cn(styles.stage, stageClassName)}>
           <div className={styles.toolbar}>
             {!panelOpen && (
               <button

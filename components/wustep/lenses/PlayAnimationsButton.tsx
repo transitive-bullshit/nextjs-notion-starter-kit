@@ -1,5 +1,6 @@
-import cs from 'classnames'
 import * as React from 'react'
+
+import { cn } from '@/lib/utils'
 
 import styles from './LensesPage.module.css'
 
@@ -22,7 +23,7 @@ export function PlayAnimationsButton({
   return (
     <button
       type='button'
-      className={cs(
+      className={cn(
         styles.headerButton,
         styles.playAnimationsButton,
         className

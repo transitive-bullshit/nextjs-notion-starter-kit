@@ -1,9 +1,9 @@
-import cs from 'classnames'
 import { Bot } from 'lucide-react'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 
 import { useOwnerMode } from '@/components/wustep/OwnerModeProvider'
+import { cn } from '@/lib/utils'
 
 import styles from './OwnerModeToggle.module.css'
 
@@ -51,7 +51,7 @@ export function OwnerModeToggle({ className }: { className?: string }) {
   return (
     <button
       type='button'
-      className={cs(
+      className={cn(
         styles.ownerModeToggle,
         isOwner && styles.active,
         className

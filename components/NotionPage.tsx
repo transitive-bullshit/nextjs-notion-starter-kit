@@ -1,5 +1,4 @@
 import { track } from '@vercel/analytics'
-import cs from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/legacy/image'
 import Link from 'next/link'
@@ -29,6 +28,7 @@ import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
 import { useSearchParam } from '@/lib/use-search-param'
+import { cn } from '@/lib/utils'
 
 import { ErrorPage } from './ErrorPage'
 import { Footer } from './Footer'
@@ -439,7 +439,7 @@ export function NotionPage({
       {isDarkMode && <BodyClassName className='dark-mode' />}
 
       <NotionRenderer
-        bodyClassName={cs(
+        bodyClassName={cn(
           styles.notion,
           pageId === site.rootNotionPageId && 'index-page',
           isAuxiliaryPage && 'auxiliary-page',

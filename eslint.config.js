@@ -16,7 +16,18 @@ export default [
       'jsx-a11y/media-has-caption': 'off',
       'jsx-a11y/interactive-supports-focus': 'off',
       'jsx-a11y/anchor-is-valid': 'off',
-      '@typescript-eslint/naming-convention': 'off'
+      '@typescript-eslint/naming-convention': 'off',
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: 'classnames',
+              message: "Use `cn` from '@/lib/utils' instead of classnames."
+            }
+          ]
+        }
+      ]
     }
   }
 ]

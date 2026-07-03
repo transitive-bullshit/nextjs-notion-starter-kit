@@ -52,6 +52,7 @@ Copy [`.env.example`](../.env.example) to `.env.local` for local overrides. Most
 - **Prettier** via `@fisch0920/config/prettier` — run on pre-commit via `lint-staged` + `simple-git-hooks`.
 - **ESLint flat config** in [`eslint.config.js`](../eslint.config.js).
 - **Path aliases:** `@/*` → project root (e.g., `@/lib/config`).
+- **Class names:** merge with `cn()` from [`@/lib/utils`](../lib/utils.ts) (clsx + tailwind-merge). Importing `classnames` is banned by ESLint.
 - **CSS modules** for component-scoped styles (`*.module.css`), global sheets in [`styles/`](../styles/). See [styling.md](styling.md).
 
 ## Git hooks

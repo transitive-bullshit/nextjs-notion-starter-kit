@@ -1,5 +1,6 @@
-import cs from 'classnames'
 import * as React from 'react'
+
+import { cn } from '@/lib/utils'
 
 import styles from './ThemeToggle.module.css'
 
@@ -19,7 +20,7 @@ export function ThemeToggle({ isDark, onToggle, className }: ThemeToggleProps) {
     <button
       type='button'
       onClick={onToggle}
-      className={cs(styles.themeToggle, className)}
+      className={cn(styles.themeToggle, className)}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       aria-pressed={isDark}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}

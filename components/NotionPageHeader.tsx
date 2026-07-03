@@ -1,5 +1,4 @@
 import type * as types from 'notion-types'
-import cs from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
@@ -14,6 +13,7 @@ import {
   pageUrlOverrides
 } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
+import { cn } from '@/lib/utils'
 
 import styles from './styles.module.css'
 
@@ -28,7 +28,9 @@ export function NotionPageHeader({
 }) {
   const { components, mapPageUrl } = useNotionContext()
   const router = useRouter()
-  const isAuxiliaryPage = auxiliaryPaths.has(router.asPath.split('?')[0]!.split('#')[0]!)
+  const isAuxiliaryPage = auxiliaryPaths.has(
+    router.asPath.split('?')[0]!.split('#')[0]!
+  )
 
   if (navigationStyle === 'default') {
     return <Header block={block} />
@@ -38,7 +40,11 @@ export function NotionPageHeader({
     <header className='notion-header'>
       <div className='notion-nav-header'>
         {isAuxiliaryPage ? (
-          <Link href='/' className={styles.homeBackButton} aria-label='Back to home'>
+          <Link
+            href='/'
+            className={styles.homeBackButton}
+            aria-label='Back to home'
+          >
             <span className={styles.homeBackArrow}>←</span>
           </Link>
         ) : (
@@ -57,7 +63,7 @@ export function NotionPageHeader({
                   <components.PageLink
                     href={mapPageUrl(link.pageId)}
                     key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
+                    className={cn(styles.navLink, 'breadcrumb', 'button')}
                   >
                     {link.title}
                   </components.PageLink>
@@ -67,7 +73,7 @@ export function NotionPageHeader({
                   <components.Link
                     href={link.url}
                     key={index}
-                    className={cs(styles.navLink, 'breadcrumb', 'button')}
+                    className={cn(styles.navLink, 'breadcrumb', 'button')}
                   >
                     {link.title}
                   </components.Link>
@@ -98,7 +104,7 @@ function ToggleThemeButton() {
     <ThemeToggle
       isDark={hasMounted ? isDarkMode : false}
       onToggle={toggleDarkMode}
-      className={cs(
+      className={cn(
         'breadcrumb',
         'button',
         styles.themeButton,
@@ -117,7 +123,7 @@ function PlaygroundButton() {
 
   return (
     <LabsButton
-      className={cs(
+      className={cn(
         'breadcrumb',
         'button',
         styles.playgroundButton,

@@ -1,8 +1,8 @@
-import cs from 'classnames'
 import Link from 'next/link'
 import * as React from 'react'
 
 import { LabFillIcon } from '@/components/icons/InlineIcons'
+import { cn } from '@/lib/utils'
 
 import styles from './LabsButton.module.css'
 
@@ -23,7 +23,7 @@ export function LabsButton({
   return (
     <Link
       href='/playground'
-      className={cs(styles.labsButton, className)}
+      className={cn(styles.labsButton, className)}
       data-lab-fill-trigger=''
       aria-label={label}
       title={label}

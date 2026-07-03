@@ -1,7 +1,8 @@
-import cs from 'classnames'
 import { PencilRuler } from 'lucide-react'
 import Link from 'next/link'
 import * as React from 'react'
+
+import { cn } from '@/lib/utils'
 
 import styles from './DesignButton.module.css'
 
@@ -19,7 +20,7 @@ export function DesignButton({ className }: { className?: string }) {
   return (
     <Link
       href='/design'
-      className={cs(styles.designButton, className)}
+      className={cn(styles.designButton, className)}
       aria-label='Open local design workbench'
       title='Open local design workbench'
     >

@@ -1,7 +1,7 @@
 import type * as React from 'react'
-import cs from 'classnames'
 
 import * as config from '@/lib/config'
+import { cn } from '@/lib/utils'
 
 import {
   GithubIcon,
@@ -61,7 +61,7 @@ export function PageSocial() {
     <div className={styles.pageSocial}>
       {socialLinks.map((action) => (
         <a
-          className={cs(styles.action, styles[action.name])}
+          className={cn(styles.action, styles[action.name])}
           href={action.href}
           key={action.name}
           title={action.title}

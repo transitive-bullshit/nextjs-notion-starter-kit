@@ -1,9 +1,7 @@
-import {
-  IoGridOutline,
-  IoListOutline
-} from '@/components/icons/InlineIcons'
-import cs from 'classnames'
 import * as React from 'react'
+
+import { IoGridOutline, IoListOutline } from '@/components/icons/InlineIcons'
+import { cn } from '@/lib/utils'
 
 export type ViewMode = 'gallery' | 'list'
 
@@ -21,12 +19,12 @@ export function PostsHeadingToggle({
 
   return (
     <div className='posts-heading-toggle'>
-      <h1 className={cs('notion-h-title', 'notion-h1', 'notion-h-indent-0')}>
+      <h1 className={cn('notion-h-title', 'notion-h1', 'notion-h-indent-0')}>
         {headingText}
       </h1>
       <div className='posts-heading-toggle-group'>
         <button
-          className={cs('posts-heading-toggle-button', {
+          className={cn('posts-heading-toggle-button', {
             active: viewMode === 'list'
           })}
           onClick={() => onViewModeChange('list')}
@@ -36,7 +34,7 @@ export function PostsHeadingToggle({
           <IoListOutline />
         </button>
         <button
-          className={cs('posts-heading-toggle-button', {
+          className={cn('posts-heading-toggle-button', {
             active: viewMode === 'gallery'
           })}
           onClick={() => onViewModeChange('gallery')}
