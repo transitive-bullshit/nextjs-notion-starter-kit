@@ -1,3 +1,4 @@
+import ExpiryMap from 'expiry-map'
 import {
   type ExtendedRecordMap,
   type SearchParams,
@@ -16,35 +17,15 @@ import { getTweetsMap } from './get-tweets'
 import { notion } from './notion-api'
 import { getPreviewImageMap } from './preview-images'
 
+// Every Notion read shares one caching primitive: pMemoize + ExpiryMap.
+// - pMemoize dedupes concurrent calls (in-flight requests share one promise)
+//   and only ever writes the *resolved* value to the cache, so a rejected
+//   fetch (e.g. a 429) is never persisted.
+// - ExpiryMap provides the TTL-based eviction.
+// This mirrors the client-side cache in ./search-notion.ts so the whole
+// codebase uses a single, consistent strategy.
 const PAGE_CACHE_TTL_MS = 25 * 60 * 1000
 const SEARCH_CACHE_TTL_MS = 60 * 1000
-
-type CacheEntry<T> = { value: Promise<T>; expiresAt: number }
-
-function createTTLCache<T>(ttlMs: number) {
-  const store = new Map<string, CacheEntry<T>>()
-  return {
-    get(key: string): Promise<T> | undefined {
-      const entry = store.get(key)
-      if (!entry) return undefined
-      if (entry.expiresAt <= Date.now()) {
-        store.delete(key)
-        return undefined
-      }
-      return entry.value
-    },
-    set(key: string, value: Promise<T>) {
-      store.set(key, { value, expiresAt: Date.now() + ttlMs })
-      // evict on rejection so we don't cache errors
-      value.catch(() => {
-        if (store.get(key)?.value === value) store.delete(key)
-      })
-    }
-  }
-}
-
-const pageCache = createTTLCache<ExtendedRecordMap>(PAGE_CACHE_TTL_MS)
-const searchCache = createTTLCache<SearchResults>(SEARCH_CACHE_TTL_MS)
 
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
@@ -69,17 +50,9 @@ const getNavigationLinkPages = pMemoize(
     }
 
     return []
-  }
+  },
+  { cache: new ExpiryMap<undefined, ExtendedRecordMap[]>(PAGE_CACHE_TTL_MS) }
 )
-
-export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
-  const cached = pageCache.get(pageId)
-  if (cached) return cached
-
-  const promise = getPageUncached(pageId)
-  pageCache.set(pageId, promise)
-  return promise
-}
 
 async function getPageUncached(pageId: string): Promise<ExtendedRecordMap> {
   let recordMap = await notion.getPage(pageId)
@@ -124,12 +97,14 @@ async function getPageUncached(pageId: string): Promise<ExtendedRecordMap> {
   return recordMap
 }
 
-export async function search(params: SearchParams): Promise<SearchResults> {
-  const key = JSON.stringify(params)
-  const cached = searchCache.get(key)
-  if (cached) return cached
+export const getPage = pMemoize(getPageUncached, {
+  cache: new ExpiryMap<string, ExtendedRecordMap>(PAGE_CACHE_TTL_MS)
+})
 
-  const promise = notion.search(params)
-  searchCache.set(key, promise)
-  return promise
-}
+export const search = pMemoize(
+  (params: SearchParams): Promise<SearchResults> => notion.search(params),
+  {
+    cacheKey: (args) => JSON.stringify(args[0]),
+    cache: new ExpiryMap<string, SearchResults>(SEARCH_CACHE_TTL_MS)
+  }
+)
