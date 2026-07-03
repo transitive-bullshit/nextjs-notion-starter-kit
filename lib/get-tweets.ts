@@ -5,7 +5,7 @@ import pMemoize from 'p-memoize'
 import { getTweet as getTweetData } from 'react-tweet/api'
 
 import type { ExtendedTweetRecordMap } from './types'
-import { db } from './db'
+import { dbGet, dbSet } from './db'
 import { getErrorMessage } from './utils'
 
 /**
@@ -59,25 +59,19 @@ async function getTweetImpl(tweetId: string): Promise<any> {
   const cacheKey = `tweet:${tweetId}`
 
   try {
-    try {
-      const cachedTweet = await db.get(cacheKey)
-      if (cachedTweet || cachedTweet === null) {
-        return normalizeTweetEntities(cachedTweet)
-      }
-    } catch (err: unknown) {
-      // ignore redis errors
-      console.warn(`redis error get "${cacheKey}"`, getErrorMessage(err))
+    // A cached `null` means "known missing" — keep it as a hit to avoid refetch.
+    const cached = await dbGet<Record<string, any> | null>(cacheKey)
+    if (cached.ok && (cached.value || cached.value === null)) {
+      return normalizeTweetEntities(cached.value)
     }
 
     const tweetData = normalizeTweetEntities(
       (await getTweetData(tweetId)) || null
     )
 
-    try {
-      await db.set(cacheKey, tweetData)
-    } catch (err: unknown) {
-      // ignore redis errors
-      console.warn(`redis error set "${cacheKey}"`, getErrorMessage(err))
+    // Only write back when the read succeeded (don't clobber on a read error).
+    if (cached.ok) {
+      await dbSet(cacheKey, tweetData)
     }
 
     return tweetData

@@ -10,7 +10,7 @@ import pMap from 'p-map'
 import pMemoize from 'p-memoize'
 
 import { defaultPageCover, defaultPageIcon } from './config'
-import { db } from './db'
+import { dbGet, dbSet } from './db'
 import persistedPreviewImagesJson from './generated/preview-images.json'
 import { mapImageUrl } from './map-image-url'
 import { getErrorMessage } from './utils'
@@ -59,14 +59,9 @@ async function createPreviewImage(
       return persisted
     }
 
-    try {
-      const cachedPreviewImage = await db.get(cacheKey)
-      if (cachedPreviewImage) {
-        return cachedPreviewImage
-      }
-    } catch (err: unknown) {
-      // ignore redis errors
-      console.warn(`redis error get "${cacheKey}"`, getErrorMessage(err))
+    const cached = await dbGet<PreviewImage>(cacheKey)
+    if (cached.ok && cached.value) {
+      return cached.value
     }
 
     const body = await ky(url).arrayBuffer()
@@ -78,11 +73,10 @@ async function createPreviewImage(
       dataURIBase64: result.metadata.dataURIBase64
     }
 
-    try {
-      await db.set(cacheKey, previewImage)
-    } catch (err: unknown) {
-      // ignore redis errors
-      console.warn(`redis error set "${cacheKey}"`, getErrorMessage(err))
+    // Only write back when the read succeeded; a read error means we can't tell
+    // whether a good value already exists, so don't risk clobbering it.
+    if (cached.ok) {
+      await dbSet(cacheKey, previewImage)
     }
 
     return previewImage
