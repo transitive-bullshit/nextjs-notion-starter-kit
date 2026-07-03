@@ -16,7 +16,7 @@
   align-items: center;
   text-align: center;
   padding: 2rem;
-  animation: fadeIn 800ms ease both;
+  animation: fadeIn 800ms var(--ease-out-quart) both;
 }
 
 @keyframes fadeIn {
@@ -40,7 +40,7 @@
   color: var(--primary);
   opacity: 0.12;
   user-select: none;
-  animation: fadeIn 1000ms ease both;
+  animation: fadeIn 1000ms var(--ease-out-quart) both;
 }
 
 .divider {
@@ -48,7 +48,7 @@
   height: 1px;
   background: var(--divider);
   margin: 1.5rem 0;
-  animation: expandLine 800ms ease 200ms both;
+  animation: expandLine 800ms var(--ease-out-quart) 200ms both;
 }
 
 @keyframes expandLine {
@@ -68,7 +68,7 @@
   font-size: 1.35rem;
   margin: 0 0 0.75rem;
   letter-spacing: -0.01em;
-  animation: fadeIn 800ms ease 300ms both;
+  animation: fadeIn 800ms var(--ease-out-quart) 300ms both;
 }
 
 .description {
@@ -77,7 +77,7 @@
   line-height: 1.6;
   margin: 0 0 2rem;
   max-width: 320px;
-  animation: fadeIn 800ms ease 400ms both;
+  animation: fadeIn 800ms var(--ease-out-quart) 400ms both;
 }
 
 .homeLink {
@@ -96,7 +96,7 @@
     color 200ms ease,
     border-color 200ms ease,
     background 200ms ease;
-  animation: fadeIn 800ms ease 500ms both;
+  animation: fadeIn 800ms var(--ease-out-quart) 500ms both;
 }
 
 .homeLink:hover {
@@ -124,5 +124,5 @@
   color: var(--secondary);
   max-width: 400px;
   font-family: monospace;
-  animation: fadeIn 800ms ease 600ms both;
+  animation: fadeIn 800ms var(--ease-out-quart) 600ms both;
 }
