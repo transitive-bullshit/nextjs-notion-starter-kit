@@ -20,7 +20,6 @@ import {
   useNotionContext
 } from 'react-notion-x'
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
-import { useSearchParam } from 'react-use'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
@@ -29,7 +28,9 @@ import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
+import { useSearchParam } from '@/lib/use-search-param'
 
+import { ErrorPage } from './ErrorPage'
 import { Footer } from './Footer'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
@@ -39,7 +40,6 @@ import { PageHead } from './PageHead'
 import styles from './styles.module.css'
 import { Comments } from './wustep/Comments'
 import { WustepFooter } from './wustep/WustepFooter'
-import { ErrorPage } from './ErrorPage'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -227,7 +227,8 @@ export function NotionPage({
   const { isDarkMode } = useDarkMode()
 
   const externalUrlMap = React.useMemo(
-    () => (recordMap ? getExternalUrlMap(recordMap) : new Map<string, string>()),
+    () =>
+      recordMap ? getExternalUrlMap(recordMap) : new Map<string, string>(),
     [recordMap]
   )
 
@@ -248,7 +249,7 @@ export function NotionPage({
   }, [site, recordMap, lite, externalUrlMap])
 
   const ExternalAwarePageLink = React.useMemo(() => {
-    const PageLinkComponent = (props: any) => {
+    function PageLinkComponent(props: any) {
       const { href, ...rest } = props
       if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
         return (
@@ -295,7 +296,8 @@ export function NotionPage({
 
   const auxiliaryPageIds = new Set(Object.values(config.pageUrlOverrides))
   const isAuxiliaryPage =
-    !isRootPage && auxiliaryPageIds.has(parsePageId(block?.id, { uuid: false })!)
+    !isRootPage &&
+    auxiliaryPageIds.has(parsePageId(block?.id, { uuid: false })!)
 
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
