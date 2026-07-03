@@ -4,6 +4,12 @@ import { domain } from '@/lib/config'
 import { resolveNotionPage } from '@/lib/resolve-notion-page'
 
 export const getStaticProps = async () => {
+  // CI build verification: skip the live Notion fetch so `next build` stays
+  // offline/deterministic. The page falls back to on-demand ISR at runtime.
+  if (process.env.SKIP_NOTION_STATIC_BUILD === 'true') {
+    return { notFound: true as const, revalidate: 10 }
+  }
+
   try {
     const props = await resolveNotionPage(domain)
 

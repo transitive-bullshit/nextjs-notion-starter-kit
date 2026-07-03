@@ -69,7 +69,11 @@ export const getStaticProps: GetStaticProps<PageProps, Params> = async (
 }
 
 export async function getStaticPaths() {
-  if (isDev) {
+  // In dev, and in CI build-verification (SKIP_NOTION_STATIC_BUILD), pre-render
+  // nothing and let every page fall through to on-demand generation. This keeps
+  // `next build` in CI fully offline/deterministic — no per-page Notion fetches.
+  // Real production builds on Vercel don't set the flag and pre-render normally.
+  if (isDev || process.env.SKIP_NOTION_STATIC_BUILD === 'true') {
     return {
       paths: [],
       fallback: true

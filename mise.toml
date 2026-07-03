@@ -1,0 +1,5 @@
+# Toolchain versions for local dev and CI, managed by mise (https://mise.jdx.dev).
+# Run `mise install` to match these locally; CI installs them via jdx/mise-action.
+[tools]
+node = "22"
+pnpm = "10.12.1"
