@@ -74,7 +74,14 @@ async function getAllPagesImpl(
 
       const canonicalPageId = getCanonicalPageId(pageId, recordMap, {
         uuid
-      })!
+      })
+
+      if (!canonicalPageId) {
+        // Skip rather than crash the whole crawl: a single unresolvable page
+        // shouldn't corrupt the generated index/sitemap.
+        console.warn('skipping page with no canonical id', { pageId })
+        return map
+      }
 
       if (map[canonicalPageId]) {
         // you can have multiple pages in different collections that have the same id
