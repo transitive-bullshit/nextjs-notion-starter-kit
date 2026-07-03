@@ -14,6 +14,20 @@ jobs:
       - name: Set up toolchain
         uses: jdx/mise-action@v2
 
+      # Cache the pnpm content-addressable store so installs are near-instant
+      # on a lockfile hit instead of re-downloading every dependency.
+      - name: Locate pnpm store
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_ENV"
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
