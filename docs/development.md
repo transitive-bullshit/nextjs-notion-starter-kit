@@ -15,9 +15,10 @@ pnpm notion:index         # refresh the generated slug index and static sitemap
 pnpm build                # refresh the index, then run next build
 pnpm start                # next start (serve the production build)
 pnpm deploy               # vercel deploy
-pnpm test                 # lint + prettier in parallel
+pnpm test                 # lint + prettier + unit tests in parallel
 pnpm test:lint            # eslint
 pnpm test:prettier        # prettier --check
+pnpm test:unit            # vitest run
 ```
 
 ### Dependency-linking helpers
@@ -72,4 +73,19 @@ npx simple-git-hooks
 
 ## Testing
 
-There's no unit-test suite. `pnpm test` runs linting and formatting only. Visual/integration testing is manual — push to a Vercel preview and click around.
+Unit tests run on [Vitest](https://vitest.dev). `pnpm test` runs lint, prettier,
+and the unit suite in parallel (`run-p test:*`).
+
+```bash
+pnpm test:unit            # vitest run (single pass)
+pnpm exec vitest          # watch mode while developing
+```
+
+Tests live next to the code they cover in `__tests__/` folders (e.g.
+[`lib/__tests__/`](../lib/__tests__/)) and are named `*.test.ts`. The suite
+currently covers pure `lib/` utilities; config runs in the Node environment
+(see [`vitest.config.ts`](../vitest.config.ts)) — switch to `jsdom` there when
+adding React component tests.
+
+Visual/integration testing is still manual — push to a Vercel preview and click
+around.
