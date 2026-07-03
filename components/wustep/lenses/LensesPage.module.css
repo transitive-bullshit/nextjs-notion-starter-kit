@@ -1526,6 +1526,10 @@
   font-family: var(--design-serif, var(--font-serif, Georgia, serif));
   padding: 30px 36px 40px;
   overflow-y: auto;
+  /* Keep momentum/overscroll inside the panel: without this, pulling past
+     the top on iOS bounces the canvas behind and can dismiss the panel.
+     Mirrors the dialog list. */
+  overscroll-behavior: contain;
   flex: 1 1 auto;
   font-size: calc(1.08rem * var(--design-body-scale, 1));
   line-height: var(--design-body-line-height, 1.6);
