@@ -13,7 +13,6 @@ const MIN_OWNER_SECRET_LENGTH = 8
 
 function isValidUrl(value: string): boolean {
   try {
-     
     new URL(value)
     return true
   } catch {
