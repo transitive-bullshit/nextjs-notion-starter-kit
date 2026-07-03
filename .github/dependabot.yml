@@ -1,0 +1,28 @@
+version: 2
+updates:
+  # App dependencies (pnpm is handled by the npm ecosystem). Grouped so a
+  # week's patch/minor bumps land as two PRs (prod + dev) instead of dozens.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      production-dependencies:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      dev-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+    # Major bumps open their own PRs for manual review.
+
+  # Keep the CI actions (checkout, cache, mise-action) current too.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
