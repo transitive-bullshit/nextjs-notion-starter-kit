@@ -1,14 +1,21 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-import { domain } from './lib/config'
+import { domain, isPreviewImageSupportEnabled } from './lib/config'
 import { getSiteMap } from './lib/get-site-map'
+import { buildPreviewImageMap } from './lib/preview-images'
 
 const notionIndexPath = path.join(
   process.cwd(),
   'lib',
   'generated',
   'notion-index.json'
+)
+const previewImagesPath = path.join(
+  process.cwd(),
+  'lib',
+  'generated',
+  'preview-images.json'
 )
 const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml')
 
@@ -37,6 +44,34 @@ export default async function syncNotionIndex(): Promise<void> {
   console.log(
     `Indexed ${Object.keys(canonicalPageMap).length} Notion pages and updated sitemap.xml.`
   )
+
+  // Generate the committed LQIP cache from the already-fetched record maps.
+  // Wrapped so an image-fetch hiccup can't fail the (critical) index build; on
+  // failure we keep the existing preview-images.json.
+  if (isPreviewImageSupportEnabled) {
+    try {
+      const recordMaps = Object.values(siteMap.pageMap).filter(
+        (recordMap) => recordMap !== null
+      )
+      const previewImages = await buildPreviewImageMap(recordMaps)
+      const count = Object.keys(previewImages).length
+
+      if (count > 0) {
+        await writeAtomic(
+          previewImagesPath,
+          `${JSON.stringify(previewImages, null, 2)}\n`
+        )
+        console.log(`Cached ${count} preview images.`)
+      } else {
+        console.warn('No preview images generated; keeping existing cache.')
+      }
+    } catch (err) {
+      console.warn(
+        'Preview image generation failed; keeping existing cache.',
+        err
+      )
+    }
+  }
 }
 
 function createSitemap(
