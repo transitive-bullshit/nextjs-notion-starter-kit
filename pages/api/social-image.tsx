@@ -178,8 +178,9 @@ export async function getNotionPageInfo({
 > {
   const recordMap = await notion.getPage(pageId)
 
-  const keys = Object.keys(recordMap?.block || {})
-  const block = getBlockValue(recordMap?.block?.[keys[0]!])
+  const blocks = recordMap?.block ?? {}
+  const firstBlockId = Object.keys(blocks)[0]
+  const block = firstBlockId ? getBlockValue(blocks[firstBlockId]) : undefined
 
   if (!block) {
     throw new Error('Invalid recordMap for page')
