@@ -14,6 +14,7 @@ import {
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
+  type ComponentOverrideFn,
   type NotionComponents,
   NotionRenderer,
   useNotionContext
@@ -156,9 +157,9 @@ function Tweet({ id }: { id: string }) {
   )
 }
 
-const propertyLastEditedTimeValue = (
-  { block, pageHeader }: any,
-  defaultFn: () => React.ReactNode
+const propertyLastEditedTimeValue: ComponentOverrideFn = (
+  { block, pageHeader },
+  defaultFn
 ) => {
   if (pageHeader && block?.last_edited_time) {
     return `Last updated ${formatDate(block?.last_edited_time, {
@@ -169,9 +170,9 @@ const propertyLastEditedTimeValue = (
   return defaultFn()
 }
 
-const propertyDateValue = (
-  { data, schema, pageHeader }: any,
-  defaultFn: () => React.ReactNode
+const propertyDateValue: ComponentOverrideFn = (
+  { data, schema, pageHeader },
+  defaultFn
 ) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'published') {
     const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
@@ -195,9 +196,9 @@ const propertyDateValue = (
   return defaultFn()
 }
 
-const propertyTextValue = (
-  { schema, pageHeader }: any,
-  defaultFn: () => React.ReactNode
+const propertyTextValue: ComponentOverrideFn = (
+  { schema, pageHeader },
+  defaultFn
 ) => {
   if (pageHeader && schema?.name?.toLowerCase() === 'author') {
     return <b>{defaultFn()}</b>
