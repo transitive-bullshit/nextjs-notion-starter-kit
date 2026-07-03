@@ -10,7 +10,7 @@ const BUILD_INITIAL_DELAY_MS = 5000
 const BUILD_MAX_DELAY_MS = 60_000
 const BUILD_MIN_FETCH_INTERVAL_MS = 1100
 
-class RetryNotionAPI extends NotionAPI {
+export class RetryNotionAPI extends NotionAPI {
   constructor(
     opts: ConstructorParameters<typeof NotionAPI>[0],
     private retryOpts: {
