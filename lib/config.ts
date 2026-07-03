@@ -18,6 +18,12 @@ import {
   type PageUrlOverridesMap,
   type Site
 } from './types'
+import { validateEnv } from './validate-env'
+
+// Fail fast on malformed env vars (bad URLs, short secret, non-numeric port).
+if (typeof window === 'undefined') {
+  validateEnv()
+}
 
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),

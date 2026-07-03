@@ -91,11 +91,9 @@ Set in `.env.local` for development, Vercel project settings for production. All
 
 ### Analytics
 
-| Var | Notes |
-|---|---|
-| `NEXT_PUBLIC_FATHOM_ID` | Fathom site ID. |
-| `NEXT_PUBLIC_POSTHOG_ID` | PostHog project key. |
-| `NEXT_PUBLIC_GOOGLE_ID` | GA measurement ID. |
+Analytics is [Vercel Analytics](https://vercel.com/analytics) only — enabled by
+the `@vercel/analytics` component in `_app.tsx`, no env var required. Owner-mode
+traffic is excluded. (Fathom, PostHog, and Google Analytics were removed.)
 
 ### Owner mode
 
@@ -137,3 +135,8 @@ A few exports in `lib/config.ts` are computed from the above, not authored:
 - Every mapped value must be a valid Notion page ID.
 
 If you add a new top-level URL mapping and the build fails early, check the error message from `cleanPageUrlMap` — it tells you which entry is bad.
+
+Environment variables are validated on the server at startup too:
+
+- `getEnv()` throws if a **required** var (one with no default) is missing.
+- [`lib/validate-env.ts`](../lib/validate-env.ts) checks the **shape** of provided values — `OWNER_MODE_SECRET` length, `NOTION_API_BASE_URL` / `REDIS_URL` must be valid URLs, `PORT` must be numeric — and reports all problems in one error. Only vars that are set are checked, so a minimal setup never fails.
