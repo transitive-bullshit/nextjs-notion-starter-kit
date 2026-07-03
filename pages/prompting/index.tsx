@@ -1,9 +1,6 @@
 import Head from 'next/head'
 
-import {
-  IntroContent,
-  PromptingLayout
-} from '@/components/wustep/prompting'
+import { IntroContent, PromptingLayout } from '@/components/wustep/prompting'
 import { domain, host, name, x } from '@/lib/config'
 
 const title = 'How to talk to coding agents'

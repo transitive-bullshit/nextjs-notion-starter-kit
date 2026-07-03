@@ -1,5 +1,5 @@
-import { PlaygroundLayout } from '@/components/wustep/PlaygroundLayout'
 import { LensesPage } from '@/components/wustep/lenses'
+import { PlaygroundLayout } from '@/components/wustep/PlaygroundLayout'
 
 export default function PlaygroundLensesPage() {
   return (

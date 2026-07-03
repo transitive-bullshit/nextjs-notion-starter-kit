@@ -19,7 +19,6 @@ const DEPTHS: Array<{ id: Depth; label: string; hint: string }> = [
   { id: 'low', label: 'Low', hint: 'one specific line' }
 ]
 
-
 function AskIcon() {
   return (
     <svg

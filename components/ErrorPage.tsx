@@ -1,7 +1,7 @@
 import * as config from '@/lib/config'
 
-import { PageHead } from './PageHead'
 import styles from './Page404.module.css'
+import { PageHead } from './PageHead'
 
 export function ErrorPage({ statusCode }: { statusCode: number }) {
   const title = `Error ${statusCode}`

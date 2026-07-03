@@ -51,14 +51,12 @@ function rowOf(y: number): number {
 }
 
 /** Cards in reading order: row by row, left to right within a row. */
-const READING_ORDER: readonly string[] = [...LENSES]
-  .sort((a, b) => {
-    const ra = rowOf(a.y)
-    const rb = rowOf(b.y)
-    if (ra !== rb) return ra - rb
-    return a.x - b.x
-  })
-  .map((l) => l.id)
+const READING_ORDER: readonly string[] = LENSES.toSorted((a, b) => {
+  const ra = rowOf(a.y)
+  const rb = rowOf(b.y)
+  if (ra !== rb) return ra - rb
+  return a.x - b.x
+}).map((l) => l.id)
 
 /**
  * Find the next lens to navigate to from `fromId` in `direction`.
@@ -83,15 +81,14 @@ export function neighborInDirection(
     if (!fromId) {
       return direction === 'right'
         ? (READING_ORDER[0] ?? null)
-        : (READING_ORDER[READING_ORDER.length - 1] ?? null)
+        : (READING_ORDER.at(-1) ?? null)
     }
 
     const idx = READING_ORDER.indexOf(fromId)
     if (idx === -1) return READING_ORDER[0] ?? null
 
     const step = direction === 'right' ? 1 : -1
-    const nextIdx =
-      (idx + step + READING_ORDER.length) % READING_ORDER.length
+    const nextIdx = (idx + step + READING_ORDER.length) % READING_ORDER.length
     return READING_ORDER[nextIdx] ?? null
   }
 

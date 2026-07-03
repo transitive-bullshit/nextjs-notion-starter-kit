@@ -2,7 +2,7 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
 import { LensesPage } from '@/components/wustep/lenses'
-import { LENS_BY_ID,LENSES } from '@/components/wustep/lenses/registry'
+import { LENS_BY_ID, LENSES } from '@/components/wustep/lenses/registry'
 import { domain, host, name, x } from '@/lib/config'
 
 type LensDetailProps = {

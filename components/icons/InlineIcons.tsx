@@ -112,7 +112,7 @@ export function HouseFillIcon(props: IconProps) {
  */
 export function LabFillIcon(props: IconProps) {
   const reactId = React.useId()
-  const cavityId = `lab-cavity-${reactId.replace(/:/g, '')}`
+  const cavityId = `lab-cavity-${reactId.replaceAll(':', '')}`
 
   return (
     <IconBase viewBox='0 0 16 16' {...props}>

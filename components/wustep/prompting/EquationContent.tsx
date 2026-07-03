@@ -25,7 +25,11 @@ export function EquationContent() {
         is finding them.
       </p>
 
-      <Lever num='2.1' name='TOOL' tagline='Use a tool that was built for this.'>
+      <Lever
+        num='2.1'
+        name='TOOL'
+        tagline='Use a tool that was built for this.'
+      >
         <p>
           Most people are still defaulting to whatever editor they had before
           agents were a thing, and bolting AI on. That&apos;s leaving the

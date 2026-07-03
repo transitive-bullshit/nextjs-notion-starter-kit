@@ -1,6 +1,6 @@
 'use client'
 
-import { type CSSProperties,useEffect, useRef, useState } from 'react'
+import { type CSSProperties, useEffect, useRef, useState } from 'react'
 
 import styles from './MidiVisualizerCover.module.css'
 

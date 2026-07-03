@@ -107,7 +107,9 @@ export function ApplauseButton() {
       }}
       onClick={doApplause}
       disabled={isLoading || isClapped}
-      aria-label={isClapped ? `Applauded — ${count} claps` : 'Applaud this page'}
+      aria-label={
+        isClapped ? `Applauded — ${count} claps` : 'Applaud this page'
+      }
       aria-pressed={isClapped}
     >
       <div className='style-root'>

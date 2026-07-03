@@ -1,8 +1,8 @@
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
 
-import { PageHead } from './PageHead'
 import styles from './Page404.module.css'
+import { PageHead } from './PageHead'
 
 export function Page404({ site, pageId, error }: types.PageProps) {
   const title = site?.name || 'Page Not Found'

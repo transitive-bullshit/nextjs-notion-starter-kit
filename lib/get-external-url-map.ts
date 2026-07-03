@@ -14,11 +14,7 @@ export function getExternalUrlMap(
     const block = getBlockValue(recordMap.block[blockId])
     if (!block || block.type !== 'page') continue
 
-    const isExternal = getPageProperty<boolean>(
-      'External',
-      block,
-      recordMap
-    )
+    const isExternal = getPageProperty<boolean>('External', block, recordMap)
     if (!isExternal) continue
 
     const externalUrl = getPageProperty<string>(

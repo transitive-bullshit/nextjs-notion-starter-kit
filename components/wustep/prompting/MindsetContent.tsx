@@ -109,7 +109,7 @@ export function MindsetContent() {
         when the model surprises them.
       </p>
 
-      <Note title='We&apos;re all beginners'>
+      <Note title="We're all beginners">
         <p>
           Closed minds blame the model. Open minds ask what they missed and find
           something to learn from each transcript. Only one of those is still

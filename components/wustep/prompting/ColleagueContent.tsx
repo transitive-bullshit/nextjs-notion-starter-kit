@@ -70,7 +70,11 @@ export function ColleagueContent() {
         </p>
       </Lever>
 
-      <Lever num='5.2' name='BRIEFING' tagline='Every task starts with context.'>
+      <Lever
+        num='5.2'
+        name='BRIEFING'
+        tagline='Every task starts with context.'
+      >
         <p>
           Onboarding is general. Briefing is per-task &mdash; what this specific
           piece of work is, which files matter, what good looks like, what to

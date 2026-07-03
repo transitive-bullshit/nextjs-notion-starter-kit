@@ -20,8 +20,8 @@ export function OrchestrationContent() {
         num='6.1'
         caption={
           <>
-            Same work, very different wall-clock cost. The dashed blocks in
-            the top row are <em>you</em>, deciding what to type next.
+            Same work, very different wall-clock cost. The dashed blocks in the
+            top row are <em>you</em>, deciding what to type next.
           </>
         }
       >
