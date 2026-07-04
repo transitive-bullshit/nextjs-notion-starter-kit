@@ -47,16 +47,6 @@
   padding-top: 2.5vh !important;
 }
 
-.auxiliary-page .notion-gallery-grid .notion-page-title-text {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-  margin-bottom: 0.35rem;
-  white-space: unset;
-}
-
 .notion-text {
   padding: 0.5em 2px;
 }
@@ -102,10 +92,6 @@
 .notion-gallery-grid .notion-collection-card-property {
   white-space: unset;
   text-overflow: unset;
-}
-
-.notion-gallery-grid .notion-property-text {
-  font-size: 14px;
 }
 
 .notion-collection-card {

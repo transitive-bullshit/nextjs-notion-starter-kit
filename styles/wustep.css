@@ -358,6 +358,7 @@ h6 {
  */
 .notion-title {
   font-size: 2.75em;
+  letter-spacing: -0.02em;
   margin-bottom: 0.25em;
 }
 
@@ -1000,9 +1001,10 @@ span[class*='_background'] {
 /**
  * ========== Gallery Cards ========== 
  */
+/* Tighter grid at the About page project-grid gap */
 .notion-gallery-grid {
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
   grid-auto-flow: row;
 }
 
@@ -1010,21 +1012,25 @@ span[class*='_background'] {
   display: none;
 }
 
+/* Card titles at the About page's project-card scale */
 .notion-gallery-grid .notion-page-title-text {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.3;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .notion-gallery-grid .notion-collection-card-property {
   margin-bottom: 0.1em;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--secondary);
 }
 
 .notion-collection-card {
-  border-radius: var(--radius-lg);
+  border-radius: 16px;
   background: var(--surface);
   transition:
     transform 0.2s ease,
@@ -1052,7 +1058,7 @@ span[class*='_background'] {
 }
 
 .notion-collection-card-cover {
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  border-radius: 16px 16px 0 0;
   overflow: hidden;
   border-bottom: 1px solid var(--divider);
   aspect-ratio: 16/9;
@@ -1126,6 +1132,52 @@ span[class*='_background'] {
 }
 
 /* Dark mode adjustments - uses CSS variables automatically */
+
+/**
+ * ========== About-Page Alignment ==========
+ * Notion-rendered pages share the main (About) page design language:
+ * muted sans metadata, uppercase section headers on listing pages, and the
+ * project-card scale. Source values live in components/AboutPage.module.css.
+ */
+
+/* Metadata stays sans-serif, like the About page's dates and notes */
+.notion-collection-row,
+.notion-collection-card-property,
+.notion-list-item-property,
+.notion-asset-caption {
+  font-family: var(--font-sans);
+}
+
+/* Post header row (author · date) */
+.notion-collection-row {
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+
+.notion-asset-caption {
+  font-size: 0.82rem;
+  color: var(--secondary);
+}
+
+/* Listing pages (/writing, /articles, …): section headings use the About
+   page's uppercase sans section-header treatment instead of serif heroes */
+.auxiliary-page .notion-h1 {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin: 3rem 0 0.75rem;
+}
+
+.auxiliary-page .notion-h1:first-child {
+  margin-top: 0.5rem;
+}
+
+.auxiliary-page .notion-hash-link {
+  display: none;
+}
 
 /**
  * ========== Personal Footer ==========
