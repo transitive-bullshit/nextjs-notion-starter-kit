@@ -2267,7 +2267,9 @@
   text-transform: var(--design-eyebrow-case, uppercase);
   letter-spacing: var(--design-eyebrow-tracking, 0.16em);
   font-weight: var(--design-eyebrow-weight, 500);
-  opacity: 0.5;
+  /* 0.5 sat at ~3.5:1 on the cream dialog; 0.62 clears AA while still
+     reading as an eyebrow. */
+  opacity: 0.62;
 }
 
 .dialogJumpTitle {

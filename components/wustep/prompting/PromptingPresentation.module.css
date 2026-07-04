@@ -939,7 +939,7 @@
   background: var(--paper);
   box-shadow: 0 0 0 2px rgba(244, 238, 227, 0.25);
   transform: translateX(-50%);
-  animation: forkDotPop 360ms cubic-bezier(0.34, 1.56, 0.64, 1) 820ms both;
+  animation: forkDotPop 360ms cubic-bezier(0.22, 1, 0.36, 1) 820ms both;
 }
 
 .fork section,
@@ -1954,20 +1954,32 @@
   display: grid;
   gap: 6px;
   padding: 15px 18px;
-  border-left: 8px solid var(--ember);
   background: #eadfce;
   color: var(--ink);
 }
 
 .contract b {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--ink);
   font-size: clamp(19px, 2vw, 26px);
   line-height: 1.05;
   text-transform: lowercase;
 }
 
+/* Ember square chip — the deck's kicker mark, doing the accent work
+   the old side stripe used to. */
+.contract b::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  background: var(--ember);
+}
+
 .contract span {
-  color: var(--muted);
+  color: rgba(18, 17, 15, 0.72);
   font-size: clamp(14px, 1.25vw, 17px);
   line-height: 1.25;
 }
@@ -2289,7 +2301,7 @@
 .effortAutoTrap {
   margin: 0;
   padding: 16px 18px;
-  border-left: 4px solid var(--ember);
+  border: 1px solid rgba(223, 107, 45, 0.4);
   background: rgba(223, 107, 45, 0.1);
   color: rgba(244, 238, 227, 0.82);
   font-size: 15px;
@@ -3096,7 +3108,7 @@
 
 .yoloPrompt {
   padding: 12px 14px;
-  border-left: 3px solid var(--ember);
+  border: 1px solid var(--line);
   background: rgba(18, 17, 15, 0.55);
   color: var(--paper);
   font-family: var(--font-serif, 'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', Georgia, serif);
@@ -3429,5 +3441,24 @@
   .articleTreeDemo,
   .articleColleagueDemo {
     transform: none;
+  }
+}
+
+/* ───── Reduced motion ─────
+ *
+ * Every slide entrance keyframe here ends on its visible state, so
+ * instead of `animation: none` (which would strand `opacity: 0`
+ * base styles) we complete all animations instantly. Content lands
+ * in its final frame with no choreography; the blinking cursor
+ * simply stops after one cycle. */
+@media (prefers-reduced-motion: reduce) {
+  .presenter *,
+  .presenter *::before,
+  .presenter *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
 }
