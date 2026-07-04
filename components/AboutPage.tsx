@@ -12,7 +12,8 @@ import { Illustration } from './wustep/lenses/illustrations'
 import { OwnerModeToggle } from './wustep/OwnerModeToggle'
 import { ThemeToggle } from './wustep/ThemeToggle'
 
-export const bioText = `I'm Stephen, a product engineer building software in San Francisco, CA. I like to write about software engineering, design, philosophy, and life.`
+// Plain-text mirror of the hero bio JSX below — used for meta descriptions.
+export const bioText = `I'm Stephen, a product & design engineer who now also manages engineers. I think a lot about tools for thought, software design, and personal philosophy. I grew up mostly in Toledo, Ohio, and live in San Francisco now. I also enjoy roguelike deckbuilders, piano improvisation, and making random web projects.`
 
 const workHistory = [
   {
@@ -96,11 +97,13 @@ function useAnimateIn() {
 function Tooltip({
   children,
   label,
-  position: forcedPosition
+  position: forcedPosition,
+  inline
 }: {
   children: React.ReactNode
   label: string
   position?: 'above' | 'below'
+  inline?: boolean
 }) {
   const wrapperRef = React.useRef<HTMLSpanElement>(null)
   const [position, setPosition] = React.useState<'above' | 'below'>(
@@ -119,7 +122,7 @@ function Tooltip({
   return (
     <span
       ref={wrapperRef}
-      className={styles.tooltipWrapper}
+      className={`${styles.tooltipWrapper} ${inline ? styles.tooltipWrapperInline : ''}`}
       onMouseEnter={updatePosition}
       onFocus={updatePosition}
     >
@@ -212,7 +215,35 @@ export function AboutPage() {
               className={styles.heroPhoto}
               draggable={false}
             />
-            <p className={styles.bio}>{bioText}</p>
+            {/* Keep in sync with bioText above */}
+            <p className={styles.bio}>
+              I&apos;m Stephen, a product &amp; design engineer who now also
+              manages engineers. I think a lot about tools for thought, software
+              design, and{' '}
+              <Tooltip
+                inline
+                label='Read my essay on moral philosophy and lenses'
+              >
+                <Link href='/philosophy' className={styles.bioHint}>
+                  personal philosophy
+                </Link>
+              </Tooltip>
+              . I grew up mostly in{' '}
+              <Tooltip
+                inline
+                label='Los Angeles, CA → Toledo, OH → Seattle, WA → San Francisco, CA. I moved a lot'
+              >
+                <span className={styles.bioHint}>Toledo, Ohio</span>
+              </Tooltip>
+              , and live in San Francisco now. I also enjoy{' '}
+              <Tooltip
+                inline
+                label='Favorites: Slay the Spire 1 & 2, Monster Train, Balatro'
+              >
+                <span className={styles.bioHint}>roguelike deckbuilders</span>
+              </Tooltip>
+              , piano improvisation, and making random web projects.
+            </p>
           </div>
         </section>
 

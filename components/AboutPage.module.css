@@ -244,6 +244,26 @@
   transition: color 300ms ease;
 }
 
+.bioHint {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--about-text) 40%, transparent);
+  cursor: help;
+  transition: text-decoration-color 200ms ease;
+}
+
+a.bioHint {
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .bioHint:hover {
+    text-decoration-color: var(--about-accent);
+  }
+}
+
 .turtleIcon {
   font-size: 1.1rem;
   line-height: 1;
@@ -1106,6 +1126,22 @@
 .tooltipWrapper {
   position: relative;
   display: block;
+}
+
+.tooltipWrapperInline {
+  display: inline;
+}
+
+.tooltipWrapperInline .tooltip {
+  white-space: normal;
+  width: max-content;
+  max-width: min(300px, calc(100vw - 32px));
+  text-align: center;
+}
+
+.tooltipWrapperInline:focus-within .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .tooltipWrapper:has(.featured) {
