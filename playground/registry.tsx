@@ -7,6 +7,7 @@ import { LensesIllustrationLabCover } from '@/components/wustep/LensesIllustrati
 import { MidiVisualizerCover } from '@/components/wustep/MidiVisualizerCover'
 import { ShadcnPhysicsCover } from '@/components/wustep/ShadcnPhysicsCover'
 import { SpotItCover } from '@/components/wustep/SpotItCover'
+import { StageBenchCover } from '@/components/wustep/StageBenchCover'
 import { StarrySequencerCover } from '@/components/wustep/StarrySequencerCover'
 
 export type PlaygroundEntry = {
@@ -43,8 +44,8 @@ export const playgroundSections: PlaygroundSection[] = [
         summary: 'Evaluating models through Nord Stage 4 replicas',
         date: 'Jun 2026',
         year: '2026',
-        ownerOnly: true,
-        gradient: 'from-red-600 via-red-950 to-zinc-950'
+        gradient: 'from-red-600 via-red-950 to-zinc-950',
+        CoverComponent: StageBenchCover
       },
       {
         title: 'Lenses',

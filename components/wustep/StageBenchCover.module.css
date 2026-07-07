@@ -1,0 +1,229 @@
+/* The illustration is one fixed-viewBox SVG (640×200) centered on a maroon
+   stage. `meet` scaling keeps the keyboard's proportions identical at every
+   card size — the stage background absorbs whatever aspect ratio the notion
+   card cover happens to have (fixed 190px height, ~300–620px width). All
+   font sizes below are in viewBox user units, so text scales with the
+   keyboard. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* px, not % — the cover's height is fixed (190px) while its width varies,
+     and %-padding tracks width, starving the height-limited SVG at wide
+     sizes. */
+  padding: 9px 14px;
+  background: radial-gradient(
+    130% 220% at 50% -30%,
+    #7c1a26 0%,
+    #591019 55%,
+    #420a11 100%
+  );
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.45));
+}
+
+/* ---------- Text ---------- */
+
+.labelText {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 6.5px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  fill: #e9ebf0;
+}
+
+.brandText {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  fill: #fdf4f0;
+}
+
+.brandSubText {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  fill: rgba(255, 235, 230, 0.5);
+}
+
+.ledLabelText {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 5px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-anchor: middle;
+  fill: #a86060;
+}
+
+.ledDigitsText {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 700;
+  text-anchor: middle;
+  fill: #ff4b39;
+  filter: drop-shadow(0 0 3px rgba(255, 75, 57, 0.7));
+}
+
+.screenSmallText {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 5.5px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  fill: #e05545;
+}
+
+.screenMainText {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  fill: #eef2f6;
+  filter: drop-shadow(0 0 2.5px rgba(190, 215, 255, 0.35));
+}
+
+.knobLabelText {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 5.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-anchor: middle;
+  fill: #d6d9e0;
+}
+
+/* ---------- Run animation ----------
+   Everything is declared paused at its idle pose and only plays while the
+   card is hovered/focused, so hovering out freezes the run mid-flight and
+   hovering back resumes it. One shared 2.8s loop keeps the swaps, LED, knob,
+   and key presses in sync. */
+
+.swapIdle {
+  animation: swapOut 2.8s linear infinite;
+  animation-play-state: paused;
+}
+
+.swapRun {
+  opacity: 0;
+  animation: swapIn 2.8s linear infinite;
+  animation-play-state: paused;
+}
+
+/* Tight 2% ramps (~56ms) so the readouts flip like an LCD instead of
+   crossfading. */
+@keyframes swapOut {
+  0%,
+  12% {
+    opacity: 1;
+  }
+  14%,
+  86% {
+    opacity: 0;
+  }
+  88%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes swapIn {
+  0%,
+  12% {
+    opacity: 0;
+  }
+  14%,
+  86% {
+    opacity: 1;
+  }
+  88%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Bright layer over the dark status LED. */
+.dotGlow {
+  opacity: 0;
+  filter: drop-shadow(0 0 2.5px rgba(255, 59, 48, 0.8));
+  animation: swapIn 2.8s linear infinite;
+  animation-play-state: paused;
+}
+
+/* The first knob sweeps while a run is active; the 0% pose matches its
+   attribute-transform rest angle so pausing lands back on idle. */
+.knobLive {
+  animation: knobSweep 2.8s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+@keyframes knobSweep {
+  0%,
+  8% {
+    transform: rotate(-50deg);
+  }
+  48% {
+    transform: rotate(48deg);
+  }
+  88%,
+  100% {
+    transform: rotate(-50deg);
+  }
+}
+
+/* Key-press overlays fade in/out; per-key animation-delay (set inline)
+   staggers them into an arpeggio. */
+.pressGlow {
+  opacity: 0;
+  filter: drop-shadow(0 0 4px rgba(255, 75, 57, 0.5));
+  animation: pressPulse 2.8s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes pressPulse {
+  0%,
+  14% {
+    opacity: 0;
+  }
+  20%,
+  34% {
+    opacity: 0.9;
+  }
+  42%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Hover / focus: resume the paused run ---------- */
+
+@media (hover: hover) {
+  :global(.group):hover .cover *,
+  .cover:hover * {
+    animation-play-state: running;
+  }
+}
+
+:global(.group):focus-within .cover *,
+.cover:focus-within * {
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swapIdle,
+  .swapRun,
+  .dotGlow,
+  .knobLive,
+  .pressGlow {
+    animation: none !important;
+  }
+}
