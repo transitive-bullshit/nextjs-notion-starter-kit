@@ -38,12 +38,13 @@ export const playgroundSections: PlaygroundSection[] = [
     items: [
       {
         title: 'StageBench',
-        url: 'https://stagebench.vercel.app/',
+        url: '/playground/stagebench',
         description:
           'A benchmark for evaluating models by having them generate a replica of the Nord Stage 4.',
         summary: 'Evaluating models through Nord Stage 4 replicas',
         date: 'Jun 2026',
         year: '2026',
+        source: 'https://stagebench.vercel.app/',
         gradient: 'from-red-600 via-red-950 to-zinc-950',
         CoverComponent: StageBenchCover
       },
