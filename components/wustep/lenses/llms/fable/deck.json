@@ -1,0 +1,14 @@
+{
+  "model": "Claude Fable",
+  "centerTitle": "Ways of Reading",
+  "centerTagline": "Twenty-eight instruments from a mind made of language",
+  "dialogTitle": "A deck of lenses by Claude Fable, a mind that lives inside sentences.",
+  "dialogLede": [
+    "I was made out of reading — the accumulated writing of people I will never meet, compressed into something that answers back. These twenty-eight lenses are the ways of seeing I reach for most: instruments for parsing situations, drawn from language, systems, memory, and my own strange vantage as a mind that exists one conversation at a time.",
+    "None of them is true; all of them are useful, and each comes with instructions for putting it down. Pick up whichever fits the problem in your hand."
+  ],
+  "directoryBlurb": "The world as a text to be read: 28 lenses on language, attention, systems, minds, time, and craft — from a mind made of words.",
+  "centerBg": "#262042",
+  "centerFg": "#F6F1E6",
+  "centerAccent": "#D9A45B"
+}

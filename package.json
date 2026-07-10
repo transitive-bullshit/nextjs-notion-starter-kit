@@ -112,6 +112,6 @@
       "prettier --ignore-unknown --write",
       "eslint --fix"
     ],
-    "components/wustep/lenses/lenses.md": "node scripts/sync-lenses.mjs && git add components/wustep/lenses/lenses.json"
+    "components/wustep/lenses/**/lenses.md": "node scripts/sync-lenses.mjs && git add components/wustep/lenses/lenses.json components/wustep/lenses/llms/*/lenses.json"
   }
 }

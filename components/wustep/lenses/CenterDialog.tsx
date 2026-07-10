@@ -4,11 +4,10 @@ import * as React from 'react'
 import { isDev } from '@/lib/config'
 
 import type { Lens } from './types'
+import { useDeck } from './deck'
 import { ignoreDesignPanelOutside, useDesignFlag } from './DesignPanel'
 import { CloseIcon } from './icons'
-import { Illustration } from './illustrations'
 import styles from './LensesPage.module.css'
-import { LENSES } from './registry'
 
 /**
  * CenterDialog — the central "Lenses" index.
@@ -32,6 +31,8 @@ export function CenterDialog({
   onOpenChange,
   onOpenLens
 }: CenterDialogProps) {
+  const deck = useDeck()
+  const lenses = deck.lenses
   /* Optional grouping by category. Default keeps the alphabetical
      reading order (the registry's runtime sort) so finding a lens
      scans top-to-bottom on first letter. Grouped mode is for when
@@ -40,13 +41,13 @@ export function CenterDialog({
   const groups = React.useMemo(() => {
     if (!grouped) return null
     const map = new Map<string, Lens[]>()
-    for (const l of LENSES) {
+    for (const l of lenses) {
       const k = l.category
       if (!map.has(k)) map.set(k, [])
       map.get(k)!.push(l)
     }
     return [...map.entries()].toSorted(([a], [b]) => a.localeCompare(b))
-  }, [grouped])
+  }, [grouped, lenses])
 
   return (
     <DialogPrimitive.Root
@@ -86,19 +87,16 @@ export function CenterDialog({
           <header className={styles.dialogHeader}>
             <div className={styles.dialogHeaderText}>
               <span className={styles.dialogEyebrow}>
-                The deck · {LENSES.length} lenses
+                The deck · {lenses.length} lenses
               </span>
               <DialogPrimitive.Title className={styles.dialogTitle}>
-                A lens is a way of looking.
+                {deck.dialog.title}
               </DialogPrimitive.Title>
-              <p className={styles.dialogLede}>
-                You’re already looking through one; you just didn’t choose it.
-                No single lens explains the world — each shows you something the
-                others hide. The deck is for switching on purpose.
-              </p>
-              <p className={styles.dialogLede}>
-                Pull one. Look through it. Put it back.
-              </p>
+              {deck.dialog.lede.map((paragraph) => (
+                <p key={paragraph} className={styles.dialogLede}>
+                  {paragraph}
+                </p>
+              ))}
             </div>
             <DialogPrimitive.Close
               className={styles.dialogCloseBtn}
@@ -132,9 +130,9 @@ export function CenterDialog({
           ) : (
             <ul
               className={styles.dialogList}
-              aria-label={`All ${LENSES.length} lenses`}
+              aria-label={`All ${lenses.length} lenses`}
             >
-              {LENSES.map((lens, i) => (
+              {lenses.map((lens, i) => (
                 <DialogJumpItem
                   key={lens.id}
                   lens={lens}
@@ -159,6 +157,7 @@ function DialogJumpItem({
   index: number
   onOpenLens: (id: string) => void
 }) {
+  const deck = useDeck()
   return (
     <li
       className={styles.dialogListItem}
@@ -178,7 +177,7 @@ function DialogJumpItem({
         }
       >
         <span className={styles.dialogJumpArt} aria-hidden='true'>
-          <Illustration
+          <deck.Illustration
             id={lens.illustration}
             fg={lens.fg}
             bg={lens.bg}

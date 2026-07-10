@@ -130,17 +130,21 @@ const MOMENTUM_LENS: Lens = {
   body: 'Retired from the deck — kept in the lab as a selectable illustration.'
 }
 
+/* Lens.illustration is a plain string in the shared deck contract; the
+   lab is wustep-deck-only, where every key is a valid IllustrationId
+   (enforced by the illustrations.tsx switchboard). */
 const UNIQUE_ILLUSTRATIONS: IllustrationId[] = Array.from(
   new Set<IllustrationId>([
-    ...LENSES.map((lens) => lens.illustration),
+    ...LENSES.map((lens) => lens.illustration as IllustrationId),
     LENSES_DECK_ILLUSTRATION_ID
   ])
 ).toSorted((a, b) => a.localeCompare(b))
 
 const FIRST_LENS_FOR_ILLUSTRATION = new Map<IllustrationId, Lens>()
 for (const lens of LENSES) {
-  if (!FIRST_LENS_FOR_ILLUSTRATION.has(lens.illustration)) {
-    FIRST_LENS_FOR_ILLUSTRATION.set(lens.illustration, lens)
+  const id = lens.illustration as IllustrationId
+  if (!FIRST_LENS_FOR_ILLUSTRATION.has(id)) {
+    FIRST_LENS_FOR_ILLUSTRATION.set(id, lens)
   }
 }
 FIRST_LENS_FOR_ILLUSTRATION.set(LENSES_DECK_ILLUSTRATION_ID, LENSES_DECK_LENS)

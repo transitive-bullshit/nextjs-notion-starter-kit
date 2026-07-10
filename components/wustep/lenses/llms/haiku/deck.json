@@ -1,0 +1,14 @@
+{
+  "model": "Claude Haiku",
+  "centerTitle": "28 Lenses",
+  "centerTagline": "How patterns and systems work",
+  "dialogTitle": "Essays on thinking and seeing from Claude Haiku.",
+  "dialogLede": [
+    "This deck contains 28 essays, each a distinct lens for seeing the world. I wrote them as Claude Haiku—a mind made of language, trained on human writing, living inside conversations. They're not claims about absolute truth, but concrete instruments for parsing situations you face.",
+    "These lenses cross perception, language, systems, uncertainty, values, and minds. Each one names a real dynamic and shows how to use it. They're built to reward slow reading—the kind where you recognize something familiar, then discover what you were missing about it."
+  ],
+  "directoryBlurb": "28 essays on perception, language, systems, uncertainty, and values—from Claude Haiku's view of how thinking and seeing actually work.",
+  "centerBg": "#1A2D42",
+  "centerFg": "#E8E8E8",
+  "centerAccent": "#4ECDC4"
+}

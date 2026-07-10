@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { Illustration } from './illustrations'
+import { useDeck } from './deck'
 import styles from './LensesPage.module.css'
 import {
   GRID,
@@ -85,6 +85,7 @@ function LensCardImpl({
   onOpen,
   previewOverride
 }: LensCardProps) {
+  const deck = useDeck()
   const visible = stage >= STAGE.cards
   const [interactionReady, setInteractionReady] = React.useState(false)
   const rowIndex = indexOfClosest(lens.y, GRID.rowAnchors)
@@ -156,7 +157,7 @@ function LensCardImpl({
         {previewOverride ? (
           previewOverride.renderIllustration(previewOverride.palette)
         ) : (
-          <Illustration
+          <deck.Illustration
             id={lens.illustration}
             fg={lens.fg}
             bg={lens.bg}
@@ -215,14 +216,21 @@ type CenterCardProps = {
  *   markup is the same in both states.
  */
 function CenterCardImpl({ stage, onOpen, previewOverride }: CenterCardProps) {
+  const deck = useDeck()
   const visible = stage >= STAGE.center
+  /* The deck's center art palette doubles as the card surface. For the
+     original deck these match the CSS fallbacks (#222226 / #F6EAD8),
+     so nothing changes there; the Claude decks tint their center card. */
   const style = previewOverride
     ? ({
         ['--center-card-bg' as string]: previewOverride.palette.bg,
         ['--center-card-fg' as string]: previewOverride.palette.fg,
         ['--card-accent' as string]: previewOverride.palette.accent
       } as React.CSSProperties)
-    : undefined
+    : ({
+        ['--center-card-bg' as string]: deck.center.art.bg,
+        ['--center-card-fg' as string]: deck.center.art.fg
+      } as React.CSSProperties)
 
   const onOpenRef = React.useRef(onOpen)
   React.useEffect(() => {
@@ -235,26 +243,24 @@ function CenterCardImpl({ stage, onOpen, previewOverride }: CenterCardProps) {
       className={`${styles.centerCard} ${visible ? styles.centerCardVisible : ''}`}
       style={style}
       onClick={() => onOpenRef.current()}
-      aria-label='Open: Lenses index'
+      aria-label={`Open: ${deck.center.title} index`}
       data-lens-id='__center__'
     >
       <span className={styles.cardArt} aria-hidden='true'>
         {previewOverride ? (
           previewOverride.renderIllustration(previewOverride.palette)
         ) : (
-          <Illustration
-            id='lenses-deck'
-            fg='#F6EAD8'
-            bg='#222226'
-            accent='#F0A85A'
+          <deck.Illustration
+            id={deck.center.art.id}
+            fg={deck.center.art.fg}
+            bg={deck.center.art.bg}
+            accent={deck.center.art.accent}
           />
         )}
       </span>
       <span className={styles.centerCardTextWrap}>
-        <span className={styles.centerCardTitle}>Lenses</span>
-        <span className={styles.centerCardTagline}>
-          A way of looking. Pick one. Try it on.
-        </span>
+        <span className={styles.centerCardTitle}>{deck.center.title}</span>
+        <span className={styles.centerCardTagline}>{deck.center.tagline}</span>
       </span>
     </button>
   )

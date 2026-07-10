@@ -123,7 +123,11 @@ export type Lens = {
   bg: string
   fg: string
   accent?: string
-  illustration: IllustrationId
+  /** Illustration key. For the wustep deck this is an `IllustrationId`
+   *  resolved by `illustrations.tsx`; other decks (e.g. the Claude decks
+   *  under ./llms) resolve arbitrary keys through their own deck-level
+   *  `Illustration` component, so the shared type stays a plain string. */
+  illustration: string
   /** Markdown body (compiled from lenses.md). Render with <LensBody />. */
   body: string
   related?: string[]

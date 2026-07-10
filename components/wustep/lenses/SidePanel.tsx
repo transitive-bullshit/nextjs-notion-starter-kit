@@ -3,13 +3,12 @@ import * as React from 'react'
 
 import { isDev } from '@/lib/config'
 
+import { useDeck } from './deck'
 import { ignoreDesignPanelOutside, useDesignFlag } from './DesignPanel'
 import { ChevronIcon, CloseIcon, ReadingArrowIcon } from './icons'
-import { Illustration } from './illustrations'
 import { LensBody } from './LensBody'
 import styles from './LensesPage.module.css'
 import { neighborInDirection } from './navigation'
-import { LENS_BY_ID } from './registry'
 import { type Lens } from './types'
 
 /**
@@ -57,6 +56,7 @@ export function SidePanel({
   dismissOnOutside = true,
   previewOverride
 }: SidePanelProps) {
+  const deck = useDeck()
   const open = !!lens
   const [shown, setShown] = React.useState<Lens | null>(lens)
   const [bodyKey, setBodyKey] = React.useState(0)
@@ -311,7 +311,7 @@ export function SidePanel({
                   {previewOverride && panelPalette ? (
                     previewOverride.renderIllustration(panelPalette)
                   ) : (
-                    <Illustration
+                    <deck.Illustration
                       id={shown.illustration}
                       fg={shown.fg}
                       bg={shown.bg}
@@ -332,7 +332,11 @@ export function SidePanel({
                     className={styles.panelNavBtn}
                     aria-label='Previous lens'
                     onClick={(event) => {
-                      const prev = neighborInDirection(shown.id, 'left')
+                      const prev = neighborInDirection(
+                        deck.lenses,
+                        shown.id,
+                        'left'
+                      )
                       if (prev) {
                         // Drop focus from the chevron after a mouse
                         // click so the new panel doesn't open with a
@@ -349,7 +353,11 @@ export function SidePanel({
                     className={styles.panelNavBtn}
                     aria-label='Next lens'
                     onClick={(event) => {
-                      const next = neighborInDirection(shown.id, 'right')
+                      const next = neighborInDirection(
+                        deck.lenses,
+                        shown.id,
+                        'right'
+                      )
                       if (next) {
                         event.currentTarget.blur()
                         onOpenLens(next)
@@ -462,7 +470,7 @@ export function SidePanel({
                     <span className={styles.relatedLabel}>Related</span>
                     <div className={styles.relatedChips}>
                       {shown.related.map((id) => {
-                        const r = LENS_BY_ID[id]
+                        const r = deck.lensById[id]
                         if (!r) return null
                         return (
                           <button

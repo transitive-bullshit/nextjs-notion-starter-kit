@@ -1,8 +1,11 @@
-import { LENSES } from './registry'
-import { GRID } from './types'
+import { GRID, type Lens } from './types'
 
 /* ────────────────────────────────────────────────────────────────
- * Arrow-key navigation across the canvas of lenses.
+ * Arrow-key navigation across a canvas of lenses.
+ *
+ *   Deck-agnostic: every entry point takes the deck's `lenses` array
+ *   (see deck.tsx) instead of importing one registry, so the same
+ *   traversal drives /lenses and the Claude decks.
  *
  *   Two different traversal models, both with wrap-around so a
  *   key press never feels like a dead end:
@@ -50,56 +53,69 @@ function rowOf(y: number): number {
   return bestIdx
 }
 
-/** Cards in reading order: row by row, left to right within a row. */
-const READING_ORDER: readonly string[] = LENSES.toSorted((a, b) => {
-  const ra = rowOf(a.y)
-  const rb = rowOf(b.y)
-  if (ra !== rb) return ra - rb
-  return a.x - b.x
-}).map((l) => l.id)
+/** Reading order per deck: row by row, left to right within a row.
+ *  Deck arrays are module constants, so cache per array identity. */
+const readingOrderCache = new WeakMap<readonly Lens[], readonly string[]>()
+
+function readingOrderOf(lenses: readonly Lens[]): readonly string[] {
+  const cached = readingOrderCache.get(lenses)
+  if (cached) return cached
+  const order = lenses
+    .toSorted((a, b) => {
+      const ra = rowOf(a.y)
+      const rb = rowOf(b.y)
+      if (ra !== rb) return ra - rb
+      return a.x - b.x
+    })
+    .map((l) => l.id)
+  readingOrderCache.set(lenses, order)
+  return order
+}
 
 /**
  * Find the next lens to navigate to from `fromId` in `direction`.
  *
- *   - left/right walks `READING_ORDER` and wraps at either end.
+ *   - left/right walks the deck's reading order and wraps at either end.
  *   - up/down picks the spatial neighbor in that half-plane.
  *
  * If `fromId` is null, navigation starts from the canvas center —
  * which gives the canvas-arrow-with-no-focus case a sensible seed.
  */
 export function neighborInDirection(
+  lenses: readonly Lens[],
   fromId: string | null,
   direction: Direction
 ): string | null {
   // Reading-order traversal for horizontal arrows.
   if (direction === 'left' || direction === 'right') {
-    if (READING_ORDER.length === 0) return null
+    const readingOrder = readingOrderOf(lenses)
+    if (readingOrder.length === 0) return null
 
     // From the canvas center (no current selection): seed at the
     // start of reading order for → and the end for ←, so the first
     // keypress always lands on a sensible card.
     if (!fromId) {
       return direction === 'right'
-        ? (READING_ORDER[0] ?? null)
-        : (READING_ORDER.at(-1) ?? null)
+        ? (readingOrder[0] ?? null)
+        : (readingOrder.at(-1) ?? null)
     }
 
-    const idx = READING_ORDER.indexOf(fromId)
-    if (idx === -1) return READING_ORDER[0] ?? null
+    const idx = readingOrder.indexOf(fromId)
+    if (idx === -1) return readingOrder[0] ?? null
 
     const step = direction === 'right' ? 1 : -1
-    const nextIdx = (idx + step + READING_ORDER.length) % READING_ORDER.length
-    return READING_ORDER[nextIdx] ?? null
+    const nextIdx = (idx + step + readingOrder.length) % readingOrder.length
+    return readingOrder[nextIdx] ?? null
   }
 
   // Spatial-neighbor traversal for vertical arrows.
   const from: Anchor = fromId
-    ? (LENSES.find((l) => l.id === fromId) ?? CENTER_ANCHOR)
+    ? (lenses.find((l) => l.id === fromId) ?? CENTER_ANCHOR)
     : CENTER_ANCHOR
 
   let best: { id: string; score: number } | null = null
 
-  for (const lens of LENSES) {
+  for (const lens of lenses) {
     if (lens.id === fromId) continue
 
     const dx = lens.x - from.x
@@ -135,7 +151,7 @@ export function neighborInDirection(
   // horizontal position, the way a book wraps line breaks.
   const wantMaxY = direction === 'up'
   let extremeY: number | null = null
-  for (const lens of LENSES) {
+  for (const lens of lenses) {
     if (lens.id === fromId) continue
     if (extremeY == null) {
       extremeY = lens.y
@@ -148,7 +164,7 @@ export function neighborInDirection(
   if (extremeY == null) return null
 
   let wrapBest: { id: string; perp: number } | null = null
-  for (const lens of LENSES) {
+  for (const lens of lenses) {
     if (lens.id === fromId) continue
     // Only consider cards on the extreme row (allow a small
     // tolerance because y values come from a discrete grid anchor

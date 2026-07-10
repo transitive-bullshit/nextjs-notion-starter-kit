@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 import { CenterCard, LensCard } from './cards'
+import { useDeck } from './deck'
 import styles from './LensesPage.module.css'
-import { LENSES } from './registry'
 import { type LensPreviewOverride, STAGE, type Stage } from './types'
 
 /* ─────────────────────────────────────────────────────────
@@ -40,6 +40,7 @@ export function Canvas({
   onOpenLens,
   previewOverride
 }: CanvasProps) {
+  const deck = useDeck()
   return (
     <div
       className={`${styles.canvas} ${stage >= STAGE.canvas ? styles.canvasVisible : ''}`}
@@ -47,7 +48,7 @@ export function Canvas({
       <BackgroundField />
 
       <div className={styles.cards}>
-        {LENSES.map((lens) => (
+        {deck.lenses.map((lens) => (
           <LensCard
             key={lens.id}
             lens={lens}

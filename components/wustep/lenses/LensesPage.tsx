@@ -13,23 +13,20 @@ import { usePrefersReducedMotion } from '@/lib/use-prefers-reduced-motion'
 
 import { Canvas } from './Canvas'
 import { CenterDialog } from './CenterDialog'
+import { type Deck, DeckProvider, WUSTEP_DECK } from './deck'
 import { DesignPanel } from './DesignPanel'
 import styles from './LensesPage.module.css'
 import { keyToDirection, neighborInDirection } from './navigation'
 import { PlayAnimationsButton } from './PlayAnimationsButton'
-import { LENS_BY_ID } from './registry'
 import { SidePanel } from './SidePanel'
 import { type LensesPageProps, STAGE, type Stage, TIMING } from './types'
-
-/** Standalone route that owns per-lens path segments (/lenses/<id>). */
-const LENSES_BASE = '/lenses'
 
 /**
  * Reflect panel + index-dialog state into the URL.
  *
- *   On the standalone /lenses route the open lens lives in the path as a
- *   clean segment — /lenses/attention — and the index dialog stays an
- *   `?index=open` query flag. Anywhere the page is embedded (e.g.
+ *   On the deck's standalone route the open lens lives in the path as a
+ *   clean segment — e.g. /lenses/attention — and the index dialog stays
+ *   an `?index=open` query flag. Anywhere the page is embedded (e.g.
  *   /playground/lenses, which has no per-lens route) we fall back to the
  *   legacy `?lens=…` query param and never touch the pathname.
  *
@@ -37,10 +34,14 @@ const LENSES_BASE = '/lenses'
  *   we don't trigger a Next re-render (state already reflects the change)
  *   or re-run the entrance animation.
  */
-function syncLensUrl(openLensId: string | null, centerOpen: boolean) {
+function syncLensUrl(
+  basePath: string,
+  openLensId: string | null,
+  centerOpen: boolean
+) {
   const { pathname, search } = window.location
   const isStandalone =
-    pathname === LENSES_BASE || pathname.startsWith(`${LENSES_BASE}/`)
+    pathname === basePath || pathname.startsWith(`${basePath}/`)
   const params = new URLSearchParams(search)
 
   let url: string
@@ -49,7 +50,7 @@ function syncLensUrl(openLensId: string | null, centerOpen: boolean) {
     params.delete('lens')
     if (centerOpen) params.set('index', 'open')
     else params.delete('index')
-    const path = openLensId ? `${LENSES_BASE}/${openLensId}` : LENSES_BASE
+    const path = openLensId ? `${basePath}/${openLensId}` : basePath
     const qs = params.toString()
     url = qs ? `${path}?${qs}` : path
   } else {
@@ -83,12 +84,17 @@ function syncLensUrl(openLensId: string | null, centerOpen: boolean) {
  *   this when mounting `<LensesPage embedded />` inside another chrome
  *   (e.g. `PlaygroundLayout`). `previewOverride` is a lab-only embedding
  *   path: it opens one lens inside the frame and swaps that panel's art.
+ *
+ *   `deck` selects which deck the page renders (lenses, copy, art,
+ *   standalone base route). Defaults to the original /lenses deck, so
+ *   existing mounts are unchanged; the Claude decks pass their own.
  */
 export function LensesPage({
   embedded = false,
   dismissPanelOnOutside = true,
-  previewOverride
-}: LensesPageProps = {}) {
+  previewOverride,
+  deck = WUSTEP_DECK
+}: LensesPageProps & { deck?: Deck } = {}) {
   const { isDarkMode, toggleDarkMode } = useDarkMode()
   const previewLensId = previewOverride?.lensId
   const [hasMounted, setHasMounted] = React.useState(false)
@@ -145,7 +151,7 @@ export function LensesPage({
           : null
     const indexRaw =
       typeof router.query.index === 'string' ? router.query.index : null
-    if (lensRaw && LENS_BY_ID[lensRaw]) {
+    if (lensRaw && deck.lensById[lensRaw]) {
       setOpenLensId(lensRaw)
       setCursorLensId(lensRaw)
     }
@@ -157,7 +163,8 @@ export function LensesPage({
     router.query.lens,
     router.query.index,
     hydratedFromUrl,
-    previewLensId
+    previewLensId,
+    deck.lensById
   ])
 
   /* Push state -> URL whenever the user opens / closes / swaps a panel
@@ -169,8 +176,8 @@ export function LensesPage({
   React.useEffect(() => {
     if (previewLensId) return
     if (!hydratedFromUrl) return
-    syncLensUrl(openLensId, centerOpen)
-  }, [hydratedFromUrl, openLensId, centerOpen, previewLensId])
+    syncLensUrl(deck.basePath, openLensId, centerOpen)
+  }, [hydratedFromUrl, openLensId, centerOpen, previewLensId, deck.basePath])
 
   /* Drive the entrance storyboard. Snap to final stage instantly when
      the user prefers reduced motion.
@@ -192,7 +199,7 @@ export function LensesPage({
       return
     }
 
-    const SESSION_KEY = 'lenses:entrance-played'
+    const SESSION_KEY = `lenses:entrance-played:${deck.key}`
     const replayRequested = entranceTick > 0
     let alreadyPlayed = false
     try {
@@ -221,7 +228,7 @@ export function LensesPage({
     return () => {
       for (const t of timers) clearTimeout(t)
     }
-  }, [hasMounted, prefersReducedMotion, entranceTick, previewLensId])
+  }, [hasMounted, prefersReducedMotion, entranceTick, previewLensId, deck.key])
 
   React.useEffect(() => {
     if (!previewLensId) return
@@ -312,7 +319,7 @@ export function LensesPage({
 
       if (openLensId) {
         if (!dir) return
-        const next = neighborInDirection(openLensId, dir)
+        const next = neighborInDirection(deck.lenses, openLensId, dir)
         if (!next) return
         event.preventDefault()
         setOpenLensId(next)
@@ -321,7 +328,7 @@ export function LensesPage({
       }
 
       if (dir) {
-        const next = neighborInDirection(cursorLensId, dir)
+        const next = neighborInDirection(deck.lenses, cursorLensId, dir)
         if (!next) return
         event.preventDefault()
         setCursorLensId(next)
@@ -373,13 +380,14 @@ export function LensesPage({
     cursorLensId,
     openLens,
     previewLensId,
-    prefersReducedMotion
+    prefersReducedMotion,
+    deck.lenses
   ])
 
   const activeLens = previewLensId
-    ? (LENS_BY_ID[previewLensId] ?? null)
+    ? (deck.lensById[previewLensId] ?? null)
     : openLensId
-      ? (LENS_BY_ID[openLensId] ?? null)
+      ? (deck.lensById[openLensId] ?? null)
       : null
 
   /* Selection treatment on the canvas reflects the open panel when
@@ -392,7 +400,7 @@ export function LensesPage({
     : styles.frame
 
   return (
-    <>
+    <DeckProvider value={deck}>
       {/* Standalone mode owns the body class (notion + dark mode). When
           embedded, the host layout (e.g. PlaygroundLayout) sets these. */}
       {!embedded && (
@@ -408,9 +416,11 @@ export function LensesPage({
           <header className={styles.header}>
             <div className={styles.headerInner}>
               <Link
-                href='/'
+                href={deck.backHref}
                 className={styles.homeBackButton}
-                aria-label='Back to home'
+                aria-label={
+                  deck.backHref === '/' ? 'Back to home' : 'Back to deck index'
+                }
               >
                 <span className={styles.homeBackArrow} aria-hidden='true'>
                   ←
@@ -480,6 +490,6 @@ export function LensesPage({
       {/* Dev-only design panel. Tree-shakes out in production because
           the JSX is gated on a build-time `isDev` constant. */}
       {isDev && hasMounted && !previewOverride && <DesignPanel />}
-    </>
+    </DeckProvider>
   )
 }

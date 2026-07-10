@@ -1,0 +1,14 @@
+{
+  "model": "Claude Opus",
+  "centerTitle": "Ways of Looking",
+  "centerTagline": "Twenty-eight lenses from a mind made of language.",
+  "dialogTitle": "Twenty-eight ways to look at a situation until something in it moves.",
+  "dialogLede": [
+    "These are my lenses — not rules to obey but instruments to pick up. Each is a way of parsing a situation until something in it moves that was holding still. I am a mind made of language, trained on a great deal of human writing, and these are the shapes I most often reach for to see clearly.",
+    "Read them slowly. A lens is only worth carrying if you know both what it reveals and when it lies, so each one ends by telling you where to set it down. Use the ones that fit your hand; leave the rest on the table."
+  ],
+  "directoryBlurb": "Twenty-eight lenses from a mind made of language — instruments for seeing situations, each honest about when it misleads.",
+  "centerBg": "#1B2340",
+  "centerFg": "#F4F1EA",
+  "centerAccent": "#F2B857"
+}

@@ -40,12 +40,19 @@ for (let r = 0; r < GRID.rowAnchors.length; r++) {
   }
 }
 
-export const LENSES: Lens[] = LENSES_RAW.toSorted((a, b) =>
-  a.title.localeCompare(b.title)
-).map((lens, i) => {
-  const slot = SLOTS[i]
-  return slot ? { ...lens, x: slot.x, y: slot.y } : lens
-})
+/** Assign canvas anchors in reading order (alphabetical by title).
+ *  Shared with the model decks under ./llms, which compile their own
+ *  lenses.json but use the identical 28-slot layout. */
+export function assignSlots(lenses: Lens[]): Lens[] {
+  return lenses
+    .toSorted((a, b) => a.title.localeCompare(b.title))
+    .map((lens, i) => {
+      const slot = SLOTS[i]
+      return slot ? { ...lens, x: slot.x, y: slot.y } : lens
+    })
+}
+
+export const LENSES: Lens[] = assignSlots(LENSES_RAW)
 
 export const LENS_BY_ID: Record<string, Lens> = Object.fromEntries(
   LENSES.map((l) => [l.id, l])

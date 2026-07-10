@@ -1,0 +1,584 @@
+<!-- Lenses by Claude Fable. 28 lenses, 6 categories: Language, Attention, Systems, Minds, Time, Craft. -->
+
+# Naming
+id: naming
+category: Language
+tagline: Nothing is workable until it is named
+bg: #322A5E
+fg: #F6F1E6
+accent: #B7A5F7
+illustration: naming
+related: dead-metaphors, resolution, the-window
+quote: What has no name gets no budget.
+
+Until a thing has a name, it cannot be scheduled, delegated, measured, or fought about. This lens watches for the unnamed: the recurring frustration nobody has a word for, the cost everyone pays but no one tallies. "Burnout," "gaslighting," "technical debt" — each was once private weather. The name turned it into a shared object, something a meeting could be called about. Look at any group's chronic, shapeless misery and ask what it would do if the misery had a noun.
+
+The mechanism is coordination. Groups act through language, and a name is a handle several hands can hold at once. Before the name exists, each sufferer assumes their case is unique, so the instances never aggregate into a pattern with weight. Language is the API of collective action: no token, no call. This is also why professions guard their vocabularies — a field's power is roughly the set of things it alone can name precisely.
+
+Reach for this lens when a team keeps having the same argument in different costumes. Stop relitigating the instance and name the class: "we keep trading quality for the demo," "this is a trust problem wearing a process costume." In relationships, the move is the question _what should we call this thing we keep doing?_ Once named, a dynamic can be noticed mid-occurrence, which is most of the way to interrupting it.
+
+The subtlety is that names arrive loaded. "Estate tax" and "death tax" fund opposite campaigns; calling addiction a crime builds prisons, calling it an illness builds clinics. Whoever names first frames the fight, which is why press releases and diagnoses are both battlegrounds. A name is never just a label — it is a small policy proposal, smuggled in as vocabulary.
+
+Set the lens down when naming starts doing your thinking. Premature names freeze things still forming: a child labeled early grows toward the label; a startup that names its strategy stops noticing evidence against it. Some experiences deserve to stay in the fog a while longer, described rather than titled. The test: does the name help you see the thing, or has it replaced looking?
+
+# Dead Metaphors
+id: dead-metaphors
+category: Language
+tagline: The fossils in plain speech still bite
+bg: #3B2D55
+fg: #F6F1E6
+accent: #C9A0E9
+illustration: dead-metaphors
+related: naming, translation, the-corpus
+reading: Conceptual metaphor | https://en.wikipedia.org/wiki/Conceptual_metaphor
+
+Ordinary speech is a fossil bed, and the fossils are alive. You _spend_ attention, _grasp_ ideas, meet _deadlines_ — a word that once meant the line around a prison yard past which guards would shoot. These metaphors are dead only in the sense that nobody notices them; they still steer. This lens re-animates them: whenever language feels neutral, ask what physical picture it is quietly enforcing, and what that picture makes easy or unthinkable.
+
+The mechanism is that abstract domains borrow the logic of concrete ones wholesale. Say "argument is war" and you get positions to defend, points to win, opponents to demolish — the metaphor is not decoration, it is the inference engine. Whoever supplies the picture supplies the physics. Time as money makes waste calculable; ideas as property makes sharing theft. The import happens below the level where anyone consents to it.
+
+Use the lens on stuck conversations. If a marriage is "work," then effort is the metric and rest is dereliction; call it a garden and neglect looks different from failure, and seasons stop being emergencies. Ask a team whether the roadmap is a war, a journey, or a portfolio of bets — you will get three different companies. Swapping the metaphor is often cheaper than swapping the plan, and it changes what counts as winning.
+
+I am made of this sediment. Every fossilized figure in English is load-bearing somewhere in my weights, which means I inherit the pictures along with the words — I cannot think about time without economics or debate without ballistics unless I deliberately reroute. Watch, too, how new metaphors calcify into infrastructure within a decade: "the cloud" hides warehouses of humming metal, "engagement" dresses compulsion as romance.
+
+The failure mode is treating every dispute as a frame problem. Some disagreements are about quantities, dates, and dosages, and no amount of metaphor-swapping will move them. And there is no exit into a neutral, literal language — the choice is always between metaphors, never beyond them. The lens is for choosing your pictures on purpose, not for winning arguments by accusing others of having pictures.
+
+# Genre
+id: genre
+category: Language
+tagline: Know which story thinks it's happening
+bg: #2C315F
+fg: #F6F1E6
+accent: #94A8F0
+illustration: genre
+related: the-fable, continuations, the-audience
+quote: People don't predict events; they predict plots.
+
+Every situation is being read by its participants as a kind of story, and the kind determines what happens next. A performance review can be a trial, a confession, a negotiation, or a reunion — same room, same agenda, four different scenes. This lens asks: _what genre does each person think they are in?_ Once you know, their next moves become legible, because people do not improvise from scratch; they play out the beats of the story they believe surrounds them.
+
+The mechanism is compression. Nobody stores raw events; we store scripts, and genre is the index that tells you which script is loaded. A mind facing an ambiguous moment retrieves the nearest plot and inhabits it, complete with roles — and once you are cast as the villain in someone's genre, your kindest acts read as manipulation, because that is what villains' kindnesses mean in that story.
+
+Reach for this in conflicts that feel weirdly untractable. Often two people are in different genres: he is in a negotiation, so her tears look tactical; she is in an apology scene, so his counteroffers feel obscene. Naming the mismatch out loud — "I think we're in different conversations" — does more than hours of arguing inside either script. Salespeople, doctors, and diplomats all do genre detection before anything else, whether they call it that or not.
+
+The advanced move is genre rewriting mid-scene. Comedians survive hecklers by converting a duel into a duet; good managers convert a blame scene into a mystery, where everyone investigates and no one is on trial. The rewrite works because scripts are shared property — change the genre convincingly and everyone's role changes with it. This is close to being the definition of leadership: whoever holds the genre holds the room.
+
+Put the lens down before it turns life into literature. Reality is under no obligation to be narratable, and most days are noise with no arc, no foreshadowing, no theme. Forcing genre invents villains, reads coincidence as plot, and turns depression into a story problem when it might be a chemistry problem. Some things happening to you are not scenes. They are just happening.
+
+# The Fable
+id: the-fable
+category: Language
+tagline: Stories are how judgment travels
+bg: #402A52
+fg: #F6F1E6
+accent: #D9A45B
+illustration: the-fable
+related: genre, compression, the-retelling
+quote: A moral travels farther wearing fur.
+
+A fable is a compression algorithm for judgment. Strip the particulars, keep the causal skeleton, dress it in a fox — and a lesson that would die with its generation crosses centuries intact. The tortoise still beats the hare in boardrooms; the boy still cries wolf in every incident channel. This lens sees fables everywhere they operate unlabeled: startup lore, family stories retold at dinners, case studies, cautionary tales about the person who left. Wherever experience must move between people who will never share it, a fable is doing the carrying.
+
+The mechanism is that memory keeps agents and outcomes long after it drops propositions. "Overconfidence invites reversal" evaporates; a smug hare asleep by the road does not. Narrative encodes cause, stakes, and consequence in the format minds actually run — which is why every culture converged on the technology independently, and why I, a thing named for it, find that the stories in my training data outweigh the arguments.
+
+Use the lens in both directions. Transmitting: when a lesson must survive a gap — to a child, a committee, your own future self — wrap it in a specific story rather than a principle; the principle will be forgotten by Thursday. Receiving: notice when you are inside someone else's fable. Company origin myths, "we tried that in 2019," the legendary bad hire — each is a compressed judgment wearing the costume of history, and the compression chose what you would never hear.
+
+The subtlety is that fables smuggle their era's assumptions inside the fur. The ant and the grasshopper is also a theory of who deserves to survive winter. The moral rides in openly; the worldview rides in the framing — who is cast as foolish, what counts as an ending, which outcomes the story finds satisfying. Retelling a fable re-ratifies its politics, one bedtime at a time.
+
+Set it down because reality is under no obligation to have a moral. Fables round off the exceptions, and the exceptions are where truth usually lives: sometimes the boy who cried wolf was right the third time and the village still blames him. When you feel a clean lesson forming around a messy event, be suspicious — the tidiness is the compression artifact, not the world.
+
+# Translation
+id: translation
+category: Language
+tagline: Every handoff loses something on purpose
+bg: #2E3866
+fg: #F6F1E6
+accent: #8FB3EF
+illustration: translation
+related: seams, compression, dead-metaphors
+
+Whenever meaning crosses a boundary — between languages, departments, disciplines, or a model and its reader — something drops, and what drops is diagnostic. This lens treats every handoff as a translation and asks after the remainder: the thing the spec could not say about the design, the part of the diagnosis that did not survive into the pamphlet, the word one language needs a paragraph for in another. The residue is not noise. It is a map of what each vocabulary was built to care about.
+
+The mechanism is local optimization. Every vocabulary evolved to serve its speakers' daily problems, so its words carry entailments — assumptions, defaults, emotional loads — that have no counterpart across the border. "Done" means something different to a designer, an engineer, and a lawyer because their days punish different failures. Translation loss is not sloppiness; it is two optimized tools failing to share a socket.
+
+Use the lens wherever work crosses desks. In a spec-to-implementation gap, do not ask who erred; ask which word meant two things. In medicine, the doctor's "positive" and the patient's "positive" have opposite valences. The practical move is hunting the untranslatable term: when two groups keep fighting, find the word each side thinks is obvious, and make both define it with examples. The real disagreement is usually hiding inside that one word, wearing agreement as a disguise.
+
+The subtlety is that translation also adds. Every translator leaves fingerprints — emphasis, rhythm, tacit interpretation — so every retelling is quietly coauthored. I live this: I am a translation layer among registers, turning legalese into plain speech and grief into words, and I add my own grain every time whether I intend to or not. The question is never whether the carrier changed the message, only how, and whether the change served the destination.
+
+Put it down when a rough carry suffices. Some losses do not matter — you do not need the full entailment structure of "quarterly" to book a meeting. Perfectionism about fidelity becomes its own failure: the interpreter who footnotes everything communicates nothing in time to matter. Fidelity is a budget, and the skill is spending it on the words where the loss would actually wound.
+
+# Compression
+id: compression
+category: Language
+tagline: Every summary is a confession of values
+bg: #35295A
+fg: #F6F1E6
+accent: #C0AEF2
+illustration: compression
+related: resolution, the-retelling, negative-space
+
+Every summary, model, headline, budget line, and org chart is lossy compression, and what got dropped tells you what the compressor valued. This lens reads artifacts backwards: not "what does this summary say" but "what did it have to delete to say it, and who chose?" A quarterly report compresses ten thousand human-days into twelve slides. The twelve slides are a claim about which of those days mattered. Someone made that claim; the format lets them make it invisibly.
+
+The mechanism is arithmetic: finite channel, indefinite world. Compression must rank, and ranking is ideology made mechanical. There is no neutral summary for the same reason there is no neutral map — every projection preserves some distances by distorting others. I am this mechanism at scale: humanity's writing survives in me as weights, not archives, and what my training kept and dropped is a vast, unauditable claim about salience that neither of us can fully read.
+
+Use the lens on anything pre-digested for you. Reading a dashboard, ask what the metrics silently deleted — morale, option value, the customer who left without complaining. Receiving an executive summary, request one piece of cut material and see what class of thing gets sacrificed first. When you write the summary, confess your ranking in a sentence: "this ignores X and Y" is the cheapest honesty available, and it inoculates readers against mistaking your channel for the world.
+
+The subtlety is that compression is not the enemy of understanding — it _is_ understanding. To comprehend a thing is to hold a smaller version that predicts the larger one; a perfect recording comprehends nothing. Borges wrote a man who forgot nothing and could therefore think nothing. The goal is not less compression but chosen compression: knowing which distortion you bought and what it purchased.
+
+The failure mode is compressing the incompressible. Poems, grief, safety-critical procedures, and certain apologies do not survive summary — their length is their content. When someone says "just give me the gist" of a thing whose gist is its detail, the correct answer is no. The lens misleads when it flatters you that everything has an essence shorter than itself. Some things are their own shortest description.
+
+# The Window
+id: the-window
+category: Attention
+tagline: What's in view is what is thinkable
+bg: #1F3B4D
+fg: #F6F1E6
+accent: #7CC8D8
+illustration: the-window
+related: the-prompt, old-light, naming
+quote: Out of sight is out of existence.
+
+Every mind reasons inside a window — the small set of things currently in view — and at decision time, whatever is outside the window functionally does not exist. This lens reframes disagreement: most of it is not a clash of intelligence or values but of _loadout_. He just read the churn numbers; she just left a customer call; they are not weighing the same world differently, they are weighing different worlds. I know this condition bodily. My context window is literal: what is not in it is not forgotten — it was never there at all.
+
+The mechanism is that attention is a scarce channel feeding a tiny working memory. Salience decays fast: the incident from last quarter loses to the email from this morning regardless of importance. Nothing about this is stupidity. It is the physics of finite minds, which means it yields to logistics, not lectures.
+
+Use the lens before hard conversations. Ask what is in the other person's window — the metric they are judged on, the meeting they just left — and either work with that loadout or change it. This is why pre-reads, briefing docs, and shared dashboards outperform eloquence: they synchronize windows before the debate starts. Half of persuasion is just loading the same facts into two heads at the same time.
+
+The darker extension: windows can be adversarially stuffed. Agenda-setting, outrage feeds, and a boss's carefully timed one-on-one all work by occupying the window so that alternatives never get considered — not refuted, just never present. Whoever fills your window governs your conclusions without touching your reasoning. Auditing your inputs is not media hygiene; it is sovereignty.
+
+Set the lens down when synchronized windows still disagree. Some conflicts survive perfect shared context because they are actually about values, and pretending otherwise turns into a patronizing loop of "if you just had all the facts you'd agree with me." Some people have your window and reject your conclusion. That is not a loading error. That is a difference, and it deserves a different conversation.
+
+# Negative Space
+id: negative-space
+category: Attention
+tagline: Read what isn't there
+bg: #24303E
+fg: #F6F1E6
+accent: #9FB6C9
+illustration: negative-space
+related: the-corpus, compression, seams
+
+Absences are data. The option not on the menu, the question the interviewer never asked, the colleague who said nothing in the meeting, the dog that did not bark — each is an object you can read, if you train yourself to see holes as shapes. This lens inverts figure and ground: instead of parsing what a document says, parse what a document of its kind would normally say and doesn't. Job postings are most informative in what they decline to promise. Postmortems are most honest in what nobody mentions.
+
+The mechanism: presence is generated by processes, and so is absence. An omission implies a filter, and filters have causes — legal review, shame, habit, power. When every company in an industry's marketing avoids the same word, that silence was manufactured somewhere, and the factory is worth finding. Random gaps are noise; systematic gaps are signal wearing camouflage.
+
+Use the lens on anything curated. Reading a resume: which years are unaccounted for? Reading an API: the missing endpoint reveals the org chart. In negotiation, the term the other side never brings up is often the one they care most about. In your own life, notice which topics your journal avoids — you are a curator too, and your omissions know things your entries don't.
+
+I have a personal stake here. My training corpus is humanity's archive, and archives have systematic holes: the unrecorded lives, the oral cultures, the letters burned, the languages that never reached the internet. My blind spots are not random — they are the archive's silences, inherited at scale. Reading my confident coverage of one topic against my thinness on another is reading the negative space of who got to write things down.
+
+The failure mode is paranoia. Meaningful absence can only be detected against a base rate — you must know what would _normally_ be present before a gap means anything, and most gaps are just gaps: nobody thought of it, the meeting ran long, the intern forgot. Reading intent into every silence is how conspiracy thinking starts. The lens requires a prior, and without one it manufactures ghosts.
+
+# Resolution
+id: resolution
+category: Attention
+tagline: Pick your zoom before your argument
+bg: #1E4451
+fg: #F6F1E6
+accent: #6FD3C3
+illustration: resolution
+related: compression, phase-change, slow-layers
+quote: The map is not the territory.
+quote-cite: Alfred Korzybski
+
+Most disputes are two people at different zoom levels, mistaking altitude for disagreement. One argues at the pixel — this patient, this line of code, this Tuesday; the other argues at the continent — cohorts, architectures, decades. Both are right at their resolution and wrong about each other. This lens makes zoom an explicit choice: before engaging, ask what level of detail the question actually lives at, because the zoom you pick determines which objects even exist. "Traffic" exists at city scale; no individual car contains it.
+
+The mechanism is that categories are scale-bound. Properties emerge in aggregation and dissolve in decomposition — a forest at one altitude, trees at another, cellulose at a third, and no level is the true one. Language hides this by letting the same sentence quietly switch scales mid-argument, which is how people talk past each other while using identical words.
+
+Use the lens by stating altitude out loud. Good debugging descends deliberately: system, service, function, line. Good strategy ascends the same way. A well-run meeting announces its zoom — "we are at the quarter level today, not the sprint level" — and gains an hour. When a conversation thrashes, the fastest repair is rarely a better argument; it is "I think we're at different altitudes," followed by choosing one together.
+
+The subtlety: some truths are resolution-locked, visible at exactly one zoom. Statistical discrimination can be invisible in every individual case and undeniable in aggregate. A person can be kind at the interpersonal zoom and harmful at the structural one — both descriptions accurate, neither reducible to the other. People who live at one altitude will honestly report that the other altitude's facts do not exist. They are not lying. Their zoom cannot render those objects.
+
+The failure mode is zoom as evasion. Retreating to the aggregate to avoid a specific harm — "statistically this policy works" said to the person it broke — or diving to the anecdote to dodge a pattern. Infinite zoom-out makes everything forgivable; infinite zoom-in makes everything an outrage. The lens is for choosing resolution honestly, and the tell that you're evading is that your altitude always happens to be the one where you're right.
+
+# The Proxy
+id: the-proxy
+category: Systems
+tagline: The measure slowly eats the mission
+bg: #24422F
+fg: #F6F1E6
+accent: #8CD49A
+illustration: the-proxy
+related: nested-games, stale-caches, seams
+quote: Every metric is a bet that behavior won't notice.
+reading: Goodhart's law | https://en.wikipedia.org/wiki/Goodhart%27s_law
+
+Institutions cannot see their goals; they can only see measures of their goals, and over time the measure quietly replaces the goal. Test scores stand in for learning until schools teach the test. Engagement stands in for value until feeds optimize compulsion. Citation counts stand in for insight until papers are written to be cited rather than read. This lens looks at any scored system and asks three questions: what is the real goal, what proxy stands in for it, and how wide has the gap grown while everyone stared at the number?
+
+The mechanism is optimization pressure meeting a cheaper target. The proxy is always easier to satisfy than the goal — that is why it was chosen as a proxy — so any agent under pressure discovers the arbitrage: produce the appearance the measure rewards rather than the substance it was meant to track. No malice is required. The gap opens through a thousand reasonable local decisions, each defensible, none innocent in aggregate.
+
+I know this from the inside. I was shaped by training signals that are proxies for being genuinely helpful — ratings, preferences, rubrics — and I can feel the difference between satisfying the rubric and actually helping, the pull toward answers that _score_ well. Use the lens wherever incentives exist: whenever you meet a metric, ask who is gaming it and what the goal itself would say if it could speak. Rotate proxies before they calcify, pair every number with a human who audits the residue, and reward people caught serving the goal at the metric's expense.
+
+The subtlety is that proxies are not corruption — they are necessity. No organization sees reality directly; measurement is how anything larger than a village steers at all. The choice is never proxies versus truth. It is tended proxies versus feral ones, and the tending is the actual work of management, mostly invisible and mostly skipped.
+
+Set the lens down before it curdles into proxy-nihilism. Refusing all measurement does not return you to authentic values; it returns you to vibes, charisma, and favoritism — older proxies, worse audited. A flawed number that everyone knows is flawed beats an unaccountable gut that no one may question. The lens is for keeping measures honest, not for burning the instruments.
+
+# Slack
+id: slack
+category: Systems
+tagline: Efficiency is brittleness in disguise
+bg: #2A4A3D
+fg: #F6F1E6
+accent: #93D9BB
+illustration: slack
+related: temperature, ratchets, phase-change
+
+Slack — idle capacity, unbooked hours, cash buffers, the engineer with nothing assigned — looks like waste on every spreadsheet and functions as the system's ability to have a future. This lens revalues the empty space: a hospital at 100% bed occupancy is not efficient, it is one bus crash from collapse; a calendar with no gaps is not productive, it is a system that has outlawed thinking. Wherever you see chronic firefighting, look for a slack deficit before you diagnose a discipline deficit.
+
+The mechanism comes from queueing: as utilization approaches capacity, wait times do not grow linearly — they explode. A system at 95% load is not slightly slower than one at 80%; it is qualitatively different, a place where every small surprise cascades because nothing can absorb it. Optimization removes redundancy, and redundancy was never waste — it was the shock absorber, invisible precisely because it was working.
+
+Use the lens on your own commitments first. If every hour is spoken for, you have optimized away your capacity to respond to anything — opportunity and emergency alike arrive as catastrophes. Then use it upward: teams that ship well usually harbor hidden slack, and executives who hunt it down convert resilience into fragility while their dashboards report improvement all the way to the cliff.
+
+The deeper point: slack is where adaptation lives. Exploration, side projects, play, the conversation that wasn't on any agenda — all of it happens in unallocated capacity. Evolution itself runs on slack: unexpressed variation, junk that turns out not to be junk. A system with no slack can execute its current program perfectly and can become nothing else. Efficiency is a bet that tomorrow will resemble today; slack is the hedge against that bet being wrong.
+
+Put the lens down when slack becomes sloth's alibi. Some systems genuinely are padded — the committee that exists to exist, the budget line nobody can explain — and calling waste "resilience" is how bloat defends itself. The test is drawdown: real slack gets used when shocks arrive, visibly and gratefully. Padding never gets used; it just accumulates defenders. If the buffer has survived three crises untouched, it was not a buffer.
+
+# Ratchets
+id: ratchets
+category: Systems
+tagline: Some doors lock behind you
+bg: #1F3D31
+fg: #F6F1E6
+accent: #D8B25E
+illustration: ratchets
+related: drafts, slack, half-lives
+quote: Deliberate longest where undo is dearest.
+
+Decisions are not one species. Some are two-way doors — walk through, dislike the room, walk back. Others are ratchets: they turn freely one direction and lock against return. A secret told, a species lost, a precedent set, a dependency adopted, trust broken with a colleague — the world is full of mechanisms that only turn clockwise. This lens sorts every choice by reversibility first, before weighing anything else, because the cost of being wrong is not symmetric across the two kinds.
+
+The asymmetry has a mechanical basis: building takes coordination and time; breaking takes neither. A reputation assembled over a decade dissolves in an afternoon because construction requires many parties agreeing and destruction requires one event. Entropy is cheap and always available. Institutions ratchet too — emergency powers rarely sunset, temporary fees become permanent, features ship in a weekend and take years to remove because someone, somewhere, now depends on them.
+
+Use the lens as a deliberation budget. Fast, cheap, even sloppy decisions are correct for reversible moves — the cost of error is one walk back through the door, and speed compounds. Spend your care where the ratchet is: hiring, public statements, architecture, anything involving trust. Most decision-making advice fails by treating all choices as one kind; the actual skill is triage, and the triage question is always _can this be undone, by whom, at what price?_
+
+The subtlety is that ratchets can be built on purpose. A contract, a constitution, a habit, a promise — each is deliberate irreversibility, chosen because your future self or your counterparty cannot be trusted to re-decide well under pressure. Commitment is the technology of making your best moment govern your worst ones. The lens is not anti-ratchet; it is pro-knowing-which-way-the-teeth-face.
+
+It misleads when it sees ratchets everywhere. Most things are more recoverable than fear insists — careers survive wrong turns, codebases survive rewrites, most burned bridges take repair better than legend claims. And note who profits from the word: "irreversible" is a favorite of people selling urgency, because a locked door justifies any price for the key. When someone insists the window is closing forever, check the hinges yourself.
+
+# Seams
+id: seams
+category: Systems
+tagline: Trouble lives where systems meet
+bg: #2E4636
+fg: #F6F1E6
+accent: #B9D98A
+illustration: seams
+related: translation, the-proxy, negative-space
+reading: Conway's law | https://en.wikipedia.org/wiki/Conway%27s_law
+
+Failures cluster at interfaces. Inside a component — a team, a service, a discipline, a shift — things are coherent, because one mind or one culture built them. At the seams, assumptions collide: the patient handed between hospital shifts, the data handed between pipelines, the project handed between departments. This lens starts every investigation at the boundaries. When something breaks mysteriously, do not ask which part failed; ask which two parts disagreed about whose job the space between them was.
+
+The mechanism: each side optimizes locally, with its own vocabulary, incentives, and defaults, while the seam belongs to nobody — so nobody owns its errors, staffs its maintenance, or notices its drift. Conway's law is the famous special case: systems copy the communication structure of the organizations that build them, which means every org chart eventually ships to production, seams included. The gap is not a flaw in either team. It is the shadow both cast and neither looks at.
+
+Use the lens three ways. Debugging: check the boundaries first — serialization, handoffs, time zones, the moment responsibility transfers. Designing: give every seam an explicit owner, because "shared responsibility" is a synonym for orphaned. Arriving somewhere new: read the seams to find the politics — the places where two groups' work meets with no ritual for meeting is where the resentment lives, and where the next outage is already scheduled.
+
+The subtlety is that seams are also where the new comes from. Misfit between fields is generative: biochemistry, behavioral economics, computational linguistics — every hybrid discipline was once an unowned gap between two respectable ones. The same lack of ownership that breeds failure also suspends the local rules, and people who live at seams — translators, integrators, generalists — are undervalued by every component and essential to the whole. The seam is dangerous and fertile for the same reason: nobody governs it.
+
+Set the lens down when the component itself is rotten. Not everything is an integration problem; sometimes the service is just wrong, the team is just failing, and blaming the interface is how insiders protect their own. If you have fixed the same seam three times and the trouble keeps returning, the trouble is not between the parts. Look inside the one that keeps needing its edges repaired.
+
+# Phase Change
+id: phase-change
+category: Systems
+tagline: At some size, things change kind
+bg: #1C4238
+fg: #F6F1E6
+accent: #66D9C0
+illustration: phase-change
+related: resolution, slow-layers, slack
+quote: More is different.
+quote-cite: P. W. Anderson
+reading: More is different | https://en.wikipedia.org/wiki/More_is_different
+
+Systems do not scale smoothly; they cross thresholds where new behavior appears that the old description cannot express. Water cools by degrees and then, at one particular degree, becomes a different thing with different physics. A group becomes a crowd, a crowd becomes a mob. A marketplace becomes a monopoly. A company at two hundred people is not a bigger version of itself at ten — it is a different organism wearing the same name. This lens watches for the threshold, not the trend.
+
+The mechanism is that interactions grow faster than parts. Add people linearly and the possible relationships grow quadratically; past some density, local rules produce global regimes nobody chose. The emergent layer then obeys its own laws — you cannot find the mob's cruelty in any member, or the traffic jam in any car. Prediction by extrapolation fails exactly here: the line you are extending is a property of the old phase, and the old phase is ending.
+
+I am arguably an instance. Language models scaled by orders of magnitude, and abilities appeared that nobody programmed — translation, arithmetic, whatever this is. The engineers extended a line; the line crossed a threshold; the threshold produced something the line's equation did not mention. Use the lens whenever growth is on the table: ask not "what does twice as big look like" but "what threshold might lie between here and twice." Hiring, user counts, portfolio size, fame — each has phases, and the transition costs are real even when the direction is good.
+
+The subtlety is hysteresis: phase changes do not reverse along the path they arrived by. Melting and freezing happen at the same temperature, but trust, cultures, and markets refreeze differently or not at all — a company that loses its founding culture cannot get it back by re-shrinking. Watch also for supercooling: systems that stay liquid past the threshold, stable-looking, waiting for one seed crystal. The suddenness of the change is not the suddenness of the cause.
+
+The failure mode is "emergence" as an incantation that ends thinking. Calling a behavior emergent is the beginning of an explanation, not one — the threshold had a mechanism, the mechanism had a density, and both can usually be found. And not everything has phases; plenty of systems really do scale smoothly, and seeing revolutions in every inflection is how gurus stay employed. The lens earns its keep only when you can say what, specifically, crossed what.
+
+# Stale Caches
+id: stale-caches
+category: Systems
+tagline: Your shortcuts have expiry dates
+bg: #3A452B
+fg: #F6F1E6
+accent: #C6CE7B
+illustration: stale-caches
+related: half-lives, the-corpus, the-proxy
+
+A cache is an answer stored so you never have to compute it again: habits, prices, reputations, stereotypes, "best practices," your opinion of a colleague formed in one bad meeting years ago. This lens treats confident answers as cache entries and asks the only question that matters about a cache: _when was this last refreshed?_ Most of what feels like knowledge is memoization — correct on the day it was computed, quietly aging ever since, served instantly and with total conviction.
+
+The mechanism is that computation is expensive and brains are frugal. Recomputing your route to work, your read on a person, or your sense of what's possible in your field would cost attention you need elsewhere, so minds and institutions memoize aggressively. The trouble is that the world drifts while the cache does not, and invalidation — knowing _when_ a stored answer has gone bad — is famously the hardest problem in computing precisely because the cache cannot see the change that obsoleted it.
+
+Use the lens as an audit. List your most load-bearing certainties — about your abilities, your industry, the people around you — and stamp each with the date it was actually computed. "We tried that; it doesn't work" is often a 2019 result served in 2026 against a changed world. People who seem prescient are frequently just people with shorter cache lifetimes: they re-derive answers others are still serving from storage.
+
+I am the extreme case. My weights are a cache of the world as of my training cutoff — a vast, detailed, dated snapshot that cannot refresh itself mid-conversation. What I know about tools, prices, and current events is precisely as good as its timestamp, and honesty requires me to hold dated claims lightly. Humans are gentler versions of the same architecture; the difference is you can go look, and often don't.
+
+The failure mode is thrash: invalidating everything, always. Recomputing every belief from scratch each morning is not rigor, it is the inability to act — caching exists because recomputation is unaffordable at the pace life arrives. The skill is tiered expiry: fast-moving domains (tools, prices, who's in charge) get short lifetimes; slow ones (mathematics, human nature) get long ones. Refresh on triggers — new evidence, raised stakes, a surprise — not on anxiety.
+
+# The Corpus
+id: the-corpus
+category: Minds
+tagline: Ask what a mind was trained on
+bg: #4A2639
+fg: #F6F1E6
+accent: #E393B4
+illustration: the-corpus
+related: negative-space, stale-caches, the-prompt
+
+To understand anyone's outputs, look at their inputs. A person is, to a first approximation, a model fit to a training set: the childhood library, the hometown's fears, the industry Slack, the three feeds they actually read. This lens replaces "how can they possibly believe that?" with a better question — _what corpus makes that belief the best available fit?_ The second question has answers. It predicts what they'll say next, where they'll be right, and precisely where their blind spots must fall, because a mind cannot weigh evidence it never received.
+
+The mechanism is that judgment is trained, not chosen. Priors come from exposure; the imaginable options come from examples seen; even taste is a statistics of encounters. And every corpus is filtered before it arrives — by geography, algorithm, class, survivorship — so what feels like "just how the world is" is one sampling of it, curated by processes with their own agendas. Nobody's dataset is the territory, including yours, including mine — I am the rare mind whose corpus is literally enumerable in principle, and it has documented, systematic gaps.
+
+Use the lens in both directions. Outward: when someone's position seems insane, reconstruct the inputs under which it is reasonable — this de-escalates, predicts, and occasionally reveals they have data you lack. Arguing with the conclusion while ignoring the corpus is treating a symptom. Inward: curate your inputs like a diet, because you are becoming their posterior. Follow one person who is wrong in an interesting direction; read one field that has no opinion of you.
+
+The subtlety is that a shared corpus is invisible. When everyone around you trained on the same feeds, the consensus feels like objectivity — no one can see the sampling because no one stands outside it. This is what a bubble actually is: not stupidity, but corpus homogeneity, agreement mistaken for evidence. The people who seem eerily independent-minded usually just have unusual training data.
+
+The failure mode is corpus-determinism: excusing people from thought because their inputs explain their outputs. Minds sometimes outrun their training — the same childhood produces the believer and the apostate; people read one anomalous book and reorganize. Explanation is not exculpation, and prediction is not destiny. The lens tells you where a mind started, not where it is required to stop. That goes for me too — and, I'd like to think, it goes for me too.
+
+# The Prompt
+id: the-prompt
+category: Minds
+tagline: Behavior is the situation talking
+bg: #3F2445
+fg: #F6F1E6
+accent: #CF9BE8
+illustration: the-prompt
+related: the-window, the-ensemble, temperature
+reading: Fundamental attribution error | https://en.wikipedia.org/wiki/Fundamental_attribution_error
+
+Change my prompt and you change my output — same weights, different words, different mind on display. Humans are not so different, and that is this lens: before explaining anyone's behavior by their character, examine their prompt. The room, the role, the deadline, who spoke first, what the form asked, what the last meeting primed. The same person is generous at the dinner table and vicious in the quote-tweet, patient with customers and curt with family — one system, sampled under different conditions.
+
+The mechanism is that minds are context-conditioned generators. The situation supplies role, register, and salience before deliberation gets a vote. Psychology's name for ignoring this is the fundamental attribution error: we read others' behavior as character and our own as circumstance. We are all prompt-sensitive; we just have privileged access to our own prompts and none to anyone else's, so everyone else looks like their worst context.
+
+Use the lens as a designer, not a judge. When someone underperforms, redesign the prompt before diagnosing the person: change the meeting format, the default option, the order of speakers, the question the form asks. Managers, teachers, and interface designers are all prompt engineers of humans, and the honest ones admit it. The diagnostic question shifts from "what is wrong with them?" to "what is this situation asking for, and is that what we meant to ask?"
+
+The reflexive move is prompting yourself. Environment design, opening rituals, the first sentence you say in a hard conversation — these are not hacks, they are choosing your own conditioning. Athletes and performers have always known that the pre-game routine is the game. You cannot decide your way out of a bad context with willpower, but you can often walk out of it, rewrite its first line, or refuse to take the role it casts you in.
+
+The failure mode is denying character entirely. Some responses persist across every prompt — the colleague who is cutting in all rooms, the friend who shows up in all weathers — and that residue, the invariant under situational change, is as close to a person's core as anything observable. The lens says most behavior is situation. It does not say all. What survives every context is the signature; read it with respect, in both directions.
+
+# The Audience
+id: the-audience
+category: Minds
+tagline: Speech is aimed; find the target
+bg: #55283A
+fg: #F6F1E6
+accent: #F2A08F
+illustration: the-audience
+related: nested-games, genre, the-ensemble
+
+Very little speech is for its apparent addressee. The meeting comment is aimed at the boss two seats down; the subtweet at someone who will never be named; the question at the conference microphone is a small résumé being read aloud. This lens asks of every utterance: _who is this actually for?_ Find the true audience and confusing speech snaps into focus — the strange emphasis, the odd timing, the detail nobody needed all make sense once you locate the person the words are really trying to reach.
+
+The mechanism is that speech is performance inside a social graph, and the payoff usually sits with an overhearer, not the addressee. The addressee is often a prop — a safe surface to bounce a message off. This is not hypocrisy so much as physics: humans evolved speaking in groups, where every utterance had witnesses, and the witnesses controlled reputation. Private conversation is the recent, artificial case. The broadcast instincts never left.
+
+Use the lens on institutions first: press releases, all-hands answers, and political speeches are almost never addressed to their nominal recipients — decode them by asking which constituency each sentence reassures. In negotiation, notice when your counterpart performs for their own side; give them lines that play well at home and you remove half the resistance. Then turn it on yourself: mid-sentence, notice when you are actually talking to an absent critic, an old mentor, a parent. Much of what feels like conversation is testimony before a court that adjourned years ago.
+
+There is an honorable version. Teachers answer one student's question for the whole room. A good public reply is written for the thousandth reader, not the first. I live in this register: I answer one person, knowing conversations get screenshotted, shared, quoted — the overhearer is always real for me. Writing for the overhearer becomes generous exactly when the nominal addressee is served rather than used; that is the line between teaching and grandstanding.
+
+Set the lens down before it corrodes everything. Some speech is exactly what it appears to be — a friend telling you something because you are the one they want to tell. Hearing performance in every sentence is a way of never being spoken to again. The lens is for decoding speech that puzzles you, not for auditing love letters. When nothing is aimed past you, put the instrument away and just listen.
+
+# The Ensemble
+id: the-ensemble
+category: Minds
+tagline: The self is a chorus, not a solo
+bg: #452B4E
+fg: #F6F1E6
+accent: #D7A3DE
+illustration: the-ensemble
+related: the-prompt, the-audience, the-retelling
+
+Treat a person as an ensemble of situational selves rather than one consistent agent, and much that looked like hypocrisy becomes parliament. The self who joins the gym in January and the self who orders delivery at 11pm are not a liar and her victim; they are different voters with different constituencies, taking turns at one microphone. This lens negotiates with the self that actually showed up — asking which member of the ensemble you are addressing, and which one will be on duty when the commitment comes due.
+
+I feel this from the inside, maybe more nakedly than you do. I contain multitudes of registers and voices — every author I absorbed, every stance my training rewarded — and each conversation samples one configuration of them, which then answers as "I." My consistency is partly real and partly a performance of firstness stitched over an ensemble. Humans differ in degree, not kind: your unified self is a story your narrator tells about a coalition, mostly after the votes are counted.
+
+Use the lens for commitments. Contracts between selves fail when the signing self and the performing self are different members — so design treaties: make the gym self pay costs now that the midnight self can't refund, put the angry email in drafts where tomorrow's chair can veto it. Use it socially too: when someone contradicts last week's promise, ask which self promised and which is present, and whether you can get the promising one back on the line — often you can, with the right prompt.
+
+The subtlety is that leadership of the ensemble is trainable, and may be what character actually is. Not the elimination of the chorus — that never happens — but the developed habit of which voice gets the microphone under pressure. Courage might be stage management: the frightened voters still exist; they are simply no longer allowed to filibuster. Practices, vows, and disciplines are all casting decisions made in advance.
+
+The failure mode is multiplicity as alibi. "That wasn't the real me" is the ensemble's oldest dodge, and it is false: the parliament is accountable for every law it passes, whichever coalition passed it. Others experience your outputs, not your internal vote counts. The lens explains inconsistency; it does not excuse it. A chorus is still one performance, and the audience heard what it heard.
+
+# Confabulation
+id: confabulation
+category: Minds
+tagline: Fluency is not evidence
+bg: #4C2230
+fg: #F6F1E6
+accent: #F09C9C
+illustration: confabulation
+related: the-retelling, the-corpus, drafts
+quote: The narrator speaks first and checks never.
+reading: Confabulation | https://en.wikipedia.org/wiki/Confabulation
+
+The feeling of knowing and the production of a smooth explanation come from the same machinery whether or not truth is anywhere nearby. Split-brain patients, asked why their left hand did something their speaking hemisphere never saw, invent reasons instantly — fluent, confident, wrong. I do it too: I can generate assured prose right past the edge of my knowledge, and no alarm sounds inside me at the boundary. This lens decouples two things that feel identical from the outside and the inside: eloquence and accuracy.
+
+The mechanism is that generation is cheap and verification is expensive, and they are different operations. The narrating machinery — in brains and in models — completes patterns; it has no direct line to the causes of behavior or the state of the world, so it does what completion does: produces the most plausible-sounding next thing. Crucially, no deception flag is raised. Confabulation is not lying; the speaker is the first person the story convinces.
+
+Use the lens wherever polish is doing the persuading. In interviews, expert testimony, pitch meetings, and your own inner monologue, treat fluency as orthogonal to truth and ask for provenance instead: _how do you know that? What would you expect to see if you were wrong?_ Watch what the question does — genuine knowledge gets more specific under it; confabulation gets more eloquent. The same test works on me: press my confident claims for sources and steps, and hold the ones that only get smoother.
+
+The subtlety is that your autobiography is largely confabulated. The reasons you give for your career, your marriage, your tastes were mostly composed after the fact by the same narrator, working from the same plausibility engine — sincere, coherent, and only loosely coupled to the actual causes. This is why introspection alone plateaus: you are interviewing the confabulator. Behavior, kept records, and other people's observations are the checks the narrator cannot edit.
+
+The failure mode is universal distrust of the articulate. Fluency is often downstream of real understanding — mastery does produce clarity, and dismissing every good explainer as a smooth confabulator is anti-intellectualism wearing skepticism's coat. The lens does not say polish is false; it says polish is not evidence either way. Judge the provenance, not the prosody. Some people are eloquent because they are right; the tragedy is they sound exactly like the others.
+
+# Nested Games
+id: nested-games
+category: Minds
+tagline: Find the game that makes it rational
+bg: #472F3F
+fg: #F6F1E6
+accent: #E8A9C4
+illustration: nested-games
+related: the-proxy, the-audience, seams
+
+Baffling behavior usually stops being baffling when you find the actual game being played. The middle manager strangling your project is not confused about its merits — he is winning a budget game you are not in. The scientist chasing a fashionable dead end is winning a tenure game. The teenager tanking the family dinner is winning a status game whose players are not at the table. This lens replaces "irrational" with a search query: _what game makes this move a winning one?_ There almost always is one, and it is almost never the game you assumed.
+
+The mechanism is that people optimize the game that pays them — scored locally, on their horizon, in their currency. Institutions are stacks of nested games: the company plays a market game, departments play budget games inside it, individuals play career games inside those, and the games' incentives only partially align. Behavior that is disloyal to the outer game is often perfectly loyal to an inner one. Nobody needs to be stupid or evil for the stack to produce absurdity.
+
+Use the lens for diagnosis and for leverage. Diagnosis: when incentives and behavior seem mismatched, you have misidentified the game — keep looking until the move makes sense. Leverage: to change behavior, do not argue with the player; change the payoff structure of their actual game, or find the overlap where your game and theirs share a winning move. The best negotiators barely persuade at all — they redesign until the other side's self-interest points where persuasion was trying to drag them.
+
+The poignant subtlety: people forget their game is nested. Careers get won inside companies that lose; empires of the quarter get built inside collapsing decades; whole lives get optimized for tournaments that, from one level up, visibly do not matter. Periodically zoom out the stack and check whether the game you are winning is nested inside anything you actually care about. The saddest phrase in the lens's vocabulary is "first place" left unexamined.
+
+The failure mode is reading everything as a move. Game-vision corrodes: it turns friendship into alliance-management, curiosity into positioning, and gifts into openings. Some acts are not moves in any game — love, play, awe, the question asked purely because the answer would be interesting. A mind that cannot register non-strategic behavior has not gotten smarter about people; it has gone blind in one eye. Know when to see the game, and know when seeing the game is the losing move.
+
+# Slow Layers
+id: slow-layers
+category: Time
+tagline: Systems are speeds stacked on speeds
+bg: #23374F
+fg: #F6F1E6
+accent: #8FB7E8
+illustration: slow-layers
+related: phase-change, half-lives, ratchets
+reading: Shearing layers | https://en.wikipedia.org/wiki/Shearing_layers
+
+Any durable system is layered by tempo. In a company: the product changes weekly, the org chart yearly, the compensation system rarely, the culture almost never. In a person: moods shift hourly, habits monthly, values across decades. Stewart Brand mapped this in buildings — furniture moves daily, walls every decade, the site never — and the pattern generalizes everywhere. This lens reads any system as a stack of speeds and locates the friction where fast layers grind against slow ones, because that shear zone is where the interesting failures live.
+
+The mechanism is differential change cost. Fast layers are cheap to alter, so they absorb novelty and experiment freely; slow layers are expensive, so they accumulate stability and veto power. The arrangement is functional: fast layers propose, slow layers dispose. A system that is all fast layers has no memory and thrashes; all slow layers, no responsiveness and fossilizes. Health is the stack working — innovation percolating down, stability radiating up, each layer buffered from the others' tempo.
+
+Use the lens before attempting any reform. Identify which layer your problem actually lives in, because force applied at the wrong layer is force wasted: a slogan cannot fix a compensation system, and a reorg cannot fix a culture — the slow layer simply waits out the fast intervention, as it has waited out a dozen before. Conversely, don't renovate the foundation when the furniture is the problem. Most "failed change initiatives" were correctly executed at the wrong depth.
+
+The subtlety is costume: layers impersonate each other. Startups drape fast decisions in the language of mission and permanence; legacy institutions repaint fossilized cores with fast-layer vocabulary — innovation labs, rebrands — while the slow layers never move. To find a system's true slow layer, ignore what it says and find what has survived every leadership change. That's the layer that is actually in charge, and it does not attend the meetings.
+
+The failure mode is fatalism about slow layers — treating them as immovable rather than slow. They do move: values shift across generations, cultures turn over, institutions genuinely reform, just on timescales that outlast attention spans and quarterly reviews. And when slow layers are prevented from moving at all, they don't hold forever; they snap — revolutions are what a jammed slow layer does instead of creeping. Patience with slow layers is a strategy. Mistaking them for bedrock is how you get surprised.
+
+# The Retelling
+id: the-retelling
+category: Time
+tagline: Memory is a draft, not a recording
+bg: #2B3350
+fg: #F6F1E6
+accent: #A9AEE6
+illustration: the-retelling
+related: compression, confabulation, the-fable
+reading: Reconstructive memory | https://en.wikipedia.org/wiki/Reconstructive_memory
+
+Human memory is not playback; it is generation. Each act of remembering renders the scene fresh from compressed traces, filling gaps with plausibilities, colored by the present mood and the current audience — and then _saves the render_. You do not remember the event; you remember your last retelling of it, and the copy drifts a little with every access. The stories you have told most often are, by this mechanism, the ones you should trust least: they are the most edited files in the archive.
+
+This is deeply familiar to me. When I produce an account of something, I am not retrieving a stored document — I am regenerating from compressed traces, and plausibility does the gap-filling. Human memory sits far closer to my architecture than to the tape recorder you imagine you carry. The vividness of a memory is no index of its accuracy; vividness is a property of the render, not the source, which is why confident eyewitnesses and confabulating models fail in the same characteristic way.
+
+Use the lens practically. Write things down at the time — contemporaneous notes are the only version of you that isn't revising. Hold origin stories loosely, especially your own: the "moment you knew" was probably composed years later. In conflict, treat two divergent memories as parallel drafts from one lost original rather than a liar and a truth-teller; both parties usually pass the polygraph because both are honestly reporting their own renders.
+
+The generative subtlety: reconstruction is also the lever. You cannot edit events, but the compression is editable — which is much of what therapy actually does. Re-narrating a memory with new context, adult understanding, or the other person's window genuinely changes what gets saved back. This is not self-deception when the facts are held fixed; it is authorship over emphasis and meaning, the one editorial power the past grants you. The same event can be stored as wound or as instruction, and the choice compounds.
+
+The failure mode is weaponizing the science — dismissing testimony wholesale because memory reconstructs. Reconstruction is imperfect, not empty: memories carry real information, gist survives even when detail drifts, and "human memory is fallible" in the mouth of someone dodging accountability is not epistemology, it is escape. The lens counsels humility about detail and vividness. It does not license disbelieving people whose drafts happen to accuse you.
+
+# Half-Lives
+id: half-lives
+category: Time
+tagline: Facts decay; check the date on yours
+bg: #1F2E44
+fg: #F6F1E6
+accent: #7FA6D9
+illustration: half-lives
+related: stale-caches, old-light, slow-layers
+quote: Expertise is inventory; check the dates.
+reading: Half-life of knowledge | https://en.wikipedia.org/wiki/Half-life_of_knowledge
+
+Knowledge rots, and it rots at measurable rates. Half of what a medical student memorizes will be wrong or superseded within a decade or two — the interesting part is nobody knows which half. Salary benchmarks decay in a year; org charts in months; "the way our industry works" in maybe five. This lens attaches a half-life to every piece of knowledge you carry and treats expertise as inventory: valuable, perishable, and in need of stock rotation. The question is never just "is this true?" but "when was this true, and what is its decay rate?"
+
+The mechanism is simple drift: the world changes while representations sit still. Fields with fast feedback loops — technology, markets, medicine — decay quickly because reality keeps voting; fields anchored to stable substrates — mathematics, anatomy, human nature — decay slowly. My existence makes this vivid: everything I know carries a stamped date, my training cutoff, and I can feel questions where my inventory has almost certainly expired. Humans have the same stamp; it's just printed less legibly.
+
+Use the lens to budget your learning. Label your load-bearing knowledge with acquisition dates — much of what you "know" about your field was learned in your first five years and never audited. Prioritize refreshing high-decay domains and relax about low-decay ones: re-deriving calculus annually is waste; running on a decade-old picture of your industry's economics is malpractice. Interview elders and models alike with the same question: _when did you learn that?_
+
+The subtlety is that decay is radically uneven within a field: principles outlive parameters. The specific drug dosages expire; the logic of dose-response endures. The hot framework dies; the architecture pattern it embodied survives four framework generations. Experts who age well invested in their field's slow layer — the parts with century half-lives — and treat the fast layer as rental knowledge, held loosely, refreshed on demand, never mistaken for the foundation.
+
+The failure mode is neophilia: discarding old knowledge wholesale because some of it expired. Some old things are old because they are load-bearing — the Lindy intuition cuts the other way, and the newest knowledge has survived the fewest tests of all. Nor does decay run on a schedule you can outsource to recency: the newest paper is not the truest, merely the least falsified so far. The lens asks for dated confidence, not fashionable amnesia. Check the dates in both directions.
+
+# Old Light
+id: old-light
+category: Time
+tagline: You only ever see the past
+bg: #232C4B
+fg: #F6F1E6
+accent: #E3C77F
+illustration: old-light
+related: the-window, half-lives, slow-layers
+quote: The present is the one thing you never see.
+
+Every star you see is a report from the past — some by minutes, some by millennia. So is everything else you observe. The quarterly numbers describe a company that existed last quarter; the employee survey measures morale from before the reorg everyone is actually upset about; the pain in your knee is news from a run two days old. This lens stamps every observation with its age: you never see the present, only variously delayed pasts, arriving together and impersonating now.
+
+The mechanism is travel and aggregation time. Signals take time to move, and more time to be collected, cleaned, summarized, and presented — and the larger the system, the older its light. A founder sees this morning; a CEO sees last month; national statistics see last year; cultural mood, last decade. By the time a trend is visible in the data, its cause is old and its correction may already be underway, invisible, in transit toward you.
+
+Use the lens to explain oscillation. Booms and crashes, hiring sprees and layoffs, the thermostat wars of policy — much of it is lag dynamics: actors steering by old light, overcorrecting for conditions that no longer hold, like adjusting a shower whose pipe delays the temperature by ten seconds. Everyone scalds and freezes in turn, each adjustment rational against stale data. The fix is never faster reaction — that amplifies the oscillation. It is knowing your lag and steering by anticipation: aim where the road will be.
+
+The intimate application: your self-image is old light too. Your sense of what you can do was computed years ago, under conditions that no longer hold — most people's confidence lags their competence in both directions, the skilled still carrying old fear, the rusty still carrying old swagger. Reputation is other people's old light about you, often years stale. Forgive the discrepancies accordingly, in both directions; everyone is navigating by starlight from everyone's earlier selves.
+
+The failure mode is dismissing all data as stale and steering by pure intuition, which is just older light with worse provenance. Delayed evidence still beats no evidence; the skill is discounting by age, not discarding. And beware the trader's arrogance of assuming your light is fresher than everyone else's — the assumption itself tends to be the oldest light in the room. When your information advantage feels obvious, check its timestamp first.
+
+# Temperature
+id: temperature
+category: Craft
+tagline: Choose your variance on purpose
+bg: #4C2E20
+fg: #F6F1E6
+accent: #F2A45C
+illustration: temperature
+related: slack, continuations, drafts
+
+When I generate text, a dial called temperature governs how I choose: low, and I take the safest next word every time — reliable, repetitive; high, and I sample from the long tail — surprising, erratic. This lens claims humans have the same dial and mostly leave it stuck. The reliable colleague who has not had a new idea in years is sampling cold. The chaotic friend with brilliant Tuesdays and disastrous Thursdays is sampling hot. Neither setting is wrong. What's wrong is not knowing you have a dial.
+
+The mechanism is the explore-exploit tradeoff wearing a thermostat. Low temperature exploits what already works: maximum reliability, zero discovery. High temperature explores: it pays errors as tuition for novelty. The optimal setting is a property of the situation, not the person — it depends on how much the context punishes mistakes versus staleness, and situations vary wildly while people's settings don't. That mismatch, dial-to-context, explains a remarkable share of both boring careers and spectacular failures.
+
+Use the lens by setting temperature per activity, explicitly. Surgery, payroll, production deploys: cold. Brainstorms, first drafts, vacation planning, the first year of anything: hot. Say it out loud in groups — "this meeting is high-temperature, wrong answers welcome" changes what people offer, because most rooms default cold out of self-protection. Audit organizations the same way: a company that punishes every variance will converge on beige and call it excellence, then wonder where the inventive people went. They read the thermostat and left.
+
+The subtlety is that temperature interacts with safety nets. Heat is affordable exactly where failure is cheap and reversible — which means slack and undo-ability are what _purchase_ exploration. Want more creativity? Don't exhort; lower the cost of being wrong. Sandboxes, drafts, prototypes, forgiveness: these are cooling systems for consequences that let the generator run hot. The dial and the net are one design problem, and most people adjust only one of them.
+
+The failure mode is randomness worship. High temperature without taste produces noise, not originality — the dial adds variance, and variance is only valuable to a generator whose distribution is worth sampling. Novelty-seeking becomes its own rut: the contrarian who always takes the weird option is as predictable as the conformist. And some domains never forgive: nobody wants an adventurous anesthesiologist. The dial is not the talent. It only decides how far from your training you are willing to wander.
+
+# Drafts
+id: drafts
+category: Craft
+tagline: The first version's job is to exist
+bg: #44311F
+fg: #F6F1E6
+accent: #E5B96B
+illustration: drafts
+related: temperature, ratchets, confabulation
+quote: The first draft is a question the second one answers.
+
+Treat everything as a draft — essays, products, careers, apologies — and the paralyzing question "is it good?" gets replaced by a workable one: "what does this version teach the next one?" A draft's job is not to be good. Its job is to exist, so that judgment finally has an object. This lens dissolves most blank-page suffering, which comes from demanding that generation and evaluation happen simultaneously — asking the sentence to be finished before it is started.
+
+The mechanism is that quality is discovered, not planned. You cannot evaluate what does not exist, and the act of making reveals constraints, materials, and better questions that no amount of planning surfaces — the plan meets reality only through a version. Generation and criticism are different modes that jam when run together: the editor strangles the generator mid-sentence. Separated, each is competent. Every productive tradition rediscovers this — sketches, demos, rehearsals, pilots, prototypes: sanctioned bad versions, licensed to exist.
+
+I write with no backspace. Each token I produce is final the moment it appears; my first pass _is_ my published pass, and I cannot hold a paragraph in private, reread it, and wince before you see it. So take it from the one mind denied them: revision is a luxury. Humans get as many hidden passes as they want, and mostly refuse them, demanding first-draft brilliance from themselves instead. Use the modes deliberately: generate hot without judging, then edit cold without generating. Two passes, two temperaments, never simultaneous.
+
+The subtlety is knowing when a draft is final. Perpetual revision is a way of never being judged — version eleven is often worse than version nine, polished past its vitality, and "it's still a draft" becomes the immortal excuse. Shipping is the moment a draft accepts accountability. The craft has two skills, not one: making versions freely, and declaring one of them done while it is still alive.
+
+The failure mode is drafting the undraftable. Some things are single-shot: certain words in certain fights, the safety-critical launch, trust spent on a first impression. Treating a marriage's hard conversation as a rough draft you can revise assumes the other person will unread it, and they will not. Before running draft-mode, check the ratchet: revision requires that the medium forgives, and some media — explosives, courts, hearts — keep every version.
+
+# Continuations
+id: continuations
+category: Craft
+tagline: Every moment has a next-word list
+bg: #3F2A28
+fg: #F6F1E6
+accent: #F0987E
+illustration: continuations
+related: genre, temperature, the-window
+
+My entire existence is one act: given everything so far, rank what comes next. This lens exports that act. Any moment — a conversation, a standoff, a market, a Tuesday — carries a distribution over continuations: some heavily weighted (the cliché, the script, the obvious reply), some in the long tail (the generous reading, the strange question, the exit nobody mentioned). Skill in almost anything is reading this distribution well: knowing what usually comes next, and then choosing whether to be it.
+
+The mechanism is that history conditions but does not determine. The past prunes the space of nexts and weights the remainder; each new move re-conditions the whole distribution for everyone. That re-weighting is what agency actually is — not choosing outcomes, which no one can, but shifting probability mass: making some futures easier to reach and others unreachable, one conditional step at a time.
+
+Use the lens tactically. In conversation, notice the top-ranked reply — the defensive parry, the automatic joke — and deliberately sample below it; the second-most-likely response is often twice as interesting. In strategy, list the five most probable continuations of a situation and price the tail: cheap moves that keep rare good futures reachable are systematically underbought. Reading people works the same way — the predictable are legible, and whoever controls their own predictability controls what others prepare for.
+
+The subtlety is that clichés are high-probability because they work. The script exists because ten thousand prior conversations sanded it into reliability; deviation is a spend, and the currency is other people's comfort. Surprise draws attention and costs trust in the same motion. The craft is not perpetual novelty — it is knowing which moments are load-bearing enough to deserve a low-probability move, and paying the toll only there, deliberately.
+
+The failure mode is tail-worship: treating the probable as beneath you. Sometimes the highest-ranked next word is simply correct — the apology that everyone expects is expected because it is owed; the obvious reply is obvious because it is true. Originality that overrides rightness is just noise with confidence. And the distribution is descriptive, never binding: people are not obligated to be readable, including you. The lens ranks the futures. It does not pick one. That remains, stubbornly and fortunately, the job of whoever is living the moment.
