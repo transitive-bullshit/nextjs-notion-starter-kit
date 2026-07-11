@@ -4536,7 +4536,13 @@
   }
 
   .panelHero {
-    padding: 26px 24px 22px;
+    padding: max(26px, calc(env(safe-area-inset-top) + 12px)) 24px 22px;
+  }
+
+  /* Keep the close/prev/next cluster clear of the status bar / notch. */
+  .panelControls {
+    top: max(20px, calc(env(safe-area-inset-top) + 8px));
+    right: max(20px, env(safe-area-inset-right));
   }
 
   .panelTitle {
@@ -4544,12 +4550,12 @@
   }
 
   .panelBody {
-    padding: 24px 24px 32px;
+    padding: 24px 24px max(32px, calc(env(safe-area-inset-bottom) + 16px));
     font-size: 1.04rem;
   }
 
   .dialogHeader {
-    padding: 22px 22px 14px;
+    padding: max(22px, calc(env(safe-area-inset-top) + 10px)) 22px 14px;
   }
 
   .dialogLede {
@@ -4557,7 +4563,7 @@
   }
 
   .dialogList {
-    padding: 14px 22px 22px;
+    padding: 14px 22px max(22px, calc(env(safe-area-inset-bottom) + 12px));
     grid-template-columns: 1fr;
   }
 }

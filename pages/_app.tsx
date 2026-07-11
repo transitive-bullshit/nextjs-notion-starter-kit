@@ -19,6 +19,7 @@ import 'styles/wustep.css'
 
 import type { AppProps } from 'next/app'
 import { Analytics, type BeforeSendEvent } from '@vercel/analytics/react'
+import Head from 'next/head'
 
 import {
   OwnerModeProvider,
@@ -44,6 +45,15 @@ function SiteAnalytics() {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <OwnerModeProvider>
+      {/* viewport-fit=cover lets env(safe-area-inset-*) resolve on every
+          page (PageHead repeats this for Notion pages, but custom surfaces
+          like /lenses don't render PageHead). */}
+      <Head>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover'
+        />
+      </Head>
       <style jsx global>{`
         :root {
           --font-sans: ${inter.style.fontFamily};
