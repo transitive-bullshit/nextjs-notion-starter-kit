@@ -3,7 +3,27 @@ import * as React from 'react'
 
 import { useOwnerMode } from '@/components/wustep/OwnerModeProvider'
 import { PlaygroundLayout } from '@/components/wustep/PlaygroundLayout'
+import { useInView } from '@/lib/use-in-view'
 import { playgroundEntries } from '@/playground/registry'
+
+/**
+ * Cover cell that pauses its (looping) CSS animations while scrolled
+ * off-screen — several covers run infinite keyframes, and phones shouldn't
+ * pay for paints nobody sees. animation-play-state (see globals.css)
+ * preserves each animation's position instead of restarting it.
+ */
+function CoverCell({ children }: { children: React.ReactNode }) {
+  const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0, once: false })
+  return (
+    <div
+      ref={ref}
+      data-animations-paused={inView ? undefined : ''}
+      className='notion-collection-card-cover aspect-video w-full [content-visibility:auto]'
+    >
+      {children}
+    </div>
+  )
+}
 
 const parseDate = (dateStr?: string): Date => {
   if (!dateStr) return new Date(0)
@@ -40,7 +60,7 @@ export default function PlaygroundPage() {
             href={project.url}
             className='group notion-collection-card relative flex h-full flex-col overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background'
           >
-            <div className='notion-collection-card-cover aspect-video w-full'>
+            <CoverCell>
               {project.CoverComponent ? (
                 <project.CoverComponent />
               ) : project.image ? (
@@ -57,7 +77,7 @@ export default function PlaygroundPage() {
                   }`}
                 />
               )}
-            </div>
+            </CoverCell>
             <div className='notion-collection-card-body p-4 flex-1'>
               <h3 className='font-semibold mb-1'>{project.title}</h3>
               <p className='text-sm text-muted-foreground'>

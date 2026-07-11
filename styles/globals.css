@@ -222,6 +222,12 @@ a {
   text-decoration: none;
 }
 
+/* Freeze (don't restart) every CSS animation inside a container flagged
+   off-screen — see CoverCell in pages/playground/index.tsx. */
+[data-animations-paused] * {
+  animation-play-state: paused !important;
+}
+
 /* Rely on each control's designed :active/:hover feedback instead of the
    translucent gray flash iOS Safari paints over tapped elements. */
 a,

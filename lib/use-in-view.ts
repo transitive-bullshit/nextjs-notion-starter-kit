@@ -2,13 +2,15 @@ import * as React from 'react'
 
 /**
  * useInView — observe an element and report when it intersects the
- * viewport. Once seen, the observer disconnects (one-shot).
+ * viewport. By default the observer disconnects once seen (one-shot);
+ * pass `once: false` to keep tracking as the element enters and leaves.
  *
  *   Useful for kicking off entrance animations only when the element
- *   actually scrolls into view.
+ *   actually scrolls into view, or (continuous mode) pausing looping
+ *   animations while it's off-screen.
  */
 export function useInView<T extends HTMLElement>(
-  opts?: IntersectionObserverInit
+  opts?: IntersectionObserverInit & { once?: boolean }
 ) {
   const ref = React.useRef<T>(null)
   const [inView, setInView] = React.useState(false)
@@ -18,14 +20,17 @@ export function useInView<T extends HTMLElement>(
   React.useEffect(() => {
     const node = ref.current
     if (!node) return
+    const { once = true, ...observerOpts } = optsRef.current ?? {}
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
           setInView(true)
-          observer.disconnect()
+          if (once) observer.disconnect()
+        } else if (!once) {
+          setInView(false)
         }
       },
-      { threshold: 0.3, ...optsRef.current }
+      { threshold: 0.3, ...observerOpts }
     )
     observer.observe(node)
     return () => observer.disconnect()
