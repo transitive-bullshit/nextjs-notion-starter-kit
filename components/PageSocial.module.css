@@ -50,13 +50,14 @@
   margin-top: 3px;
 }
 
+/* Full-size circle scaled to 0 and grown on hover — transform is
+   GPU-composited, unlike the width/height animation it replaces. */
 .actionBgPane {
-  transition:
-    width 300ms ease-out,
-    height 300ms ease-out;
+  transition: transform 300ms ease-out;
   border-radius: 50%;
-  width: 0;
-  height: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
 }
 
 .action svg {
@@ -71,15 +72,14 @@
 
 @media (hover: hover) {
   .action:hover .actionBgPane {
-    width: 100%;
-    height: 100%;
-    transition:
-      width 100ms ease-out,
-      height 100ms ease-out;
+    transform: scale(1);
+    transition: transform 100ms ease-out;
   }
 
   .action:hover svg {
     transition: color 100ms ease-out;
+    /* Deliberate constant: white icon over the brand-colored pane
+       (dark mode overrides to --fg-color below). */
     color: #ffffff;
   }
 
