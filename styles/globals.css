@@ -213,6 +213,18 @@ a {
   text-decoration: none;
 }
 
+/* Rely on each control's designed :active/:hover feedback instead of the
+   translucent gray flash iOS Safari paints over tapped elements. */
+a,
+button,
+[role='button'],
+input,
+select,
+textarea,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body,
 html {
   padding: 0;
