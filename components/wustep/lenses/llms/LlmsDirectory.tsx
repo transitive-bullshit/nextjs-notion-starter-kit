@@ -126,6 +126,19 @@ export function LlmsDirectory() {
               <DeckCard key={deck.key} deck={deck} />
             ))}
           </ul>
+
+          <p className={styles.footNote}>
+            Every deck was generated from the same authoring prompt —{' '}
+            <a
+              href='/lenses/llms/prompt.md'
+              className={styles.ledeLink}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              read it
+            </a>
+            .
+          </p>
         </main>
       </div>
     </>

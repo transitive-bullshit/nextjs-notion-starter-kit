@@ -241,6 +241,16 @@
     opacity 200ms ease;
 }
 
+/* ===== Footnote ===== */
+
+.footNote {
+  margin: 26px 0 0;
+  font-family: var(--font-serif, 'Crimson Pro', Georgia, serif);
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
 /* Narrow viewports: stack the art above the text. */
 @media (max-width: 540px) {
   .deckCard {

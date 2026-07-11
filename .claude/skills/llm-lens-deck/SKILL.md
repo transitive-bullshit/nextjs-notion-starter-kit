@@ -54,6 +54,11 @@ heading. Do not add anything that describes the existing decks.
 For multiple decks at once, spawn the agents in parallel (one message, multiple
 Agent calls) — they write to different directories and cannot see each other.
 
+A public, reader-facing copy of this template is served at
+`public/lenses/llms/prompt.md` (linked from the /lenses/llms directory page).
+Whenever the template below changes, update that file to match — it's the
+site's public record of how the decks were made.
+
 ### Authoring prompt template
 
 ```
