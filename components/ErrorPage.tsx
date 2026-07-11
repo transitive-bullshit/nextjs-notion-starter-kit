@@ -3,10 +3,11 @@ import * as config from '@/lib/config'
 import styles from './Page404.module.css'
 import { PageHead } from './PageHead'
 
-export function ErrorPage({ statusCode }: { statusCode: number }) {
-  const title = `Error ${statusCode}`
+export function ErrorPage({ statusCode }: { statusCode?: number }) {
+  const code = statusCode ?? 500
+  const title = `Error ${code}`
   const description =
-    statusCode === 500
+    code === 500
       ? "Something went wrong on our end. We're looking into it."
       : 'An unexpected error occurred. Please try again later.'
 
@@ -16,7 +17,7 @@ export function ErrorPage({ statusCode }: { statusCode: number }) {
 
       <div className={styles.page}>
         <div className={styles.content}>
-          <p className={styles.code}>{statusCode}</p>
+          <p className={styles.code}>{code}</p>
 
           <div className={styles.divider} />
 
