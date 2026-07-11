@@ -247,7 +247,7 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 1px solid rgba(0, 0, 0, 0.12);
   background: rgba(255, 255, 255, 0.5);
   color: inherit;
@@ -1542,7 +1542,7 @@
   border: none;
   cursor: pointer;
   color: var(--panel-fg);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   transition:
     background 200ms ease,
     transform 150ms var(--ease-spring-snap);
@@ -1943,7 +1943,7 @@
   padding: 9px 12px 9px 9px;
   background: rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-family: var(--font-geist, var(--font-sans), system-ui, sans-serif);
   font-size: 0.84rem;
   font-weight: 500;
@@ -2367,7 +2367,7 @@
   border: none;
   cursor: pointer;
   color: inherit;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   transition:
     background 200ms ease,
     transform 150ms var(--ease-spring-snap);

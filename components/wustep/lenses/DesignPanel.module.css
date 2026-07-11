@@ -55,7 +55,7 @@
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
   border: 1px solid var(--panel-stroke);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   color: var(--panel-fg);
   font: inherit;
   font-weight: 500;
@@ -89,7 +89,7 @@
 .handleDot {
   width: 8px;
   height: 8px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--panel-accent);
   box-shadow: 0 0 12px var(--panel-accent);
 }
@@ -393,7 +393,7 @@
 
 .sections::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 2px solid transparent;
   background-clip: padding-box;
 }
@@ -513,7 +513,7 @@
   -webkit-appearance: none;
   height: 4px;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   outline: none;
   cursor: pointer;
   margin: 0;
@@ -528,7 +528,7 @@
   -webkit-appearance: none;
   width: 14px;
   height: 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--panel-fg);
   border: none;
   cursor: grab;
@@ -548,7 +548,7 @@
 .slider::-moz-range-thumb {
   width: 14px;
   height: 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--panel-fg);
   border: none;
   cursor: grab;

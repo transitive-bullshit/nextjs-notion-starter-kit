@@ -37,6 +37,7 @@
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-pill: 9999px; /* fully-rounded pills/circles */
   --font-serif: 'Crimson Pro', 'Georgia', serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
@@ -834,7 +835,7 @@ span[class*='_background'] {
   display: inline-flex;
   align-items: center;
   padding: 0.2rem;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 1px solid var(--w-divider);
   background: var(--w-surface);
   gap: 0.15rem;
@@ -851,7 +852,7 @@ span[class*='_background'] {
   justify-content: center;
   gap: 0.35rem;
   border: none;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   padding: 0.3rem 0.85rem;
   background: transparent;
   font-weight: 600;
