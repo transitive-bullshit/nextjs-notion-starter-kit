@@ -275,6 +275,12 @@ a.bioHint {
   cursor: pointer;
 }
 
+.bioHint:focus-visible {
+  outline: 2px solid var(--about-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 @media (hover: hover) {
   .bioHint:hover {
     text-decoration-color: var(--about-accent);
@@ -1156,7 +1162,9 @@ a.bioHint {
   text-align: center;
 }
 
-.tooltipWrapperInline:focus-within .tooltip {
+/* Keyboard parity with the hover reveal below — any focused trigger
+   (link or focusable span) shows its tooltip. */
+.tooltipWrapper:focus-within .tooltip {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }

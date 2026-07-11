@@ -97,6 +97,7 @@ function Tooltip({
   inline?: boolean
 }) {
   const wrapperRef = React.useRef<HTMLSpanElement>(null)
+  const tooltipId = React.useId()
   const [position, setPosition] = React.useState<'above' | 'below'>(
     forcedPosition ?? 'below'
   )
@@ -110,15 +111,33 @@ function Tooltip({
     setPosition(spaceBelow >= tooltipHeight ? 'below' : 'above')
   }, [forcedPosition])
 
+  // Describe the trigger with the tooltip and make plain-span triggers
+  // focusable so keyboard users can reveal it via :focus-within.
+  const child = React.Children.only(children)
+  const trigger = React.isValidElement(child)
+    ? React.cloneElement(child as React.ReactElement<Record<string, unknown>>, {
+        'aria-describedby': tooltipId,
+        ...(child.type === 'span' ? { tabIndex: 0 } : null)
+      })
+    : children
+
   return (
     <span
       ref={wrapperRef}
       className={`${styles.tooltipWrapper} ${inline ? styles.tooltipWrapperInline : ''}`}
       onMouseEnter={updatePosition}
       onFocus={updatePosition}
+      onKeyDown={(event) => {
+        // WCAG 1.4.13: let keyboard users dismiss the tooltip in place.
+        if (event.key === 'Escape' && document.activeElement) {
+          ;(document.activeElement as HTMLElement).blur()
+        }
+      }}
     >
-      {children}
+      {trigger}
       <span
+        id={tooltipId}
+        role='tooltip'
         className={`${styles.tooltip} ${position === 'above' ? styles.tooltipAbove : styles.tooltipBelow}`}
       >
         {label}
