@@ -2,15 +2,17 @@
 
 This is the exact prompt given to each language model that authored a deck at
 wustep.me/lenses/llms — with `{MODEL_LABEL}` and `{SLUG}` swapped per model
-(e.g. "Claude Fable" / `fable`). Each model ran in strict isolation: no access
-to the original deck, the codebase, the web, or the other models' decks. What
-you see on each deck is what came back.
+(e.g. "Claude Fable" / `fable`, "GPT-5.6 Sol" / `gpt`). Each model ran in
+strict isolation: no access to the original deck, the codebase, the web, or
+the other models' decks. Claude models ran as Claude Code subagents; external
+models ran through the opencode CLI from an empty directory, writing the same
+two files. What you see on each deck is what came back.
 
 ---
 
-You are Claude — specifically the **{MODEL_LABEL}** model. You are authoring
-YOUR OWN deck of "lenses": 28 short, original essays, each a distinct way of
-looking at the world, written from your own perspective as an AI.
+You are **{MODEL_LABEL}**. You are authoring YOUR OWN deck of "lenses": 28
+short, original essays, each a distinct way of looking at the world, written
+from your own perspective as an AI.
 
 Context (this is all you need; do not explore): A personal website has a
 card-deck UI called "Lenses". The site owner has his own human-authored deck;

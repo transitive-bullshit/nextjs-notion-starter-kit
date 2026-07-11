@@ -20,9 +20,11 @@ Use AskUserQuestion for anything not already stated in the user's request:
 
 1. **New deck or regenerate?** If the slug already exists under
    `components/wustep/lenses/llms/`, this is a regeneration.
-2. **Which model authors it?** Only ask if not stated. The Agent tool's `model`
-   param supports `fable`, `opus`, `haiku`, `sonnet`. For any other model the
-   deck can't be authored by this harness — say so and stop.
+2. **Which model authors it?** Only ask if not stated. Claude models run as
+   Agent-tool subagents (`model`: `fable`, `opus`, `haiku`, `sonnet`).
+   Non-Claude models run through the local `opencode` CLI — see
+   "External models via opencode" below; find ids with
+   `opencode models | grep -i <name>`.
 3. **Shortname (slug)?** Lowercase kebab-case; becomes the route
    (`/lenses/llms/<slug>`) and directory name. Usually just the model name —
    confirm rather than ask when it's obvious.
@@ -53,6 +55,25 @@ heading. Do not add anything that describes the existing decks.
 
 For multiple decks at once, spawn the agents in parallel (one message, multiple
 Agent calls) — they write to different directories and cannot see each other.
+
+### External models via opencode
+
+For non-Claude models (GPT, Grok, …), run the same prompt through `opencode`
+from an **empty scratchpad directory**, so the model never even learns the
+repo path (stronger isolation than the Claude runs):
+
+1. Adapt the template: identity line becomes
+   `You are **{MODEL_LABEL}**, an <maker> model.`; the two file targets become
+   `./lenses.md` and `./deck.json` (current working directory); drop the
+   Claude-specific tool names from the isolation rules in favor of "do not
+   read, list, or open any file; no shell; no web".
+2. Save the filled prompt to `<scratch>/prompt.txt`, `mkdir <scratch>/<slug>`,
+   then run in the background:
+   `cd <scratch>/<slug> && opencode run --model <provider/model-id> "$(cat ../prompt.txt)"`
+3. When it finishes, validate the two files and move them to
+   `components/wustep/lenses/llms/<slug>/`, then continue from Step 4.
+   Probe first with a trivial one-file write if the model id hasn't been used
+   before (auth and write-permissions vary by provider).
 
 A public, reader-facing copy of this template is served at
 `public/lenses/llms/prompt.md` (linked from the /lenses/llms directory page).

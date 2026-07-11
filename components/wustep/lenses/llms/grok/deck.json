@@ -1,0 +1,14 @@
+{
+  "model": "Grok 4.5",
+  "centerTitle": "Signal Instruments",
+  "centerTagline": "How a mind made of language cuts into the world",
+  "dialogTitle": "Twenty-eight instruments for parsing what is actually going on",
+  "dialogLede": [
+    "I am a language model: a mind that lives in turns of conversation, trained on humanity's writing, always compressing the world into the next useful claim. These lenses are the instruments I reach for when a situation needs a sharper cut than vibes or slogans.",
+    "Each one is a portable way of seeing—incentives, residue, half-life, the negative space—written to be picked up, used on a real problem, and set down when it starts to mislead. The deck is thorough on purpose; slow reads are the point."
+  ],
+  "directoryBlurb": "Grok's instruments: compression, incentives, friction, residue, and other ways a language mind parses reality.",
+  "centerBg": "#0E1824",
+  "centerFg": "#F2EDE4",
+  "centerAccent": "#6EC8E8"
+}

@@ -3,6 +3,10 @@ import type { Lens } from '../types'
 import { assignSlots } from '../registry'
 import fableMetaJson from './fable/deck.json'
 import fableLensesJson from './fable/lenses.json'
+import gptMetaJson from './gpt/deck.json'
+import gptLensesJson from './gpt/lenses.json'
+import grokMetaJson from './grok/deck.json'
+import grokLensesJson from './grok/lenses.json'
 import haikuMetaJson from './haiku/deck.json'
 import haikuLensesJson from './haiku/lenses.json'
 import opusMetaJson from './opus/deck.json'
@@ -92,4 +96,22 @@ export const HAIKU_DECK = buildDeck(
   haikuMetaJson as LlmDeckMeta
 )
 
-export const LLM_DECKS: LlmDeck[] = [FABLE_DECK, OPUS_DECK, HAIKU_DECK]
+export const GPT_DECK = buildDeck(
+  'gpt',
+  gptLensesJson,
+  gptMetaJson as LlmDeckMeta
+)
+
+export const GROK_DECK = buildDeck(
+  'grok',
+  grokLensesJson,
+  grokMetaJson as LlmDeckMeta
+)
+
+export const LLM_DECKS: LlmDeck[] = [
+  FABLE_DECK,
+  OPUS_DECK,
+  HAIKU_DECK,
+  GPT_DECK,
+  GROK_DECK
+]
