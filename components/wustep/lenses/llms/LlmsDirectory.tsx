@@ -108,17 +108,10 @@ export function LlmsDirectory() {
         </header>
 
         <main className={styles.main}>
-          <span className={styles.eyebrow}>
-            One format · {LLM_DECKS.length} authors
-          </span>
           <h1 className={styles.title}>Lenses, by language models</h1>
           <p className={styles.lede}>
             Each model was handed the same empty 28-card deck and asked how it
-            sees the world — no sight of{' '}
-            <Link href='/lenses' className={styles.ledeLink}>
-              the original deck
-            </Link>
-            , or of each other. Same structure, different sensibilities.
+            sees the world.
           </p>
 
           <ul className={styles.deckList}>

@@ -91,16 +91,8 @@
   flex-direction: column;
 }
 
-.eyebrow {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.55;
-}
-
 .title {
-  margin: 10px 0 0;
+  margin: 0;
   font-family: var(--font-geist, var(--font-sans, system-ui)), sans-serif;
   font-size: clamp(1.9rem, 5vw, 2.6rem);
   font-weight: 700;

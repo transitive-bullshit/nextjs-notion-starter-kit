@@ -434,6 +434,20 @@ export function LensesPage({
                     onToggle={() => setPlayAllAnimations((on) => !on)}
                   />
                 )}
+                {/* Quiet door to the model-authored decks — hidden at
+                    rest and revealed on header hover, like the play
+                    toggle beside it. Only on the original deck; the
+                    LLM decks' back button already leads to /lenses/llms. */}
+                {deck.key === 'wustep' && (
+                  <Link
+                    href='/lenses/llms'
+                    className={`${styles.headerButton} ${styles.llmsDecksLink}`}
+                    aria-label='Lenses, by language models'
+                    title='Lenses, by language models'
+                  >
+                    <SparklesIcon />
+                  </Link>
+                )}
                 <LabsButton className={styles.headerButton} />
                 <ThemeToggle
                   isDark={hasMounted ? isDarkMode : false}
@@ -491,5 +505,22 @@ export function LensesPage({
           the JSX is gated on a build-time `isDev` constant. */}
       {isDev && hasMounted && !previewOverride && <DesignPanel />}
     </DeckProvider>
+  )
+}
+
+/** Sparkles — marks the link to the model-authored decks. Same filled,
+ *  single-color hand as the play/pause icons beside it. */
+function SparklesIcon() {
+  return (
+    <svg viewBox='0 0 24 24' aria-hidden='true'>
+      <path
+        d='M11 4l1.7 4.3L17 10l-4.3 1.7L11 16l-1.7-4.3L5 10l4.3-1.7L11 4Z'
+        fill='currentColor'
+      />
+      <path
+        d='M17.75 13.5l.95 2.35 2.3.9-2.3.9-.95 2.35-.9-2.35-2.35-.9 2.35-.9.9-2.35Z'
+        fill='currentColor'
+      />
+    </svg>
   )
 }

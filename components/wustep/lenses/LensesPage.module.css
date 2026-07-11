@@ -305,24 +305,29 @@
   height: 16px;
 }
 
-/* Desktop-only; revealed on header hover (AboutPage theme-toggle pattern). */
-.playAnimationsButton {
+/* Desktop-only; revealed on header hover (AboutPage theme-toggle pattern).
+   Shared by the play toggle and the LLM-decks link that sits beside it. */
+.playAnimationsButton,
+.llmsDecksLink {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .playAnimationsButton {
+  .playAnimationsButton,
+  .llmsDecksLink {
     display: inline-flex;
     opacity: 0;
     transition: opacity 200ms ease-out;
   }
 
-  .playAnimationsButton:focus-visible {
+  .playAnimationsButton:focus-visible,
+  .llmsDecksLink:focus-visible {
     opacity: 1;
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .header:hover .playAnimationsButton {
+    .header:hover .playAnimationsButton,
+    .header:hover .llmsDecksLink {
       opacity: 1;
     }
   }
