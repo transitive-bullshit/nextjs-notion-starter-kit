@@ -20,20 +20,20 @@ export function PlayAnimationsButton({
   onToggle,
   className
 }: PlayAnimationsButtonProps) {
+  const label = playing ? 'Pause all illustrations' : 'Play all illustrations'
   return (
     <button
       type='button'
       className={cn(
         styles.headerButton,
         styles.playAnimationsButton,
+        styles.headerTip,
         className
       )}
       onClick={onToggle}
-      aria-label={
-        playing ? 'Pause all illustrations' : 'Play all illustrations'
-      }
+      aria-label={label}
       aria-pressed={playing}
-      title={playing ? 'Pause all illustrations' : 'Play all illustrations'}
+      data-tooltip={label}
     >
       {playing ? <PauseIcon /> : <PlayIcon />}
     </button>

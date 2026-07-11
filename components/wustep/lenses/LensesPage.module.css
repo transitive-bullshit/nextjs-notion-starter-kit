@@ -305,6 +305,63 @@
   height: 16px;
 }
 
+/* Tooltip for the hover-revealed header buttons. Pure CSS off a
+   `data-tooltip` attribute: a small ink pill below the button (the
+   header hugs the top edge, so below never clips). Shown after a
+   short delay on hover, immediately on keyboard focus. */
+.headerTip {
+  position: relative;
+}
+
+.headerTip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 9px);
+  left: 50%;
+  translate: -50% 2px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: #1a1a1a;
+  color: #f5f1e8;
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 150ms ease-out,
+    translate 150ms ease-out,
+    visibility 0s linear 150ms;
+  z-index: 30;
+}
+
+:global(.dark-mode) .headerTip::after {
+  background: #f5f1e8;
+  color: #1a1a1a;
+}
+
+.headerTip:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  translate: -50% 0;
+  transition-delay: 0s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .headerTip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    translate: -50% 0;
+    /* Delay only on the way in, so the pill doesn't flash while the
+       cursor sweeps across the header. */
+    transition-delay: 400ms;
+  }
+}
+
 /* Desktop-only; revealed on header hover (AboutPage theme-toggle pattern).
    Shared by the play toggle and the LLM-decks link that sits beside it. */
 .playAnimationsButton,

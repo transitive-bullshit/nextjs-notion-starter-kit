@@ -441,9 +441,9 @@ export function LensesPage({
                 {deck.key === 'wustep' && (
                   <Link
                     href='/lenses/llms'
-                    className={`${styles.headerButton} ${styles.llmsDecksLink}`}
+                    className={`${styles.headerButton} ${styles.llmsDecksLink} ${styles.headerTip}`}
                     aria-label='Lenses, by language models'
-                    title='Lenses, by language models'
+                    data-tooltip='Lenses, by language models'
                   >
                     <SparklesIcon />
                   </Link>
