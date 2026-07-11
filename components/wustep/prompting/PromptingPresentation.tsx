@@ -681,9 +681,11 @@ function GoToOverlay({
       return
     }
     if (event.key !== 'Tab') return
-    const focusables =
-      scrimRef.current?.querySelectorAll<HTMLElement>('button, input')
-    if (!focusables?.length) return
+    const focusables = [
+      ...(scrimRef.current?.querySelectorAll<HTMLElement>('button, input') ??
+        [])
+    ]
+    if (focusables.length === 0) return
     const first = focusables[0]
     const last = focusables.at(-1)
     if (event.shiftKey && document.activeElement === first) {
