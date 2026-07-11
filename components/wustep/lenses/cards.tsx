@@ -143,6 +143,8 @@ function LensCardImpl({
       type='button'
       className={className}
       style={style}
+      // Invisible cards shouldn't be tab stops during the entrance.
+      tabIndex={visible ? undefined : -1}
       onAnimationEnd={(event) => {
         if (event.currentTarget === event.target) setInteractionReady(true)
       }}
@@ -242,6 +244,8 @@ function CenterCardImpl({ stage, onOpen, previewOverride }: CenterCardProps) {
       type='button'
       className={`${styles.centerCard} ${visible ? styles.centerCardVisible : ''}`}
       style={style}
+      // Invisible during the entrance — keep it out of the tab order.
+      tabIndex={visible ? undefined : -1}
       onClick={() => onOpenRef.current()}
       aria-label={`Open: ${deck.center.title} index`}
       data-lens-id='__center__'

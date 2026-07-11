@@ -593,6 +593,10 @@
   cursor: pointer;
   font-family: var(--font-geist, var(--font-sans, system-ui), sans-serif);
   opacity: 0;
+  /* Not just transparent: unclickable and out of the a11y tree until
+     the entrance reveals it (visibility flips instantly — it's not in
+     the transition list). */
+  visibility: hidden;
   transform: scale(0.96);
   /* Default = hover-OUT timing. Hover-in overrides below with a
      much shorter duration so the card lifts under the cursor
@@ -628,6 +632,7 @@
 
 .cardVisible {
   opacity: 1;
+  visibility: visible;
   transform: scale(1);
   /* Entrance uses a one-shot animation rather than a transition
      so the base `.card` rule keeps owning `transform` for later
@@ -1131,6 +1136,8 @@
   cursor: pointer;
   font-family: var(--font-geist, var(--font-sans), system-ui, sans-serif);
   opacity: 0;
+  /* Unclickable and out of the a11y tree until revealed (see .card). */
+  visibility: hidden;
   transform: scale(0.94);
   transition:
     opacity 700ms var(--ease-out-quint),
@@ -1178,6 +1185,7 @@
 
 .centerCardVisible {
   opacity: 1;
+  visibility: visible;
   transform: scale(1);
   /* The entrance gets a longer exponential ease; afterwards the
      base rule owns the shorter interaction timing. */
