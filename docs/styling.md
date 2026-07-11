@@ -18,7 +18,7 @@ All five are imported from `pages/_app.tsx` or via `_document.tsx`.
 
 Configured by [`postcss.config.js`](../postcss.config.js) using `@tailwindcss/postcss`. No `tailwind.config.js` — v4 uses CSS-native `@custom-variant` / `@theme` directives inside `globals.css`.
 
-- Dark mode: `@custom-variant dark (&:is(.dark *))` — toggled by a `dark` class on the root element.
+- Dark mode: `@custom-variant dark (&:is(.dark-mode *))` — keyed off the same `dark-mode` body class the Notion track uses, so `dark:` utilities and the `.dark-mode` token overrides flip together.
 - The shadcn token system (`--background`, `--foreground`, etc.) sits in `:root` in `globals.css`.
 
 ## The two token systems (namespaced)

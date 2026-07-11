@@ -7,7 +7,10 @@
 
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
+/* Key the Tailwind dark: variant off the .dark-mode class that
+   lib/use-dark-mode.ts and the _document noflash script actually toggle
+   (nothing ever applies a bare `.dark` class). */
+@custom-variant dark (&:is(.dark-mode *));
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
