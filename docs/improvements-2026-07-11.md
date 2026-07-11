@@ -6,140 +6,140 @@
 ## UI/UX & Design
 
 ### 1. Resolve the two-token-system `:root` collision (wustep.css silently overrides shadcn)
-- **Impact:** 🔴 high · **Effort:** L · **Status:** ⬜ proposed
+- **Impact:** 🔴 high · **Effort:** L · **Status:** ✅ accepted
 - **Problem.** `styles/globals.css` and `styles/wustep.css` both define the same variable names at `:root` — `--primary`, `--secondary`, `--accent`, `--background`, and `--radius-sm/md/lg` (globals.css:125–142 as `oklch(...)` + :57–59 as `calc(var(--radius) …)`, vs wustep.css:9–12,37–39 as hex/px). `pages/_app.tsx:18` imports wustep.css last, so its values win the cascade for every shadcn/Tailwind component: `rounded-sm` resolves to wustep's 4px instead of shadcn's ~6px, and `bg-primary`/`text-primary` pull wustep's hex, not the oklch scale. `pages/design/theme.tsx:143–184` re-maps tokens only inside the theme preview, not globally. The `--dw-*` workbench vocabulary is duplicated (13 identical keys) in both files.
 - **Proposal.** Pick one owner per token: namespace wustep's tokens (e.g. `--w-primary`) or move the shadcn palette to non-colliding names, have `@theme inline` map to the intended source, delete the duplicated `--dw-*` block from one file, and add a "who owns which token" table to `docs/styling.md`.
 - **Risks / trade-offs.** Touches globally-consumed tokens; a rename can regress Notion-track pages or shadcn components. Needs a visual pass in light and dark across /design, /playground, About, and Notion pages.
 - **Files.** `styles/globals.css`, `styles/wustep.css`, `pages/_app.tsx`, `pages/design/theme.tsx`, `docs/styling.md`
 
 ### 2. `_error` page renders "Error undefined" — wire up statusCode
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** `pages/_error.tsx` only re-exports `ErrorPage`; there is no `getInitialProps`, so `statusCode` is `undefined` on real 500s and client-side crashes. `components/ErrorPage.tsx` renders it as the giant number (line 19), sets `<title>Error undefined</title>` (line 7), and always shows the non-500 copy (lines 8–11). This is the site's top-level crash screen.
 - **Proposal.** Add `getInitialProps = ({ res, err }) => ({ statusCode: res?.statusCode ?? err?.statusCode ?? 500 })` and guard the display so a missing code falls back to a friendly label.
 - **Risks / trade-offs.** `getInitialProps` on `_error` opts it out of static optimization (already true for `_error`); verify both SSR 500s and client-transition errors.
 - **Files.** `pages/_error.tsx`, `components/ErrorPage.tsx`
 
 ### 3. Stop hiding the entire About page until JS runs
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** `components/AboutPage.module.css` `.page` starts at `opacity: 0` (line 7) and only becomes visible via `.visible` (line 37), applied by `useAnimateIn()` in `AboutPage.tsx` (lines 88–95) inside a post-mount `requestAnimationFrame`. The fully server-rendered About page is invisible until hydration — blank on slow devices, permanently blank if the JS bundle fails.
 - **Proposal.** Default `.page` to visible and make the entrance fade opt-in (class added synchronously before paint on the JS-enabled path), or animate a child wrapper so SSR content always paints.
 - **Risks / trade-offs.** The entrance fade won't play on the very first paint for no-JS users (acceptable); ensure no flash for JS users.
 - **Files.** `components/AboutPage.tsx`, `components/AboutPage.module.css`
 
 ### 4. Fix the split dark-mode mechanism and the dead shadcn `.dark` variant
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** `styles/globals.css:10` declares `@custom-variant dark (&:is(.dark *))`, but nothing ever applies a `.dark` class — `pages/_document.tsx:19–23` and `lib/use-dark-mode.ts:4` toggle only `dark-mode`. The shadcn `dark:` variant is a latent trap. globals.css binds the shadcn dark palette to `.dark-mode` (165–197) while wustep.css also overrides the same names there (63–71), so `bg-background` resolves to wustep's `#0d0d0d`, not the oklch value.
 - **Proposal.** Rewrite the variant to `@custom-variant dark (&:is(.dark-mode *))` (or also toggle `.dark` in the noflash script and hook), then dedupe the dark-token overrides so one file owns them.
 - **Risks / trade-offs.** Aligning the selector could activate previously-inert styling if `dark:` utilities are added later; verify no third-party CSS keys off `.dark`.
 - **Files.** `styles/globals.css`, `styles/wustep.css`, `pages/_document.tsx`, `lib/use-dark-mode.ts`
 
 ### 5. Fix iOS Safari viewport jumps on full-screen surfaces (100vh → dvh/svh)
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** Full-height surfaces still use `100vh`, which on iOS Safari includes the collapsing toolbar area: `PromptingPresentation.module.css` `.presenterFullscreen { height: 100vh }` (:29) and `.presenter { min-height: 100vh }` (:11); `LensesPage.module.css` `.frame { min-height: 100vh }` (:73) and dialog `max-height: calc(100vh - 64px)` (:1990); `AboutPage.module.css` `.page { min-height: 100vh }` (:3). The codebase already uses `100dvh` elsewhere (LensesPage.module.css:429, 4451–4452, design pages), so treatment is inconsistent.
 - **Proposal.** Switch these to `100dvh` with a `100vh` fallback line first (or `svh` where a stable viewport is better, e.g. the presenter slide).
 - **Risks / trade-offs.** `dvh` recalculates as the URL bar animates (subtle resize during scroll); `svh` leaves a gap when the bar collapses — pick per surface.
 - **Files.** `components/wustep/prompting/PromptingPresentation.module.css`, `components/wustep/lenses/LensesPage.module.css`, `components/AboutPage.module.css`
 
 ### 6. Kill the default tap-highlight box on the touch-first card surfaces
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** No global `-webkit-tap-highlight-color` reset exists — the only occurrence is scoped to `styles/applause.css:19`. On iOS, tapping lens cards, CenterDialog items, playground project links, and header buttons flashes the default gray rectangle, undermining the deck's carefully designed `:active` scale/shadow feedback (`LensesPage.module.css:741–769`).
 - **Proposal.** Add `-webkit-tap-highlight-color: transparent` to interactive elements (`a, button, [role="button"]`) in `styles/globals.css`, relying on existing designed `:active` states; spot-check every tappable control has visible press feedback.
 - **Risks / trade-offs.** Controls lacking their own `:active` state lose feedback — audit plain Notion links; scope to custom surfaces if a blanket reset is too broad.
 - **Files.** `styles/globals.css`, `styles/wustep.css`, `components/wustep/lenses/LensesPage.module.css`, `pages/playground/index.tsx`
 
 ### 7. Respect safe-area insets on the full-bleed lenses panel and index dialog
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** On phones the SidePanel is edge-to-edge (`.panel { width: 100vw }`, LensesPage.module.css:4423) and the CenterDialog fills the screen (`.dialog { height: 100dvh }`, :4451), but padding is plain pixels: `.panelHero` (4474–4476), `.panelBody` (4482–4485), `.dialogList`/`.dialogHeader` (4487–4498). The close/prev/next cluster at `top: 20px` (:1472) can tuck under the notch; list rows sit under the home indicator. `.cards` already does it right with `max(28px, env(safe-area-inset-bottom))` (:4384).
 - **Proposal.** Add `env(safe-area-inset-*)` to the phone rules — top inset for `.panelHero`/`.panelControls`/`.dialogHeader`, bottom inset for `.panelBody`/`.dialogList`, mirroring the `.cards` approach.
 - **Risks / trade-offs.** Insets are 0 on non-notched devices; verify hero art isn't pushed too far down, and consider landscape (left/right) insets for panel controls.
 - **Files.** `components/wustep/lenses/LensesPage.module.css`
 
 ### 8. Bring primary icon controls up to the 44px touch-target bar
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** PRODUCT.md commits to touch-friendly targets, but: the Playground `SidebarTrigger` is 28px (`components/ui/sidebar.tsx:277`), the Playground header home/owner/theme buttons are 32px (`PlaygroundLayout.tsx:192–204`), Lenses `.headerButton` is 34px (`LensesPage.module.css:~258`), About `.navIcon` is 40px (`AboutPage.module.css`). The Footer already does it right at 44px (`components/styles.module.css:106–107`).
 - **Proposal.** Expand hit areas to ≥44px — keep glyph sizes, add padding or an invisible `::before` expander, prioritizing `SidebarTrigger` (sole open/close affordance on mobile) and the Playground header row.
 - **Risks / trade-offs.** Larger targets can crowd the compact 55px Playground header; use expanders rather than growing visible chrome.
 - **Files.** `components/ui/sidebar.tsx`, `components/wustep/PlaygroundLayout.tsx`, `components/wustep/lenses/LensesPage.module.css`, `components/AboutPage.module.css`
 
 ### 9. Raise sub-threshold low-contrast text in the Playground sidebar
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** `PlaygroundSidebar.tsx` renders meaningful copy at heavily reduced opacity: disabled items and years at `text-muted-foreground/60` (:159, :162–165, :174–177), the About body at `text-muted-foreground` (:188), the metadata row at `text-muted-foreground/80` in 11px (:195). `muted-foreground` at 60–80% opacity is very likely below WCAG 2.2 AA 4.5:1 for small text — and it's the sidebar's primary descriptive copy.
 - **Proposal.** Measure these pairings in light and `.dark`; raise disabled/metadata text to full `muted-foreground` (or a dedicated AA-passing token) and reserve opacity dimming for decorative elements.
 - **Risks / trade-offs.** More legible disabled items weaken the "disabled" affordance — pair contrast with a non-color cue.
 - **Files.** `components/wustep/PlaygroundSidebar.tsx`, `styles/globals.css`
 
 ### 10. Stop hiding scrollbars site-wide; unify the inner-scrollbar treatment
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** `styles/wustep.css:1289–1297` hides scrollbars globally (`::-webkit-scrollbar { display: none }` + `body { scrollbar-width: none }`), removing the scroll-position cue on the main page for everyone. The inner panels that do style scrollbars are inconsistent: `DesignWorkbench.module.css:226` and `pages/design/fonts.module.css:118` use `scrollbar-color: #b4b5b0 transparent`; `DesignPanel.module.css:382–394` uses `rgba(255,255,255,0.16)` with a separate webkit block — three looks, none tokenized, one with no dark-mode variant.
 - **Proposal.** Remove (or narrowly scope) the global hide; define one tokenized thin-scrollbar recipe (`scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) transparent`) reused by inner panels with a dark-mode value.
 - **Risks / trade-offs.** Scrollbars appear on pages designed assuming none — check Notion content pages and horizontal-overflow layouts for unexpected gutters.
 - **Files.** `styles/wustep.css`, `components/design/DesignWorkbench.module.css`, `pages/design/fonts.module.css`, `components/wustep/lenses/DesignPanel.module.css`
 
 ### 11. Close reduced-motion gaps and stop animating layout properties on hover
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** `components/Page404.module.css` runs 800–1000ms entrance choreography (`fadeIn`, `expandLine` at :19,:43,:51,:71,:80,:99,:127) plus a hover transform (:111) with no `prefers-reduced-motion` guard — unlike nearly every other module. `components/PageSocial.module.css:53–58` animates `width`/`height` 0→100% on hover (layout-thrashing; should be `transform`), also unguarded, and hardcodes `color: #ffffff` (:84).
 - **Proposal.** Add `@media (prefers-reduced-motion: reduce)` blocks mirroring the existing site pattern; reimplement PageSocial's expanding circle with `transform: scale()` from a fixed-size element; tokenize the hardcoded white.
 - **Risks / trade-offs.** `scale()` changes the fill-reveal feel slightly; verify the hover still reads as a fill, not a zoom.
 - **Files.** `components/Page404.module.css`, `components/PageSocial.module.css`
 
 ### 12. Make the About-page inline tooltips reachable by keyboard and screen readers
-- **Impact:** 🟡 med · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** The `Tooltip` in `components/AboutPage.tsx` (:97–137) reveals only on `:hover` (`AboutPage.module.css:1211–1216`) and `:focus-within` (:1142), but two of three bio tooltips wrap non-focusable `<span className={styles.bioHint}>` triggers (:232–237, :239–244) — `focus-within` never fires. The tooltip node has no `role="tooltip"`/`id` and triggers have no `aria-describedby`, so screen readers get nothing.
 - **Proposal.** Make text triggers focusable (`tabindex=0` + `aria-describedby`), give the tooltip `role="tooltip"` and an `id`, reveal on `:hover, :focus-visible` — or swap to Radix Tooltip (already in deps).
 - **Risks / trade-offs.** Adds tabstops to inline hero text; keep to the three intentional hints.
 - **Files.** `components/AboutPage.tsx`, `components/AboutPage.module.css`
 
 ### 13. Replace the generic loading spinner with a designed, theme-aware Notion skeleton
-- **Impact:** 🟡 med · **Effort:** M · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** M · **Status:** ✅ accepted
 - **Problem.** `pages/[pageId].tsx` uses `fallback: true` (:79, :94), so uncached pages render `<Loading/>` during ISR; `NotionPage.tsx:348–354` does the same for redirects. The spinner color is hardcoded `rgba(55, 53, 47, 0.4)` (`components/styles.module.css:37`), `LoadingIcon.tsx` hardcodes gray gradient stops, and styles.module.css:20 carries the TODO "swap to dark mode aware colors". In dark mode it's a low-contrast gray blob — against PRODUCT.md's dark-parity commitment.
 - **Proposal.** Build a lightweight skeleton mirroring a Notion article shell (cover band, title, byline, paragraph bars) with `components/ui/skeleton.tsx` + shadcn tokens for the `router.isFallback` branch; at minimum derive the spinner color from `currentColor`/tokens.
 - **Risks / trade-offs.** Skeleton geometry won't match every page type; keep it generic to avoid a jarring swap; preserve the absolute-fill layout.
 - **Files.** `components/Loading.tsx`, `components/LoadingIcon.tsx`, `components/styles.module.css`, `components/NotionPage.tsx`, `components/ui/skeleton.tsx`
 
 ### 14. Pause off-screen playground cover animations to protect mobile perf/battery
-- **Impact:** 🟡 med · **Effort:** M · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** M · **Status:** ✅ accepted
 - **Problem.** `pages/playground/index.tsx:44–46` renders every `CoverComponent` eagerly. `LensesCover`, `MidiVisualizerCover`, `StageBenchCover`, and `ShadcnPhysicsCover` module CSS all run `@keyframes` (several `infinite`), and no cover is gated by visibility — `lib/use-in-view.ts` exists but no `*Cover.tsx` uses it. Many simultaneous off-screen loops hurt scroll smoothness and battery on phones.
 - **Proposal.** Gate looping covers with `lib/use-in-view.ts` (`animation-play-state: paused` off-screen; don't mount rAF loops), plus `content-visibility: auto` on the cover container.
 - **Risks / trade-offs.** Pausing/resuming can visibly restart animations — prefer `animation-play-state` over unmounting; reduced-motion is already covered by wustep.css:107.
 - **Files.** `pages/playground/index.tsx`, `components/wustep/*Cover.tsx`, `components/wustep/*Cover.module.css`, `lib/use-in-view.ts`
 
 ### 15. Consolidate motion tokens and eliminate raw-bezier / duration sprawl
-- **Impact:** 🟡 med · **Effort:** M · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** M · **Status:** ✅ accepted
 - **Problem.** Easing tokens exist (`globals.css:160–162`) but are duplicated and diverging: `--ease-out-quart/quint` redefined in `LensesPage.module.css:30–31`, `--ease-out-snap` defined in both LensesPage.module.css:37 and `LlmsDirectory.module.css:10`. Most motion bypasses tokens: `cubic-bezier(0.32, 0.72, 0, 1)` appears 62×, `cubic-bezier(0.22, 1, 0.36, 1)` 47×, and durations span 60→1400ms with no `--duration-*` scale.
 - **Proposal.** Promote shared easings + a small duration scale (`--dur-fast/base/slow`) to globals `:root`, delete duplicate token blocks, replace the two highest-frequency raw beziers with `var(--ease-…)`; leave bespoke deck curves scoped but named.
 - **Risks / trade-offs.** Deck animations were hand-tuned; substitute curve-by-curve only where values match a token exactly.
 - **Files.** `styles/globals.css`, `components/wustep/lenses/LensesPage.module.css`, `components/wustep/lenses/llms/LlmsDirectory.module.css`, `components/wustep/prompting/PromptingPresentation.module.css`
 
 ### 16. Actually use the z-index scale that already exists (and kill `z-index: 9999`)
-- **Impact:** 🟡 med · **Effort:** M · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** M · **Status:** ✅ accepted
 - **Problem.** `globals.css:23–29` defines a semantic scale (`--z-base:1 … --z-toast:300`) with a "never hardcode large values" comment, yet only 6 sites consume it. `DesignPanel.module.css:28` uses `z-index: 9999`; LensesPage and PromptingPresentation scatter 0–200 across stacking contexts with no shared meaning (two unrelated `z-index: 100` and two `z-index: 200` in LensesPage at :4727/:4780).
 - **Proposal.** Replace 9999 and large ad-hoc values with the semantic tokens; wrap locally-ordered groups in `isolation: isolate` with small integers; document the scale in `docs/styling.md`.
 - **Risks / trade-offs.** Re-mapping can expose latent overlap bugs (modal vs sticky header vs deck cards); test /lenses dialogs and /prompting interactions.
 - **Files.** `components/wustep/lenses/DesignPanel.module.css`, `components/wustep/lenses/LensesPage.module.css`, `components/wustep/prompting/PromptingPresentation.module.css`, `components/wustep/MidiVisualizer.module.css`
 
 ### 17. Introduce an elevation/shadow token scale
-- **Impact:** 🟡 med · **Effort:** M · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** M · **Status:** ✅ accepted
 - **Problem.** ~40 unique bespoke `box-shadow` declarations with no elevation system — near-duplicates like `0 20px 60px rgba(0,0,0,0.28)`, `0 24px 70px rgba(0,0,0,0.28)`, `0 24px 80px rgba(0,0,0,0.4)`, `0 28px 80px rgba(0,0,0,0.35)` each appear once; focus rings vary across multiple 2px/3px accent tints. All alphas are hardcoded `rgba(0,0,0,x)` — no dark-aware elevation, no single depth knob.
 - **Proposal.** Define `--shadow-sm/md/lg/xl` + `--shadow-focus` in globals, tuned for light and `.dark-mode`, and replace recurring card/dialog/focus shadows. Keep artistic cover glows local.
 - **Risks / trade-offs.** Shadows carry surface character; scope to structural surfaces (cards, dialogs, panels, focus), not cover art.
 - **Files.** `styles/globals.css`, `components/wustep/lenses/LensesPage.module.css`, `components/wustep/prompting/PromptingPresentation.module.css`, `components/wustep/*Cover.module.css`
 
 ### 18. Standardize the radius scale and the pill convention
-- **Impact:** 🟡 med · **Effort:** M · **Status:** ⬜ proposed
+- **Impact:** 🟡 med · **Effort:** M · **Status:** ✅ accepted
 - **Problem.** "Fully rounded" is expressed three ways: `999px` (26×), `290486px` (`MidiVisualizer.module.css:722,:737` — the Bulma magic number), and `99px` (`PromptingPresentation.module.css:1486`). Small radii are hardcoded 2–18px across modules while `--radius-sm/md/lg` go almost unused (only `Page404.module.css:122`). The idea-1 collision also means `components/ui/*` render at wustep's px values.
 - **Proposal.** Standardize a `--radius-pill: 9999px` token and replace the variants; map common small radii to `--radius-sm/md/lg` where a component isn't intentionally bespoke.
 - **Risks / trade-offs.** Don't force-tokenize intentional cover-art radii; the pill swap itself is visually a no-op.
 - **Files.** `components/wustep/MidiVisualizer.module.css`, `components/wustep/prompting/PromptingPresentation.module.css`, `styles/globals.css`, `docs/styling.md`
 
 ### 19. Give the prompting "Go to slide" overlay real dialog behavior
-- **Impact:** ⚪ low · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** ⚪ low · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** `GoToOverlay` in `PromptingPresentation.tsx:646–694` renders `role="dialog"` (:670) with no `aria-modal="true"` and no focus trap — Tab escapes to the slide controls behind the scrim, and focus isn't restored to the trigger on close. Escape only works via a window-level handler (:436–441).
 - **Proposal.** Add `aria-modal="true"`, trap Tab within the form (or reuse Radix Dialog as the Lenses surfaces do), and restore focus on close.
 - **Risks / trade-offs.** Niche surface; a minimal manual focus-guard is smaller than a Radix swap.
 - **Files.** `components/wustep/prompting/PromptingPresentation.tsx`
 
 ### 20. Stop lens cards being focusable and clickable while invisible during the entrance
-- **Impact:** ⚪ low · **Effort:** S · **Status:** ⬜ proposed
+- **Impact:** ⚪ low · **Effort:** S · **Status:** ✅ accepted
 - **Problem.** `LensCard`/`CenterCard` (`cards.tsx:142`) always render an interactive `<button>`; the base `.card` is `opacity: 0` (`LensesPage.module.css:543`) until `.cardVisible` (:577), with no `visibility: hidden`/`inert`/`tabIndex=-1`. During the first-visit entrance (`LensesPage.tsx:217–227`), all ~32 cards are tabbable and clickable while fully transparent — keyboard focus lands on invisible controls, violating the visible-focus commitment.
 - **Proposal.** Gate interactivity on visibility: `tabIndex={visible ? undefined : -1}` (or `inert`) until the card's stage is reached, and/or `visibility: hidden` in the base state.
 - **Risks / trade-offs.** Reduced-motion/repeat visits snap straight to `STAGE.cards` — guard the gating to the animated path only.
