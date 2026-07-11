@@ -1,6 +1,7 @@
 .page {
   position: relative;
-  min-height: 100vh;
+  min-height: 100vh; /* fallback for browsers without dvh */
+  min-height: 100dvh;
   background: var(--about-bg);
   color: var(--about-text);
   font-family: var(--font-serif);

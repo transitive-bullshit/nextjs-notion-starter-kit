@@ -8,7 +8,8 @@
   --magenta: #b83280;
   --violet: #6d48bf;
   --teal: #0f766e;
-  min-height: 100vh;
+  min-height: 100vh; /* fallback for browsers without dvh */
+  min-height: 100dvh;
   padding: 18px;
   background:
     radial-gradient(
@@ -26,7 +27,8 @@
 .presenterFullscreen {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 100vh;
+  height: 100vh; /* fallback for browsers without dvh */
+  height: 100dvh;
   padding: 14px;
 }
 
@@ -133,7 +135,8 @@
   grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.78fr);
   gap: clamp(28px, 5vw, 72px);
   width: min(1280px, calc(100vw - 36px));
-  min-height: min(720px, calc(100vh - 108px));
+  min-height: min(720px, calc(100vh - 108px)); /* fallback */
+  min-height: min(720px, calc(100dvh - 108px));
   margin: 0 auto;
   padding: clamp(42px, 6vw, 76px);
   overflow: hidden;
@@ -314,7 +317,8 @@
 }
 
 .notesPage {
-  min-height: 100vh;
+  min-height: 100vh; /* fallback for browsers without dvh */
+  min-height: 100dvh;
   padding: clamp(24px, 5vw, 64px);
   background: #12110f;
   color: var(--paper, #f4eee3);

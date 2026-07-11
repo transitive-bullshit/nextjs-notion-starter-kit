@@ -70,7 +70,8 @@
 
 .frame {
   position: relative;
-  min-height: 100vh;
+  min-height: 100vh; /* fallback for browsers without dvh */
+  min-height: 100dvh;
   /* Establish an inline-size container so the canvas responds to
      the *frame's* width, not the viewport. This matters in
      embedded mode (e.g. /playground/lenses) where the playground
@@ -2049,7 +2050,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
   width: min(var(--design-dialog-width, 760px), calc(100vw - 32px));
-  max-height: calc(100vh - 64px);
+  max-height: calc(100vh - 64px); /* fallback */
+  max-height: calc(100dvh - 64px);
   background: #faf7ee;
   border-radius: var(--design-dialog-radius, 18px);
   box-shadow:
