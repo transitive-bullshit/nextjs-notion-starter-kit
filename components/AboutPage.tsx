@@ -85,15 +85,6 @@ const writingPersonal = [
   }
 ]
 
-function useAnimateIn() {
-  const [visible, setVisible] = React.useState(false)
-  React.useEffect(() => {
-    const id = requestAnimationFrame(() => setVisible(true))
-    return () => cancelAnimationFrame(id)
-  }, [])
-  return visible
-}
-
 function Tooltip({
   children,
   label,
@@ -137,7 +128,6 @@ function Tooltip({
 }
 
 export function AboutPage() {
-  const animateIn = useAnimateIn()
   const [isDark, setIsDark] = React.useState(true)
 
   React.useEffect(() => {
@@ -152,9 +142,7 @@ export function AboutPage() {
   }, [isDark])
 
   return (
-    <main
-      className={`${styles.page} ${animateIn ? styles.visible : ''} ${isDark ? styles.dark : styles.light}`}
-    >
+    <main className={`${styles.page} ${isDark ? styles.dark : styles.light}`}>
       <div className={styles.glow} aria-hidden='true' />
 
       <div className={styles.container}>

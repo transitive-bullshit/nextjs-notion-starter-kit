@@ -4,11 +4,20 @@
   background: var(--about-bg);
   color: var(--about-text);
   font-family: var(--font-serif);
-  opacity: 0;
+  /* CSS-only entrance so server-rendered content never waits on hydration */
+  animation: pageFadeIn 600ms ease;
   transition:
-    opacity 600ms ease,
     background-color 300ms ease,
     color 300ms ease;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .page.dark {
@@ -31,10 +40,6 @@
   --about-border-hover: rgba(0, 0, 0, 0.15);
   --about-card: rgba(0, 0, 0, 0.03);
   --about-card-hover: rgba(0, 0, 0, 0.06);
-}
-
-.page.visible {
-  opacity: 1;
 }
 
 .glow {
