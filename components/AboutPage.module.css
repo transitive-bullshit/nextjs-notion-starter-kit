@@ -112,6 +112,7 @@
 /* Container-level overrides; the shared ThemeToggle provides reset,
  * rotation, and yellow/indigo hover colors. */
 .themeToggle {
+  position: relative;
   width: 40px;
   height: 40px;
   border-radius: 12px;
@@ -170,6 +171,7 @@
 }
 
 .navIcon {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -184,6 +186,15 @@
     background-color 180ms ease,
     border-color 180ms ease,
     color 180ms ease;
+}
+
+/* 44px hit area via pseudo-element — visual size stays 40px. */
+.navIcon::after,
+.themeToggle::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
 }
 
 .navIcon svg {

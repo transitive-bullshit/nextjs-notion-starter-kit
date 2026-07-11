@@ -191,16 +191,16 @@ function LayoutContent({
         <div className='relative ml-auto flex items-center gap-2'>
           <Link
             href='/'
-            className='playground-home-button playground-action-button inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors'
+            className='playground-home-button playground-action-button relative inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors after:absolute after:-inset-1.5'
             aria-label='Go home'
           >
             <HouseFillIcon className='playground-home-icon h-4 w-4' />
           </Link>
-          <OwnerModeToggle className='playground-owner-mode-toggle playground-action-button h-8 w-8 rounded-md text-base' />
+          <OwnerModeToggle className='playground-owner-mode-toggle playground-action-button relative h-8 w-8 rounded-md text-base after:absolute after:-inset-1.5' />
           <ThemeToggle
             isDark={hasMounted ? isDarkMode : false}
             onToggle={toggleDarkMode}
-            className='playground-theme-button playground-action-button inline-flex h-8 w-8 items-center justify-center rounded-md'
+            className='playground-theme-button playground-action-button relative inline-flex h-8 w-8 items-center justify-center rounded-md after:absolute after:-inset-1.5'
           />
         </div>
       </header>

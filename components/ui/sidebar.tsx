@@ -274,7 +274,11 @@ const SidebarTrigger = React.forwardRef<
       data-sidebar='trigger'
       variant='ghost'
       size='icon'
-      className={cn('h-7 w-7', className)}
+      // 44px hit area via ::after — the visible button stays 28px.
+      className={cn(
+        'relative h-7 w-7 after:absolute after:-inset-2',
+        className
+      )}
       onClick={(event) => {
         onClick?.(event)
         toggleSidebar()
