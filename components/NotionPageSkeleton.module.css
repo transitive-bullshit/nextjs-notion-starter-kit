@@ -1,0 +1,65 @@
+.page {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--w-background);
+  color: var(--w-primary);
+}
+
+/* Mirrors the Notion article column so the swap to real content is calm. */
+.column {
+  width: min(708px, calc(100vw - 48px));
+  margin: 0 auto;
+  padding-top: 96px;
+}
+
+.icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.title {
+  height: 38px;
+  width: 65%;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.meta {
+  height: 14px;
+  width: 30%;
+  border-radius: 6px;
+  margin-bottom: 28px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--w-divider);
+  margin-bottom: 28px;
+}
+
+.line {
+  height: 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.icon,
+.title,
+.meta,
+.line {
+  background: var(--w-surface-hover);
+  animation: skeletonPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes skeletonPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}

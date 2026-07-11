@@ -34,7 +34,8 @@
   display: block;
   width: 24px;
   height: 24px;
-  color: rgba(55, 53, 47, 0.4);
+  /* Theme-aware: the SVG strokes/fills use currentColor. */
+  color: var(--w-secondary);
 }
 
 .main {

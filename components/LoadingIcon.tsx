@@ -20,12 +20,9 @@ export function LoadingIcon(props: ComponentPropsWithoutRef<'svg'>) {
           y2='17.7832031%'
           id='linearGradient-1'
         >
-          <stop stopColor='rgba(164, 164, 164, 1)' offset='0%' />
-          <stop
-            stopColor='rgba(164, 164, 164, 0)'
-            stopOpacity='0'
-            offset='100%'
-          />
+          {/* currentColor lets the CSS color token theme the spinner. */}
+          <stop stopColor='currentColor' offset='0%' />
+          <stop stopColor='currentColor' stopOpacity='0' offset='100%' />
         </linearGradient>
       </defs>
 
@@ -43,12 +40,12 @@ export function LoadingIcon(props: ComponentPropsWithoutRef<'svg'>) {
             <path
               d='M10,2 C4.4771525,2 0,6.4771525 0,12'
               id='Oval-2'
-              stroke='rgba(164, 164, 164, 1)'
+              stroke='currentColor'
               strokeWidth='4'
             />
             <rect
               id='Rectangle-1'
-              fill='rgba(164, 164, 164, 1)'
+              fill='currentColor'
               x='8'
               y='0'
               width='4'

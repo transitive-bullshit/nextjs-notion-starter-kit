@@ -35,6 +35,7 @@ import { ErrorPage } from './ErrorPage'
 import { Footer } from './Footer'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
+import { NotionPageSkeleton } from './NotionPageSkeleton'
 import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
@@ -346,7 +347,7 @@ export function NotionPage({
   }, [notionFallbackUrl, pageId])
 
   if (router.isFallback) {
-    return <Loading />
+    return <NotionPageSkeleton />
   }
 
   if (externalRedirectUrl || notionFallbackUrl) {
