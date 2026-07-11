@@ -8,6 +8,10 @@
   --magenta: #b83280;
   --violet: #6d48bf;
   --teal: #0f766e;
+  /* One elevation for floating dark surfaces (slide, demos, dialogs) —
+     replaces four hand-tuned near-duplicates. Local (not a global token)
+     because this surface is fixed-dark regardless of site theme. */
+  --shadow-overlay: 0 24px 72px rgba(0, 0, 0, 0.32);
   min-height: 100vh; /* fallback for browsers without dvh */
   min-height: 100dvh;
   padding: 18px;
@@ -141,7 +145,7 @@
   padding: clamp(42px, 6vw, 76px);
   overflow: hidden;
   border: 1px solid rgba(244, 238, 227, 0.12);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-overlay);
   animation: slideIn 280ms var(--ease-out-smooth);
 }
 
@@ -317,6 +321,8 @@
 }
 
 .notesPage {
+  /* Same fixed-dark elevation as .presenter (separate root, same world). */
+  --shadow-overlay: 0 24px 72px rgba(0, 0, 0, 0.32);
   min-height: 100vh; /* fallback for browsers without dvh */
   min-height: 100dvh;
   padding: clamp(24px, 5vw, 64px);
@@ -530,7 +536,7 @@
 }
 
 .articlePromptDemo > * {
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--shadow-overlay);
 }
 
 .articleEquationDemo,
@@ -2573,7 +2579,7 @@
 .briefPair section.briefGood {
   border-color: rgba(232, 162, 65, 0.55);
   background: #221a13;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--shadow-overlay);
 }
 
 .briefPair section.briefGood span {
@@ -2986,7 +2992,7 @@
   padding: 22px 26px;
   border: 1px solid rgba(244, 238, 227, 0.2);
   background: #1a1714;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-overlay);
   animation: goToEnter 220ms var(--ease-out-smooth);
 }
 
