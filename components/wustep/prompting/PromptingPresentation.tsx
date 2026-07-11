@@ -651,9 +651,14 @@ function GoToOverlay({
 }) {
   const [value, setValue] = React.useState('')
   const inputRef = React.useRef<HTMLInputElement | null>(null)
+  const scrimRef = React.useRef<HTMLDivElement | null>(null)
 
   React.useEffect(() => {
+    const previouslyFocused = document.activeElement
     inputRef.current?.focus()
+    return () => {
+      if (previouslyFocused instanceof HTMLElement) previouslyFocused.focus()
+    }
   }, [])
 
   const submit = (event: React.FormEvent) => {
@@ -666,13 +671,46 @@ function GoToOverlay({
     }
   }
 
+  // Modal behavior the window-level handler can't provide: Escape works
+  // even while the input is focused, and Tab cycles inside the dialog.
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      event.stopPropagation()
+      onClose()
+      return
+    }
+    if (event.key !== 'Tab') return
+    const focusables =
+      scrimRef.current?.querySelectorAll<HTMLElement>('button, input')
+    if (!focusables?.length) return
+    const first = focusables[0]
+    const last = focusables.at(-1)
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault()
+      last?.focus()
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault()
+      first?.focus()
+    }
+  }
+
   return (
-    <div className={styles.goToScrim} role='dialog' aria-label='Go to slide'>
+    <div
+      ref={scrimRef}
+      className={styles.goToScrim}
+      role='dialog'
+      aria-modal='true'
+      aria-label='Go to slide'
+    >
+      {/* The key handler sits on each interactive element (focus is
+          trapped among them) — jsx-a11y disallows it on the dialog div. */}
       <button
         type='button'
         className={styles.goToScrimButton}
         aria-label='Close'
         onClick={onClose}
+        onKeyDown={handleKeyDown}
       />
       <form className={styles.goTo} onSubmit={submit}>
         <label htmlFor='go-to-input'>Go to slide</label>
@@ -686,8 +724,11 @@ function GoToOverlay({
           value={value}
           onChange={(event) => setValue(event.target.value)}
           placeholder={`1–${count}`}
+          onKeyDown={handleKeyDown}
         />
-        <button type='submit'>jump</button>
+        <button type='submit' onKeyDown={handleKeyDown}>
+          jump
+        </button>
       </form>
     </div>
   )
