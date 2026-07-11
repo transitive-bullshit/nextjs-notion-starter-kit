@@ -20,21 +20,10 @@
  *     • prefers-reduced-motion disables all animation, no exceptions
  * ========================================================================== */
 
-/* Reusable easing — kept narrow so we can tune timing globally.
-   The hover hot-path uses --ease-out-snap exclusively: a sharp
-   curve that lands *cleanly* without the trailing tail that
-   makes quart/quint ease-outs feel sluggish at short durations.
-   Quart/quint stay around for entrance animations (300ms+) where
-   their gentler arc reads as graceful rather than draggy. */
+/* Easing tokens (--ease-out-*) are owned by styles/globals.css :root —
+   the hover hot-path uses --ease-out-snap (lands cleanly at short
+   durations); quart/quint suit 300ms+ entrances. */
 .frame {
-  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  /* Sharp ease-out that lands *cleanly*. Second control point
-     at (0.2, 1) means ~80% travel by 50% time, then the last
-     20% completes quickly instead of trailing. The curve to use
-     for short hover/press transforms. */
-  --ease-out-snap: cubic-bezier(0.2, 0.9, 0.2, 1);
   /* Legacy aliases keep the existing interaction rules readable
      while removing overshoot from the motion system. */
   --ease-spring-soft: var(--ease-out-expo);

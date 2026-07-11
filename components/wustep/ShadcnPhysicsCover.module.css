@@ -106,7 +106,7 @@
   }
   82% {
     transform: translate(-3.5cqw, 37cqh) rotate(-162deg) scaleY(0.96);
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timing-function: var(--ease-out-smooth);
   }
   92% {
     transform: translate(-3.5cqw, 38cqh) rotate(-156deg) scaleY(1);
@@ -132,7 +132,7 @@
   }
   85% {
     transform: translate(2.5cqw, 31cqh) rotate(82deg) scaleY(0.97);
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timing-function: var(--ease-out-smooth);
   }
   94% {
     transform: translate(2.5cqw, 32cqh) rotate(77deg) scaleY(1);

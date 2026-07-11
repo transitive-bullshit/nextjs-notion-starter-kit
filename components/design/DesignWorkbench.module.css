@@ -140,7 +140,7 @@
   grid-template-columns: 352px minmax(0, 1fr);
   height: calc(100dvh - 52px);
   overflow: hidden;
-  transition: grid-template-columns 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: grid-template-columns 220ms var(--ease-out-smooth);
 }
 
 .panelClosed {
@@ -157,8 +157,8 @@
   border-right: 1px solid #11120f;
   background: var(--dw-panel);
   transition:
-    width 220ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    width 220ms var(--ease-out-smooth),
+    transform 220ms var(--ease-out-smooth);
 }
 
 .panelClosed .panel {

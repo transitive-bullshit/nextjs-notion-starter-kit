@@ -39,8 +39,8 @@
   border-right: 1px solid #171815;
   background: var(--panel);
   transition:
-    width 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    width 260ms var(--ease-out-smooth),
+    transform 260ms var(--ease-out-smooth);
 }
 
 .sidebarHeader {

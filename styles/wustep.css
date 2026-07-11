@@ -150,7 +150,7 @@ h6 {
  */
 .lab-fill-liquid {
   y: 10;
-  transition: y 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: y 400ms var(--ease-out-smooth);
 }
 
 @media (hover: hover) {
@@ -202,7 +202,7 @@ h6 {
 @media (hover: hover) {
   .playground-home-button:hover .playground-home-icon {
     color: #09c772;
-    animation: playground-home-hop 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: playground-home-hop 420ms var(--ease-out-smooth) both;
   }
 
   .playground-home-button:hover .playground-home-icon .house-body {

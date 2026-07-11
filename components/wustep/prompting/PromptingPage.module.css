@@ -104,7 +104,7 @@
   font-size: 1.15em;
   line-height: 1;
   transform: translateX(2px);
-  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 200ms var(--ease-out-smooth);
 }
 
 .homeBackButton:hover .homeBackArrow {
@@ -161,9 +161,9 @@
   align-items: center;
   gap: 0.08em 0.3em;
   transition:
-    opacity 600ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 600ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 600ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 600ms var(--ease-out-swift),
+    transform 600ms var(--ease-out-swift),
+    filter 600ms var(--ease-out-swift);
   will-change: opacity, transform, filter;
 }
 
@@ -259,9 +259,9 @@
   transform: translateY(0.35em);
   filter: blur(8px);
   transition:
-    opacity 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 700ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 700ms var(--ease-out-swift),
+    transform 700ms var(--ease-out-swift),
+    filter 700ms var(--ease-out-swift);
 }
 
 .titleVisible .titleWord {
@@ -293,9 +293,9 @@
   transform: translateY(8px);
   filter: blur(6px);
   transition:
-    opacity 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 700ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 700ms var(--ease-out-swift),
+    transform 700ms var(--ease-out-swift),
+    filter 700ms var(--ease-out-swift);
   will-change: opacity, transform, filter;
 }
 
@@ -326,8 +326,8 @@
   border: none !important;
   background-image: none !important;
   transition:
-    background 200ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    background 200ms var(--ease-out-smooth),
+    transform 200ms var(--ease-out-smooth);
 }
 
 .beginCta:hover {
@@ -337,7 +337,7 @@
 
 .beginCtaArrow {
   display: inline-block;
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 220ms var(--ease-out-smooth);
 }
 
 .beginCta:hover .beginCtaArrow {
@@ -483,9 +483,9 @@
   transform: translateY(8px);
   filter: blur(4px);
   transition:
-    opacity 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 700ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 700ms var(--ease-out-swift),
+    transform 700ms var(--ease-out-swift),
+    filter 700ms var(--ease-out-swift);
 }
 
 .chapterBodyVisible {
@@ -609,7 +609,7 @@
   pointer-events: none;
   transition:
     opacity 180ms ease,
-    transform 180ms cubic-bezier(0.32, 0.72, 0, 1);
+    transform 180ms var(--ease-out-swift);
 }
 
 /* Invisible bridge spanning the gap between the trigger and the
@@ -754,7 +754,7 @@
   transition:
     background 180ms ease,
     border-color 180ms ease,
-    transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 220ms var(--ease-out-smooth);
 }
 
 .chapterNavLink:hover {
@@ -793,7 +793,7 @@
   font-weight: 700;
   letter-spacing: -0.005em;
   color: var(--fg-color, rgb(55, 53, 47));
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 220ms var(--ease-out-smooth);
 }
 
 :global(.dark-mode) .chapterNavLabel {
@@ -803,7 +803,7 @@
 .chapterNavArrow {
   font-size: 1.2rem;
   color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
-  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 220ms var(--ease-out-smooth);
 }
 
 .chapterNavLink:hover .chapterNavArrow {
@@ -988,9 +988,9 @@
   transform: translateY(10px);
   filter: blur(6px);
   transition:
-    opacity 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 700ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 700ms var(--ease-out-swift),
+    transform 700ms var(--ease-out-swift),
+    filter 700ms var(--ease-out-swift);
   will-change: opacity, transform, filter;
 }
 
@@ -1059,9 +1059,9 @@
   transform: translateY(8px);
   filter: blur(4px);
   transition:
-    opacity 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 700ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 700ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 700ms var(--ease-out-swift),
+    transform 700ms var(--ease-out-swift),
+    filter 700ms var(--ease-out-swift);
   will-change: opacity, transform, filter;
 }
 
@@ -1261,7 +1261,7 @@
     background 160ms ease,
     color 160ms ease,
     border-color 160ms ease,
-    transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 200ms var(--ease-out-smooth);
 }
 
 .colleagueChip:hover {
@@ -1306,7 +1306,7 @@
   border-radius: 0;
   background: var(--fg-color-0, rgba(55, 53, 47, 0.04));
   border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.08));
-  animation: colleagueFade 320ms cubic-bezier(0.32, 0.72, 0, 1);
+  animation: colleagueFade 320ms var(--ease-out-swift);
 }
 
 :global(.dark-mode) .colleagueResponseBody {
@@ -1480,7 +1480,7 @@
 /* Curve fill — fades in once trigger hits */
 .eloChartCurveFill {
   opacity: 0;
-  transition: opacity 700ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition: opacity 700ms var(--ease-out-swift);
   transition-delay: 200ms;
 }
 
@@ -1492,7 +1492,7 @@
 .eloChartCurveStroke {
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
-  transition: stroke-dashoffset 1400ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition: stroke-dashoffset 1400ms var(--ease-out-swift);
   transition-delay: 300ms;
 }
 
@@ -1576,7 +1576,7 @@
 
 .eloChartMarker {
   opacity: 0;
-  transition: opacity 600ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition: opacity 600ms var(--ease-out-swift);
 }
 
 /* You marker — second ink */
@@ -1621,7 +1621,7 @@
 
 .eloChartGap {
   opacity: 0;
-  transition: opacity 600ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition: opacity 600ms var(--ease-out-swift);
 }
 
 .eloChartVisible .eloChartGap {
@@ -1750,7 +1750,7 @@
 .recapTitleArrow {
   font-size: 0.85em;
   color: var(--fg-color-3, rgba(55, 53, 47, 0.4));
-  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 200ms var(--ease-out-smooth);
 }
 
 .recapTitle:hover .recapTitleArrow {
@@ -2128,7 +2128,7 @@
   text-decoration: none !important;
   transition:
     border-color 160ms ease,
-    transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 200ms var(--ease-out-smooth);
 }
 
 .skillsLink:hover {
@@ -2261,12 +2261,12 @@
   min-height: 110px;
   /* Fast default — drives the collapse on replay. Expansion gets a slower
      transition by overriding when .equationCardExpanded is added. */
-  transition: gap 500ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition: gap 500ms var(--ease-out-swift);
 }
 
 .equationCardExpanded .equationStage {
   gap: 14px;
-  transition: gap 1400ms cubic-bezier(0.32, 0.72, 0, 1);
+  transition: gap 1400ms var(--ease-out-swift);
 }
 
 .equationLine {
@@ -2279,12 +2279,12 @@
   letter-spacing: 0.02em;
   /* Fast default — used when collapsing back to initial state on replay. */
   transition:
-    opacity 500ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 500ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 500ms cubic-bezier(0.32, 0.72, 0, 1),
-    font-size 500ms cubic-bezier(0.32, 0.72, 0, 1),
-    max-height 500ms cubic-bezier(0.32, 0.72, 0, 1),
-    gap 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 500ms var(--ease-out-swift),
+    transform 500ms var(--ease-out-swift),
+    filter 500ms var(--ease-out-swift),
+    font-size 500ms var(--ease-out-swift),
+    max-height 500ms var(--ease-out-swift),
+    gap 500ms var(--ease-out-swift);
   will-change: opacity, transform, filter, font-size;
 }
 
@@ -2309,11 +2309,11 @@
   /* Slow expansion when going INTO the settled state. Going back to
      un-settled uses the base .equationLine transition (fast). */
   transition:
-    opacity 1500ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 1500ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 1500ms cubic-bezier(0.32, 0.72, 0, 1),
-    font-size 1400ms cubic-bezier(0.32, 0.72, 0, 1),
-    gap 1400ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 1500ms var(--ease-out-swift),
+    transform 1500ms var(--ease-out-swift),
+    filter 1500ms var(--ease-out-swift),
+    font-size 1400ms var(--ease-out-swift),
+    gap 1400ms var(--ease-out-swift);
 }
 
 .equationSimpleSettled .token {
@@ -2332,9 +2332,9 @@
   transform: translateY(-4px) scale(0.8);
   /* Fast default — collapse direction. */
   transition:
-    opacity 400ms cubic-bezier(0.32, 0.72, 0, 1),
-    max-height 400ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 400ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 400ms var(--ease-out-swift),
+    max-height 400ms var(--ease-out-swift),
+    transform 400ms var(--ease-out-swift);
 }
 
 .equationArrowVisible {
@@ -2343,9 +2343,9 @@
   transform: translateY(0) scale(1);
   /* Slow + delayed when expanding INTO visible. */
   transition:
-    opacity 900ms cubic-bezier(0.32, 0.72, 0, 1),
-    max-height 1100ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 900ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 900ms var(--ease-out-swift),
+    max-height 1100ms var(--ease-out-swift),
+    transform 900ms var(--ease-out-swift);
   transition-delay: 350ms;
 }
 
@@ -2370,10 +2370,10 @@
   /* Slow + delayed when entering visible state. Collapse uses
      .equationLine base transition (fast). */
   transition:
-    opacity 1500ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 1500ms cubic-bezier(0.32, 0.72, 0, 1),
-    filter 1500ms cubic-bezier(0.32, 0.72, 0, 1),
-    max-height 1400ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 1500ms var(--ease-out-swift),
+    transform 1500ms var(--ease-out-swift),
+    filter 1500ms var(--ease-out-swift),
+    max-height 1400ms var(--ease-out-swift);
   transition-delay: 500ms;
 }
 
@@ -2560,8 +2560,8 @@
   opacity: 0;
   transform: translateY(2px);
   transition:
-    opacity 500ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 500ms var(--ease-out-swift),
+    transform 500ms var(--ease-out-swift);
   transition-delay: 0ms;
 }
 
@@ -2830,7 +2830,7 @@
   transition:
     background 180ms ease,
     border-color 180ms ease,
-    transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 200ms var(--ease-out-smooth);
 }
 
 :global(.dark-mode) .treeCell {
@@ -2869,7 +2869,7 @@
   background: var(--fg-color-1, rgba(55, 53, 47, 0.18));
   transition:
     background 200ms ease,
-    transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 200ms var(--ease-out-smooth);
 }
 
 :global(.dark-mode) .treeCellDot {
@@ -2936,7 +2936,7 @@
   font-size: 0.98rem;
   line-height: 1.55;
   color: var(--fg-color, rgb(55, 53, 47));
-  animation: promptFadeIn 320ms cubic-bezier(0.32, 0.72, 0, 1);
+  animation: promptFadeIn 320ms var(--ease-out-swift);
 }
 
 :global(.dark-mode) .treeOutputText {
@@ -3111,7 +3111,7 @@
   padding: 6px 0;
   font-size: 0.85rem;
   color: #c01957;
-  animation: errorIn 220ms cubic-bezier(0.32, 0.72, 0, 1);
+  animation: errorIn 220ms var(--ease-out-swift);
 }
 
 :global(.dark-mode) .promptError {
@@ -3292,7 +3292,7 @@
   display: flex;
   flex-direction: column;
   gap: 1px;
-  animation: menuIn 160ms cubic-bezier(0.32, 0.72, 0, 1);
+  animation: menuIn 160ms var(--ease-out-swift);
   transform-origin: bottom left;
 }
 
@@ -3370,7 +3370,7 @@
   color: var(--pm-on-accent, #fcfcfb);
   cursor: pointer;
   transition:
-    transform 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 120ms var(--ease-out-smooth),
     opacity 150ms ease;
 }
 
@@ -3395,8 +3395,8 @@
   align-items: center;
   justify-content: center;
   transition:
-    opacity 220ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 280ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 220ms var(--ease-out-swift),
+    transform 280ms var(--ease-out-swift);
 }
 
 .submitIconHidden {
@@ -3582,8 +3582,8 @@
   opacity: 0;
   transform: translateY(8px);
   transition:
-    opacity 500ms cubic-bezier(0.32, 0.72, 0, 1),
-    transform 500ms cubic-bezier(0.32, 0.72, 0, 1);
+    opacity 500ms var(--ease-out-swift),
+    transform 500ms var(--ease-out-swift);
 }
 
 .practiceLoopVisible .practiceLadder b {
@@ -3787,7 +3787,7 @@
 }
 
 .orchDiagramVisible .orchTimelineBlock {
-  animation: orchBlockGrow 360ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation: orchBlockGrow 360ms var(--ease-out-swift) forwards;
 }
 
 @keyframes orchBlockGrow {
@@ -3840,7 +3840,7 @@
 }
 
 .orchDiagramVisible .orchFanDrop {
-  animation: orchFadeIn 500ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation: orchFadeIn 500ms var(--ease-out-swift) forwards;
 }
 
 .orchFanTrack {
@@ -3848,7 +3848,7 @@
 }
 
 .orchDiagramVisible .orchFanTrack {
-  animation: orchFadeIn 600ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation: orchFadeIn 600ms var(--ease-out-swift) forwards;
 }
 
 .orchFanMerge {
@@ -3861,7 +3861,7 @@
 }
 
 .orchDiagramVisible .orchFanMerge {
-  animation: orchFadeIn 600ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation: orchFadeIn 600ms var(--ease-out-swift) forwards;
   animation-delay: 900ms;
 }
 
@@ -3914,7 +3914,7 @@
 }
 
 .orchDiagramVisible .orchRoleCard {
-  animation: orchFadeIn 600ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation: orchFadeIn 600ms var(--ease-out-swift) forwards;
 }
 
 .orchRoleName {
@@ -3944,7 +3944,7 @@
 }
 
 .orchDiagramVisible .orchRoleHandoff {
-  animation: orchFadeIn 500ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation: orchFadeIn 500ms var(--ease-out-swift) forwards;
 }
 
 .orchRoleHandoffArtifact {

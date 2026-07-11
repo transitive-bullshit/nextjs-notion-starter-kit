@@ -161,12 +161,18 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* Shared motion vocabulary. The Lenses deck scopes its own copies (plus
-     deck-only curves) on .frame; these canonical tokens let other surfaces
-     (loading, error) move with the same character. */
+  /* Shared motion vocabulary — the single source for easing tokens.
+     (The Lenses deck aliases --ease-spring-* onto these on .frame.) */
   --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Sharp ease-out that lands cleanly (~80% travel by 50% time) —
+     the curve for short hover/press transforms. */
+  --ease-out-snap: cubic-bezier(0.2, 0.9, 0.2, 1);
+  /* iOS-sheet-style curve the prompting surfaces use as their base ease. */
+  --ease-out-swift: cubic-bezier(0.32, 0.72, 0, 1);
+  /* easings.net easeOutQuint — slightly softer start than --ease-out-quint. */
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* One thin-scrollbar recipe for small scroll containers:
      scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) transparent */

@@ -22,7 +22,7 @@
   }
 
   .designButton:hover svg {
-    animation: design-tool-nudge 480ms cubic-bezier(0.22, 1, 0.36, 1);
+    animation: design-tool-nudge 480ms var(--ease-out-smooth);
   }
 }
 

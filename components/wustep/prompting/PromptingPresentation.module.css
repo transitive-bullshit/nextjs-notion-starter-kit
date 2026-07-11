@@ -142,7 +142,7 @@
   overflow: hidden;
   border: 1px solid rgba(244, 238, 227, 0.12);
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
-  animation: slideIn 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: slideIn 280ms var(--ease-out-smooth);
 }
 
 .slide::before {
@@ -526,7 +526,7 @@
   margin-left: auto;
   opacity: 0;
   transform: translateY(28px) scale(0.96);
-  animation: promptCardEnter 740ms cubic-bezier(0.22, 1, 0.36, 1) 520ms forwards;
+  animation: promptCardEnter 740ms var(--ease-out-smooth) 520ms forwards;
 }
 
 .articlePromptDemo > * {
@@ -777,7 +777,7 @@
 .eloCurveStroke {
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
-  animation: eloCurveDraw 700ms cubic-bezier(0.22, 1, 0.36, 1) 100ms forwards;
+  animation: eloCurveDraw 700ms var(--ease-out-smooth) 100ms forwards;
 }
 
 .eloCurveAxis {
@@ -911,7 +911,7 @@
   bottom: 0;
   height: 122px;
   transform: translateX(-50%);
-  animation: forkBaseGrow 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: forkBaseGrow 620ms var(--ease-out-smooth) both;
 }
 
 .forkRoadLeft,
@@ -923,13 +923,13 @@
 .forkRoadLeft {
   transform: translateX(-50%) rotate(-38deg);
   opacity: 0.42;
-  animation: forkBranchGrow 680ms cubic-bezier(0.22, 1, 0.36, 1) 380ms both;
+  animation: forkBranchGrow 680ms var(--ease-out-smooth) 380ms both;
 }
 
 .forkRoadRight {
   transform: translateX(-50%) rotate(38deg);
   background: linear-gradient(180deg, rgba(232, 162, 65, 0.24), var(--gold));
-  animation: forkBranchGrow 680ms cubic-bezier(0.22, 1, 0.36, 1) 520ms both;
+  animation: forkBranchGrow 680ms var(--ease-out-smooth) 520ms both;
 }
 
 .forkRoadDot {
@@ -943,7 +943,7 @@
   background: var(--paper);
   box-shadow: 0 0 0 2px rgba(244, 238, 227, 0.25);
   transform: translateX(-50%);
-  animation: forkDotPop 360ms cubic-bezier(0.22, 1, 0.36, 1) 820ms both;
+  animation: forkDotPop 360ms var(--ease-out-smooth) 820ms both;
 }
 
 .fork section,
@@ -990,7 +990,7 @@
 .fork section {
   opacity: 0;
   transform: translateY(18px);
-  animation: forkBoxEnter 540ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: forkBoxEnter 540ms var(--ease-out-smooth) forwards;
 }
 
 .forkClosed {
@@ -1519,7 +1519,7 @@
   background: rgba(244, 238, 227, 0.05);
   opacity: 0;
   transform: translateY(10px);
-  animation: choiceEnter 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: choiceEnter 480ms var(--ease-out-smooth) forwards;
 }
 
 .choiceHeader {
@@ -1595,7 +1595,7 @@
   box-shadow: 0 14px 36px rgba(18, 17, 15, 0.14);
   opacity: 0;
   transform: translateY(10px);
-  animation: colleagueEnter 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: colleagueEnter 480ms var(--ease-out-smooth) forwards;
 }
 
 .colleagueCard header {
@@ -1828,7 +1828,7 @@
   display: block;
   height: 28px;
   transform-origin: left;
-  animation: barReveal 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: barReveal 780ms var(--ease-out-smooth) both;
 }
 
 .you,
@@ -1912,7 +1912,7 @@
   display: block;
   height: 24px;
   transform-origin: left;
-  animation: barReveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: barReveal 700ms var(--ease-out-smooth) both;
 }
 
 .staggerYou {
@@ -2425,7 +2425,7 @@
   color: var(--ink);
   opacity: 0;
   transform: translateY(8px);
-  animation: contextRowEnter 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: contextRowEnter 460ms var(--ease-out-smooth) forwards;
 }
 
 .contextStackV2Row:nth-child(2) {
@@ -2693,7 +2693,7 @@
   background: rgba(244, 238, 227, 0.06);
   opacity: 0;
   transform: translateY(8px);
-  animation: roleEnter 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: roleEnter 480ms var(--ease-out-smooth) forwards;
 }
 
 .roleName {
@@ -2715,7 +2715,7 @@
   gap: 4px;
   min-width: 96px;
   opacity: 0;
-  animation: roleEnter 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: roleEnter 480ms var(--ease-out-smooth) forwards;
 }
 
 .roleHandoffArtifact {
@@ -2987,7 +2987,7 @@
   border: 1px solid rgba(244, 238, 227, 0.2);
   background: #1a1714;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
-  animation: goToEnter 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: goToEnter 220ms var(--ease-out-smooth);
 }
 
 .goTo label {

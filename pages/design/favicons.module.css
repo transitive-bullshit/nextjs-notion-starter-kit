@@ -399,7 +399,7 @@
   background: var(--page-surface);
   transition:
     border-color 160ms ease,
-    transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 160ms var(--ease-out-smooth);
 }
 
 .card:hover {
