@@ -156,12 +156,12 @@ export function PlaygroundSidebar({
                       onBlur={resetDescription}
                     >
                       {item.disabled ? (
-                        <span className='flex w-full items-center justify-between gap-2 text-muted-foreground/60'>
+                        // The menu button's aria-disabled:opacity-50 is the
+                        // single dimmer; don't stack a second opacity here.
+                        <span className='flex w-full items-center justify-between gap-2 text-muted-foreground'>
                           <span className='truncate'>{item.title}</span>
                           {item.year ? (
-                            <span className='text-[11px] text-muted-foreground/60'>
-                              {item.year}
-                            </span>
+                            <span className='text-[11px]'>{item.year}</span>
                           ) : null}
                         </span>
                       ) : (
@@ -171,7 +171,7 @@ export function PlaygroundSidebar({
                         >
                           <span className='truncate'>{item.title}</span>
                           {item.year ? (
-                            <span className='text-[11px] text-muted-foreground/60'>
+                            <span className='text-[11px] text-muted-foreground'>
                               {item.year}
                             </span>
                           ) : null}
@@ -192,7 +192,7 @@ export function PlaygroundSidebar({
         </div>
         <p>{aboutInfo.description}</p>
         {metadataItems.length ? (
-          <p className='mt-1 text-[11px] text-muted-foreground/80 flex items-center gap-1'>
+          <p className='mt-1 text-[11px] text-muted-foreground flex items-center gap-1'>
             {metadataItems.map((item, index) => (
               <React.Fragment key={index}>
                 {index > 0 ? <span aria-hidden='true'>&bull;</span> : null}
