@@ -223,7 +223,7 @@
   flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
-  scrollbar-color: #b4b5b0 transparent;
+  scrollbar-color: var(--dw-scrollbar-thumb) transparent;
   scrollbar-width: thin;
 }
 

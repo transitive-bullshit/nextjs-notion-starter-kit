@@ -46,6 +46,7 @@
   --dw-label-ink: #555751;
   --dw-meta-ink: #858781;
   --dw-danger: #9d2f20;
+  --dw-scrollbar-thumb: #b4b5b0; /* workbench panels are fixed-light */
   --dw-ready: #a7f35a;
   --dw-focus: #4a98ec;
   --dw-focus-dark: #69b7f2;
@@ -166,6 +167,14 @@
   --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* One thin-scrollbar recipe for small scroll containers:
+     scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) transparent */
+  --scrollbar-thumb: rgba(0, 0, 0, 0.28);
+}
+
+.dark-mode {
+  --scrollbar-thumb: rgba(255, 255, 255, 0.22);
 }
 
 .dark-mode {

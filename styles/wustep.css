@@ -1270,16 +1270,6 @@ span[class*='_background'] {
   border-top: 0.5px solid var(--color-border);
 }
 
-/* Hide scrollbars */
-::-webkit-scrollbar {
-  display: none;
-}
-
-body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 /**
  * ========== Select pills ==========
  */
