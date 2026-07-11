@@ -32,17 +32,17 @@ const tokenDefinitions: Array<{
   label: string
   cssVariable: string
 }> = [
-  { key: 'background', label: 'Background', cssVariable: '--background' },
-  { key: 'primary', label: 'Primary text', cssVariable: '--primary' },
-  { key: 'secondary', label: 'Secondary text', cssVariable: '--secondary' },
-  { key: 'accent', label: 'Accent', cssVariable: '--accent' },
-  { key: 'surface', label: 'Surface', cssVariable: '--surface' },
+  { key: 'background', label: 'Background', cssVariable: '--w-background' },
+  { key: 'primary', label: 'Primary text', cssVariable: '--w-primary' },
+  { key: 'secondary', label: 'Secondary text', cssVariable: '--w-secondary' },
+  { key: 'accent', label: 'Accent', cssVariable: '--w-accent' },
+  { key: 'surface', label: 'Surface', cssVariable: '--w-surface' },
   {
     key: 'surfaceHover',
     label: 'Surface hover',
-    cssVariable: '--surface-hover'
+    cssVariable: '--w-surface-hover'
   },
-  { key: 'divider', label: 'Divider', cssVariable: '--divider' }
+  { key: 'divider', label: 'Divider', cssVariable: '--w-divider' }
 ]
 
 const defaults: ThemeState = {
@@ -155,13 +155,13 @@ function createPreviewStyle(tokens: TokenSet, mode: ThemeMode) {
     `--border: ${tokens.divider} !important;`,
     `--input: ${tokens.divider} !important;`,
     `--ring: ${tokens.accent} !important;`,
-    `--dark-background: ${tokens.background} !important;`,
-    `--dark-primary: ${tokens.primary} !important;`,
-    `--dark-secondary: ${tokens.secondary} !important;`,
-    `--dark-accent: ${tokens.accent} !important;`,
-    `--dark-surface: ${tokens.surface} !important;`,
-    `--dark-surface-hover: ${tokens.surfaceHover} !important;`,
-    `--dark-divider: ${tokens.divider} !important;`
+    `--w-dark-background: ${tokens.background} !important;`,
+    `--w-dark-primary: ${tokens.primary} !important;`,
+    `--w-dark-secondary: ${tokens.secondary} !important;`,
+    `--w-dark-accent: ${tokens.accent} !important;`,
+    `--w-dark-surface: ${tokens.surface} !important;`,
+    `--w-dark-surface-hover: ${tokens.surfaceHover} !important;`,
+    `--w-dark-divider: ${tokens.divider} !important;`
   ].join('\n')
 
   return `:root, html, body, [data-font-root] {

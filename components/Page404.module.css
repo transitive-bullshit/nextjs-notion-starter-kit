@@ -4,8 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--background);
-  color: var(--primary);
+  background: var(--w-background);
+  color: var(--w-primary);
   font-family: var(--font-sans);
   overflow: hidden;
 }
@@ -37,7 +37,7 @@
   letter-spacing: 0.08em;
   line-height: 1;
   margin: 0;
-  color: var(--primary);
+  color: var(--w-primary);
   opacity: 0.12;
   user-select: none;
   animation: fadeIn 1000ms var(--ease-out-quart) both;
@@ -46,7 +46,7 @@
 .divider {
   width: 48px;
   height: 1px;
-  background: var(--divider);
+  background: var(--w-divider);
   margin: 1.5rem 0;
   animation: expandLine 800ms var(--ease-out-quart) 200ms both;
 }
@@ -72,7 +72,7 @@
 }
 
 .description {
-  color: var(--secondary);
+  color: var(--w-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
   margin: 0 0 2rem;
@@ -87,10 +87,10 @@
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--secondary);
+  color: var(--w-secondary);
   text-decoration: none;
   padding: 10px 20px;
-  border: 1px solid var(--divider);
+  border: 1px solid var(--w-divider);
   border-radius: 100px;
   transition:
     color 200ms ease,
@@ -100,9 +100,9 @@
 }
 
 .homeLink:hover {
-  color: var(--primary);
-  border-color: var(--divider-hover);
-  background: var(--surface);
+  color: var(--w-primary);
+  border-color: var(--w-divider-hover);
+  background: var(--w-surface);
 }
 
 .homeLink svg {
@@ -118,10 +118,10 @@
 .devError {
   margin-top: 1.5rem;
   padding: 1rem;
-  background: var(--surface);
+  background: var(--w-surface);
   border-radius: var(--radius-md);
   font-size: 0.8rem;
-  color: var(--secondary);
+  color: var(--w-secondary);
   max-width: 400px;
   font-family: monospace;
   animation: fadeIn 800ms var(--ease-out-quart) 600ms both;

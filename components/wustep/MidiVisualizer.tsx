@@ -1032,11 +1032,11 @@ function DropOverlay() {
           {/* Music note inside */}
           <path
             d='M 56 44 L 56 64 Q 56 70 50 70 Q 44 70 44 65 Q 44 60 50 60 Q 52 60 54 60.6 L 54 50 L 64 47.5 L 64 44 Z'
-            fill='var(--primary)'
+            fill='var(--w-primary)'
             opacity='0.9'
           />
           {/* Plus badge */}
-          <circle cx='72' cy='70' r='12' fill='var(--primary)' />
+          <circle cx='72' cy='70' r='12' fill='var(--w-primary)' />
           <path
             d='M 72 64 L 72 76 M 66 70 L 78 70'
             stroke='#04201a'

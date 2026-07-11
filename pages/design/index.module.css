@@ -1,7 +1,7 @@
 .page {
   --bg: #0d0d0d;
-  --surface: rgba(255, 255, 255, 0.045);
-  --surface-hover: rgba(255, 255, 255, 0.075);
+  --w-surface: rgba(255, 255, 255, 0.045);
+  --w-surface-hover: rgba(255, 255, 255, 0.075);
   --text: #e8e8e8;
   --muted: #929292;
   --faint: #686868;
@@ -87,7 +87,7 @@
   padding: 18px;
   border: 1px solid var(--border);
   border-radius: var(--dw-radius-card);
-  background: var(--surface);
+  background: var(--w-surface);
   transition:
     border-color 160ms ease,
     background-color 160ms ease;
@@ -151,7 +151,7 @@
 
   .studyCard:hover {
     border-color: rgba(255, 255, 255, 0.18);
-    background: var(--surface-hover);
+    background: var(--w-surface-hover);
   }
 
   .studyCard:hover .openIcon {

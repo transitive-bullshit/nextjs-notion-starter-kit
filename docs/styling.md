@@ -21,14 +21,19 @@ Configured by [`postcss.config.js`](../postcss.config.js) using `@tailwindcss/po
 - Dark mode: `@custom-variant dark (&:is(.dark *))` — toggled by a `dark` class on the root element.
 - The shadcn token system (`--background`, `--foreground`, etc.) sits in `:root` in `globals.css`.
 
-## The two overlapping token systems
+## The two token systems (namespaced)
 
-There's a design-system overlap worth knowing about:
+The two tracks used to define the *same* variable names (`--primary`, `--background`, …) at `:root`, and wustep.css — imported last — silently won the cascade for every shadcn utility. The wustep track is now namespaced so the systems can't collide. Who owns which token:
 
-- `styles/wustep.css` `:root` — `--primary`, `--secondary`, `--accent`, `--background`, etc. Used by the Notion page and custom components (AboutPage, WustepFooter, etc.).
-- `styles/globals.css` `:root` — shadcn/Tailwind tokens for the UI kit in [`components/ui/`](../components/ui/).
+| Namespace | Owner | Examples | Consumers |
+|---|---|---|---|
+| `--w-*` | `styles/wustep.css` | `--w-primary`, `--w-secondary`, `--w-accent`, `--w-background`, `--w-surface`, `--w-divider` | Notion pages, Page404/ErrorPage, MidiVisualizer, `/design` pages' custom CSS |
+| shadcn names | `styles/globals.css` | `--background`, `--foreground`, `--primary`, `--muted-foreground`, `--sidebar*` | Tailwind utilities + [`components/ui/`](../components/ui/) |
+| `--dw-*` | `styles/globals.css` | `--dw-accent`, `--dw-field-h`, `--dw-radius-*` | `/design` workbench shell + tools |
+| `--about-*` | `components/AboutPage.module.css` | `--about-text`, `--about-accent` | About page (theme workbench overrides them in preview) |
+| shared | `styles/wustep.css` (`--space-*`, `--radius-sm/md/lg`, `--font-*`) and `styles/globals.css` (`--z-*`, `--ease-*`) | | both tracks |
 
-They don't conflict because they cover mostly disjoint component sets, but new components should pick a track and stick with it.
+New components should still pick a track and stick with it; never redefine another namespace's token.
 
 ## Dark mode
 

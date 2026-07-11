@@ -6,24 +6,24 @@
 
 :root {
   /* Color system - matching About page */
-  --primary: #1a1a1a;
-  --secondary: #666;
-  --accent: #000;
-  --background: #ffffff;
-  --surface: rgba(0, 0, 0, 0.03);
-  --surface-hover: rgba(0, 0, 0, 0.06);
-  --divider: rgba(0, 0, 0, 0.08);
-  --divider-hover: rgba(0, 0, 0, 0.15);
+  --w-primary: #1a1a1a;
+  --w-secondary: #666;
+  --w-accent: #000;
+  --w-background: #ffffff;
+  --w-surface: rgba(0, 0, 0, 0.03);
+  --w-surface-hover: rgba(0, 0, 0, 0.06);
+  --w-divider: rgba(0, 0, 0, 0.08);
+  --w-divider-hover: rgba(0, 0, 0, 0.15);
 
   /* Dark mode colors - will be applied via .dark-mode class */
-  --dark-primary: #e8e8e8;
-  --dark-secondary: #888;
-  --dark-accent: #fff;
-  --dark-background: #0d0d0d;
-  --dark-surface: rgba(255, 255, 255, 0.04);
-  --dark-surface-hover: rgba(255, 255, 255, 0.08);
-  --dark-divider: rgba(255, 255, 255, 0.1);
-  --dark-divider-hover: rgba(255, 255, 255, 0.2);
+  --w-dark-primary: #e8e8e8;
+  --w-dark-secondary: #888;
+  --w-dark-accent: #fff;
+  --w-dark-background: #0d0d0d;
+  --w-dark-surface: rgba(255, 255, 255, 0.04);
+  --w-dark-surface-hover: rgba(255, 255, 255, 0.08);
+  --w-dark-divider: rgba(255, 255, 255, 0.1);
+  --w-dark-divider-hover: rgba(255, 255, 255, 0.2);
 
   /* Spacing system */
   --space-xs: 0.25rem;
@@ -40,35 +40,19 @@
   --font-serif: 'Crimson Pro', 'Georgia', serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
-  /* Design playground (dw) primitives — shared by every /design tool */
-  --dw-field-h: 36px; /* canonical control height */
-  --dw-field-border: #c8cac4; /* input / select / search outline */
-  --dw-label-ink: #555751; /* section / field label text */
-  --dw-meta-ink: #858781; /* counts + de-emphasized secondary text */
-  --dw-danger: #9d2f20; /* inline error text */
-  --dw-accent: #2167d5; /* primary + selected fill */
-  --dw-accent-ink: #164d9c; /* selected text on a soft accent bg */
-  --dw-accent-soft: #e8f1ff;
-  --dw-focus: #4a98ec; /* focus ring on light surfaces */
-  --dw-focus-dark: #69b7f2; /* focus ring on dark surfaces */
-  --dw-segment-track: #e3e4e0; /* segmented-control track */
-  --dw-label-weight: 650; /* section / field label weight */
-  --dw-radius-control: 8px; /* inputs, search fields */
-  --dw-radius-control-sm: 7px; /* chips, icon buttons, segment items */
-  --dw-radius-segment: 9px; /* segmented-control track */
-  --dw-radius-card: 12px;
+  /* Design-workbench (--dw-*) tokens are owned by styles/globals.css */
 }
 
 /* Dark mode */
 .dark-mode {
-  --primary: var(--dark-primary);
-  --secondary: var(--dark-secondary);
-  --accent: var(--dark-accent);
-  --background: var(--dark-background);
-  --surface: var(--dark-surface);
-  --surface-hover: var(--dark-surface-hover);
-  --divider: var(--dark-divider);
-  --divider-hover: var(--dark-divider-hover);
+  --w-primary: var(--w-dark-primary);
+  --w-secondary: var(--w-dark-secondary);
+  --w-accent: var(--w-dark-accent);
+  --w-background: var(--w-dark-background);
+  --w-surface: var(--w-dark-surface);
+  --w-surface-hover: var(--w-dark-surface-hover);
+  --w-divider: var(--w-dark-divider);
+  --w-divider-hover: var(--w-dark-divider-hover);
 }
 
 body {
@@ -87,11 +71,11 @@ h6 {
 }
 
 .notion-app {
-  background: var(--background);
+  background: var(--w-background);
 }
 
 .dark-mode .notion-app {
-  background: var(--dark-background);
+  background: var(--w-dark-background);
 }
 
 /**
@@ -660,7 +644,7 @@ span[class*='_background'] {
     content: '·';
     margin-left: 0.5em;
     margin-right: 0.5em;
-    color: var(--secondary);
+    color: var(--w-secondary);
   }
 }
 
@@ -851,14 +835,14 @@ span[class*='_background'] {
   align-items: center;
   padding: 0.2rem;
   border-radius: 999px;
-  border: 1px solid var(--divider);
-  background: var(--surface);
+  border: 1px solid var(--w-divider);
+  background: var(--w-surface);
   gap: 0.15rem;
 }
 
 .dark-mode .posts-view-toggle {
-  background: var(--dark-surface);
-  border-color: var(--divider);
+  background: var(--w-dark-surface);
+  border-color: var(--w-divider);
 }
 
 .posts-view-toggle__button {
@@ -871,7 +855,7 @@ span[class*='_background'] {
   padding: 0.3rem 0.85rem;
   background: transparent;
   font-weight: 600;
-  color: var(--secondary);
+  color: var(--w-secondary);
   transition:
     background 0.2s ease,
     color 0.2s ease;
@@ -884,18 +868,18 @@ span[class*='_background'] {
 
 @media (hover: hover) {
   .posts-view-toggle__button:hover {
-    color: var(--primary);
+    color: var(--w-primary);
     background: rgba(0, 0, 0, 0.04);
   }
 }
 
 .posts-view-toggle__button--active {
-  background: var(--primary);
-  color: var(--background);
+  background: var(--w-primary);
+  color: var(--w-background);
 }
 
 .posts-view-toggle__button:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--w-primary);
   outline-offset: 2px;
 }
 
@@ -1026,17 +1010,17 @@ span[class*='_background'] {
   margin-bottom: 0.1em;
   font-size: 0.82rem;
   line-height: 1.4;
-  color: var(--secondary);
+  color: var(--w-secondary);
 }
 
 .notion-collection-card {
   border-radius: 16px;
-  background: var(--surface);
+  background: var(--w-surface);
   transition:
     transform 0.2s ease,
     background-color 0.3s ease,
     border-color 0.3s ease;
-  border: 1px solid var(--divider);
+  border: 1px solid var(--w-divider);
   box-shadow: none;
   transform-origin: center bottom;
 }
@@ -1044,8 +1028,8 @@ span[class*='_background'] {
 @media (hover: hover) {
   .notion-collection-card:hover {
     transform: translateY(-2px);
-    background: var(--surface-hover);
-    border-color: var(--divider-hover);
+    background: var(--w-surface-hover);
+    border-color: var(--w-divider-hover);
   }
 }
 
@@ -1053,16 +1037,16 @@ span[class*='_background'] {
    lift on focus — tapping or tabbing to a card gives the same affordance. */
 .group.notion-collection-card:focus-within {
   transform: translateY(-2px);
-  background: var(--surface-hover);
-  border-color: var(--divider-hover);
+  background: var(--w-surface-hover);
+  border-color: var(--w-divider-hover);
 }
 
 .notion-collection-card-cover {
   border-radius: 16px 16px 0 0;
   overflow: hidden;
-  border-bottom: 1px solid var(--divider);
+  border-bottom: 1px solid var(--w-divider);
   aspect-ratio: 16/9;
-  background: var(--background);
+  background: var(--w-background);
   transition: border-color 0.3s ease;
 }
 
@@ -1072,7 +1056,7 @@ span[class*='_background'] {
 
 @media (hover: hover) {
   .notion-collection-card:hover .notion-collection-card-cover {
-    border-color: var(--divider-hover);
+    border-color: var(--w-divider-hover);
   }
 
   .notion-collection-card:hover .notion-collection-card-cover img {
@@ -1082,7 +1066,7 @@ span[class*='_background'] {
 
 /* Focus mirror for playground cards (see above) — applies on touch/keyboard. */
 .group.notion-collection-card:focus-within .notion-collection-card-cover {
-  border-color: var(--divider-hover);
+  border-color: var(--w-divider-hover);
 }
 
 .group.notion-collection-card:focus-within .notion-collection-card-cover img {
@@ -1151,12 +1135,12 @@ span[class*='_background'] {
 /* Post header row (author · date) */
 .notion-collection-row {
   font-size: 0.9rem;
-  color: var(--secondary);
+  color: var(--w-secondary);
 }
 
 .notion-asset-caption {
   font-size: 0.82rem;
-  color: var(--secondary);
+  color: var(--w-secondary);
 }
 
 /* Listing pages (/writing, /articles, …): section headings use the About
@@ -1167,7 +1151,7 @@ span[class*='_background'] {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--secondary);
+  color: var(--w-secondary);
   margin: 3rem 0 0.75rem;
 }
 

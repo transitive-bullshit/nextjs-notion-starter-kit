@@ -8,7 +8,7 @@
   /* Mirror midi.to's CSS variables for direct visual parity. */
   --piano-height: clamp(110px, 14vh, 160px);
   --transport-height: 56px;
-  --primary: #00d4b1;
+  --w-primary: #00d4b1;
   --primary-soft: rgba(0, 212, 177, 0.16);
   --primary-glow: rgba(0, 212, 177, 0.4);
   --primary-dark: #018470;
@@ -84,7 +84,7 @@
   gap: 6px;
   background: var(--primary-soft);
   border: 1px solid rgba(0, 212, 177, 0.35);
-  color: var(--primary);
+  color: var(--w-primary);
   border-radius: 4px;
   padding: 4px 10px;
   font-size: 0.7rem;
@@ -150,7 +150,7 @@
 
 .trackItemActive {
   background: rgba(0, 212, 177, 0.08);
-  border-left-color: var(--primary);
+  border-left-color: var(--w-primary);
 }
 
 .trackItemActive:hover {
@@ -273,12 +273,12 @@
 .midiPillActive {
   background: var(--primary-soft);
   border-color: rgba(0, 212, 177, 0.4);
-  color: var(--primary);
+  color: var(--w-primary);
 }
 
 .midiPillActive:hover {
   background: rgba(0, 212, 177, 0.22);
-  color: var(--primary);
+  color: var(--w-primary);
 }
 
 .midiDot {
@@ -289,7 +289,7 @@
 }
 
 .midiDotActive {
-  background: var(--primary);
+  background: var(--w-primary);
   box-shadow: 0 0 6px var(--primary-glow);
 }
 
@@ -330,7 +330,7 @@
   /* While pressed: rounded at the top, flat at the bottom (still emerging
      from the key). On release, .barReleased rounds the bottom too. */
   border-radius: 999px 999px 0 0;
-  background: var(--primary);
+  background: var(--w-primary);
   box-shadow:
     0 0 6px rgba(0, 212, 177, 0.25),
     inset 0 -1px 0 rgba(0, 0, 0, 0.18);
@@ -494,7 +494,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: var(--primary);
+  background: var(--w-primary);
   border-radius: 999px;
 }
 
@@ -506,7 +506,7 @@
   border-radius: 50%;
   background: #fff;
   box-shadow:
-    0 0 0 2px var(--primary),
+    0 0 0 2px var(--w-primary),
     0 1px 4px rgba(0, 0, 0, 0.5);
   transform: translate(-50%, 50%);
   pointer-events: none;
@@ -567,7 +567,7 @@
 }
 
 .whiteKeyPressed {
-  background: linear-gradient(180deg, var(--primary) 0%, #33ffe0 100%);
+  background: linear-gradient(180deg, var(--w-primary) 0%, #33ffe0 100%);
   border-bottom-color: rgba(0, 0, 0, 0.4);
   box-shadow:
     inset 0 6px 12px rgba(0, 0, 0, 0.15),
@@ -733,7 +733,7 @@
 
 .scrubberFill {
   height: 100%;
-  background: var(--primary);
+  background: var(--w-primary);
   border-radius: 290486px;
 }
 
@@ -745,7 +745,7 @@
   border-radius: 50%;
   background: #fff;
   box-shadow:
-    0 0 0 2px var(--primary),
+    0 0 0 2px var(--w-primary),
     0 1px 4px rgba(0, 0, 0, 0.5);
   transform: translate(-50%, -50%);
   pointer-events: none;

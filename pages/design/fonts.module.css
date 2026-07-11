@@ -11,7 +11,7 @@
   --ink: #20211f;
   --muted: #666963;
   --rule: #d7d8d3;
-  --accent: var(--dw-accent);
+  --w-accent: var(--dw-accent);
   --accent-soft: var(--dw-accent-soft);
   --green: #a7f35a;
   display: grid;
@@ -162,7 +162,7 @@
 
 .select:focus,
 .pathInputRow input:focus {
-  border-color: var(--accent);
+  border-color: var(--w-accent);
   background: var(--panel-raised);
   box-shadow: 0 0 0 3px rgba(33, 103, 213, 0.12);
 }
@@ -325,9 +325,9 @@
 }
 
 .activePair .pairCheck {
-  border-color: var(--accent);
+  border-color: var(--w-accent);
   color: white;
-  background: var(--accent);
+  background: var(--w-accent);
 }
 
 .pairCheck svg {
@@ -471,7 +471,7 @@
 
 .activeFont .fontSelected {
   color: white;
-  background: var(--accent);
+  background: var(--w-accent);
 }
 
 .fontSelected svg {
@@ -512,7 +512,7 @@
   width: 100%;
   height: 18px;
   margin: 2px 0 0;
-  accent-color: var(--accent);
+  accent-color: var(--w-accent);
   cursor: ew-resize;
 }
 
