@@ -35,11 +35,26 @@ The two tracks used to define the *same* variable names (`--primary`, `--backgro
 
 New components should still pick a track and stick with it; never redefine another namespace's token.
 
+## Z-index scale
+
+`styles/globals.css` defines the semantic scale — use these tokens (or a small `calc(var(--z-modal) + n)` ladder within a band) instead of hardcoding large values:
+
+| Token | Value | Use |
+|---|---|---|
+| `--z-base` | 1 | content that must sit above siblings |
+| `--z-sticky` | 10 | sticky/fixed page chrome (headers) |
+| `--z-dropdown` | 50 | menus, popovers |
+| `--z-tooltip` | 100 | tooltips |
+| `--z-modal` | 200 | scrims, panels, dialogs (the lenses panel/dialog ladder is `--z-modal`+0..3) |
+| `--z-toast` | 300 | top band: toasts, the floating DesignPanel |
+
+Purely local ordering inside a contained component can keep small integers (0–25); wrap the group in `isolation: isolate` if it starts fighting siblings.
+
 ## Dark mode
 
-Driven by [`lib/use-dark-mode.ts`](../lib/use-dark-mode.ts) (a thin wrapper around `@fisch0920/use-dark-mode`). Toggles a `dark-mode` class on `<body>`. `styles/wustep.css` has `.dark-mode { --primary: ...; ... }` blocks that swap the token values.
+Driven by [`lib/use-dark-mode.ts`](../lib/use-dark-mode.ts) (a thin wrapper around `@fisch0920/use-dark-mode`). Toggles a `dark-mode` class on `<body>`. `styles/wustep.css` has `.dark-mode { --w-primary: ...; ... }` blocks that swap the token values.
 
-The shadcn side uses the `dark` class variant — separate mechanism.
+The shadcn side flips on the same class: `globals.css` overrides its tokens under `.dark-mode`, and the Tailwind `dark:` variant is keyed to `.dark-mode` too.
 
 ## CSS modules
 

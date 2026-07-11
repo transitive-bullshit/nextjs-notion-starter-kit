@@ -181,7 +181,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: var(--z-sticky);
   /* Account for iOS notch / Android cutouts. */
   padding: max(18px, env(safe-area-inset-top)) 22px 0;
 }
@@ -1289,7 +1289,8 @@
   background: rgba(20, 20, 22, var(--design-overlay-dim, 0.4));
   backdrop-filter: blur(var(--design-overlay-blur, 3px));
   -webkit-backdrop-filter: blur(var(--design-overlay-blur, 3px));
-  z-index: 50;
+  /* Modal band ladder: overlay < panel < dialog overlay < dialog. */
+  z-index: var(--z-modal);
 }
 
 .panelOverlay[data-state='open'] {
@@ -1315,7 +1316,7 @@
   background: #faf7ee;
   display: flex;
   flex-direction: column;
-  z-index: 60;
+  z-index: calc(var(--z-modal) + 1);
   outline: none;
   font-family: var(--font-sans, system-ui, sans-serif);
   color: #1a1a1a;
@@ -2022,7 +2023,7 @@
   background: rgba(20, 20, 22, calc(var(--design-overlay-dim, 0.4) + 0.15));
   backdrop-filter: blur(calc(var(--design-overlay-blur, 3px) * 2));
   -webkit-backdrop-filter: blur(calc(var(--design-overlay-blur, 3px) * 2));
-  z-index: 70;
+  z-index: calc(var(--z-modal) + 2);
 }
 
 .dialogOverlay[data-state='open'] {
@@ -2046,7 +2047,7 @@
   box-shadow:
     0 1px 1px rgba(0, 0, 0, 0.1),
     0 30px 80px -20px rgba(0, 0, 0, 0.4);
-  z-index: 80;
+  z-index: calc(var(--z-modal) + 3);
   outline: none;
   overflow: hidden;
   font-family: var(--font-sans, system-ui, sans-serif);

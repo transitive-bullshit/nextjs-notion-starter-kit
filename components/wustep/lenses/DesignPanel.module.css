@@ -25,7 +25,7 @@
   position: fixed;
   bottom: 18px;
   right: 18px;
-  z-index: 9999;
+  z-index: var(--z-toast); /* top band: floats above the lenses modal ladder */
   font-family:
     var(--font-geist, var(--font-sans, system-ui)),
     system-ui,
@@ -150,7 +150,7 @@
 /* ───── Dodge the lens side-panel ─────
  *
  * When a lens detail panel is open, the dev DesignPanel is
- * functionally clickable (z-index 9999 vs 60) but visually
+ * functionally clickable (--z-toast vs the modal band) but visually
  * obscured because both anchor to the same edge by default.
  * Slide the DesignPanel to the opposite side of whichever edge
  * the lens panel is anchored to, so both surfaces stay usable.

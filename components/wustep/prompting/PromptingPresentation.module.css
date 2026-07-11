@@ -2957,7 +2957,7 @@
   place-items: center;
   background: rgba(18, 17, 15, 0.62);
   backdrop-filter: blur(6px);
-  z-index: 100;
+  z-index: var(--z-modal);
   animation: scrimFade 180ms ease-out;
 }
 
