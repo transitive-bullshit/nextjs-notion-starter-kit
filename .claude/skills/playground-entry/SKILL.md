@@ -172,9 +172,13 @@ than about art.
 
 `pages/playground/covers-preview.tsx` is a **persistent, dev-only workbench**:
 one tab per project (see the `tabs` array), each rendering covers inside the
-real card markup at 420px and 620px so hover selectors and proportions behave
-exactly as on `/playground`. Its `getStaticProps` returns `notFound` in
-production — keep that guard.
+real card markup at 420px, 620px, and a wide 880px stress test — the cover
+box height is pinned (~190px) while its width varies ~300–900px, so wide is
+where covers break. Design covers as an extra-wide stage (wider than any
+card, action centered, expendable filler in the wings) with
+`preserveAspectRatio='xMidYMid slice'`, so the full height always fits and
+wide cards just reveal more stage. Its `getStaticProps` returns `notFound`
+in production — keep that guard.
 
 - **New exploration**: add a tab for the project whose `covers` array lists
   all four variants (label + one-line hover hint each).

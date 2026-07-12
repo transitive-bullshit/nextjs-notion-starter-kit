@@ -212,8 +212,41 @@
 }
 
 /* ---------- Cast reaction ----------
-   Both chibis hop when the burst reaches them; Bomba a beat later so the
-   panic ripples across the arena instead of landing metronome-flat. */
+   Two layered groups keep the characters alive, not stiff: an outer group
+   (castBob) breathes the whole loop with a gentle bob + squash, and an inner
+   group (hopLeft/hopRight) plays the startle — anticipation crouch, a
+   stretched leap when the burst reaches them, then a landing wobble that
+   settles. Bomba and Pip breathe and react a beat apart so the panic ripples
+   across the arena instead of landing metronome-flat. */
+.castBob {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: castBreathe 3.6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.castBobOffset {
+  animation-delay: -1.5s;
+}
+
+@keyframes castBreathe {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  25% {
+    transform: translateY(-2.5px) scale(0.99, 1.025);
+  }
+  50% {
+    transform: translateY(0) scale(1.01, 0.99);
+  }
+  75% {
+    transform: translateY(-1.8px) scale(0.995, 1.015);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
 .hopLeft,
 .hopRight {
   transform-box: fill-box;
@@ -223,24 +256,35 @@
 }
 
 .hopRight {
-  animation-delay: 0.09s;
+  animation-delay: 0.1s;
 }
 
 @keyframes alarmHop {
   0%,
-  39% {
+  33% {
     transform: translateY(0) scale(1, 1);
   }
+  37% {
+    /* anticipation: duck low and wide just before the burst lands */
+    transform: translateY(3px) scale(1.07, 0.9);
+  }
   43% {
-    transform: translateY(-13px) scale(0.96, 1.05);
+    /* startled leap, stretched tall */
+    transform: translateY(-16px) scale(0.9, 1.12);
   }
-  48% {
-    transform: translateY(0) scale(1.04, 0.95);
+  49% {
+    /* land squash */
+    transform: translateY(0) scale(1.09, 0.9);
   }
-  51% {
-    transform: translateY(-5px) scale(1, 1.02);
+  53% {
+    /* small rebound */
+    transform: translateY(-6px) scale(0.98, 1.05);
   }
-  54%,
+  58% {
+    /* settle wobble */
+    transform: translateY(0) scale(1.03, 0.98);
+  }
+  63%,
   100% {
     transform: translateY(0) scale(1, 1);
   }
@@ -270,6 +314,7 @@
   .armV,
   .splashCore,
   .drop,
+  .castBob,
   .hopLeft,
   .hopRight {
     animation: none !important;

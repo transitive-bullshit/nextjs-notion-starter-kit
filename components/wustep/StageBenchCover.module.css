@@ -103,45 +103,101 @@
 }
 
 /* ---------- Run animation ----------
-   Everything is declared paused at its idle pose and only plays while the
-   card is hovered/focused, so hovering out freezes the run mid-flight and
-   hovering back resumes it. One shared 2.8s loop keeps the swaps, LED, knob,
-   and key presses in sync. */
+   The whole run is one shared 8.4s loop, declared paused at its idle pose
+   (SELECT MODEL, ACTIVE 00) and resumed only while the card is
+   hovered/focused — so hovering out freezes the run mid-flight. Hovering
+   "plays" Ode to Joy across the keybed (the per-key keyframes are generated
+   from the melody in the component); the program screen and ACTIVE LED step
+   SELECT → RUNNING 01 → 02 → 03 through the three phrases and only fall back
+   to SELECT MODEL once the tune finishes (the loop wrap). Windows:
+     0–10%   SELECT MODEL / ACTIVE 00 (idle)
+     13–37%  RUNNING 01 — phrase 1 (notes 1–5)
+     39–62%  RUNNING 02 — phrase 2 (notes 6–10)
+     64–87%  RUNNING 03 — phrase 3 (notes 11–15)
+     89–100% back to SELECT MODEL (done → reset) */
 
-.swapIdle {
-  animation: swapOut 2.8s linear infinite;
+/* Screen + ACTIVE LED readouts. Only the SELECT/00 pair shows at rest; the
+   RUNNING/0N variants sit at opacity 0 so reduced motion lands on idle. */
+.progSelect,
+.led0 {
+  animation: showSelect 8.4s linear infinite;
   animation-play-state: paused;
 }
 
-.swapRun {
+.progRun1,
+.led1 {
   opacity: 0;
-  animation: swapIn 2.8s linear infinite;
+  animation: showRun1 8.4s linear infinite;
   animation-play-state: paused;
 }
 
-/* Tight 2% ramps (~56ms) so the readouts flip like an LCD instead of
+.progRun2,
+.led2 {
+  opacity: 0;
+  animation: showRun2 8.4s linear infinite;
+  animation-play-state: paused;
+}
+
+.progRun3,
+.led3 {
+  opacity: 0;
+  animation: showRun3 8.4s linear infinite;
+  animation-play-state: paused;
+}
+
+/* Tight 2% ramps (~0.17s) so the readouts flip like an LCD instead of
    crossfading. */
-@keyframes swapOut {
+@keyframes showSelect {
   0%,
-  12% {
+  10% {
     opacity: 1;
   }
-  14%,
-  86% {
+  12%,
+  89% {
     opacity: 0;
   }
-  88%,
+  91%,
   100% {
     opacity: 1;
   }
 }
 
-@keyframes swapIn {
+@keyframes showRun1 {
   0%,
-  12% {
+  11% {
     opacity: 0;
   }
-  14%,
+  13%,
+  36% {
+    opacity: 1;
+  }
+  38%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes showRun2 {
+  0%,
+  37% {
+    opacity: 0;
+  }
+  39%,
+  61% {
+    opacity: 1;
+  }
+  63%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes showRun3 {
+  0%,
+  62% {
+    opacity: 0;
+  }
+  64%,
   86% {
     opacity: 1;
   }
@@ -151,57 +207,85 @@
   }
 }
 
-/* Bright layer over the dark status LED. */
+/* Bright layer over the dark status LED — lit through the run with a quick
+   flicker at each phrase handoff. */
 .dotGlow {
   opacity: 0;
   filter: drop-shadow(0 0 2.5px rgba(255, 59, 48, 0.8));
-  animation: swapIn 2.8s linear infinite;
+  animation: runActive 8.4s linear infinite;
   animation-play-state: paused;
 }
 
-/* The first knob sweeps while a run is active; the 0% pose matches its
+@keyframes runActive {
+  0%,
+  10% {
+    opacity: 0;
+  }
+  13% {
+    opacity: 1;
+  }
+  37% {
+    opacity: 1;
+  }
+  38% {
+    opacity: 0.3;
+  }
+  39% {
+    opacity: 1;
+  }
+  62% {
+    opacity: 1;
+  }
+  63% {
+    opacity: 0.3;
+  }
+  64% {
+    opacity: 1;
+  }
+  87% {
+    opacity: 1;
+  }
+  89%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* The first phase knob steps up as each phrase completes, then snaps back to
+   its rest angle when the benchmark resets. The 0% pose matches the
    attribute-transform rest angle so pausing lands back on idle. */
 .knobLive {
-  animation: knobSweep 2.8s ease-in-out infinite;
+  animation: knobSweep 8.4s ease-in-out infinite;
   animation-play-state: paused;
 }
 
 @keyframes knobSweep {
   0%,
-  8% {
+  10% {
     transform: rotate(-50deg);
   }
-  48% {
-    transform: rotate(48deg);
+  37% {
+    transform: rotate(-18deg);
   }
-  88%,
+  62% {
+    transform: rotate(14deg);
+  }
+  87% {
+    transform: rotate(46deg);
+  }
+  89%,
   100% {
     transform: rotate(-50deg);
   }
 }
 
-/* Key-press overlays fade in/out; per-key animation-delay (set inline)
-   staggers them into an arpeggio. */
-.pressGlow {
-  opacity: 0;
-  filter: drop-shadow(0 0 4px rgba(255, 75, 57, 0.5));
-  animation: pressPulse 2.8s linear infinite;
+/* Key strike. Each melody key runs its own generated keyframe (sb-key-<i>,
+   built from the tune in the component) that dips the key and shades it
+   darker on every note it plays — a physical press, not just a lit key. The
+   animation name/duration are set inline per key; this class only holds the
+   paused state so the shared hover rule below can resume it. */
+.pressKey {
   animation-play-state: paused;
-}
-
-@keyframes pressPulse {
-  0%,
-  14% {
-    opacity: 0;
-  }
-  20%,
-  34% {
-    opacity: 0.9;
-  }
-  42%,
-  100% {
-    opacity: 0;
-  }
 }
 
 /* ---------- Hover / focus: resume the paused run ---------- */
@@ -219,11 +303,17 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .swapIdle,
-  .swapRun,
+  .progSelect,
+  .progRun1,
+  .progRun2,
+  .progRun3,
+  .led0,
+  .led1,
+  .led2,
+  .led3,
   .dotGlow,
   .knobLive,
-  .pressGlow {
+  .pressKey {
     animation: none !important;
   }
 }

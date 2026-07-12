@@ -21,24 +21,71 @@ const MEADOW = { light: '#bce49f', dark: '#b0da93', tuft: '#57b95c' }
 
 // Everything sits on the game's 80px tile grid. Rows are shifted -20px so a
 // 60px wall band tops the scene and four grass rows (centers 100/180/260/340)
-// fill the rest; columns run on centers 40..600. The balloon holds
-// (360, 180); the cast holds diagonal tiles that share neither its row nor
-// its column, so the plus-burst soaks nobody.
+// fill the rest.
+//
+// The stage is deliberately much wider than any card: 1920×360 (5.3:1),
+// while the cover box ranges ~1.6:1 to ~4.7:1 (its height is pinned ~190px
+// and only the width varies). With `slice`, the full height is therefore
+// always visible and widening a card just reveals more meadow at the sides —
+// the cast never gets cropped. The action lives in the center 640; the wings
+// carry only expendable crates and tufts.
 const TILE = 80
+const STAGE_W = 1920
 const WALL_H = 60
-const BALLOON = { x: 360, y: 180 }
-const PIP = { x: 200, y: 260 }
-const BOMBA = { x: 520, y: 100 }
+// Columns are shifted +40 (half a tile) so a tile CENTER lands exactly on
+// the stage's horizontal center (960) — otherwise 960 falls on a tile edge
+// and the balloon can only ever sit ±40 off center, which reads as a
+// mysterious lean at every crop width. Tile centers are multiples of 80.
+//
+// The balloon holds dead center (960, 180); the cast flanks it ±160 on
+// diagonal tiles that share neither its row nor its column, so the
+// plus-burst soaks nobody.
+//
+// Scenery placement rule: everything sits in 180°-rotational pairs about
+// the stage center — (x, y) ↔ (1920−x, 360−y) — the way competitive arena
+// maps are laid out. Rotational symmetry balances every centered crop just
+// like a mirror would, but without the stamped-out look. The bottom fringe
+// row (y 340) has no rotational partner (its twin lands in the wall band),
+// so those few props pair by mirror (x ↔ 1920−x) instead.
+const BALLOON = { x: 960, y: 180 }
+const PIP = { x: 800, y: 260 }
+const BOMBA = { x: 1120, y: 100 }
+// Crates: a counter-diagonal against the cast's diagonal (top-left ↔
+// bottom-right while the cast runs bottom-left ↔ top-right), a half-cropped
+// pair on the bottom fringe, and blast-lane stoppers out in the wings —
+// none adjacent to a character, so everyone has breathing room.
 const CRATES = [
-  { x: 40, y: 100 },
-  { x: 600, y: 260 }
+  // center
+  { x: 720, y: 100 },
+  { x: 1200, y: 260 },
+  { x: 720, y: 340 },
+  // wings
+  { x: 400, y: 260 },
+  { x: 1520, y: 100 },
+  { x: 480, y: 180 },
+  { x: 1440, y: 180 },
+  { x: 240, y: 100 },
+  { x: 1680, y: 260 },
+  { x: 320, y: 340 },
+  { x: 1600, y: 340 }
 ]
+// Grass tufts scatter through the leftover tiles (never within the blast
+// arms' reach), one per pair, so the meadow reads lived-in.
 const TUFTS = [
-  { x: 280, y: 100 },
-  { x: 600, y: 100 },
-  { x: 120, y: 260 },
-  { x: 40, y: 340 },
-  { x: 440, y: 340 }
+  // center
+  { x: 880, y: 100 },
+  { x: 1040, y: 260 },
+  { x: 800, y: 340 },
+  { x: 1120, y: 340 },
+  // wings
+  { x: 560, y: 100 },
+  { x: 1360, y: 260 },
+  { x: 320, y: 180 },
+  { x: 1600, y: 180 },
+  { x: 160, y: 260 },
+  { x: 1760, y: 100 },
+  { x: 560, y: 340 },
+  { x: 1360, y: 340 }
 ]
 
 // Characters are ~100×100 squeeze-toy blobs centered on (0,0); these paths
@@ -150,20 +197,25 @@ export function SplashPanicCover() {
 
   return (
     <div className={styles.cover} aria-hidden='true'>
+      {/* slice against an extra-wide stage: the stage's 5.3:1 outruns every
+          real cover box (~1.6:1–4.7:1), so the full height always fits and
+          widening a card just reveals more meadow at the sides. See the
+          STAGE_W comment above. */}
       <svg
         className={styles.svg}
-        viewBox='0 0 640 360'
-        preserveAspectRatio='xMidYMid meet'
+        viewBox={`0 0 ${STAGE_W} 360`}
+        preserveAspectRatio='xMidYMid slice'
       >
         <defs>
-          {/* -20px row shift keys the checker to the wall band (see TILE
+          {/* -20px row shift keys the checker to the wall band; +40 column
+              shift puts a tile center on the stage center (see the TILE
               comment above). */}
           <pattern
             id={id('checker')}
             width='160'
             height='160'
             patternUnits='userSpaceOnUse'
-            patternTransform='translate(0,-20)'
+            patternTransform='translate(40,-20)'
           >
             <rect width='160' height='160' fill={MEADOW.dark} />
             <rect width='80' height='80' fill={MEADOW.light} />
@@ -187,9 +239,13 @@ export function SplashPanicCover() {
           </clipPath>
         </defs>
 
-        {/* Wall band — the arena's top border, one block per tile column. */}
-        <rect width='640' height={WALL_H} fill='#6e7a89' />
-        {Array.from({ length: 8 }, (_, i) => i * TILE).map((x) => (
+        {/* Wall band — the arena's top border, one block per tile column
+            (starting half a tile off-stage to match the shifted grid). */}
+        <rect width={STAGE_W} height={WALL_H} fill='#6e7a89' />
+        {Array.from(
+          { length: STAGE_W / TILE + 1 },
+          (_, i) => i * TILE - TILE / 2
+        ).map((x) => (
           <g key={x} stroke='rgba(42,36,64,0.35)' strokeWidth='3'>
             <rect
               x={x + 3}
@@ -213,12 +269,17 @@ export function SplashPanicCover() {
         {/* Grass checker + the wall's cast shadow + lighting. */}
         <rect
           y={WALL_H}
-          width='640'
+          width={STAGE_W}
           height={360 - WALL_H}
           fill={`url(#${id('checker')})`}
         />
-        <rect y={WALL_H} width='640' height='9' fill='rgba(42,36,64,0.12)' />
-        <rect width='640' height='360' fill={`url(#${id('sun')})`} />
+        <rect
+          y={WALL_H}
+          width={STAGE_W}
+          height='9'
+          fill='rgba(42,36,64,0.12)'
+        />
+        <rect width={STAGE_W} height='360' fill={`url(#${id('sun')})`} />
 
         {/* Grass tufts, one per tile center. */}
         <g
@@ -292,10 +353,13 @@ export function SplashPanicCover() {
           fill='rgba(42,36,64,0.16)'
         />
 
-        {/* Bomba first: row 100 sits behind the row-180 blast. */}
+        {/* Bomba first: row 100 sits behind the row-180 blast. The outer
+            group breathes throughout; the inner group handles the startle. */}
         <g transform={`translate(${BOMBA.x}, ${BOMBA.y}) scale(1.05)`}>
-          <g className={styles.hopRight}>
-            <Chibi kind='bomba' look={-1} />
+          <g className={styles.castBob}>
+            <g className={styles.hopRight}>
+              <Chibi kind='bomba' look={-1} />
+            </g>
           </g>
         </g>
 
@@ -412,15 +476,18 @@ export function SplashPanicCover() {
           </g>
         </g>
 
-        {/* Pip last: row 260 stands in front of the blast row. */}
+        {/* Pip last: row 260 stands in front of the blast row. The offset
+            class breathes Pip a beat out of phase with Bomba. */}
         <g transform={`translate(${PIP.x}, ${PIP.y}) scale(1.05)`}>
-          <g className={styles.hopLeft}>
-            <Chibi kind='pip' look={1} />
+          <g className={`${styles.castBob} ${styles.castBobOffset}`}>
+            <g className={styles.hopLeft}>
+              <Chibi kind='pip' look={1} />
+            </g>
           </g>
         </g>
 
         {/* Edge vignette settles the scene into the card. */}
-        <rect width='640' height='360' fill={`url(#${id('vign')})`} />
+        <rect width={STAGE_W} height='360' fill={`url(#${id('vign')})`} />
       </svg>
     </div>
   )

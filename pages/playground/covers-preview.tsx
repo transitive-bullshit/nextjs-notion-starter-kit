@@ -188,8 +188,10 @@ export default function CoversPreviewPage() {
     >
       <div className='space-y-8'>
         <p className='text-muted-foreground'>
-          Playground covers inside real card markup, at grid width (420px) and
-          full-column width (620px). Hover or focus a card to run its animation.
+          Playground covers inside real card markup at grid width (420px),
+          full-column width (620px), and a wide stress test (880px) — the cover
+          height is fixed while width varies, so wide is where covers break.
+          Hover or focus a card to run its animation.
         </p>
 
         <div
@@ -248,20 +250,16 @@ export default function CoversPreviewPage() {
               <h2 className='font-semibold'>{label}</h2>
               <p className='text-sm text-muted-foreground'>{hint}</p>
               <div className='flex flex-wrap items-start gap-6'>
-                <PreviewCard
-                  Cover={Cover}
-                  id={`${activeTab.id}-420`}
-                  title={activeTab.title}
-                  summary={activeTab.summary}
-                  width={420}
-                />
-                <PreviewCard
-                  Cover={Cover}
-                  id={`${activeTab.id}-620`}
-                  title={activeTab.title}
-                  summary={activeTab.summary}
-                  width={620}
-                />
+                {[420, 620, 880].map((width) => (
+                  <PreviewCard
+                    key={width}
+                    Cover={Cover}
+                    id={`${activeTab.id}-${width}`}
+                    title={activeTab.title}
+                    summary={activeTab.summary}
+                    width={width}
+                  />
+                ))}
               </div>
             </section>
           ))}

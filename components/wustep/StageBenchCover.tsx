@@ -1,4 +1,4 @@
-import { type CSSProperties, useId } from 'react'
+import { type CSSProperties, useId, useMemo } from 'react'
 
 import styles from './StageBenchCover.module.css'
 
@@ -10,9 +10,11 @@ import styles from './StageBenchCover.module.css'
  *   program screen, phase knobs, keybed). Drawn as one fixed-viewBox SVG so
  *   it scales as a single piece at any card size; the maroon stage behind it
  *   absorbs the varying cover aspect ratio. Hovering the card "starts a
- *   run": the keys arpeggiate, ACTIVE ticks 00 → 01, the program screen
- *   flips to RUNNING, the status LED blinks, and the first phase knob
- *   sweeps.
+ *   run" that plays Beethoven's Ode to Joy across the keybed — each key
+ *   physically dips and shades on the notes it plays — while the program
+ *   screen and ACTIVE LED step SELECT MODEL → RUNNING 01 → 02 → 03 through
+ *   the three phrases (only resetting to SELECT MODEL once the tune
+ *   finishes), the status LED flickers, and the first phase knob steps up.
  */
 
 // 22 white keys; a black key sits on the right edge of white indices
@@ -20,13 +22,42 @@ import styles from './StageBenchCover.module.css'
 const WHITE_KEYS = 22
 const BLACK_AFTER = new Set([0, 1, 3, 4, 5])
 
-// White keys pressed during the hover arpeggio → stagger order.
-const PRESSED_ORDER = new Map([
-  [6, 0],
-  [9, 1],
-  [12, 2],
-  [15, 3]
-])
+// The hover "run" plays Ode to Joy on the keybed — white keys only. White
+// key i sounds C D E F G A B (i % 7), so the tune lives in the second octave
+// (C = index 7 … G = index 11).
+type Note = 'C' | 'D' | 'E' | 'F' | 'G'
+const MELODY: readonly Note[] = [
+  'E',
+  'E',
+  'F',
+  'G',
+  'G',
+  'F',
+  'E',
+  'D',
+  'C',
+  'C',
+  'D',
+  'E',
+  'E',
+  'D',
+  'D'
+]
+const NOTE_KEY: Record<Note, number> = { C: 7, D: 8, E: 9, F: 10, G: 11 }
+
+// One shared loop; notes land evenly across the RUNNING window.
+const LOOP_S = 8.4
+const NOTE_START = 13.5 // % of loop where the first note strikes
+const NOTE_STEP = 5 // % of loop between notes
+
+// keyIndex → the loop-% times it is struck (ascending, from MELODY order).
+const KEY_STRIKES = MELODY.reduce<Map<number, number[]>>((map, note, i) => {
+  const key = NOTE_KEY[note]
+  const times = map.get(key) ?? []
+  times.push(NOTE_START + i * NOTE_STEP)
+  map.set(key, times)
+  return map
+}, new Map())
 
 // Keybed geometry in viewBox units.
 const KEYS_X = 13
@@ -58,8 +89,31 @@ export function StageBenchCover() {
     if (BLACK_AFTER.has(i % 7)) blackKeys.push(i)
   }
 
+  // Per-key press keyframes, generated from the melody so it stays the single
+  // source of truth. Each note = a quick dip + darken, held ~0.3s, released
+  // before the next note (so repeated notes re-articulate). Keyframe names
+  // carry the instance uid to avoid cross-instance collisions.
+  const keyframes = useMemo(() => {
+    const down = 'transform: translateY(5px); filter: brightness(0.72);'
+    const up = 'transform: translateY(0); filter: brightness(1);'
+    let css = ''
+    for (const [key, times] of KEY_STRIKES) {
+      const stops = [`0% { ${up} }`]
+      for (const t of times) {
+        stops.push(`${t.toFixed(2)}% { ${up} }`)
+        stops.push(`${(t + 0.5).toFixed(2)}% { ${down} }`)
+        stops.push(`${(t + 3.6).toFixed(2)}% { ${down} }`)
+        stops.push(`${(t + 4.5).toFixed(2)}% { ${up} }`)
+      }
+      stops.push(`100% { ${up} }`)
+      css += `@keyframes sb-key-${key}-${uid} { ${stops.join(' ')} }\n`
+    }
+    return css
+  }, [uid])
+
   return (
     <div className={styles.cover} aria-hidden='true'>
+      <style dangerouslySetInnerHTML={{ __html: keyframes }} />
       <svg
         className={styles.svg}
         viewBox='0 0 640 200'
@@ -106,10 +160,6 @@ export function StageBenchCover() {
             <stop offset='0' stopColor='rgba(0,0,0,0.55)' />
             <stop offset='1' stopColor='rgba(0,0,0,0)' />
           </linearGradient>
-          <linearGradient id={id('press')} x1='0' y1='0' x2='0' y2='1'>
-            <stop offset='0' stopColor='#f0b3a8' />
-            <stop offset='1' stopColor='#f7d8d1' />
-          </linearGradient>
           <radialGradient id={id('knob')} cx='0.32' cy='0.26' r='0.85'>
             <stop offset='0' stopColor='#5f6575' />
             <stop offset='0.75' stopColor='#2b2f39' />
@@ -141,18 +191,35 @@ export function StageBenchCover() {
           <rect x='6' y='102' width='628' height='92' fill='#1a1014' />
           <rect x={KEYS_X} y='105.5' width={KEYS_W} height='4' fill='#8c1626' />
 
-          {/* White keys */}
-          {Array.from({ length: WHITE_KEYS }).map((_, i) => (
-            <rect
-              key={i}
-              x={KEYS_X + i * whiteW + 0.6}
-              y={KEYS_Y}
-              width={whiteW - 1.2}
-              height={WHITE_H}
-              rx='2'
-              fill={`url(#${id('wkey')})`}
-            />
-          ))}
+          {/* White keys — melody keys dip + shade on the notes they play,
+              driven by their generated sb-key-<i> keyframe (name set inline
+              so it can reference the instance uid; .pressKey holds the paused
+              state the hover rule resumes). */}
+          {Array.from({ length: WHITE_KEYS }).map((_, i) => {
+            const struck = KEY_STRIKES.has(i)
+            return (
+              <rect
+                key={i}
+                className={struck ? styles.pressKey : undefined}
+                style={
+                  struck
+                    ? {
+                        animationName: `sb-key-${i}-${uid}`,
+                        animationDuration: `${LOOP_S}s`,
+                        animationTimingFunction: 'linear',
+                        animationIterationCount: 'infinite'
+                      }
+                    : undefined
+                }
+                x={KEYS_X + i * whiteW + 0.6}
+                y={KEYS_Y}
+                width={whiteW - 1.2}
+                height={WHITE_H}
+                rx='2'
+                fill={`url(#${id('wkey')})`}
+              />
+            )
+          })}
 
           {/* Shadow cast by the panel lip onto the keys */}
           <rect
@@ -163,22 +230,6 @@ export function StageBenchCover() {
             fill={`url(#${id('kshade')})`}
             opacity='0.3'
           />
-
-          {/* Arpeggio press overlays — staggered delays walk the run up the
-              keybed while the LEDs/screen show it running. */}
-          {[...PRESSED_ORDER].map(([i, order]) => (
-            <rect
-              key={i}
-              className={styles.pressGlow}
-              style={{ animationDelay: `${order * 0.14}s` }}
-              x={KEYS_X + i * whiteW + 0.6}
-              y={KEYS_Y}
-              width={whiteW - 1.2}
-              height={WHITE_H}
-              rx='2'
-              fill={`url(#${id('press')})`}
-            />
-          ))}
 
           {/* Black keys */}
           {blackKeys.map((offset) => (
@@ -320,19 +371,34 @@ export function StageBenchCover() {
           <text className={styles.ledDigitsText} x='161.5' y='75'>
             05
           </text>
+          {/* ACTIVE ticks 00 → 01 → 02 → 03 across the three runs. */}
           <text
-            className={`${styles.ledDigitsText} ${styles.swapIdle}`}
+            className={`${styles.ledDigitsText} ${styles.led0}`}
             x='218.5'
             y='75'
           >
             00
           </text>
           <text
-            className={`${styles.ledDigitsText} ${styles.swapRun}`}
+            className={`${styles.ledDigitsText} ${styles.led1}`}
             x='218.5'
             y='75'
           >
             01
+          </text>
+          <text
+            className={`${styles.ledDigitsText} ${styles.led2}`}
+            x='218.5'
+            y='75'
+          >
+            02
+          </text>
+          <text
+            className={`${styles.ledDigitsText} ${styles.led3}`}
+            x='218.5'
+            y='75'
+          >
+            03
           </text>
 
           {/* Program module */}
@@ -372,19 +438,35 @@ export function StageBenchCover() {
           <text className={styles.screenSmallText} x='279' y='51'>
             SYSTEM READY
           </text>
+          {/* SELECT MODEL → RUNNING 01 → 02 → 03, resetting to SELECT only
+              once the third run wraps. */}
           <text
-            className={`${styles.screenMainText} ${styles.swapIdle}`}
+            className={`${styles.screenMainText} ${styles.progSelect}`}
             x='279'
             y='70'
           >
             SELECT MODEL
           </text>
           <text
-            className={`${styles.screenMainText} ${styles.swapRun}`}
+            className={`${styles.screenMainText} ${styles.progRun1}`}
             x='279'
             y='70'
           >
             RUNNING 01_
+          </text>
+          <text
+            className={`${styles.screenMainText} ${styles.progRun2}`}
+            x='279'
+            y='70'
+          >
+            RUNNING 02_
+          </text>
+          <text
+            className={`${styles.screenMainText} ${styles.progRun3}`}
+            x='279'
+            y='70'
+          >
+            RUNNING 03_
           </text>
 
           {/* Phases module */}
