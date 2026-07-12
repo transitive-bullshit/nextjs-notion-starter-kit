@@ -1,0 +1,262 @@
+/* Split scene on the game's light UI gray; the .cover background matches the
+   SVG page color so letterbox slivers vanish. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2f6;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.chatCard {
+  filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.08));
+}
+
+.bubbleText {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  fill: #1e3a5f;
+}
+
+.modelName {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  fill: #64748b;
+}
+
+.avatarMark {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+  fill: #fff;
+}
+
+.emoji {
+  font-size: 30px;
+  text-anchor: middle;
+}
+
+.bomb {
+  font-size: 32px;
+}
+
+.boom {
+  font-size: 40px;
+}
+
+/* ---------- The exchange, on hover ----------
+   One shared 3.4s loop, declared paused (StageBench idiom): typing dots
+   bounce and the shimmer sweeps the whole time, the bomb wobbles through
+   the fuse window, and the board answers with a plus-burst at mid-loop.
+   Windows: 0–38% fuse/typing · 40–62% burst · 65–100% reset breath. */
+
+.typingDot,
+.shimmer,
+.bomb,
+.boom,
+.flame,
+.playerOne,
+.playerTwo {
+  animation-duration: 3.4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+/* The classic chat typing indicator — literal domain motion, eased in/out
+   rather than an elastic curve. */
+.typingDot {
+  animation-name: dotBounce;
+  animation-duration: 1.13s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes dotBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+  60% {
+    transform: translateY(0);
+  }
+}
+
+.shimmer {
+  animation-name: shimmerSweep;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(116px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.bomb {
+  transform-box: fill-box;
+  transform-origin: 50% 60%;
+  animation-name: bombWobble;
+}
+
+@keyframes bombWobble {
+  0%,
+  8% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  16% {
+    transform: rotate(-8deg) scale(1.04);
+  }
+  24% {
+    transform: rotate(7deg) scale(1.07);
+  }
+  32% {
+    transform: rotate(-6deg) scale(1.1);
+  }
+  38% {
+    transform: rotate(0deg) scale(1.16);
+    opacity: 1;
+  }
+  40%,
+  62% {
+    opacity: 0;
+  }
+  66%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.boom,
+.flame {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.boom {
+  animation-name: boomPop;
+}
+
+@keyframes boomPop {
+  0%,
+  39% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  44% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  56% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  63%,
+  100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+.flame {
+  animation-name: flamePop;
+}
+
+@keyframes flamePop {
+  0%,
+  41% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  46% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  58% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+  64%,
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+/* The cast flinches as the burst lands. */
+.playerOne,
+.playerTwo {
+  transform-box: fill-box;
+  transform-origin: 50% 85%;
+  animation-name: playerHop;
+  animation-timing-function: ease-in-out;
+}
+
+.playerTwo {
+  animation-delay: 0.08s;
+}
+
+@keyframes playerHop {
+  0%,
+  42% {
+    transform: translateY(0);
+  }
+  47% {
+    transform: translateY(-9px) scale(0.97, 1.04);
+  }
+  53% {
+    transform: translateY(0) scale(1.03, 0.96);
+  }
+  57%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+/* ---------- Hover / focus: resume the paused exchange ---------- */
+
+@media (hover: hover) {
+  :global(.group):hover .cover *,
+  .cover:hover * {
+    animation-play-state: running;
+  }
+}
+
+:global(.group):focus-within .cover *,
+.cover:focus-within * {
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typingDot,
+  .shimmer,
+  .bomb,
+  .boom,
+  .flame,
+  .playerOne,
+  .playerTwo {
+    animation: none !important;
+  }
+}

@@ -1,11 +1,13 @@
 import type React from 'react'
 
+import { BombermanCover } from '@/components/wustep/BombermanCover'
 import { BookshelfCover } from '@/components/wustep/BookshelfCover'
 import { DominoCover } from '@/components/wustep/DominoCover'
 import { LensesCover } from '@/components/wustep/LensesCover'
 import { LensesIllustrationLabCover } from '@/components/wustep/LensesIllustrationLabCover'
 import { MidiVisualizerCover } from '@/components/wustep/MidiVisualizerCover'
 import { ShadcnPhysicsCover } from '@/components/wustep/ShadcnPhysicsCover'
+import { SplashPanicCover } from '@/components/wustep/SplashPanicCover'
 import { SpotItCover } from '@/components/wustep/SpotItCover'
 import { StageBenchCover } from '@/components/wustep/StageBenchCover'
 import { StarrySequencerCover } from '@/components/wustep/StarrySequencerCover'
@@ -22,6 +24,8 @@ export type PlaygroundEntry = {
   ownerOnly?: boolean
   article?: string
   source?: string
+  /** Companion X post; linked like `article` from cards and the sidebar. */
+  x?: string
   gradient?: string
   image?: string
   CoverComponent?: React.ComponentType
@@ -45,6 +49,7 @@ export const playgroundSections: PlaygroundSection[] = [
         date: 'Jun 2026',
         year: '2026',
         source: 'https://stagebench.vercel.app/',
+        x: 'https://x.com/wustep/status/2074529375043858480',
         gradient: 'from-red-600 via-red-950 to-zinc-950',
         CoverComponent: StageBenchCover
       },
@@ -112,6 +117,18 @@ export const playgroundSections: PlaygroundSection[] = [
     title: 'Games',
     items: [
       {
+        title: 'Splash Panic!',
+        url: '/playground/splashpanic',
+        description:
+          'A chaotic multiplayer water-balloon battle arena inspired by Crazy Arcade — trap your rivals in bubbles, rescue your teammates, and be the last one standing.',
+        summary: 'Multiplayer water-balloon chaos with bubble traps & rescues',
+        date: 'Jul 2026',
+        year: '2026',
+        source: 'https://github.com/wustep/splashpanic',
+        gradient: 'from-teal-300 via-sky-400 to-blue-500',
+        CoverComponent: SplashPanicCover
+      },
+      {
         title: 'Spot it!',
         url: '/playground/spot-it',
         description:
@@ -135,7 +152,8 @@ export const playgroundSections: PlaygroundSection[] = [
         article: '/bomberman',
         source: 'https://github.com/wustep/bomberman',
         gradient: 'from-orange-500 to-rose-500',
-        image: '/playground/covers/bomberman.png'
+        image: '/playground/covers/bomberman.png',
+        CoverComponent: BombermanCover
       }
     ]
   },

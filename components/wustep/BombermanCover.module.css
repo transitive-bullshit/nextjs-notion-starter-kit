@@ -1,0 +1,162 @@
+/* Full-bleed emoji board on the game's white page; the .cover background
+   matches the ⬜ tone so letterbox slivers vanish. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdfdfd;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* One size for every cell emoji — the game renders the whole board at
+   text-3xl inside w-8 cells (~94% fill); 74px on 80px tiles matches. */
+.cell {
+  font-size: 74px;
+  text-anchor: middle;
+}
+
+/* ---------- The round, on hover ----------
+   One shared 3.4s loop, declared paused at the idle pose (bomb ticking,
+   blossoms hidden — StageBench idiom). Windows: 0–40% fuse · 40–54% bloom
+   (the game's 400ms explosion, in loop time) · 66–100% a fresh bomb. */
+
+.bomb,
+.bloom,
+.playerOne,
+.playerTwo {
+  animation-duration: 3.4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+/* The game's fuse is a color ramp on the 💣 itself (GameCell.tsx applies
+   sepia/saturate/hue-rotate/brightness by progress) — reproduced here with
+   a hint of swell so it reads at card size. */
+.bomb {
+  animation-name: fuseHeat;
+}
+
+@keyframes fuseHeat {
+  0%,
+  8% {
+    transform: scale(1);
+    filter: none;
+    opacity: 1;
+  }
+  38% {
+    filter: sepia(85%) saturate(700%) hue-rotate(-115deg) brightness(220%);
+  }
+  40% {
+    transform: scale(1.08);
+    filter: sepia(90%) saturate(790%) hue-rotate(-120deg) brightness(240%);
+    opacity: 1;
+  }
+  41%,
+  62% {
+    opacity: 0;
+  }
+  66%,
+  100% {
+    transform: scale(1);
+    filter: none;
+    opacity: 1;
+  }
+}
+
+/* The game's explosion keyframes (tailwind.config.ts `explosion`): scale
+   0.5 @ 0.8 → 1 @ 1 → 1.3 @ 0.2 over 400ms. 40→54% of this loop is the
+   same pop in loop time; arms trail the center by one frame via the inline
+   delay. */
+.bloom {
+  opacity: 0;
+  animation-name: blossomPop;
+}
+
+@keyframes blossomPop {
+  0%,
+  40% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  41% {
+    opacity: 0.8;
+    transform: scale(0.5);
+  }
+  47% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  53% {
+    opacity: 0.2;
+    transform: scale(1.3);
+  }
+  54%,
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+}
+
+/* The cast flinches as the blossoms land; staggered so the panic ripples. */
+.playerOne,
+.playerTwo {
+  transform-origin: 50% 85%;
+  animation-name: playerHop;
+  animation-timing-function: ease-in-out;
+}
+
+.playerTwo {
+  animation-delay: 0.08s;
+}
+
+@keyframes playerHop {
+  0%,
+  42% {
+    transform: translateY(0);
+  }
+  47% {
+    transform: translateY(-11px) scale(0.97, 1.04);
+  }
+  53% {
+    transform: translateY(0) scale(1.03, 0.96);
+  }
+  57%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+/* ---------- Hover / focus: resume the paused round ---------- */
+
+@media (hover: hover) {
+  :global(.group):hover .cover *,
+  .cover:hover * {
+    animation-play-state: running;
+  }
+}
+
+:global(.group):focus-within .cover *,
+.cover:focus-within * {
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bomb,
+  .bloom,
+  .playerOne,
+  .playerTwo {
+    animation: none !important;
+  }
+}

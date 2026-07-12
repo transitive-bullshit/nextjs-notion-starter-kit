@@ -1,0 +1,277 @@
+/* One fixed-viewBox SVG (640×360) on a meadow-toned backdrop. The scene is
+   16:9 like the card, so the backdrop only peeks through as sub-pixel slivers
+   at odd widths — it matches the darker checker tone so those slivers vanish. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #b0da93;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- The round, on hover ----------
+   One shared 3.6s loop, declared paused at its idle pose (balloon intact,
+   splash hidden). Hover/focus resumes the timeline, so leaving mid-burst
+   freezes the round and coming back finishes it — same idiom as
+   StageBenchCover. Windows within the loop:
+     0–36%   fuse: throb grows, blush creeps in
+     37–58%  pop: balloon gone, plus-splash blooms, cast hops
+     58–80%  splash drains away
+     82–100% a fresh balloon re-inflates (loop lands back on the idle pose) */
+
+.balloon {
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+  animation: fuseAndPop 3.6s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes fuseAndPop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  8% {
+    transform: scale(1.045);
+  }
+  16% {
+    transform: scale(1);
+  }
+  24% {
+    transform: scale(1.075);
+  }
+  30% {
+    transform: scale(1.03);
+  }
+  36% {
+    transform: scale(1.16);
+    opacity: 1;
+  }
+  38% {
+    transform: scale(1.24);
+    opacity: 0;
+  }
+  81% {
+    transform: scale(0.02);
+    opacity: 0;
+  }
+  84% {
+    transform: scale(0.02);
+    opacity: 1;
+  }
+  94% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Danger blush rides the last stretch of the fuse (mirrors the game's
+   pulse > 0.7 red wash). Base opacity 0 doubles as the reduced-motion pose. */
+.blush {
+  opacity: 0;
+  animation: blushIn 3.6s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes blushIn {
+  0%,
+  20% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 0.5;
+  }
+  37% {
+    opacity: 0.8;
+  }
+  38.5%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Splash ---------- */
+
+.splash {
+  opacity: 0;
+  animation: splashFade 3.6s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes splashFade {
+  0%,
+  37% {
+    opacity: 0;
+  }
+  39%,
+  58% {
+    opacity: 1;
+  }
+  72%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Arms shoot out along the row/column from the burst center; the group
+   fade above handles their exit so the grow keyframes never rewind. */
+.armH,
+.armV {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: armGrowH 3.6s cubic-bezier(0.2, 0.9, 0.3, 1) infinite;
+  animation-play-state: paused;
+}
+
+.armV {
+  animation-name: armGrowV;
+}
+
+@keyframes armGrowH {
+  0%,
+  37% {
+    transform: scaleX(0.05);
+  }
+  46% {
+    transform: scaleX(1.03);
+  }
+  50%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes armGrowV {
+  0%,
+  37% {
+    transform: scaleY(0.05);
+  }
+  46% {
+    transform: scaleY(1.03);
+  }
+  50%,
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.splashCore {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: coreGrow 3.6s cubic-bezier(0.2, 0.9, 0.3, 1) infinite;
+  animation-play-state: paused;
+}
+
+@keyframes coreGrow {
+  0%,
+  37% {
+    transform: scale(0.2);
+  }
+  43% {
+    transform: scale(1.12);
+  }
+  47%,
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Droplets scatter along per-drop --dx/--dy vectors set inline. */
+.drop {
+  opacity: 0;
+  animation: dropFly 3.6s ease-out infinite;
+  animation-play-state: paused;
+}
+
+@keyframes dropFly {
+  0%,
+  38% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 0;
+  }
+}
+
+/* ---------- Cast reaction ----------
+   Both chibis hop when the burst reaches them; Bomba a beat later so the
+   panic ripples across the arena instead of landing metronome-flat. */
+.hopLeft,
+.hopRight {
+  transform-box: fill-box;
+  transform-origin: 50% 90%;
+  animation: alarmHop 3.6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.hopRight {
+  animation-delay: 0.09s;
+}
+
+@keyframes alarmHop {
+  0%,
+  39% {
+    transform: translateY(0) scale(1, 1);
+  }
+  43% {
+    transform: translateY(-13px) scale(0.96, 1.05);
+  }
+  48% {
+    transform: translateY(0) scale(1.04, 0.95);
+  }
+  51% {
+    transform: translateY(-5px) scale(1, 1.02);
+  }
+  54%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+/* ---------- Hover / focus: resume the paused round ---------- */
+
+@media (hover: hover) {
+  :global(.group):hover .cover *,
+  .cover:hover * {
+    animation-play-state: running;
+  }
+}
+
+:global(.group):focus-within .cover *,
+.cover:focus-within * {
+  animation-play-state: running;
+}
+
+/* Idle pose (balloon intact, splash hidden) already reads as a complete
+   scene, so reduced motion just stays there. */
+@media (prefers-reduced-motion: reduce) {
+  .balloon,
+  .blush,
+  .splash,
+  .armH,
+  .armV,
+  .splashCore,
+  .drop,
+  .hopLeft,
+  .hopRight {
+    animation: none !important;
+  }
+}

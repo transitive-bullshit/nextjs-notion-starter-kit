@@ -1,0 +1,180 @@
+/* Poster on cream — the .cover background continues the SVG's paper color so
+   letterboxing at odd card widths is invisible. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff6e9;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Chunky rounded display type. ui-rounded lands on SF Pro Rounded on Apple
+   platforms; elsewhere the extrabold weight + thick ink stroke still carry
+   the toy-box look. paint-order keeps the stroke behind the fill. */
+.title {
+  font-family:
+    ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: 60px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-anchor: middle;
+  fill: #ff6b81;
+  stroke: #2a2440;
+  stroke-width: 11px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+.titleShadow {
+  fill: #3fd2c7;
+}
+
+.tagline {
+  font-family:
+    ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  text-anchor: middle;
+  fill: #4a4458;
+}
+
+.pillText {
+  font-family:
+    ui-rounded, 'SF Pro Rounded', 'Arial Rounded MT Bold', system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  text-anchor: middle;
+  fill: #2a2440;
+}
+
+/* ---------- Hover: the poster wakes up ----------
+   Apply-on-hover idiom (like LensesCover): the rest pose must be the exact
+   composed poster, so animations are only assigned while hovered/focused and
+   every keyframe set starts and ends at the identity pose. */
+
+.wordmark {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.balloonFloat,
+.bubbleBob {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.sparkle {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  opacity: 0.75;
+}
+
+@media (hover: hover) {
+  :global(.group):hover .wordmark,
+  .cover:hover .wordmark {
+    /* 3.4s matches the app's title wiggle cadence. */
+    animation: posterWiggle 3.4s ease-in-out infinite;
+  }
+
+  :global(.group):hover .balloonFloat,
+  .cover:hover .balloonFloat {
+    animation: balloonDrift 4.2s ease-in-out infinite;
+  }
+
+  :global(.group):hover .bubbleBob,
+  .cover:hover .bubbleBob {
+    animation: bubbleBob 3.8s ease-in-out infinite;
+  }
+
+  :global(.group):hover .sparkle,
+  .cover:hover .sparkle {
+    animation: sparkleTwinkle 2.6s ease-in-out infinite;
+  }
+}
+
+:global(.group):focus-within .wordmark,
+.cover:focus-within .wordmark {
+  animation: posterWiggle 3.4s ease-in-out infinite;
+}
+
+:global(.group):focus-within .balloonFloat,
+.cover:focus-within .balloonFloat {
+  animation: balloonDrift 4.2s ease-in-out infinite;
+}
+
+:global(.group):focus-within .bubbleBob,
+.cover:focus-within .bubbleBob {
+  animation: bubbleBob 3.8s ease-in-out infinite;
+}
+
+:global(.group):focus-within .sparkle,
+.cover:focus-within .sparkle {
+  animation: sparkleTwinkle 2.6s ease-in-out infinite;
+}
+
+.sparkleLate {
+  animation-delay: 1.1s !important;
+}
+
+@keyframes posterWiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-1.4deg);
+  }
+  75% {
+    transform: rotate(1.4deg);
+  }
+}
+
+@keyframes balloonDrift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(4deg);
+  }
+}
+
+@keyframes bubbleBob {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-3px, -10px);
+  }
+}
+
+@keyframes sparkleTwinkle {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark,
+  .balloonFloat,
+  .bubbleBob,
+  .sparkle {
+    animation: none !important;
+  }
+}

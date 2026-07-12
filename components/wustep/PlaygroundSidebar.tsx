@@ -27,6 +27,7 @@ type AboutState = {
   date?: string
   article?: string
   source?: string
+  x?: string
 }
 
 export function PlaygroundSidebar({
@@ -55,7 +56,8 @@ export function PlaygroundSidebar({
     description: activeItem?.description ?? defaultDescription,
     date: activeItem?.date,
     article: activeItem?.article,
-    source: activeItem?.source
+    source: activeItem?.source,
+    x: activeItem?.x
   })
 
   React.useEffect(() => {
@@ -63,7 +65,8 @@ export function PlaygroundSidebar({
       description: activeItem?.description ?? defaultDescription,
       date: activeItem?.date,
       article: activeItem?.article,
-      source: activeItem?.source
+      source: activeItem?.source,
+      x: activeItem?.x
     })
   }, [activeItem])
 
@@ -72,7 +75,8 @@ export function PlaygroundSidebar({
       description: activeItem?.description ?? defaultDescription,
       date: activeItem?.date,
       article: activeItem?.article,
-      source: activeItem?.source
+      source: activeItem?.source,
+      x: activeItem?.x
     })
 
   const metadataItems: React.ReactNode[] = []
@@ -87,6 +91,17 @@ export function PlaygroundSidebar({
         className='underline underline-offset-2 hover:text-sidebar-primary transition-colors'
       >
         Article
+      </Link>
+    )
+  }
+  if (aboutInfo.x) {
+    metadataItems.push(
+      <Link
+        key='x'
+        href={aboutInfo.x}
+        className='underline underline-offset-2 hover:text-sidebar-primary transition-colors'
+      >
+        Post
       </Link>
     )
   }
@@ -141,7 +156,8 @@ export function PlaygroundSidebar({
                           description: item.description,
                           date: item.date,
                           article: item.article,
-                          source: item.source
+                          source: item.source,
+                          x: item.x
                         })
                       }
                       onFocus={() =>
@@ -149,7 +165,8 @@ export function PlaygroundSidebar({
                           description: item.description,
                           date: item.date,
                           article: item.article,
-                          source: item.source
+                          source: item.source,
+                          x: item.x
                         })
                       }
                       onMouseLeave={resetDescription}

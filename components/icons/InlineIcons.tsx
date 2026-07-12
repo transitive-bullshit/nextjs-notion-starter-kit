@@ -261,3 +261,12 @@ export function IoHeartOutline(props: IconProps) {
     </IconBase>
   )
 }
+
+/** X (Twitter) logo, from react-icons' RiTwitterXFill. */
+export function RiTwitterX(props: IconProps) {
+  return (
+    <IconBase viewBox='0 0 24 24' {...props}>
+      <path d='M8 2H1l8.26 11.014L1.45 22h2.65l6.388-7.349L16 22h7L14.392 10.522 21.8 2h-2.65l-5.986 6.886L8 2Zm9 18L5 4h2l12 16h-2Z' />
+    </IconBase>
+  )
+}
