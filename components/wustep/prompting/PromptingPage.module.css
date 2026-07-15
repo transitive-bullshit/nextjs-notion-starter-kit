@@ -2411,6 +2411,20 @@
   color: var(--bg-color, #fff);
 }
 
+/* The generic `.dark-mode .token` override outranks the single-class kind
+   rules above, so the kinds restate their surfaces at equal specificity. */
+:global(.dark-mode) .token_agent,
+:global(.dark-mode) .token_input {
+  background: var(--pm-accent-soft, rgba(232, 122, 74, 0.13));
+  border-color: var(--pm-accent-line, rgba(232, 122, 74, 0.45));
+}
+
+:global(.dark-mode) .token_output {
+  background: var(--fg-color-6, rgba(255, 255, 255, 0.84));
+  border-color: transparent;
+  color: var(--bg-color, #0d0d0d);
+}
+
 .op {
   display: inline-block;
   padding: 0 4px;
