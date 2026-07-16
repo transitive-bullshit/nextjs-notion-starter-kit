@@ -6,11 +6,11 @@ type Area = 'ux' | 'perf' | 'debug' | 'arch'
 type Depth = 'high' | 'mid' | 'low'
 type Action = 'ask' | 'plan' | 'delegate'
 
-const AREAS: Array<{ id: Area; label: string }> = [
-  { id: 'ux', label: 'UX' },
-  { id: 'perf', label: 'Performance' },
-  { id: 'debug', label: 'Debugging' },
-  { id: 'arch', label: 'Architecture' }
+const AREAS: Array<{ id: Area; label: string; short: string }> = [
+  { id: 'ux', label: 'UX', short: 'UX' },
+  { id: 'perf', label: 'Performance', short: 'Perf' },
+  { id: 'debug', label: 'Debugging', short: 'Debug' },
+  { id: 'arch', label: 'Architecture', short: 'Arch' }
 ]
 
 const DEPTHS: Array<{ id: Depth; label: string; hint: string }> = [
@@ -255,7 +255,8 @@ export function TreeDemo() {
               key={a.id}
               className={`${styles.treeColLabel} ${a.id === area ? styles.treeAxisActive : ''}`}
             >
-              {a.label}
+              <span className={styles.treeColLabelFull}>{a.label}</span>
+              <span className={styles.treeColLabelShort}>{a.short}</span>
             </div>
           ))}
           {DEPTHS.map((d) => (

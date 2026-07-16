@@ -2808,7 +2808,14 @@
 
 .treeGrid {
   display: grid;
-  grid-template-columns: minmax(110px, 0.9fr) repeat(4, 1fr);
+  /*
+   * minmax(0) matters: a bare 1fr track can't shrink below its items'
+   * min-content, and the one-word column headers (PERFORMANCE,
+   * ARCHITECTURE) put that floor near 690px — wider than the wrap at
+   * modest article widths, which grew a scrollbar inside the figure.
+   * The grid's min-width is the intended floor; below it the wrap scrolls.
+   */
+  grid-template-columns: minmax(110px, 0.9fr) repeat(4, minmax(0, 1fr));
   gap: 6px;
   min-width: 480px;
 }
@@ -2822,6 +2829,10 @@
   text-transform: uppercase;
   color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
   transition: color 200ms ease;
+}
+
+.treeColLabelShort {
+  display: none;
 }
 
 .treeAxisActive {
@@ -2931,12 +2942,16 @@
   border-style: solid;
 }
 
+/*
+ * No transform/outer shadow here: the grid sits in an overflow-x:auto
+ * wrap, and anything that pokes outside an edge cell's box (a scale-up,
+ * an outer ring) makes the wrap grow scrollbars. The ring is inset.
+ */
 .treeCellActive {
   border-style: solid;
   border-color: var(--pm-accent, #b8401f);
   background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
-  transform: scale(1.02);
-  box-shadow: 0 0 0 1px var(--pm-accent, #b8401f);
+  box-shadow: inset 0 0 0 1px var(--pm-accent, #b8401f);
 }
 
 .treeCellDot {
@@ -3087,6 +3102,18 @@
   color: var(--pm-accent-ink, #a03415);
 }
 
+/* Once the tracks can shrink, the full column words no longer fit
+   four-across; swap to the short forms before they collide. */
+@media (max-width: 760px) {
+  .treeColLabelFull {
+    display: none;
+  }
+
+  .treeColLabelShort {
+    display: inline;
+  }
+}
+
 /*
  * The 2D map on phones. At desktop the grid is held at min-width 480px
  * (so it scrolls sideways on a narrow screen) and each Ask/Plan/Delegate
@@ -3098,7 +3125,7 @@
 @media (max-width: 640px) {
   .treeGrid {
     min-width: 0;
-    grid-template-columns: minmax(58px, 0.7fr) repeat(4, 1fr);
+    grid-template-columns: minmax(58px, 0.7fr) repeat(4, minmax(0, 1fr));
     gap: 4px;
   }
 
@@ -3129,6 +3156,9 @@
   }
 
   .treeCell {
+    /* The ratio resolves width from min-height (~75px) even in narrow
+       tracks, overflowing the wrap — on phones let the track set width. */
+    aspect-ratio: auto;
     min-height: 44px;
     border-radius: 2px;
   }
