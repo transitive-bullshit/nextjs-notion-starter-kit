@@ -92,6 +92,47 @@ export function RecapContent() {
         </p>
         <p>Go talk to a machine.</p>
       </Note>
+
+      <section className={styles.resources}>
+        <h3 className={styles.resourcesHeading}>Additional readings</h3>
+        <ul className={styles.resourcesList}>
+          <li className={styles.resourcesItem}>
+            <a
+              href='https://github.com/cursor/plugins/blob/main/pstack/README.md'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={styles.resourcesLink}
+            >
+              pstack
+            </a>
+            <span className={styles.resourcesDesc}>
+              a grab bag of excellent skills
+            </span>
+          </li>
+          <li className={styles.resourcesItem}>
+            <a
+              href='https://x.com/bcherny'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={styles.resourcesLink}
+            >
+              Boris Cherny
+            </a>
+            <span className={styles.resourcesDesc}>on Twitter/X</span>
+          </li>
+          <li className={styles.resourcesItem}>
+            <a
+              href='https://x.com/trq212/articles'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={styles.resourcesLink}
+            >
+              Thariq
+            </a>
+            <span className={styles.resourcesDesc}>&apos;s articles</span>
+          </li>
+        </ul>
+      </section>
     </ChapterBody>
   )
 }

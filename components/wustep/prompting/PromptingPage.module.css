@@ -2244,6 +2244,69 @@
   margin-bottom: 0;
 }
 
+/* ===== Recap chapter — favorite resources ===== */
+
+.resources {
+  margin: 2.4em 0 0.5em;
+  padding-top: 1.6em;
+  border-top: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+}
+
+:global(.dark-mode) .resources {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.resourcesHeading {
+  margin: 0 0 0.9em;
+  font-family: var(--font-serif, var(--font-sans));
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg-color, rgb(55, 53, 47));
+}
+
+:global(.dark-mode) .resourcesHeading {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.resourcesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resourcesItem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4em;
+  font-size: 0.96rem;
+}
+
+.resourcesLink {
+  font-weight: 600;
+  color: var(--pm-accent, #b8401f) !important;
+  text-decoration: none !important;
+  background: none !important;
+  background-image: none !important;
+  border: none !important;
+}
+
+.resourcesLink:hover {
+  text-decoration: underline !important;
+}
+
+.resourcesDesc {
+  color: var(--fg-color-3, rgba(55, 53, 47, 0.6));
+}
+
+:global(.dark-mode) .resourcesDesc {
+  color: rgba(255, 255, 255, 0.55);
+}
+
 /* ===== Equation demo ===== */
 
 .equationCard {
