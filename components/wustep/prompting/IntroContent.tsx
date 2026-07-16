@@ -88,7 +88,7 @@ export function IntroContent() {
         <div className={styles.bodyItem} style={bodyDelay(1)}>
           <Figure
             num='0.1'
-            caption='The new surface of programming. Try sending it.'
+            caption='What a lot of programming looks like now. Try sending it.'
           >
             <PromptInputDemo start={revealed} />
           </Figure>

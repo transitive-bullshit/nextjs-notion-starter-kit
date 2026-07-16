@@ -238,7 +238,7 @@ export function AboutPage() {
               . I grew up mostly in{' '}
               <Tooltip
                 inline
-                label='Los Angeles, CA → Toledo, OH → Seattle, WA → San Francisco, CA. I moved a lot'
+                label='Los Angeles, CA → Toledo, OH → Seattle, WA → San Francisco, CA. I moved a lot!'
               >
                 <span className={styles.bioHint}>Toledo, Ohio</span>
               </Tooltip>
@@ -249,7 +249,13 @@ export function AboutPage() {
               >
                 <span className={styles.bioHint}>roguelike deckbuilders</span>
               </Tooltip>
-              , piano improvisation, and making random web projects.
+              , piano improvisation, and making{' '}
+              <Tooltip inline label='Check out my playground of lil tech demos'>
+                <Link href='/playground' className={styles.bioHint}>
+                  random web projects
+                </Link>
+              </Tooltip>
+              .
             </p>
           </div>
         </section>

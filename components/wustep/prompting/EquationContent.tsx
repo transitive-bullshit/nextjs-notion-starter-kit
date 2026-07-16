@@ -21,8 +21,8 @@ export function EquationContent() {
 
       <p>
         That gives you four levers.{' '}
-        <em>There exist inputs that produce great outputs</em> &mdash; the job
-        is finding them.
+        <em>There exist inputs that produce great outputs</em>; the job is
+        finding them.
       </p>
 
       <Lever
@@ -36,10 +36,9 @@ export function EquationContent() {
           biggest, easiest win on the table.
         </p>
         <p>
-          The frontier here isn&apos;t subtle: <strong>Cursor</strong>,{' '}
-          <strong>Claude Code</strong>, and <strong>Codex</strong> are
-          significantly better than VSCode (with stock Copilot) or Antigravity.
-          The difference can feel like swapping a junior for a senior engineer.
+          The frontier here isn&apos;t subtle: Cursor, Claude Code, and Codex
+          are far better than VSCode with stock Copilot, or Antigravity. The
+          difference can feel like swapping a junior for a senior engineer.
         </p>
         <p>
           You don&apos;t have to commit to one forever. Try a new coding agent
@@ -69,7 +68,7 @@ export function EquationContent() {
           </div>
           <div className={styles.modelGuideRow}>
             <span className={styles.modelGuideWhen}>
-              Taste &mdash; writing, docs, PRs, UI/UX, animations
+              Taste: writing, docs, PRs, UI/UX, animations
             </span>
             <span className={styles.modelGuidePick}>Opus 4.8</span>
           </div>
@@ -95,22 +94,18 @@ export function EquationContent() {
           between models before you have a feel for any of them slows you down.
         </p>
         <p>
-          Avoid <strong>&quot;Auto&quot; mode</strong>. Pick the model yourself,
-          and keep bumping it to the latest one. A few reasons. First, Auto is
-          optimized for the platform&apos;s margin, not your output &mdash;
-          Cursor reaches for a cheaper model (Composer) unless you say
-          otherwise, and if you&apos;re not cost-sensitive you can usually do
-          better. Second, choosing yourself tunes your eye for each model&apos;s
-          style. Third, your results get more consistent, so you actually learn
-          which model to reach for when.
+          Avoid &quot;Auto&quot; mode. Auto optimizes for the platform&apos;s
+          margin, not for you; Cursor reaches for a cheaper model (Composer)
+          unless you say otherwise. Picking the model yourself has a quieter
+          benefit too: you start noticing each model&apos;s style, and your
+          results get consistent enough that you learn which one to reach for
+          when.
         </p>
         <p>
           Thinking effort is another dial, and an increasingly important one to
-          get right. Most tools expose four rungs: <strong>low</strong>,{' '}
-          <strong>medium</strong>, <strong>high</strong>, <strong>xhigh</strong>
-          . Default to <strong>high</strong> (or medium, if more cost-sensitive)
-          and try dialing it down or up when the model lets you down by
-          overthinking or underthinking.
+          get right. Most tools expose four rungs: low, medium, high, xhigh.
+          Default to high (or medium, if you&apos;re watching cost) and adjust
+          when the model lets you down by overthinking or underthinking.
         </p>
 
         <div className={styles.modelGuide}>
@@ -129,8 +124,8 @@ export function EquationContent() {
           <div className={styles.modelGuideRow}>
             <span className={styles.modelGuidePick}>High</span>
             <span className={styles.modelGuideWhen}>
-              Underspecced problems &mdash; planning through constraints,
-              tradeoffs, real decisions. Also a good default.
+              Underspecced problems: planning through constraints, tradeoffs,
+              real decisions. Also a good default.
             </span>
           </div>
           <div className={styles.modelGuideRow}>
@@ -218,10 +213,9 @@ export function EquationContent() {
             state plus a sketch of the target is worth ten paragraphs.
           </li>
           <li>
-            <strong>MCPs.</strong> Wire the agent into your actual systems
-            &mdash; repo, dashboards, design tokens, internal docs. Same as
-            giving a junior engineer access to the stack instead of describing
-            it from memory.
+            <strong>MCPs.</strong> Wire the agent into your actual systems:
+            repo, dashboards, design tokens, internal docs. Same as giving a new
+            engineer access to the stack instead of describing it from memory.
           </li>
         </ul>
         <p>
@@ -242,8 +236,8 @@ export function EquationContent() {
         <ul className={styles.axisList}>
           <li>
             <strong>Did I communicate clearly?</strong> Rewrite the prompt with
-            concrete details &mdash; paste the error, name the file, say what
-            good looks like and what to avoid.
+            concrete details: paste the error, name the file, say what good
+            looks like and what to avoid.
           </li>
           <li>
             <strong>Could the agent see what it needed?</strong> Load the files,
@@ -253,8 +247,8 @@ export function EquationContent() {
           </li>
           <li>
             <strong>Was this the right model?</strong> Reach for something more
-            capable on tricky work, and override &quot;Auto&quot; &mdash; that
-            mode optimizes for cost, not for you.
+            capable on tricky work, and override &quot;Auto&quot;. That mode
+            optimizes for cost, not for you.
           </li>
           <li>
             <strong>Was thinking on?</strong> For ambiguous, multi-step, or
@@ -264,8 +258,7 @@ export function EquationContent() {
 
         <p>
           Prompting and context management are real skills, with as much depth
-          as anything else in the craft &mdash; closer to chess than to magic
-          words.
+          as anything else in the craft. Closer to chess than to magic words.
         </p>
       </Note>
     </ChapterBody>

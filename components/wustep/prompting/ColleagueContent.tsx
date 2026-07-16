@@ -8,7 +8,7 @@ export function ColleagueContent() {
     <ChapterBody>
       <p>
         The most useful mental shift I&apos;ve found is treating the agent as a{' '}
-        <em>colleague</em> &mdash; specifically, a fast, infinitely patient{' '}
+        <em>colleague</em>. Specifically, a fast, infinitely patient{' '}
         <s>junior</s> senior who has only seen what you&apos;ve shown them and
         forgets between sessions.
       </p>
@@ -28,9 +28,9 @@ export function ColleagueContent() {
       </Figure>
 
       <p>
-        Same task, same model &mdash; what changes is how much the colleague was
-        set up to succeed. The asymmetry between what <em>you</em> can see and
-        what <em>they</em> can see is where most of the skill lives.
+        Same task, same model. What changes is how much the colleague was set up
+        to succeed. The asymmetry between what <em>you</em> can see and what{' '}
+        <em>they</em> can see is where most of the skill lives.
       </p>
 
       <Lever
@@ -39,9 +39,9 @@ export function ColleagueContent() {
         tagline='Set them up before the work starts.'
       >
         <p>
-          Skills, project rules, conventions, examples &mdash; the same
-          materials a new hire gets. What to use, what not to, where things
-          live, what good looks like in this codebase.
+          Skills, project rules, conventions, examples: the same materials a new
+          hire gets. What to use, what not to, where things live, what good
+          looks like in this codebase.
         </p>
         <p>
           Most of this lives in a <code>CLAUDE.md</code> or{' '}
@@ -76,9 +76,8 @@ export function ColleagueContent() {
         tagline='Every task starts with context.'
       >
         <p>
-          Onboarding is general. Briefing is per-task &mdash; what this specific
-          piece of work is, which files matter, what good looks like, what to
-          avoid.
+          Onboarding is general. Briefing is per-task: what this specific piece
+          of work is, which files matter, what good looks like, what to avoid.
         </p>
         <p>
           The mistake is starting cold every time: &quot;fix the auth bug.&quot;
@@ -97,9 +96,9 @@ export function ColleagueContent() {
         tagline='The diff is a proposal, not an answer.'
       >
         <p>
-          Whatever comes back is a colleague&apos;s PR, not a final answer
-          &mdash; your job is to evaluate it. Read the diff. Run the code. Check
-          the cases you&apos;d check on a junior&apos;s PR.
+          Whatever comes back is a colleague&apos;s PR, not a final answer, and
+          your job is to evaluate it. Read the diff. Run the code. Check the
+          cases you&apos;d check on a junior&apos;s PR.
         </p>
         <p>
           Don&apos;t accept what you can&apos;t verify. If you can&apos;t tell
@@ -107,10 +106,10 @@ export function ColleagueContent() {
           to be smaller, or that the agent needed more context.
         </p>
         <p>
-          The &quot;rubber-stamp&quot; failure mode &mdash; clicking accept on
-          long diffs &mdash; is where mistakes compound. Treat agent output the
-          way you&apos;d treat a teammate&apos;s: assume something subtle is
-          probably wrong, and look for it before merging.
+          The rubber-stamp failure mode, clicking accept on diff after diff, is
+          where mistakes pile up. Treat agent output the way you&apos;d treat a
+          teammate&apos;s: assume something subtle is probably wrong, and look
+          for it before merging.
         </p>
       </Lever>
     </ChapterBody>

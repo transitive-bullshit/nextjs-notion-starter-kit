@@ -19,7 +19,7 @@ export function RecapContent() {
           We&apos;re three years into a five-hundred-year skill. About 1200 ELO.
           When the model lets you down, the closed-minded blame the AI; the
           open-minded ask what they could have done differently. The second is
-          the faster path &mdash; by a lot.
+          the faster path, by a lot.
         </p>
       </RecapItem>
 
@@ -63,10 +63,9 @@ export function RecapContent() {
       <RecapItem index={5} title='The colleague' href='/prompting/colleague'>
         <RecapColleagueViz />
         <p>
-          Treat the agent as a colleague &mdash; a fast, knowledgeable{' '}
-          <s>junior</s> senior who only sees what you&apos;ve shown them. The
-          discipline gets <em>more</em> important, not less, as the models get
-          smarter.
+          Treat the agent as a colleague: a fast, knowledgeable <s>junior</s>{' '}
+          senior who only sees what you&apos;ve shown them. The discipline gets{' '}
+          <em>more</em> important, not less, as the models get smarter.
         </p>
       </RecapItem>
 
@@ -77,18 +76,19 @@ export function RecapContent() {
       >
         <RecapOrchestrationViz />
         <p>
-          One agent makes you faster &mdash; but now you have access to a whole
-          team. The bottleneck stops being model speed and becomes <em>you</em>:
-          how well you can brief them, unblock them, and manage several at once.
+          One agent makes you faster, but now you have access to a whole team.
+          The bottleneck stops being model speed and becomes <em>you</em>: how
+          well you can brief them, unblock them, and manage several at once.
           Optimize the hour, not the message.
         </p>
       </RecapItem>
 
       <Note title='One more thing'>
         <p>
-          We&apos;re all early in this. Three years in. Maybe 1200 ELO. The next
-          1200 is wide open &mdash; and the most useful move is paying attention
-          while everyone else assumes they&apos;ve figured it out.
+          We&apos;re all still beginners here. Three years into a skill that
+          might take five hundred to map, nobody is past 1200, and most of the
+          good moves haven&apos;t been found yet. I find that more exciting than
+          daunting.
         </p>
         <p>Go talk to a machine.</p>
       </Note>

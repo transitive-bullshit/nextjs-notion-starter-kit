@@ -23,28 +23,28 @@ export function MindsetContent() {
 
       <p>
         AI coding is roughly three years old. Chess is five hundred. Three years
-        of chess might get you to 1200 ELO &mdash; past most casual players,
-        nowhere near expert. A grandmaster beats a 1200 every game. The gap in
-        AI coding isn&apos;t that wide, but the people at its frontier are
-        already getting far more done than the ones who decided they&apos;d
-        figured it out.
+        of chess gets you to maybe 1200 ELO, enough to beat casual players and
+        get crushed by anyone serious. A grandmaster beats a 1200 every single
+        game. I don&apos;t think the gap in AI coding is that wide yet, but the
+        people at the frontier are getting far more done than the people who
+        decided they&apos;d figured it out.
       </p>
 
       <p>
-        The danger of calling yourself an expert too early is that your learning
+        The trouble with deciding you&apos;re an expert is that your learning
         stalls. You stop reading tutorials, skip the bootcamp, ignore the
         patterns the model enabled last week. Look at where your workflow was
         twelve months ago, then project that forward. Most of the meta
-        hasn&apos;t been uncovered yet.
+        hasn&apos;t been uncovered yet, which is the fun part.
       </p>
 
       <SectionHeading num='1.1'>Two responses</SectionHeading>
 
       <p>
-        Sooner or later the model will let you down. It writes the wrong code.
-        Picks the wrong abstraction. Hallucinates an API. Confidently does the
-        opposite of what you asked. How you react in that moment shapes your
-        learning curve.
+        Sooner or later the model lets you down: wrong code, wrong abstraction,
+        a hallucinated API, or a confident sprint in the exact opposite
+        direction of what you asked. What you do next decides how fast you
+        learn.
       </p>
 
       <div className={styles.mindsetPair}>
@@ -78,21 +78,19 @@ export function MindsetContent() {
       </p>
 
       <p>
-        Most of the time the model isn&apos;t the limit &mdash; your prompt is,
-        or your context, or your patience. With the bottleneck-is-me stance, the
-        same frustrating moment turns into a puzzle: which lever would have
-        changed the result? Each answer is an edge others aren&apos;t
-        collecting; they&apos;ve already decided it&apos;s the tool&apos;s
-        fault.
+        Most of the time the model isn&apos;t the limit. Your prompt is, or your
+        context, or your patience. Assume it&apos;s you, and the same
+        frustrating moment turns into a puzzle: which lever would have changed
+        the result? Puzzles are more interesting than grudges, and you learn
+        more from them.
       </p>
 
-      <SectionHeading num='1.2'>Every failure is a rep</SectionHeading>
+      <SectionHeading num='1.2'>Every failure is a puzzle</SectionHeading>
 
       <p>
         Treat each disappointment like a chess puzzle: try something, notice
-        what actually worked, update your repertoire. One a day and the curve
-        climbs. You won&apos;t feel it in a week; you&apos;ll feel it in a
-        quarter.
+        what actually worked, update your repertoire. You won&apos;t feel the
+        difference in a week. You&apos;ll feel it in a quarter.
       </p>
 
       <Figure
@@ -105,15 +103,15 @@ export function MindsetContent() {
       <p>
         The beginner&apos;s mindset is the faster path. Three years in, the
         people pulling away are the ones still treating themselves like
-        beginners &mdash; still reading, still experimenting, still updating
-        when the model surprises them.
+        beginners: still reading, still experimenting, still curious when the
+        model surprises them.
       </p>
 
       <Note title="We're all beginners">
         <p>
-          Closed minds blame the model. Open minds ask what they missed and find
-          something to learn from each transcript. Only one of those is still
-          gaining ELO a year from now.
+          Closed minds blame the model. Open minds ask what they missed, and
+          find something to learn in almost every transcript. Only one of those
+          is still improving a year from now.
         </p>
       </Note>
     </ChapterBody>

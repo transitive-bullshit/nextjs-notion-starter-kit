@@ -29,9 +29,10 @@ export function OrchestrationContent() {
       </Figure>
 
       <p>
-        Orchestration is the move from typist to conductor &mdash; from
-        messaging the agent to briefing it, from one thread to several. Stop
-        tuning the next prompt and start tuning the next <em>hour</em>.
+        Orchestration is the move from typist to conductor: from messaging the
+        agent to briefing it, from one thread to several. The question stops
+        being &quot;what do I type next&quot; and becomes &quot;what happens
+        this <em>hour</em>.&quot;
       </p>
 
       <SectionHeading num='6.1'>Chain, don&apos;t ping</SectionHeading>
@@ -86,34 +87,33 @@ export function OrchestrationContent() {
 
       <p>
         You can only write one brief at a time. The agents don&apos;t all start
-        in parallel &mdash; you start them in a cascade. Brief thread one, kick
-        it off. While it runs, brief thread two. Then three. By the time
-        you&apos;ve sent the third, the first is delivering. You step in,
-        glance, send a follow-up, and the cycle continues.
+        in parallel; you start them in a cascade. Brief thread one, kick it off.
+        While it runs, brief thread two. Then three. By the time you&apos;ve
+        sent the third, the first is delivering. You step in, glance, send a
+        follow-up, and the cycle continues.
       </p>
 
       <Figure
         num='6.2'
-        caption='Briefs (red) cascade — you can only write one at a time. Agent work (ink) overlaps freely. Dashed gaps are the cost of switching attention.'
+        caption='Briefs (red) cascade, since you can only write one at a time. Agent work (ink) overlaps freely. Dashed gaps are the cost of switching attention.'
       >
         <StaggerDiagram />
       </Figure>
 
       <p>
-        Three things to notice. The red bars never overlap &mdash; that&apos;s
-        your hands, and there&apos;s only one of you. The ink bars do, freely;
-        the agents don&apos;t wait for each other. And after every agent
-        finishes, there&apos;s a small dashed gap before you come back:
-        attention is a real cost, and you can only spend it on one thread at a
-        time.
+        Three things to notice. The red bars never overlap: that&apos;s your
+        hands, and there&apos;s only one of you. The ink bars do, freely; the
+        agents don&apos;t wait for each other. And after every agent finishes,
+        there&apos;s a small dashed gap before you come back. Attention is a
+        real cost, and you can only spend it on one thread at a time.
       </p>
 
       <SectionHeading num='6.3'>Fan out</SectionHeading>
 
       <p>
         One agent works on one thing at a time. You don&apos;t. The moment two
-        tasks are independent of each other, run them side by side &mdash;
-        separate tabs, separate worktrees, separate windows.
+        tasks are independent of each other, run them side by side: separate
+        tabs, separate worktrees, separate windows.
       </p>
 
       <Figure
@@ -132,8 +132,8 @@ export function OrchestrationContent() {
       <p>
         Good candidates: tests in parallel with the implementation, five
         unrelated bugs at once, three library spikes side by side. Bad
-        candidates: anything where agent B reads what agent A produced &mdash;
-        don&apos;t parallelize a chain. Budget for the merge too; three branches
+        candidates: anything where agent B reads what agent A produced.
+        Don&apos;t parallelize a chain. And budget for the merge; three branches
         become one review queue.
       </p>
 
@@ -143,31 +143,30 @@ export function OrchestrationContent() {
         Give different agents different jobs and let them hand work to each
         other. A researcher reads and plans. An implementer takes the plan and
         writes. A reviewer comes in cold and critiques. Each role wants a
-        different mindset and a different context window &mdash; splitting them
+        different mindset and a different context window; splitting them
         enforces a discipline you&apos;d struggle to keep alone.
       </p>
 
       <Figure
         num='6.4'
-        caption='Each handoff is a concrete artifact — a plan, a diff. Name them and the seams between roles stop being fuzzy.'
+        caption='Each handoff is a concrete artifact: a plan, a diff. Name them and the seams between roles stop being fuzzy.'
       >
         <RolesDiagram />
       </Figure>
 
       <p>
-        Most modern tools support this directly &mdash; sub-agents, background
-        tasks, parallel runs. The spin-up cost is now smaller than the cost of
+        Most modern tools support this directly: sub-agents, background tasks,
+        parallel runs. The spin-up cost is now smaller than the cost of
         switching contexts in your own head.
       </p>
 
       <SectionHeading num='6.5'>Run long, check less</SectionHeading>
 
       <p>
-        The biggest leaps of the last year have been long-horizon tasks &mdash;
-        jobs that run for thirty, sixty, ninety minutes while you do something
-        else. Whole-repo refactors. Migrations. Test backfills. The instinct is
-        to babysit. Resist it; babysitting collapses long jobs back into
-        ping-pong.
+        The biggest leaps of the last year have been long-horizon tasks: jobs
+        that run for thirty, sixty, ninety minutes while you do something else.
+        Whole-repo refactors. Migrations. Test backfills. The instinct is to
+        babysit. Resist it; babysitting collapses long jobs back into ping-pong.
       </p>
 
       <p>
@@ -181,18 +180,17 @@ export function OrchestrationContent() {
       <Note title='Command the fleet'>
         <p>
           With several agents going, the job changes shape: you&apos;re
-          triaging, not typing. Which branch needs a decision? Which run is
-          stuck? What&apos;s ready to merge? One agent makes you faster; a fleet
+          triaging, not typing. Which branch needs a decision, which run is
+          stuck, what&apos;s ready to merge. One agent makes you faster; a fleet
           gives you a whole team, cheap and always available. The bottleneck
           stops being the model and becomes <em>you</em>.
         </p>
         <p>
-          So that&apos;s the skill to invest in: reading diffs fast, holding
-          several threads, killing runs that have gone sideways, and writing
-          briefs that don&apos;t need follow-ups. Optimize the hour, not the
-          message. Chain steps, fan out independent work, specialize roles, let
-          long jobs run. The conductor&apos;s edge is patient briefing and clean
-          handoffs &mdash; nothing else.
+          So that&apos;s the skill worth building: reading diffs fast, holding
+          several threads, killing runs that have gone sideways, writing briefs
+          that don&apos;t need follow-ups. Optimize the hour, not the message.
+          Conducting, it turns out, is mostly patient briefing and clean
+          handoffs.
         </p>
       </Note>
     </ChapterBody>

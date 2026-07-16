@@ -7,8 +7,8 @@ export function TreeContent() {
   return (
     <ChapterBody>
       <p>
-        Every change lives somewhere on a 2D map &mdash; across the surface area
-        of your codebase (<em>breadth</em>), and at some level of abstraction (
+        Every change lives somewhere on a 2D map: how much of the codebase it
+        touches (<em>breadth</em>), and at what level of abstraction (
         <em>depth</em>). At any point on that map, you have three moves you can
         make: <strong>ask</strong>, <strong>plan</strong>, or{' '}
         <strong>delegate</strong>.
@@ -29,12 +29,12 @@ export function TreeContent() {
       <Lever num='4.1' name='ASK' tagline="When you don't know yet.">
         <p>
           Use <strong>Ask</strong> when you need to understand something before
-          you act. It&apos;s the cheapest move &mdash; a few seconds and a few
-          tokens to widen what you know.
+          you act. It&apos;s the cheapest move: a few seconds and a few tokens
+          to widen what you know.
         </p>
         <ExamplePrompt
           note='From a real session. The repro and the trace did most of the work.'
-          text={`The middleware in apps/api/src/auth/check.ts is intermittently returning 401 in staging — about 1 in 30 requests. Trace attached. I see the call to verifyToken returns null but the function looks idempotent to me. What am I missing?`}
+          text={`The middleware in apps/api/src/auth/check.ts is intermittently returning 401 in staging, about 1 in 30 requests. Trace attached. I see the call to verifyToken returns null but the function looks idempotent to me. What am I missing?`}
         />
         <p>
           The classic failure is asking too narrowly. You phrase the question
@@ -59,11 +59,11 @@ export function TreeContent() {
         </p>
         <ExamplePrompt
           note='Cross-cutting change with multiple plausible approaches. Plan first, code later.'
-          text={`I want to migrate our notification logic out of the request handlers into a queue. Don't write code yet — propose 2–3 approaches, then pick one and explain the trade-offs. Constraints: must keep delivery semantics at-least-once, must not block API responses, can use the existing Redis instance.`}
+          text={`I want to migrate our notification logic out of the request handlers into a queue. Don't write code yet. Propose 2–3 approaches, then pick one and explain the trade-offs. Constraints: must keep delivery semantics at-least-once, must not block API responses, can use the existing Redis instance.`}
         />
         <p>
           The trap is treating the first plan as binding. The model will defend
-          whatever it proposed first unless you push back &mdash; treat it as a
+          whatever it proposed first unless you push back. Treat the plan as a
           draft, and make it argue for the choices you&apos;re skeptical of.
         </p>
       </Lever>
@@ -75,8 +75,8 @@ export function TreeContent() {
       >
         <p>
           <strong>Delegate</strong> works for bug fixes with a clear repro,
-          mechanical refactors, boilerplate, tests for known behavior &mdash;
-          anything well-scoped and easy to grade.
+          mechanical refactors, boilerplate, tests for known behavior. Anything
+          well-scoped and easy to grade.
         </p>
         <ExamplePrompt
           note='Narrow scope, obvious success criteria. Easy to verify.'
@@ -86,8 +86,8 @@ export function TreeContent() {
           It works badly the moment any of that breaks: the task touches taste
           (UX, copy, naming), the change is cross-cutting, or you can&apos;t
           easily tell whether the result is right. Don&apos;t delegate what you
-          can&apos;t grade. The discipline is bounding the blast radius first
-          &mdash; smaller diffs, narrower scope, clearer success criteria.
+          can&apos;t grade. The discipline is bounding the blast radius first:
+          smaller diffs, narrower scope, clearer success criteria.
         </p>
       </Lever>
 
@@ -103,8 +103,8 @@ export function TreeContent() {
           <li>
             <strong>If you&apos;re burning loops, zoom out.</strong>{' '}
             Delegate-reject-reprompt cycles are almost always a context problem,
-            not a model problem. The cell you&apos;re in is wrong &mdash; back
-            out to plan, or all the way up to ask.
+            not a model problem. The cell you&apos;re in is wrong. Back out to
+            plan, or all the way up to ask.
           </li>
           <li>
             <strong>

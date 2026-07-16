@@ -9,8 +9,8 @@ export function TechniquesContent() {
     <ChapterBody>
       <p>
         Mental models tell you <em>where</em> to push. Techniques are the
-        phrases that do the pushing. Chess players build a repertoire &mdash;
-        openings, tactics, endgame studies, most of it learned from other
+        phrases that do the pushing. Chess players build a repertoire of
+        openings, tactics, and endgame studies, most of it learned from other
         players and none of it secret. The same vocabulary is forming for
         prompting. Here are some moves worth adding to yours.
       </p>
@@ -38,16 +38,16 @@ export function TechniquesContent() {
           <p>
             Forces breadth before depth. The model defaults to its first
             plausible idea; asking for three pushes it past that. Useful for any
-            decision where you don&apos;t already know the right answer &mdash;
+            decision where you don&apos;t already know the right answer:
             algorithm choice, library choice, schema design.
           </p>
         </Technique>
 
         <Technique prompt='Argue against your last suggestion.'>
           <p>
-            Surfaces hidden assumptions. Especially useful right after a plan
-            &mdash; much cheaper to discover the plan&apos;s weaknesses now than
-            after you&apos;ve implemented it.
+            Surfaces hidden assumptions. Especially useful right after a plan;
+            much cheaper to discover its weaknesses now than after you&apos;ve
+            implemented it.
           </p>
         </Technique>
       </TechniqueGroup>
@@ -56,18 +56,18 @@ export function TechniquesContent() {
         <Technique prompt='What did you skip?'>
           <p>
             After a delegated task, ask what was glossed over. The model often
-            owns up to things you&apos;d have missed &mdash; tests, error
-            handling, the &quot;TODO: revisit&quot; it left on line 47. Cheap
-            two-second move, high hit rate.
+            owns up to things you&apos;d have missed: tests, error handling, the
+            &quot;TODO: revisit&quot; it left on line 47. Cheap two-second move,
+            high hit rate.
           </p>
         </Technique>
 
         <Technique prompt='How would a senior engineer review this?'>
           <p>
-            Triggers review-mode output. Different vibe than implementation-mode
-            &mdash; more critical, more &quot;but consider&quot; tradeoffs, more
-            willing to call out things its implementation-self would have left
-            in.
+            Triggers review-mode output, a different vibe than
+            implementation-mode: more critical, more &quot;but consider&quot;
+            tradeoffs, more willing to call out things its implementation-self
+            would have left in.
           </p>
         </Technique>
       </TechniqueGroup>
@@ -75,10 +75,10 @@ export function TechniquesContent() {
       <TechniqueGroup num='3.4' heading='Pay it forward'>
         <Technique prompt='Match the style of components/PostCard.tsx.'>
           <p>
-            Anchor on something concrete &mdash; a path, a screenshot, a doc, a
-            working example. &quot;Match this&quot; beats &quot;make it look
-            nice&quot; by a wide margin. Models are imitators first; give them
-            something to imitate.
+            Anchor on something concrete: a path, a screenshot, a doc, a working
+            example. &quot;Match this&quot; beats &quot;make it look nice&quot;
+            by a wide margin. Models are imitators first; give them something to
+            imitate.
           </p>
         </Technique>
 
@@ -96,8 +96,8 @@ export function TechniquesContent() {
         <p>
           Once you find a move that works, stop typing it manually. Every
           serious agent tool lets you write project-level instructions that the
-          agent reads on every task &mdash; you write the lesson once, the agent
-          has it forever.
+          agent reads on every task. You write the lesson once; the agent has it
+          forever.
         </p>
         <div className={styles.skillsLinks}>
           <a
@@ -138,13 +138,10 @@ export function TechniquesContent() {
 
       <Note title='Keep climbing'>
         <p>
-          None of these are hard. Used regularly, they compound. Don&apos;t
-          memorize them as a checklist &mdash; notice there&apos;s a craft here,
-          and the shape is still being mapped.
-        </p>
-        <p>
-          The best moves are the ones you&apos;ll find yourself. Start
-          collecting them.
+          None of these are hard, and none of them are secret. The point is less
+          the list than the noticing: there&apos;s a craft here, and most of it
+          is still unmapped. The best moves are the ones you&apos;ll find
+          yourself.
         </p>
       </Note>
     </ChapterBody>
