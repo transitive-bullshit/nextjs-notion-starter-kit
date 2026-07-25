@@ -5,7 +5,11 @@ import type * as types from './types'
 import { api } from './config'
 
 export const searchNotion = pMemoize(searchNotionImpl, {
-  cacheKey: (args) => args[0]?.query,
+  // Key on the whole params object, not just `query` — `ancestorIds`, filters
+  // and limit all change the result set, so keying on the query string alone
+  // let two structurally different searches collide and serve each other's
+  // results. Matches the server-side `search` in ./notion.ts.
+  cacheKey: (args) => JSON.stringify(args[0]),
   cache: new ExpiryMap(10_000)
 })
 

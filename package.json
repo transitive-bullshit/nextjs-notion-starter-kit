@@ -12,7 +12,7 @@
   },
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 6363",
     "prebuild": "pnpm notion:index",
     "build": "next build",
     "start": "next start",

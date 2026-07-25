@@ -209,7 +209,7 @@ function LayoutContent({
           {children}
         </div>
       ) : (
-        <div className='flex flex-1 flex-col gap-4 p-4 pt-8 bg-background'>
+        <div className='flex flex-1 flex-col gap-4 p-4 pt-8 pb-16 bg-background'>
           <div className='w-full max-w-4xl mx-auto'>
             <h1 className='text-4xl font-bold mb-8'>{title}</h1>
             {children}

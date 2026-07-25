@@ -1,3 +1,4 @@
+import ExpiryMap from 'expiry-map'
 import ky from 'ky'
 import lqip from 'lqip-modern'
 import {
@@ -86,7 +87,19 @@ async function createPreviewImage(
   }
 }
 
-export const getPreviewImage = pMemoize(createPreviewImage)
+// Mirrors the caching strategy in ./notion.ts: pMemoize dedupes concurrent
+// calls for the same image, ExpiryMap bounds the cache so a long-lived server
+// process doesn't accumulate every image URL it has ever seen, and
+// `shouldCache` keeps failures out of the cache — otherwise one transient
+// fetch error would permanently strip an image's LQIP placeholder for the
+// life of the process.
+const PREVIEW_IMAGE_CACHE_TTL_MS = 25 * 60 * 1000
+
+export const getPreviewImage = pMemoize(createPreviewImage, {
+  cacheKey: ([, { cacheKey }]) => cacheKey,
+  cache: new ExpiryMap<string, PreviewImage | null>(PREVIEW_IMAGE_CACHE_TTL_MS),
+  shouldCache: (result) => result !== null
+})
 
 /**
  * Build a merged, null-free preview-image map across many record maps.

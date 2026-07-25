@@ -1,3 +1,4 @@
+import ExpiryMap from 'expiry-map'
 import { type ExtendedRecordMap } from 'notion-types'
 import { getPageTweetIds } from 'notion-utils'
 import pMap from 'p-map'
@@ -42,7 +43,15 @@ export async function getTweetsMap(
     await pMap(
       tweetIds,
       async (tweetId: string) => {
-        return [tweetId, await getTweet(tweetId)]
+        // Contain per-tweet failures here rather than in getTweetImpl, so a
+        // transient error stays uncached (see getTweetImpl) while still not
+        // failing the whole page render over one flaky embed.
+        try {
+          return [tweetId, await getTweet(tweetId)]
+        } catch (err: unknown) {
+          console.warn('failed to get tweet', tweetId, getErrorMessage(err))
+          return [tweetId, null]
+        }
       },
       {
         concurrency: 8
@@ -53,32 +62,52 @@ export async function getTweetsMap(
   ;(recordMap as ExtendedTweetRecordMap).tweets = tweetsMap
 }
 
+/**
+ * Fetch a single tweet, or `null` if it is genuinely gone.
+ *
+ * This deliberately does *not* catch. `react-tweet`'s `getTweet` distinguishes
+ * the two failure modes for us, and conflating them is what makes tweet
+ * caching brittle:
+ *
+ * - Deleted / private / 404 → resolves `undefined`. That's a durable fact, so
+ *   we normalize it to `null` and cache it (in-process and in Redis) as a
+ *   "known missing" hit.
+ * - Rate limit, 5xx, network error → throws. That's transient, so we let it
+ *   propagate: `pMemoize` never caches a rejection, and we never reach the
+ *   `dbSet` below. Previously both paths returned `null`, so a single 429 was
+ *   memoized for the life of the process *and* persisted to Redis with no TTL
+ *   — permanently blanking an embed that was perfectly fine.
+ *
+ * `getTweetsMap` is responsible for catching, so one flaky embed can't fail a
+ * whole page render.
+ */
 async function getTweetImpl(tweetId: string): Promise<any> {
   if (!tweetId) return null
 
   const cacheKey = `tweet:${tweetId}`
 
-  try {
-    // A cached `null` means "known missing" — keep it as a hit to avoid refetch.
-    const cached = await dbGet<Record<string, any> | null>(cacheKey)
-    if (cached.ok && (cached.value || cached.value === null)) {
-      return normalizeTweetEntities(cached.value)
-    }
-
-    const tweetData = normalizeTweetEntities(
-      (await getTweetData(tweetId)) || null
-    )
-
-    // Only write back when the read succeeded (don't clobber on a read error).
-    if (cached.ok) {
-      await dbSet(cacheKey, tweetData)
-    }
-
-    return tweetData
-  } catch (err: unknown) {
-    console.warn('failed to get tweet', tweetId, getErrorMessage(err))
-    return null
+  // A cached `null` means "known missing" — keep it as a hit to avoid refetch.
+  const cached = await dbGet<Record<string, any> | null>(cacheKey)
+  if (cached.ok && (cached.value || cached.value === null)) {
+    return normalizeTweetEntities(cached.value)
   }
+
+  const tweetData = normalizeTweetEntities(
+    (await getTweetData(tweetId)) || null
+  )
+
+  // Only write back when the read succeeded (don't clobber on a read error).
+  if (cached.ok) {
+    await dbSet(cacheKey, tweetData)
+  }
+
+  return tweetData
 }
 
-export const getTweet = pMemoize(getTweetImpl)
+// TTL-bounded so a long-lived server doesn't retain every tweet it has ever
+// rendered, and so a "known missing" verdict is eventually re-checked.
+const TWEET_CACHE_TTL_MS = 25 * 60 * 1000
+
+export const getTweet = pMemoize(getTweetImpl, {
+  cache: new ExpiryMap<string, any>(TWEET_CACHE_TTL_MS)
+})

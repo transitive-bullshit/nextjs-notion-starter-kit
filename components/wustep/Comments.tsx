@@ -34,7 +34,12 @@ export function Comments() {
     return () => {
       giscusScript.remove()
     }
-  })
+    // Only the theme affects the injected script. Without this dep array the
+    // effect re-ran on every render (dark-mode toggle, router change, any
+    // parent state change), each time removing and re-appending the script —
+    // re-fetching giscus.app/client.js and destroying the comments iframe,
+    // discarding whatever the reader had typed.
+  }, [isDarkMode])
 
   // If giscus is not configured, don't render anything
   if (!config.giscus) {

@@ -16,10 +16,8 @@ import BodyClassName from 'react-body-classname'
 import {
   type ComponentOverrideFn,
   type NotionComponents,
-  NotionRenderer,
-  useNotionContext
+  NotionRenderer
 } from 'react-notion-x'
-import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
@@ -143,20 +141,9 @@ const Modal = dynamic(
   }
 )
 
-function Tweet({ id }: { id: string }) {
-  const { recordMap } = useNotionContext()
-  // @wustep: id is a URL with a query string that includes spaceId, like [id]&spaceId=[spaceId]
-  const tweetId = id.split('&')[0]
-  const tweet = tweetId
-    ? (recordMap as types.ExtendedTweetRecordMap)?.tweets?.[tweetId]
-    : undefined
-
-  return (
-    <React.Suspense fallback={<TweetSkeleton />}>
-      {tweet ? <EmbeddedTweet tweet={tweet} /> : <TweetNotFound />}
-    </React.Suspense>
-  )
-}
+// Lazy like the other third-party embeds above: react-tweet only loads on the
+// handful of pages that actually contain a tweet.
+const Tweet = dynamic(() => import('./NotionTweet'), { ssr: false })
 
 const propertyLastEditedTimeValue: ComponentOverrideFn = (
   { block, pageHeader },

@@ -163,7 +163,15 @@ export default async function OGImage(
           style: 'normal',
           weight: 700
         }
-      ]
+      ],
+      // OG images are hit repeatedly by crawlers and link unfurlers and change
+      // only when the page title/cover changes. Without a cache header every
+      // one of those hits was a fresh Notion fetch plus a full image render on
+      // a public, unauthenticated endpoint.
+      headers: {
+        'Cache-Control':
+          'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800'
+      }
     }
   )
 }

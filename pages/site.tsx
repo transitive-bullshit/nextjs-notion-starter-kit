@@ -13,7 +13,12 @@ export const getStaticProps = async () => {
   try {
     const props = await resolveNotionPage(domain)
 
-    return { props, revalidate: 10 }
+    // Roughly aligned with PAGE_CACHE_TTL_MS (25m) in lib/notion.ts. A shorter
+    // window doesn't actually buy freshness: `getPage` is memoized per server
+    // instance for 25m, so a warm instance regenerating every 10s just
+    // re-serves the same cached recordMap. All it bought was ISR churn and
+    // Notion rate-limit pressure on the site's hottest page.
+    return { props, revalidate: 1800 }
   } catch (err) {
     console.error('page error', domain, err)
 

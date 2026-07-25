@@ -5,7 +5,7 @@
       "name": "me-dev",
       "runtimeExecutable": "/bin/zsh",
       "runtimeArgs": ["-lc", "pnpm dev"],
-      "port": 3000,
+      "port": 6363,
       "autoPort": true
     }
   ]
