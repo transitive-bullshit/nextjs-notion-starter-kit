@@ -111,7 +111,12 @@ export async function generatePost(
       { role: 'system', content: config.systemPrompt },
       { role: 'user', content: userContent }
     ],
-    { temperature: 0.8, maxTokens: 16384 }
+    {
+      temperature: 0.3,
+      maxTokens: 16384,
+      jsonMode: true,
+      disableThinking: true
+    }
   )
 
   const cleaned = response
