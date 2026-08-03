@@ -10,49 +10,36 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     res.setHeader('Content-Type', 'application/json')
     res.write(JSON.stringify({ error: 'method not allowed' }))
     res.end()
-    return {
-      props: {}
-    }
+    return { props: {} }
   }
 
   const siteMap = await getSiteMap()
 
-  // cache for up to 8 hours
+  // Cache at CDN level — Notion data refreshes via KV TTL (24h)
   res.setHeader(
     'Cache-Control',
-    'public, max-age=28800, stale-while-revalidate=28800'
+    'public, s-maxage=14400, stale-while-revalidate=86400'
   )
   res.setHeader('Content-Type', 'text/xml')
   res.write(createSitemap(siteMap))
   res.end()
 
-  return {
-    props: {}
-  }
+  return { props: {} }
 }
 
-const createSitemap = (siteMap: SiteMap) =>
-  `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-      <loc>${host}</loc>
-    </url>
+const createSitemap = (siteMap: SiteMap) => {
+  const urls = Object.keys(siteMap.canonicalPageMap)
+    .map((path) => `  <url>\n    <loc>${host}/${path}</loc>\n  </url>`)
+    .join('\n')
 
-    <url>
-      <loc>${host}/</loc>
-    </url>
-
-    ${Object.keys(siteMap.canonicalPageMap)
-      .map((canonicalPagePath) =>
-        `
-          <url>
-            <loc>${host}/${canonicalPagePath}</loc>
-          </url>
-        `.trim()
-      )
-      .join('')}
-  </urlset>
-`
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${host}</loc>
+  </url>
+${urls}
+</urlset>`
+}
 
 export default function noop() {
   return null

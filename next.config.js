@@ -1,8 +1,18 @@
-// import path from 'node:path'
-// import { fileURLToPath } from 'node:url'
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
+
+initOpenNextCloudflareForDev()
 
 export default {
+  output: 'standalone',
   staticPageGenerationTimeout: 300,
+  serverExternalPackages: ['ofetch', 'lqip-modern', 'sharp'],
+  outputFileTracingExcludes: {
+    '*': [
+      './node_modules/lqip-modern/**',
+      './node_modules/sharp/**',
+      './node_modules/@img/**'
+    ]
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'www.notion.so' },

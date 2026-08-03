@@ -4,31 +4,16 @@ on: [push]
 
 jobs:
   test:
-    name: Test Node.js ${{ matrix.node-version }}
+    name: Test
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: true
-      matrix:
-        node-version:
-          - 20
-          - 22
-          - 24
 
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 24
           cache: "pnpm"
 
       - run: pnpm install --frozen-lockfile --strict-peer-dependencies
       - run: pnpm test
-
-      # TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
-      # env:
-      #   REDIS_HOST: ${{ secrets.REDIS_HOST }}
-      #   REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
-      # - name: Build
-      #   run: pnpm build

@@ -3,9 +3,13 @@ import { parsePageId } from 'notion-utils'
 
 import type { PageProps } from './types'
 import * as acl from './acl'
-import { environment, pageUrlAdditions, pageUrlOverrides, site } from './config'
-import { db } from './db'
-import { getSiteMap } from './get-site-map'
+import { pageUrlAdditions, pageUrlOverrides, site } from './config'
+import {
+  getSiteMap,
+  hotCacheGet,
+  kvAppendSlug,
+  resolveSlugDirect
+} from './get-site-map'
 import { getPage } from './notion'
 
 export async function resolveNotionPage(
@@ -29,52 +33,29 @@ export async function resolveNotionPage(
       }
     }
 
-    const useUriToPageIdCache = true
-    const cacheKey = `uri-to-page-id:${domain}:${environment}:${rawPageId}`
-    // TODO: should we use a TTL for these mappings or make them permanent?
-    // const cacheTTL = 8.64e7 // one day in milliseconds
-    const cacheTTL = undefined // disable cache TTL
-
-    if (!pageId && useUriToPageIdCache) {
-      try {
-        // check if the database has a cached mapping of this URI to page ID
-        pageId = await db.get(cacheKey)
-
-        // console.log(`redis get "${cacheKey}"`, pageId)
-      } catch (err: any) {
-        // ignore redis errors
-        console.warn(`redis error get "${cacheKey}"`, err.message)
-      }
+    // L1: Cache API hot cache (per-colo, ~0ms)
+    if (!pageId) {
+      pageId = (await hotCacheGet(rawPageId)) ?? undefined
     }
 
     if (pageId) {
       recordMap = await getPage(pageId)
     } else {
-      // handle mapping of user-friendly canonical page paths to Notion page IDs
-      // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
-      const siteMap = await getSiteMap()
-      pageId = siteMap?.canonicalPageMap[rawPageId]
+      // L2: Direct DB query for databases with Slug property (1 Notion API call)
+      pageId = (await resolveSlugDirect(rawPageId)) ?? undefined
+
+      // L3: KV sitemap / static fallback / full crawl
+      if (!pageId) {
+        const siteMap = await getSiteMap()
+        pageId = siteMap?.canonicalPageMap[rawPageId]
+      }
 
       if (pageId) {
-        // TODO: we're not re-using the page recordMap from siteMaps because it is
-        // cached aggressively
-        // recordMap = siteMap.pageMap[pageId]
-
         recordMap = await getPage(pageId)
 
-        if (useUriToPageIdCache) {
-          try {
-            // update the database mapping of URI to pageId
-            await db.set(cacheKey, pageId, cacheTTL)
-
-            // console.log(`redis set "${cacheKey}"`, pageId, { cacheTTL })
-          } catch (err: any) {
-            // ignore redis errors
-            console.warn(`redis error set "${cacheKey}"`, err.message)
-          }
-        }
+        // Update L1 hot cache + L2 KV for future requests
+        await kvAppendSlug(rawPageId, pageId)
       } else {
-        // note: we're purposefully not caching URI to pageId mappings for 404s
         return {
           error: {
             message: `Not found "${rawPageId}"`,

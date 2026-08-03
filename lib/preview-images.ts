@@ -1,5 +1,4 @@
 import ky from 'ky'
-import lqip from 'lqip-modern'
 import {
   type ExtendedRecordMap,
   type PreviewImage,
@@ -54,6 +53,7 @@ async function createPreviewImage(
     }
 
     const body = await ky(url).arrayBuffer()
+    const { default: lqip } = await import('lqip-modern')
     const result = await lqip(body)
     console.log('lqip', { ...result.metadata, url, cacheKey })
 

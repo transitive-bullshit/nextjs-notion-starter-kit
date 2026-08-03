@@ -11,6 +11,7 @@
 # next.js
 /.next/
 /out/
+.open-next
 
 # production
 /build
@@ -37,3 +38,12 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# cloudflare
+.wrangler/
+.dev.vars
+
+# local plans
+docs/plans/
+
+lib/smart-digest/data/

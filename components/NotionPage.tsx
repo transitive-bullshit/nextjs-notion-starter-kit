@@ -28,7 +28,6 @@ import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
-import { GitHubShareButton } from './GitHubShareButton'
 import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
@@ -114,8 +113,9 @@ const Code = dynamic(() =>
 const Collection = dynamic(() =>
   import('react-notion-x/third-party/collection').then((m) => m.Collection)
 )
-const Equation = dynamic(() =>
-  import('react-notion-x/third-party/equation').then((m) => m.Equation)
+const Equation = dynamic(
+  () => import('react-notion-x/third-party/equation').then((m) => m.Equation),
+  { ssr: false }
 )
 const Pdf = dynamic(
   () => import('react-notion-x/third-party/pdf').then((m) => m.Pdf),
@@ -325,8 +325,6 @@ export function NotionPage({
         pageAside={pageAside}
         footer={<Footer />}
       />
-
-      <GitHubShareButton />
     </>
   )
 }

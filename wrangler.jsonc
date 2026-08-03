@@ -1,0 +1,57 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "blog-cuong-day",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "build": {
+    "command": "tsx scripts/generate-sitemap-fallback.ts && opennextjs-cloudflare build",
+    "watch_dir": ["pages", "components", "lib", "styles"]
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": true
+    }
+  },
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "blog-cuong-day"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "blog-cuong-day-cache"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "SITEMAP_KV",
+      "id": "7249cd7e8dca4af2bf19a2b5e76392a8",
+      "preview_id": "8fd4ac1b14c549d0b267dc1b09fa505a"
+    }
+  ],
+  "images": {
+    "binding": "IMAGES"
+  },
+  "vars": {
+    "NEXT_PUBLIC_SOCIAL_TWITTER": "caocuong2404",
+    "NEXT_PUBLIC_SOCIAL_GITHUB": "caocuong2404",
+    "NEXT_PUBLIC_SOCIAL_LINKEDIN": "caocuong2404"
+  },
+  "routes": [
+    {
+      "pattern": "blog.cuong.day",
+      "custom_domain": true
+    }
+  ]
+}

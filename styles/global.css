@@ -17,8 +17,55 @@ body {
   --notion-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif;
-  font-family: var(--notion-font);
+
+  /* Design tokens */
+  --font-display: 'Momo Trust Display', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Momo Trust Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-signature: 'Momo Signature', cursive;
+
+  --bg: #f8fafc;
+  --surface: rgba(255,255,255,0.72);
+  --text: #1e293b;
+  --muted: #64748b;
+  --line: rgba(30,41,59,0.10);
+  --primary: #2563eb;
+  --cta: #f97316;
+
+  --content-max: 65ch;
+  --page-max: 1200px;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+
+  --shadow-soft: 0 10px 30px rgba(15,23,42,0.08);
+  --shadow-hover: 0 18px 50px rgba(15,23,42,0.12);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  font-family: var(--font-sans), var(--notion-font);
   overflow-x: hidden;
+}
+
+.dark-mode {
+  --bg: #0b1220;
+  --surface: rgba(15,23,42,0.55);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --line: rgba(226,232,240,0.10);
+  --primary: #60a5fa;
+  --cta: #fb923c;
+
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.35);
+  --shadow-hover: 0 18px 50px rgba(0,0,0,0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .static-tweet blockquote {
@@ -59,4 +106,81 @@ body {
 
 ::-webkit-scrollbar-track {           
     background-color: var(--bg-color);
+}
+
+/* ── Cursor System ── */
+.has-pointer { cursor: none !important; }
+.has-pointer a, .has-pointer button, .has-pointer [role="button"],
+.has-pointer input, .has-pointer textarea { cursor: none !important; }
+
+.cursor-dot {
+  position: fixed; top: -4px; left: -4px; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--primary);
+  pointer-events: none; z-index: 10001; will-change: transform;
+  transition: width 200ms var(--ease-out), height 200ms var(--ease-out), opacity 200ms var(--ease-out);
+}
+.cursor-dot--active { width: 6px; height: 6px; opacity: 0.6; }
+
+.cursor-ring {
+  position: fixed; top: -20px; left: -20px; width: 40px; height: 40px;
+  border-radius: 50%; border: 1.5px solid var(--primary); opacity: 0.35;
+  pointer-events: none; z-index: 10000; will-change: transform;
+  transition: width 300ms var(--ease-out), height 300ms var(--ease-out),
+              border-color 300ms var(--ease-out), opacity 300ms var(--ease-out),
+              background 300ms var(--ease-out);
+}
+.cursor-ring--active {
+  width: 56px; height: 56px; top: -28px; left: -28px;
+  border-color: var(--cta); opacity: 0.25; background: rgba(249, 115, 22, 0.04);
+}
+.dark-mode .cursor-ring--active { background: rgba(251, 146, 60, 0.06); }
+.cursor-ring--click { width: 32px; height: 32px; top: -16px; left: -16px; opacity: 0.5; border-width: 2px; }
+
+/* ── Click Ripple ── */
+@keyframes ripple-expand {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.4; }
+  60% { opacity: 0.15; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+.click-ripple {
+  position: fixed; width: 100px; height: 100px; border-radius: 50%;
+  background: radial-gradient(circle, var(--primary) 0%, var(--cta) 50%, transparent 100%);
+  pointer-events: none; z-index: 10002;
+  animation: ripple-expand 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Ambient Spirits ── */
+@keyframes ambient-drift {
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  15% { transform: translate(calc(var(--drift-x) * 0.15), calc(var(--drift-y) * 0.15)) scale(1); opacity: 0.6; }
+  70% { opacity: 0.4; }
+  100% { transform: translate(var(--drift-x), var(--drift-y)) scale(0.3); opacity: 0; }
+}
+.ambient-spirit {
+  position: fixed; pointer-events: none; z-index: 5;
+  line-height: 1; filter: blur(0.5px);
+  animation: ambient-drift 4s var(--ease-out) forwards;
+}
+.ambient-spirit--primary { color: var(--primary); text-shadow: 0 0 8px var(--primary); }
+.ambient-spirit--cta { color: var(--cta); text-shadow: 0 0 8px var(--cta); }
+
+/* ── Disable all effects for reduced motion + mobile ── */
+@media (prefers-reduced-motion: reduce) {
+  .click-ripple, .cursor-dot, .cursor-ring, .ambient-spirit { display: none !important; }
+  .has-pointer, .has-pointer a, .has-pointer button, .has-pointer [role="button"] { cursor: auto !important; }
+}
+@media (hover: none) {
+  .cursor-dot, .cursor-ring { display: none !important; }
+  .has-pointer { cursor: auto !important; }
+}
+
+/* Hide Google Translate default bar */
+.goog-te-banner-frame,
+.skiptranslate,
+#goog-gt-tt {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
 }
