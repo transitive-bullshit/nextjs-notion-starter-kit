@@ -40,6 +40,7 @@ jobs:
           LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_MODEL: ${{ vars.LLM_MODEL }}
+          DAILY_DIGEST_GEN_CONCURRENT: ${{ vars.DAILY_DIGEST_GEN_CONCURRENT || '5' }}
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_BUCKET: ${{ secrets.R2_BUCKET }}

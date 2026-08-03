@@ -2,12 +2,14 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import pMap from 'p-map'
+
 import type { DigestConfig } from './types.js'
 import { loadConfig } from './config.js'
 import { generateAndSetCover, loadCoverConfig } from './cover-image.js'
 import { extractEntities } from './extract.js'
 import { fetchReports } from './fetch-reports.js'
-import { findExistingPublicPage, publishToNotion } from './notion-publish.js'
+import { findPublishedDigestPage, publishToNotion } from './notion-publish.js'
 import { deduplicateEntities } from './novelty.js'
 import { generatePost } from './writer.js'
 
@@ -23,17 +25,49 @@ async function runPipeline(
   const slug = `daily-digest-${today}`
   console.log(`\n📅 Date: ${today}`)
 
-  // Early check: skip if already published on Notion
+  // Early check: recover a missing cover or skip an already complete page
   if (!dryRun) {
-    const existingId = await findExistingPublicPage(
+    const existingPage = await findPublishedDigestPage(
       config,
       config.notionDatabaseId,
       slug
     )
-    if (existingId) {
-      console.log(
-        `⏭️  Already published (public): "${slug}" (${existingId}), skipping.`
-      )
+    if (existingPage) {
+      if (existingPage.hasCover) {
+        console.log(
+          `⏭️  Already published with cover: "${slug}" (${existingPage.id}), skipping.`
+        )
+        return
+      }
+
+      const coverConfig = loadCoverConfig()
+      if (!coverConfig) {
+        console.warn(
+          `⚠ Missing cover config for "${slug}", skipping cover recovery.`
+        )
+        return
+      }
+
+      console.log(`🎨 Published page missing cover: "${slug}", recovering...`)
+      try {
+        await generateAndSetCover(
+          config,
+          coverConfig,
+          {
+            title: existingPage.title,
+            slug,
+            description: existingPage.description,
+            tags: existingPage.tags,
+            date: today,
+            content: '[]'
+          },
+          existingPage.id
+        )
+      } catch (err) {
+        console.warn(
+          `⚠ Cover recovery failed for "${slug}": ${err instanceof Error ? err.message : err}`
+        )
+      }
       return
     }
   }
@@ -102,7 +136,9 @@ async function runPipeline(
   // Guard: don't publish empty fallback pages (writer JSON parse failed)
   const parsedBlocks = JSON.parse(post.content) as unknown[]
   if (parsedBlocks.length === 0) {
-    console.log('⚠ Skipping publish: writer produced no blocks (fallback). Will retry next run.')
+    console.log(
+      '⚠ Skipping publish: writer produced no blocks (fallback). Will retry next run.'
+    )
     return
   }
 
@@ -136,6 +172,16 @@ function getDateRange(days: number): string[] {
   return dates
 }
 
+function getGenerationConcurrency(): number {
+  const parsed = Number.parseInt(
+    process.env.DAILY_DIGEST_GEN_CONCURRENT ?? '5',
+    10
+  )
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : 5
+}
+
+// Backfill jobs use p-map's bounded concurrency.
+
 async function main() {
   const args = process.argv.slice(2)
   const dateArg = args.find((a) => /^\d{4}-\d{2}-\d{2}$/.test(a))
@@ -155,14 +201,17 @@ async function main() {
     // Explicit date: run exactly that date
     await runPipeline(config, dateArg, dryRun, skipPublish)
   } else if (backfillDays > 0) {
-    // Backfill mode: check last N days and generate any missing ones
+    // Backfill mode: recover missing posts and covers through one bounded pool
     const dates = getDateRange(backfillDays)
+    const concurrency = getGenerationConcurrency()
     console.log(
-      `🔄 Backfill mode: checking ${dates.length} dates (last ${backfillDays} days + today)\n`
+      `🔄 Backfill mode: checking ${dates.length} dates (last ${backfillDays} days + today) with concurrency ${concurrency}\n`
     )
-    for (const date of dates) {
-      await runPipeline(config, date, dryRun, skipPublish)
-    }
+    await pMap(
+      dates,
+      (date) => runPipeline(config, date, dryRun, skipPublish),
+      { concurrency }
+    )
   } else {
     // Default: today only
     const today = new Date().toISOString().split('T')[0]!

@@ -118,9 +118,13 @@ async function generateImage(
 ): Promise<Buffer> {
   // Use custom prompt from env, or pick a random template based on date
   const basePrompt = coverConfig.imagePrompt || pickCoverTemplate(post.date)
+  const summary = post.description
+    ? `
+Summary: ${post.description}`
+    : ''
   const prompt = `${basePrompt}
 
-Inspired by the topic: "${post.title}"
+Inspired by the topic: "${post.title}"${summary}
 Tags: ${post.tags.join(', ')}`
 
   // Try /images/generations first (Google API, OpenAI, etc.)

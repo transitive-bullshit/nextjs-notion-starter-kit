@@ -55,27 +55,57 @@ async function fetchWithRetry(
 export async function chatCompletion(
   config: DigestConfig,
   messages: LLMMessage[],
-  options?: { temperature?: number; maxTokens?: number }
+  options?: {
+    temperature?: number
+    maxTokens?: number
+    jsonMode?: boolean
+    disableThinking?: boolean
+  }
 ): Promise<string> {
+  const isMiMo = /xiaomimimo\.com/i.test(config.llmBaseUrl)
+  const body: Record<string, unknown> = {
+    model: config.llmModel,
+    messages,
+    temperature: options?.temperature ?? 0.7,
+    stream: false
+  }
+
+  if (isMiMo) {
+    body.max_completion_tokens = options?.maxTokens ?? 4096
+    if (options?.jsonMode) body.response_format = { type: 'json_object' }
+    if (options?.disableThinking) body.thinking = { type: 'disabled' }
+  } else {
+    body.max_tokens = options?.maxTokens ?? 4096
+  }
+
   const res = await fetchWithRetry(`${config.llmBaseUrl}/chat/completions`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${config.llmApiKey}`
     },
-    body: JSON.stringify({
-      model: config.llmModel,
-      messages,
-      temperature: options?.temperature ?? 0.7,
-      max_tokens: options?.maxTokens ?? 4096,
-      stream: false
-    })
+    body: JSON.stringify(body)
   })
 
   const data = (await res.json()) as {
-    choices?: Array<{ message?: { content?: string } }>
+    choices?: Array<{
+      finish_reason?: string
+      message?: { content?: string }
+    }>
+    usage?: {
+      prompt_tokens?: number
+      completion_tokens?: number
+      total_tokens?: number
+    }
   }
-  return data.choices?.[0]?.message?.content ?? ''
+
+  const choice = data.choices?.[0]
+  console.log(
+    `  LLM response: chars=${choice?.message?.content?.length ?? 0}, ` +
+      `finish_reason=${choice?.finish_reason ?? 'unknown'}, ` +
+      `completion_tokens=${data.usage?.completion_tokens ?? 'unknown'}`
+  )
+  return choice?.message?.content ?? ''
 }
 
 export async function fetchModels(
