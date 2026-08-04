@@ -3,7 +3,7 @@ packages:
 
 enablePrePostScripts: true
 
-minimumReleaseAge: 1440
+minimumReleaseAge: 4320
 
 onlyBuiltDependencies:
   - sharp
