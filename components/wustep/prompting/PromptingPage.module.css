@@ -1204,6 +1204,21 @@
   border-bottom: none;
 }
 
+/* Small provenance note under the model table, tucked bottom-right. */
+.modelGuideUpdated {
+  margin: 4px 2px 0;
+  text-align: right;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.45));
+}
+
+:global(.dark-mode) .modelGuideUpdated {
+  color: rgba(255, 255, 255, 0.45);
+}
+
 .modelGuideWhen {
   font-size: 0.92rem;
   color: var(--fg-color-6, rgba(26, 25, 24, 0.85));

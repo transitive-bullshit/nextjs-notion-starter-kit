@@ -125,9 +125,7 @@ export function IntroContent() {
             <p>
               I wrote most of this (with help from agents) in April 2026, for a
               talk for Notion engineers. The field moves fast enough that some
-              of it is probably dated already; the model names will go first.
-              The levers and core ideas will change slower than the models and
-              tools. I hope something in here is useful anyway.{' '}
+              of it is dated already. I hope something in here is useful anyway.{' '}
               <em>&mdash; Stephen</em>
             </p>
           </Note>
