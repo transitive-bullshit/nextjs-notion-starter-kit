@@ -123,10 +123,12 @@ export function IntroContent() {
         <div className={styles.bodyItem} style={bodyDelay(6)}>
           <Note title='A timestamp'>
             <p>
-              I wrote most of this in April 2026, and the field moves fast
-              enough that some of it is probably dated already; the model names
-              will go first. The levers seem to change slower than the models. I
-              hope something in here is useful anyway. <em>&mdash; Stephen</em>
+              I wrote most of this (with help from agents) in April 2026, for a
+              talk for Notion engineers. The field moves fast enough that some
+              of it is probably dated already; the model names will go first.
+              The levers and core ideas will change slower than the models and
+              tools. I hope something in here is useful anyway.{' '}
+              <em>&mdash; Stephen</em>
             </p>
           </Note>
         </div>
