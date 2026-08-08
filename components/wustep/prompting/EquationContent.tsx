@@ -62,27 +62,21 @@ export function EquationContent() {
             <span className={styles.modelGuideWhen}>
               Fast and cost-friendly
             </span>
-            <span className={styles.modelGuidePick}>
-              Sonnet 4.6 · Composer 2.5
-            </span>
+            <span className={styles.modelGuidePick}>Cursor Grok 4.5</span>
           </div>
           <div className={styles.modelGuideRow}>
             <span className={styles.modelGuideWhen}>
               Taste: writing, docs, PRs, UI/UX, animations
             </span>
-            <span className={styles.modelGuidePick}>Opus 4.8</span>
+            <span className={styles.modelGuidePick}>Opus 5 · Fable 5</span>
           </div>
           <div className={styles.modelGuideRow}>
             <span className={styles.modelGuideWhen}>
               Problem solving, backend, gnarly debugging
             </span>
-            <span className={styles.modelGuidePick}>GPT-5.5</span>
-          </div>
-          <div className={styles.modelGuideRow}>
-            <span className={styles.modelGuideWhen}>
-              Anything tricky, ambiguous, or multi-step
+            <span className={styles.modelGuidePick}>
+              GPT 5.6 Sol · GPT 5.6 Luna Max
             </span>
-            <span className={styles.modelGuidePick}>+ Thinking on</span>
           </div>
         </div>
 
