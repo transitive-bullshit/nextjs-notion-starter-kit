@@ -136,6 +136,7 @@ export const playgroundSections: PlaygroundSection[] = [
         summary: 'Explore the symbol matching card game and its mechanics',
         date: 'Dec 2025',
         year: '2025',
+        article: '/spot-it',
         source: 'https://github.com/wustep/spot-it',
         gradient: 'from-amber-400 to-pink-500',
         image: '/playground/covers/spot-it.png',
