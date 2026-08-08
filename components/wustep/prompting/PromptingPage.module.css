@@ -12,41 +12,55 @@
 
 /* ===== Frame & layout =====
  *
- * Field-manual palette. Paper at chroma 0 (no cream), near-black ink,
- * and one structural second ink — vermillion — carrying chapter
- * numerals, figure plates, NOTE tags, and links. The notion tokens are
- * re-pointed here so the whole file shifts in lockstep, and every mono
- * surface picks up the typewriter (Courier Prime) via --font-mono.
+ * Quiet-craft palette. Paper at chroma 0, near-black ink, hairline
+ * rules, and one second ink — terracotta — held back for links, figure
+ * numbers, the current chapter, and moments inside the demos. The
+ * demos are the article's imagery; the page around them stays calm.
+ *
+ * Type: Source Serif 4 for display (--font-serif), the platform's
+ * system face for reading text (--font-sans), Geist Mono for anything
+ * you'd type into the machine (--font-mono). See fonts.ts.
  */
 
 .frame {
   /* type system (see fonts.ts) */
-  --font-sans: var(--pm-sans), 'Franklin Gothic Medium', Arial, sans-serif;
-  --font-serif: var(--pm-sans), 'Franklin Gothic Medium', Arial, sans-serif;
-  --font-mono: var(--pm-mono), 'Courier New', Courier, monospace;
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-serif:
+    var(--pm-serif), 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-mono: var(--pm-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* paper + ink */
-  --bg-color: #fcfcfb;
-  --bg-color-0: rgba(25, 24, 22, 0.05);
-  --bg-color-1: #f4f4f2;
-  --fg-color: #21201d;
-  --fg-color-0: rgba(25, 24, 22, 0.05);
-  --fg-color-1: rgba(25, 24, 22, 0.14);
-  --fg-color-2: rgba(25, 24, 22, 0.52);
-  --fg-color-3: rgba(25, 24, 22, 0.7);
-  --fg-color-5: rgba(25, 24, 22, 0.035);
-  --fg-color-6: rgba(25, 24, 22, 0.84);
+  --bg-color: #fdfdfc;
+  --bg-color-0: rgba(26, 25, 24, 0.05);
+  --bg-color-1: #f5f5f3;
+  --fg-color: #1a1918;
+  --fg-color-0: rgba(26, 25, 24, 0.05);
+  --fg-color-1: rgba(26, 25, 24, 0.12);
+  --fg-color-2: rgba(26, 25, 24, 0.56);
+  --fg-color-3: rgba(26, 25, 24, 0.66);
+  --fg-color-5: rgba(26, 25, 24, 0.03);
+  --fg-color-6: rgba(26, 25, 24, 0.84);
 
   /* second ink */
   --pm-accent: #b8401f;
   --pm-accent-ink: #a03415; /* darker rung for small text on paper */
   --pm-accent-soft: rgba(184, 64, 31, 0.09);
   --pm-accent-line: rgba(184, 64, 31, 0.38);
-  --pm-on-accent: #fcfcfb;
+  --pm-on-accent: #fdfdfc;
 
-  /* rules */
-  --pm-rule: rgba(25, 24, 22, 0.16);
-  --pm-rule-strong: #21201d;
+  /* rules — hairlines only; emphasis comes from space, not weight */
+  --pm-rule: rgba(26, 25, 24, 0.1);
+  --pm-rule-strong: rgba(26, 25, 24, 0.22);
+
+  /* surfaces & radii — the soft plinth under figures and callouts */
+  --pm-surface: #f7f7f5;
+  --pm-radius-sm: 6px;
+  --pm-radius-md: 10px;
+  --pm-radius-lg: 14px;
+  --pm-shadow-pop:
+    0 1px 2px rgba(15, 15, 15, 0.05), 0 12px 32px rgba(15, 15, 15, 0.1);
 
   min-height: 100vh;
   background: var(--bg-color);
@@ -63,9 +77,9 @@
   --bg-color-1: #161616;
   --fg-color: rgba(255, 255, 255, 0.92);
   --fg-color-0: rgba(255, 255, 255, 0.05);
-  --fg-color-1: rgba(255, 255, 255, 0.14);
-  --fg-color-2: rgba(255, 255, 255, 0.52);
-  --fg-color-3: rgba(255, 255, 255, 0.7);
+  --fg-color-1: rgba(255, 255, 255, 0.12);
+  --fg-color-2: rgba(255, 255, 255, 0.56);
+  --fg-color-3: rgba(255, 255, 255, 0.68);
   --fg-color-5: rgba(255, 255, 255, 0.03);
   --fg-color-6: rgba(255, 255, 255, 0.84);
 
@@ -75,8 +89,12 @@
   --pm-accent-line: rgba(232, 122, 74, 0.45);
   --pm-on-accent: #0d0d0d;
 
-  --pm-rule: rgba(255, 255, 255, 0.18);
-  --pm-rule-strong: rgba(255, 255, 255, 0.88);
+  --pm-rule: rgba(255, 255, 255, 0.12);
+  --pm-rule-strong: rgba(255, 255, 255, 0.24);
+
+  --pm-surface: #151514;
+  --pm-shadow-pop:
+    0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
 
   background: var(--bg-color);
   color: var(--fg-color);
@@ -133,15 +151,14 @@
 .titleSlot {
   position: relative;
   min-height: 1.2em;
-  font-size: clamp(2.1rem, 5.4vw, 3.1rem);
-  font-weight: 800;
-  letter-spacing: 0.005em;
-  text-transform: uppercase;
-  line-height: 1.06;
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5.6vw, 3.4rem);
+  font-weight: 440;
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   text-wrap: balance;
-  margin: 1.2rem 0 0.5em;
-  padding-top: 0.5em;
-  border-top: 3px solid var(--pm-rule-strong, #21201d);
+  margin: 2.6rem 0 0.5em;
   /*
    * Grid-stack the "Thinking" and title states in a single cell so they
    * cross-fade on top of one another while the slot grows to fit the
@@ -174,9 +191,9 @@
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
-  text-transform: none;
-  font-weight: 600;
-  font-size: 0.82em;
+  font-family: var(--font-sans);
+  font-weight: 550;
+  font-size: 0.62em;
   letter-spacing: -0.01em;
 }
 
@@ -198,11 +215,11 @@
   position: relative;
   background: linear-gradient(
     90deg,
-    var(--fg-color-3, rgba(55, 53, 47, 0.4)) 0%,
-    var(--fg-color-3, rgba(55, 53, 47, 0.4)) 30%,
-    var(--fg-color, rgb(55, 53, 47)) 50%,
-    var(--fg-color-3, rgba(55, 53, 47, 0.4)) 70%,
-    var(--fg-color-3, rgba(55, 53, 47, 0.4)) 100%
+    var(--fg-color-3, rgba(26, 25, 24, 0.4)) 0%,
+    var(--fg-color-3, rgba(26, 25, 24, 0.4)) 30%,
+    var(--fg-color, #1a1918) 50%,
+    var(--fg-color-3, rgba(26, 25, 24, 0.4)) 70%,
+    var(--fg-color-3, rgba(26, 25, 24, 0.4)) 100%
   );
   background-size: 250% 100%;
   background-clip: text;
@@ -275,7 +292,7 @@
 .prose {
   font-size: 1.0625rem;
   line-height: 1.7;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 .prose p {
@@ -306,33 +323,36 @@
 }
 
 /* ===== Begin CTA on intro page =====
- * A solid vermillion block — the manual's second ink at full strength. */
+ * A quiet terracotta pill — the second ink's one full-strength moment
+ * on the cover. Sentence case; responds to press, not just hover. */
 
 .beginCta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   margin-top: 0.6em;
-  padding: 12px 20px;
-  border-radius: 2px;
+  padding: 11px 22px;
+  border-radius: 999px;
   background: var(--pm-accent, #b8401f);
-  color: var(--pm-on-accent, #fcfcfb);
+  color: var(--pm-on-accent, #fdfdfc);
   font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 0.95rem;
+  font-weight: 550;
+  letter-spacing: 0;
   text-decoration: none !important;
   border: none !important;
   background-image: none !important;
   transition:
     background 200ms var(--ease-out-smooth),
-    transform 200ms var(--ease-out-smooth);
+    transform 160ms var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1));
 }
 
 .beginCta:hover {
   background: var(--pm-accent-ink, #a03415);
-  transform: translateY(-1px);
+}
+
+.beginCta:active {
+  transform: scale(0.97);
 }
 
 .beginCtaArrow {
@@ -360,7 +380,7 @@
    with just "presentation" underlined as the link. */
 .altVersion {
   font-size: 0.92rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.55));
 }
 
 :global(.dark-mode) .altVersion {
@@ -378,22 +398,23 @@
 }
 
 .altVersionLink:hover {
-  color: var(--fg-color, rgb(55, 53, 47)) !important;
+  color: var(--fg-color, #1a1918) !important;
 }
 
 :global(.dark-mode) .altVersionLink:hover {
   color: rgba(255, 255, 255, 0.92) !important;
 }
 
-/* ===== Chapter header: folio head + opener plate =====
+/* ===== Chapter header: running head + opener =====
  *
- * The manual's running head — a double rule carrying the guide title
- * (left) and the chapter mark (right, typewriter) — followed by the
- * chapter plate: an oversized vermillion numeral beside the title.
+ * A hairline running head carries the series title (left) and a humane
+ * chapter mark (right); below, the chapter title in the book serif.
+ * The accent stays out of the header — the chapter mark earns it only
+ * in its numeral.
  */
 
 .chapterHeader {
-  margin-bottom: 2.2em;
+  margin-bottom: 2.6em;
 }
 
 .folio {
@@ -401,19 +422,17 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 16px;
-  padding: 0.55em 0 0.5em;
-  border-top: 3px solid var(--pm-rule-strong, #21201d);
-  border-bottom: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
-  margin-top: 1.2rem;
+  padding: 0 0 0.7em;
+  border-bottom: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
+  margin-top: 2.2rem;
 }
 
 .folioTitle {
   font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg-color, rgb(55, 53, 47));
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
   text-decoration: none !important;
   border: none !important;
   background: none !important;
@@ -422,58 +441,48 @@
 }
 
 .folioTitle:hover {
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--fg-color, #1a1918);
 }
 
 @media (max-width: 560px) {
   .folioTitle {
-    font-size: 0.68rem;
-    letter-spacing: 0.06em;
+    font-size: 0.76rem;
   }
 
   .folioMark {
-    font-size: 0.7rem;
+    font-size: 0.76rem;
   }
 }
 
 .folioMark {
   flex-shrink: 0;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--pm-accent-ink, #a03415);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
   white-space: nowrap;
 }
 
-.chapterPlate {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5em;
-  margin-top: 0.5em;
+.folioMarkNum {
+  color: var(--pm-accent-ink, #a03415);
+  font-weight: 550;
 }
 
-.chapterNumeral {
-  font-family: var(--font-sans);
-  font-size: clamp(3.6rem, 9vw, 5.2rem);
-  font-weight: 800;
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  color: var(--pm-accent, #b8401f);
-  font-variant-numeric: lining-nums;
-  flex-shrink: 0;
-  transform: translateY(0.04em);
+.chapterPlate {
+  margin-top: 1.4em;
 }
 
 .chapterTitle {
   margin: 0;
-  font-family: var(--font-sans);
-  font-size: clamp(2rem, 5.6vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  line-height: 1.02;
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 5.4vw, 2.9rem);
+  font-weight: 440;
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
   text-wrap: balance;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 /* ===== Chapter body (mounts faded, fades in once mounted) ===== */
@@ -500,9 +509,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-top: 4em;
+  margin-top: 4.5em;
   padding-top: 1.3em;
-  border-top: 3px solid var(--pm-rule-strong, #21201d);
+  border-top: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
 }
 
 /* Stack prev/next on phones — two long chapter labels side-by-side get
@@ -520,7 +529,7 @@
   .chapterNavLink {
     width: 100%;
     justify-content: flex-start;
-    border-color: var(--fg-color-1, rgba(55, 53, 47, 0.12)) !important;
+    border-color: var(--fg-color-1, rgba(26, 25, 24, 0.12)) !important;
   }
 
   .chapterNavLinkNext {
@@ -540,19 +549,20 @@
   }
 }
 
-/* ===== Table of contents (floating, hover-reveal) ===== */
+/* ===== Table of contents (floating; click-open, hover as shortcut) ===== */
 
 .toc {
-  display: none;
+  display: block;
+  position: fixed;
+  top: 60px;
+  right: 16px;
+  z-index: var(--z-dropdown, 50);
 }
 
 @media (min-width: 1100px) {
   .toc {
-    display: block;
-    position: fixed;
     top: 88px;
     right: 28px;
-    z-index: 40;
   }
 }
 
@@ -564,9 +574,9 @@
   height: 32px;
   padding: 0;
   border: none;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   background: transparent;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
   opacity: 0.45;
   cursor: pointer;
   transition:
@@ -575,16 +585,32 @@
 }
 
 .tocTrigger:hover,
-.toc:hover .tocTrigger,
+.tocOpen .tocTrigger,
 .toc:focus-within .tocTrigger {
   opacity: 1;
-  background: var(--fg-color-1, rgba(55, 53, 47, 0.06));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+}
+
+.tocTrigger:active {
+  transform: scale(0.94);
 }
 
 :global(.dark-mode) .tocTrigger:hover,
-:global(.dark-mode) .toc:hover .tocTrigger,
+:global(.dark-mode) .tocOpen .tocTrigger,
 :global(.dark-mode) .toc:focus-within .tocTrigger {
   background: rgba(255, 255, 255, 0.08);
+}
+
+/* Hover is a pointer-fine shortcut on top of the click model. */
+@media (hover: hover) and (pointer: fine) {
+  .toc:hover .tocTrigger {
+    opacity: 1;
+    background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  }
+
+  :global(.dark-mode) .toc:hover .tocTrigger {
+    background: rgba(255, 255, 255, 0.08);
+  }
 }
 
 .tocIcon {
@@ -597,19 +623,23 @@
   top: calc(100% + 8px);
   right: 0;
   min-width: 260px;
+  max-width: min(320px, calc(100vw - 32px));
   padding: 10px 8px 12px;
-  border-radius: 0;
+  border-radius: var(--pm-radius-md, 10px);
   background: var(--bg-color, #fff);
-  border: 1px solid var(--pm-rule-strong, #21201d);
-  box-shadow:
-    0 1px 2px rgba(15, 15, 15, 0.06),
-    0 8px 28px rgba(15, 15, 15, 0.12);
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
+  box-shadow: var(
+    --pm-shadow-pop,
+    0 1px 2px rgba(15, 15, 15, 0.05),
+    0 12px 32px rgba(15, 15, 15, 0.1)
+  );
   opacity: 0;
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(0.97);
+  transform-origin: top right;
   pointer-events: none;
   transition:
     opacity 180ms ease,
-    transform 180ms var(--ease-out-swift);
+    transform 200ms var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1));
 }
 
 /* Invisible bridge spanning the gap between the trigger and the
@@ -624,30 +654,34 @@
 }
 
 :global(.dark-mode) .tocPanel {
-  background: var(--bg-color, #2f3437);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.3),
-    0 8px 28px rgba(0, 0, 0, 0.4);
+  background: #161616;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.toc:hover .tocPanel,
+.tocOpen .tocPanel,
 .toc:focus-within .tocPanel {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   pointer-events: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .toc:hover .tocPanel {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
 }
 
 .tocPanelHeader {
   margin: 0 10px 6px;
   padding: 4px 0 6px;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--pm-accent-ink, #a03415);
-  border-bottom: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
+  border-bottom: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
 }
 
 .tocList {
@@ -665,11 +699,11 @@
   align-items: baseline;
   gap: 10px;
   padding: 6px 10px;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   font-family: var(--font-sans);
   font-size: 0.9rem;
   line-height: 1.3;
-  color: var(--fg-color-2, rgba(55, 53, 47, 0.75));
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.75));
   text-decoration: none !important;
   border: none !important;
   background: none !important;
@@ -680,8 +714,8 @@
 }
 
 .tocLink:hover {
-  color: var(--fg-color, rgb(55, 53, 47));
-  background: var(--fg-color-1, rgba(55, 53, 47, 0.05));
+  color: var(--fg-color, #1a1918);
+  background: var(--fg-color-1, rgba(26, 25, 24, 0.05));
 }
 
 :global(.dark-mode) .tocLink {
@@ -694,9 +728,13 @@
 }
 
 .tocLinkCurrent {
-  color: var(--fg-color, rgb(55, 53, 47));
-  font-weight: 700;
-  box-shadow: inset 2px 0 0 var(--pm-accent, #b8401f);
+  color: var(--fg-color, #1a1918);
+  font-weight: 600;
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.05)) !important;
+}
+
+.tocLinkCurrent .tocIndex {
+  color: var(--pm-accent-ink, #a03415);
 }
 
 :global(.dark-mode) .tocLinkCurrent {
@@ -709,17 +747,13 @@
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.45));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.45));
 }
 
 :global(.dark-mode) .tocIndex {
   color: rgba(255, 255, 255, 0.4);
 }
 
-.tocLinkCurrent .tocIndex {
-  color: inherit;
-  opacity: 0.85;
-}
 
 .tocTitle {
   flex: 1;
@@ -758,8 +792,8 @@
 }
 
 .chapterNavLink:hover {
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.05)) !important;
-  border-color: var(--fg-color-1, rgba(55, 53, 47, 0.12)) !important;
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.05)) !important;
+  border-color: var(--fg-color-1, rgba(26, 25, 24, 0.12)) !important;
 }
 
 :global(.dark-mode) .chapterNavLink:hover {
@@ -779,20 +813,20 @@
 }
 
 .chapterNavDirection {
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--pm-accent-ink, #a03415);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
 }
 
 .chapterNavLabel {
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.005em;
-  color: var(--fg-color, rgb(55, 53, 47));
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 480;
+  font-optical-sizing: auto;
+  letter-spacing: -0.01em;
+  color: var(--fg-color, #1a1918);
   transition: transform 220ms var(--ease-out-smooth);
 }
 
@@ -802,12 +836,12 @@
 
 .chapterNavArrow {
   font-size: 1.2rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.55));
   transition: transform 220ms var(--ease-out-smooth);
 }
 
 .chapterNavLink:hover .chapterNavArrow {
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .chapterNavLink:hover .chapterNavArrow {
@@ -830,15 +864,14 @@
   align-items: center;
   gap: 8px;
   padding: 6px 12px;
-  border-radius: 2px;
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.7rem;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
   text-decoration: none !important;
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.12)) !important;
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.12)) !important;
   background: transparent !important;
   background-image: none !important;
   transition:
@@ -848,9 +881,9 @@
 }
 
 .chapterNavRestart:hover {
-  color: var(--fg-color, rgb(55, 53, 47));
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.05)) !important;
-  border-color: var(--fg-color-2, rgba(55, 53, 47, 0.18)) !important;
+  color: var(--fg-color, #1a1918);
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.05)) !important;
+  border-color: var(--fg-color-2, rgba(26, 25, 24, 0.18)) !important;
 }
 
 :global(.dark-mode) .chapterNavRestart {
@@ -909,7 +942,7 @@
 
 .prose strong {
   font-weight: 600;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .prose strong {
@@ -918,16 +951,16 @@
 
 .prose em {
   font-style: italic;
-  color: var(--fg-color-6, rgba(55, 53, 47, 0.85));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.85));
 }
 
 .prose code {
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.92em;
   padding: 0.08em 0.4em;
-  border-radius: 2px;
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border-radius: var(--pm-radius-sm, 6px);
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
 }
 
 :global(.dark-mode) .prose code {
@@ -943,10 +976,10 @@
   font-size: 0.88em;
   font-style: normal;
   padding: 0.08em 0.4em;
-  border-radius: 2px;
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
-  color: var(--fg-color, rgb(55, 53, 47));
+  border-radius: var(--pm-radius-sm, 6px);
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .chapterBody code {
@@ -961,7 +994,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.45em;
-  color: var(--fg-color-6, rgba(55, 53, 47, 0.85));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.85));
 }
 
 .axisList li {
@@ -970,7 +1003,7 @@
 }
 
 .axisList li::marker {
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.4));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.4));
 }
 
 /* ===== Section (Mental Models) ===== */
@@ -1015,7 +1048,7 @@
 
 .sectionDivider {
   border: none;
-  border-top: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.12));
+  border-top: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.12));
   margin: 0 0 2.4em;
 }
 
@@ -1028,18 +1061,20 @@
   align-items: baseline;
   gap: 0.7em;
   font-family: var(--font-serif, var(--font-sans));
-  font-size: 1.85rem;
-  font-weight: 600;
+  font-size: 1.7rem;
+  font-weight: 470;
+  font-optical-sizing: auto;
   letter-spacing: -0.015em;
   margin: 0 0 1em;
 }
 
 .sectionIndex {
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.7em;
+  font-family: var(--font-sans);
+  font-size: 0.62em;
   font-weight: 500;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.4));
-  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.45));
+  letter-spacing: 0.01em;
 }
 
 .sectionTitle {
@@ -1111,24 +1146,24 @@
   gap: 12px;
   margin: 0 0 0.7em;
   padding-top: 0.65em;
-  border-top: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+  border-top: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
   flex-wrap: wrap;
 }
 
 .leverHeadingNum {
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
   color: var(--pm-accent-ink, #a03415);
   font-variant-numeric: tabular-nums;
 }
 
 .leverHeadingName {
   font-family: var(--font-sans);
-  font-size: 1.12rem;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  color: var(--fg-color, rgb(55, 53, 47));
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  color: var(--fg-color, #1a1918);
 }
 
 .leverHeadingTagline {
@@ -1136,7 +1171,7 @@
   font-size: 1.05rem;
   font-weight: 450;
   letter-spacing: 0;
-  color: var(--fg-color-3, rgba(25, 24, 22, 0.62));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.62));
 }
 
 .leverBody p {
@@ -1151,8 +1186,8 @@
 .modelGuide {
   margin: 0.4em 0 1em;
   padding: 4px 0;
-  border-top: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
-  border-bottom: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border-top: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
+  border-bottom: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
 }
 
 :global(.dark-mode) .modelGuide {
@@ -1165,7 +1200,7 @@
   justify-content: space-between;
   gap: 14px;
   padding: 9px 2px;
-  border-bottom: 1px dashed var(--fg-color-1, rgba(55, 53, 47, 0.08));
+  border-bottom: 1px dashed var(--fg-color-1, rgba(26, 25, 24, 0.08));
 }
 
 :global(.dark-mode) .modelGuideRow {
@@ -1178,7 +1213,7 @@
 
 .modelGuideWhen {
   font-size: 0.92rem;
-  color: var(--fg-color-6, rgba(55, 53, 47, 0.85));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.85));
   flex: 1;
 }
 
@@ -1190,7 +1225,7 @@
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.86rem;
   font-weight: 500;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
   white-space: nowrap;
 }
 
@@ -1224,14 +1259,14 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
 }
 
 .colleagueTaskText {
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.55;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .colleagueTaskText {
@@ -1249,10 +1284,10 @@
   align-items: center;
   gap: 7px;
   padding: 7px 11px;
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.14));
-  border-radius: 2px;
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.14));
+  border-radius: var(--pm-radius-sm, 6px);
   background: transparent;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.6));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.6));
   font-family: inherit;
   font-size: 0.85rem;
   font-weight: 500;
@@ -1265,8 +1300,8 @@
 }
 
 .colleagueChip:hover {
-  color: var(--fg-color, rgb(55, 53, 47));
-  border-color: var(--fg-color-2, rgba(55, 53, 47, 0.3));
+  color: var(--fg-color, #1a1918);
+  border-color: var(--fg-color-2, rgba(26, 25, 24, 0.3));
 }
 
 :global(.dark-mode) .colleagueChip {
@@ -1304,8 +1339,8 @@
 .colleagueResponseBody {
   padding: 12px 14px;
   border-radius: 0;
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.04));
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.08));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.04));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.08));
   animation: colleagueFade 320ms var(--ease-out-swift);
 }
 
@@ -1325,7 +1360,7 @@
 }
 
 .colleagueResponseText {
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .colleagueResponseText {
@@ -1333,7 +1368,7 @@
 }
 
 .colleagueResponseDim {
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.55));
   font-style: italic;
 }
 
@@ -1384,39 +1419,41 @@
   display: flex;
   align-items: baseline;
   gap: 0.55em;
-  margin: 2.4em 0 0.6em;
+  margin: 2.6em 0 0.6em;
   font-family: var(--font-sans);
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: -0.005em;
-  line-height: 1.15;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   text-wrap: balance;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 .manualHeadingNum {
   flex-shrink: 0;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.82em;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 0.78em;
+  font-weight: 500;
   color: var(--pm-accent-ink, #a03415);
   font-variant-numeric: tabular-nums;
 }
 
 /* ===== Figures =====
  *
- * Every demo and diagram sits in a rule-framed enclosure with a
- * numbered caption plate below — FIG. 4.1 in typewriter, caption after.
+ * Demos and diagrams sit on a soft plinth — a tinted surface with a
+ * hairline edge, not an ink box — with a centered caption below.
+ * The figure number keeps the second ink; the caption stays quiet.
  */
 
 .manualFigure {
-  margin: 1.75em 0 2em;
+  margin: 2em 0 2.4em;
 }
 
 .manualFigureBody {
-  border: 1px solid var(--pm-rule-strong, #21201d);
-  padding: 18px 16px;
-  background: var(--bg-color, #fff);
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
+  border-radius: var(--pm-radius-lg, 14px);
+  padding: 20px 18px;
+  background: var(--pm-surface, #f7f7f5);
 }
 
 .manualFigureBody > :first-child {
@@ -1428,28 +1465,29 @@
 }
 
 .manualFigureCaption {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  padding: 8px 2px 0;
+  display: block;
+  padding: 10px 12px 0;
   line-height: 1.5;
+  text-align: center;
+  max-width: 56ch;
+  margin: 0 auto;
 }
 
 .manualFigureNum {
-  flex-shrink: 0;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
   color: var(--pm-accent-ink, #a03415);
   white-space: nowrap;
+  margin-right: 0.6em;
 }
 
 .manualFigureText {
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.78rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.62));
-  max-width: 56ch;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.66));
 }
 
 /* ===== ELO chart (Techniques chapter top) ===== */
@@ -1502,7 +1540,7 @@
 
 /* Axis */
 .eloChartAxis {
-  stroke: var(--fg-color-1, rgba(55, 53, 47, 0.18));
+  stroke: var(--fg-color-1, rgba(26, 25, 24, 0.18));
   stroke-width: 1;
   opacity: 0;
   transition: opacity 500ms ease;
@@ -1518,7 +1556,7 @@
 }
 
 .eloChartTicks {
-  stroke: var(--fg-color-2, rgba(55, 53, 47, 0.3));
+  stroke: var(--fg-color-2, rgba(26, 25, 24, 0.3));
   stroke-width: 1;
   opacity: 0;
   transition: opacity 500ms ease;
@@ -1537,7 +1575,7 @@
 .eloChartTierLabels text {
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 10px;
-  fill: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  fill: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   letter-spacing: 0.04em;
 }
 
@@ -1591,7 +1629,7 @@
 
 /* Magnus marker — first ink */
 .eloChartMarkerMagnus {
-  color: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.84));
 }
 
 .eloChartVisible .eloChartMarkerMagnus {
@@ -1601,14 +1639,14 @@
 
 /* Gap arrow between markers */
 .eloChartGap line {
-  stroke: var(--fg-color-2, rgba(55, 53, 47, 0.32));
+  stroke: var(--fg-color-2, rgba(26, 25, 24, 0.32));
   stroke-width: 1;
 }
 
 .eloChartGap text {
   font-family: var(--font-mono, 'Courier New', monospace);
   font-size: 11px;
-  fill: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  fill: var(--fg-color-3, rgba(26, 25, 24, 0.55));
 }
 
 :global(.dark-mode) .eloChartGap line {
@@ -1662,12 +1700,12 @@
 /* The prompt itself is a thing you type — typewriter, no quote marks. */
 .techniquePrompt {
   margin: 0 0 0.5em;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.45;
-  letter-spacing: 0;
-  color: var(--fg-color, rgb(55, 53, 47));
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.98rem;
+  font-weight: 550;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--fg-color, #1a1918);
   max-width: var(--pm-measure);
 }
 
@@ -1678,7 +1716,7 @@
 
 .techniqueBody p {
   margin: 0 0 0.7em;
-  color: var(--fg-color-6, rgba(55, 53, 47, 0.85));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.85));
 }
 
 .techniqueBody > :last-child {
@@ -1694,7 +1732,7 @@
 .recapItem {
   margin: 2.4em 0;
   padding-top: 1.6em;
-  border-top: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border-top: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
 }
 
 .recapItem:first-of-type {
@@ -1719,7 +1757,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.45));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.45));
   align-self: center;
 }
 
@@ -1735,7 +1773,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--fg-color, rgb(55, 53, 47)) !important;
+  color: var(--fg-color, #1a1918) !important;
   text-decoration: none !important;
   background: none !important;
   background-image: none !important;
@@ -1749,13 +1787,13 @@
 
 .recapTitleArrow {
   font-size: 0.85em;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.4));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.4));
   transition: transform 200ms var(--ease-out-smooth);
 }
 
 .recapTitle:hover .recapTitleArrow {
   transform: translateX(4px);
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .recapTitle:hover .recapTitleArrow {
@@ -1781,7 +1819,7 @@
   margin: 0 0 1em;
   border-radius: 0;
   background: var(--bg-color-1, #f4f4f2);
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.85rem;
   letter-spacing: 0.02em;
@@ -1795,7 +1833,7 @@
 .recapToken {
   display: inline-block;
   padding: 3px 8px;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   font-weight: 500;
   white-space: nowrap;
 }
@@ -1809,10 +1847,10 @@
 .recapTokenOutput {
   display: inline-block;
   padding: 3px 8px;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   font-weight: 700;
   white-space: nowrap;
-  background: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  background: var(--fg-color-6, rgba(26, 25, 24, 0.84));
   border: 1px solid transparent;
   color: var(--bg-color, #fff);
 }
@@ -1826,7 +1864,7 @@
   margin: 0 0 1em;
   border-radius: 0;
   background: var(--bg-color-1, #f4f4f2);
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
 }
 
 :global(.dark-mode) .recapTreeViz {
@@ -1845,7 +1883,7 @@
 .recapTreeCell {
   display: block;
   border-radius: 1px;
-  background: var(--fg-color-1, rgba(55, 53, 47, 0.12));
+  background: var(--fg-color-1, rgba(26, 25, 24, 0.12));
   transition: background 200ms ease;
 }
 
@@ -1868,7 +1906,7 @@
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.78rem;
   letter-spacing: 0.04em;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
 }
 
 :global(.dark-mode) .recapTreeMoves {
@@ -1891,7 +1929,7 @@
   margin: 0 0 1em;
   border-radius: 0;
   background: var(--bg-color-1, #f4f4f2);
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
 }
 
 :global(.dark-mode) .recapColleagueViz {
@@ -1906,7 +1944,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 5px 11px;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
   border: 1px solid var(--pm-accent-line, rgba(184, 64, 31, 0.38));
   color: var(--pm-accent-ink, #a03415);
@@ -1914,7 +1952,7 @@
 
 .recapColleagueArrow {
   font-size: 1.05rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.4));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.4));
 }
 
 :global(.dark-mode) .recapColleagueArrow {
@@ -1931,8 +1969,8 @@
   margin: 0 0 1em;
   border-radius: 0;
   background: var(--bg-color-1, #f4f4f2);
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
 }
 
 :global(.dark-mode) .recapMindsetViz,
@@ -2051,7 +2089,7 @@
 .recapTechniquesIntro {
   margin: 0 0 0.4em !important;
   font-style: italic;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.55));
 }
 
 :global(.dark-mode) .recapTechniquesIntro {
@@ -2071,11 +2109,11 @@
   padding-left: 0.3em;
   font-family: var(--font-serif, var(--font-sans));
   font-style: italic;
-  color: var(--fg-color-6, rgba(55, 53, 47, 0.85));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.85));
 }
 
 .recapList li::marker {
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.4));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.4));
   font-style: normal;
 }
 
@@ -2087,18 +2125,19 @@
 
 .skillsBlock {
   margin: 3em 0 0;
-  padding: 1.4em 1.6em;
-  border: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
-  background: var(--fg-color-5, rgba(25, 24, 22, 0.035));
+  padding: 1.5em 1.7em;
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
+  border-radius: var(--pm-radius-lg, 14px);
+  background: var(--pm-surface, #f7f7f5);
 }
 
 .skillsHeading {
   margin: 0 0 0.6em;
   font-family: var(--font-sans);
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 650;
   letter-spacing: -0.005em;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 .skillsBlock p {
@@ -2117,11 +2156,11 @@
   align-items: center;
   gap: 6px;
   padding: 6px 11px;
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.16)) !important;
-  border-radius: 2px;
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.16)) !important;
+  border-radius: var(--pm-radius-sm, 6px);
   background: var(--bg-color, #fff) !important;
   background-image: none !important;
-  color: var(--fg-color, rgb(55, 53, 47)) !important;
+  color: var(--fg-color, #1a1918) !important;
   font-family: inherit;
   font-size: 0.84rem;
   font-weight: 500;
@@ -2148,7 +2187,7 @@
 
 .skillsLinkArrow {
   font-size: 0.85em;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   transition: transform 200ms ease;
 }
 
@@ -2167,73 +2206,79 @@
 
 .examplePromptCard {
   position: relative;
-  padding: 12px 16px 14px;
-  background: var(--bg-color-1, #f4f4f2);
-  border: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+  padding: 14px 18px 15px;
+  background: var(--pm-surface, #f7f7f5);
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
+  border-radius: var(--pm-radius-md, 10px);
 }
 
 .examplePromptLabel {
   display: inline-block;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  font-weight: 480;
+  letter-spacing: 0;
   color: var(--pm-accent-ink, #a03415);
   margin-bottom: 6px;
 }
 
 .examplePromptText {
   margin: 0;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.92rem;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.9rem;
   line-height: 1.55;
-  color: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.84));
   white-space: pre-wrap;
 }
 
 .examplePromptNote {
   display: block;
-  margin-top: 7px;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.76rem;
-  color: var(--fg-color-3, rgba(25, 24, 22, 0.62));
+  margin-top: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.66));
 }
 
-/* ===== NOTE block — chapter-closing callout =====
- * Full 1px ink border, vermillion NOTE tag. The manual's one callout
- * grammar; no tinted cards, no stripes. */
+/* ===== Note block — chapter-closing callout =====
+ * A soft plinth with a serif-italic "Note" marker in the second ink.
+ * The article's one callout grammar; no stripes, no stamps. */
 
 .synthesis {
   position: relative;
   margin: 3em 0 0.5em;
-  padding: 1.4em 1.6em 1.4em;
-  border: 1px solid var(--pm-rule-strong, #21201d);
+  padding: 1.5em 1.7em;
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
+  border-radius: var(--pm-radius-lg, 14px);
+  background: var(--pm-surface, #f7f7f5);
 }
 
 .synthesisHeading {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 0.7em;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 0.6em;
   font-family: var(--font-sans);
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 650;
   letter-spacing: -0.005em;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 .synthesisTag {
   display: inline-block;
-  padding: 3px 8px 2px;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  background: var(--pm-accent, #b8401f);
-  color: var(--pm-on-accent, #fcfcfb);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92em;
+  font-weight: 480;
+  letter-spacing: 0;
+  color: var(--pm-accent-ink, #a03415);
   flex-shrink: 0;
-  transform: translateY(-1px);
+}
+
+.synthesisTag::after {
+  content: ' —';
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.4));
 }
 
 .synthesis p {
@@ -2249,7 +2294,7 @@
 .resources {
   margin: 2.4em 0 0.5em;
   padding-top: 1.6em;
-  border-top: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border-top: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
 }
 
 :global(.dark-mode) .resources {
@@ -2262,7 +2307,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .resourcesHeading {
@@ -2300,7 +2345,7 @@
 }
 
 .resourcesDesc {
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.6));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.6));
 }
 
 :global(.dark-mode) .resourcesDesc {
@@ -2381,14 +2426,14 @@
 
 .equationSimpleSettled .token {
   padding: 2px 6px;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
 }
 
 /* Connecting arrow */
 .equationArrow {
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.85rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.4));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.4));
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -2448,9 +2493,9 @@
 .token {
   display: inline-block;
   padding: 4px 9px;
-  border-radius: 2px;
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border-radius: var(--pm-radius-sm, 6px);
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
   font-weight: 500;
   font-feature-settings: 'tnum' on;
   white-space: nowrap;
@@ -2469,7 +2514,7 @@
 }
 
 .token_output {
-  background: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  background: var(--fg-color-6, rgba(26, 25, 24, 0.84));
   border-color: transparent;
   color: var(--bg-color, #fff);
 }
@@ -2492,18 +2537,18 @@
   display: inline-block;
   padding: 0 4px;
   font-weight: 500;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   user-select: none;
 }
 
 .opSubtle {
-  color: var(--fg-color-2, rgba(55, 53, 47, 0.4));
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.4));
   font-size: 0.9em;
 }
 
 .bracket {
   font-weight: 400;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.45));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.45));
   font-size: 1.05em;
   user-select: none;
 }
@@ -2518,9 +2563,9 @@
   position: relative;
   display: inline-block;
   padding: 4px 9px;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   background: var(--bg-color, #fff);
-  border: 1px solid var(--fg-color-2, rgba(55, 53, 47, 0.3));
+  border: 1px solid var(--fg-color-2, rgba(26, 25, 24, 0.3));
   color: inherit;
   font-family: inherit;
   font-size: inherit;
@@ -2540,7 +2585,7 @@
 
 .lever:hover,
 .lever:focus-visible {
-  border-color: var(--fg-color, rgb(55, 53, 47));
+  border-color: var(--fg-color, #1a1918);
   transform: translateY(-1px);
   outline: none;
 }
@@ -2559,7 +2604,7 @@
   max-width: 240px;
   padding: 8px 11px;
   border-radius: 0;
-  background: var(--fg-color, rgb(55, 53, 47));
+  background: var(--fg-color, #1a1918);
   color: var(--bg-color, #fff);
   font-family: var(--font-sans);
   font-size: 0.78rem;
@@ -2586,7 +2631,7 @@
   left: 50%;
   margin-left: -5px;
   border: 5px solid transparent;
-  border-top-color: var(--fg-color, rgb(55, 53, 47));
+  border-top-color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .leverPopover {
@@ -2623,7 +2668,7 @@
   gap: 12px;
   margin-top: 18px;
   padding-top: 14px;
-  border-top: 1px dashed var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border-top: 1px dashed var(--fg-color-1, rgba(26, 25, 24, 0.1));
 }
 
 :global(.dark-mode) .equationFooter {
@@ -2632,7 +2677,7 @@
 
 .equationHint {
   font-size: 0.78rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   font-style: italic;
   opacity: 0;
   transform: translateY(2px);
@@ -2657,10 +2702,10 @@
   align-items: center;
   gap: 5px;
   padding: 5px 10px;
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.12));
-  border-radius: 2px;
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.12));
+  border-radius: var(--pm-radius-sm, 6px);
   background: transparent;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.6));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.6));
   font-family: inherit;
   font-size: 0.8rem;
   font-weight: 500;
@@ -2672,9 +2717,9 @@
 }
 
 .equationReplay:hover {
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
-  color: var(--fg-color, rgb(55, 53, 47));
-  border-color: var(--fg-color-2, rgba(55, 53, 47, 0.3));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  color: var(--fg-color, #1a1918);
+  border-color: var(--fg-color-2, rgba(26, 25, 24, 0.3));
 }
 
 :global(.dark-mode) .equationReplay {
@@ -2706,7 +2751,7 @@
   display: flex;
   gap: 6px;
   padding: 4px;
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.04));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.04));
   border-radius: 0;
 }
 
@@ -2721,9 +2766,9 @@
   gap: 10px;
   padding: 9px 12px;
   border: 1px solid transparent;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   background: transparent;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.55));
   font-family: inherit;
   text-align: left;
   cursor: pointer;
@@ -2739,10 +2784,10 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   flex-shrink: 0;
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.55));
   transition:
     background 150ms ease,
     color 150ms ease;
@@ -2770,7 +2815,7 @@
 }
 
 .treeActionButton:hover {
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .treeActionButton:hover {
@@ -2779,7 +2824,7 @@
 
 .treeActionActive {
   background: var(--bg-color, #fff);
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
   box-shadow:
     0 1px 2px rgba(15, 15, 15, 0.05),
     0 4px 12px -6px rgba(15, 15, 15, 0.1);
@@ -2798,7 +2843,7 @@
 
 .treeActionVerb {
   font-size: 0.72rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   font-weight: 400;
 }
 
@@ -2827,7 +2872,7 @@
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   transition: color 200ms ease;
 }
 
@@ -2836,7 +2881,7 @@
 }
 
 .treeAxisActive {
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .treeAxisActive {
@@ -2886,7 +2931,7 @@
 .treeRowLabelText {
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .treeRowLabelText {
@@ -2895,7 +2940,7 @@
 
 .treeRowLabelHint {
   font-size: 0.78rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.6));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.6));
   margin-top: 2px;
   letter-spacing: 0.005em;
 }
@@ -2908,7 +2953,7 @@
   position: relative;
   aspect-ratio: 1.7 / 1;
   min-height: 46px;
-  border: 1px dashed var(--fg-color-1, rgba(55, 53, 47, 0.12));
+  border: 1px dashed var(--fg-color-1, rgba(26, 25, 24, 0.12));
   border-radius: 0;
   background: transparent;
   cursor: pointer;
@@ -2927,8 +2972,8 @@
 
 .treeCell:hover {
   border-style: solid;
-  border-color: var(--fg-color-2, rgba(55, 53, 47, 0.3));
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.04));
+  border-color: var(--fg-color-2, rgba(26, 25, 24, 0.3));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.04));
 }
 
 :global(.dark-mode) .treeCell:hover {
@@ -2937,7 +2982,7 @@
 }
 
 .treeCellOnAxis {
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.03));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.03));
   border-color: var(--pm-accent-line, rgba(184, 64, 31, 0.38));
   border-style: solid;
 }
@@ -2957,8 +3002,8 @@
 .treeCellDot {
   width: 6px;
   height: 6px;
-  border-radius: 2px;
-  background: var(--fg-color-1, rgba(55, 53, 47, 0.18));
+  border-radius: var(--pm-radius-sm, 6px);
+  background: var(--fg-color-1, rgba(26, 25, 24, 0.18));
   transition:
     background 200ms ease,
     transform 200ms var(--ease-out-smooth);
@@ -2969,7 +3014,7 @@
 }
 
 .treeCell:hover .treeCellDot {
-  background: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  background: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   transform: scale(1.3);
 }
 
@@ -2984,7 +3029,7 @@
 .treeOutputCard {
   padding: 12px 14px 14px;
   background: var(--bg-color-1, #f4f4f2);
-  border: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -3002,14 +3047,14 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
 }
 
 .treeOutputCoord {
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.7rem;
   letter-spacing: 0.02em;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   white-space: nowrap;
 }
 
@@ -3027,7 +3072,7 @@
   font-family: var(--font-mono, 'Courier New', monospace);
   font-size: 0.98rem;
   line-height: 1.55;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
   animation: promptFadeIn 320ms var(--ease-out-swift);
 }
 
@@ -3065,10 +3110,10 @@
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.12));
-  border-radius: 2px;
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.12));
+  border-radius: var(--pm-radius-sm, 6px);
   background: transparent;
-  color: var(--fg-color-6, rgba(55, 53, 47, 0.7));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.7));
   font-family: inherit;
   font-size: 0.82rem;
   font-weight: 500;
@@ -3080,9 +3125,9 @@
 }
 
 .treeTour:hover {
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
-  color: var(--fg-color, rgb(55, 53, 47));
-  border-color: var(--fg-color-2, rgba(55, 53, 47, 0.3));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  color: var(--fg-color, #1a1918);
+  border-color: var(--fg-color-2, rgba(26, 25, 24, 0.3));
 }
 
 :global(.dark-mode) .treeTour {
@@ -3160,7 +3205,7 @@
        tracks, overflowing the wrap — on phones let the track set width. */
     aspect-ratio: auto;
     min-height: 44px;
-    border-radius: 2px;
+    border-radius: var(--pm-radius-sm, 6px);
   }
 }
 
@@ -3170,12 +3215,12 @@
   margin: 0;
   padding: 12px 12px 8px;
   background: var(--bg-color, #fff);
-  border: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
   transition: border-color 200ms ease;
 }
 
 .promptCard:focus-within {
-  border-color: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  border-color: var(--fg-color-6, rgba(26, 25, 24, 0.84));
 }
 
 .promptCardError,
@@ -3258,11 +3303,11 @@
   line-height: 1.5;
   padding: 4px 6px;
   min-height: 2.6em;
-  caret-color: var(--fg-color, rgb(55, 53, 47));
+  caret-color: var(--fg-color, #1a1918);
 }
 
 .promptInput::placeholder {
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.45));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.45));
 }
 
 .promptInputTyping {
@@ -3281,7 +3326,7 @@
   font-family: var(--font-mono, 'Courier New', monospace);
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
   pointer-events: none;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -3320,9 +3365,9 @@
   gap: 6px;
   padding: 5px 9px 5px 8px;
   border: 1px solid transparent;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   background: transparent;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.6));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.6));
   font-family: inherit;
   font-size: 0.825rem;
   font-weight: 500;
@@ -3334,13 +3379,13 @@
 }
 
 .modelButton:hover {
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
-  color: var(--fg-color, rgb(55, 53, 47));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  color: var(--fg-color, #1a1918);
 }
 
 .modelButton[aria-expanded='true'] {
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
-  color: var(--fg-color, rgb(55, 53, 47));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .modelButton:hover,
@@ -3392,7 +3437,7 @@
   padding: 4px;
   border-radius: 0;
   background: var(--bg-color, #fff);
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.12));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.12));
   box-shadow:
     0 4px 12px rgba(15, 15, 15, 0.08),
     0 16px 40px -12px rgba(15, 15, 15, 0.18);
@@ -3429,7 +3474,7 @@
   gap: 10px;
   padding: 7px 10px;
   border: none;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   background: transparent;
   color: inherit;
   font-family: inherit;
@@ -3440,7 +3485,7 @@
 }
 
 .modelOption:hover {
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
 }
 
 :global(.dark-mode) .modelOption:hover {
@@ -3448,7 +3493,7 @@
 }
 
 .modelOptionActive {
-  background: var(--fg-color-0, rgba(55, 53, 47, 0.06));
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.06));
 }
 
 :global(.dark-mode) .modelOptionActive {
@@ -3461,7 +3506,7 @@
 
 .modelOptionTag {
   font-size: 0.72rem;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.5));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
   font-style: italic;
 }
 
@@ -3472,7 +3517,7 @@
   width: 30px;
   height: 30px;
   border: none;
-  border-radius: 2px;
+  border-radius: var(--pm-radius-sm, 6px);
   background: var(--pm-accent, #b8401f);
   color: var(--pm-on-accent, #fcfcfb);
   cursor: pointer;
@@ -3587,7 +3632,7 @@
 
   .mindsetCardOpen {
     border-left: none !important;
-    border-top: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+    border-top: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
   }
 }
 
@@ -3598,16 +3643,16 @@
 }
 
 .mindsetCardOpen {
-  border-left: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+  border-left: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
 }
 
 .mindsetCardHeading {
   margin: 0 0 0.55em;
   font-family: var(--font-sans);
   font-size: 1.02rem;
-  font-weight: 800;
+  font-weight: 650;
   letter-spacing: -0.005em;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 .mindsetCardOpen .mindsetCardHeading {
@@ -3618,7 +3663,7 @@
   margin: 0;
   font-size: 0.97rem;
   line-height: 1.55;
-  color: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.84));
 }
 
 /* ----- Practice loop (open climbs / closed regresses) ----- */
@@ -3637,7 +3682,7 @@
 
   .practiceCardClosed {
     border-left: none !important;
-    border-top: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+    border-top: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
   }
 }
 
@@ -3647,7 +3692,7 @@
 }
 
 .practiceCardClosed {
-  border-left: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+  border-left: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
 }
 
 .practiceLabel {
@@ -3665,7 +3710,7 @@
 }
 
 .practiceCardClosed .practiceLabel {
-  color: var(--fg-color-3, rgba(25, 24, 22, 0.62));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.62));
 }
 
 .practiceLadder {
@@ -3704,7 +3749,7 @@
 }
 
 .practiceCardClosed .practiceLadder b {
-  background: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  background: var(--fg-color-6, rgba(26, 25, 24, 0.84));
 }
 
 .practiceCardOpen .practiceLadder b:nth-child(1) {
@@ -3750,7 +3795,7 @@
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--fg-color, rgb(55, 53, 47));
+  color: var(--fg-color, #1a1918);
 }
 
 :global(.dark-mode) .practiceFlow {
@@ -3761,7 +3806,7 @@
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.5;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.6));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.6));
 }
 
 :global(.dark-mode) .practiceCard p {
@@ -3785,7 +3830,7 @@
 
   .orchCardGood {
     border-left: none !important;
-    border-top: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+    border-top: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
   }
 }
 
@@ -3796,7 +3841,7 @@
 }
 
 .orchCardGood {
-  border-left: 1px solid var(--pm-rule, rgba(25, 24, 22, 0.16));
+  border-left: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
 }
 
 .orchCardLabel {
@@ -3806,7 +3851,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg-color-3, rgba(25, 24, 22, 0.62));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.62));
   margin-bottom: 0.55em;
 }
 
@@ -3819,7 +3864,7 @@
   font-family: var(--font-mono, 'Courier New', monospace);
   font-size: 0.85rem;
   line-height: 1.55;
-  color: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  color: var(--fg-color-6, rgba(26, 25, 24, 0.84));
   white-space: pre-wrap;
   word-break: break-word;
 }
@@ -3846,7 +3891,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  fill: var(--fg-color-3, rgba(55, 53, 47, 0.7));
+  fill: var(--fg-color-3, rgba(26, 25, 24, 0.7));
 }
 
 :global(.dark-mode) .orchTimelineLabel {
@@ -3857,7 +3902,7 @@
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 11px;
   font-weight: 500;
-  fill: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  fill: var(--fg-color-3, rgba(26, 25, 24, 0.55));
 }
 
 :global(.dark-mode) .orchTimelineDuration {
@@ -3878,12 +3923,12 @@
 }
 
 .orchBlockAgent {
-  fill: var(--fg-color-6, rgba(25, 24, 22, 0.84));
+  fill: var(--fg-color-6, rgba(26, 25, 24, 0.84));
 }
 
 .orchTimelineIdle {
-  fill: var(--fg-color-1, rgba(55, 53, 47, 0.12));
-  stroke: var(--fg-color-1, rgba(55, 53, 47, 0.18));
+  fill: var(--fg-color-1, rgba(26, 25, 24, 0.12));
+  stroke: var(--fg-color-1, rgba(26, 25, 24, 0.18));
   stroke-width: 0.5;
   stroke-dasharray: 2 2;
 }
@@ -3909,7 +3954,7 @@
 }
 
 .orchTimelineAxis {
-  stroke: var(--fg-color-1, rgba(55, 53, 47, 0.18));
+  stroke: var(--fg-color-1, rgba(26, 25, 24, 0.18));
   stroke-width: 1;
   stroke-linecap: round;
 }
@@ -3924,7 +3969,7 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  fill: var(--fg-color-3, rgba(55, 53, 47, 0.45));
+  fill: var(--fg-color-3, rgba(26, 25, 24, 0.45));
 }
 
 :global(.dark-mode) .orchTimelineAxisLabel {
@@ -3960,7 +4005,7 @@
 
 .orchFanMerge {
   opacity: 0;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.55));
 }
 
 :global(.dark-mode) .orchFanMerge {
@@ -4011,7 +4056,7 @@
   min-width: 140px;
   border-radius: 0;
   background: var(--bg-color, #fff);
-  border: 1px solid var(--fg-color-1, rgba(55, 53, 47, 0.1));
+  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
   opacity: 0;
 }
 
@@ -4035,7 +4080,7 @@
 
 .orchRoleVerb {
   font-size: 0.88rem;
-  color: var(--fg-color-2, rgba(55, 53, 47, 0.7));
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.7));
 }
 
 :global(.dark-mode) .orchRoleVerb {
@@ -4058,10 +4103,10 @@
   font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.55));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.55));
   padding: 1px 6px;
   border-radius: 1px;
-  background: var(--fg-color-5, rgba(55, 53, 47, 0.05));
+  background: var(--fg-color-5, rgba(26, 25, 24, 0.05));
 }
 
 :global(.dark-mode) .orchRoleHandoffArtifact {
@@ -4072,7 +4117,7 @@
 .orchRoleHandoffArrow {
   font-size: 1.2rem;
   line-height: 1;
-  color: var(--fg-color-3, rgba(55, 53, 47, 0.45));
+  color: var(--fg-color-3, rgba(26, 25, 24, 0.45));
 }
 
 :global(.dark-mode) .orchRoleHandoffArrow {

@@ -24,12 +24,27 @@ import styles from './PromptingPage.module.css'
  *  user types again        →  error clears, Send returns
  *  user clicks Replay      →  re-runs the typing sequence
  *  prefers-reduced-motion  →  fills value instantly, no auto-send
+ *
+ *  Direct manipulation always wins: typing, backspacing, or hitting
+ *  Enter while the script is "typing" cancels the pending timers and
+ *  hands control straight to the visitor.
  * ───────────────────────────────────────────────────────── */
+
+function optionId(index: number) {
+  return `model-option-${index}`
+}
+
+/** Keys that would actually change the textarea's text content. */
+function isEditingKey(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+  if (e.key === 'Backspace' || e.key === 'Delete') return true
+  return e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey
+}
 
 export function PromptInputDemo({ start }: { start: boolean }) {
   const [value, setValue] = React.useState('')
   const [model, setModel] = React.useState(FAKE_MODELS[0]!)
   const [open, setOpen] = React.useState(false)
+  const [activeIndex, setActiveIndex] = React.useState(0)
   const [error, setError] = React.useState<string | null>(null)
   const [shakeKey, setShakeKey] = React.useState(0)
   const [autoTyping, setAutoTyping] = React.useState(false)
@@ -103,7 +118,13 @@ export function PromptInputDemo({ start }: { start: boolean }) {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (autoTyping) return
+    if (autoTyping) {
+      // Any value change while the script is running (typing, paste, IME)
+      // hands control back to the visitor — the script never wins a fight
+      // over the value.
+      clearTimers()
+      setAutoTyping(false)
+    }
     setValue(e.target.value)
     if (error) setError(null)
     if (sent) setSent(false)
@@ -111,7 +132,22 @@ export function PromptInputDemo({ start }: { start: boolean }) {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (autoTyping) {
-      e.preventDefault()
+      if (e.key === 'Enter' && !e.shiftKey) {
+        // Enter always submits whatever's in the field so far, scripted
+        // or not.
+        e.preventDefault()
+        clearTimers()
+        setAutoTyping(false)
+        triggerSend(value)
+        return
+      }
+      if (isEditingKey(e)) {
+        // Cancel the pending auto-type timer *before* the keystroke lands
+        // so the script doesn't overwrite the edit the visitor is about
+        // to make.
+        clearTimers()
+        setAutoTyping(false)
+      }
       return
     }
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -121,6 +157,61 @@ export function PromptInputDemo({ start }: { start: boolean }) {
   }
 
   const showReplay = sent
+
+  const selectModel = React.useCallback(
+    (m: (typeof FAKE_MODELS)[number]) => {
+      setModel(m)
+      setOpen(false)
+      if (error) setError(null)
+      triggerRef.current?.focus()
+    },
+    [error]
+  )
+
+  // WAI-ARIA listbox pattern: focus moves to the listbox itself and
+  // aria-activedescendant tracks the active option, rather than moving
+  // real focus between the option buttons.
+  const handleListboxKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault()
+        setActiveIndex((i) => Math.min(i + 1, FAKE_MODELS.length - 1))
+        break
+      case 'ArrowUp':
+        e.preventDefault()
+        setActiveIndex((i) => Math.max(i - 1, 0))
+        break
+      case 'Home':
+        e.preventDefault()
+        setActiveIndex(0)
+        break
+      case 'End':
+        e.preventDefault()
+        setActiveIndex(FAKE_MODELS.length - 1)
+        break
+      case 'Enter':
+      case ' ':
+        e.preventDefault()
+        selectModel(FAKE_MODELS[activeIndex]!)
+        break
+      case 'Escape':
+        e.preventDefault()
+        setOpen(false)
+        triggerRef.current?.focus()
+        break
+      case 'Tab':
+        setOpen(false)
+        break
+      default:
+        break
+    }
+  }
+
+  React.useEffect(() => {
+    if (!open) return
+    setActiveIndex(FAKE_MODELS.findIndex((m) => m.name === model.name))
+    menuRef.current?.focus()
+  }, [open, model])
 
   React.useEffect(() => {
     if (!open) return
@@ -136,7 +227,10 @@ export function PromptInputDemo({ start }: { start: boolean }) {
       }
     }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key === 'Escape') {
+        setOpen(false)
+        triggerRef.current?.focus()
+      }
     }
     document.addEventListener('mousedown', onDown)
     document.addEventListener('keydown', onKey)
@@ -160,7 +254,6 @@ export function PromptInputDemo({ start }: { start: boolean }) {
           onKeyDown={handleKeyDown}
           rows={2}
           spellCheck={false}
-          readOnly={autoTyping}
           aria-invalid={error ? 'true' : 'false'}
           aria-describedby={error ? 'prompt-error' : undefined}
         />
@@ -195,21 +288,26 @@ export function PromptInputDemo({ start }: { start: boolean }) {
           </button>
 
           {open && (
-            <div ref={menuRef} className={styles.modelMenu} role='listbox'>
-              {FAKE_MODELS.map((m) => {
-                const active = m.name === model.name
+            <div
+              ref={menuRef}
+              className={styles.modelMenu}
+              role='listbox'
+              tabIndex={-1}
+              aria-activedescendant={optionId(activeIndex)}
+              onKeyDown={handleListboxKeyDown}
+            >
+              {FAKE_MODELS.map((m, i) => {
+                const selected = m.name === model.name
                 return (
                   <button
                     key={m.name}
+                    id={optionId(i)}
                     type='button'
                     role='option'
-                    aria-selected={active}
-                    className={`${styles.modelOption} ${active ? styles.modelOptionActive : ''}`}
-                    onClick={() => {
-                      setModel(m)
-                      setOpen(false)
-                      if (error) setError(null)
-                    }}
+                    aria-selected={selected}
+                    tabIndex={-1}
+                    className={`${styles.modelOption} ${selected ? styles.modelOptionActive : ''}`}
+                    onClick={() => selectModel(m)}
                   >
                     <span className={styles.modelOptionName}>{m.name}</span>
                     <span className={styles.modelOptionTag}>{m.tag}</span>

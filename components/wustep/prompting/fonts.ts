@@ -1,33 +1,35 @@
-import { Courier_Prime, Libre_Franklin } from 'next/font/google'
+import { Geist_Mono, Source_Serif_4 } from 'next/font/google'
 
 /**
- * Field-manual type system, scoped to the /prompting pages.
+ * Quiet-craft type system, scoped to the /prompting pages.
  *
- *   Libre Franklin — the Franklin/News Gothic lineage of American
- *   technical manuals. One family carries display and body via hard
- *   weight contrast (400 text / 600 labels / 800 display).
+ *   Source Serif 4 — the book voice. Carries chapter titles, the cover
+ *   title, and pull moments at weight 400–500 with real optical sizing,
+ *   so display sizes set tighter and darker than text sizes on their
+ *   own. Body copy stays on the platform's system face (declared in
+ *   CSS, nothing to load): reading text should feel native, not dressed.
  *
- *   Courier Prime — the typewriter voice. Reserved for what you type
- *   into the machine: prompts, specimens, figure captions, folio marks.
+ *   Geist Mono — what you type into the machine: prompts, specimens,
+ *   inline code. A terminal voice rather than a typewriter costume.
  */
-export const manualSans = Libre_Franklin({
+export const manualSerif = Source_Serif_4({
   subsets: ['latin'],
   weight: 'variable',
   style: ['normal', 'italic'],
-  variable: '--pm-sans',
+  axes: ['opsz'],
+  variable: '--pm-serif',
   display: 'swap',
   preload: true,
   adjustFontFallback: true,
-  fallback: ['Franklin Gothic Medium', 'Arial Narrow', 'Arial', 'sans-serif']
+  fallback: ['Iowan Old Style', 'Palatino Linotype', 'Georgia', 'serif']
 })
 
-export const manualMono = Courier_Prime({
+export const manualMono = Geist_Mono({
   subsets: ['latin'],
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
+  weight: 'variable',
   variable: '--pm-mono',
   display: 'swap',
   preload: true,
   adjustFontFallback: true,
-  fallback: ['Courier New', 'Courier', 'monospace']
+  fallback: ['SFMono-Regular', 'Menlo', 'Consolas', 'monospace']
 })

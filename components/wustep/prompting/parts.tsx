@@ -75,7 +75,7 @@ export function Figure({
     <figure className={styles.manualFigure}>
       <div className={styles.manualFigureBody}>{children}</div>
       <figcaption className={styles.manualFigureCaption}>
-        <span className={styles.manualFigureNum}>FIG. {num}</span>
+        <span className={styles.manualFigureNum}>Fig. {num}</span>
         <span className={styles.manualFigureText}>{caption}</span>
       </figcaption>
     </figure>
@@ -83,8 +83,8 @@ export function Figure({
 }
 
 /**
- * Note — the manual's bordered NOTE block. Replaces the old ✦ synthesis
- * card as the chapter-closing (or mid-chapter) callout.
+ * Note — the article's one callout grammar: a soft plinth with a quiet
+ * serif-italic "Note" marker. Chapter-closing or mid-chapter.
  */
 export function Note({
   title,
@@ -96,7 +96,7 @@ export function Note({
   return (
     <aside className={styles.synthesis}>
       <h3 className={styles.synthesisHeading}>
-        <span className={styles.synthesisTag}>NOTE</span>
+        <span className={styles.synthesisTag}>Note</span>
         {title}
       </h3>
       {children}

@@ -9,7 +9,7 @@ import { useDarkMode } from '@/lib/use-dark-mode'
 
 import type { ChapterMeta } from './types'
 import { CHAPTERS, TOTAL_CHAPTERS } from './constants'
-import { manualMono, manualSans } from './fonts'
+import { manualMono, manualSerif } from './fonts'
 import { TocIcon } from './icons'
 import styles from './PromptingPage.module.css'
 
@@ -40,7 +40,7 @@ export function PromptingLayout({
       <BodyClassName className={isDarkMode ? 'notion dark-mode' : 'notion'} />
 
       <div
-        className={`${styles.frame} ${manualSans.variable} ${manualMono.variable}`}
+        className={`${styles.frame} ${manualSerif.variable} ${manualMono.variable}`}
       >
         <header className='notion-header'>
           <div className='notion-nav-header'>
@@ -77,24 +77,65 @@ export function PromptingLayout({
 
 /**
  * TableOfContents — fixed-position icon in the upper-right of the
- * viewport that reveals the CONTENTS panel on hover/focus. Hidden on
- * narrower viewports via CSS (no room beside the centered page).
+ * viewport. Opens on click (with Escape / outside-click / route-change
+ * close) so it works for touch, keyboard, and screen readers; hovering
+ * still reveals it on pointer-fine devices as a shortcut. Available at
+ * every viewport width.
  */
 function TableOfContents() {
   const router = useRouter()
   const currentPath = router.asPath.split(/[?#]/)[0]
+  const [isOpen, setIsOpen] = React.useState(false)
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const triggerRef = React.useRef<HTMLButtonElement>(null)
+
+  // Close when the pointer commits a navigation or clicks elsewhere.
+  React.useEffect(() => {
+    if (!isOpen) return
+
+    const onPointerDown = (e: PointerEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false)
+        triggerRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('pointerdown', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [isOpen])
+
+  // Route change (chapter picked) dismisses the panel.
+  React.useEffect(() => {
+    setIsOpen(false)
+  }, [currentPath])
 
   return (
-    <div className={styles.toc}>
+    <div
+      ref={rootRef}
+      className={isOpen ? `${styles.toc} ${styles.tocOpen}` : styles.toc}
+    >
       <button
+        ref={triggerRef}
         type='button'
         className={styles.tocTrigger}
         aria-label='Table of contents'
         aria-haspopup='true'
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen((open) => !open)}
       >
         <TocIcon className={styles.tocIcon} />
       </button>
-      <div className={styles.tocPanel} role='menu'>
+      <nav className={styles.tocPanel} aria-label='Chapters'>
         <div className={styles.tocPanelHeader}>Contents</div>
         <ol className={styles.tocList}>
           {CHAPTERS.map((c) => {
@@ -119,15 +160,14 @@ function TableOfContents() {
             )
           })}
         </ol>
-      </div>
+      </nav>
     </div>
   )
 }
 
 /**
- * ChapterHeader — the manual's folio head + chapter opener plate.
- * A double-ruled running head carries the guide title and the chapter
- * mark; below it, a large vermillion chapter numeral and the title.
+ * ChapterHeader — a hairline running head (series title left, humane
+ * chapter mark right) above the chapter title set in the book serif.
  */
 function ChapterHeader({ chapter }: { chapter: ChapterMeta }) {
   return (
@@ -137,14 +177,11 @@ function ChapterHeader({ chapter }: { chapter: ChapterMeta }) {
           How to talk to coding agents
         </Link>
         <span className={styles.folioMark}>
-          CH.&nbsp;{String(chapter.index).padStart(2, '0')}&thinsp;/&thinsp;
-          {String(TOTAL_CHAPTERS).padStart(2, '0')}
+          Chapter <span className={styles.folioMarkNum}>{chapter.index}</span>{' '}
+          of {TOTAL_CHAPTERS}
         </span>
       </div>
       <div className={styles.chapterPlate}>
-        <span className={styles.chapterNumeral} aria-hidden='true'>
-          {chapter.index}
-        </span>
         <h1 className={styles.chapterTitle}>{chapter.title}</h1>
       </div>
     </header>

@@ -81,8 +81,10 @@ export function EquationDemo({
     setExpanded(false)
     setFullyExpanded(false)
     // Collapse runs fast (~500ms) — small pause on the centered simple
-    // equation before the slow re-expansion plays.
-    window.setTimeout(() => setExpanded(true), 1300)
+    // equation before the slow re-expansion plays. Reduced motion skips
+    // the pause; a 0ms timeout still gives the collapsed state its own
+    // render tick so it actually commits before flipping back to expanded.
+    window.setTimeout(() => setExpanded(true), prefersReducedMotion ? 0 : 1300)
   }
 
   return (

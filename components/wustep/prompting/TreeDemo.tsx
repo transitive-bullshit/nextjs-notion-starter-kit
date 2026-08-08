@@ -1,5 +1,7 @@
 import * as React from 'react'
 
+import { usePrefersReducedMotion } from '@/lib/use-prefers-reduced-motion'
+
 import styles from './PromptingPage.module.css'
 
 type Area = 'ux' | 'perf' | 'debug' | 'arch'
@@ -166,6 +168,11 @@ const TOUR: Array<{ area: Area; depth: Depth; action: Action }> = [
   { area: 'arch', depth: 'high', action: 'plan' }
 ]
 
+/** How long the tour holds on each step before advancing. Kept the same
+ * regardless of prefers-reduced-motion — reduced motion means "don't
+ * animate the swap," not "cycle through it faster." */
+const TOUR_STEP_MS = 1700
+
 /* ─────────────────────────────────────────────────────────
  * TREE DEMO INTERACTION
  *
@@ -174,9 +181,13 @@ const TOUR: Array<{ area: Area; depth: Depth; action: Action }> = [
  *    Click a cell  →  same as hover but stops the running tour
  *    Action chip   →  swaps the verb on the generated prompt
  *
- *    Tour mode: when started, advances through TOUR every 1700ms,
- *    cycling through area/depth/action triples. Any user
- *    interaction (chip click, cell click, button click) stops it.
+ *    Tour mode: when started, advances through TOUR every
+ *    TOUR_STEP_MS, cycling through area/depth/action triples. Any user
+ *    interaction (chip click, chip arrow-key, cell click, button click)
+ *    stops it. Under prefers-reduced-motion the tour keeps the same
+ *    cadence — it still needs to be readable — but the generated-prompt
+ *    swap reuses the same DOM node instead of remounting into a fresh
+ *    fade-in, so there's no animation for reduced motion to skip.
  * ───────────────────────────────────────────────────────── */
 
 export function TreeDemo() {
@@ -185,6 +196,8 @@ export function TreeDemo() {
   const [action, setAction] = React.useState<Action>('ask')
   const [touring, setTouring] = React.useState(false)
   const tourRef = React.useRef<number | null>(null)
+  const actionTabRefs = React.useRef<Array<HTMLButtonElement | null>>([])
+  const prefersReducedMotion = usePrefersReducedMotion()
 
   const stopTour = React.useCallback(() => {
     if (tourRef.current != null) {
@@ -209,31 +222,76 @@ export function TreeDemo() {
       setDepth(next.depth)
       setAction(next.action)
       i += 1
-      tourRef.current = window.setTimeout(step, 1700)
+      tourRef.current = window.setTimeout(step, TOUR_STEP_MS)
     }
     step()
   }
 
+  // Roving-tabindex tabs pattern: ArrowLeft/ArrowRight move focus AND
+  // selection (wrapping at the ends), Home/End jump to the first/last tab.
+  const moveAction = (targetIndex: number) => {
+    const len = ACTIONS.length
+    const nextIndex = ((targetIndex % len) + len) % len
+    if (touring) stopTour()
+    setAction(ACTIONS[nextIndex]!.id)
+    actionTabRefs.current[nextIndex]?.focus()
+  }
+
+  const handleActionKeyDown = (
+    e: React.KeyboardEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault()
+        moveAction(index + 1)
+        break
+      case 'ArrowLeft':
+        e.preventDefault()
+        moveAction(index - 1)
+        break
+      case 'Home':
+        e.preventDefault()
+        moveAction(0)
+        break
+      case 'End':
+        e.preventDefault()
+        moveAction(ACTIONS.length - 1)
+        break
+      default:
+        break
+    }
+  }
+
   const prompt = PROMPTS[area][depth][action]
-  const promptKey = `${area}-${depth}-${action}`
+  // Reduced motion: keep the same node so the text swaps in place instead
+  // of remounting into the (otherwise CSS-driven) fade-in.
+  const promptKey = prefersReducedMotion
+    ? 'static'
+    : `${area}-${depth}-${action}`
 
   return (
     <div className={styles.tree}>
       <div className={styles.treeActions} role='tablist' aria-label='Action'>
-        {ACTIONS.map((a) => {
+        {ACTIONS.map((a, i) => {
           const active = action === a.id
           const Icon = a.Icon
           return (
             <button
               key={a.id}
+              ref={(el) => {
+                actionTabRefs.current[i] = el
+              }}
               type='button'
               role='tab'
               aria-selected={active}
+              tabIndex={active ? 0 : -1}
               className={`${styles.treeActionButton} ${active ? styles.treeActionActive : ''}`}
               onClick={() => {
                 if (touring) stopTour()
                 setAction(a.id)
               }}
+              onKeyDown={(e) => handleActionKeyDown(e, i)}
             >
               <span className={styles.treeActionIcon} aria-hidden='true'>
                 <Icon />
@@ -248,7 +306,24 @@ export function TreeDemo() {
       </div>
 
       <div className={styles.treeGridWrap}>
-        <div className={styles.treeGrid} role='grid'>
+        {/*
+         * `.treeGrid` lays its children out with CSS Grid using implicit
+         * row placement across one flat list (label cells + action
+         * cells, 5 columns wide). A real ARIA grid needs `role="row"`
+         * wrappers per row plus 2D arrow-key cell navigation — adding
+         * those wrappers here would insert extra DOM nodes into the CSS
+         * grid's child list and break the column auto-placement this
+         * layout relies on. Since every cell is already a real,
+         * individually focusable/operable <button> with its own
+         * accessible name (aria-label below), we downgrade honestly to a
+         * labelled group of toggle buttons rather than fake grid/gridcell
+         * semantics with no matching interaction model.
+         */}
+        <div
+          className={styles.treeGrid}
+          role='group'
+          aria-label='Area and depth matrix'
+        >
           <div />
           {AREAS.map((a) => (
             <div
@@ -274,8 +349,7 @@ export function TreeDemo() {
                   <button
                     key={`${a.id}-${d.id}`}
                     type='button'
-                    role='gridcell'
-                    aria-selected={active}
+                    aria-pressed={active}
                     className={`${styles.treeCell} ${active ? styles.treeCellActive : ''} ${
                       !active && onAxis ? styles.treeCellOnAxis : ''
                     }`}
