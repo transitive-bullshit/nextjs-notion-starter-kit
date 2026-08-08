@@ -96,16 +96,14 @@ export function EquationContent() {
         <p>
           Avoid &quot;Auto&quot; mode. Auto optimizes for the platform&apos;s
           margin, not for you; Cursor reaches for a cheaper model (Composer)
-          unless you say otherwise. Picking the model yourself has a quieter
-          benefit too: you start noticing each model&apos;s style, and your
-          results get consistent enough that you learn which one to reach for
-          when.
+          unless you say otherwise. Pick the model yourself. Consistent results
+          are how you learn which one to reach for when.
         </p>
         <p>
-          Thinking effort is another dial, and an increasingly important one to
-          get right. Most tools expose four rungs: low, medium, high, xhigh.
-          Default to high (or medium, if you&apos;re watching cost) and adjust
-          when the model lets you down by overthinking or underthinking.
+          Thinking effort is the dial people forget. Most tools expose four
+          rungs: low, medium, high, xhigh. Default to high (or medium, if
+          you&apos;re watching cost) and adjust when the model lets you down by
+          overthinking or underthinking.
         </p>
 
         <div className={styles.modelGuide}>

@@ -86,17 +86,14 @@ export function IntroContent() {
         </p>
 
         <div className={styles.bodyItem} style={bodyDelay(1)}>
-          <Figure
-            num='0.1'
-            caption='What a lot of programming looks like now. Try sending it.'
-          >
+          <Figure num='0.1' caption='What a lot of programming looks like now.'>
             <PromptInputDemo start={revealed} />
           </Figure>
         </div>
 
         <p className={styles.bodyItem} style={bodyDelay(2)}>
           You don&apos;t write code so much as describe what you want and watch
-          it appear. The job is shifting from writing the code to talking to the
+          it appear. The job is shifting from writing code to talking to the
           thing that writes it.
         </p>
 

@@ -74,7 +74,7 @@ export function MindsetContent() {
         your character keeps dying, the level isn&apos;t broken, you&apos;re
         unskilled. It sounds flippant, but the move underneath is serious:
         assume, provisionally, that the bottleneck is you. It isn&apos;t always
-        true. But this assumption helps you grow when it is.
+        true. It&apos;s the only version of events you can do anything about.
       </p>
 
       <p>
@@ -89,8 +89,8 @@ export function MindsetContent() {
 
       <p>
         Treat each disappointment like a chess puzzle: try something, notice
-        what actually worked, update your repertoire. You won&apos;t feel the
-        difference in a week. You&apos;ll feel it in a quarter.
+        what worked, update your repertoire. You won&apos;t feel the difference
+        in a week. You&apos;ll feel it in a quarter.
       </p>
 
       <Figure

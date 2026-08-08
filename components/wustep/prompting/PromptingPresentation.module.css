@@ -520,7 +520,15 @@
 }
 
 .agenda strong {
-  font-family: var(--font-serif, 'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', Georgia, serif);
+  font-family: var(
+    --font-serif,
+    'Iowan Old Style',
+    'Apple Garamond',
+    Baskerville,
+    'Times New Roman',
+    Georgia,
+    serif
+  );
   font-style: italic;
   font-weight: 600;
   font-size: clamp(24px, 3vw, 42px);
@@ -1555,7 +1563,15 @@
 .choiceExample {
   margin: 0;
   color: var(--paper);
-  font-family: var(--font-serif, 'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', Georgia, serif);
+  font-family: var(
+    --font-serif,
+    'Iowan Old Style',
+    'Apple Garamond',
+    Baskerville,
+    'Times New Roman',
+    Georgia,
+    serif
+  );
   font-size: clamp(15px, 1.55vw, 19px);
   font-style: italic;
   line-height: 1.35;
@@ -2209,8 +2225,15 @@
 
 .toolLadderName {
   color: var(--paper);
-  font-family: var(--font-serif, 'Iowan Old Style', 'Apple Garamond',
-    Baskerville, 'Times New Roman', Georgia, serif);
+  font-family: var(
+    --font-serif,
+    'Iowan Old Style',
+    'Apple Garamond',
+    Baskerville,
+    'Times New Roman',
+    Georgia,
+    serif
+  );
   font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -3056,7 +3079,10 @@
 
 .yoloFlow {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) auto minmax(0, 0.95fr) auto minmax(0, 1.2fr) auto minmax(0, 0.95fr);
+  grid-template-columns: minmax(0, 0.95fr) auto minmax(0, 0.95fr) auto minmax(
+      0,
+      1.2fr
+    ) auto minmax(0, 0.95fr);
   align-items: stretch;
   gap: 16px;
 }
@@ -3121,7 +3147,15 @@
   border: 1px solid var(--line);
   background: rgba(18, 17, 15, 0.55);
   color: var(--paper);
-  font-family: var(--font-serif, 'Iowan Old Style', 'Apple Garamond', Baskerville, 'Times New Roman', Georgia, serif);
+  font-family: var(
+    --font-serif,
+    'Iowan Old Style',
+    'Apple Garamond',
+    Baskerville,
+    'Times New Roman',
+    Georgia,
+    serif
+  );
   font-size: clamp(15px, 1.5vw, 18px);
   font-style: italic;
   line-height: 1.35;

@@ -12,7 +12,7 @@ export function TechniquesContent() {
         phrases that do the pushing. Chess players build a repertoire of
         openings, tactics, and endgame studies, most of it learned from other
         players and none of it secret. The same vocabulary is forming for
-        prompting. Here are some moves worth adding to yours.
+        prompting. Some moves worth stealing:
       </p>
 
       <TechniqueGroup num='3.1' heading='Before you start'>

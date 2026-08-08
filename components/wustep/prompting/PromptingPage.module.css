@@ -93,8 +93,7 @@
   --pm-rule-strong: rgba(255, 255, 255, 0.24);
 
   --pm-surface: #151514;
-  --pm-shadow-pop:
-    0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
+  --pm-shadow-pop: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.5);
 
   background: var(--bg-color);
   color: var(--fg-color);
@@ -138,6 +137,12 @@
   padding: 4vh 6vw 8vh;
   font-family: var(--font-sans);
   line-height: 1.65;
+}
+
+/* Light-on-dark type reads lighter than ink-on-paper; give it a touch
+ * more leading to compensate. */
+:global(.dark-mode) .page {
+  line-height: 1.7;
 }
 
 @media (min-width: 720px) {
@@ -618,6 +623,9 @@
   height: 18px;
 }
 
+/* A translucent material, not a flat card: the panel blurs what scrolls
+ * beneath it, and materializes (blur + scale together) from the trigger
+ * corner rather than fading in flat. */
 .tocPanel {
   position: absolute;
   top: calc(100% + 8px);
@@ -626,7 +634,9 @@
   max-width: min(320px, calc(100vw - 32px));
   padding: 10px 8px 12px;
   border-radius: var(--pm-radius-md, 10px);
-  background: var(--bg-color, #fff);
+  background: color-mix(in srgb, var(--bg-color, #fdfdfc) 78%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
   box-shadow: var(
     --pm-shadow-pop,
@@ -634,12 +644,31 @@
     0 12px 32px rgba(15, 15, 15, 0.1)
   );
   opacity: 0;
-  transform: translateY(-4px) scale(0.97);
+  filter: blur(6px);
+  transform: translateY(-4px) scale(0.96);
   transform-origin: top right;
   pointer-events: none;
   transition:
     opacity 180ms ease,
+    filter 200ms var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1)),
     transform 200ms var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1));
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .tocPanel {
+    background: var(--bg-color, #fdfdfc);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .tocPanel {
+    background: var(--bg-color, #fdfdfc);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border-color: var(--fg-color, #1a1918);
+  }
 }
 
 /* Invisible bridge spanning the gap between the trigger and the
@@ -654,13 +683,20 @@
 }
 
 :global(.dark-mode) .tocPanel {
-  background: #161616;
+  background: color-mix(in srgb, #161616 75%, transparent);
   border-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :global(.dark-mode) .tocPanel {
+    background: #161616;
+  }
 }
 
 .tocOpen .tocPanel,
 .toc:focus-within .tocPanel {
   opacity: 1;
+  filter: blur(0);
   transform: translateY(0) scale(1);
   pointer-events: auto;
 }
@@ -668,6 +704,7 @@
 @media (hover: hover) and (pointer: fine) {
   .toc:hover .tocPanel {
     opacity: 1;
+    filter: blur(0);
     transform: translateY(0) scale(1);
     pointer-events: auto;
   }
@@ -753,7 +790,6 @@
 :global(.dark-mode) .tocIndex {
   color: rgba(255, 255, 255, 0.4);
 }
-
 
 .tocTitle {
   flex: 1;
@@ -1487,6 +1523,7 @@
 .manualFigureText {
   font-family: var(--font-sans);
   font-size: 0.8rem;
+  letter-spacing: 0.01em; /* small sizes want a touch of air */
   color: var(--fg-color-3, rgba(26, 25, 24, 0.66));
 }
 
@@ -3432,11 +3469,13 @@
   position: absolute;
   bottom: calc(100% + 6px);
   left: 0;
-  z-index: 10;
+  z-index: var(--z-dropdown, 50);
   min-width: 240px;
   padding: 4px;
-  border-radius: 0;
-  background: var(--bg-color, #fff);
+  border-radius: var(--pm-radius-md, 10px);
+  background: color-mix(in srgb, var(--bg-color, #fdfdfc) 82%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.12));
   box-shadow:
     0 4px 12px rgba(15, 15, 15, 0.08),
@@ -3448,12 +3487,26 @@
   transform-origin: bottom left;
 }
 
+@media (prefers-reduced-transparency: reduce) {
+  .modelMenu {
+    background: var(--bg-color, #fdfdfc);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
 :global(.dark-mode) .modelMenu {
-  background: #181818;
+  background: color-mix(in srgb, #181818 82%, transparent);
   border-color: rgba(255, 255, 255, 0.12);
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.4),
     0 16px 40px -12px rgba(0, 0, 0, 0.6);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :global(.dark-mode) .modelMenu {
+    background: #181818;
+  }
 }
 
 @keyframes menuIn {
@@ -3571,8 +3624,6 @@
   opacity: 0.35;
   cursor: not-allowed;
 }
-
-
 
 @media (prefers-reduced-motion: reduce) {
   .thinking,
@@ -4133,6 +4184,52 @@
   .orchRoleHandoff {
     animation: none;
     opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== Press feedback =====
+ *
+ * Respond on pointer-down, not on release: every pressable surface
+ * compresses the instant it's touched. The scale is subtle (0.97) and
+ * the return ride the element's own transition where it has one; where
+ * it doesn't, the press applies instantly, which is the point.
+ */
+
+.chapterNavLink:active,
+.chapterNavRestart:active,
+.tocLink:active,
+.skillsLink:active,
+.colleagueChip:active,
+.equationReplay:active,
+.treeActionButton:active,
+.treeTour:active,
+.modelButton:active,
+.recapTitle:active {
+  transform: scale(0.97);
+}
+
+.treeCell:active {
+  transform: scale(0.94);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapterNavLink:active,
+  .chapterNavRestart:active,
+  .tocLink:active,
+  .skillsLink:active,
+  .colleagueChip:active,
+  .equationReplay:active,
+  .treeActionButton:active,
+  .treeTour:active,
+  .modelButton:active,
+  .recapTitle:active,
+  .treeCell:active,
+  .submitButton:active:not(:disabled) {
     transform: none;
   }
 }
