@@ -32,8 +32,8 @@ export function EquationContent() {
       >
         <p>
           Most people are still defaulting to whatever editor they had before
-          agents were a thing, and bolting AI on. That&apos;s leaving the
-          biggest, easiest win on the table.
+          agents were a thing, and bolting AI on. That&apos;s the biggest single
+          upgrade most people haven&apos;t made.
         </p>
         <p>
           The frontier here isn&apos;t subtle: Cursor, Claude Code, and Codex
@@ -167,7 +167,7 @@ export function EquationContent() {
         </ul>
         <p>
           If you find yourself rewriting the same prompt for the fifth time,
-          stop. The lever you actually need is the next one.
+          stop. The lever you need is the next one.
         </p>
       </Lever>
 
@@ -213,10 +213,9 @@ export function EquationContent() {
 
       <Note title='Putting it all together'>
         <p>
-          Treat the output as something you partially authored. Whatever came
-          back, you were part of why it came back that way. When something feels
-          off, walk these four questions and find the lever you didn&apos;t
-          pull:
+          Whatever came back, you were part of why it came back that way. When
+          something feels off, walk these four questions and find the lever you
+          didn&apos;t pull:
         </p>
 
         <ul className={styles.axisList}>

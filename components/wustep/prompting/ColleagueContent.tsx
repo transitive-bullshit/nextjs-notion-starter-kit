@@ -29,8 +29,8 @@ export function ColleagueContent() {
 
       <p>
         Same task, same model. What changes is how much the colleague was set up
-        to succeed. The asymmetry between what <em>you</em> can see and what{' '}
-        <em>they</em> can see is where most of the skill lives.
+        to succeed. Most of the craft is closing the gap between what{' '}
+        <em>you</em> can see and what <em>they</em> can see.
       </p>
 
       <Lever

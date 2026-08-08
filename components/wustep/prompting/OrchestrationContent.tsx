@@ -22,10 +22,10 @@ export function OrchestrationContent() {
       </Figure>
 
       <p>
-        Orchestration is the move from typist to conductor: from messaging the
-        agent to briefing it, from one thread to several. The question stops
-        being &quot;what do I type next&quot; and becomes &quot;what happens
-        this <em>hour</em>.&quot;
+        Orchestration is the shift from typing to conducting: you stop messaging
+        one agent and start briefing several. The question stops being
+        &quot;what do I type next&quot; and becomes &quot;what happens this{' '}
+        <em>hour</em>.&quot;
       </p>
 
       <SectionHeading num='6.1'>Chain, don&apos;t ping</SectionHeading>
@@ -178,8 +178,7 @@ export function OrchestrationContent() {
           So that&apos;s the skill worth building: reading diffs fast, holding
           several threads, killing runs that have gone sideways, writing briefs
           that don&apos;t need follow-ups. Optimize the hour, not the message.
-          Conducting, it turns out, is mostly patient briefing and clean
-          handoffs.
+          Conducting is mostly patient briefing and clean handoffs.
         </p>
       </Note>
     </ChapterBody>

@@ -138,9 +138,9 @@ export function TechniquesContent() {
 
       <Note title='Keep climbing'>
         <p>
-          None of these are hard, and none of them are secret. The point is less
-          the list than the noticing: there&apos;s a craft here, and most of it
-          is still unmapped. The best moves are the ones you&apos;ll find
+          None of these are hard, and none of them are secret. The list matters
+          less than the habit of noticing: there&apos;s a craft here, and most
+          of it is still unmapped. The best moves are the ones you&apos;ll find
           yourself.
         </p>
       </Note>

@@ -92,9 +92,8 @@ export function IntroContent() {
         </div>
 
         <p className={styles.bodyItem} style={bodyDelay(2)}>
-          You don&apos;t write code so much as describe what you want and watch
-          it appear. The job is shifting from writing code to talking to the
-          thing that writes it.
+          You describe what you want and watch it appear. The job is shifting
+          from writing code to talking to the thing that writes it.
         </p>
 
         <p className={styles.bodyItem} style={bodyDelay(3)}>
