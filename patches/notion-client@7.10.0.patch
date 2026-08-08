@@ -1,0 +1,30 @@
+diff --git a/build/index.js b/build/index.js
+index 76da6f4c1a7dffa60036aa0cd21c9c19c5daff8f..1b2e76a436c7e9ceb35048bf57b147d912801c13 100644
+--- a/build/index.js
++++ b/build/index.js
+@@ -17,14 +17,14 @@ var NotionAPI = class {
+   /**
+    * Constructor for the NotionAPI class.
+    * @param options - Configuration options.
+-   * @param options.apiBaseUrl - The base URL of the Notion API. Defaults to `https://www.notion.so/api/v3`.
++   * @param options.apiBaseUrl - The base URL of the Notion API. Defaults to `https://app.notion.com/api/v3`.
+    * @param options.authToken - The authentication token for the Notion API. Defaults to undefined.
+    * @param options.activeUser - The active user for the Notion API. Defaults to undefined.
+    * @param options.userTimeZone - The time zone for the Notion API. Defaults to `America/New_York`.
+    * @param options.ofetchOptions - The HTTP options to use for the underlying `ofetch` requests. Defaults to undefined.
+    */
+   constructor({
+-    apiBaseUrl = "https://www.notion.so/api/v3",
++    apiBaseUrl = "https://app.notion.com/api/v3",
+     authToken,
+     activeUser,
+     userTimeZone = "America/New_York",
+@@ -115,7 +115,7 @@ var NotionAPI = class {
+         allCollectionInstances,
+         async (collectionInstance) => {
+           const { collectionId, collectionViewId, spaceId } = collectionInstance;
+-          const collectionView = recordMap.collection_view[collectionViewId]?.value;
++          const collectionView = getBlockValue(recordMap.collection_view[collectionViewId]);
+           try {
+             const collectionData = await this.getCollectionData(
+               collectionId,

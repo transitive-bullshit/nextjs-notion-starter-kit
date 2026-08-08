@@ -68,7 +68,10 @@ whose direct URL must be private.
 
 ## Patches
 
-[`patches/notion-client@7.8.2.patch`](../patches/notion-client@7.8.2.patch) fixes a bug in `notion-client` where `recordMap.collection_view[viewId]?.value` would break on certain payload shapes — replaced with the safer `getBlockValue` helper. Applied automatically by pnpm on install.
+[`patches/notion-client@7.10.0.patch`](../patches/notion-client@7.10.0.patch) applies two fixes on top of the pinned version. Applied automatically by pnpm on install.
+
+1. `recordMap.collection_view[viewId]?.value` would break on certain payload shapes — replaced with the safer `getBlockValue` helper.
+2. The default `apiBaseUrl` moves from `https://www.notion.so/api/v3` to `https://app.notion.com/api/v3`. Both fixes ship in [`notion-client@7.10.1`](https://github.com/NotionX/react-notion-x/releases) upstream, which was tagged on GitHub but not yet published to npm as of this patch — see the commit history on the `notion-client` package for when that lands, then drop this patch and re-run `pnpm deps:upgrade`.
 
 ## Signed-URL fix
 

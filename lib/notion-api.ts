@@ -8,6 +8,13 @@ const RETRY_STATUS_CODES = new Set([429, 502, 503, 504])
  * clients (ofetch/undici here, ky in lib/preview-images.ts) send none by
  * default. Shared so both call sites present the same header.
  * https://github.com/NotionX/react-notion-x/issues/710
+ *
+ * notion-client's own upstream fix (moving the api/v3 default host to
+ * app.notion.com) ships in v7.10.1, tagged on GitHub but not yet published
+ * to npm — patches/notion-client@7.10.0.patch applies that same change
+ * locally in the meantime. See docs/customizations.md#patches. This
+ * User-Agent header is orthogonal (it also covers the notion.so/image proxy,
+ * which the host migration doesn't touch) and stays regardless.
  */
 export const NOTION_USER_AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
