@@ -37,13 +37,9 @@ export function EquationContent() {
         </p>
         <p>
           The frontier here isn&apos;t subtle: Cursor, Claude Code, and Codex
-          are far better than VSCode with stock Copilot, or Antigravity. The
-          difference can feel like swapping a junior for a senior engineer.
-        </p>
-        <p>
-          You don&apos;t have to commit to one forever. Try a new coding agent
-          for a few weeks. If your day-to-day doesn&apos;t get noticeably
-          easier, go back.
+          are far better than VSCode with stock Copilot. The difference can feel
+          like swapping a junior for a senior. Try one for a few weeks; if your
+          day-to-day doesn&apos;t get noticeably easier, go back.
         </p>
       </Lever>
 
@@ -83,11 +79,10 @@ export function EquationContent() {
         </div>
 
         <p>
-          Models also have distinct styles: how they structure code, what
-          explanations they reach for, where they cut corners under ambiguity.
-          If you&apos;re newer to AI coding, you&apos;ll attune faster by
-          staying with one model for a while and learning its tics. Hopping
-          between models before you have a feel for any of them slows you down.
+          Models have distinct styles: how they structure code, where they cut
+          corners under ambiguity. Stay with one for a while and learn its tics;
+          hopping between models before you have a feel for any of them slows
+          you down.
         </p>
         <p>
           Avoid &quot;Auto&quot; mode. Auto optimizes for the platform&apos;s
@@ -213,9 +208,8 @@ export function EquationContent() {
           </li>
         </ul>
         <p>
-          Loading the right context is the strongest pull available on any of
-          the four levers. It&apos;s also the most boring one, which is why
-          it&apos;s underused.
+          Context is the strongest of the four levers. It&apos;s also the most
+          boring, which is why it&apos;s underused.
         </p>
       </Lever>
 
@@ -229,24 +223,20 @@ export function EquationContent() {
 
         <ul className={styles.axisList}>
           <li>
-            <strong>Did I communicate clearly?</strong> Rewrite the prompt with
-            concrete details: paste the error, name the file, say what good
-            looks like and what to avoid.
+            <strong>Did I communicate clearly?</strong> Paste the error, name
+            the file, say what good looks like.
           </li>
           <li>
             <strong>Could the agent see what it needed?</strong> Load the files,
-            screenshots, docs, and project rules. &quot;The model is dumb
-            today&quot; is almost always &quot;the model can&apos;t see the
-            thing it needs.&quot;
+            screenshots, docs, and rules.
           </li>
           <li>
             <strong>Was this the right model?</strong> Reach for something more
-            capable on tricky work, and override &quot;Auto&quot;. That mode
-            optimizes for cost, not for you.
+            capable on tricky work.
           </li>
           <li>
-            <strong>Was thinking on?</strong> For ambiguous, multi-step, or
-            stuck moments, turn it up. Drop it back when the work is mechanical.
+            <strong>Was thinking on?</strong> Turn it up for ambiguous or stuck
+            moments.
           </li>
         </ul>
 

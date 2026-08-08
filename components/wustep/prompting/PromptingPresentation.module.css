@@ -3079,10 +3079,9 @@
 
 .yoloFlow {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) auto minmax(0, 0.95fr) auto minmax(
-      0,
-      1.2fr
-    ) auto minmax(0, 0.95fr);
+  grid-template-columns:
+    minmax(0, 0.95fr) auto minmax(0, 0.95fr) auto minmax(0, 1.2fr)
+    auto minmax(0, 0.95fr);
   align-items: stretch;
   gap: 16px;
 }

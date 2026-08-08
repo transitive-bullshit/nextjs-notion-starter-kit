@@ -107,9 +107,8 @@ export function ColleagueContent() {
         </p>
         <p>
           The rubber-stamp failure mode, clicking accept on diff after diff, is
-          where mistakes pile up. Treat agent output the way you&apos;d treat a
-          teammate&apos;s: assume something subtle is probably wrong, and look
-          for it before merging.
+          where mistakes pile up. Assume something subtle is wrong and look for
+          it before merging.
         </p>
       </Lever>
     </ChapterBody>

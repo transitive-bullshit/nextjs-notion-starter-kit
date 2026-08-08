@@ -5,7 +5,7 @@
  */
 .frame button:focus-visible,
 .frame a:focus-visible {
-  outline: 2px solid var(--pm-accent, #b8401f);
+  outline: 2px solid var(--pm-accent, #1a1918);
   outline-offset: 2px;
   border-radius: inherit;
 }
@@ -43,11 +43,13 @@
   --fg-color-5: rgba(26, 25, 24, 0.03);
   --fg-color-6: rgba(26, 25, 24, 0.84);
 
-  /* second ink */
-  --pm-accent: #b8401f;
-  --pm-accent-ink: #a03415; /* darker rung for small text on paper */
-  --pm-accent-soft: rgba(184, 64, 31, 0.09);
-  --pm-accent-line: rgba(184, 64, 31, 0.38);
+  /* second ink — the article runs achromatic, like the rest of the
+   * site. "Accent" is the ink itself at full strength; emphasis comes
+   * from weight and fill, never hue. */
+  --pm-accent: #1a1918;
+  --pm-accent-ink: #1a1918;
+  --pm-accent-soft: rgba(26, 25, 24, 0.06);
+  --pm-accent-line: rgba(26, 25, 24, 0.35);
   --pm-on-accent: #fdfdfc;
 
   /* rules — hairlines only; emphasis comes from space, not weight */
@@ -83,10 +85,10 @@
   --fg-color-5: rgba(255, 255, 255, 0.03);
   --fg-color-6: rgba(255, 255, 255, 0.84);
 
-  --pm-accent: #e87a4a;
-  --pm-accent-ink: #ee8f64;
-  --pm-accent-soft: rgba(232, 122, 74, 0.13);
-  --pm-accent-line: rgba(232, 122, 74, 0.45);
+  --pm-accent: rgba(255, 255, 255, 0.92);
+  --pm-accent-ink: rgba(255, 255, 255, 0.92);
+  --pm-accent-soft: rgba(255, 255, 255, 0.08);
+  --pm-accent-line: rgba(255, 255, 255, 0.4);
   --pm-on-accent: #0d0d0d;
 
   --pm-rule: rgba(255, 255, 255, 0.12);
@@ -338,7 +340,7 @@
   margin-top: 0.6em;
   padding: 11px 22px;
   border-radius: 999px;
-  background: var(--pm-accent, #b8401f);
+  background: var(--pm-accent, #1a1918);
   color: var(--pm-on-accent, #fdfdfc);
   font-family: inherit;
   font-size: 0.95rem;
@@ -353,7 +355,7 @@
 }
 
 .beginCta:hover {
-  background: var(--pm-accent-ink, #a03415);
+  background: var(--pm-accent-ink, #1a1918);
 }
 
 .beginCta:active {
@@ -470,7 +472,7 @@
 }
 
 .folioMarkNum {
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
   font-weight: 550;
 }
 
@@ -771,7 +773,7 @@
 }
 
 .tocLinkCurrent .tocIndex {
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 :global(.dark-mode) .tocLinkCurrent {
@@ -1190,7 +1192,7 @@
   font-family: var(--font-sans);
   font-size: 0.88rem;
   font-weight: 500;
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1290,12 +1292,11 @@
 .colleagueTaskLabel,
 .colleagueShareLabel,
 .colleagueResponseLabel {
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
 }
 
 .colleagueTaskText {
@@ -1351,14 +1352,14 @@
 }
 
 .colleagueChipOn {
-  background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
-  border-color: var(--pm-accent-line, rgba(184, 64, 31, 0.38));
-  color: var(--pm-accent-ink, #a03415);
+  background: var(--pm-accent-soft, rgba(26, 25, 24, 0.06));
+  border-color: var(--pm-accent-line, rgba(26, 25, 24, 0.35));
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 .colleagueChipOn:hover {
-  color: var(--pm-accent-ink, #a03415);
-  border-color: var(--pm-accent, #b8401f);
+  color: var(--pm-accent-ink, #1a1918);
+  border-color: var(--pm-accent, #1a1918);
 }
 
 .colleagueChipIcon {
@@ -1470,7 +1471,7 @@
   font-family: var(--font-sans);
   font-size: 0.78em;
   font-weight: 500;
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1515,7 +1516,7 @@
   font-weight: 550;
   letter-spacing: 0.01em;
   font-variant-numeric: tabular-nums;
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
   white-space: nowrap;
   margin-right: 0.6em;
 }
@@ -1544,12 +1545,12 @@
 }
 
 .eloChartFillInk {
-  fill: var(--pm-accent, #b8401f);
+  fill: var(--pm-accent, #1a1918);
   fill-opacity: 0.14;
 }
 
 .eloChartStrokeInk {
-  stroke: var(--pm-accent, #b8401f);
+  stroke: var(--pm-accent, #1a1918);
 }
 
 /* Curve fill — fades in once trigger hits */
@@ -1654,9 +1655,9 @@
   transition: opacity 600ms var(--ease-out-swift);
 }
 
-/* You marker — second ink */
+/* You marker — solid ink dot */
 .eloChartMarkerYou {
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--fg-color, #1a1918);
 }
 
 .eloChartVisible .eloChartMarkerYou {
@@ -1664,9 +1665,15 @@
   transition-delay: 1600ms;
 }
 
-/* Magnus marker — first ink */
+/* Magnus marker — hollow dot, out in the tail */
 .eloChartMarkerMagnus {
   color: var(--fg-color-6, rgba(26, 25, 24, 0.84));
+}
+
+.eloChartMarkerMagnus circle {
+  fill: var(--bg-color, #fdfdfc);
+  stroke: currentColor;
+  stroke-width: 1.5;
 }
 
 .eloChartVisible .eloChartMarkerMagnus {
@@ -1681,8 +1688,9 @@
 }
 
 .eloChartGap text {
-  font-family: var(--font-mono, 'Courier New', monospace);
+  font-family: var(--font-sans);
   font-size: 11px;
+  font-style: italic;
   fill: var(--fg-color-3, rgba(26, 25, 24, 0.55));
 }
 
@@ -1748,7 +1756,7 @@
 
 .techniquePrompt::before {
   content: '> ';
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 .techniqueBody p {
@@ -1876,9 +1884,9 @@
 }
 
 .recapTokenLever {
-  background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
-  border: 1px solid var(--pm-accent-line, rgba(184, 64, 31, 0.38));
-  color: var(--pm-accent-ink, #a03415);
+  background: var(--pm-accent-soft, rgba(26, 25, 24, 0.06));
+  border: 1px solid var(--pm-accent-line, rgba(26, 25, 24, 0.35));
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 .recapTokenOutput {
@@ -1929,11 +1937,11 @@
 }
 
 .recapTreeCellOnAxis {
-  background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
+  background: var(--pm-accent-soft, rgba(26, 25, 24, 0.06));
 }
 
 .recapTreeCellActive {
-  background: var(--pm-accent, #b8401f);
+  background: var(--pm-accent, #1a1918);
 }
 
 .recapTreeMoves {
@@ -1952,7 +1960,7 @@
 
 .recapTreeMovesActive {
   font-weight: 700;
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 /* Colleague viz — three steps in a row */
@@ -1975,16 +1983,15 @@
 }
 
 .recapColleagueStep {
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
   padding: 5px 11px;
   border-radius: var(--pm-radius-sm, 6px);
-  background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
-  border: 1px solid var(--pm-accent-line, rgba(184, 64, 31, 0.38));
-  color: var(--pm-accent-ink, #a03415);
+  background: var(--bg-color, #fdfdfc);
+  border: 1px solid var(--pm-rule-strong, rgba(26, 25, 24, 0.22));
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 .recapColleagueArrow {
@@ -2032,7 +2039,7 @@
 
 .recapMindsetCurve {
   fill: none;
-  stroke: var(--pm-accent, #b8401f);
+  stroke: var(--pm-accent, #1a1918);
   stroke-width: 2;
   stroke-linecap: round;
 }
@@ -2045,14 +2052,14 @@
 }
 
 .recapMindsetStem {
-  stroke: var(--pm-accent, #b8401f);
+  stroke: var(--pm-accent, #1a1918);
   stroke-width: 1;
   stroke-dasharray: 2 2;
   opacity: 0.55;
 }
 
 .recapMindsetDotYou {
-  fill: var(--pm-accent, #b8401f);
+  fill: var(--pm-accent, #1a1918);
 }
 
 .recapMindsetDotMagnus {
@@ -2069,7 +2076,7 @@
 }
 
 .recapMindsetLabelYou {
-  fill: var(--pm-accent-ink, #a03415);
+  fill: var(--pm-accent-ink, #1a1918);
 }
 
 /* Orchestration viz — fan-out into a merge */
@@ -2081,7 +2088,7 @@
 }
 
 .recapOrchYou {
-  fill: var(--pm-accent, #b8401f);
+  fill: var(--pm-accent, #1a1918);
 }
 
 .recapOrchYouLabel {
@@ -2090,7 +2097,7 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-anchor: middle;
-  fill: var(--pm-on-accent, #fcfcfb);
+  fill: var(--pm-on-accent, #fdfdfc);
 }
 
 .recapOrchBranch {
@@ -2102,13 +2109,13 @@
 }
 
 .recapOrchAgent {
-  fill: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
-  stroke: var(--pm-accent-line, rgba(184, 64, 31, 0.38));
+  fill: var(--pm-accent-soft, rgba(26, 25, 24, 0.06));
+  stroke: var(--pm-accent-line, rgba(26, 25, 24, 0.35));
   stroke-width: 1;
 }
 
 .recapOrchAgentDot {
-  fill: var(--pm-accent, #b8401f);
+  fill: var(--pm-accent, #1a1918);
 }
 
 .recapOrchMerge {
@@ -2120,7 +2127,7 @@
 }
 
 .recapOrchMergeDot {
-  fill: var(--pm-accent, #b8401f);
+  fill: var(--pm-accent, #1a1918);
 }
 
 .recapTechniquesIntro {
@@ -2141,17 +2148,19 @@
   gap: 0.35em;
 }
 
+/* Prompts are things you type — mono, matching the techniques chapter. */
 .recapList li {
-  list-style: '— ';
+  list-style: '> ';
   padding-left: 0.3em;
-  font-family: var(--font-serif, var(--font-sans));
-  font-style: italic;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 0.92em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   color: var(--fg-color-6, rgba(26, 25, 24, 0.85));
 }
 
 .recapList li::marker {
   color: var(--fg-color-3, rgba(26, 25, 24, 0.4));
-  font-style: normal;
 }
 
 :global(.dark-mode) .recapList li {
@@ -2208,7 +2217,7 @@
 }
 
 .skillsLink:hover {
-  border-color: var(--pm-accent, #b8401f) !important;
+  border-color: var(--pm-accent, #1a1918) !important;
   transform: translateY(-1px);
 }
 
@@ -2219,7 +2228,7 @@
 }
 
 :global(.dark-mode) .skillsLink:hover {
-  border-color: var(--pm-accent, #b8401f) !important;
+  border-color: var(--pm-accent, #1a1918) !important;
 }
 
 .skillsLinkArrow {
@@ -2256,7 +2265,7 @@
   font-size: 0.85rem;
   font-weight: 480;
   letter-spacing: 0;
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
   margin-bottom: 6px;
 }
 
@@ -2309,7 +2318,7 @@
   font-size: 0.92em;
   font-weight: 480;
   letter-spacing: 0;
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
   flex-shrink: 0;
 }
 
@@ -2370,7 +2379,7 @@
 
 .resourcesLink {
   font-weight: 600;
-  color: var(--pm-accent, #b8401f) !important;
+  color: var(--pm-accent, #1a1918) !important;
   text-decoration: none !important;
   background: none !important;
   background-image: none !important;
@@ -2545,9 +2554,9 @@
 
 .token_agent,
 .token_input {
-  background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
-  border-color: var(--pm-accent-line, rgba(184, 64, 31, 0.38));
-  color: var(--pm-accent-ink, #a03415);
+  background: var(--pm-accent-soft, rgba(26, 25, 24, 0.06));
+  border-color: var(--pm-accent-line, rgba(26, 25, 24, 0.35));
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 .token_output {
@@ -2687,10 +2696,10 @@
 }
 
 .leverPopoverLabel {
-  font-weight: 600;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-family: var(--font-sans);
+  font-weight: 550;
+  font-size: 0.74rem;
+  letter-spacing: 0.01em;
   opacity: 0.7;
 }
 
@@ -2840,8 +2849,8 @@
 }
 
 .treeActionActive .treeActionIcon {
-  background: var(--pm-accent, #b8401f);
-  color: var(--pm-on-accent, #fcfcfb);
+  background: var(--pm-accent, #1a1918);
+  color: var(--pm-on-accent, #fdfdfc);
 }
 
 .treeActionText {
@@ -2906,10 +2915,9 @@
   padding: 6px 8px;
   text-align: center;
   font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
   transition: color 200ms ease;
 }
 
@@ -2938,7 +2946,7 @@
   width: 18px;
   height: 2px;
   border-radius: 0;
-  background: var(--pm-accent, #b8401f);
+  background: var(--pm-accent, #1a1918);
 }
 
 .treeRowLabel.treeAxisActive {
@@ -2954,7 +2962,7 @@
   width: 2px;
   height: 18px;
   border-radius: 0;
-  background: var(--pm-accent, #b8401f);
+  background: var(--pm-accent, #1a1918);
 }
 
 .treeRowLabel {
@@ -3020,7 +3028,7 @@
 
 .treeCellOnAxis {
   background: var(--fg-color-0, rgba(26, 25, 24, 0.03));
-  border-color: var(--pm-accent-line, rgba(184, 64, 31, 0.38));
+  border-color: var(--pm-accent-line, rgba(26, 25, 24, 0.35));
   border-style: solid;
 }
 
@@ -3031,9 +3039,9 @@
  */
 .treeCellActive {
   border-style: solid;
-  border-color: var(--pm-accent, #b8401f);
-  background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
-  box-shadow: inset 0 0 0 1px var(--pm-accent, #b8401f);
+  border-color: var(--pm-accent, #1a1918);
+  background: var(--pm-accent-soft, rgba(26, 25, 24, 0.06));
+  box-shadow: inset 0 0 0 1px var(--pm-accent, #1a1918);
 }
 
 .treeCellDot {
@@ -3058,7 +3066,7 @@
 .treeCellActive .treeCellDot {
   width: 9px;
   height: 9px;
-  background: var(--pm-accent, #b8401f);
+  background: var(--pm-accent, #1a1918);
   box-shadow: none;
   transform: none;
 }
@@ -3080,11 +3088,11 @@
 }
 
 .treeOutputLabel {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--fg-color-3, rgba(26, 25, 24, 0.5));
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
 }
 
 .treeOutputCoord {
@@ -3179,9 +3187,9 @@
 }
 
 .treeTourActive {
-  background: var(--pm-accent-soft, rgba(184, 64, 31, 0.09));
-  border-color: var(--pm-accent-line, rgba(184, 64, 31, 0.38));
-  color: var(--pm-accent-ink, #a03415);
+  background: var(--pm-accent-soft, rgba(26, 25, 24, 0.06));
+  border-color: var(--pm-accent-line, rgba(26, 25, 24, 0.35));
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 /* Once the tracks can shrink, the full column words no longer fit
@@ -3435,15 +3443,15 @@
   width: 7px;
   height: 7px;
   border-radius: var(--radius-pill);
-  background: var(--pm-accent, #b8401f);
-  box-shadow: 0 0 0 0 var(--pm-accent-line, rgba(184, 64, 31, 0.38));
+  background: var(--pm-accent, #1a1918);
+  box-shadow: 0 0 0 0 var(--pm-accent-line, rgba(26, 25, 24, 0.35));
   animation: dotPulse 2.4s ease-in-out infinite;
 }
 
 @keyframes dotPulse {
   0%,
   100% {
-    box-shadow: 0 0 0 0 var(--pm-accent-line, rgba(184, 64, 31, 0.38));
+    box-shadow: 0 0 0 0 var(--pm-accent-line, rgba(26, 25, 24, 0.35));
   }
   50% {
     box-shadow: 0 0 0 4px rgba(0, 0, 0, 0);
@@ -3571,8 +3579,8 @@
   height: 30px;
   border: none;
   border-radius: var(--pm-radius-sm, 6px);
-  background: var(--pm-accent, #b8401f);
-  color: var(--pm-on-accent, #fcfcfb);
+  background: var(--pm-accent, #1a1918);
+  color: var(--pm-on-accent, #fdfdfc);
   cursor: pointer;
   transition:
     transform 120ms var(--ease-out-smooth),
@@ -3673,7 +3681,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 0;
   margin: 1.4em 0 1.2em;
-  border: 1px solid var(--pm-rule-strong, #21201d);
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
+  border-radius: var(--pm-radius-md, 10px);
+  overflow: hidden;
 }
 
 @media (max-width: 640px) {
@@ -3687,10 +3697,16 @@
   }
 }
 
+/* Role by value: the closed card recedes onto the plinth tint with
+   muted type; the open card sits on paper at full ink. */
 .mindsetCard {
   position: relative;
   padding: 1.1em 1.25em 1.1em;
   background: var(--bg-color, #fff);
+}
+
+.mindsetCardClosed {
+  background: var(--pm-surface, #f7f7f5);
 }
 
 .mindsetCardOpen {
@@ -3706,8 +3722,8 @@
   color: var(--fg-color, #1a1918);
 }
 
-.mindsetCardOpen .mindsetCardHeading {
-  color: var(--pm-accent-ink, #a03415);
+.mindsetCardClosed .mindsetCardHeading {
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
 }
 
 .mindsetCard p {
@@ -3715,6 +3731,10 @@
   font-size: 0.97rem;
   line-height: 1.55;
   color: var(--fg-color-6, rgba(26, 25, 24, 0.84));
+}
+
+.mindsetCardClosed p {
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
 }
 
 /* ----- Practice loop (open climbs / closed regresses) ----- */
@@ -3749,94 +3769,128 @@
 .practiceLabel {
   display: inline-block;
   margin-bottom: 1em;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
 }
 
 .practiceCardOpen .practiceLabel {
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 .practiceCardClosed .practiceLabel {
   color: var(--fg-color-3, rgba(26, 25, 24, 0.62));
 }
 
-.practiceLadder {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  min-height: 84px;
+/* Sparkline step-charts — same grammar as the ELO chart: hairline
+   strokes, dashed baseline at the shared 1200 start, mono values.
+   The line draws in; the end dot and value land after. */
+.practiceSpark {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 260px;
+  overflow: visible;
 }
 
-.practiceLadder b {
-  display: grid;
-  place-items: center;
-  flex: 1;
-  min-width: 0;
-  border-radius: 1px;
-  color: var(--bg-color, #fff);
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+.practiceSparkBaseline {
+  stroke: var(--fg-color-1, rgba(26, 25, 24, 0.12));
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+
+:global(.dark-mode) .practiceSparkBaseline {
+  stroke: rgba(255, 255, 255, 0.16);
+}
+
+.practiceSparkLine {
+  stroke: var(--fg-color, #1a1918);
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  transition: stroke-dashoffset 900ms var(--ease-out-swift);
+  transition-delay: 200ms;
+}
+
+.practiceSparkLineMuted {
+  stroke: var(--fg-color-2, rgba(26, 25, 24, 0.42));
+}
+
+:global(.dark-mode) .practiceSparkLine {
+  stroke: rgba(255, 255, 255, 0.92);
+}
+
+:global(.dark-mode) .practiceSparkLineMuted {
+  stroke: rgba(255, 255, 255, 0.45);
+}
+
+.practiceLoopVisible .practiceSparkLine {
+  stroke-dashoffset: 0;
+}
+
+.practiceSparkDot {
+  fill: var(--fg-color, #1a1918);
+}
+
+.practiceSparkDotMuted {
+  fill: var(--bg-color, #fdfdfc);
+  stroke: var(--fg-color-2, rgba(26, 25, 24, 0.42));
+  stroke-width: 1.5;
+}
+
+:global(.dark-mode) .practiceSparkDot {
+  fill: rgba(255, 255, 255, 0.92);
+}
+
+:global(.dark-mode) .practiceSparkDotMuted {
+  fill: #161616;
+  stroke: rgba(255, 255, 255, 0.45);
+}
+
+.practiceSparkEnd {
   opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 500ms var(--ease-out-swift),
-    transform 500ms var(--ease-out-swift);
+  transition: opacity 500ms var(--ease-out-swift);
+  transition-delay: 1000ms;
 }
 
-.practiceLoopVisible .practiceLadder b {
+.practiceLoopVisible .practiceSparkEnd {
   opacity: 1;
-  transform: translateY(0);
 }
 
-.practiceCardOpen .practiceLadder b {
-  background: var(--pm-accent, #b8401f);
-  color: var(--pm-on-accent, #fcfcfb);
+.practiceSparkStart,
+.practiceSparkValue {
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
-.practiceCardClosed .practiceLadder b {
-  background: var(--fg-color-6, rgba(26, 25, 24, 0.84));
+.practiceSparkStart {
+  fill: var(--fg-color-3, rgba(26, 25, 24, 0.45));
 }
 
-.practiceCardOpen .practiceLadder b:nth-child(1) {
-  height: 34px;
+.practiceSparkValue {
+  fill: var(--fg-color, #1a1918);
+  font-weight: 600;
 }
 
-.practiceCardOpen .practiceLadder b:nth-child(2) {
-  height: 46px;
+:global(.dark-mode) .practiceSparkStart {
+  fill: rgba(255, 255, 255, 0.45);
 }
 
-.practiceCardOpen .practiceLadder b:nth-child(3) {
-  height: 58px;
+:global(.dark-mode) .practiceSparkValue {
+  fill: rgba(255, 255, 255, 0.92);
 }
 
-.practiceCardOpen .practiceLadder b:nth-child(4) {
-  height: 70px;
-}
-
-.practiceCardOpen .practiceLadder b:nth-child(5) {
-  height: 82px;
-}
-
-.practiceCardClosed .practiceLadder b:nth-child(1) {
-  height: 82px;
-}
-
-.practiceCardClosed .practiceLadder b:nth-child(2) {
-  height: 66px;
-}
-
-.practiceCardClosed .practiceLadder b:nth-child(3) {
-  height: 50px;
-}
-
-.practiceCardClosed .practiceLadder b:nth-child(4) {
-  height: 34px;
+@media (prefers-reduced-motion: reduce) {
+  .practiceSparkLine {
+    transition: none;
+    stroke-dashoffset: 0;
+  }
+  .practiceSparkEnd {
+    transition: none;
+    opacity: 1;
+  }
 }
 
 .practiceFlow {
@@ -3871,7 +3925,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 0;
   margin: 1.2em 0;
-  border: 1px solid var(--pm-rule-strong, #21201d);
+  border: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.1));
+  border-radius: var(--pm-radius-md, 10px);
+  overflow: hidden;
 }
 
 @media (max-width: 640px) {
@@ -3885,29 +3941,35 @@
   }
 }
 
+/* Role by value: pinging recedes onto the plinth tint; briefing sits
+   on paper at full ink. */
 .orchCard {
   position: relative;
   padding: 1em 1.1em;
-  background: var(--bg-color, #fff);
+  background: var(--pm-surface, #f7f7f5);
+}
+
+.orchCard:not(.orchCardGood) .orchPromptBlock {
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
 }
 
 .orchCardGood {
+  background: var(--bg-color, #fff);
   border-left: 1px solid var(--pm-rule, rgba(26, 25, 24, 0.16));
 }
 
 .orchCardLabel {
   display: inline-block;
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fg-color-3, rgba(26, 25, 24, 0.62));
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
   margin-bottom: 0.55em;
 }
 
 .orchCardGood .orchCardLabel {
-  color: var(--pm-accent-ink, #a03415);
+  color: var(--pm-accent-ink, #1a1918);
 }
 
 .orchPromptBlock {
@@ -3937,11 +3999,10 @@
 }
 
 .orchTimelineLabel {
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-family: var(--font-sans);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-weight: 550;
+  letter-spacing: 0.01em;
   fill: var(--fg-color-3, rgba(26, 25, 24, 0.7));
 }
 
@@ -3967,14 +4028,18 @@
   cursor: help;
 }
 
-/* Two-ink timeline blocks: solid vermillion is you, solid ink is the
-   agent, dashed outline is idle attention. */
+/* One-ink timeline blocks: solid ink is you, mid-gray is the agent,
+   dashed outline is idle attention. Role by value, not hue. */
 .orchBlockYou {
-  fill: var(--pm-accent, #b8401f);
+  fill: var(--fg-color, #1a1918);
 }
 
 .orchBlockAgent {
-  fill: var(--fg-color-6, rgba(26, 25, 24, 0.84));
+  fill: var(--fg-color-2, rgba(26, 25, 24, 0.38));
+}
+
+:global(.dark-mode) .orchBlockAgent {
+  fill: rgba(255, 255, 255, 0.42);
 }
 
 .orchTimelineIdle {
@@ -4015,11 +4080,10 @@
 }
 
 .orchTimelineAxisLabel {
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   fill: var(--fg-color-3, rgba(26, 25, 24, 0.45));
 }
 
@@ -4039,7 +4103,7 @@
 
 .orchFanDrop {
   opacity: 0;
-  color: var(--pm-accent, #b8401f);
+  color: var(--pm-accent, #1a1918);
 }
 
 .orchDiagramVisible .orchFanDrop {
@@ -4069,11 +4133,10 @@
 }
 
 .orchFanMergeLabel {
-  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-family: var(--font-sans);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 550;
+  letter-spacing: 0.01em;
   fill: currentColor;
 }
 
@@ -4121,12 +4184,11 @@
 }
 
 .orchRoleName {
-  font-family: var(--font-mono, 'Courier New', monospace);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--pm-accent-ink, #a03415);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  color: var(--fg-color, #1a1918);
 }
 
 .orchRoleVerb {

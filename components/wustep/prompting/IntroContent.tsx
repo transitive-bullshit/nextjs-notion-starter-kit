@@ -10,7 +10,7 @@ import {
   TITLE_WORDS
 } from './constants'
 import { DotMatrixIcon } from './DotMatrixIcon'
-import { Figure } from './parts'
+import { Figure, Note } from './parts'
 import styles from './PromptingPage.module.css'
 import { PromptInputDemo } from './PromptInputDemo'
 import { bodyDelay } from './types'
@@ -119,6 +119,17 @@ export function IntroContent() {
               presentation
             </Link>
           </span>
+        </div>
+
+        <div className={styles.bodyItem} style={bodyDelay(6)}>
+          <Note title='A timestamp'>
+            <p>
+              I wrote most of this in April 2026, and the field moves fast
+              enough that some of it is probably dated already; the model names
+              will go first. The levers seem to change slower than the models. I
+              hope something in here is useful anyway. <em>&mdash; Stephen</em>
+            </p>
+          </Note>
         </div>
       </div>
     </>

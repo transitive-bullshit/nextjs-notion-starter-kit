@@ -233,16 +233,111 @@ function EloChart() {
 }
 
 /* ─────────────────────────────────────────────────────────
- * PRACTICE LOOP
+ * PRACTICE LOOP STORYBOARD
  *
- * Two ladders, side by side. The open loop climbs (try → notice →
- * update); the closed loop slides back (blame → stop → regress). Bars
- * fade up with a stagger once the figure scrolls into view. Reuses the
- * fork's color coding: open = orange, closed = ember.
+ *    0ms   waiting for IntersectionObserver (threshold 0.3)
+ *  200ms   both step-lines draw left → right (900ms)
+ * 1000ms   end dots + end values fade in
+ *
+ * Two sparklines on a shared ELO scale, speaking the ELO chart's
+ * language: hairline strokes, dashed 1200 baseline, mono values.
+ * Open loop = solid ink climbing; closed loop = mid-gray sliding.
  * ───────────────────────────────────────────────────────── */
 
 const PRACTICE_OPEN = [1200, 1204, 1211, 1218, 1227]
 const PRACTICE_CLOSED = [1200, 1198, 1192, 1186]
+
+/* Shared y-scale across both cards so the slopes are honest. */
+const SPARK_W = 240
+const SPARK_H = 84
+const SPARK_PAD_X = 14
+const SPARK_PAD_Y = 18
+const SPARK_MIN = Math.min(...PRACTICE_CLOSED)
+const SPARK_MAX = Math.max(...PRACTICE_OPEN)
+
+function sparkPoints(values: number[]): Array<{ x: number; y: number }> {
+  const innerW = SPARK_W - SPARK_PAD_X * 2
+  const innerH = SPARK_H - SPARK_PAD_Y * 2
+  const span = SPARK_MAX - SPARK_MIN
+  return values.map((v, i) => ({
+    x: SPARK_PAD_X + (i / (PRACTICE_OPEN.length - 1)) * innerW,
+    y: SPARK_PAD_Y + (1 - (v - SPARK_MIN) / span) * innerH
+  }))
+}
+
+function Sparkline({
+  values,
+  muted,
+  label
+}: {
+  values: number[]
+  muted?: boolean
+  label: string
+}) {
+  const pts = sparkPoints(values)
+  const path = pts
+    .map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x},${p.y}`)
+    .join(' ')
+  const first = pts[0]!
+  const last = pts.at(-1)!
+  const baselineY = first.y
+  const rising = values.at(-1)! > values[0]!
+
+  return (
+    <svg
+      viewBox={`0 0 ${SPARK_W} ${SPARK_H}`}
+      className={styles.practiceSpark}
+      role='img'
+      aria-label={label}
+      preserveAspectRatio='xMidYMid meet'
+    >
+      <line
+        x1={SPARK_PAD_X}
+        y1={baselineY}
+        x2={SPARK_W - SPARK_PAD_X}
+        y2={baselineY}
+        className={styles.practiceSparkBaseline}
+      />
+      <text
+        x={first.x}
+        y={baselineY + (rising ? 14 : -8)}
+        textAnchor='start'
+        className={styles.practiceSparkStart}
+      >
+        {values[0]}
+      </text>
+      <path
+        d={path}
+        fill='none'
+        strokeWidth='1.75'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        pathLength={100}
+        className={`${styles.practiceSparkLine} ${
+          muted ? styles.practiceSparkLineMuted : ''
+        }`}
+      />
+      <g className={styles.practiceSparkEnd}>
+        <circle
+          cx={last.x}
+          cy={last.y}
+          r='4.5'
+          className={
+            muted ? styles.practiceSparkDotMuted : styles.practiceSparkDot
+          }
+        />
+        <text
+          x={last.x}
+          y={last.y + (rising ? -10 : 18)}
+          textAnchor='end'
+          className={styles.practiceSparkValue}
+        >
+          {values.at(-1)}
+        </text>
+      </g>
+    </svg>
+  )
+}
 
 function PracticeLoop() {
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.3 })
@@ -256,13 +351,10 @@ function PracticeLoop() {
     >
       <section className={`${styles.practiceCard} ${styles.practiceCardOpen}`}>
         <span className={styles.practiceLabel}>Open loop</span>
-        <div className={styles.practiceLadder} aria-hidden='true'>
-          {PRACTICE_OPEN.map((elo, i) => (
-            <b key={elo} style={{ transitionDelay: `${200 + i * 90}ms` }}>
-              {elo}
-            </b>
-          ))}
-        </div>
+        <Sparkline
+          values={PRACTICE_OPEN}
+          label='ELO climbing from 1200 to 1227 across five sessions.'
+        />
         <strong className={styles.practiceFlow}>
           try &rarr; notice &rarr; update
         </strong>
@@ -273,13 +365,11 @@ function PracticeLoop() {
         className={`${styles.practiceCard} ${styles.practiceCardClosed}`}
       >
         <span className={styles.practiceLabel}>Closed loop</span>
-        <div className={styles.practiceLadder} aria-hidden='true'>
-          {PRACTICE_CLOSED.map((elo, i) => (
-            <b key={elo} style={{ transitionDelay: `${200 + i * 90}ms` }}>
-              {elo}
-            </b>
-          ))}
-        </div>
+        <Sparkline
+          values={PRACTICE_CLOSED}
+          muted
+          label='ELO sliding from 1200 to 1186 across four sessions.'
+        />
         <strong className={styles.practiceFlow}>
           blame &rarr; stop &rarr; regress
         </strong>

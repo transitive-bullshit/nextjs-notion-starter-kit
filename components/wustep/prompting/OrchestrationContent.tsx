@@ -86,26 +86,22 @@ export function OrchestrationContent() {
       <SectionHeading num='6.2'>Stagger and overlap</SectionHeading>
 
       <p>
-        You can only write one brief at a time. The agents don&apos;t all start
-        in parallel; you start them in a cascade. Brief thread one, kick it off.
-        While it runs, brief thread two. Then three. By the time you&apos;ve
-        sent the third, the first is delivering. You step in, glance, send a
-        follow-up, and the cycle continues.
+        You can only write one brief at a time, so agents start in a cascade.
+        Brief thread one, kick it off. While it runs, brief thread two. By the
+        time you&apos;ve sent the third, the first is delivering.
       </p>
 
       <Figure
         num='6.2'
-        caption='Briefs (red) cascade, since you can only write one at a time. Agent work (ink) overlaps freely. Dashed gaps are the cost of switching attention.'
+        caption='Briefs (solid) cascade, since you can only write one at a time. Agent work (gray) overlaps freely. Dashed gaps are the cost of switching attention.'
       >
         <StaggerDiagram />
       </Figure>
 
       <p>
-        Three things to notice. The red bars never overlap: that&apos;s your
-        hands, and there&apos;s only one of you. The ink bars do, freely; the
-        agents don&apos;t wait for each other. And after every agent finishes,
-        there&apos;s a small dashed gap before you come back. Attention is a
-        real cost, and you can only spend it on one thread at a time.
+        The solid bars never overlap: that&apos;s your hands, and there&apos;s
+        only one of you. The agents overlap freely. Attention is a real cost,
+        and you can only spend it on one thread at a time.
       </p>
 
       <SectionHeading num='6.3'>Fan out</SectionHeading>
@@ -181,9 +177,8 @@ export function OrchestrationContent() {
         <p>
           With several agents going, the job changes shape: you&apos;re
           triaging, not typing. Which branch needs a decision, which run is
-          stuck, what&apos;s ready to merge. One agent makes you faster; a fleet
-          gives you a whole team, cheap and always available. The bottleneck
-          stops being the model and becomes <em>you</em>.
+          stuck, what&apos;s ready to merge. The bottleneck stops being the
+          model and becomes <em>you</em>.
         </p>
         <p>
           So that&apos;s the skill worth building: reading diffs fast, holding
