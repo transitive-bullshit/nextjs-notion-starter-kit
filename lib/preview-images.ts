@@ -14,6 +14,7 @@ import { defaultPageCover, defaultPageIcon } from './config'
 import { dbGet, dbSet } from './db'
 import persistedPreviewImagesJson from './generated/preview-images.json'
 import { mapImageUrl } from './map-image-url'
+import { NOTION_USER_AGENT } from './notion-api'
 import { getErrorMessage } from './utils'
 
 // Committed, prebuild-generated LQIP cache (keyed by normalizeUrl). Read first
@@ -65,7 +66,9 @@ async function createPreviewImage(
       return cached.value
     }
 
-    const body = await ky(url).arrayBuffer()
+    const body = await ky(url, {
+      headers: { 'User-Agent': NOTION_USER_AGENT }
+    }).arrayBuffer()
     const result = await lqip(body)
 
     const previewImage = {

@@ -2,6 +2,34 @@ import { NotionAPI } from 'notion-client'
 
 const RETRY_STATUS_CODES = new Set([429, 502, 503, 504])
 
+/**
+ * As of early August 2026, the Cloudflare in front of www.notion.so rejects
+ * any request with no User-Agent header with a 403 — Node's fetch-based
+ * clients (ofetch/undici here, ky in lib/preview-images.ts) send none by
+ * default. Shared so both call sites present the same header.
+ * https://github.com/NotionX/react-notion-x/issues/710
+ */
+export const NOTION_USER_AGENT =
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+
+// Merges into every notion-client request via NotionAPI's own
+// ofetchOptions.headers merge (see notion-client's fetch()).
+const ofetchOptions = {
+  headers: {
+    'User-Agent': NOTION_USER_AGENT
+  }
+}
+
+/**
+ * Optional extra hardening: authenticate as a real logged-in Notion session
+ * instead of a fully-anonymous request. Not required for the Cloudflare
+ * User-Agent block above, but Notion has separately been known to treat
+ * anonymous datacenter/CI traffic differently even on genuinely public
+ * pages. See docs/configuration.md for how to obtain the cookie value.
+ */
+const authToken = process.env.NOTION_TOKEN_V2 || undefined
+const activeUser = process.env.NOTION_ACTIVE_USER || undefined
+
 const RUNTIME_MAX_RETRIES = 1
 const RUNTIME_RETRY_DELAY_MS = 1100
 
@@ -58,7 +86,12 @@ export class RetryNotionAPI extends NotionAPI {
  * Retries 429/5xx once after a short delay to handle transient errors.
  */
 export const notion = new RetryNotionAPI(
-  { apiBaseUrl: process.env.NOTION_API_BASE_URL },
+  {
+    apiBaseUrl: process.env.NOTION_API_BASE_URL,
+    authToken,
+    activeUser,
+    ofetchOptions
+  },
   {
     maxRetries: RUNTIME_MAX_RETRIES,
     initialDelay: RUNTIME_RETRY_DELAY_MS,
@@ -90,7 +123,12 @@ class BuildNotionAPI extends RetryNotionAPI {
 }
 
 export const buildNotion = new BuildNotionAPI(
-  { apiBaseUrl: process.env.NOTION_API_BASE_URL },
+  {
+    apiBaseUrl: process.env.NOTION_API_BASE_URL,
+    authToken,
+    activeUser,
+    ofetchOptions
+  },
   {
     maxRetries: BUILD_MAX_RETRIES,
     initialDelay: BUILD_INITIAL_DELAY_MS,

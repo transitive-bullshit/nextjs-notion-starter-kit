@@ -105,6 +105,19 @@ Set `OWNER_MODE_SECRET` for Development, Preview, and Production in Vercel if ow
 
 Owner mode issues a signed, `HttpOnly`, same-site cookie for one year. A local access marker reveals the hover-only agent toggle after successful activation, while a separate active marker controls presentation and suppresses Vercel Analytics, Fathom, PostHog, and Google Analytics. The header toggle can pause or resume owner mode without forgetting the browser; “Forget this browser” at `/owner` clears both the cookie and local access.
 
+### Notion auth (optional hardening)
+
+As of early August 2026, the Cloudflare in front of `www.notion.so` rejects any `api/v3` request with no `User-Agent` header with a `403` — Node's `ofetch`/`undici` (which `notion-client` uses) sends none by default. `lib/notion-api.ts` sets a default browser `User-Agent` on both Notion clients to fix this; no env var needed. See [react-notion-x#710](https://github.com/NotionX/react-notion-x/issues/710).
+
+Separately, Notion has been known to treat fully-anonymous datacenter/CI traffic differently from a real logged-in session, even on genuinely public pages. If 403s persist after the `User-Agent` fix, authenticate as a real session:
+
+| Var | Notes |
+|---|---|
+| `NOTION_TOKEN_V2` | The `token_v2` cookie from a logged-in notion.so session (DevTools → Application → Cookies → `www.notion.so`). Treat as a secret. |
+| `NOTION_ACTIVE_USER` | The `notion_user_id` cookie from the same session. Optional, pairs with `NOTION_TOKEN_V2`. |
+
+Set both for Development, Preview, and Production in Vercel. The cookie is tied to a browser session and can expire or be invalidated by a password change — if 403s come back, re-extract a fresh value.
+
 ### Misc
 
 | Var | Notes |
