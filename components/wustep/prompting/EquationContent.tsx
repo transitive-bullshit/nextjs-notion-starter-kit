@@ -62,7 +62,9 @@ export function EquationContent() {
             <span className={styles.modelGuideWhen}>
               Fast and cost-friendly
             </span>
-            <span className={styles.modelGuidePick}>Cursor Grok 4.5</span>
+            <span className={styles.modelGuidePick}>
+              Cursor Grok 4.5 · GPT 5.6 Luna
+            </span>
           </div>
           <div className={styles.modelGuideRow}>
             <span className={styles.modelGuideWhen}>
