@@ -1177,6 +1177,7 @@
 
 /* Model calibration grid inside the MODEL lever */
 .modelGuide {
+  position: relative;
   margin: 0.4em 0 1em;
   padding: 4px 0;
   border-top: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.1));
@@ -1204,15 +1205,22 @@
   border-bottom: none;
 }
 
-/* Small provenance note under the model table, tucked bottom-right. */
+/* Small provenance tag breaking the table's top hairline, top-right —
+ * the same "label cuts the rule" move used by figure captions and
+ * section dividers elsewhere in the article. */
 .modelGuideUpdated {
-  margin: 4px 2px 0;
-  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  transform: translateY(-50%);
+  padding: 0 6px;
+  background: var(--bg-color, #fdfdfc);
   font-family: var(--font-sans);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 450;
   letter-spacing: 0.01em;
   color: var(--fg-color-2, rgba(26, 25, 24, 0.45));
+  white-space: nowrap;
 }
 
 :global(.dark-mode) .modelGuideUpdated {

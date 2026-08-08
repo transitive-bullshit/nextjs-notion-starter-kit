@@ -54,6 +54,9 @@ export function EquationContent() {
         </p>
 
         <div className={styles.modelGuide}>
+          <span className={styles.modelGuideUpdated}>
+            Last updated Aug 2026
+          </span>
           <div className={styles.modelGuideRow}>
             <span className={styles.modelGuideWhen}>
               Fast and cost-friendly
@@ -75,7 +78,6 @@ export function EquationContent() {
             <span className={styles.modelGuidePick}>GPT 5.6 Sol</span>
           </div>
         </div>
-        <div className={styles.modelGuideUpdated}>Last updated Aug 2026</div>
 
         <p>
           Models have distinct styles: how they structure code, where they cut
