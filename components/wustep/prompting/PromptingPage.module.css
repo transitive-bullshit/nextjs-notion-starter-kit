@@ -894,71 +894,26 @@
   transform: translateX(3px);
 }
 
-/* Restart pill — used on the Recap page in place of the prominent
-   Next button. Smaller, inline, with a continuously-rotating icon so
-   it reads as "loop back" rather than "next chapter". */
-.chapterNavRestart {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
-  text-decoration: none !important;
-  border: 1px solid var(--fg-color-1, rgba(26, 25, 24, 0.12)) !important;
-  background: transparent !important;
-  background-image: none !important;
-  transition:
-    background 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease;
-}
-
-.chapterNavRestart:hover {
-  color: var(--fg-color, #1a1918);
-  background: var(--fg-color-0, rgba(26, 25, 24, 0.05)) !important;
-  border-color: var(--fg-color-2, rgba(26, 25, 24, 0.18)) !important;
-}
-
-:global(.dark-mode) .chapterNavRestart {
-  color: rgba(255, 255, 255, 0.55);
-  border-color: rgba(255, 255, 255, 0.12) !important;
-}
-
-:global(.dark-mode) .chapterNavRestart:hover {
-  color: rgba(255, 255, 255, 0.95);
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-}
-
-.chapterNavRestartLabel {
-  display: inline-block;
-}
-
+/* Restart — the Recap footer's next slot, in the same grammar as the
+   other nav links. The circular arrow is still by default and turns
+   one full revolution on hover: loop back, shown once, on intent. */
 .chapterNavRestartIcon {
   flex-shrink: 0;
   transform-origin: 50% 50%;
-  animation: chapterNavRestartSpin 8s linear infinite;
-  transition: animation-duration 220ms ease;
+  transition: transform 700ms
+    var(--ease-out-quart, cubic-bezier(0.25, 1, 0.5, 1));
 }
 
-.chapterNavRestart:hover .chapterNavRestartIcon {
-  animation-duration: 1.6s;
-}
-
-@keyframes chapterNavRestartSpin {
-  to {
-    transform: rotate(-360deg);
-  }
+.chapterNavLink:hover .chapterNavRestartIcon {
+  transform: rotate(-360deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .chapterNavRestartIcon {
-    animation: none;
+    transition: none;
+  }
+  .chapterNavLink:hover .chapterNavRestartIcon {
+    transform: none;
   }
 }
 
@@ -2301,7 +2256,7 @@
 
 .synthesisHeading {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   margin: 0 0 0.6em;
   font-family: var(--font-sans);
@@ -2311,20 +2266,11 @@
   color: var(--fg-color, #1a1918);
 }
 
-.synthesisTag {
-  display: inline-block;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.92em;
-  font-weight: 480;
-  letter-spacing: 0;
-  color: var(--pm-accent-ink, #1a1918);
+.synthesisIcon {
   flex-shrink: 0;
-}
-
-.synthesisTag::after {
-  content: ' —';
-  color: var(--fg-color-2, rgba(26, 25, 24, 0.4));
+  width: 18px;
+  height: 18px;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
 }
 
 .synthesis p {
@@ -4319,4 +4265,56 @@
   .submitButton:active:not(:disabled) {
     transform: none;
   }
+}
+
+/* ===== Timeline legend (orchestration figures) =====
+ * Names the block encoding right where it's used: solid = you typing,
+ * gray = agent running, dashed = you reading and deciding. */
+
+.orchLegend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 22px;
+  margin-top: 14px;
+}
+
+.orchLegendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--fg-color-2, rgba(26, 25, 24, 0.56));
+}
+
+.orchLegendSwatch {
+  display: inline-block;
+  width: 16px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.orchLegendYou {
+  background: var(--fg-color, #1a1918);
+}
+
+.orchLegendAgent {
+  background: var(--fg-color-2, rgba(26, 25, 24, 0.38));
+}
+
+:global(.dark-mode) .orchLegendAgent {
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.orchLegendIdle {
+  background: var(--fg-color-0, rgba(26, 25, 24, 0.05));
+  border: 1px dashed var(--fg-color-2, rgba(26, 25, 24, 0.4));
+}
+
+:global(.dark-mode) .orchLegendIdle {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.4);
 }

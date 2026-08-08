@@ -83,8 +83,8 @@ export function Figure({
 }
 
 /**
- * Note — the article's one callout grammar: a soft plinth with a quiet
- * serif-italic "Note" marker. Chapter-closing or mid-chapter.
+ * Note — the article's one callout grammar: a soft plinth marked by a
+ * quiet (i) glyph. Chapter-closing or mid-chapter.
  */
 export function Note({
   title,
@@ -96,11 +96,32 @@ export function Note({
   return (
     <aside className={styles.synthesis}>
       <h3 className={styles.synthesisHeading}>
-        <span className={styles.synthesisTag}>Note</span>
+        <InfoIcon className={styles.synthesisIcon} />
         {title}
       </h3>
       {children}
     </aside>
+  )
+}
+
+function InfoIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      width='18'
+      height='18'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.75'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      aria-hidden='true'
+    >
+      <circle cx='12' cy='12' r='9.25' />
+      <line x1='12' y1='11' x2='12' y2='16.4' />
+      <circle cx='12' cy='7.6' r='0.6' fill='currentColor' stroke='none' />
+    </svg>
   )
 }
 

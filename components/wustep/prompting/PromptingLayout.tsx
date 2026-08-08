@@ -212,13 +212,18 @@ function ChapterNav({ chapter }: { chapter: ChapterMeta }) {
           (chapter.nextKind === 'restart' ? (
             <Link
               href={chapter.nextHref}
-              className={styles.chapterNavRestart}
+              className={`${styles.chapterNavLink} ${styles.chapterNavLinkNext}`}
               aria-label={`Restart: ${chapter.nextLabel}`}
             >
-              <RestartIcon className={styles.chapterNavRestartIcon} />
-              <span className={styles.chapterNavRestartLabel}>
-                {chapter.nextLabel}
+              <span className={styles.chapterNavBody}>
+                <span className={styles.chapterNavDirection}>Restart</span>
+                <span className={styles.chapterNavLabel}>
+                  {chapter.nextLabel}
+                </span>
               </span>
+              <RestartIcon
+                className={`${styles.chapterNavArrow} ${styles.chapterNavRestartIcon}`}
+              />
             </Link>
           ) : (
             <Link
@@ -242,16 +247,15 @@ function ChapterNav({ chapter }: { chapter: ChapterMeta }) {
 }
 
 /**
- * RestartIcon — circular arrow used by the Recap chapter's "Restart"
- * pill. Rotates continuously at a slow, almost-ignorable pace, and
- * speeds up on hover via CSS.
+ * RestartIcon — circular arrow in the Recap footer's Restart slot.
+ * Still by default; turns one full revolution on hover.
  */
 function RestartIcon({ className }: { className?: string }) {
   return (
     <svg
       className={className}
-      width='14'
-      height='14'
+      width='15'
+      height='15'
       viewBox='0 0 24 24'
       fill='none'
       stroke='currentColor'

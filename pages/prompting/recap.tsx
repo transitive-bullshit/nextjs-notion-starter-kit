@@ -35,7 +35,7 @@ export default function PromptingRecapPage() {
           prevHref: '/prompting/orchestration',
           prevLabel: 'Orchestration',
           nextHref: '/prompting',
-          nextLabel: 'Restart',
+          nextLabel: 'From the top',
           nextKind: 'restart'
         }}
       >

@@ -16,16 +16,9 @@ export function OrchestrationContent() {
         bottleneck.
       </p>
 
-      <Figure
-        num='6.1'
-        caption={
-          <>
-            Same work, very different wall-clock cost. The dashed blocks in the
-            top row are <em>you</em>, deciding what to type next.
-          </>
-        }
-      >
+      <Figure num='6.1' caption='Same work, very different wall-clock cost.'>
         <PingPongDiagram />
+        <TimelineLegend />
       </Figure>
 
       <p>
@@ -93,9 +86,10 @@ export function OrchestrationContent() {
 
       <Figure
         num='6.2'
-        caption='Briefs (solid) cascade, since you can only write one at a time. Agent work (gray) overlaps freely. Dashed gaps are the cost of switching attention.'
+        caption='Briefs cascade, since you can only write one at a time. Agent work overlaps freely.'
       >
         <StaggerDiagram />
+        <TimelineLegend />
       </Figure>
 
       <p>
@@ -207,6 +201,29 @@ const SEGMENT_TOOLTIPS: Record<SegmentKind, string> = {
   you: 'You — writing a prompt or brief',
   agent: 'Agent — running',
   idle: 'You — reading, thinking, deciding what to do next'
+}
+
+/**
+ * TimelineLegend — names the three block kinds used by the timeline
+ * figures, so the encoding never has to be decoded from the caption.
+ */
+function TimelineLegend() {
+  return (
+    <div className={styles.orchLegend}>
+      <span className={styles.orchLegendItem}>
+        <i className={`${styles.orchLegendSwatch} ${styles.orchLegendYou}`} />
+        You, typing
+      </span>
+      <span className={styles.orchLegendItem}>
+        <i className={`${styles.orchLegendSwatch} ${styles.orchLegendAgent}`} />
+        Agent, running
+      </span>
+      <span className={styles.orchLegendItem}>
+        <i className={`${styles.orchLegendSwatch} ${styles.orchLegendIdle}`} />
+        You, reading &amp; deciding
+      </span>
+    </div>
+  )
 }
 
 type PingSegment = {
