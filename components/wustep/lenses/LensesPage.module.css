@@ -2106,20 +2106,6 @@
   min-width: 0;
 }
 
-.dialogEyebrow {
-  display: inline-block;
-  font-family: var(
-    --design-sans,
-    var(--font-geist, var(--font-sans), system-ui, sans-serif)
-  );
-  font-size: 0.66rem;
-  text-transform: var(--design-eyebrow-case, uppercase);
-  letter-spacing: var(--design-eyebrow-tracking, 0.2em);
-  font-weight: var(--design-eyebrow-weight, 500);
-  opacity: 0.5;
-  margin-bottom: 2px;
-}
-
 .dialogTitle {
   font-family: var(
     --design-sans,
@@ -2146,8 +2132,84 @@
   opacity: 0.82;
 }
 
-.dialogLede + .dialogLede {
-  margin-top: 0.55em;
+.dialogCredit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 2px 0 0;
+  font-family: var(
+    --design-sans,
+    var(--font-geist, var(--font-sans), system-ui, sans-serif)
+  );
+  font-size: 0.75rem;
+  line-height: 1.35;
+  opacity: 0.58;
+}
+
+.dialogCreditInfo {
+  display: none;
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font: 600 0.65rem/1 var(--font-sans, system-ui, sans-serif);
+  cursor: help;
+  opacity: 0.82;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dialogCreditInfo {
+    display: inline-flex;
+  }
+
+  .dialogCreditInfo:hover {
+    opacity: 1;
+  }
+}
+
+.dialogCreditTooltip {
+  z-index: calc(var(--z-modal) + 4);
+  width: min(330px, calc(100vw - 32px));
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #f5f1e8;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.45);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-wrap: pretty;
+  animation: dialogCreditTooltipIn 140ms var(--ease-out-quart);
+}
+
+:global(.dark-mode) .dialogCreditTooltip {
+  background: #f5f1e8;
+  color: #1a1a1a;
+}
+
+.dialogCreditTooltipArrow {
+  fill: #1a1a1a;
+}
+
+:global(.dark-mode) .dialogCreditTooltipArrow {
+  fill: #f5f1e8;
+}
+
+@keyframes dialogCreditTooltipIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Lens jump list — scrolls inside the dialog while the header stays. */
@@ -4251,6 +4313,7 @@
   .dialogListItem,
   .dialogJumpBtn,
   .dialogJumpArrow,
+  .dialogCreditTooltip,
   .dialogCloseBtn,
   .relatedChip,
   .relatedChipArrow,

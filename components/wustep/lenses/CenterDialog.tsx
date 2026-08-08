@@ -1,4 +1,5 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog'
+import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import * as React from 'react'
 
 import { isDev } from '@/lib/config'
@@ -86,9 +87,6 @@ export function CenterDialog({
         >
           <header className={styles.dialogHeader}>
             <div className={styles.dialogHeaderText}>
-              <span className={styles.dialogEyebrow}>
-                The deck · {lenses.length} lenses
-              </span>
               <DialogPrimitive.Title className={styles.dialogTitle}>
                 {deck.dialog.title}
               </DialogPrimitive.Title>
@@ -97,6 +95,37 @@ export function CenterDialog({
                   {paragraph}
                 </p>
               ))}
+              {deck.dialog.credit ? (
+                <p className={styles.dialogCredit}>
+                  {deck.dialog.credit.label}
+                  <TooltipPrimitive.Provider delayDuration={250}>
+                    <TooltipPrimitive.Root>
+                      <TooltipPrimitive.Trigger asChild>
+                        <button
+                          type='button'
+                          className={styles.dialogCreditInfo}
+                          aria-label='About the Claude co-writing credit'
+                        >
+                          i
+                        </button>
+                      </TooltipPrimitive.Trigger>
+                      <TooltipPrimitive.Portal>
+                        <TooltipPrimitive.Content
+                          className={styles.dialogCreditTooltip}
+                          side='bottom'
+                          sideOffset={8}
+                          collisionPadding={16}
+                        >
+                          {deck.dialog.credit.tooltip}
+                          <TooltipPrimitive.Arrow
+                            className={styles.dialogCreditTooltipArrow}
+                          />
+                        </TooltipPrimitive.Content>
+                      </TooltipPrimitive.Portal>
+                    </TooltipPrimitive.Root>
+                  </TooltipPrimitive.Provider>
+                </p>
+              ) : null}
             </div>
             <DialogPrimitive.Close
               className={styles.dialogCloseBtn}

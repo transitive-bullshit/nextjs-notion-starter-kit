@@ -44,6 +44,10 @@ export type Deck = {
   dialog: {
     title: string
     lede: string[]
+    credit?: {
+      label: string
+      tooltip: string
+    }
   }
   /** Illustration renderer for this deck's illustration keys. */
   Illustration: React.ComponentType<DeckIllustrationProps>
@@ -72,9 +76,13 @@ export const WUSTEP_DECK: Deck = {
   dialog: {
     title: 'A lens is a way of looking.',
     lede: [
-      'You’re already looking through one; you just didn’t choose it. No single lens explains the world — each shows you something the others hide. The deck is for switching on purpose.',
-      'Pull one. Look through it. Put it back.'
-    ]
+      'You’re already looking through one; you just didn’t choose it. No single lens explains the world — each shows you something the others hide. The deck is for switching on purpose. Pull one. Look through it. Put it back.'
+    ],
+    credit: {
+      label: 'Cowritten with Claude.',
+      tooltip:
+        "I'd love to rewrite this by hand one day but haven't had the time, I hope you'll bear with my AI writing for now 🙏"
+    }
   },
   Illustration: WustepIllustration
 }
