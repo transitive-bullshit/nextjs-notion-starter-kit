@@ -81,7 +81,7 @@ export const WUSTEP_DECK: Deck = {
     credit: {
       label: 'Cowritten with Claude.',
       tooltip:
-        "I'd love to rewrite this by hand one day but haven't had the time, I hope you'll bear with my AI writing for now 🙏"
+        "The ideas are mine; Claude helped me put them into words. I'd love to rewrite everything by hand one day, but haven't had the time. I hope you'll bear with the AI-assisted writing for now 🙏"
     }
   },
   Illustration: WustepIllustration

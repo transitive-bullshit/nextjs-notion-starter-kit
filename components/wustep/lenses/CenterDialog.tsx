@@ -34,6 +34,7 @@ export function CenterDialog({
 }: CenterDialogProps) {
   const deck = useDeck()
   const lenses = deck.lenses
+  const closeButtonRef = React.useRef<HTMLButtonElement>(null)
   /* Optional grouping by category. Default keeps the alphabetical
      reading order (the registry's runtime sort) so finding a lens
      scans top-to-bottom on first letter. Grouped mode is for when
@@ -84,6 +85,10 @@ export function CenterDialog({
              click outside `Content`. No-op in production. */
           onPointerDownOutside={ignoreDesignPanelOutside}
           onInteractOutside={ignoreDesignPanelOutside}
+          onOpenAutoFocus={(event) => {
+            event.preventDefault()
+            closeButtonRef.current?.focus()
+          }}
         >
           <header className={styles.dialogHeader}>
             <div className={styles.dialogHeaderText}>
@@ -128,6 +133,7 @@ export function CenterDialog({
               ) : null}
             </div>
             <DialogPrimitive.Close
+              ref={closeButtonRef}
               className={styles.dialogCloseBtn}
               aria-label='Close'
             >
