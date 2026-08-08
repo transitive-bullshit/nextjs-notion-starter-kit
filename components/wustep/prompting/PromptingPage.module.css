@@ -3790,7 +3790,7 @@
   display: block;
   width: 100%;
   height: auto;
-  max-width: 260px;
+  max-width: 340px;
   overflow: visible;
 }
 
@@ -3847,10 +3847,34 @@
   stroke: rgba(255, 255, 255, 0.45);
 }
 
+/* Session dots land one by one as the stroke reaches them (per-dot
+ * transition-delay is set inline, matched to the draw). */
+.practiceSparkMid {
+  fill: var(--fg-color, #1a1918);
+  opacity: 0;
+  transition: opacity 260ms var(--ease-out-swift);
+}
+
+.practiceSparkMidMuted {
+  fill: var(--fg-color-2, rgba(26, 25, 24, 0.42));
+}
+
+:global(.dark-mode) .practiceSparkMid {
+  fill: rgba(255, 255, 255, 0.92);
+}
+
+:global(.dark-mode) .practiceSparkMidMuted {
+  fill: rgba(255, 255, 255, 0.45);
+}
+
+.practiceLoopVisible .practiceSparkMid {
+  opacity: 1;
+}
+
 .practiceSparkEnd {
   opacity: 0;
   transition: opacity 500ms var(--ease-out-swift);
-  transition-delay: 1000ms;
+  transition-delay: 1100ms;
 }
 
 .practiceLoopVisible .practiceSparkEnd {
@@ -3887,6 +3911,7 @@
     transition: none;
     stroke-dashoffset: 0;
   }
+  .practiceSparkMid,
   .practiceSparkEnd {
     transition: none;
     opacity: 1;

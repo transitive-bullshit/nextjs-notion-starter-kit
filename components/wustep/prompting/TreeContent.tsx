@@ -101,10 +101,10 @@ export function TreeContent() {
             up as rework two prompts later.
           </li>
           <li>
-            <strong>If you&apos;re burning loops, zoom out.</strong>{' '}
-            Delegate-reject-reprompt cycles are almost always a context problem,
-            not a model problem. The cell you&apos;re in is wrong. Back out to
-            plan, or all the way up to ask.
+            <strong>Stuck in a loop? Zoom out.</strong> If you&apos;ve rejected
+            the same delegation three times, the wording isn&apos;t the problem.
+            The agent is missing something you haven&apos;t given it. Back out
+            to plan, or all the way up to ask.
           </li>
           <li>
             <strong>

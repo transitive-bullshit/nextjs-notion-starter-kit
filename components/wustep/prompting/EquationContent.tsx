@@ -72,9 +72,7 @@ export function EquationContent() {
             <span className={styles.modelGuideWhen}>
               Problem solving, backend, gnarly debugging
             </span>
-            <span className={styles.modelGuidePick}>
-              GPT 5.6 Sol · GPT 5.6 Luna Max
-            </span>
+            <span className={styles.modelGuidePick}>GPT 5.6 Sol</span>
           </div>
         </div>
 

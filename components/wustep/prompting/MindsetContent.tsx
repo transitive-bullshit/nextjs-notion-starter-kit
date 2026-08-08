@@ -244,8 +244,10 @@ function EloChart() {
  * Open loop = solid ink climbing; closed loop = mid-gray sliding.
  * ───────────────────────────────────────────────────────── */
 
-const PRACTICE_OPEN = [1200, 1204, 1211, 1218, 1227]
-const PRACTICE_CLOSED = [1200, 1198, 1192, 1186]
+/* Session-by-session ELO. Progress isn't monotonic — a couple of dips
+ * keep the climb honest; the slide has a false rally in it too. */
+const PRACTICE_OPEN = [1200, 1203, 1201, 1207, 1212, 1210, 1219, 1227]
+const PRACTICE_CLOSED = [1200, 1198, 1201, 1196, 1193, 1188, 1186]
 
 /* Shared y-scale across both cards so the slopes are honest. */
 const SPARK_W = 240
@@ -255,15 +257,21 @@ const SPARK_PAD_Y = 18
 const SPARK_MIN = Math.min(...PRACTICE_CLOSED)
 const SPARK_MAX = Math.max(...PRACTICE_OPEN)
 
+/* Each series spans the full width on its own x-scale. */
 function sparkPoints(values: number[]): Array<{ x: number; y: number }> {
   const innerW = SPARK_W - SPARK_PAD_X * 2
   const innerH = SPARK_H - SPARK_PAD_Y * 2
   const span = SPARK_MAX - SPARK_MIN
   return values.map((v, i) => ({
-    x: SPARK_PAD_X + (i / (PRACTICE_OPEN.length - 1)) * innerW,
+    x: SPARK_PAD_X + (i / (values.length - 1)) * innerW,
     y: SPARK_PAD_Y + (1 - (v - SPARK_MIN) / span) * innerH
   }))
 }
+
+/* The line draws over 900ms starting at 200ms; each mid dot lands as
+ * the stroke reaches it. */
+const SPARK_DRAW_START_MS = 200
+const SPARK_DRAW_MS = 900
 
 function Sparkline({
   values,
@@ -317,6 +325,22 @@ function Sparkline({
           muted ? styles.practiceSparkLineMuted : ''
         }`}
       />
+      {pts.slice(0, -1).map((p, i) => (
+        <circle
+          key={i}
+          cx={p.x}
+          cy={p.y}
+          r='2.25'
+          className={`${styles.practiceSparkMid} ${
+            muted ? styles.practiceSparkMidMuted : ''
+          }`}
+          style={{
+            transitionDelay: `${
+              SPARK_DRAW_START_MS + (i / (pts.length - 1)) * SPARK_DRAW_MS
+            }ms`
+          }}
+        />
+      ))}
       <g className={styles.practiceSparkEnd}>
         <circle
           cx={last.x}
