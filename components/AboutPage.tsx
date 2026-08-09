@@ -97,48 +97,146 @@ function Tooltip({
   inline?: boolean
 }) {
   const wrapperRef = React.useRef<HTMLSpanElement>(null)
+  const tooltipRef = React.useRef<HTMLSpanElement>(null)
   const tooltipId = React.useId()
   const [position, setPosition] = React.useState<'above' | 'below'>(
     forcedPosition ?? 'below'
   )
+  const [shift, setShift] = React.useState(0)
+  const shiftRef = React.useRef(0)
+  const [arrowShift, setArrowShift] = React.useState(0)
+  const positionRef = React.useRef(position)
+  const [tapped, setTapped] = React.useState(false)
+
+  // The tooltip is centered on its trigger, which pushes it past the viewport
+  // edge for triggers near one. Nudge it back in (the arrow counter-shifts in
+  // CSS so it keeps pointing at the trigger). Measure the tooltip itself
+  // rather than the wrapper: an inline wrapper that breaks across lines
+  // reports the union of its line boxes, which is not where the tooltip is
+  // anchored. Undo the shift already applied to recover that anchor.
+  const updateShift = React.useCallback(() => {
+    if (!tooltipRef.current) return
+    const margin = 12
+    // clientWidth, not innerWidth: an overflowing tooltip widens the mobile
+    // layout viewport, and measuring against that would leave it overflowing.
+    const viewport = document.documentElement.clientWidth
+    const rect = tooltipRef.current.getBoundingClientRect()
+    const left = rect.left - shiftRef.current
+    const right = left + rect.width
+    const next =
+      left < margin
+        ? Math.round(margin - left)
+        : right > viewport - margin
+          ? -Math.round(right - (viewport - margin))
+          : 0
+    shiftRef.current = next
+    setShift(next)
+
+    // Point the arrow at the line box the tooltip actually sits against: an
+    // inline trigger that wraps has two of them, and aiming at the midpoint of
+    // both puts the arrow in the gutter between lines.
+    const fragments = [...(wrapperRef.current?.getClientRects() ?? [])]
+    if (fragments.length === 0) return
+    const fragment =
+      positionRef.current === 'below' ? fragments.at(-1)! : fragments[0]!
+    const limit = Math.max(0, rect.width / 2 - 16)
+    const offset =
+      fragment.left + fragment.width / 2 - (left + rect.width / 2 + next)
+    setArrowShift(Math.round(Math.min(Math.max(offset, -limit), limit)))
+  }, [])
+
+  // Clamp on mount too, not just on reveal: a tooltip is laid out even while
+  // hidden, so an unclamped one makes the page scroll sideways on a phone.
+  React.useEffect(() => {
+    updateShift()
+    window.addEventListener('resize', updateShift)
+    return () => window.removeEventListener('resize', updateShift)
+  }, [updateShift])
 
   const updatePosition = React.useCallback(() => {
-    if (forcedPosition) return
-    if (!wrapperRef.current) return
-    const rect = wrapperRef.current.getBoundingClientRect()
-    const tooltipHeight = 50
-    const spaceBelow = window.innerHeight - rect.bottom
-    setPosition(spaceBelow >= tooltipHeight ? 'below' : 'above')
-  }, [forcedPosition])
+    if (wrapperRef.current && !forcedPosition) {
+      const rect = wrapperRef.current.getBoundingClientRect()
+      const tooltipHeight = 50
+      const spaceBelow = window.innerHeight - rect.bottom
+      positionRef.current = spaceBelow >= tooltipHeight ? 'below' : 'above'
+      setPosition(positionRef.current)
+    }
+    updateShift()
+  }, [forcedPosition, updateShift])
+
+  const close = React.useCallback(() => {
+    setTapped(false)
+    const active = document.activeElement
+    if (active instanceof HTMLElement && wrapperRef.current?.contains(active)) {
+      active.blur()
+    }
+  }, [])
 
   // Describe the trigger with the tooltip and make plain-span triggers
   // focusable so keyboard users can reveal it via :focus-within.
   const child = React.Children.only(children)
+  const isSpanTrigger = React.isValidElement(child) && child.type === 'span'
+
+  // Touch devices have no hover, so the tooltip needs a tap — but only
+  // plain-span triggers can spend one on it. A link's tap belongs to its
+  // navigation, so those keep the hover-only tooltip (hidden on touch).
+  const toggleOnTouch = React.useCallback(() => {
+    if (!window.matchMedia('(hover: none), (pointer: coarse)').matches) return
+    if (tapped) {
+      close()
+      return
+    }
+    updatePosition()
+    setTapped(true)
+  }, [close, tapped, updatePosition])
+
+  React.useEffect(() => {
+    if (!tapped) return
+    const onPointerDown = (event: PointerEvent) => {
+      if (wrapperRef.current?.contains(event.target as Node)) return
+      close()
+    }
+    document.addEventListener('pointerdown', onPointerDown)
+    window.addEventListener('scroll', close, { passive: true })
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown)
+      window.removeEventListener('scroll', close)
+    }
+  }, [close, tapped])
+
   const trigger = React.isValidElement(child)
     ? React.cloneElement(child as React.ReactElement<Record<string, unknown>>, {
         'aria-describedby': tooltipId,
-        ...(child.type === 'span' ? { tabIndex: 0 } : null)
+        ...(isSpanTrigger ? { tabIndex: 0, onClick: toggleOnTouch } : null)
       })
     : children
 
   return (
     <span
       ref={wrapperRef}
-      className={`${styles.tooltipWrapper} ${inline ? styles.tooltipWrapperInline : ''}`}
+      className={`${styles.tooltipWrapper} ${inline ? styles.tooltipWrapperInline : ''} ${isSpanTrigger ? styles.tooltipTappable : ''} ${tapped ? styles.tooltipTapped : ''}`}
       onMouseEnter={updatePosition}
       onFocus={updatePosition}
       onKeyDown={(event) => {
         // WCAG 1.4.13: let keyboard users dismiss the tooltip in place.
         if (event.key === 'Escape' && document.activeElement) {
+          close()
           ;(document.activeElement as HTMLElement).blur()
         }
       }}
     >
       {trigger}
       <span
+        ref={tooltipRef}
         id={tooltipId}
         role='tooltip'
         className={`${styles.tooltip} ${position === 'above' ? styles.tooltipAbove : styles.tooltipBelow}`}
+        style={
+          {
+            '--tooltip-shift': `${shift}px`,
+            '--tooltip-arrow-shift': `${arrowShift}px`
+          } as React.CSSProperties
+        }
       >
         {label}
       </span>

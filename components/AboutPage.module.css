@@ -1164,7 +1164,7 @@ a.bioHint {
    (link or focusable span) shows its tooltip. */
 .tooltipWrapper:focus-within .tooltip {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(calc(-50% + var(--tooltip-shift, 0px))) translateY(0);
 }
 
 .tooltipWrapper:has(.featured) {
@@ -1185,7 +1185,9 @@ a.bioHint {
 .tooltip {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%) translateY(6px);
+  /* --tooltip-shift keeps an edge-hugging tooltip inside the viewport; it is
+     measured per-trigger in AboutPage.tsx and defaults to no shift. */
+  transform: translateX(calc(-50% + var(--tooltip-shift, 0px))) translateY(6px);
   padding: 10px 14px;
   background: #fff;
   color: #111;
@@ -1212,7 +1214,7 @@ a.bioHint {
   position: absolute;
   top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(calc(-50% + var(--tooltip-arrow-shift, 0px)));
   border: 7px solid transparent;
   border-top-color: #fff;
 }
@@ -1226,7 +1228,7 @@ a.bioHint {
   position: absolute;
   bottom: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(calc(-50% + var(--tooltip-arrow-shift, 0px)));
   border: 7px solid transparent;
   border-bottom-color: #fff;
 }
@@ -1234,7 +1236,7 @@ a.bioHint {
 @media (hover: hover) {
   .tooltipWrapper:hover .tooltip {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(calc(-50% + var(--tooltip-shift, 0px))) translateY(0);
   }
 }
 
@@ -1339,9 +1341,21 @@ a.bioHint {
   }
 }
 
+/* Touch has no hover, so a tooltip costs a tap. Plain-span triggers have
+   nothing else to spend that tap on, so they toggle their tooltip; link
+   triggers spend it on navigation and stay tooltip-less here. */
 @media (hover: none), (pointer: coarse) {
   .tooltip {
     display: none;
+  }
+
+  .tooltipTappable .tooltip {
+    display: block;
+  }
+
+  .tooltipTappable.tooltipTapped .tooltip {
+    opacity: 1;
+    transform: translateX(calc(-50% + var(--tooltip-shift, 0px))) translateY(0);
   }
 }
 
