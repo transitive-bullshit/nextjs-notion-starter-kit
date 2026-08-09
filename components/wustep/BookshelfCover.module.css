@@ -88,6 +88,33 @@
   transform: translateY(-5px) rotate(1deg);
 }
 
+/* Touch has no hover to give, so the books lift while this cover holds the
+   grid's spotlight — the one nearest the middle of the screen
+   (data-cover-awake, set in pages/playground/index.tsx). */
+@media (hover: none) {
+  :global([data-cover-awake]) .book:nth-child(1) {
+    transform: translateY(-3px) rotate(-2deg);
+  }
+  :global([data-cover-awake]) .book:nth-child(2) {
+    transform: translateY(-5px);
+  }
+  :global([data-cover-awake]) .book:nth-child(3) {
+    transform: translateY(-2px) rotate(1deg);
+  }
+  :global([data-cover-awake]) .book:nth-child(4) {
+    transform: translateY(-6px) rotate(-1deg);
+  }
+  :global([data-cover-awake]) .book:nth-child(5) {
+    transform: translateY(-4px) rotate(2deg);
+  }
+  :global([data-cover-awake]) .book:nth-child(6) {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+  :global([data-cover-awake]) .book:nth-child(7) {
+    transform: translateY(-5px) rotate(1deg);
+  }
+}
+
 .title {
   margin: 0;
   font-size: 1.15rem;

@@ -6,7 +6,8 @@ import * as React from 'react'
  * StarrySequencerCover
  *
  *   The cover is a still poster at rest and animates while hovered (pointer
- *   devices) or focused (tap/keyboard — covers touch, where there's no hover).
+ *   devices), focused (keyboard), or — on touch, where a tap on the card just
+ *   navigates — while it holds the playground grid's spotlight.
  *   Animated WebP can't be paused via the DOM, so we swap the <img> src:
  *   poster ⇄ animated WebP. Re-assigning the animated src restarts it from
  *   the first frame, so each play runs the loop fresh. Honors reduced motion
@@ -36,16 +37,30 @@ export function StarrySequencerCover() {
     }
 
     // Hover drives playback on pointer devices...
+    const cell = img.closest<HTMLElement>('[data-cover-cell]')
+    let attributes: MutationObserver | undefined
     if (canHover.matches) {
       hoverTarget.addEventListener('pointerenter', play)
       hoverTarget.addEventListener('pointerleave', stop)
+    } else if (cell) {
+      // ...and on touch the playground grid spotlights one cover at a time
+      // (data-cover-awake — pages/playground/index.tsx). The CSS covers read
+      // that attribute directly; an animated WebP can't be driven from CSS,
+      // so watch it instead and stay in step with the rest of the grid.
+      const sync = () => ('coverAwake' in cell.dataset ? play() : stop())
+      attributes = new MutationObserver(sync)
+      attributes.observe(cell, {
+        attributes: true,
+        attributeFilter: ['data-cover-awake']
+      })
+      sync()
     }
-    // ...and focus drives it everywhere — covers touch, where tapping the card
-    // focuses it and there's no hover to trigger the animation.
+    // Focus drives it everywhere, for keyboard.
     hoverTarget.addEventListener('focusin', play)
     hoverTarget.addEventListener('focusout', stop)
 
     return () => {
+      attributes?.disconnect()
       hoverTarget.removeEventListener('pointerenter', play)
       hoverTarget.removeEventListener('pointerleave', stop)
       hoverTarget.removeEventListener('focusin', play)

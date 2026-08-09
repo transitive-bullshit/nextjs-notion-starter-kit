@@ -94,6 +94,17 @@
   animation-play-state: running;
 }
 
+/* Touch has no hover to give, so the phrase plays while this cover holds the
+   grid's spotlight — the one nearest the middle of the screen
+   (data-cover-awake, set in pages/playground/index.tsx). */
+@media (hover: none) {
+  :global([data-cover-awake]) .bar,
+  :global([data-cover-awake]) .whitePressed,
+  :global([data-cover-awake]) .blackPressed {
+    animation-play-state: running;
+  }
+}
+
 /* Two phases, split so the top edge moves at one constant speed across both:
    0%–46%   = key held: bar grows in place (scaleY 0→1), top rises by 1 height
    46%–100% = key released: bar travels up (translateY 0→-115%)

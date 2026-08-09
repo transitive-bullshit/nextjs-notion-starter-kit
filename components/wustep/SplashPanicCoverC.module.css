@@ -135,6 +135,27 @@
   animation: buddyDrop 4s ease-in-out infinite;
 }
 
+/* Touch has no hover to give, so the bubble pops while this cover holds the
+   grid's spotlight — the one nearest the middle of the screen
+   (data-cover-awake, set in pages/playground/index.tsx). */
+@media (hover: none) {
+  :global([data-cover-awake]) .bubbleShell {
+    animation: shellPop 4s ease-in-out infinite;
+  }
+
+  :global([data-cover-awake]) .burstRing {
+    animation: ringBurst 4s ease-out infinite;
+  }
+
+  :global([data-cover-awake]) .popDrop {
+    animation: sprayFly 4s ease-out infinite;
+  }
+
+  :global([data-cover-awake]) .buddy {
+    animation: buddyDrop 4s ease-in-out infinite;
+  }
+}
+
 @keyframes shellPop {
   0% {
     transform: scale(1);

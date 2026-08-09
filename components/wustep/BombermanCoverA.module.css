@@ -235,7 +235,7 @@
   }
 }
 
-/* ---------- Hover / focus: resume the paused exchange ---------- */
+/* ---------- Hover / focus / in view: resume the paused exchange ---------- */
 
 @media (hover: hover) {
   :global(.group):hover .cover *,
@@ -247,6 +247,15 @@
 :global(.group):focus-within .cover *,
 .cover:focus-within * {
   animation-play-state: running;
+}
+
+/* Touch has no hover to give, so the exchange runs while this cover holds the
+   grid's spotlight — the one nearest the middle of the screen
+   (data-cover-awake, set in pages/playground/index.tsx). */
+@media (hover: none) {
+  :global([data-cover-awake]) .cover * {
+    animation-play-state: running;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

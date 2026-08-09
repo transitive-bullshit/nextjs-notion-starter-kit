@@ -83,6 +83,22 @@
   will-change: transform;
 }
 
+/* Touch has no hover to give, so the drop fires while this cover holds the
+   grid's spotlight — the one nearest the middle of the screen
+   (data-cover-awake, set in pages/playground/index.tsx). Scrolling the cover
+   away and back replays it, which is the point. */
+@media (hover: none) {
+  :global([data-cover-awake]) .word {
+    animation: fall-word 1000ms forwards;
+    will-change: transform;
+  }
+
+  :global([data-cover-awake]) .slashes {
+    animation: fall-slashes 920ms 60ms forwards;
+    will-change: transform;
+  }
+}
+
 /*
  * Gravity drop with angular momentum.
  * - translateY: cqh so fall distance is relative to the cover height.

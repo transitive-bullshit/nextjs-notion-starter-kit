@@ -13,18 +13,86 @@ import { playgroundEntries } from '@/playground/registry'
  * off-screen — several covers run infinite keyframes, and phones shouldn't
  * pay for paints nobody sees. animation-play-state (see globals.css)
  * preserves each animation's position instead of restarting it.
+ *
+ * The other signal on this element, `data-cover-awake`, comes from
+ * useSpotlightCover below.
  */
 function CoverCell({ children }: { children: React.ReactNode }) {
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0, once: false })
   return (
     <div
       ref={ref}
+      data-cover-cell=''
       data-animations-paused={inView ? undefined : ''}
       className='notion-collection-card-cover aspect-video w-full [content-visibility:auto]'
     >
       {children}
     </div>
   )
+}
+
+/**
+ * Touch's stand-in for hover. A tap can't hover a card whose whole surface is
+ * a link — it just navigates — so on `(hover: none)` a cover wakes by being
+ * looked at instead: `data-cover-awake` goes on the one nearest the middle of
+ * the viewport, and only there. Waking every cover that happens to be on
+ * screen turns the grid into a wall of motion, which is the opposite of what
+ * hover gives you on desktop — one cover at a time, the one you're pointing
+ * at. A cover under half visible never wins, so nothing runs its beat while
+ * clipped at the edge of the screen.
+ *
+ * The attribute is written straight to the DOM instead of through state: this
+ * runs on scroll, and re-rendering the whole grid for a visual-only flag would
+ * cost more than the animation it gates.
+ */
+function useSpotlightCover(
+  gridRef: React.RefObject<HTMLDivElement | null>,
+  count: number
+) {
+  React.useEffect(() => {
+    const grid = gridRef.current
+    if (!grid || window.matchMedia('(hover: hover)').matches) return
+    const cells = [...grid.querySelectorAll<HTMLElement>('[data-cover-cell]')]
+
+    let frame = 0
+    let awake: HTMLElement | null = null
+
+    const pick = () => {
+      frame = 0
+      const middle = window.innerHeight / 2
+      let nearest: HTMLElement | null = null
+      let nearestGap = Number.POSITIVE_INFINITY
+      for (const cell of cells) {
+        const rect = cell.getBoundingClientRect()
+        const visible =
+          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
+        if (visible < rect.height / 2) continue
+        const gap = Math.abs(rect.top + rect.height / 2 - middle)
+        if (gap < nearestGap) {
+          nearestGap = gap
+          nearest = cell
+        }
+      }
+      if (nearest === awake) return
+      awake?.removeAttribute('data-cover-awake')
+      nearest?.setAttribute('data-cover-awake', '')
+      awake = nearest
+    }
+
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(pick)
+    }
+
+    pick()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    return () => {
+      if (frame) cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+      awake?.removeAttribute('data-cover-awake')
+    }
+  }, [gridRef, count])
 }
 
 /* Quiet chip for the card's quick links; sits above the stretched card link
@@ -54,13 +122,16 @@ export default function PlaygroundPage() {
     [isOwner]
   )
 
+  const gridRef = React.useRef<HTMLDivElement>(null)
+  useSpotlightCover(gridRef, projects.length)
+
   return (
     <PlaygroundLayout title='Playground'>
       <p className='text-muted-foreground mb-8'>
         A collection of interactive experiments, demos, and creative projects.
       </p>
 
-      <div className='grid gap-6 md:grid-cols-2'>
+      <div ref={gridRef} className='grid gap-6 md:grid-cols-2'>
         {projects.map((project) => (
           <div
             key={project.url}

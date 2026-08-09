@@ -102,6 +102,23 @@
   animation: boomPop 3.3s ease-in-out infinite;
 }
 
+/* Touch has no hover to give, so the run plays while this cover holds the
+   grid's spotlight — the one nearest the middle of the screen
+   (data-cover-awake, set in pages/playground/index.tsx). */
+@media (hover: none) {
+  :global([data-cover-awake]) .caret {
+    animation: caretBlink 1.1s steps(1) infinite;
+  }
+
+  :global([data-cover-awake]) .glowLine {
+    animation: lineGlow 3.3s ease-in-out infinite;
+  }
+
+  :global([data-cover-awake]) .boom {
+    animation: boomPop 3.3s ease-in-out infinite;
+  }
+}
+
 @keyframes caretBlink {
   0%,
   100% {
