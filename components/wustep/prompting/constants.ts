@@ -57,3 +57,7 @@ export const AUTO_PROMPT = 'Center this div'
 export const AUTO_TYPE_INITIAL_DELAY_MS = 1400
 export const AUTO_TYPE_CHAR_MS = 70
 export const AUTO_TYPE_SEND_DELAY_MS = 700
+/** How long the agent visibly "works" on a sent prompt before hitting
+ * the wall — a couple of Drive sweeps and timer ticks, kept short
+ * enough that the error still reads as the punchline. */
+export const WORKING_DURATION_MS = 2200

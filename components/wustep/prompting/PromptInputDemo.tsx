@@ -8,8 +8,10 @@ import {
   AUTO_TYPE_INITIAL_DELAY_MS,
   AUTO_TYPE_SEND_DELAY_MS,
   ERROR_MESSAGES,
-  FAKE_MODELS
+  FAKE_MODELS,
+  WORKING_DURATION_MS
 } from './constants'
+import { DriveLoader, useElapsed } from './DriveLoader'
 import { ChevronIcon, ReplayIcon } from './icons'
 import styles from './PromptingPage.module.css'
 
@@ -20,10 +22,13 @@ import styles from './PromptingPage.module.css'
  * 1400ms   begins typing "Center this div" (70ms/char ≈ 1.2s)
  * 2700ms   typing settles; the prompt waits for the visitor to send
  *
- *  user hits Send / Enter  →  error appears, card shakes, Replay swaps in
- *  user types again        →  error clears, Send returns
+ *  user hits Send / Enter  →  agent "works" (Drive loader + elapsed
+ *                             timer) for a couple of seconds, then the
+ *                             error appears, card shakes, Replay swaps in
+ *  user types again        →  working/error clears, Send returns
  *  user clicks Replay      →  re-runs the typing sequence
- *  prefers-reduced-motion  →  fills value instantly, no auto-send
+ *  prefers-reduced-motion  →  fills value instantly, no auto-send;
+ *                             sending fails immediately, no fake work
  *
  *  Direct manipulation always wins: typing, backspacing, or hitting
  *  Enter while the script is "typing" cancels the pending timers and
@@ -48,6 +53,7 @@ export function PromptInputDemo({ start }: { start: boolean }) {
   const [error, setError] = React.useState<string | null>(null)
   const [shakeKey, setShakeKey] = React.useState(0)
   const [autoTyping, setAutoTyping] = React.useState(false)
+  const [working, setWorking] = React.useState(false)
   const [sent, setSent] = React.useState(false)
   const menuRef = React.useRef<HTMLDivElement>(null)
   const triggerRef = React.useRef<HTMLButtonElement>(null)
@@ -60,19 +66,34 @@ export function PromptInputDemo({ start }: { start: boolean }) {
     timersRef.current = []
   }
 
-  const triggerSend = React.useCallback((text: string) => {
-    if (text.trim().length === 0) return
-    const next =
-      ERROR_MESSAGES[Math.floor(Math.random() * ERROR_MESSAGES.length)]!
-    setError(next)
-    setShakeKey((k) => k + 1)
-    setAutoTyping(false)
-    setSent(true)
-  }, [])
+  const triggerSend = React.useCallback(
+    (text: string) => {
+      if (text.trim().length === 0) return
+      const fail = () => {
+        const next =
+          ERROR_MESSAGES[Math.floor(Math.random() * ERROR_MESSAGES.length)]!
+        setWorking(false)
+        setError(next)
+        setShakeKey((k) => k + 1)
+      }
+      setAutoTyping(false)
+      setSent(true)
+      if (prefersReducedMotion) {
+        fail()
+        return
+      }
+      // Let the agent visibly churn before it hits the wall — the same
+      // Drive loader + elapsed timer as the intro's Thinking state.
+      setWorking(true)
+      timersRef.current.push(window.setTimeout(fail, WORKING_DURATION_MS))
+    },
+    [prefersReducedMotion]
+  )
 
   const runAutoType = React.useCallback(() => {
     clearTimers()
     setError(null)
+    setWorking(false)
     setSent(false)
     setValue('')
 
@@ -109,7 +130,7 @@ export function PromptInputDemo({ start }: { start: boolean }) {
   React.useEffect(() => () => clearTimers(), [])
 
   const handleSend = () => {
-    if (autoTyping) return
+    if (autoTyping || working) return
     triggerSend(value)
   }
 
@@ -124,6 +145,13 @@ export function PromptInputDemo({ start }: { start: boolean }) {
       // over the value.
       clearTimers()
       setAutoTyping(false)
+    }
+    if (working) {
+      // Editing mid-"work" withdraws the request: cancel the pending
+      // failure and hand the input back.
+      clearTimers()
+      setWorking(false)
+      setSent(false)
     }
     setValue(e.target.value)
     if (error) setError(null)
@@ -156,7 +184,8 @@ export function PromptInputDemo({ start }: { start: boolean }) {
     }
   }
 
-  const showReplay = sent
+  const showReplay = sent && !working
+  const elapsed = useElapsed(working)
 
   const selectModel = React.useCallback(
     (m: (typeof FAKE_MODELS)[number]) => {
@@ -265,6 +294,21 @@ export function PromptInputDemo({ start }: { start: boolean }) {
         )}
       </div>
 
+      {working && (
+        <div className={styles.promptWorking}>
+          <DriveLoader />
+          <span
+            role='status'
+            className={`${styles.thinkingText} ${styles.promptWorkingText}`}
+          >
+            Thinking
+          </span>
+          <span className={styles.thinkingElapsed} aria-hidden='true'>
+            {elapsed}
+          </span>
+        </div>
+      )}
+
       {error && (
         <div id='prompt-error' className={styles.promptError} role='alert'>
           <ErrorIcon />
@@ -323,7 +367,9 @@ export function PromptInputDemo({ start }: { start: boolean }) {
           className={`${styles.submitButton} ${showReplay ? styles.submitButtonReplay : ''}`}
           aria-label={showReplay ? 'Replay' : 'Send'}
           onClick={showReplay ? handleReplay : handleSend}
-          disabled={!showReplay && (autoTyping || value.trim().length === 0)}
+          disabled={
+            !showReplay && (autoTyping || working || value.trim().length === 0)
+          }
         >
           <span className={styles.submitIconStack} aria-hidden='true'>
             <span

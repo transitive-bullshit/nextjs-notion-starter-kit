@@ -9,7 +9,7 @@ import {
   TITLE,
   TITLE_WORDS
 } from './constants'
-import { DotMatrixIcon } from './DotMatrixIcon'
+import { DriveLoader, useElapsed } from './DriveLoader'
 import { Figure, Note } from './parts'
 import styles from './PromptingPage.module.css'
 import { PromptInputDemo } from './PromptInputDemo'
@@ -18,23 +18,24 @@ import { bodyDelay } from './types'
 /**
  * IntroContent — chapter-zero animated title + body intro + Begin CTA.
  *
- *   The title boots in two phases: a 1.2s "Thinking" sparkle, then the
+ *   The title boots in two phases: a short "Thinking" hold — the Drive
+ *   pixel loader, shimmer label, and a live elapsed timer — then the
  *   real title blurs in word-by-word. Body content fades up below as
  *   the title settles and ends with the Begin CTA into chapter 1.
  */
 export function IntroContent() {
   const [revealed, setRevealed] = React.useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
+  const elapsed = useElapsed(!revealed && !prefersReducedMotion)
 
   React.useEffect(() => {
     if (prefersReducedMotion) {
       setRevealed(true)
       return
     }
-    // On the first visit per session, hold just long enough for the
-    // dot-matrix to finish one clean cycle (plus a small tail), capped
-    // under 3s. After that, snap to the short duration so revisits stay
-    // snappy.
+    // On the first visit per session, hold long enough for the Drive
+    // wavefront to sweep the grid a couple of times, capped under 3s.
+    // After that, snap to the short duration so revisits stay snappy.
     let firstLoad = false
     try {
       firstLoad = !window.sessionStorage.getItem('prompting:intro:seen')
@@ -54,8 +55,9 @@ export function IntroContent() {
           className={`${styles.thinking} ${revealed ? styles.thinkingHidden : ''}`}
           aria-hidden={revealed}
         >
-          <DotMatrixIcon className={styles.sparkle} />
+          <DriveLoader />
           <span className={styles.thinkingText}>Thinking</span>
+          <span className={styles.thinkingElapsed}>{elapsed}</span>
         </span>
 
         <span
