@@ -39,14 +39,14 @@ importers:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       notion-client:
-        specifier: ^8.0.1
-        version: 8.0.1
+        specifier: ^8.0.2
+        version: 8.0.2
       notion-types:
-        specifier: ^8.0.1
-        version: 8.0.1
+        specifier: ^8.0.2
+        version: 8.0.2
       notion-utils:
-        specifier: ^8.0.1
-        version: 8.0.1
+        specifier: ^8.0.2
+        version: 8.0.2
       p-map:
         specifier: ^7.0.6
         version: 7.0.6
@@ -69,8 +69,8 @@ importers:
         specifier: ^19.2.8
         version: 19.2.8(react@19.2.8)
       react-notion-x:
-        specifier: ^8.0.1
-        version: 8.0.1(@babel/runtime@7.29.7)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^8.0.2
+        version: 8.0.2(@babel/runtime@7.29.7)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react-tweet:
         specifier: ^3.3.1
         version: 3.3.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -1240,16 +1240,16 @@ packages:
     resolution: {integrity: sha512-ARftfC5HdUNu9jJeL8pHj8debUIHA2b91FizCoMzY4lG6dDX13jdvTK0TBe24IBDRf2HvJSzzwEPvmbkQWHRSg==}
     engines: {node: '>=20'}
 
-  notion-client@8.0.1:
-    resolution: {integrity: sha512-tkHqAfg7Z1EmLUCdENNCSRrUaMDD13/M9J0ZP088H65frgnr4in/yWnW8zA/UsUrU4cXa/e3elxe7JHwUkRrkg==}
+  notion-client@8.0.2:
+    resolution: {integrity: sha512-dKvsYtph3hdqpxatrElmgBPc1krzXwNZSJ+VGmjltfAn6gx7e9yKWdIXrUdojquIOF46iS4yxE2V7YcXbhWsSw==}
     engines: {node: '>=18'}
 
-  notion-types@8.0.1:
-    resolution: {integrity: sha512-s88soResy74q0pOm7tFzzOF24tPHaYLVAoyAef48NglmSs4XOue3VmBFctxnaCpDNo2jvxLismxkwuYT1DMCGQ==}
+  notion-types@8.0.2:
+    resolution: {integrity: sha512-c+As+3iHSEWFOwhkmaoZCN0Mp4a+8dr6aQSU8fPCmSHagA2qWJiLT7kwozhpbJlUIS21Jt+ityfIUFXkoldojA==}
     engines: {node: '>=18'}
 
-  notion-utils@8.0.1:
-    resolution: {integrity: sha512-acPFb+XhdCPaftGuQj3sZCO8ocOsGgt6WVPpEltlt4M3GugjG73qQsP+HT9OX1OtNKr97sKNUKSWujJzxrNzIg==}
+  notion-utils@8.0.2:
+    resolution: {integrity: sha512-4FALxuGL1HyMQAc8v8kxRpi7DuDC2TAiGQkenHIllDNbiI68Zzy4jO353avY+kYFbQsexo/j52LKBS3OMX0yTA==}
     engines: {node: '>=18'}
 
   npm-normalize-package-bin@6.0.0:
@@ -1388,8 +1388,8 @@ packages:
       react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
       react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
 
-  react-notion-x@8.0.1:
-    resolution: {integrity: sha512-uZzcqr9pLUnOukjyO0/mDv63dPC4225xjLX0CRv9u8ahhsuh7llcOWeluE079F1cUIenCoCIE4PCvrXJxue0hQ==}
+  react-notion-x@8.0.2:
+    resolution: {integrity: sha512-Y0yevVicRAa1DN2MGmECMEIoPkHbw7SDkV46Poa5q6gnrLB5KTi6xsCVGdAIMvFKwExBCO5bGsg8QUx6Ml946w==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=18'
@@ -2428,21 +2428,21 @@ snapshots:
 
   normalize-url@9.0.1: {}
 
-  notion-client@8.0.1:
+  notion-client@8.0.2:
     dependencies:
-      notion-types: 8.0.1
-      notion-utils: 8.0.1
+      notion-types: 8.0.2
+      notion-utils: 8.0.2
       ofetch: 1.5.1
       p-map: 7.0.6
 
-  notion-types@8.0.1: {}
+  notion-types@8.0.2: {}
 
-  notion-utils@8.0.1:
+  notion-utils@8.0.2:
     dependencies:
       is-url-superb: 6.1.0
       memoize: 11.0.0
       normalize-url: 9.0.1
-      notion-types: 8.0.1
+      notion-types: 8.0.2
       p-queue: 9.3.3
 
   npm-normalize-package-bin@6.0.0: {}
@@ -2607,13 +2607,13 @@ snapshots:
       react-lifecycles-compat: 3.0.4
       warning: 4.0.3
 
-  react-notion-x@8.0.1(@babel/runtime@7.29.7)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  react-notion-x@8.0.2(@babel/runtime@7.29.7)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       '@fisch0920/medium-zoom': 1.0.7
       '@matejmazur/react-katex': 3.1.3(katex@0.18.4)(react@19.2.8)
       katex: 0.18.4
-      notion-types: 8.0.1
-      notion-utils: 8.0.1
+      notion-types: 8.0.2
+      notion-utils: 8.0.2
       prismjs: 1.30.0
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
