@@ -1,6 +1,6 @@
 import cs from 'classnames'
 import dynamic from 'next/dynamic'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { type PageBlock } from 'notion-types'
@@ -184,7 +184,7 @@ const propertyTextValue = (
 }
 
 const notionRendererComponents: Partial<NotionComponents> = {
-  nextLegacyImage: Image,
+  nextImage: Image,
   nextLink: Link,
   Code,
   Collection,
