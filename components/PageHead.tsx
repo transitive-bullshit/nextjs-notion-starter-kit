@@ -3,6 +3,7 @@ import Head from 'next/head'
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
 import { getSocialImageUrl } from '@/lib/get-social-image-url'
+import { useDarkMode } from '@/lib/use-dark-mode'
 
 export function PageHead({
   site,
@@ -19,6 +20,7 @@ export function PageHead({
   url?: string
   isBlogPost?: boolean
 }) {
+  const { hasMounted, isDarkMode } = useDarkMode()
   const rssFeedUrl = `${config.host}/feed`
 
   title = title ?? site?.name
@@ -38,18 +40,28 @@ export function PageHead({
       <meta name='mobile-web-app-capable' content='yes' />
       <meta name='apple-mobile-web-app-status-bar-style' content='black' />
 
-      <meta
-        name='theme-color'
-        media='(prefers-color-scheme: light)'
-        content='#fefffe'
-        key='theme-color-light'
-      />
-      <meta
-        name='theme-color'
-        media='(prefers-color-scheme: dark)'
-        content='#2d3439'
-        key='theme-color-dark'
-      />
+      {hasMounted ? (
+        <meta
+          name='theme-color'
+          content={isDarkMode ? '#2d3439' : '#fefffe'}
+          key='theme-color'
+        />
+      ) : (
+        <>
+          <meta
+            name='theme-color'
+            media='(prefers-color-scheme: light)'
+            content='#fefffe'
+            key='theme-color-light'
+          />
+          <meta
+            name='theme-color'
+            media='(prefers-color-scheme: dark)'
+            content='#2d3439'
+            key='theme-color-dark'
+          />
+        </>
+      )}
 
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='website' />

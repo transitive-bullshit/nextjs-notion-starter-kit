@@ -1,3 +1,9 @@
+allowBuilds:
+  canvas: true
+  core-js: true
+  protobufjs: true
+  sharp: true
+
 enablePrePostScripts: true
 
 minimumReleaseAge: 1440
