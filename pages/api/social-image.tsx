@@ -17,11 +17,17 @@ import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
 import { type NotionPageInfo, type PageError } from '@/lib/types'
 
+export const runtime = 'edge'
+
 export default async function OGImage(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { searchParams } = new URL(req.url!)
+  console.log(req.url)
+  const { searchParams } = new URL(
+    req.url!,
+    `http://${req.headers.host || 'http://localhost'}`
+  )
   const pageId = parsePageId(
     searchParams.get('id') || libConfig.rootNotionPageId
   )
@@ -85,8 +91,7 @@ export default async function OGImage(
           display: 'flex',
           flexDirection: 'column',
           border: '16px solid rgba(0,0,0,0.3)',
-          borderRadius: 8,
-          zIndex: '1'
+          borderRadius: 8
         }}
       >
         <div
@@ -132,8 +137,7 @@ export default async function OGImage(
             width: 128,
             display: 'flex',
             borderRadius: '50%',
-            border: '4px solid #fff',
-            zIndex: '5'
+            border: '4px solid #fff'
           }}
         >
           <img
