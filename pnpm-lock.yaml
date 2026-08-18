@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@fisch0920/use-dark-mode':
-        specifier: ^2.4.0
-        version: 2.4.0(react@19.2.8)
       '@keyvhq/core':
         specifier: ^1.6.9
         version: 1.6.26
@@ -38,6 +35,9 @@ importers:
       next:
         specifier: ^16.3.1
         version: 16.3.1(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      next-themes:
+        specifier: ^0.4.6
+        version: 0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       notion-client:
         specifier: ^7.12.0
         version: 7.12.0
@@ -205,11 +205,6 @@ packages:
 
   '@fisch0920/medium-zoom@1.0.7':
     resolution: {integrity: sha512-hPUrgVM/QvsZdZzDTPyL1C1mOtEw03RqTLmK7ZlJ8S/64u4O4O5BvPvjB/9kyLtE6iVaS9UDRAMSwmM9uh2JIw==}
-
-  '@fisch0920/use-dark-mode@2.4.0':
-    resolution: {integrity: sha512-R5onciu81CCOxWVIJcRjp1PfSfBI5fIfxYR2jqydc0nuGWrn4ZB4ciDXiv36PNX5mFIbAgPfjUF0Z5lhSI62TA==}
-    peerDependencies:
-      react: '>=16.8'
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -1108,11 +1103,6 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@use-it/event-listener@0.1.7':
-    resolution: {integrity: sha512-hgfExDzUU9uTRTPDCpw2s9jWTxcxmpJya3fK5ADpf5VDpSy8WYwY/kh28XE0tUcbsljeP8wfan48QvAQTSSa3Q==}
-    peerDependencies:
-      react: '>=16.8.0'
-
   '@xobotyi/scrollbar-width@1.9.5':
     resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
 
@@ -1468,6 +1458,12 @@ packages:
 
   napi-build-utils@2.0.0:
     resolution: {integrity: sha512-GEbrYkbfF7MoNaoh2iGG84Mnf/WZfB0GdGEsM8wz7Expx/LlWf5U8t9nvJKXSp3qr5IsEbK04cBGhol/KwOsWA==}
+
+  next-themes@0.4.6:
+    resolution: {integrity: sha512-pZvgD5L0IEvX5/9GWyHMf3m8BKiVQwsCMHfoFosXtXBMnaS0ZnIJ9ST4b4NqLVKDEm8QBxoNNGNaBv2JNF6XNA==}
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
   next@16.3.1:
     resolution: {integrity: sha512-hsAp0i7Rh+/dhe7DGIeN2YlpLM1DP4MNxti9EtDMtqcO612X81MvvEj388/oTce9U1EcEIOWDlGq0zRwrBKvuA==}
@@ -1955,11 +1951,6 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
-  use-persisted-state@0.3.3:
-    resolution: {integrity: sha512-pCNlvYC8+XjRxwnIut4teGC9f2p9aD88R8OGseQGZa2dvqG/h1vEGk1vRE1IZG0Vf161UDpn+NlW4+UGubQflQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0
-
   use-sync-external-store@1.6.0:
     resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
     peerDependencies:
@@ -2132,12 +2123,6 @@ snapshots:
       typescript: 7.0.2
 
   '@fisch0920/medium-zoom@1.0.7': {}
-
-  '@fisch0920/use-dark-mode@2.4.0(react@19.2.8)':
-    dependencies:
-      '@use-it/event-listener': 0.1.7(react@19.2.8)
-      react: 19.2.8
-      use-persisted-state: 0.3.3(react@19.2.8)
 
   '@img/colour@1.1.0':
     optional: true
@@ -2712,10 +2697,6 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  '@use-it/event-listener@0.1.7(react@19.2.8)':
-    dependencies:
-      react: 19.2.8
-
   '@xobotyi/scrollbar-width@1.9.5': {}
 
   ansi-styles@7.0.0: {}
@@ -3037,6 +3018,11 @@ snapshots:
 
   napi-build-utils@2.0.0:
     optional: true
+
+  next-themes@0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+    dependencies:
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
   next@16.3.1(@babel/core@7.29.7(supports-color@7.2.0))(@opentelemetry/api@1.9.0)(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
@@ -3675,11 +3661,6 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
     optional: true
-
-  use-persisted-state@0.3.3(react@19.2.8):
-    dependencies:
-      '@use-it/event-listener': 0.1.7(react@19.2.8)
-      react: 19.2.8
 
   use-sync-external-store@1.6.0(react@19.2.8):
     dependencies:

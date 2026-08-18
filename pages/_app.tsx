@@ -16,6 +16,7 @@ import '@/styles/prism-theme.css'
 import type { AppProps } from 'next/app'
 import * as Fathom from 'fathom-client'
 import { useRouter } from 'next/router'
+import { ThemeProvider } from 'next-themes'
 import { posthog } from 'posthog-js'
 import * as React from 'react'
 
@@ -27,6 +28,8 @@ import {
   posthogConfig,
   posthogId
 } from '@/lib/config'
+
+const themeClassNames = { dark: 'dark-mode', light: 'light-mode' }
 
 if (!isServer) {
   bootstrap()
@@ -61,5 +64,15 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider
+      attribute='class'
+      defaultTheme='system'
+      disableTransitionOnChange
+      enableSystem
+      value={themeClassNames}
+    >
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }
