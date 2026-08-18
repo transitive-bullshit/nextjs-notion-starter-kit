@@ -17,6 +17,7 @@ import {
   NotionRenderer,
   useNotionContext
 } from 'react-notion-x'
+import { Collection } from 'react-notion-x/third-party/collection'
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
 import { useSearchParam } from 'react-use'
 
@@ -111,9 +112,6 @@ const Code = dynamic(() =>
   })
 )
 
-const Collection = dynamic(() =>
-  import('react-notion-x/third-party/collection').then((m) => m.Collection)
-)
 const Equation = dynamic(() =>
   import('react-notion-x/third-party/equation').then((m) => m.Equation)
 )
