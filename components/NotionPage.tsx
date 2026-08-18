@@ -299,10 +299,7 @@ export function NotionPage({
       {isLiteMode && <BodyClassName className='notion-lite' />}
 
       <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
-        )}
+        bodyClassName={cs(pageId === site.rootNotionPageId && 'index-page')}
         darkMode={isDarkMode}
         components={notionRendererComponents}
         recordMap={recordMap}
