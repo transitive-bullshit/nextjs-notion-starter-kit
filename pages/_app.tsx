@@ -17,7 +17,7 @@ import type { AppProps } from 'next/app'
 import * as Fathom from 'fathom-client'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
-import { posthog } from 'posthog-js'
+import type PostHog from 'posthog-js-lite'
 import * as React from 'react'
 
 import { bootstrap } from '@/lib/bootstrap-client'
@@ -39,28 +39,40 @@ export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
+    let posthog: PostHog | undefined
+    let isDisposed = false
+
     function onRouteChangeComplete() {
       if (fathomId) {
         Fathom.trackPageview()
       }
 
-      if (posthogId) {
-        posthog.capture('$pageview')
-      }
+      posthog?.capture('$pageview')
     }
 
     if (fathomId) {
       Fathom.load(fathomId, fathomConfig)
     }
 
-    if (posthogId) {
-      posthog.init(posthogId, posthogConfig)
+    const posthogApiKey = posthogId
+
+    if (posthogApiKey) {
+      void import('posthog-js-lite').then(({ default: PostHog }) => {
+        if (isDisposed) {
+          return
+        }
+
+        posthog = new PostHog(posthogApiKey, posthogConfig)
+        posthog.capture('$pageview')
+      })
     }
 
     router.events.on('routeChangeComplete', onRouteChangeComplete)
 
     return () => {
+      isDisposed = true
       router.events.off('routeChangeComplete', onRouteChangeComplete)
+      void posthog?._shutdown()
     }
   }, [router.events])
 
