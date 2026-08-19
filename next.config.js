@@ -1,6 +1,3 @@
-// import path from 'node:path'
-// import { fileURLToPath } from 'node:url'
-
 export default {
   staticPageGenerationTimeout: 300,
   images: {
