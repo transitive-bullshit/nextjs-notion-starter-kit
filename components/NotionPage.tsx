@@ -1,15 +1,10 @@
+'use client'
+
 import cs from 'classnames'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { type PageBlock } from 'notion-types'
-import {
-  formatDate,
-  getBlockTitle,
-  getBlockValue,
-  getPageProperty
-} from 'notion-utils'
+import { formatDate, getBlockTitle, getBlockValue } from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
@@ -24,17 +19,14 @@ import { useSearchParam } from 'react-use'
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
 import { mapImageUrl } from '@/lib/map-image-url'
-import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
+import { mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
 import { GitHubShareButton } from './GitHubShareButton'
-import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
-import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
-import { PageHead } from './PageHead'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -201,10 +193,8 @@ const notionRendererComponents: Partial<NotionComponents> = {
 export function NotionPage({
   site,
   recordMap,
-  error,
   pageId
-}: types.PageProps) {
-  const router = useRouter()
+}: Required<Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>>) {
   const lite = useSearchParam('lite')
 
   // lite mode is for oembed
@@ -217,11 +207,11 @@ export function NotionPage({
     if (lite) params.lite = lite
 
     const searchParams = new URLSearchParams(params)
-    return site ? mapPageUrl(site, recordMap!, searchParams) : undefined
+    return mapPageUrl(site, recordMap, searchParams)
   }, [site, recordMap, lite])
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = getBlockValue(recordMap?.block?.[keys[0]!])
+  const block = getBlockValue(recordMap?.block?.[keys[0]!])!
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
@@ -233,68 +223,31 @@ export function NotionPage({
 
   const pageAside = React.useMemo(
     () => (
-      <PageAside
-        block={block!}
-        recordMap={recordMap!}
-        isBlogPost={isBlogPost}
-      />
+      <PageAside block={block!} recordMap={recordMap} isBlogPost={isBlogPost} />
     ),
     [block, recordMap, isBlogPost]
   )
 
-  if (router.isFallback) {
-    return <Loading />
-  }
-
-  if (error || !site || !block || !recordMap) {
-    return <Page404 site={site} pageId={pageId} error={error} />
-  }
-
   const title = getBlockTitle(block, recordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+  React.useEffect(() => {
+    console.log('notion page', {
+      isDev: config.isDev,
+      title,
+      pageId,
+      rootNotionPageId: site.rootNotionPageId,
+      recordMap
+    })
 
-  if (!config.isServer) {
     // add important objects to the window global for easy debugging
     const g = window as any
     g.pageId = pageId
     g.recordMap = recordMap
     g.block = block
-  }
-
-  const canonicalPageUrl = config.isDev
-    ? undefined
-    : getCanonicalPageUrl(site, recordMap)(pageId)
-
-  const socialImage = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
-    block
-  )
-
-  const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) ||
-    config.description
+  }, [block, pageId, recordMap, site.rootNotionPageId, title])
 
   return (
     <>
-      <PageHead
-        pageId={pageId}
-        site={site}
-        title={title}
-        description={socialDescription}
-        image={socialImage}
-        url={canonicalPageUrl}
-        isBlogPost={isBlogPost}
-      />
-
       {isLiteMode && <BodyClassName className='notion-lite' />}
 
       <NotionRenderer

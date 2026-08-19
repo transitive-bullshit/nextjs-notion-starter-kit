@@ -60,13 +60,13 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 
 **All config is defined in [site.config.ts](./site.config.ts).**
 
-This project requires a recent version of Node.js (we recommend >= 16).
+This project requires Node.js 22 or newer.
 
 1. Fork / clone this repo
 2. Change a few values in [site.config.ts](./site.config.ts)
-3. `npm install`
-4. `npm run dev` to test locally
-5. `npm run deploy` to deploy to vercel 💪
+3. `pnpm install`
+4. `pnpm dev` to test locally
+5. `pnpm deploy` to deploy to Vercel 💪
 6. Double check your [Vercel project settings](#vercel-configuration)
 
 I tried to make configuration as easy as possible — All you really need to do to get started is edit `rootNotionPageId`.
@@ -160,7 +160,7 @@ Dark mode is fully supported and can be toggled via the sun / moon icon in the f
 
 All Open Graph and social meta tags are generated from your Notion content, which makes social sharing look professional by default.
 
-Social images are generated automatically using [Vercel OG Image Generation](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation). You can tweak the default React template for social images by editing [api/social-images.tsx](./pages/api/social-image.tsx).
+Social images are generated automatically using [Vercel OG Image Generation](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation). You can tweak the default React template for social images by editing [route.tsx](./app/api/social-image/route.tsx).
 
 You can view an example social image live in production [here](https://transitivebullsh.it/api/social-image?id=dfc7f709-ae3e-42c6-9292-f6543d5586f0).
 
