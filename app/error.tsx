@@ -3,6 +3,7 @@
 import * as React from 'react'
 
 import { ErrorPage } from '@/components/ErrorPage'
+import { SpecialPageShell } from '@/components/SpecialPageShell'
 
 export default function ErrorBoundary({
   error,
@@ -15,5 +16,9 @@ export default function ErrorBoundary({
     console.error(error)
   }, [error])
 
-  return <ErrorPage statusCode={500} onRetry={reset} />
+  return (
+    <SpecialPageShell>
+      <ErrorPage statusCode={500} onRetry={reset} />
+    </SpecialPageShell>
+  )
 }

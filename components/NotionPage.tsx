@@ -5,10 +5,12 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
+  estimatePageReadTime,
   formatDate,
   getBlockTitle,
   getBlockValue,
-  // getPageProperty,
+  getPageProperty,
+  getSignedFileUrl,
   // normalizeTitle,
   parsePageId
 } from 'notion-utils'
@@ -21,20 +23,20 @@ import {
 } from 'react-notion-x'
 import { Collection } from 'react-notion-x/third-party/collection'
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
-import { useSearchParam } from 'react-use'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
-import { useDarkMode } from '@/lib/use-dark-mode'
 
+import { ArticleMasthead } from './ArticleMasthead'
+import { AuthorLetter } from './AuthorLetter'
 import { Footer } from './Footer'
-import { GitHubShareButton } from './GitHubShareButton'
 import { NotionPageHeader } from './NotionPageHeader'
 import { PageAside } from './PageAside'
 import { Page404 } from './Page404'
+import { SpecialPageShell } from './SpecialPageShell'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -196,6 +198,10 @@ const HeroHeader = dynamic<{ className?: string }>(
   { ssr: false }
 )
 
+const LandingSignature = dynamic(() =>
+  import('./LandingSignature').then((m) => m.LandingSignature)
+)
+
 const notionRendererComponents: Partial<NotionComponents> = {
   nextImage: Image,
   nextLink: Link,
@@ -216,29 +222,25 @@ export function NotionPage({
   pageId,
   error,
   tagsPage,
-  propertyToFilterName
+  propertyToFilterName,
+  isLiteMode = false
 }: Required<Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>> &
-  Pick<types.PageProps, 'error' | 'tagsPage' | 'propertyToFilterName'>) {
-  const lite = useSearchParam('lite')
-
-  // lite mode is for oembed
-  const isLiteMode = lite === 'true'
-
-  const { isDarkMode } = useDarkMode()
-
+  Pick<types.PageProps, 'error' | 'tagsPage' | 'propertyToFilterName'> & {
+    isLiteMode?: boolean
+  }) {
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
-    if (lite) params.lite = lite
+    if (isLiteMode) params.lite = 'true'
 
     const searchParams = new URLSearchParams(params)
     return mapPageUrl(site, recordMap, searchParams)
-  }, [site, recordMap, lite])
+  }, [site, recordMap, isLiteMode])
 
   const keys = Object.keys(recordMap?.block || {})
   const block = getBlockValue(recordMap?.block?.[keys[0]!])!
 
-  // const isRootPage =
-  //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
+  const isRootPage =
+    parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection'
   const isBioPage =
@@ -246,6 +248,15 @@ export function NotionPage({
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
+  const aboutPageId = config.navigationLinks?.find(
+    (link) => link?.title.toLowerCase() === 'about'
+  )?.pageId
+  const aboutHref = aboutPageId ? siteMapPageUrl(aboutPageId) : '/about'
+  const name = block
+    ? getBlockTitle(block, recordMap) || site?.name || config.name
+    : site?.name || config.name
+  const title =
+    tagsPage && propertyToFilterName ? `${propertyToFilterName} ${name}` : name
 
   const pageAside = React.useMemo(
     () => (
@@ -255,6 +266,8 @@ export function NotionPage({
   )
 
   const pageCover = React.useMemo(() => {
+    if (isLiteMode) return null
+
     if (isBioPage) {
       if (config.isServer) {
         return (
@@ -265,21 +278,90 @@ export function NotionPage({
           <HeroHeader className='notion-page-cover-wrapper notion-page-cover-hero' />
         )
       }
-    } else {
-      return null
     }
-  }, [isBioPage])
 
-  if (error || !site || !block || !recordMap) {
-    return <Page404 site={site} pageId={pageId} error={error} />
-  }
+    if (isBlogPost && block?.type === 'page') {
+      const pageBlock = block as types.PageBlock
+      const rawCoverUrl =
+        pageBlock.format?.page_cover || config.defaultPageCover
+      const signedCoverUrl = getSignedFileUrl(
+        rawCoverUrl,
+        pageBlock,
+        recordMap.signed_urls
+      )
+      const coverUrl =
+        mapImageUrl(signedCoverUrl, pageBlock) || '/page-cover.jpg'
+      const rawIcon = pageBlock.format?.page_icon
+      const iconIsImage = Boolean(
+        rawIcon &&
+        (rawIcon.includes('/') ||
+          rawIcon.includes(':') ||
+          rawIcon.startsWith('data:') ||
+          rawIcon.startsWith('blob:'))
+      )
+      const iconUrl = iconIsImage
+        ? mapImageUrl(
+            getSignedFileUrl(rawIcon, pageBlock, recordMap.signed_urls),
+            pageBlock
+          )
+        : undefined
+      const publishedTimestamp = getPageProperty<number>(
+        'Published',
+        pageBlock,
+        recordMap
+      )
+      const updatedTimestamp =
+        getPageProperty<number>('Last Updated', pageBlock, recordMap) ||
+        pageBlock.last_edited_time
+      const readTime = estimatePageReadTime(pageBlock, recordMap)
+      const tags = (
+        getPageProperty<string[]>('Tags', pageBlock, recordMap) || []
+      ).filter(Boolean)
 
-  const name = getBlockTitle(block, recordMap) || site.name
-  const title =
-    tagsPage && propertyToFilterName ? `${propertyToFilterName} ${name}` : name
+      return (
+        <ArticleMasthead
+          title={title}
+          description={
+            getPageProperty<string>('Description', pageBlock, recordMap) || ''
+          }
+          iconEmoji={!iconIsImage ? rawIcon : undefined}
+          iconUrl={iconUrl}
+          published={
+            publishedTimestamp
+              ? formatDate(publishedTimestamp, { month: 'long' })
+              : 'Unpublished'
+          }
+          updated={
+            updatedTimestamp
+              ? formatDate(updatedTimestamp, { month: 'long' })
+              : 'Not recorded'
+          }
+          author={
+            getPageProperty<string>('Author', pageBlock, recordMap) ||
+            config.author
+          }
+          readingLength={`${Math.max(
+            1,
+            Math.ceil(readTime.totalReadTimeInMinutes)
+          )} min read`}
+          tags={tags}
+          coverUrl={coverUrl}
+          coverAlt=''
+          coverPosition={
+            pageBlock.format?.page_cover_position ??
+            config.defaultPageCoverPosition
+          }
+        />
+      )
+    }
+
+    return null
+  }, [block, isBioPage, isBlogPost, isLiteMode, recordMap, title])
 
   // for easier debugging
   React.useEffect(() => {
+    if (error || !site || !block || !recordMap) return
+
     console.log('notion page', {
       isDev: config.isDev,
       title,
@@ -292,18 +374,41 @@ export function NotionPage({
     g.pageId = pageId
     g.recordMap = recordMap
     g.block = block
-  }, [block, pageId, recordMap, site.rootNotionPageId, title])
+  }, [block, error, pageId, recordMap, site, title])
+
+  if (error || !site || !block || !recordMap) {
+    return (
+      <SpecialPageShell sourceNotionPageId={pageId}>
+        <Page404 site={site} pageId={pageId} error={error} />
+      </SpecialPageShell>
+    )
+  }
 
   return (
     <>
       {isLiteMode && <BodyClassName className='notion-lite' />}
 
       <NotionRenderer
-        bodyClassName={cs(
-          pageId === site.rootNotionPageId && 'index-page',
-          tagsPage && 'tags-page'
-        )}
-        darkMode={isDarkMode}
+        bodyClassName={
+          isLiteMode
+            ? undefined
+            : cs(
+                isRootPage && 'index-page landing-page',
+                isBlogPost && 'article-page',
+                !isRootPage && !isBlogPost && 'standard-page',
+                tagsPage && 'tags-page'
+              )
+        }
+        className={
+          isLiteMode
+            ? undefined
+            : cs(
+                isRootPage && 'landing-notion',
+                isBlogPost && 'article-notion',
+                !isRootPage && !isBlogPost && 'standard-notion'
+              )
+        }
+        darkMode={true}
         components={notionRendererComponents}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
@@ -313,20 +418,30 @@ export function NotionPage({
         showCollectionViewDropdown={false}
         showTableOfContents={showTableOfContents}
         minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
+        defaultPageIcon={undefined}
+        defaultPageCover={undefined}
         defaultPageCoverPosition={config.defaultPageCoverPosition}
         linkTableTitleProperties={false}
         mapPageUrl={siteMapPageUrl}
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : undefined}
-        pageAside={pageAside}
-        footer={<Footer />}
+        disableHeader={false}
+        header={isRootPage ? <LandingSignature /> : undefined}
+        pageAside={isBlogPost ? pageAside : undefined}
+        pageHeader={
+          isRootPage ? (
+            <>
+              <AuthorLetter aboutHref={aboutHref} />
+              <header className='landing-writing-header'>
+                <h2 id='writing'>Writing</h2>
+              </header>
+            </>
+          ) : undefined
+        }
+        footer={<Footer sourceNotionPageId={pageId} />}
         pageTitle={tagsPage && propertyToFilterName ? title : undefined}
         pageCover={pageCover}
       />
-
-      <GitHubShareButton />
     </>
   )
 }

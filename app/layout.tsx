@@ -12,11 +12,31 @@ import '@/styles/notion.css'
 import '@/styles/prism-theme.css'
 
 import type { Metadata, Viewport } from 'next'
+import { Cormorant_Garamond, JetBrains_Mono, Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
 
 import * as config from '@/lib/config'
 
 import { Providers } from './providers'
+
+const sans = Manrope({
+  preload: false,
+  subsets: ['latin'],
+  variable: '--font-sans'
+})
+
+const serif = Cormorant_Garamond({
+  preload: false,
+  subsets: ['latin'],
+  variable: '--font-serif',
+  weight: '500'
+})
+
+const mono = JetBrains_Mono({
+  preload: false,
+  subsets: ['latin'],
+  variable: '--font-mono'
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.host),
@@ -68,22 +88,13 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: [
-    {
-      media: '(prefers-color-scheme: light)',
-      color: '#fefffe'
-    },
-    {
-      media: '(prefers-color-scheme: dark)',
-      color: '#2d3439'
-    }
-  ]
+  themeColor: '#080908'
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body>
+      <body className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
         <Providers>{children}</Providers>
       </body>
     </html>

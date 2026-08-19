@@ -11,13 +11,15 @@ body,
 html {
   padding: 0;
   margin: 0;
+  color-scheme: dark;
+  background: #080908;
 }
 
 body {
-  --notion-font:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', 'Noto Sans', sans-serif;
+  --notion-font: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --editorial-font: var(--font-serif), Georgia, serif;
+  --technical-font:
+    var(--font-mono), 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
   font-family: var(--notion-font);
   overflow-x: hidden;
 }

@@ -1,4 +1,49 @@
+import { execFileSync } from 'node:child_process'
+
+const fullGitCommitPattern = /^[0-9a-f]{40}$/i
+
+function resolveBuildGitCommit() {
+  const environmentCommit =
+    process.env.VERCEL_GIT_COMMIT_SHA || process.env.GITHUB_SHA
+
+  if (environmentCommit && fullGitCommitPattern.test(environmentCommit)) {
+    return environmentCommit
+  }
+
+  try {
+    const localCommit = execFileSync('git', ['rev-parse', 'HEAD'], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore']
+    }).trim()
+
+    return fullGitCommitPattern.test(localCommit) ? localCommit : ''
+  } catch {
+    return ''
+  }
+}
+
 export default {
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/',
+          has: [{ type: 'query', key: 'lite', value: 'true' }],
+          destination: '/-/embed/root'
+        },
+        {
+          source: '/:pageId',
+          has: [{ type: 'query', key: 'lite', value: 'true' }],
+          destination: '/-/embed/:pageId'
+        }
+      ],
+      afterFiles: [],
+      fallback: []
+    }
+  },
+  env: {
+    NEXT_PUBLIC_BUILD_GIT_SHA: resolveBuildGitCommit()
+  },
   staticPageGenerationTimeout: 300,
   images: {
     remotePatterns: [

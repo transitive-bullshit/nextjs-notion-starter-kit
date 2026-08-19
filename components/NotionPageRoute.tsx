@@ -8,7 +8,13 @@ import { getPageMetadataInfo } from '@/lib/page-metadata'
 
 import { NotionPage } from './NotionPage'
 
-export function NotionPageRoute({ pageProps }: { pageProps: PageProps }) {
+export function NotionPageRoute({
+  pageProps,
+  isLiteMode = false
+}: {
+  pageProps: PageProps
+  isLiteMode?: boolean
+}) {
   const { error, pageId, recordMap, site } = pageProps
 
   if (error || !pageId || !recordMap || !site) {
@@ -44,7 +50,12 @@ export function NotionPageRoute({ pageProps }: { pageProps: PageProps }) {
         />
       )}
 
-      <NotionPage pageId={pageId} recordMap={recordMap} site={site} />
+      <NotionPage
+        pageId={pageId}
+        recordMap={recordMap}
+        site={site}
+        isLiteMode={isLiteMode}
+      />
     </>
   )
 }

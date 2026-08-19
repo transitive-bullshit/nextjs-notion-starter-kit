@@ -1,0 +1,338 @@
+.footer {
+  --acid: #d6ff3f;
+  --ink: #f0eee6;
+  --muted-ink: rgb(240 238 230 / 54%);
+  width: calc(100% - clamp(36px, 8vw, 96px));
+  max-width: 50rem;
+  margin: clamp(24px, 4vw, 32px) auto 0;
+  padding: 0 0 max(28px, env(safe-area-inset-bottom));
+  border-top: 1px solid rgb(240 238 230 / 18%);
+  color: var(--ink);
+  font-family: var(--technical-font);
+}
+
+.bottomLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.bottomLine p {
+  margin: 0;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--acid);
+  box-shadow: 0 0 10px rgb(214 255 63 / 48%);
+  animation: signal-pulse 2400ms cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+.primaryLinks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid rgb(240 238 230 / 11%);
+}
+
+.primaryLink {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 0;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.primaryLink:first-child {
+  padding-right: 24px;
+}
+
+.primaryLink + .primaryLink {
+  padding-left: 24px;
+  border-left: 1px solid rgb(240 238 230 / 11%);
+}
+
+.primaryLink::after,
+.utilityLinks a::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: var(--acid);
+  content: '';
+  opacity: 0;
+  transform: scaleX(0.18);
+  transform-origin: left;
+  transition:
+    opacity 180ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.primaryLabel,
+.primaryHandle {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+}
+
+.primaryLabel {
+  gap: 10px;
+  font-family: var(--notion-font);
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.primaryLabel svg {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+.primaryHandle {
+  gap: 8px;
+  overflow: hidden;
+  color: var(--muted-ink);
+  font-size: 0.59rem;
+  letter-spacing: 0.06em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.primaryHandle span {
+  color: var(--acid);
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.primaryLink:focus-visible,
+.metadataLink a:focus-visible,
+.utilityLinks a:focus-visible {
+  outline: 1px solid var(--acid);
+  outline-offset: 7px;
+}
+
+.metadata {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: clamp(42px, 6vw, 64px) 0;
+}
+
+.metadataItem {
+  min-width: 0;
+}
+
+.metadataItem + .metadataItem {
+  padding-left: clamp(18px, 3vw, 32px);
+  border-left: 1px solid rgb(240 238 230 / 11%);
+}
+
+.metadataItem dt {
+  margin-bottom: 10px;
+  color: var(--muted-ink);
+  font-size: 0.57rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.metadataItem dd {
+  display: flex;
+  min-height: 1.2em;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  overflow: hidden;
+  color: rgb(240 238 230 / 84%);
+  font-size: 0.66rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.liveValue {
+  opacity: 0.45;
+  transition: opacity 240ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.liveValue[data-ready='true'] {
+  opacity: 1;
+}
+
+.metadataLink a {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+  color: rgb(240 238 230 / 84%);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.metadataLink code {
+  font: inherit;
+}
+
+.metadataLink a span {
+  flex: 0 0 auto;
+  color: var(--acid);
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.bottomLine {
+  padding-top: 17px;
+  border-top: 1px solid rgb(240 238 230 / 11%);
+  color: var(--muted-ink);
+  font-size: 0.58rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.utilityLinks {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.utilityLinks a {
+  position: relative;
+  padding: 3px 0;
+  color: rgb(240 238 230 / 74%);
+  text-decoration: none;
+  transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes signal-pulse {
+  0%,
+  100% {
+    opacity: 0.38;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryLink:hover::after,
+  .utilityLinks a:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .primaryLink:hover .primaryHandle span {
+    transform: translate(2px, -2px);
+  }
+
+  .metadataLink a:hover span {
+    transform: translate(2px, -2px);
+  }
+
+  .utilityLinks a:hover {
+    color: var(--acid);
+  }
+}
+
+@media (max-width: 820px) {
+  .metadata {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 24px;
+  }
+
+  .metadataItem:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer {
+    margin-top: 96px;
+  }
+
+  .primaryLinks {
+    grid-template-columns: 1fr;
+  }
+
+  .primaryLink:first-child {
+    padding-right: 0;
+  }
+
+  .primaryLink + .primaryLink {
+    padding-left: 0;
+    border-top: 1px solid rgb(240 238 230 / 11%);
+    border-left: 0;
+  }
+
+  .metadata {
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+  }
+
+  .metadataItem {
+    display: grid;
+    grid-template-columns: minmax(112px, 0.8fr) minmax(0, 1fr);
+    align-items: baseline;
+  }
+
+  .metadataItem + .metadataItem {
+    padding-top: 18px;
+    padding-left: 0;
+    border-top: 1px solid rgb(240 238 230 / 8%);
+    border-left: 0;
+  }
+
+  .metadataItem dt {
+    margin: 0;
+  }
+
+  .bottomLine {
+    align-items: flex-start;
+  }
+
+  .utilityLinks {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 390px) {
+  .bottomLine {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bottomLine {
+    gap: 15px;
+  }
+
+  .utilityLinks {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusDot {
+    animation: none;
+    opacity: 1;
+  }
+
+  .primaryLink::after,
+  .primaryHandle span,
+  .metadataLink a span,
+  .utilityLinks a,
+  .utilityLinks a::after {
+    transition-duration: 0.01ms;
+  }
+}

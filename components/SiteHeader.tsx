@@ -1,0 +1,387 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import type {
+  KeyboardEvent as ReactKeyboardEvent,
+  PointerEvent,
+  ReactNode
+} from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+
+import { github, navigationLinks, twitter } from '@/lib/config'
+
+import styles from './site-header.module.css'
+
+const desktopMediaQuery = '(min-width: 821px)'
+const searchClearSelector = '.notion-search .clearButton'
+const focusableSelector = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])'
+].join(',')
+
+function getConfiguredHref(title: string, fallback: string) {
+  const configuredLink = navigationLinks?.find(
+    (link) => link?.title.toLowerCase() === title.toLowerCase()
+  )
+
+  return configuredLink?.url || fallback
+}
+
+const defaultAboutHref = getConfiguredHref('about', '/about')
+const defaultContactHref = getConfiguredHref('contact', '/contact')
+const githubUrl = github ? `https://github.com/${github}` : undefined
+const twitterUrl = twitter ? `https://x.com/${twitter}` : undefined
+
+export interface SiteHeaderProps {
+  /** A record-map-aware page URL should be passed when available. */
+  aboutHref?: string
+  /** A record-map-aware page URL should be passed when available. */
+  contactHref?: string
+  /** Optional callback used by the mobile Search row. */
+  onSearch?: () => void
+  /** Existing search control rendered once in the desktop utility area. */
+  search?: ReactNode
+}
+
+function MenuGlyph({ open }: { open: boolean }) {
+  return (
+    <span
+      className={styles.menuGlyph}
+      data-open={open ? 'true' : undefined}
+      aria-hidden='true'
+    >
+      <span />
+      <span />
+    </span>
+  )
+}
+
+function SearchGlyph() {
+  return (
+    <svg className={styles.searchGlyph} viewBox='0 0 20 20' aria-hidden='true'>
+      <circle cx='8.5' cy='8.5' r='5.5' />
+      <path d='m12.8 12.8 4.2 4.2' />
+    </svg>
+  )
+}
+
+function ExternalMark() {
+  return <span aria-hidden='true'>↗</span>
+}
+
+function enhanceSearchDialogAccessibility() {
+  document
+    .querySelectorAll<HTMLInputElement>('.notion-search .searchInput')
+    .forEach((input) => {
+      if (!input.hasAttribute('aria-label')) {
+        input.setAttribute('aria-label', 'Search the site')
+      }
+    })
+
+  document
+    .querySelectorAll<HTMLElement>(searchClearSelector)
+    .forEach((clearButton) => {
+      if (!clearButton.hasAttribute('tabindex')) {
+        clearButton.tabIndex = 0
+      }
+      if (!clearButton.hasAttribute('aria-label')) {
+        clearButton.setAttribute('aria-label', 'Clear search')
+      }
+    })
+}
+
+export function SiteHeader({
+  aboutHref = defaultAboutHref,
+  contactHref = defaultContactHref,
+  onSearch,
+  search
+}: SiteHeaderProps) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const searchBridgeRef = useRef<HTMLDivElement>(null)
+  const handledSearchUrlRef = useRef<string | undefined>(undefined)
+  const searchAvailable = Boolean(search || onSearch)
+
+  const closeMenu = useCallback(() => setMenuOpen(false), [])
+  const openBridgedSearch = useCallback(() => {
+    const searchControl = searchBridgeRef.current?.querySelector<HTMLElement>(
+      'button, [role="button"], input, a[href]'
+    )
+
+    if (searchControl instanceof HTMLInputElement) {
+      searchControl.focus()
+    } else {
+      searchControl?.click()
+    }
+  }, [])
+  const openSearch = useCallback(() => {
+    if (onSearch) {
+      onSearch()
+      return
+    }
+
+    openBridgedSearch()
+  }, [onSearch, openBridgedSearch])
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    if (menuOpen && !dialog.open) {
+      dialog.showModal()
+      const firstFocusable =
+        dialog.querySelector<HTMLElement>(focusableSelector)
+      firstFocusable?.focus()
+    } else if (!menuOpen && dialog.open) {
+      dialog.close()
+    }
+  }, [menuOpen])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(desktopMediaQuery)
+    const handleBreakpointChange = (event: MediaQueryListEvent) => {
+      if (event.matches) closeMenu()
+    }
+
+    if (mediaQuery.matches) closeMenu()
+    mediaQuery.addEventListener('change', handleBreakpointChange)
+
+    return () =>
+      mediaQuery.removeEventListener('change', handleBreakpointChange)
+  }, [closeMenu])
+
+  useEffect(() => {
+    if (!search) return
+
+    const url = new URL(window.location.href)
+    if (url.searchParams.get('search') !== 'true') return
+    if (handledSearchUrlRef.current === url.href) return
+
+    handledSearchUrlRef.current = url.href
+    const openFrame = window.requestAnimationFrame(openBridgedSearch)
+
+    url.searchParams.delete('search')
+    const cleanUrl = `${url.pathname}${url.search}${url.hash}`
+    window.history.replaceState(window.history.state, '', cleanUrl)
+    handledSearchUrlRef.current = new URL(cleanUrl, window.location.origin).href
+
+    return () => window.cancelAnimationFrame(openFrame)
+  }, [openBridgedSearch, search])
+
+  useEffect(() => {
+    if (!search) return
+
+    const observer = new MutationObserver(enhanceSearchDialogAccessibility)
+    const handleSearchDialogKeyDown = (event: KeyboardEvent) => {
+      const target = event.target
+      if (!(target instanceof HTMLElement)) return
+      if (!target.matches(searchClearSelector)) return
+      if (target instanceof HTMLButtonElement) return
+      if (event.key !== 'Enter' && event.key !== ' ') return
+
+      event.preventDefault()
+      target.click()
+    }
+
+    enhanceSearchDialogAccessibility()
+    observer.observe(document.body, { childList: true, subtree: true })
+    document.addEventListener('keydown', handleSearchDialogKeyDown)
+
+    return () => {
+      observer.disconnect()
+      document.removeEventListener('keydown', handleSearchDialogKeyDown)
+    }
+  }, [search])
+
+  const handleDialogClose = () => {
+    setMenuOpen(false)
+    menuButtonRef.current?.focus()
+  }
+
+  const handleDialogPointerDown = (event: PointerEvent<HTMLDialogElement>) => {
+    const dialog = event.currentTarget
+    const bounds = dialog.getBoundingClientRect()
+    const outsideDialog =
+      event.clientX < bounds.left ||
+      event.clientX > bounds.right ||
+      event.clientY < bounds.top ||
+      event.clientY > bounds.bottom
+
+    if (outsideDialog) closeMenu()
+  }
+
+  const handleDialogKeyDown = (
+    event: ReactKeyboardEvent<HTMLDialogElement>
+  ) => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      closeMenu()
+      return
+    }
+
+    if (event.key !== 'Tab') return
+
+    const focusableElements = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>(focusableSelector)
+    ).filter((element) => element.getAttribute('aria-hidden') !== 'true')
+
+    const firstElement = focusableElements[0]
+    const lastElement = focusableElements.at(-1)
+    if (!firstElement || !lastElement) return
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault()
+      lastElement.focus()
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault()
+      firstElement.focus()
+    }
+  }
+
+  const handleMobileSearch = () => {
+    closeMenu()
+    window.requestAnimationFrame(openSearch)
+  }
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.inner}>
+        <Link
+          className={styles.avatarLink}
+          href='/'
+          aria-label='Travis Fischer, home'
+        >
+          <Image
+            className={styles.avatar}
+            src='/page-icon.png'
+            alt=''
+            width={40}
+            height={40}
+            priority
+          />
+        </Link>
+
+        <nav
+          className={styles.primaryNavigation}
+          aria-label='Primary navigation'
+        >
+          <Link href='/#writing'>Writing</Link>
+          <Link href={aboutHref}>About</Link>
+          <Link href={contactHref}>Contact</Link>
+        </nav>
+
+        <nav className={styles.utilityNavigation} aria-label='Site utilities'>
+          {githubUrl ? (
+            <a href={githubUrl} target='_blank' rel='noopener noreferrer'>
+              GitHub <ExternalMark />
+            </a>
+          ) : null}
+          {twitterUrl ? (
+            <a href={twitterUrl} target='_blank' rel='noopener noreferrer'>
+              X <ExternalMark />
+            </a>
+          ) : null}
+          {searchAvailable ? (
+            <button
+              className={styles.desktopSearchButton}
+              type='button'
+              onClick={openSearch}
+            >
+              <SearchGlyph />
+              Search
+            </button>
+          ) : null}
+
+          {search ? (
+            <div
+              className={styles.searchBridge}
+              ref={searchBridgeRef}
+              aria-hidden='true'
+            >
+              {search}
+            </div>
+          ) : null}
+        </nav>
+
+        <button
+          className={styles.menuButton}
+          ref={menuButtonRef}
+          type='button'
+          aria-expanded={menuOpen}
+          aria-controls='site-mobile-menu'
+          aria-haspopup='dialog'
+          onClick={() => setMenuOpen((current) => !current)}
+        >
+          <span>Menu</span>
+          <MenuGlyph open={menuOpen} />
+        </button>
+      </div>
+
+      <dialog
+        className={styles.mobileMenu}
+        id='site-mobile-menu'
+        ref={dialogRef}
+        aria-labelledby='site-mobile-menu-title'
+        onCancel={(event) => {
+          event.preventDefault()
+          closeMenu()
+        }}
+        onClose={handleDialogClose}
+        onKeyDown={handleDialogKeyDown}
+        onPointerDown={handleDialogPointerDown}
+      >
+        <div className={styles.mobileMenuTopline}>
+          <p id='site-mobile-menu-title'>Navigate</p>
+          <button type='button' onClick={closeMenu}>
+            Close
+          </button>
+        </div>
+
+        <nav className={styles.mobileNavigation} aria-label='Mobile navigation'>
+          <Link href='/#writing' onClick={closeMenu}>
+            <span>Writing</span>
+            <span aria-hidden='true'>01</span>
+          </Link>
+          <Link href={aboutHref} onClick={closeMenu}>
+            <span>About</span>
+            <span aria-hidden='true'>02</span>
+          </Link>
+          <Link href={contactHref} onClick={closeMenu}>
+            <span>Contact</span>
+            <span aria-hidden='true'>03</span>
+          </Link>
+          {searchAvailable ? (
+            <button type='button' onClick={handleMobileSearch}>
+              <span>Search</span>
+              <SearchGlyph />
+            </button>
+          ) : null}
+        </nav>
+
+        {githubUrl || twitterUrl ? (
+          <nav
+            className={styles.mobileSocialNavigation}
+            aria-label='Social links'
+          >
+            {githubUrl ? (
+              <a href={githubUrl} target='_blank' rel='noopener noreferrer'>
+                GitHub <ExternalMark />
+              </a>
+            ) : null}
+            {twitterUrl ? (
+              <a href={twitterUrl} target='_blank' rel='noopener noreferrer'>
+                X <ExternalMark />
+              </a>
+            ) : null}
+          </nav>
+        ) : null}
+      </dialog>
+    </header>
+  )
+}

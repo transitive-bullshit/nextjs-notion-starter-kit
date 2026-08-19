@@ -5,24 +5,21 @@
 }
 
 .container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   display: flex;
+  width: 100%;
+  min-height: clamp(24rem, 68svh, 52rem);
+  flex: 1 1 auto;
   justify-content: center;
   align-items: center;
   padding: 2vmin;
 
   font-size: 16px;
   line-height: 1.5;
-  color: rgb(55, 53, 47);
-  caret-color: rgb(55, 53, 47);
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
-    'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol';
-  background-color: var(--bg-color);
+  color: inherit;
+  caret-color: currentColor;
+  font-family: inherit;
+  background-color: transparent;
 }
 
 .loadingIcon {
