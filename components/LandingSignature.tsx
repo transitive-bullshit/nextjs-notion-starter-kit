@@ -3,6 +3,8 @@
 import type { CSSProperties, MouseEvent, PointerEvent } from 'react'
 import { useEffect, useRef, useState } from 'react'
 
+import { SmoothHashLink } from './SmoothHashLink'
+import { useSound } from './SoundProvider'
 import styles from './landing-signature.module.css'
 
 const O_COUNT = 8
@@ -318,6 +320,7 @@ function createStressFieldRenderer(
 }
 
 export function LandingSignature() {
+  const { playSound } = useSound()
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const [staticOrigin, setStaticOrigin] = useState(Math.floor(O_COUNT / 2))
   const [activationCount, setActivationCount] = useState(0)
@@ -663,6 +666,8 @@ export function LandingSignature() {
     const word = wordRef.current
     if (!word) return
 
+    playSound('sparkle')
+
     let origin = (staticOriginRef.current + 1) % O_COUNT
 
     if (clientX !== undefined) {
@@ -788,9 +793,9 @@ export function LandingSignature() {
         </span>
       </div>
 
-      <a className={styles.footerMeta} href='#author-letter'>
+      <SmoothHashLink className={styles.footerMeta} href='#author-letter'>
         A note from Travis <span aria-hidden='true'>↓</span>
-      </a>
+      </SmoothHashLink>
     </section>
   )
 }

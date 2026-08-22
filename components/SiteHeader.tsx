@@ -3,14 +3,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type {
+  ComponentPropsWithoutRef,
   KeyboardEvent as ReactKeyboardEvent,
-  PointerEvent,
+  MouseEvent as ReactMouseEvent,
   ReactNode
 } from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 import { github, navigationLinks, twitter } from '@/lib/config'
 
+import { SmoothHashLink } from './SmoothHashLink'
+import { SoundToggle } from './SoundToggle'
 import styles from './site-header.module.css'
 
 const desktopMediaQuery = '(min-width: 821px)'
@@ -33,15 +37,12 @@ function getConfiguredHref(title: string, fallback: string) {
 }
 
 const defaultAboutHref = getConfiguredHref('about', '/about')
-const defaultContactHref = getConfiguredHref('contact', '/contact')
 const githubUrl = github ? `https://github.com/${github}` : undefined
 const twitterUrl = twitter ? `https://x.com/${twitter}` : undefined
 
 export interface SiteHeaderProps {
   /** A record-map-aware page URL should be passed when available. */
   aboutHref?: string
-  /** A record-map-aware page URL should be passed when available. */
-  contactHref?: string
   /** Optional callback used by the mobile Search row. */
   onSearch?: () => void
   /** Existing search control rendered once in the desktop utility area. */
@@ -74,6 +75,23 @@ function ExternalMark() {
   return <span aria-hidden='true'>↗</span>
 }
 
+function WritingLink({
+  children,
+  onClick
+}: Pick<ComponentPropsWithoutRef<'a'>, 'children' | 'onClick'>) {
+  const pathname = usePathname()
+
+  return pathname === '/' ? (
+    <SmoothHashLink href='#writing' onClick={onClick}>
+      {children}
+    </SmoothHashLink>
+  ) : (
+    <Link href='/#writing' onClick={onClick}>
+      {children}
+    </Link>
+  )
+}
+
 function enhanceSearchDialogAccessibility() {
   document
     .querySelectorAll<HTMLInputElement>('.notion-search .searchInput')
@@ -97,7 +115,6 @@ function enhanceSearchDialogAccessibility() {
 
 export function SiteHeader({
   aboutHref = defaultAboutHref,
-  contactHref = defaultContactHref,
   onSearch,
   search
 }: SiteHeaderProps) {
@@ -204,7 +221,7 @@ export function SiteHeader({
     menuButtonRef.current?.focus()
   }
 
-  const handleDialogPointerDown = (event: PointerEvent<HTMLDialogElement>) => {
+  const handleDialogClick = (event: ReactMouseEvent<HTMLDialogElement>) => {
     const dialog = event.currentTarget
     const bounds = dialog.getBoundingClientRect()
     const outsideDialog =
@@ -271,9 +288,8 @@ export function SiteHeader({
           className={styles.primaryNavigation}
           aria-label='Primary navigation'
         >
-          <Link href='/#writing'>Writing</Link>
+          <WritingLink>Writing</WritingLink>
           <Link href={aboutHref}>About</Link>
-          <Link href={contactHref}>Contact</Link>
         </nav>
 
         <nav className={styles.utilityNavigation} aria-label='Site utilities'>
@@ -298,6 +314,8 @@ export function SiteHeader({
             </button>
           ) : null}
 
+          <SoundToggle />
+
           {search ? (
             <div
               className={styles.searchBridge}
@@ -309,18 +327,22 @@ export function SiteHeader({
           ) : null}
         </nav>
 
-        <button
-          className={styles.menuButton}
-          ref={menuButtonRef}
-          type='button'
-          aria-expanded={menuOpen}
-          aria-controls='site-mobile-menu'
-          aria-haspopup='dialog'
-          onClick={() => setMenuOpen((current) => !current)}
-        >
-          <span>Menu</span>
-          <MenuGlyph open={menuOpen} />
-        </button>
+        <div className={styles.mobileControls}>
+          <SoundToggle />
+          <button
+            className={styles.menuButton}
+            ref={menuButtonRef}
+            type='button'
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls='site-mobile-menu'
+            aria-haspopup='dialog'
+            onClick={() => setMenuOpen((current) => !current)}
+          >
+            <span>Menu</span>
+            <MenuGlyph open={menuOpen} />
+          </button>
+        </div>
       </div>
 
       <dialog
@@ -334,7 +356,7 @@ export function SiteHeader({
         }}
         onClose={handleDialogClose}
         onKeyDown={handleDialogKeyDown}
-        onPointerDown={handleDialogPointerDown}
+        onClick={handleDialogClick}
       >
         <div className={styles.mobileMenuTopline}>
           <p id='site-mobile-menu-title'>Navigate</p>
@@ -344,18 +366,16 @@ export function SiteHeader({
         </div>
 
         <nav className={styles.mobileNavigation} aria-label='Mobile navigation'>
-          <Link href='/#writing' onClick={closeMenu}>
+          <WritingLink onClick={closeMenu}>
             <span>Writing</span>
             <span aria-hidden='true'>01</span>
-          </Link>
+          </WritingLink>
+
           <Link href={aboutHref} onClick={closeMenu}>
             <span>About</span>
             <span aria-hidden='true'>02</span>
           </Link>
-          <Link href={contactHref} onClick={closeMenu}>
-            <span>Contact</span>
-            <span aria-hidden='true'>03</span>
-          </Link>
+
           {searchAvailable ? (
             <button type='button' onClick={handleMobileSearch}>
               <span>Search</span>

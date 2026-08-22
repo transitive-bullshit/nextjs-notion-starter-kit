@@ -22,6 +22,7 @@
     "test": "run-p test:*",
     "test:format": "oxfmt --check",
     "test:lint": "oxlint",
+    "test:unit": "vitest run",
     "test:typecheck": "tsc --noEmit",
     "fix": "run-s fix:*",
     "fix:format": "oxfmt",
@@ -31,6 +32,7 @@
     "@keyvhq/core": "^2.2.7",
     "@keyvhq/redis": "^2.2.7",
     "classnames": "^2.5.1",
+    "cuelume": "^0.2.2",
     "expiry-map": "^2.0.0",
     "fathom-client": "^3.7.2",
     "katex": "^0.18.4",
@@ -68,7 +70,8 @@
     "oxfmt": "^0.64.0",
     "oxlint": "^1.79.0",
     "oxlint-tsgolint": "^7.0.2001",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.11"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

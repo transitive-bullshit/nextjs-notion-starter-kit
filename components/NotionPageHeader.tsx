@@ -27,12 +27,10 @@ export function NotionPageHeader({
 }) {
   const { mapPageUrl } = useNotionContext()
   const aboutHref = getNavigationHref('about', mapPageUrl, '/about')
-  const contactHref = getNavigationHref('contact', mapPageUrl, '/contact')
 
   return (
     <SiteHeader
       aboutHref={aboutHref}
-      contactHref={contactHref}
       search={
         isSearchEnabled ? <Search block={block} title={null} /> : undefined
       }

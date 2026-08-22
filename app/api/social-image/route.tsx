@@ -1,3 +1,5 @@
+import { Buffer } from 'node:buffer'
+
 import ky from 'ky'
 import { ImageResponse } from 'next/og'
 import { type PageBlock } from 'notion-types'
@@ -6,6 +8,7 @@ import {
   getBlockTitle,
   getBlockValue,
   getPageProperty,
+  getSignedFileUrl,
   isUrl,
   parsePageId
 } from 'notion-utils'
@@ -14,6 +17,10 @@ import * as libConfig from '@/lib/config'
 import interSemiBoldFont from '@/lib/fonts/inter-semibold'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
+import {
+  selectImageWithFallback,
+  selectSocialImageBackground
+} from '@/lib/social-image'
 import { type NotionPageInfo, type PageError } from '@/lib/types'
 
 export async function GET(request: Request) {
@@ -36,7 +43,6 @@ export async function GET(request: Request) {
   }
 
   const pageInfo = pageInfoOrError.data
-  console.log(pageInfo)
 
   return new ImageResponse(
     <div
@@ -59,7 +65,8 @@ export async function GET(request: Request) {
             position: 'absolute',
             width: '100%',
             height: '100%',
-            objectFit: 'cover'
+            objectFit: 'cover',
+            objectPosition: pageInfo.imageObjectPosition
           }}
         />
       )}
@@ -190,23 +197,36 @@ async function getNotionPageInfo({
     ? `center ${(1 - imageCoverPosition) * 100}%`
     : undefined
 
-  const imageBlockUrl = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover,
-    block
+  const resolveImageUrl = (url: string | undefined) =>
+    mapImageUrl(getSignedFileUrl(url, block, recordMap.signed_urls), block)
+
+  const socialImageUrl = resolveImageUrl(
+    getPageProperty<string>('Social Image', block, recordMap)
   )
-  const imageFallbackUrl = mapImageUrl(libConfig.defaultPageCover, block)
+  const pageCoverUrl = resolveImageUrl((block as PageBlock).format?.page_cover)
+  const imageFallbackUrl = resolveImageUrl(libConfig.defaultPageCover)
 
   const blockIcon = getBlockIcon(block, recordMap)
-  const authorImageBlockUrl = mapImageUrl(
-    blockIcon && isUrl(blockIcon) ? blockIcon : undefined,
-    block
+  const authorImageBlockUrl = resolveImageUrl(
+    blockIcon && isUrl(blockIcon) ? blockIcon : undefined
   )
-  const authorImageFallbackUrl = mapImageUrl(libConfig.defaultPageIcon, block)
-  const [authorImage, image] = await Promise.all([
-    getCompatibleImageUrl(authorImageBlockUrl, authorImageFallbackUrl),
-    getCompatibleImageUrl(imageBlockUrl, imageFallbackUrl)
+  const authorImageFallbackUrl = resolveImageUrl(libConfig.defaultPageIcon)
+  const [authorImage, selectedImage] = await Promise.all([
+    selectImageWithFallback(
+      [authorImageBlockUrl],
+      authorImageFallbackUrl,
+      isUrlReachable
+    ),
+    selectSocialImageBackground(
+      {
+        socialImageUrl,
+        pageCoverUrl,
+        fallbackUrl: imageFallbackUrl
+      },
+      isUrlReachable
+    )
   ])
+  const image = await inlineImageWithFallback(selectedImage, imageFallbackUrl)
 
   const author =
     getPageProperty<string>('Author', block, recordMap) || libConfig.author
@@ -245,30 +265,41 @@ async function isUrlReachable(
   }
 
   try {
-    await ky.head(url)
+    const response = await ky.get(url, {
+      headers: {
+        Range: 'bytes=0-0'
+      }
+    })
+    void response.body?.cancel()
     return true
   } catch {
     return false
   }
 }
 
-async function getCompatibleImageUrl(
-  url: string | undefined | null,
-  fallbackUrl: string | undefined | null
+async function inlineImage(
+  url: string | undefined
 ): Promise<string | undefined> {
-  const image = (await isUrlReachable(url)) ? url : fallbackUrl
+  if (!url) return
 
-  if (image) {
-    const imageUrl = new URL(image)
+  try {
+    const response = await ky.get(url)
+    const contentType = response.headers.get('content-type')?.split(';')[0]
+    if (!contentType?.startsWith('image/')) return
 
-    if (imageUrl.host === 'images.unsplash.com') {
-      if (!imageUrl.searchParams.has('w')) {
-        imageUrl.searchParams.set('w', '1200')
-        imageUrl.searchParams.set('fit', 'max')
-        return imageUrl.toString()
-      }
-    }
+    const image = Buffer.from(await response.arrayBuffer()).toString('base64')
+    return `data:${contentType};base64,${image}`
+  } catch {
+    return
   }
+}
 
-  return image ?? undefined
+async function inlineImageWithFallback(
+  url: string | undefined,
+  fallbackUrl: string | undefined
+): Promise<string | undefined> {
+  const image = await inlineImage(url)
+  if (image || !fallbackUrl || fallbackUrl === url) return image
+
+  return inlineImage(fallbackUrl)
 }

@@ -5,6 +5,7 @@ import * as React from 'react'
 import * as config from '@/lib/config'
 import { GitHubIcon } from '@/lib/icons/github'
 
+import { SoundToggle } from './SoundToggle'
 import landingStyles from './landing-footer.module.css'
 
 interface FooterProps {
@@ -177,7 +178,11 @@ export function FooterImpl({ gitCommitSha, sourceNotionPageId }: FooterProps) {
 
       <div className={landingStyles.bottomLine}>
         <p>© {currentYear} Travis Fischer</p>
-        <nav className={landingStyles.utilityLinks} aria-label='More links'>
+        <nav
+          className={landingStyles.utilityLinks}
+          aria-label='Footer utilities'
+        >
+          <SoundToggle />
           <a
             href={sourceRepositoryUrl}
             target='_blank'

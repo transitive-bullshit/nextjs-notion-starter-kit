@@ -90,6 +90,7 @@
 
 .utilityNavigation {
   grid-column: 3;
+  gap: 2px;
   justify-content: flex-end;
   justify-self: end;
 }
@@ -209,6 +210,12 @@
   cursor: pointer;
 }
 
+.mobileControls {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
 .menuButton:focus-visible {
   color: var(--site-header-acid);
 }
@@ -265,11 +272,8 @@
   border-bottom: 1px solid rgb(214 255 63 / 14%);
   color: var(--site-header-ink);
   background:
-    linear-gradient(135deg, rgb(214 255 63 / 3.5%), transparent 44%),
-    rgb(8 9 8 / 92%);
+    linear-gradient(135deg, rgb(214 255 63 / 3.5%), transparent 44%), #080908;
   box-shadow: 0 24px 60px rgb(0 0 0 / 34%);
-  backdrop-filter: saturate(145%) blur(24px);
-  -webkit-backdrop-filter: saturate(145%) blur(24px);
   overscroll-behavior: contain;
 }
 
@@ -410,10 +414,14 @@
     display: none;
   }
 
-  .menuButton {
+  .mobileControls {
     display: flex;
     grid-column: 3;
     justify-self: end;
+  }
+
+  .menuButton {
+    display: flex;
   }
 }
 

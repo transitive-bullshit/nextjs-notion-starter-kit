@@ -7,8 +7,8 @@
   gap: clamp(52px, 7vw, 112px);
   align-items: center;
   width: min(100%, 1320px);
-  min-height: calc(100svh - var(--site-header-height, 68px));
-  padding: clamp(68px, 10vh, 118px) clamp(18px, 4vw, 56px) 0;
+  /* min-height: calc(100svh - var(--site-header-height, 68px)); */
+  padding: clamp(48px, 5vh, 96px) clamp(18px, 4vw, 56px) 0;
   margin: 0 auto;
   color: var(--masthead-ink);
 }
@@ -109,10 +109,10 @@
   margin: 0;
   color: var(--masthead-ink);
   font-family: var(--editorial-font);
-  font-size: clamp(3.8rem, 6vw, 6.9rem);
+  font-size: clamp(3.5rem, 5vw, 6.9rem);
   font-weight: 500;
   letter-spacing: -0.055em;
-  line-height: 0.84;
+  line-height: 1.2;
   text-wrap: balance;
 }
 
@@ -223,6 +223,7 @@
 .heroImage {
   z-index: 0;
   display: block;
+  border-radius: 2px;
   filter: grayscale(0.88) sepia(0.1) saturate(0.52) contrast(1.14)
     brightness(0.76);
   object-fit: cover;

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
 
+import { ArticleSharedElement } from './ArticleViewTransitions'
 import styles from './article-masthead.module.css'
 
 export type ArticleMastheadProps = {
@@ -12,6 +13,7 @@ export type ArticleMastheadProps = {
   description: string
   iconEmoji?: string
   iconUrl?: string
+  pageId: string
   published: string
   readingLength: string
   tags: readonly string[]
@@ -43,6 +45,7 @@ export function ArticleMasthead({
   description,
   iconEmoji,
   iconUrl,
+  pageId,
   published,
   readingLength,
   tags,
@@ -79,9 +82,13 @@ export function ArticleMasthead({
             ) : null}
             Writing
           </p>
-          <h1 id='article-title'>{title}</h1>
+          <ArticleSharedElement pageId={pageId} part='title'>
+            <h1 id='article-title'>{title}</h1>
+          </ArticleSharedElement>
           {description ? (
-            <p className={styles.description}>{description}</p>
+            <ArticleSharedElement pageId={pageId} part='description'>
+              <p className={styles.description}>{description}</p>
+            </ArticleSharedElement>
           ) : null}
         </div>
 
@@ -120,15 +127,17 @@ export function ArticleMasthead({
       </div>
 
       <figure className={styles.hero}>
-        <Image
-          className={styles.heroImage}
-          src={coverUrl}
-          alt={coverAlt}
-          fill
-          priority
-          sizes='(max-width: 820px) calc(100vw - 36px), (max-width: 1320px) 42vw, 560px'
-          style={coverStyle}
-        />
+        <ArticleSharedElement pageId={pageId} part='hero'>
+          <Image
+            className={styles.heroImage}
+            src={coverUrl}
+            alt={coverAlt}
+            fill
+            priority
+            sizes='(max-width: 820px) calc(100vw - 36px), (max-width: 1320px) 42vw, 560px'
+            style={coverStyle}
+          />
+        </ArticleSharedElement>
         <span className={styles.heroColorWash} aria-hidden='true' />
         <span className={styles.heroGrain} aria-hidden='true' />
       </figure>

@@ -9,6 +9,8 @@ import * as React from 'react'
 import { bootstrap } from '@/lib/bootstrap-client'
 import { fathomConfig, fathomId, posthogConfig, posthogId } from '@/lib/config'
 
+import { SoundProvider } from '@/components/SoundProvider'
+
 const themeClassNames = { dark: 'dark-mode', light: 'light-mode' }
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -21,11 +23,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
       forcedTheme='dark'
       value={themeClassNames}
     >
-      <React.Suspense fallback={null}>
-        <Analytics />
-      </React.Suspense>
+      <SoundProvider>
+        <React.Suspense fallback={null}>
+          <Analytics />
+        </React.Suspense>
 
-      {children}
+        {children}
+      </SoundProvider>
     </ThemeProvider>
   )
 }
