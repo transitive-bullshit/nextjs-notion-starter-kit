@@ -59,10 +59,6 @@ export default siteConfig({
     {
       title: 'About',
       pageId: '8d0062776d0c4afca96eb1ace93a7538'
-    },
-    {
-      title: 'Contact',
-      pageId: '9a7ddf2973444067bbc5ce0a4e0e0058'
     }
   ]
 })
