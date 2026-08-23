@@ -35,6 +35,7 @@ import { Footer } from './Footer'
 import { NotionPageHeader } from './NotionPageHeader'
 import { PageAside } from './PageAside'
 import { Page404 } from './Page404'
+import { MainContentTarget } from './SkipLink'
 import { SpecialPageShell } from './SpecialPageShell'
 import { TableOfContentsBottomState } from './TableOfContentsBottomState'
 
@@ -441,14 +442,17 @@ export function NotionPage({
           header={isRootPage ? <LandingSignature /> : undefined}
           pageAside={isBlogPost ? pageAside : undefined}
           pageHeader={
-            isRootPage ? (
-              <>
-                <AuthorLetter aboutHref={aboutHref} />
-                <header className='landing-writing-header'>
-                  <h2 id='writing'>Writing</h2>
-                </header>
-              </>
-            ) : undefined
+            <>
+              <MainContentTarget />
+              {isRootPage ? (
+                <>
+                  <AuthorLetter aboutHref={aboutHref} />
+                  <header className='landing-writing-header'>
+                    <h2 id='writing'>Writing</h2>
+                  </header>
+                </>
+              ) : null}
+            </>
           }
           footer={
             <>

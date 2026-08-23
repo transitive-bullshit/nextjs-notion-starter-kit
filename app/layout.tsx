@@ -16,6 +16,7 @@ import { Cormorant_Garamond, JetBrains_Mono, Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
 
 import * as config from '@/lib/config'
+import { SkipLink } from '@/components/SkipLink'
 
 import { Providers } from './providers'
 
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     icon: [
       {
-        url: '/favicon.png',
+        url: '/favicon-32x32.png',
         type: 'image/png',
         sizes: '32x32'
       }
@@ -93,8 +94,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang={config.language} suppressHydrationWarning>
       <body className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+        <SkipLink />
         <Providers>{children}</Providers>
       </body>
     </html>

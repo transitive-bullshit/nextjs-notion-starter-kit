@@ -3,6 +3,8 @@
 import * as React from 'react'
 
 import { ErrorPage } from '@/components/ErrorPage'
+import { SkipLink } from '@/components/SkipLink'
+import * as config from '@/lib/config'
 
 const LazySpecialPageShell = React.lazy(async () => {
   const { SpecialPageShell } = await import('@/components/SpecialPageShell')
@@ -45,7 +47,7 @@ export default function GlobalError({
   const errorPage = <ErrorPage statusCode={500} onRetry={reset} />
 
   return (
-    <html lang='en'>
+    <html lang={config.language}>
       <body
         style={{
           margin: 0,
@@ -53,6 +55,7 @@ export default function GlobalError({
           background: '#080908'
         }}
       >
+        <SkipLink />
         <GlobalErrorChromeBoundary fallback={errorPage}>
           <React.Suspense fallback={errorPage}>
             <LazySpecialPageShell>{errorPage}</LazySpecialPageShell>

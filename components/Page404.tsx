@@ -1,10 +1,12 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import type * as types from '@/lib/types'
 
+import { mainContentId } from './SkipLink'
 import styles from './styles.module.css'
 
 export function Page404({ pageId, error }: types.PageProps) {
@@ -13,7 +15,7 @@ export function Page404({ pageId, error }: types.PageProps) {
 
   return (
     <div className={styles.container}>
-      <main className={styles.main}>
+      <main className={styles.main} id={mainContentId} tabIndex={-1}>
         <h1>Notion Page Not Found</h1>
 
         {error ? (
@@ -26,6 +28,11 @@ export function Page404({ pageId, error }: types.PageProps) {
             </p>
           )
         )}
+
+        <Link className={styles.recoveryLink} href='/'>
+          <span aria-hidden='true'>←</span>
+          Return Home
+        </Link>
 
         <Image
           src='/404.png'

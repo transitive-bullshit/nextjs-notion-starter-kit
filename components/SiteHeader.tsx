@@ -98,6 +98,12 @@ function enhanceSearchDialogAccessibility(searchRoot: HTMLElement) {
   searchRoot
     .querySelectorAll<HTMLInputElement>('.searchInput')
     .forEach((input) => {
+      input.name = 'search'
+      input.type = 'search'
+      input.autocomplete = 'off'
+      input.spellcheck = false
+      input.placeholder = 'Search…'
+
       if (!input.hasAttribute('aria-label')) {
         input.setAttribute('aria-label', 'Search the site')
       }
