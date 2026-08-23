@@ -46,7 +46,7 @@ export function AuthorLetter() {
             It uses{' '}
             <a
               className={styles.link}
-              href='https://www.notion.so'
+              href='https://www.notion.com'
               target='_blank'
               rel='noopener noreferrer'
             >
