@@ -59,7 +59,7 @@ export function AuthorLetter() {
               target='_blank'
               rel='noopener noreferrer'
             >
-              open source and forkable
+              open source and easy to fork
             </a>
             .
           </p>

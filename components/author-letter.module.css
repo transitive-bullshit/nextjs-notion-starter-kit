@@ -6,7 +6,7 @@
   width: 100%;
   min-width: 0;
   scroll-margin-top: 0;
-  padding: clamp(104px, 14vw, 176px) 0 clamp(64px, 10vw, 128px);
+  padding: clamp(104px, 14vw, 176px) 0 clamp(104px, 14vw, 176px);
   color: var(--ink);
 }
 
