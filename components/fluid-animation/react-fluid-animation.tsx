@@ -3,8 +3,6 @@ import * as React from 'react'
 
 import FluidAnimation, { defaultConfig } from './fluid-animation'
 
-const autoplayDurationMs = 5000
-
 type ReactFluidAnimationProps = React.HTMLAttributes<HTMLDivElement> & {
   animationRef?: (animation: FluidAnimation | null) => void
   config?: any
@@ -99,18 +97,12 @@ export function ReactFluidAnimation({
     instanceRef.current = animation
     notifyAnimationRef(animation)
 
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     let frameId: number | null = null
-    let autoplayTimeoutId: ReturnType<typeof setTimeout> | null = null
     let isDisposed = false
-    let isIntersecting = true
     let isDocumentVisible = document.visibilityState !== 'hidden'
-    let prefersReducedMotion = motionQuery.matches
     let isActive = false
     let reportedActivity: boolean | undefined
     let needsStaticFrame = true
-    let autoplayExpired = false
-    const autoplayDeadline = Date.now() + autoplayDurationMs
 
     const hasLayoutSize = () => layoutWidth > 0 && layoutHeight > 0
 
@@ -141,12 +133,6 @@ export function ReactFluidAnimation({
       frameId = null
       if (!isActive || isDisposed) return
 
-      if (Date.now() >= autoplayDeadline) {
-        autoplayExpired = true
-        syncActivity()
-        return
-      }
-
       animation.update()
       needsStaticFrame = false
       frameId = raf(frame)
@@ -166,10 +152,8 @@ export function ReactFluidAnimation({
     }
 
     const syncActivity = () => {
-      if (Date.now() >= autoplayDeadline) autoplayExpired = true
-
-      const canDisplay = isIntersecting && isDocumentVisible && hasLayoutSize()
-      const canAnimate = canDisplay && !prefersReducedMotion && !autoplayExpired
+      const canDisplay = isDocumentVisible && hasLayoutSize()
+      const canAnimate = canDisplay
 
       if (canAnimate || (!canvasSizeInitialized && canDisplay)) {
         syncCanvasSize()
@@ -184,37 +168,20 @@ export function ReactFluidAnimation({
         stop()
       }
 
-      if (
-        canDisplay &&
-        prefersReducedMotion &&
-        canvasSizeInitialized &&
-        needsStaticFrame
-      ) {
+      if (canDisplay && canvasSizeInitialized && needsStaticFrame) {
         animation.update()
         needsStaticFrame = false
       }
     }
 
     renderInteractionFrameRef.current = () => {
-      if (
-        isDisposed ||
-        isActive ||
-        prefersReducedMotion ||
-        !isIntersecting ||
-        !isDocumentVisible ||
-        !hasLayoutSize()
-      ) {
+      if (isDisposed || isActive || !isDocumentVisible || !hasLayoutSize()) {
         return
       }
 
       syncCanvasSize()
       animation.update()
       needsStaticFrame = false
-    }
-
-    const handleMotionPreference = () => {
-      prefersReducedMotion = motionQuery.matches
-      syncActivity()
     }
 
     const handleVisibility = () => {
@@ -232,30 +199,15 @@ export function ReactFluidAnimation({
     })
     resizeObserver.observe(container)
 
-    const intersectionObserver = new IntersectionObserver(([entry]) => {
-      isIntersecting = entry?.isIntersecting ?? true
-      syncActivity()
-    })
-    intersectionObserver.observe(container)
-
-    motionQuery.addEventListener('change', handleMotionPreference)
     document.addEventListener('visibilitychange', handleVisibility)
     syncActivity()
-    autoplayTimeoutId = setTimeout(() => {
-      autoplayTimeoutId = null
-      autoplayExpired = true
-      syncActivity()
-    }, autoplayDurationMs)
 
     return () => {
       isDisposed = true
       isActive = false
       stop()
-      if (autoplayTimeoutId !== null) clearTimeout(autoplayTimeoutId)
       renderInteractionFrameRef.current = () => undefined
       resizeObserver.disconnect()
-      intersectionObserver.disconnect()
-      motionQuery.removeEventListener('change', handleMotionPreference)
       document.removeEventListener('visibilitychange', handleVisibility)
       reportActivity(false)
       notifyAnimationRef(null)

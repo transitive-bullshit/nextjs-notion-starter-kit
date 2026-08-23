@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import { NotionPage } from '@/components/NotionPage'
 import { NotionPageRoute } from '@/components/NotionPageRoute'
 import { getPageData } from '@/lib/get-page-data'
 
@@ -20,5 +21,11 @@ export default async function EmbedPage({ params }: EmbedPageProps) {
   const { pageId } = await params
   const pageProps = await getPageData(pageId === 'root' ? undefined : pageId)
 
-  return <NotionPageRoute pageProps={pageProps} isLiteMode={true} />
+  return (
+    <NotionPageRoute
+      pageProps={pageProps}
+      pageComponent={NotionPage}
+      isLiteMode={true}
+    />
+  )
 }

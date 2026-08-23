@@ -1,21 +1,21 @@
 import 'server-only'
 
 import { notFound } from 'next/navigation'
+import type { ComponentType } from 'react'
 
 import type { PageProps } from '@/lib/types'
 import { author } from '@/lib/config'
 import { getPageMetadataInfo } from '@/lib/page-metadata'
 
-import { LandingNotionPage } from './LandingNotionPage'
-import { NotionPage } from './NotionPage'
+import type { NotionPageProps } from './NotionPage'
 
 export function NotionPageRoute({
   pageProps,
-  useEagerCollection = false,
+  pageComponent: PageComponent,
   isLiteMode = false
 }: {
   pageProps: PageProps
-  useEagerCollection?: boolean
+  pageComponent: ComponentType<NotionPageProps>
   isLiteMode?: boolean
 }) {
   const { error, pageId, recordMap, site } = pageProps
@@ -53,21 +53,12 @@ export function NotionPageRoute({
         />
       )}
 
-      {useEagerCollection ? (
-        <LandingNotionPage
-          pageId={pageId}
-          recordMap={recordMap}
-          site={site}
-          isLiteMode={isLiteMode}
-        />
-      ) : (
-        <NotionPage
-          pageId={pageId}
-          recordMap={recordMap}
-          site={site}
-          isLiteMode={isLiteMode}
-        />
-      )}
+      <PageComponent
+        pageId={pageId}
+        recordMap={recordMap}
+        site={site}
+        isLiteMode={isLiteMode}
+      />
     </>
   )
 }
