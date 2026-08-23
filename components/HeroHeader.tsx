@@ -1,6 +1,6 @@
 import raf from 'raf'
 import random from 'random'
-import React, { Component } from 'react'
+import { Component } from 'react'
 
 import { ReactFluidAnimation } from './fluid-animation'
 
@@ -12,29 +12,15 @@ const maxSplatRadius = 0.03
 export class HeroHeader extends Component<{
   className?: string
 }> {
-  _time: number = Date.now()
-  _direction = 1
-  _tickRaf: any
-  _timeout: any
-  _animation: any
-
-  override componentDidMount() {
-    this._time = Date.now()
-    this._direction = 1
-    this._reset()
-    this._tick()
-  }
+  _tickRaf: number | null = null
+  _timeout: ReturnType<typeof setTimeout> | null = null
+  _animation: any = null
+  _isActive = false
 
   override componentWillUnmount() {
-    if (this._tickRaf) {
-      raf.cancel(this._tickRaf)
-      this._tickRaf = null
-    }
-
-    if (this._timeout) {
-      clearTimeout(this._timeout)
-      this._timeout = null
-    }
+    this._isActive = false
+    this._stop()
+    this._animation = null
   }
 
   override render() {
@@ -42,13 +28,55 @@ export class HeroHeader extends Component<{
       <ReactFluidAnimation
         className={this.props.className}
         animationRef={this._animationRef}
+        onActiveChange={this._handleActiveChange}
       />
     )
   }
 
+  _stop = () => {
+    if (this._tickRaf !== null) {
+      raf.cancel(this._tickRaf)
+      this._tickRaf = null
+    }
+
+    if (this._timeout !== null) {
+      clearTimeout(this._timeout)
+      this._timeout = null
+    }
+  }
+
+  _start = () => {
+    if (
+      !this._isActive ||
+      !this._animation ||
+      this._tickRaf !== null ||
+      this._timeout !== null
+    ) {
+      return
+    }
+
+    this._tick()
+  }
+
   _animationRef = (ref: any) => {
     this._animation = ref
-    this._reset()
+
+    if (ref) {
+      this._reset()
+      this._start()
+    } else {
+      this._stop()
+    }
+  }
+
+  _handleActiveChange = (active: boolean) => {
+    this._isActive = active
+
+    if (active) {
+      this._start()
+    } else {
+      this._stop()
+    }
   }
 
   _reset() {
@@ -64,6 +92,8 @@ export class HeroHeader extends Component<{
   _tick = () => {
     this._tickRaf = null
     this._timeout = null
+
+    if (!this._isActive || !this._animation) return
 
     let scale = 1.0
 
@@ -129,6 +159,9 @@ export class HeroHeader extends Component<{
     const timeout = (exp() * 100) / dampenedScale
 
     this._timeout = setTimeout(() => {
+      this._timeout = null
+      if (!this._isActive || !this._animation) return
+
       this._tickRaf = raf(this._tick)
     }, timeout)
   }

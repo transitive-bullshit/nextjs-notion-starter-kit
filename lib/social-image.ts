@@ -1,4 +1,4 @@
-export type ImageReachabilityCheck = (url: string) => Promise<boolean>
+export type ImageLoader = (url: string) => Promise<string | undefined>
 
 export interface SocialImageBackgroundSources {
   fallbackUrl?: string | null
@@ -8,32 +8,47 @@ export interface SocialImageBackgroundSources {
 
 export async function selectSocialImageBackground(
   { fallbackUrl, pageCoverUrl, socialImageUrl }: SocialImageBackgroundSources,
-  isReachable: ImageReachabilityCheck
+  loadImage: ImageLoader
 ): Promise<string | undefined> {
   return selectImageWithFallback(
     [socialImageUrl, pageCoverUrl],
     fallbackUrl,
-    isReachable
+    loadImage
   )
 }
 
 export async function selectImageWithFallback(
   candidates: ReadonlyArray<string | null | undefined>,
   fallbackUrl: string | null | undefined,
-  isReachable: ImageReachabilityCheck
+  loadImage: ImageLoader
 ): Promise<string | undefined> {
   const seen = new Set<string>()
 
-  for (const candidate of candidates) {
-    if (!candidate || seen.has(candidate)) continue
+  for (const candidate of [...candidates, fallbackUrl]) {
+    if (!candidate) continue
 
-    seen.add(candidate)
-    if (await isReachable(candidate)) {
-      return prepareSocialImageUrl(candidate)
-    }
+    const imageUrl = prepareSocialImageUrl(candidate)
+    if (seen.has(imageUrl)) continue
+
+    seen.add(imageUrl)
+    const image = await loadImage(imageUrl)
+    if (image) return image
   }
 
-  return fallbackUrl ? prepareSocialImageUrl(fallbackUrl) : undefined
+  return
+}
+
+export function createCachedImageLoader(loadImage: ImageLoader): ImageLoader {
+  const images = new Map<string, Promise<string | undefined>>()
+
+  return (url) => {
+    const cachedImage = images.get(url)
+    if (cachedImage) return cachedImage
+
+    const image = loadImage(url)
+    images.set(url, image)
+    return image
+  }
 }
 
 function prepareSocialImageUrl(image: string): string {

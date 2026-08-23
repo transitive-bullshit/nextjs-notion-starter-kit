@@ -13,5 +13,5 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const pageProps = await getPageData()
 
-  return <NotionPageRoute pageProps={pageProps} />
+  return <NotionPageRoute pageProps={pageProps} useEagerCollection />
 }

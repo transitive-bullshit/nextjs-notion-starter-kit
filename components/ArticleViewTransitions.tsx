@@ -2,6 +2,7 @@
 
 import Image, { type ImageProps } from 'next/image'
 import Link, { type LinkProps } from 'next/link'
+import { useRouter } from 'next/navigation'
 import { type ExtendedRecordMap, type PageBlock } from 'notion-types'
 import {
   getBlockTitle,
@@ -56,10 +57,38 @@ export function ArticleTransitionProvider({
 }
 
 export function ArticlePageLink({
+  href,
+  onFocus,
+  onMouseEnter,
   prefetch,
   ...props
 }: LinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) {
-  return <Link {...props} prefetch={prefetch ?? true} />
+  const router = useRouter()
+  const prefetchOnIntent = () => {
+    if (
+      prefetch === undefined &&
+      typeof href === 'string' &&
+      href.startsWith('/')
+    ) {
+      router.prefetch(href)
+    }
+  }
+
+  return (
+    <Link
+      {...props}
+      href={href}
+      prefetch={prefetch === undefined ? false : prefetch}
+      onMouseEnter={(event) => {
+        onMouseEnter?.(event)
+        if (!event.defaultPrevented) prefetchOnIntent()
+      }}
+      onFocus={(event) => {
+        onFocus?.(event)
+        if (!event.defaultPrevented) prefetchOnIntent()
+      }}
+    />
+  )
 }
 
 export function ArticleTransitionImage(props: ImageProps) {

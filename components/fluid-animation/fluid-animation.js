@@ -28,6 +28,20 @@ class Pointer {
   }
 }
 
+function disposeFramebuffer(gl, target) {
+  if (!target) return
+
+  gl.deleteTexture(target[0])
+  gl.deleteFramebuffer(target[1])
+}
+
+function disposeDoubleFramebuffer(gl, target) {
+  if (!target) return
+
+  disposeFramebuffer(gl, target.read)
+  disposeFramebuffer(gl, target.write)
+}
+
 export default class FluidAnimation {
   constructor(opts) {
     const {
@@ -43,14 +57,28 @@ export default class FluidAnimation {
 
     this._pointers = [new Pointer()]
     this._splatStack = []
+    this._disposed = false
+    this._programs = {}
+    this._vertexBuffer = null
+    this._indexBuffer = null
+    this._density = null
+    this._velocity = null
+    this._divergence = null
+    this._curl = null
+    this._pressure = null
 
     const { gl, ext } = getGLContext(canvas)
     this._gl = gl
     this._ext = ext
 
-    this._initPrograms()
-    this._initBlit()
-    this.resize()
+    try {
+      this._initPrograms()
+      this._initBlit()
+      this.resize()
+    } catch (err) {
+      this.dispose()
+      throw err
+    }
 
     this._time = Date.now()
     this._timer = 0
@@ -73,14 +101,20 @@ export default class FluidAnimation {
   }
 
   addSplat(splat) {
+    if (this._disposed) return
+
     this._splatStack.push([splat])
   }
 
   addSplats(splats) {
+    if (this._disposed) return
+
     this._splatStack.push(Array.isArray(splats) ? splats : [splats])
   }
 
   addRandomSplats(count) {
+    if (this._disposed) return
+
     const splats = []
 
     for (let i = 0; i < count; ++i) {
@@ -91,6 +125,8 @@ export default class FluidAnimation {
   }
 
   resize() {
+    if (this._disposed) return
+
     const { width, height } = this._canvas
 
     if (this._width !== width || this._height !== height) {
@@ -98,6 +134,29 @@ export default class FluidAnimation {
       this._height = height
 
       this._initFramebuffers()
+    }
+  }
+
+  dispose() {
+    if (this._disposed) return
+
+    this._disposed = true
+    this._splatStack.length = 0
+    this._disposeFramebuffers()
+
+    for (const program of Object.values(this._programs)) {
+      program.dispose()
+    }
+    this._programs = {}
+
+    if (this._vertexBuffer) {
+      this._gl.deleteBuffer(this._vertexBuffer)
+      this._vertexBuffer = null
+    }
+
+    if (this._indexBuffer) {
+      this._gl.deleteBuffer(this._indexBuffer)
+      this._indexBuffer = null
     }
   }
 
@@ -154,7 +213,6 @@ export default class FluidAnimation {
     const gl = this._gl
     const ext = this._ext
 
-    this._programs = {}
     this._programs.clear = new GLProgram(gl, shaders.vert, shaders.clear)
     this._programs.display = new GLProgram(gl, shaders.vert, shaders.display)
     this._programs.splat = new GLProgram(gl, shaders.vert, shaders.splat)
@@ -188,9 +246,13 @@ export default class FluidAnimation {
     const gl = this._gl
     const ext = this._ext
 
+    this._disposeFramebuffers()
+
     function createFBO(texId, w, h, internalFormat, format, type, param) {
       gl.activeTexture(gl.TEXTURE0 + texId)
       const texture = gl.createTexture()
+      if (!texture) throw new Error('Unable to create fluid texture')
+
       gl.bindTexture(gl.TEXTURE_2D, texture)
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, param)
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, param)
@@ -209,6 +271,11 @@ export default class FluidAnimation {
       )
 
       const fbo = gl.createFramebuffer()
+      if (!fbo) {
+        gl.deleteTexture(texture)
+        throw new Error('Unable to create fluid framebuffer')
+      }
+
       gl.bindFramebuffer(gl.FRAMEBUFFER, fbo)
       gl.framebufferTexture2D(
         gl.FRAMEBUFFER,
@@ -225,7 +292,14 @@ export default class FluidAnimation {
 
     function createDoubleFBO(texId, w, h, internalFormat, format, type, param) {
       let fbo1 = createFBO(texId, w, h, internalFormat, format, type, param)
-      let fbo2 = createFBO(texId + 1, w, h, internalFormat, format, type, param)
+      let fbo2
+
+      try {
+        fbo2 = createFBO(texId + 1, w, h, internalFormat, format, type, param)
+      } catch (err) {
+        disposeFramebuffer(gl, fbo1)
+        throw err
+      }
 
       return {
         get read() {
@@ -302,16 +376,42 @@ export default class FluidAnimation {
     )
   }
 
+  _disposeFramebuffers() {
+    if (!this._gl) return
+
+    disposeDoubleFramebuffer(this._gl, this._density)
+    disposeDoubleFramebuffer(this._gl, this._velocity)
+    disposeFramebuffer(this._gl, this._divergence)
+    disposeFramebuffer(this._gl, this._curl)
+    disposeDoubleFramebuffer(this._gl, this._pressure)
+
+    this._density = null
+    this._velocity = null
+    this._divergence = null
+    this._curl = null
+    this._pressure = null
+  }
+
   _initBlit() {
     const gl = this._gl
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
+    this._vertexBuffer = gl.createBuffer()
+    if (!this._vertexBuffer) {
+      throw new Error('Unable to create fluid vertex buffer')
+    }
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer)
     gl.bufferData(
       gl.ARRAY_BUFFER,
       new Float32Array([-1, -1, -1, 1, 1, 1, 1, -1]),
       gl.STATIC_DRAW
     )
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer())
+    this._indexBuffer = gl.createBuffer()
+    if (!this._indexBuffer) {
+      throw new Error('Unable to create fluid index buffer')
+    }
+
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer)
     gl.bufferData(
       gl.ELEMENT_ARRAY_BUFFER,
       new Uint16Array([0, 1, 2, 0, 2, 3]),
@@ -386,6 +486,8 @@ export default class FluidAnimation {
   }
 
   update() {
+    if (this._disposed) return
+
     const gl = this._gl
 
     const dt = Math.min((Date.now() - this._time) / 1000, 0.016)

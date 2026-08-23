@@ -18,7 +18,9 @@ import { SoundToggle } from './SoundToggle'
 import styles from './site-header.module.css'
 
 const desktopMediaQuery = '(min-width: 821px)'
-const searchClearSelector = '.notion-search .clearButton'
+const searchRootSelector = '.notion-search'
+const searchPortalSelector = '.ReactModalPortal'
+const searchClearSelector = '.clearButton'
 const focusableSelector = [
   'a[href]',
   'button:not([disabled])',
@@ -92,16 +94,16 @@ function WritingLink({
   )
 }
 
-function enhanceSearchDialogAccessibility() {
-  document
-    .querySelectorAll<HTMLInputElement>('.notion-search .searchInput')
+function enhanceSearchDialogAccessibility(searchRoot: HTMLElement) {
+  searchRoot
+    .querySelectorAll<HTMLInputElement>('.searchInput')
     .forEach((input) => {
       if (!input.hasAttribute('aria-label')) {
         input.setAttribute('aria-label', 'Search the site')
       }
     })
 
-  document
+  searchRoot
     .querySelectorAll<HTMLElement>(searchClearSelector)
     .forEach((clearButton) => {
       if (!clearButton.hasAttribute('tabindex')) {
@@ -111,6 +113,13 @@ function enhanceSearchDialogAccessibility() {
         clearButton.setAttribute('aria-label', 'Clear search')
       }
     })
+}
+
+function findSearchRoot(node: Node): HTMLElement | null {
+  if (!(node instanceof HTMLElement)) return null
+  if (node.matches(searchRootSelector)) return node
+
+  return node.querySelector<HTMLElement>(searchRootSelector)
 }
 
 export function SiteHeader({
@@ -123,10 +132,14 @@ export function SiteHeader({
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const searchBridgeRef = useRef<HTMLDivElement>(null)
   const handledSearchUrlRef = useRef<string | undefined>(undefined)
-  const searchAvailable = Boolean(search || onSearch)
+  const prepareSearchDialogRef = useRef<() => void>(() => {})
+  const hasBridgedSearch = Boolean(search)
+  const searchAvailable = hasBridgedSearch || Boolean(onSearch)
 
   const closeMenu = useCallback(() => setMenuOpen(false), [])
   const openBridgedSearch = useCallback(() => {
+    prepareSearchDialogRef.current()
+
     const searchControl = searchBridgeRef.current?.querySelector<HTMLElement>(
       'button, [role="button"], input, a[href]'
     )
@@ -174,7 +187,7 @@ export function SiteHeader({
   }, [closeMenu])
 
   useEffect(() => {
-    if (!search) return
+    if (!hasBridgedSearch) return
 
     const url = new URL(window.location.href)
     if (url.searchParams.get('search') !== 'true') return
@@ -189,12 +202,17 @@ export function SiteHeader({
     handledSearchUrlRef.current = new URL(cleanUrl, window.location.origin).href
 
     return () => window.cancelAnimationFrame(openFrame)
-  }, [openBridgedSearch, search])
+  }, [hasBridgedSearch, openBridgedSearch])
 
   useEffect(() => {
-    if (!search) return
+    if (!hasBridgedSearch) return
 
-    const observer = new MutationObserver(enhanceSearchDialogAccessibility)
+    let searchRoot: HTMLElement | null = null
+    let discoveryTimeout: number | undefined
+    const discoveryObservers = new Set<MutationObserver>()
+    const searchObserver = new MutationObserver(() => {
+      if (searchRoot) enhanceSearchDialogAccessibility(searchRoot)
+    })
     const handleSearchDialogKeyDown = (event: KeyboardEvent) => {
       const target = event.target
       if (!(target instanceof HTMLElement)) return
@@ -206,15 +224,95 @@ export function SiteHeader({
       target.click()
     }
 
-    enhanceSearchDialogAccessibility()
-    observer.observe(document.body, { childList: true, subtree: true })
-    document.addEventListener('keydown', handleSearchDialogKeyDown)
+    const stopDiscovering = () => {
+      for (const observer of discoveryObservers) observer.disconnect()
+      discoveryObservers.clear()
+      if (discoveryTimeout !== undefined) {
+        window.clearTimeout(discoveryTimeout)
+        discoveryTimeout = undefined
+      }
+    }
+
+    const connectSearchRoot = (nextSearchRoot: HTMLElement) => {
+      stopDiscovering()
+      searchObserver.disconnect()
+      searchRoot?.removeEventListener('keydown', handleSearchDialogKeyDown)
+
+      searchRoot = nextSearchRoot
+      enhanceSearchDialogAccessibility(searchRoot)
+      searchObserver.observe(searchRoot, { childList: true, subtree: true })
+      searchRoot.addEventListener('keydown', handleSearchDialogKeyDown)
+    }
+
+    const inspectAddedNodes = (records: MutationRecord[]) => {
+      for (const record of records) {
+        for (const node of record.addedNodes) {
+          const nextSearchRoot = findSearchRoot(node)
+          if (nextSearchRoot) {
+            connectSearchRoot(nextSearchRoot)
+            return
+          }
+        }
+      }
+    }
+
+    const observeContainer = (container: HTMLElement) => {
+      const observer = new MutationObserver(inspectAddedNodes)
+      observer.observe(container, { childList: true, subtree: true })
+      discoveryObservers.add(observer)
+    }
+
+    const startDiscovering = () => {
+      if (searchRoot?.isConnected) {
+        enhanceSearchDialogAccessibility(searchRoot)
+        return
+      }
+
+      searchObserver.disconnect()
+      searchRoot?.removeEventListener('keydown', handleSearchDialogKeyDown)
+      searchRoot = document.querySelector<HTMLElement>(searchRootSelector)
+      if (searchRoot) {
+        connectSearchRoot(searchRoot)
+        return
+      }
+
+      stopDiscovering()
+      document
+        .querySelectorAll<HTMLElement>(searchPortalSelector)
+        .forEach(observeContainer)
+
+      const bodyObserver = new MutationObserver((records) => {
+        inspectAddedNodes(records)
+        if (searchRoot) return
+
+        for (const record of records) {
+          for (const node of record.addedNodes) {
+            if (!(node instanceof HTMLElement)) continue
+
+            if (node.matches(searchPortalSelector)) observeContainer(node)
+            node
+              .querySelectorAll<HTMLElement>(searchPortalSelector)
+              .forEach(observeContainer)
+          }
+        }
+      })
+      bodyObserver.observe(document.body, { childList: true })
+      discoveryObservers.add(bodyObserver)
+      discoveryTimeout = window.setTimeout(stopDiscovering, 5000)
+    }
+
+    const existingSearchRoot =
+      document.querySelector<HTMLElement>(searchRootSelector)
+    if (existingSearchRoot) connectSearchRoot(existingSearchRoot)
+    prepareSearchDialogRef.current = startDiscovering
 
     return () => {
-      observer.disconnect()
-      document.removeEventListener('keydown', handleSearchDialogKeyDown)
+      prepareSearchDialogRef.current = () => {}
+      stopDiscovering()
+      searchObserver.disconnect()
+      searchRoot?.removeEventListener('keydown', handleSearchDialogKeyDown)
     }
-  }, [search])
+  }, [hasBridgedSearch])
 
   const handleDialogClose = () => {
     setMenuOpen(false)

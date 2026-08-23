@@ -58,6 +58,8 @@ export default {
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    minimumCacheTTL: 604800 // 7 days
   }
 }

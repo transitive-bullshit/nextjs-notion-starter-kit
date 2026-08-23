@@ -1,114 +1,226 @@
 import raf from 'raf'
-import React from 'react'
-import { useMeasure } from 'react-use'
+import * as React from 'react'
 
 import FluidAnimation, { defaultConfig } from './fluid-animation'
+
+type ReactFluidAnimationProps = React.HTMLAttributes<HTMLDivElement> & {
+  animationRef?: (animation: FluidAnimation | null) => void
+  config?: any
+  onActiveChange?: (active: boolean) => void
+}
 
 export function ReactFluidAnimation({
   config = defaultConfig,
   style,
   animationRef,
+  onActiveChange,
   ...rest
-}: {
-  config?: any
-  animationRef?: any
-  style?: any
-  className?: string
-}) {
+}: ReactFluidAnimationProps) {
+  const containerRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
-  const tickRef = React.useRef<number | null>(null)
-  const [animation, setAnimation] = React.useState<FluidAnimation | null>(null)
-  const [measureRef, { width, height }] = useMeasure()
+  const instanceRef = React.useRef<FluidAnimation | null>(null)
+  const animationRefCallback = React.useRef(animationRef)
+  const activeChangeCallback = React.useRef(onActiveChange)
+
+  animationRefCallback.current = animationRef
+  activeChangeCallback.current = onActiveChange
 
   const onMouseDown = React.useCallback(
     (event: React.MouseEvent<HTMLCanvasElement>) => {
       event.preventDefault()
-      animation?.onMouseDown()
+      instanceRef.current?.onMouseDown()
     },
-    [animation]
+    []
   )
 
   const onMouseMove = React.useCallback(
     (event: React.MouseEvent<HTMLCanvasElement>) => {
       event.preventDefault()
-      animation?.onMouseMove(event.nativeEvent)
+      instanceRef.current?.onMouseMove(event.nativeEvent)
     },
-    [animation]
+    []
   )
 
   const onMouseUp = React.useCallback(
     (event: React.MouseEvent<HTMLCanvasElement>) => {
       event.preventDefault()
-      animation?.onMouseUp()
+      instanceRef.current?.onMouseUp()
     },
-    [animation]
+    []
   )
 
   const onTouchStart = React.useCallback(
     (event: React.TouchEvent<HTMLCanvasElement>) => {
       event.preventDefault()
-      animation?.onTouchStart(event.nativeEvent)
+      instanceRef.current?.onTouchStart(event.nativeEvent)
     },
-    [animation]
+    []
   )
 
   const onTouchMove = React.useCallback(
     (event: React.TouchEvent<HTMLCanvasElement>) => {
       event.preventDefault()
-      animation?.onTouchMove(event.nativeEvent)
+      instanceRef.current?.onTouchMove(event.nativeEvent)
     },
-    [animation]
+    []
   )
 
   const onTouchEnd = React.useCallback(
     (event: React.TouchEvent<HTMLCanvasElement>) => {
       event.preventDefault()
-      animation?.onTouchEnd(event.nativeEvent)
+      instanceRef.current?.onTouchEnd(event.nativeEvent)
     },
-    [animation]
+    []
   )
 
-  const tick = React.useCallback(() => {
-    if (!animation) {
-      tickRef.current = null
-      return
+  React.useEffect(() => {
+    const container = containerRef.current
+    const canvas = canvasRef.current
+    if (!container || !canvas) return
+
+    const initialBounds = container.getBoundingClientRect()
+    let layoutWidth = initialBounds.width
+    let layoutHeight = initialBounds.height
+    let canvasSizeInitialized = layoutWidth > 0 && layoutHeight > 0
+
+    if (canvasSizeInitialized) {
+      canvas.width = Math.max(1, Math.trunc(layoutWidth))
+      canvas.height = Math.max(1, Math.trunc(layoutHeight))
     }
 
-    animation.update()
-    tickRef.current = raf(tick)
-  }, [animation])
+    const animation = new FluidAnimation({ canvas, config })
+    instanceRef.current = animation
+    animationRefCallback.current?.(animation)
 
-  React.useEffect(() => {
-    if (canvasRef.current && width > 0 && height > 0) {
-      console.log('resize', width, height)
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let frameId: number | null = null
+    let isDisposed = false
+    let isIntersecting = true
+    let isDocumentVisible = document.visibilityState !== 'hidden'
+    let prefersReducedMotion = motionQuery.matches
+    let isActive = false
+    let reportedActivity: boolean | undefined
+    let needsStaticFrame = true
 
-      canvasRef.current.width = Math.trunc(width)
-      canvasRef.current.height = Math.trunc(height)
+    const hasLayoutSize = () => layoutWidth > 0 && layoutHeight > 0
 
-      animation?.resize()
+    const syncCanvasSize = () => {
+      if (!hasLayoutSize()) return false
+
+      const width = Math.max(1, Math.trunc(layoutWidth))
+      const height = Math.max(1, Math.trunc(layoutHeight))
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width
+        canvas.height = height
+        animation.resize()
+        needsStaticFrame = true
+      }
+
+      canvasSizeInitialized = true
+      return true
     }
-  }, [animation, width, height])
 
-  React.useEffect(() => {
-    if (canvasRef.current) {
-      setAnimation(
-        new FluidAnimation({
-          canvas: canvasRef.current,
-          config
-        })
-      )
+    const stop = () => {
+      if (frameId === null) return
+
+      raf.cancel(frameId)
+      frameId = null
     }
-  }, [canvasRef, config])
 
-  React.useEffect(() => {
-    if (animation) {
-      animation!.resize()
-      animationRef?.(animation!)
-      if (!tickRef.current) {
-        tick()
+    const frame = () => {
+      frameId = null
+      if (!isActive || isDisposed) return
+
+      animation.update()
+      needsStaticFrame = false
+      frameId = raf(frame)
+    }
+
+    const start = () => {
+      if (frameId !== null || isDisposed) return
+
+      frameId = raf(frame)
+    }
+
+    const reportActivity = (active: boolean) => {
+      if (reportedActivity === active) return
+
+      reportedActivity = active
+      activeChangeCallback.current?.(active)
+    }
+
+    const syncActivity = () => {
+      const canDisplay = isIntersecting && isDocumentVisible && hasLayoutSize()
+      const canAnimate = canDisplay && !prefersReducedMotion
+
+      if (canAnimate || (!canvasSizeInitialized && canDisplay)) {
+        syncCanvasSize()
+      }
+
+      isActive = canAnimate && canvasSizeInitialized
+      reportActivity(isActive)
+
+      if (isActive) {
+        start()
+      } else {
+        stop()
+      }
+
+      if (
+        canDisplay &&
+        prefersReducedMotion &&
+        canvasSizeInitialized &&
+        needsStaticFrame
+      ) {
+        animation.update()
+        needsStaticFrame = false
       }
     }
-  }, [animation, animationRef, tick])
+
+    const handleMotionPreference = () => {
+      prefersReducedMotion = motionQuery.matches
+      syncActivity()
+    }
+
+    const handleVisibility = () => {
+      isDocumentVisible = document.visibilityState !== 'hidden'
+      syncActivity()
+    }
+
+    const resizeObserver = new ResizeObserver(([entry]) => {
+      if (entry) {
+        layoutWidth = entry.contentRect.width
+        layoutHeight = entry.contentRect.height
+      }
+
+      syncActivity()
+    })
+    resizeObserver.observe(container)
+
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      isIntersecting = entry?.isIntersecting ?? true
+      syncActivity()
+    })
+    intersectionObserver.observe(container)
+
+    motionQuery.addEventListener('change', handleMotionPreference)
+    document.addEventListener('visibilitychange', handleVisibility)
+    syncActivity()
+
+    return () => {
+      isDisposed = true
+      isActive = false
+      stop()
+      resizeObserver.disconnect()
+      intersectionObserver.disconnect()
+      motionQuery.removeEventListener('change', handleMotionPreference)
+      document.removeEventListener('visibilitychange', handleVisibility)
+      reportActivity(false)
+      animationRefCallback.current?.(null)
+      if (instanceRef.current === animation) instanceRef.current = null
+      animation.dispose()
+    }
+  }, [config])
 
   return (
     <div
@@ -119,7 +231,7 @@ export function ReactFluidAnimation({
         ...style
       }}
       {...rest}
-      ref={measureRef as any}
+      ref={containerRef}
     >
       <canvas
         ref={canvasRef}

@@ -15,13 +15,7 @@ import {
 } from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
-import {
-  type NotionComponents,
-  NotionRenderer,
-  useNotionContext
-} from 'react-notion-x'
-import { Collection } from 'react-notion-x/third-party/collection'
-import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
+import { type NotionComponents, NotionRenderer } from 'react-notion-x'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
@@ -92,16 +86,13 @@ const Modal = dynamic(
   }
 )
 
-function Tweet({ id }: { id: string }) {
-  const { recordMap } = useNotionContext()
-  const tweet = (recordMap as types.ExtendedTweetRecordMap)?.tweets?.[id]
+const Collection = dynamic(
+  () =>
+    import('react-notion-x/third-party/collection').then((m) => m.Collection),
+  { ssr: false }
+)
 
-  return (
-    <React.Suspense fallback={<TweetSkeleton />}>
-      {tweet ? <EmbeddedTweet tweet={tweet} /> : <TweetNotFound />}
-    </React.Suspense>
-  )
-}
+const Tweet = dynamic(() => import('./NotionTweet').then((m) => m.NotionTweet))
 
 const propertyLastEditedTimeValue = (
   { block, pageHeader }: any,
@@ -205,7 +196,7 @@ const LandingSignature = dynamic(() =>
   import('./LandingSignature').then((m) => m.LandingSignature)
 )
 
-const notionRendererComponents: Partial<NotionComponents> = {
+const defaultNotionRendererComponents: Partial<NotionComponents> = {
   nextImage: ArticleTransitionImage,
   nextLink: Link,
   PageLink: ArticlePageLink,
@@ -221,7 +212,16 @@ const notionRendererComponents: Partial<NotionComponents> = {
   // propertySelectValue
 }
 
+export type NotionPageProps = Required<
+  Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>
+> &
+  Pick<types.PageProps, 'error' | 'tagsPage' | 'propertyToFilterName'> & {
+    components?: Partial<NotionComponents>
+    isLiteMode?: boolean
+  }
+
 export function NotionPage({
+  components,
   site,
   recordMap,
   pageId,
@@ -229,10 +229,14 @@ export function NotionPage({
   tagsPage,
   propertyToFilterName,
   isLiteMode = false
-}: Required<Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>> &
-  Pick<types.PageProps, 'error' | 'tagsPage' | 'propertyToFilterName'> & {
-    isLiteMode?: boolean
-  }) {
+}: NotionPageProps) {
+  const notionRendererComponents = React.useMemo(
+    () =>
+      components
+        ? { ...defaultNotionRendererComponents, ...components }
+        : defaultNotionRendererComponents,
+    [components]
+  )
   const siteMapPageUrl = React.useMemo(() => {
     const params: any = {}
     if (isLiteMode) params.lite = 'true'

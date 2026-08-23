@@ -54,7 +54,8 @@
 .landing-page .notion-block-a7fae3c61a2d44688c720555c8876594,
 .landing-page .notion-block-d2ab057ff2c2428aa5b08b718c3204f3,
 .landing-page .notion-block-bc39515201c545b7ad20ddb5a44b64b7,
-.landing-page .notion-block-ab9a258d6cf444f3bb40dc2600feae91 {
+.landing-page .notion-block-ab9a258d6cf444f3bb40dc2600feae91,
+.landing-page .notion-block-8d0062776d0c4afca96eb1ace93a7538 {
   display: none;
 }
 
@@ -220,6 +221,8 @@
   min-height: clamp(230px, 23vw, 310px);
   padding: clamp(32px, 4vw, 52px) 0;
   overflow: visible;
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 310px;
   border-bottom: 1px solid rgb(240 238 230 / 14%);
   border-radius: 0;
   color: #f0eee6;
@@ -1014,6 +1017,7 @@ html[data-toc-at-bottom]
     gap: 28px;
     min-height: 0;
     padding: 38px 0 52px;
+    contain-intrinsic-block-size: auto 560px;
   }
 
   .landing-page

@@ -6,13 +6,16 @@ import type { PageProps } from '@/lib/types'
 import { author } from '@/lib/config'
 import { getPageMetadataInfo } from '@/lib/page-metadata'
 
+import { LandingNotionPage } from './LandingNotionPage'
 import { NotionPage } from './NotionPage'
 
 export function NotionPageRoute({
   pageProps,
+  useEagerCollection = false,
   isLiteMode = false
 }: {
   pageProps: PageProps
+  useEagerCollection?: boolean
   isLiteMode?: boolean
 }) {
   const { error, pageId, recordMap, site } = pageProps
@@ -50,12 +53,21 @@ export function NotionPageRoute({
         />
       )}
 
-      <NotionPage
-        pageId={pageId}
-        recordMap={recordMap}
-        site={site}
-        isLiteMode={isLiteMode}
-      />
+      {useEagerCollection ? (
+        <LandingNotionPage
+          pageId={pageId}
+          recordMap={recordMap}
+          site={site}
+          isLiteMode={isLiteMode}
+        />
+      ) : (
+        <NotionPage
+          pageId={pageId}
+          recordMap={recordMap}
+          site={site}
+          isLiteMode={isLiteMode}
+        />
+      )}
     </>
   )
 }

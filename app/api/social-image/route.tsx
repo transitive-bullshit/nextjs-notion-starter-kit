@@ -1,6 +1,5 @@
 import { Buffer } from 'node:buffer'
 
-import ky from 'ky'
 import { ImageResponse } from 'next/og'
 import { type PageBlock } from 'notion-types'
 import {
@@ -18,10 +17,16 @@ import interSemiBoldFont from '@/lib/fonts/inter-semibold'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
 import {
+  createCachedImageLoader,
   selectImageWithFallback,
   selectSocialImageBackground
 } from '@/lib/social-image'
 import { type NotionPageInfo, type PageError } from '@/lib/types'
+
+const socialImageResponseHeaders = {
+  'Cache-Control': 'public, max-age=60',
+  'Vercel-CDN-Cache-Control': 'public, max-age=60, stale-while-revalidate=300'
+}
 
 export async function GET(request: Request) {
   console.log(request.url)
@@ -141,6 +146,7 @@ export async function GET(request: Request) {
     {
       width: 1200,
       height: 630,
+      headers: socialImageResponseHeaders,
       fonts: [
         {
           name: 'Inter',
@@ -211,11 +217,12 @@ async function getNotionPageInfo({
     blockIcon && isUrl(blockIcon) ? blockIcon : undefined
   )
   const authorImageFallbackUrl = resolveImageUrl(libConfig.defaultPageIcon)
-  const [authorImage, selectedImage] = await Promise.all([
+  const loadImage = createCachedImageLoader(fetchAndInlineImage)
+  const [authorImage, image] = await Promise.all([
     selectImageWithFallback(
       [authorImageBlockUrl],
       authorImageFallbackUrl,
-      isUrlReachable
+      loadImage
     ),
     selectSocialImageBackground(
       {
@@ -223,10 +230,9 @@ async function getNotionPageInfo({
         pageCoverUrl,
         fallbackUrl: imageFallbackUrl
       },
-      isUrlReachable
+      loadImage
     )
   ])
-  const image = await inlineImageWithFallback(selectedImage, imageFallbackUrl)
 
   const author =
     getPageProperty<string>('Author', block, recordMap) || libConfig.author
@@ -257,49 +263,23 @@ async function getNotionPageInfo({
   }
 }
 
-async function isUrlReachable(
-  url: string | undefined | null
-): Promise<boolean> {
-  if (!url) {
-    return false
-  }
-
+async function fetchAndInlineImage(url: string): Promise<string | undefined> {
   try {
-    const response = await ky.get(url, {
-      headers: {
-        Range: 'bytes=0-0'
-      }
-    })
-    void response.body?.cancel()
-    return true
-  } catch {
-    return false
-  }
-}
+    const response = await fetch(url, { cache: 'no-store' })
+    if (!response.ok) {
+      await response.body?.cancel()
+      return
+    }
 
-async function inlineImage(
-  url: string | undefined
-): Promise<string | undefined> {
-  if (!url) return
-
-  try {
-    const response = await ky.get(url)
     const contentType = response.headers.get('content-type')?.split(';')[0]
-    if (!contentType?.startsWith('image/')) return
+    if (!contentType?.startsWith('image/')) {
+      await response.body?.cancel()
+      return
+    }
 
     const image = Buffer.from(await response.arrayBuffer()).toString('base64')
     return `data:${contentType};base64,${image}`
   } catch {
     return
   }
-}
-
-async function inlineImageWithFallback(
-  url: string | undefined,
-  fallbackUrl: string | undefined
-): Promise<string | undefined> {
-  const image = await inlineImage(url)
-  if (image || !fallbackUrl || fallbackUrl === url) return image
-
-  return inlineImage(fallbackUrl)
 }
