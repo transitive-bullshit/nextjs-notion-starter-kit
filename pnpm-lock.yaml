@@ -39,14 +39,14 @@ importers:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       notion-client:
-        specifier: ^8.0.5
-        version: 8.0.5
+        specifier: ^8.0.6
+        version: 8.0.6
       notion-types:
-        specifier: ^8.0.5
-        version: 8.0.5
+        specifier: ^8.0.6
+        version: 8.0.6
       notion-utils:
-        specifier: ^8.0.5
-        version: 8.0.5
+        specifier: ^8.0.6
+        version: 8.0.6
       p-map:
         specifier: ^7.0.6
         version: 7.0.6
@@ -69,8 +69,8 @@ importers:
         specifier: ^19.2.8
         version: 19.2.8(react@19.2.8)
       react-notion-x:
-        specifier: ^8.0.5
-        version: 8.0.5(@babel/runtime@7.29.7)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^8.0.6
+        version: 8.0.6(@babel/runtime@7.29.7)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react-tweet:
         specifier: ^3.3.1
         version: 3.3.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -974,11 +974,6 @@ packages:
     resolution: {integrity: sha512-kKvt3m4uwzqL0wlkPd09CmljPJGOZZ4D0fP65sqFSvPkMRKhNi+74MgIJ5QxE6SxqB4t4KyUFGg8+n5zjo6hew==}
     engines: {node: '>=22'}
 
-  baseline-browser-mapping@2.11.14:
-    resolution: {integrity: sha512-JyJ954WzuIR8/FFzX0o5krdSTrBAkcCSRfWSleRsIHSWV+cZe2FI1PKggVkFke1hBldRs+LRxUczzE9iPmgZww==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-
   baseline-browser-mapping@2.11.18:
     resolution: {integrity: sha512-1iEmLEYSiE1SeBoAfPo/Mnx3PzfzHUkDK61ASkCpuk3YXugYLH5DYK1SzqV55F8FMI6s0F+/tCP7Polz1QRjxw==}
     engines: {node: '>=6.0.0'}
@@ -1252,16 +1247,16 @@ packages:
     resolution: {integrity: sha512-ARftfC5HdUNu9jJeL8pHj8debUIHA2b91FizCoMzY4lG6dDX13jdvTK0TBe24IBDRf2HvJSzzwEPvmbkQWHRSg==}
     engines: {node: '>=20'}
 
-  notion-client@8.0.5:
-    resolution: {integrity: sha512-F3PULcZ1JWz1gffnUvxxhT9PSfr7ZQbAkXSOEsNTXQf+/fgpSV9H9nlIIQ47k/a9yi+8F2jfVWbp66Z1byMKbQ==}
+  notion-client@8.0.6:
+    resolution: {integrity: sha512-a6tJu+J5A8IwXTLCx+sNIL9m8hWsH6b0O8P4Q6b6q9vDNA6xiyN4YKjABn0A71q1fSHSFa2ZhdiliVg/RZyNYA==}
     engines: {node: '>=18'}
 
-  notion-types@8.0.5:
-    resolution: {integrity: sha512-+BWVydEqjA+SLg73a3pG2opySptsXn16kFSuqhquAym8zP0L8avzANeBjVCt25y7M/oLhfyEYvMZJ/20LdRViw==}
+  notion-types@8.0.6:
+    resolution: {integrity: sha512-gmXbfVFTBjd2Yf8LK8c8g065cWI967hVWzI+XC50EvZ17UPqhZ/10VOWjtvLBZ+tvJSDctDCiz1L8xuCL6jJGQ==}
     engines: {node: '>=18'}
 
-  notion-utils@8.0.5:
-    resolution: {integrity: sha512-KRzn0qOVC0IN1pfy1E9scAFlRrOONY43LxfoKgfMrdd/ZktdcE81ZmMEbrYa18C1/aPILRvXnZMjT49ZBY0NDw==}
+  notion-utils@8.0.6:
+    resolution: {integrity: sha512-w2KvwggB3hZwB0gs651HUsQvvEpDi3UlWB2SQeFE+4pgwpJR/LANeywxdQMrE4662klEVUArff0xgEsiC/aaIw==}
     engines: {node: '>=18'}
 
   npm-normalize-package-bin@6.0.0:
@@ -1400,8 +1395,8 @@ packages:
       react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
       react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18 || ^19
 
-  react-notion-x@8.0.5:
-    resolution: {integrity: sha512-UKt+t4EUl3Rd6I9Xg9vF5mzWYhtNbWhj20D8JzJ/fsLgXEEblpcMQ6JCVfNL6Fg+3poLjuO4GnPBMskUafD02g==}
+  react-notion-x@8.0.6:
+    resolution: {integrity: sha512-f0upZrR2tCSTLpKkOzFxXpF8sYH9cSTXt4e2dN16JhCkQxU5tY3khTI6vUFnOP9ayVy1fxjGsUZP9rkH4MUGXg==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=18'
@@ -2210,14 +2205,11 @@ snapshots:
 
   ansi-styles@7.0.0: {}
 
-  baseline-browser-mapping@2.11.14:
-    optional: true
-
   baseline-browser-mapping@2.11.18: {}
 
   browserslist@4.28.8:
     dependencies:
-      baseline-browser-mapping: 2.11.14
+      baseline-browser-mapping: 2.11.18
       caniuse-lite: 1.0.30001809
       electron-to-chromium: 1.5.405
       node-releases: 2.0.53
@@ -2449,21 +2441,21 @@ snapshots:
 
   normalize-url@9.0.1: {}
 
-  notion-client@8.0.5:
+  notion-client@8.0.6:
     dependencies:
-      notion-types: 8.0.5
-      notion-utils: 8.0.5
+      notion-types: 8.0.6
+      notion-utils: 8.0.6
       ofetch: 1.5.1
       p-map: 7.0.6
 
-  notion-types@8.0.5: {}
+  notion-types@8.0.6: {}
 
-  notion-utils@8.0.5:
+  notion-utils@8.0.6:
     dependencies:
       is-url-superb: 6.1.0
       memoize: 11.0.0
       normalize-url: 9.0.1
-      notion-types: 8.0.5
+      notion-types: 8.0.6
       p-queue: 9.3.3
 
   npm-normalize-package-bin@6.0.0: {}
@@ -2628,13 +2620,13 @@ snapshots:
       react-lifecycles-compat: 3.0.4
       warning: 4.0.3
 
-  react-notion-x@8.0.5(@babel/runtime@7.29.7)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  react-notion-x@8.0.6(@babel/runtime@7.29.7)(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       '@fisch0920/medium-zoom': 1.0.7
       '@matejmazur/react-katex': 3.1.3(katex@0.18.4)(react@19.2.8)
       katex: 0.18.4
-      notion-types: 8.0.5
-      notion-utils: 8.0.5
+      notion-types: 8.0.6
+      notion-utils: 8.0.6
       prismjs: 1.30.0
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
