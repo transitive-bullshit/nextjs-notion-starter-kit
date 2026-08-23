@@ -10,7 +10,6 @@
   background:
     radial-gradient(circle at 50% 42%, rgb(255 255 255 / 4%), transparent 39%),
     #080908;
-  cursor: crosshair;
   font-family: var(--notion-font);
 }
 
@@ -63,7 +62,6 @@
   z-index: 2;
   display: grid;
   min-height: calc(100svh - var(--site-header-height, 66px));
-  cursor: crosshair;
   touch-action: pan-y;
   place-items: center;
   user-select: none;
@@ -126,7 +124,7 @@
   letter-spacing: -0.105em;
   line-height: 0.72;
   white-space: nowrap;
-  cursor: inherit;
+  cursor: pointer;
   -webkit-font-smoothing: antialiased;
 }
 

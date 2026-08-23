@@ -25,7 +25,7 @@ export function ErrorPage({
 
         <Image
           src='/error.png'
-          alt='Error'
+          alt=''
           className={styles.errorImage}
           width={912}
           height={912}

@@ -58,7 +58,6 @@ export function ReactFluidAnimation({
 
   const onTouchStart = React.useCallback(
     (event: React.TouchEvent<HTMLCanvasElement>) => {
-      event.preventDefault()
       instanceRef.current?.onTouchStart(event.nativeEvent)
       renderInteractionFrameRef.current()
     },
@@ -67,7 +66,6 @@ export function ReactFluidAnimation({
 
   const onTouchMove = React.useCallback(
     (event: React.TouchEvent<HTMLCanvasElement>) => {
-      event.preventDefault()
       instanceRef.current?.onTouchMove(event.nativeEvent)
       renderInteractionFrameRef.current()
     },
@@ -76,7 +74,6 @@ export function ReactFluidAnimation({
 
   const onTouchEnd = React.useCallback(
     (event: React.TouchEvent<HTMLCanvasElement>) => {
-      event.preventDefault()
       instanceRef.current?.onTouchEnd(event.nativeEvent)
       renderInteractionFrameRef.current()
     },
@@ -279,6 +276,7 @@ export function ReactFluidAnimation({
       ref={containerRef}
     >
       <canvas
+        aria-hidden='true'
         ref={canvasRef}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
@@ -288,7 +286,8 @@ export function ReactFluidAnimation({
         onTouchEnd={onTouchEnd}
         style={{
           width: '100%',
-          height: '100%'
+          height: '100%',
+          touchAction: 'pan-y'
         }}
       />
     </div>

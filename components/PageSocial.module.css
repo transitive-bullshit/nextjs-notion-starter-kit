@@ -8,19 +8,18 @@
 
 .action {
   position: relative;
-  border-radius: 50%;
-  border: 2px solid var(--fg-color-6);
-  transition: all 300ms ease-out;
-  width: 3.5em;
-  height: 3.5em;
-  margin: 0 0 1em;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 3.5em;
+  width: 3.5em;
   align-items: center;
+  justify-content: center;
+  margin: 0 0 1em;
+  border: 2px solid var(--fg-color-6);
+  border-radius: 50%;
   text-decoration: none !important;
-  user-select: none;
   cursor: pointer;
+  transition: border-color 300ms ease-out;
+  user-select: none;
 }
 
 .action:last-child {
@@ -29,102 +28,117 @@
 
 .actionBg {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
+  inset: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
 .actionBg svg {
   width: 50%;
   height: 50%;
   fill: var(--fg-color-6);
+  transition: fill 300ms ease-out;
 }
 
 .actionBgPane {
-  transition: all 300ms ease-out;
-  border-radius: 50%;
-  width: 0;
-  height: 0;
-}
-
-.action:hover {
-  transition: all 100ms ease-out;
-}
-
-.action:hover .actionBgPane {
   width: 100%;
   height: 100%;
-  transition: all 100ms ease-out;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 300ms ease-out;
 }
 
-.action:hover svg {
-  transition: fill 100ms ease-out;
+.action:hover,
+.action:focus-visible {
+  transition-duration: 100ms;
+}
+
+.action:focus-visible {
+  outline: 2px solid #d6ff3f;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgb(214 255 63 / 14%);
+}
+
+.action:hover .actionBgPane,
+.action:focus-visible .actionBgPane {
+  transform: scale(1);
+  transition-duration: 100ms;
+}
+
+.action:hover svg,
+.action:focus-visible svg {
   fill: var(--bg-color);
+  transition-duration: 100ms;
 }
 
-:global(.dark-mode) .action:hover svg {
+:global(.dark-mode) .action:hover svg,
+:global(.dark-mode) .action:focus-visible svg {
   fill: var(--fg-color);
 }
 
 .facebook .actionBgPane {
   background: #3b5998;
 }
-.facebook:hover {
+.facebook:hover,
+.facebook:focus-visible {
   border-color: #3b5998;
 }
 
 .twitter .actionBgPane {
   background: #2795e9;
 }
-.twitter:hover {
+.twitter:hover,
+.twitter:focus-visible {
   border-color: #2795e9;
 }
 
 .linkedin .actionBgPane {
   background: #0077b5;
 }
-.linkedin:hover {
+.linkedin:hover,
+.linkedin:focus-visible {
   border-color: #0077b5;
 }
 
 .github .actionBgPane {
   background: #c9510c;
 }
-.github:hover {
+.github:hover,
+.github:focus-visible {
   border-color: #c9510c;
 }
 
 .youtube .actionBgPane {
   background: #ff0000;
 }
-.youtube:hover {
+.youtube:hover,
+.youtube:focus-visible {
   border-color: #ff0000;
 }
 
 .medium .actionBgPane {
   background: #00ab6c;
 }
-.medium:hover {
+.medium:hover,
+.medium:focus-visible {
   border-color: #00ab6c;
 }
 
 .newsletter .actionBgPane {
   background: #777777;
 }
-.newsletter:hover {
+.newsletter:hover,
+.newsletter:focus-visible {
   border-color: #777777;
 }
 
 .email .actionBgPane {
   background: #777;
 }
-.email:hover {
+.email:hover,
+.email:focus-visible {
   border-color: #777;
 }
 
@@ -137,5 +151,13 @@
 
   .action:last-child {
     margin-right: 1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action,
+  .actionBgPane,
+  .actionBg svg {
+    transition: none;
   }
 }

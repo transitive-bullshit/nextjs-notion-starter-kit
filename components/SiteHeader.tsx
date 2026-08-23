@@ -21,6 +21,7 @@ const desktopMediaQuery = '(min-width: 821px)'
 const searchRootSelector = '.notion-search'
 const searchPortalSelector = '.ReactModalPortal'
 const searchClearSelector = '.clearButton'
+const searchStatusSelector = '.resultsFooter, .noResultsPane'
 const focusableSelector = [
   'a[href]',
   'button:not([disabled])',
@@ -117,6 +118,20 @@ function enhanceSearchDialogAccessibility(searchRoot: HTMLElement) {
       }
       if (!clearButton.hasAttribute('aria-label')) {
         clearButton.setAttribute('aria-label', 'Clear search')
+      }
+    })
+
+  searchRoot
+    .querySelectorAll<HTMLElement>(searchStatusSelector)
+    .forEach((status) => {
+      if (!status.hasAttribute('role')) {
+        status.setAttribute('role', 'status')
+      }
+      if (!status.hasAttribute('aria-live')) {
+        status.setAttribute('aria-live', 'polite')
+      }
+      if (!status.hasAttribute('aria-atomic')) {
+        status.setAttribute('aria-atomic', 'true')
       }
     })
 }

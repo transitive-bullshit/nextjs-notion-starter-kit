@@ -202,32 +202,49 @@
 }
 
 .pageActions a {
-  cursor: pointer;
-  font-size: 24px;
   display: inline-flex;
   padding: 12px;
   margin-right: 1vw;
   border-radius: 50%;
   background: transparent;
-  transition: all 250ms ease-out;
+  cursor: pointer;
+  font-size: 24px;
+  transition:
+    color 250ms ease-out,
+    background-color 250ms ease-out;
 }
 
 .pageActions a:last-of-type {
   margin-right: 0;
 }
 
-.pageActions a:hover {
-  transition: all 50ms ease-out;
+.pageActions a:hover,
+.pageActions a:focus-visible {
+  transition-duration: 50ms;
 }
 
-.likeTweet:hover {
+.pageActions a:focus-visible {
+  outline: 2px solid #d6ff3f;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgb(214 255 63 / 14%);
+}
+
+.likeTweet:hover,
+.likeTweet:focus-visible {
   background: #f6e3e8;
   color: #e0265e;
 }
 
-.retweet:hover {
+.retweet:hover,
+.retweet:focus-visible {
   color: #19bf64;
   background: #e5f2e8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pageActions a {
+    transition: none;
+  }
 }
 
 @media (max-width: 1360px) {

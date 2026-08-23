@@ -392,6 +392,15 @@
   color: var(--site-header-acid);
 }
 
+.menuButton:focus-visible,
+.mobileMenuTopline button:focus-visible,
+.mobileNavigation a:focus-visible,
+.mobileNavigation button:focus-visible,
+.mobileSocialNavigation a:focus-visible {
+  outline: 2px solid var(--site-header-acid);
+  outline-offset: 3px;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .avatarLink:hover {
     border-color: rgb(214 255 63 / 60%);
