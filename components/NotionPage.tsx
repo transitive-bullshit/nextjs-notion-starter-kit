@@ -444,9 +444,11 @@ export function NotionPage({
           pageHeader={
             <>
               <MainContentTarget />
+
               {isRootPage ? (
                 <>
                   <AuthorLetter aboutHref={aboutHref} />
+
                   <header className='landing-writing-header'>
                     <h2 id='writing'>Writing</h2>
                   </header>
@@ -467,6 +469,7 @@ export function NotionPage({
                   </Link>
                 </nav>
               ) : null}
+
               <Footer sourceNotionPageId={pageId} />
             </>
           }

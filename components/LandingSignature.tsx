@@ -794,7 +794,7 @@ export function LandingSignature() {
       </div>
 
       <SmoothHashLink className={styles.footerMeta} href='#author-letter'>
-        A note from Travis <span aria-hidden='true'>↓</span>
+        A quick note <span aria-hidden='true'>↓</span>
       </SmoothHashLink>
     </section>
   )

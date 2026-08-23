@@ -94,7 +94,7 @@
   margin: 0;
   color: #f0eee6;
   font-family: var(--editorial-font);
-  font-size: clamp(4.5rem, 9vw, 9.5rem);
+  font-size: clamp(4.5rem, 7vw, 9rem);
   font-weight: 500;
   letter-spacing: -0.052em;
   line-height: 0.84;
