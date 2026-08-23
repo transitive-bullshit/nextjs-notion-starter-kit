@@ -258,10 +258,6 @@ export function NotionPage({
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
-  const aboutPageId = config.navigationLinks?.find(
-    (link) => link?.title.toLowerCase() === 'about'
-  )?.pageId
-  const aboutHref = aboutPageId ? siteMapPageUrl(aboutPageId) : '/about'
   const name = block
     ? getBlockTitle(block, recordMap) || site?.name || config.name
     : site?.name || config.name
@@ -447,7 +443,7 @@ export function NotionPage({
 
               {isRootPage ? (
                 <>
-                  <AuthorLetter aboutHref={aboutHref} />
+                  <AuthorLetter />
 
                   <header className='landing-writing-header'>
                     <h2 id='writing'>Writing</h2>

@@ -1,49 +1,14 @@
-'use client'
-
 import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
 
 import { twitter } from '@/lib/config'
 
 import styles from './author-letter.module.css'
 
-type SignatureState = 'armed' | 'complete' | 'visible'
-
 const X_URL = `https://x.com/${twitter ?? 'transitive_bs'}`
 const GITHUB_URL =
   'https://github.com/transitive-bullshit/nextjs-notion-starter-kit'
 
-export function AuthorLetter({ aboutHref }: { aboutHref: string }) {
-  const signatureRef = useRef<HTMLElement>(null)
-  const [signatureState, setSignatureState] =
-    useState<SignatureState>('complete')
-
-  useEffect(() => {
-    const signature = signatureRef.current
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-
-    if (!signature || motionQuery.matches) return
-
-    const bounds = signature.getBoundingClientRect()
-    if (bounds.top <= window.innerHeight) return
-
-    setSignatureState('armed')
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return
-
-        setSignatureState('visible')
-        observer.disconnect()
-      },
-      { rootMargin: '0px 0px -64px 0px', threshold: 0.65 }
-    )
-
-    observer.observe(signature)
-    return () => observer.disconnect()
-  }, [])
-
+export function AuthorLetter() {
   return (
     <section
       className={styles.letter}
