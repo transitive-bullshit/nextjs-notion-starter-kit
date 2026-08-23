@@ -53,15 +53,21 @@ function Analytics() {
     const posthogApiKey = posthogId
 
     if (posthogApiKey) {
-      void import('posthog-js-lite').then(({ default: PostHogClient }) => {
-        if (isDisposed) {
-          return
-        }
+      void import('posthog-js-lite')
+        .then(({ default: PostHogClient }) => {
+          if (isDisposed) {
+            return
+          }
 
-        const posthog = new PostHogClient(posthogApiKey, posthogConfig)
-        posthog.capture('$pageview')
-        posthogRef.current = posthog
-      })
+          const posthog = new PostHogClient(posthogApiKey, posthogConfig)
+          posthog.capture('$pageview')
+          posthogRef.current = posthog
+        })
+        .catch((err: unknown) => {
+          if (!isDisposed) {
+            console.error('Failed to initialize PostHog', err)
+          }
+        })
     }
 
     return () => {

@@ -19,11 +19,12 @@ export function ReactFluidAnimation({
   const containerRef = React.useRef<HTMLDivElement>(null)
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const instanceRef = React.useRef<FluidAnimation | null>(null)
-  const animationRefCallback = React.useRef(animationRef)
-  const activeChangeCallback = React.useRef(onActiveChange)
-
-  animationRefCallback.current = animationRef
-  activeChangeCallback.current = onActiveChange
+  const notifyAnimationRef = React.useEffectEvent(
+    (animation: FluidAnimation | null) => animationRef?.(animation)
+  )
+  const notifyActiveChange = React.useEffectEvent((active: boolean) =>
+    onActiveChange?.(active)
+  )
 
   const onMouseDown = React.useCallback(
     (event: React.MouseEvent<HTMLCanvasElement>) => {
@@ -90,7 +91,7 @@ export function ReactFluidAnimation({
 
     const animation = new FluidAnimation({ canvas, config })
     instanceRef.current = animation
-    animationRefCallback.current?.(animation)
+    notifyAnimationRef(animation)
 
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     let frameId: number | null = null
@@ -146,7 +147,7 @@ export function ReactFluidAnimation({
       if (reportedActivity === active) return
 
       reportedActivity = active
-      activeChangeCallback.current?.(active)
+      notifyActiveChange(active)
     }
 
     const syncActivity = () => {
@@ -216,7 +217,7 @@ export function ReactFluidAnimation({
       motionQuery.removeEventListener('change', handleMotionPreference)
       document.removeEventListener('visibilitychange', handleVisibility)
       reportActivity(false)
-      animationRefCallback.current?.(null)
+      notifyAnimationRef(null)
       if (instanceRef.current === animation) instanceRef.current = null
       animation.dispose()
     }

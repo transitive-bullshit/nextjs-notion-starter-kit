@@ -2,9 +2,55 @@
 
 import { play, type SoundName } from 'cuelume'
 import * as React from 'react'
-import { useLocalStorage } from 'react-use'
 
 const soundPreferenceKey = 'site-sound-enabled-v1'
+const soundPreferenceChangeEvent = `${soundPreferenceKey}:change`
+
+function readSoundPreference() {
+  try {
+    const storedValue = window.localStorage.getItem(soundPreferenceKey)
+    return storedValue === null ? true : JSON.parse(storedValue) !== false
+  } catch {
+    return true
+  }
+}
+
+function readServerSoundPreference() {
+  return true
+}
+
+function subscribeToSoundPreference(onStoreChange: () => void) {
+  const handleStorage = (event: StorageEvent) => {
+    if (event.key === null || event.key === soundPreferenceKey) {
+      onStoreChange()
+    }
+  }
+  const handlePreferenceChange = () => onStoreChange()
+
+  window.addEventListener('storage', handleStorage)
+  window.addEventListener(soundPreferenceChangeEvent, handlePreferenceChange)
+
+  return () => {
+    window.removeEventListener('storage', handleStorage)
+    window.removeEventListener(
+      soundPreferenceChangeEvent,
+      handlePreferenceChange
+    )
+  }
+}
+
+function writeSoundPreference(soundEnabled: boolean) {
+  try {
+    window.localStorage.setItem(
+      soundPreferenceKey,
+      JSON.stringify(soundEnabled)
+    )
+    window.dispatchEvent(new Event(soundPreferenceChangeEvent))
+    return true
+  } catch {
+    return false
+  }
+}
 
 interface SoundContextValue {
   playSound: (sound: SoundName) => void
@@ -15,16 +61,11 @@ interface SoundContextValue {
 const SoundContext = React.createContext<SoundContextValue | null>(null)
 
 export function SoundProvider({ children }: { children: React.ReactNode }) {
-  const [storedSoundEnabled, setStoredSoundEnabled] = useLocalStorage<boolean>(
-    soundPreferenceKey,
-    true
+  const soundEnabled = React.useSyncExternalStore(
+    subscribeToSoundPreference,
+    readSoundPreference,
+    readServerSoundPreference
   )
-  const [hasMounted, setHasMounted] = React.useState(false)
-  const soundEnabled = hasMounted ? storedSoundEnabled !== false : true
-
-  React.useEffect(() => {
-    setHasMounted(true)
-  }, [])
 
   const playSound = React.useCallback(
     (sound: SoundName) => {
@@ -37,15 +78,15 @@ export function SoundProvider({ children }: { children: React.ReactNode }) {
 
   const toggleSound = React.useCallback(() => {
     const nextSoundEnabled = !soundEnabled
+    const didUpdatePreference = writeSoundPreference(nextSoundEnabled)
+    if (!didUpdatePreference) return
 
     if (nextSoundEnabled) {
       play('bloom')
     } else {
       play('droplet')
     }
-
-    setStoredSoundEnabled(nextSoundEnabled)
-  }, [setStoredSoundEnabled, soundEnabled])
+  }, [soundEnabled])
 
   const value = React.useMemo(
     () => ({ playSound, soundEnabled, toggleSound }),
