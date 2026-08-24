@@ -2,6 +2,7 @@ import type React from 'react'
 
 import { BombermanCover } from '@/components/wustep/BombermanCover'
 import { BookshelfCover } from '@/components/wustep/BookshelfCover'
+import { ContraptionsCoverA } from '@/components/wustep/ContraptionsCoverA'
 import { DominoCover } from '@/components/wustep/DominoCover'
 import { LensesCover } from '@/components/wustep/LensesCover'
 import { LensesIllustrationLabCover } from '@/components/wustep/LensesIllustrationLabCover'
@@ -40,6 +41,18 @@ export const playgroundSections: PlaygroundSection[] = [
   {
     title: 'Experiments',
     items: [
+      {
+        title: 'Contraptions',
+        url: '/playground/contraptions',
+        description:
+          'A generator for grids of tiny animated machines. Every cell is a small self-contained mechanism that loops forever — pendulums, gear pairs, marble runs, tipping buckets — and adjacent machines can be wired into chains that fire in sequence, so a signal visibly runs across the piece. 37 machines, 14 palettes, four layouts, and every composition is a shareable link. Built with Claude Opus 5.',
+        summary: 'Grids of tiny looping machines, wired into chains',
+        date: 'Aug 2026',
+        year: '2026',
+        source: 'https://github.com/wustep/contraptions',
+        gradient: 'from-sky-500 via-amber-400 to-rose-500',
+        CoverComponent: ContraptionsCoverA
+      },
       {
         title: 'StageBench',
         url: '/playground/stagebench',

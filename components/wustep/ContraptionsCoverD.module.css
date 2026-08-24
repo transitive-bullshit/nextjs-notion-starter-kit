@@ -1,0 +1,229 @@
+/* Variant D — the app's catalog view as a plate from a reference book. Hover
+   runs a roll call: each specimen performs once, left to right, so the card
+   demonstrates the set rather than a composition made from it. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ebf1f4;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4.5px;
+  text-anchor: middle;
+  fill: rgba(33, 33, 33, 0.5);
+}
+
+.caption {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-anchor: middle;
+  fill: rgba(33, 33, 33, 0.62);
+}
+
+/* Paused timeline over one 5.4s loop. The stagger is the whole idea, so each
+   specimen's delay is set by its position in the row. */
+.swing,
+.spin,
+.strike,
+.drop,
+.topple,
+.ring,
+.march {
+  animation-duration: 5.4s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  transform-box: fill-box;
+}
+
+/* nth-of-type walks the specimen groups in document order, which is left to
+   right, so the roll call needs no per-element bookkeeping in the component. */
+.svg > g > g > g:nth-of-type(1) * {
+  animation-delay: 0s;
+}
+.svg > g > g > g:nth-of-type(2) * {
+  animation-delay: 0.16s;
+}
+.svg > g > g > g:nth-of-type(3) * {
+  animation-delay: 0.32s;
+}
+.svg > g > g > g:nth-of-type(4) * {
+  animation-delay: 0.48s;
+}
+.svg > g > g > g:nth-of-type(5) * {
+  animation-delay: 0.64s;
+}
+.svg > g > g > g:nth-of-type(6) * {
+  animation-delay: 0.8s;
+}
+.svg > g > g > g:nth-of-type(7) * {
+  animation-delay: 0.96s;
+}
+.svg > g > g > g:nth-of-type(8) * {
+  animation-delay: 1.12s;
+}
+.svg > g > g > g:nth-of-type(9) * {
+  animation-delay: 1.28s;
+}
+.svg > g > g > g:nth-of-type(10) * {
+  animation-delay: 1.44s;
+}
+
+.swing {
+  animation-name: swing;
+  animation-timing-function: ease-in-out;
+  transform-origin: 50% 0%;
+}
+.spin {
+  animation-name: spin;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+  transform-origin: center;
+}
+.strike {
+  animation-name: strike;
+  animation-timing-function: cubic-bezier(0.25, 0, 0.15, 1);
+}
+.drop {
+  animation-name: drop;
+  animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.6);
+}
+.topple {
+  animation-name: topple;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.7, 1);
+  transform-origin: 50% 100%;
+}
+.ring {
+  animation-name: ring;
+  animation-timing-function: cubic-bezier(0.2, 0, 0.2, 1);
+  transform-origin: 50% 0%;
+}
+.march {
+  animation-name: march;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1);
+}
+
+/* Each specimen performs inside the first third of the loop and then rests,
+   which is what leaves room for the stagger to read as a sweep down the row. */
+@keyframes swing {
+  0%,
+  30%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(20deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  26%,
+  100% {
+    transform: rotate(180deg);
+  }
+}
+@keyframes strike {
+  0%,
+  26%,
+  100% {
+    transform: translateY(0);
+  }
+  6% {
+    transform: translateY(-13px);
+  }
+}
+@keyframes drop {
+  0% {
+    transform: translate(0, 0);
+  }
+  22%,
+  100% {
+    transform: translate(14px, 26px);
+  }
+}
+@keyframes topple {
+  0% {
+    transform: rotate(0deg);
+  }
+  22%,
+  100% {
+    transform: rotate(52deg);
+  }
+}
+@keyframes ring {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(14deg);
+  }
+  12% {
+    transform: rotate(-9deg);
+  }
+  19% {
+    transform: rotate(4deg);
+  }
+  26% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes march {
+  0% {
+    transform: translateX(0);
+  }
+  24%,
+  100% {
+    transform: translateX(20px);
+  }
+}
+
+@media (hover: hover) {
+  :global(.group):hover .svg *,
+  .cover:hover .svg * {
+    animation-play-state: running;
+  }
+}
+
+:global(.group):focus-within .svg *,
+.cover:focus-within .svg * {
+  animation-play-state: running;
+}
+
+/* The plate is already the designed frame — every specimen at rest, captioned.
+   Nothing to force. */
+@media (prefers-reduced-motion: reduce) {
+  .swing,
+  .spin,
+  .strike,
+  .drop,
+  .topple,
+  .ring,
+  .march {
+    animation: none !important;
+  }
+}

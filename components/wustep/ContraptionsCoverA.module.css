@@ -1,0 +1,262 @@
+/* Variant A — a patch of the generator's grid, with a wired chain firing
+   through the middle on hover.
+
+   The scene is one extra-wide SVG (960×200) sliced to the cover box, so the
+   full height always fits and wider cards simply reveal more grid. The paper
+   fill is painted inside the SVG as well as on .cover so the letterboxing can
+   never show a mismatched edge. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ebf1f4;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Paused-timeline idiom: everything is declared up front and held, so the card
+   reads as a finished frame at rest and hover switches the machine on. All the
+   loops share one 4.2s period; the chain's per-link delays are inline. */
+.swing,
+.swingSoft,
+.spin,
+.breathe,
+.slide,
+.strike,
+.spinFire,
+.marchFire,
+.lampFire,
+.bead {
+  animation-duration: 4.2s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  transform-box: fill-box;
+}
+
+/* ---------- Idle machines ---------- */
+
+.swing {
+  animation-name: swing;
+  animation-timing-function: ease-in-out;
+  transform-origin: 50% 0%;
+}
+.swingSoft {
+  animation-name: swingSoft;
+  animation-timing-function: ease-in-out;
+  transform-origin: 50% 0%;
+}
+.spin {
+  animation-name: spin;
+  animation-timing-function: linear;
+  transform-origin: center;
+}
+.breathe {
+  animation-name: breathe;
+  animation-timing-function: ease-in-out;
+  transform-origin: center;
+}
+.slide {
+  animation-name: slide;
+  animation-timing-function: ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(19deg);
+  }
+  50% {
+    transform: rotate(-19deg);
+  }
+}
+@keyframes swingSoft {
+  0%,
+  100% {
+    transform: rotate(7deg);
+  }
+  50% {
+    transform: rotate(-7deg);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(0.72);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+@keyframes slide {
+  0%,
+  100% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+/* ---------- The chain ---------- */
+
+/* Each machine acts as the bead reaches it: the delays below are one link
+   apart, matching the inline delays on the beads. */
+.strike {
+  animation-name: strike;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+}
+.spinFire {
+  animation-name: spinFire;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+  transform-origin: center;
+  animation-delay: 0.42s;
+}
+.marchFire {
+  animation-name: marchFire;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+  animation-delay: 1.26s;
+}
+.lampFire {
+  animation-name: lampFire;
+  animation-timing-function: ease-out;
+  animation-delay: 1.68s;
+  opacity: 0;
+}
+
+/* The hammer is the source, so it goes first and hard. */
+@keyframes strike {
+  0% {
+    transform: translateY(0);
+  }
+  4% {
+    transform: translateY(-13px);
+  }
+  10% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* Relays turn a quarter-ish as the signal passes, then hold. */
+@keyframes spinFire {
+  0% {
+    transform: rotate(0deg);
+  }
+  14% {
+    transform: rotate(96deg);
+  }
+  100% {
+    transform: rotate(96deg);
+  }
+}
+@keyframes marchFire {
+  0% {
+    transform: translateX(0);
+  }
+  14% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+}
+/* The sink is the payoff: the lamp's rays only exist while it is lit. */
+@keyframes lampFire {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  34% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* A bead crosses one cell, then waits out the rest of the loop. */
+.bead {
+  animation-name: bead;
+  animation-timing-function: linear;
+  opacity: 0;
+}
+@keyframes bead {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  2% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(40px);
+  }
+  12% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+/* `.group` is the card <Link> on /playground; the bare .cover selectors keep
+   the cover alive anywhere else it is rendered. Hover is gated so a tap on a
+   touch device cannot strand the animation mid-flight. */
+@media (hover: hover) {
+  :global(.group):hover .svg *,
+  .cover:hover .svg * {
+    animation-play-state: running;
+  }
+}
+
+:global(.group):focus-within .svg *,
+.cover:focus-within .svg * {
+  animation-play-state: running;
+}
+
+/* Reduced motion still needs a designed frame, not a frozen accident: hold the
+   lamp lit so the card shows what the chain is for. */
+@media (prefers-reduced-motion: reduce) {
+  .swing,
+  .swingSoft,
+  .spin,
+  .breathe,
+  .slide,
+  .strike,
+  .spinFire,
+  .marchFire,
+  .lampFire,
+  .bead {
+    animation: none !important;
+  }
+  .lampFire {
+    opacity: 1;
+  }
+  .bead {
+    opacity: 1;
+  }
+}

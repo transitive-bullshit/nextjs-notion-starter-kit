@@ -1,0 +1,134 @@
+/* Variant B — poster treatment. Machines demoted to ornament bands top and
+   bottom; the wordmark holds the centre between two rules. One extra-wide SVG
+   sliced to the cover box, so wide cards reveal more ornament. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ebf1f4;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sizes are viewBox units, so the type scales with the poster. */
+.word {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-anchor: middle;
+  fill: #212121;
+}
+
+.sub {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  text-anchor: middle;
+  fill: rgba(33, 33, 33, 0.55);
+}
+
+/* Paused timeline: the poster is a finished frame at rest, and hover reveals
+   that every ornament on it is a machine. */
+.swing,
+.spin,
+.breathe,
+.bead {
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  transform-box: fill-box;
+}
+
+.swing {
+  animation-name: swing;
+  animation-timing-function: ease-in-out;
+  transform-origin: 50% 0%;
+}
+.spin {
+  animation-name: spin;
+  animation-timing-function: linear;
+  transform-origin: center;
+}
+.breathe {
+  animation-name: breathe;
+  animation-timing-function: ease-in-out;
+  transform-origin: center;
+}
+.bead {
+  animation-name: bead;
+  animation-timing-function: linear;
+}
+
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(16deg);
+  }
+  50% {
+    transform: rotate(-16deg);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(0.75);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+/* Crosses the full stage width, so it is travelling whatever the crop. */
+@keyframes bead {
+  0% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(980px);
+  }
+}
+
+@media (hover: hover) {
+  :global(.group):hover .svg *,
+  .cover:hover .svg * {
+    animation-play-state: running;
+  }
+}
+
+:global(.group):focus-within .svg *,
+.cover:focus-within .svg * {
+  animation-play-state: running;
+}
+
+/* At rest the poster is already the designed frame; the bead just needs
+   parking somewhere deliberate rather than off-stage. */
+@media (prefers-reduced-motion: reduce) {
+  .swing,
+  .spin,
+  .breathe,
+  .bead {
+    animation: none !important;
+  }
+  .bead {
+    transform: translateX(480px);
+  }
+}

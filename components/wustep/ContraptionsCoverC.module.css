@@ -1,0 +1,156 @@
+/* Variant C — the signature mechanic made huge: hammer → gears → bell, wired,
+   with the rest of the grid pushed to the wings at low opacity. One extra-wide
+   SVG sliced to the cover box; the three heroes and both links sit inside the
+   narrowest crop. */
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ebf1f4;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Paused timeline. One 3.6s loop; the per-bead delays are inline and the
+   machines below are offset to match, so each acts as its bead arrives. */
+.strike,
+.step,
+.ring,
+.bead {
+  animation-duration: 3.6s;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  transform-box: fill-box;
+}
+
+.strike {
+  animation-name: strike;
+  animation-timing-function: cubic-bezier(0.25, 0, 0.15, 1);
+  animation-delay: 0.2s;
+}
+.step {
+  animation-name: step;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1);
+  animation-delay: 1.1s;
+  transform-origin: center;
+}
+.ring {
+  animation-name: ring;
+  animation-timing-function: cubic-bezier(0.2, 0, 0.2, 1);
+  animation-delay: 2s;
+  transform-origin: 50% 0%;
+}
+.bead {
+  animation-name: bead;
+  animation-timing-function: linear;
+  opacity: 0;
+}
+
+/* The source: up fast, down under its own weight, which is how the machine in
+   the generator actually moves. */
+@keyframes strike {
+  0% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(-15px);
+  }
+  16% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* The relay takes one visible step, then holds until the next loop. */
+@keyframes step {
+  0% {
+    transform: rotate(0deg);
+  }
+  18% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+/* The sink: struck hard, then a damped wobble settling out. */
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  4% {
+    transform: rotate(13deg);
+  }
+  10% {
+    transform: rotate(-10deg);
+  }
+  16% {
+    transform: rotate(6deg);
+  }
+  22% {
+    transform: rotate(-3deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes bead {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(122px);
+  }
+  24% {
+    opacity: 0;
+    transform: translateX(122px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(122px);
+  }
+}
+
+@media (hover: hover) {
+  :global(.group):hover .svg *,
+  .cover:hover .svg * {
+    animation-play-state: running;
+  }
+}
+
+:global(.group):focus-within .svg *,
+.cover:focus-within .svg * {
+  animation-play-state: running;
+}
+
+/* Hold the run mid-flight: bead on the wire, bell already struck. A frozen
+   rest pose would hide the one idea the card exists to show. */
+@media (prefers-reduced-motion: reduce) {
+  .strike,
+  .step,
+  .ring,
+  .bead {
+    animation: none !important;
+  }
+  .bead {
+    opacity: 1;
+    transform: translateX(61px);
+  }
+  .ring {
+    transform: rotate(9deg);
+  }
+}
