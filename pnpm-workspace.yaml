@@ -3,6 +3,7 @@ allowBuilds:
   core-js: true
   protobufjs: true
   sharp: true
+  simple-git-hooks: true
 
 enablePrePostScripts: true
 
@@ -15,10 +16,3 @@ minimumReleaseAgeExclude:
   - notion-client
   - notion-types
   - notion-utils
-
-onlyBuiltDependencies:
-  - canvas
-  - sharp
-  - simple-git-hooks
-
-packageManagerStrict: false
