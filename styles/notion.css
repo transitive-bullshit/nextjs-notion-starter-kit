@@ -273,7 +273,16 @@
   );
 }
 
-.notion-purple_background,
+.notion-purple_background {
+  /* light red */
+  background-image: linear-gradient(
+    119deg,
+    var(--bg-color),
+    #f5c4ff 10.5%,
+    #e7a8fc 85.29%,
+    var(--bg-color)
+  );
+}
 .notion-pink_background {
   /* light pink */
   background-image: linear-gradient(
@@ -285,8 +294,18 @@
   );
 }
 
-.notion-blue_background,
 .notion-gray_background {
+  /* light gray */
+  background-image: linear-gradient(
+    119deg,
+    var(--bg-color),
+    #d9d9d9 10.5%,
+    #e1e1e1 85.29%,
+    var(--bg-color)
+  );
+}
+
+.notion-blue_background {
   /* light blue */
   background-image: linear-gradient(
     119deg,
@@ -297,14 +316,24 @@
   );
 }
 
-.notion-red_background,
+.notion-red_background {
+  /* light red */
+  background-image: linear-gradient(
+    119deg,
+    var(--bg-color),
+    #ffc4c4 10.5%,
+    #fca8a8 85.29%,
+    var(--bg-color)
+  );
+}
+
 .notion-orange_background {
   /* light red */
   background-image: linear-gradient(
     119deg,
     var(--bg-color),
-    #f5c4ff 10.5%,
-    #e7a8fc 85.29%,
+    #ffd4c4 10.5%,
+    #fcdaa8 85.29%,
     var(--bg-color)
   );
 }
@@ -343,9 +372,49 @@
 .dark-mode .notion-gray_background {
   padding: 0;
   margin: 0;
-  border-radius: 0;
-  background: none !important;
+  border-radius: 5px;
 }
+
+.dark-mode .notion-red_background:hover,
+.dark-mode .notion-pink_background:hover,
+.dark-mode .notion-blue_background:hover,
+.dark-mode .notion-purple_background:hover,
+.dark-mode .notion-teal_background:hover,
+.dark-mode .notion-yellow_background:hover,
+.dark-mode .notion-orange_background:hover,
+.dark-mode .notion-brown_background:hover,
+.dark-mode .notion-gray_background:hover {
+  background: rgb(70,70,70);
+}
+
+.dark-mode .notion-red_background {
+  background: rgb(77,48,43);
+}
+.dark-mode .notion-pink_background {
+  background: rgb(73,46,59);
+}
+.dark-mode .notion-blue_background {
+  background: rgb(30,57,76);
+}
+.dark-mode .notion-purple_background {
+  background: rgb(58,46,71);
+}
+.dark-mode .notion-teal_background {
+  background: rgb(42,60,49);
+}
+.dark-mode .notion-yellow_background {
+  background: rgb(83, 68, 44);
+}
+.dark-mode .notion-orange_background {
+  background: rgb(87,60,39);
+}
+.dark-mode .notion-brown_background {
+  background: rgb(70,51,43);
+}
+.dark-mode .notion-gray_background {
+  background: rgb(47,47,47);
+}
+
 
 /* if you don't want rounded page icon images, remove this */
 .notion-page-icon-hero.notion-page-icon-image {
