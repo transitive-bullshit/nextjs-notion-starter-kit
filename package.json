@@ -23,6 +23,7 @@
     "test:format": "oxfmt --check",
     "test:lint": "oxlint",
     "test:typecheck": "tsc --noEmit",
+    "test:unit": "node --experimental-strip-types --test lib/merge-navigation-record-maps.test.ts",
     "fix": "run-s fix:*",
     "fix:format": "oxfmt",
     "fix:lint": "oxlint --fix"

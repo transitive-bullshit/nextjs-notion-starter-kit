@@ -1,9 +1,9 @@
+import ExpiryMap from 'expiry-map'
 import {
   type ExtendedRecordMap,
   type SearchParams,
   type SearchResults
 } from 'notion-types'
-import { mergeRecordMaps } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
 
@@ -13,8 +13,13 @@ import {
   navigationStyle
 } from './config'
 import { getTweetsMap } from './get-tweets'
+import { mergeNavigationRecordMaps } from './merge-navigation-record-maps'
 import { notion } from './notion-api'
 import { getPreviewImageMap } from './preview-images'
+
+// Keep this short so a long-lived server does not pin the first nav snapshot
+// across ISR revalidations. The page itself is always fetched fresh.
+const navigationLinkCacheMs = 10_000
 
 const getNavigationLinkPages = pMemoize(
   async (): Promise<ExtendedRecordMap[]> => {
@@ -39,6 +44,10 @@ const getNavigationLinkPages = pMemoize(
     }
 
     return []
+  },
+  {
+    cacheKey: () => 'navigation-link-pages',
+    cache: new ExpiryMap(navigationLinkCacheMs)
   }
 )
 
@@ -52,11 +61,7 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
     const navigationLinkRecordMaps = await getNavigationLinkPages()
 
     if (navigationLinkRecordMaps?.length) {
-      recordMap = navigationLinkRecordMaps.reduce(
-        (map, navigationLinkRecordMap) =>
-          mergeRecordMaps(map, navigationLinkRecordMap),
-        recordMap
-      )
+      recordMap = mergeNavigationRecordMaps(recordMap, navigationLinkRecordMaps)
     }
   }
 

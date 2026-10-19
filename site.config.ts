@@ -53,7 +53,7 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
     {
-      title: 'CV/Resume',
+      title: 'Resume',
       pageId: '18fce5cd674080e6a1b0ca8232a5e341'
     },
     {
