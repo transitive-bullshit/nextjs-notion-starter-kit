@@ -11,8 +11,7 @@ import { useDarkMode } from '@/lib/use-dark-mode'
 import styles from './styles.module.css'
 
 export function FooterImpl() {
-  const [hasMounted, setHasMounted] = React.useState(false)
-  const { isDarkMode, toggleDarkMode } = useDarkMode()
+  const { hasMounted, isDarkMode, toggleDarkMode } = useDarkMode()
   const currentYear = new Date().getFullYear()
 
   const onToggleDarkMode = React.useCallback(
@@ -22,10 +21,6 @@ export function FooterImpl() {
     },
     [toggleDarkMode]
   )
-
-  React.useEffect(() => {
-    setHasMounted(true)
-  }, [])
 
   return (
     <footer className={styles.footer}>

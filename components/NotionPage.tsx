@@ -1,15 +1,10 @@
+'use client'
+
 import cs from 'classnames'
 import dynamic from 'next/dynamic'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { type PageBlock } from 'notion-types'
-import {
-  formatDate,
-  getBlockTitle,
-  getBlockValue,
-  getPageProperty
-} from 'notion-utils'
+import { formatDate, getBlockTitle, getBlockValue } from 'notion-utils'
 import * as React from 'react'
 import BodyClassName from 'react-body-classname'
 import {
@@ -17,30 +12,27 @@ import {
   NotionRenderer,
   useNotionContext
 } from 'react-notion-x'
+import { Collection } from 'react-notion-x/third-party/collection'
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton } from 'react-tweet'
 import { useSearchParam } from 'react-use'
 
 import type * as types from '@/lib/types'
 import * as config from '@/lib/config'
 import { mapImageUrl } from '@/lib/map-image-url'
-import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
+import { mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
-import { Loading } from './Loading'
 import { NotionPageHeader } from './NotionPageHeader'
-import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
-import { PageHead } from './PageHead'
-import styles from './styles.module.css'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
 // -----------------------------------------------------------------------------
 
 const Code = dynamic(() =>
-  import('react-notion-x/build/third-party/code').then(async (m) => {
+  import('react-notion-x/third-party/code').then(async (m) => {
     // add / remove any prism syntaxes here
     await Promise.allSettled([
       // @ts-expect-error Ignore prisma types
@@ -110,23 +102,18 @@ const Code = dynamic(() =>
   })
 )
 
-const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then(
-    (m) => m.Collection
-  )
-)
 const Equation = dynamic(() =>
-  import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
+  import('react-notion-x/third-party/equation').then((m) => m.Equation)
 )
 const Pdf = dynamic(
-  () => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf),
+  () => import('react-notion-x/third-party/pdf').then((m) => m.Pdf),
   {
     ssr: false
   }
 )
 const Modal = dynamic(
   () =>
-    import('react-notion-x/build/third-party/modal').then((m) => {
+    import('react-notion-x/third-party/modal').then((m) => {
       m.Modal.setAppElement('.notion-viewport')
       return m.Modal
     }),
@@ -187,32 +174,27 @@ const propertyTextValue = (
   return defaultFn()
 }
 
+const notionRendererComponents: Partial<NotionComponents> = {
+  nextImage: Image,
+  nextLink: Link,
+  Code,
+  Collection,
+  Equation,
+  Pdf,
+  Modal,
+  Tweet,
+  Header: NotionPageHeader,
+  propertyLastEditedTimeValue,
+  propertyTextValue,
+  propertyDateValue
+}
+
 export function NotionPage({
   site,
   recordMap,
-  error,
   pageId
-}: types.PageProps) {
-  const router = useRouter()
+}: Required<Pick<types.PageProps, 'site' | 'recordMap' | 'pageId'>>) {
   const lite = useSearchParam('lite')
-
-  const components = React.useMemo<Partial<NotionComponents>>(
-    () => ({
-      nextLegacyImage: Image,
-      nextLink: Link,
-      Code,
-      Collection,
-      Equation,
-      Pdf,
-      Modal,
-      Tweet,
-      Header: NotionPageHeader,
-      propertyLastEditedTimeValue,
-      propertyTextValue,
-      propertyDateValue
-    }),
-    []
-  )
 
   // lite mode is for oembed
   const isLiteMode = lite === 'true'
@@ -224,11 +206,11 @@ export function NotionPage({
     if (lite) params.lite = lite
 
     const searchParams = new URLSearchParams(params)
-    return site ? mapPageUrl(site, recordMap!, searchParams) : undefined
+    return mapPageUrl(site, recordMap, searchParams)
   }, [site, recordMap, lite])
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = getBlockValue(recordMap?.block?.[keys[0]!])
+  const block = getBlockValue(recordMap?.block?.[keys[0]!])!
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
@@ -240,80 +222,37 @@ export function NotionPage({
 
   const pageAside = React.useMemo(
     () => (
-      <PageAside
-        block={block!}
-        recordMap={recordMap!}
-        isBlogPost={isBlogPost}
-      />
+      <PageAside block={block!} recordMap={recordMap} isBlogPost={isBlogPost} />
     ),
     [block, recordMap, isBlogPost]
   )
 
-  const footer = React.useMemo(() => <Footer />, [])
-
-  if (router.isFallback) {
-    return <Loading />
-  }
-
-  if (error || !site || !block || !recordMap) {
-    return <Page404 site={site} pageId={pageId} error={error} />
-  }
-
   const title = getBlockTitle(block, recordMap) || site.name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+  React.useEffect(() => {
+    console.log('notion page', {
+      isDev: config.isDev,
+      title,
+      pageId,
+      rootNotionPageId: site.rootNotionPageId,
+      recordMap
+    })
 
-  if (!config.isServer) {
     // add important objects to the window global for easy debugging
     const g = window as any
     g.pageId = pageId
     g.recordMap = recordMap
     g.block = block
-  }
-
-  const canonicalPageUrl = config.isDev
-    ? undefined
-    : getCanonicalPageUrl(site, recordMap)(pageId)
-
-  const socialImage = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
-    block
-  )
-
-  const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) ||
-    config.description
+  }, [block, pageId, recordMap, site.rootNotionPageId, title])
 
   return (
     <>
-      <PageHead
-        pageId={pageId}
-        site={site}
-        title={title}
-        description={socialDescription}
-        image={socialImage}
-        url={canonicalPageUrl}
-        isBlogPost={isBlogPost}
-      />
-
       {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
 
       <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
-        )}
+        bodyClassName={cs(pageId === site.rootNotionPageId && 'index-page')}
         darkMode={isDarkMode}
-        components={components}
+        components={notionRendererComponents}
         recordMap={recordMap}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
@@ -329,7 +268,7 @@ export function NotionPage({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : undefined}
         pageAside={pageAside}
-        footer={footer}
+        footer={<Footer />}
       />
     </>
   )

@@ -1,5 +1,4 @@
 import ky from 'ky'
-import { type NextApiRequest, type NextApiResponse } from 'next'
 import { ImageResponse } from 'next/og'
 import { type PageBlock } from 'notion-types'
 import {
@@ -17,13 +16,10 @@ import { mapImageUrl } from '@/lib/map-image-url'
 import { notion } from '@/lib/notion-api'
 import { type NotionPageInfo, type PageError } from '@/lib/types'
 
-export const runtime = 'edge'
+export async function GET(request: Request) {
+  console.log(request.url)
 
-export default async function OGImage(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  const { searchParams } = new URL(req.url!)
+  const { searchParams } = new URL(request.url)
   const pageId = parsePageId(
     searchParams.get('id') || libConfig.rootNotionPageId
   )
@@ -33,10 +29,12 @@ export default async function OGImage(
 
   const pageInfoOrError = await getNotionPageInfo({ pageId })
   if (pageInfoOrError.type === 'error') {
-    return res.status(pageInfoOrError.error.statusCode).send({
-      error: pageInfoOrError.error.message
-    })
+    return Response.json(
+      { error: pageInfoOrError.error.message },
+      { status: pageInfoOrError.error.statusCode }
+    )
   }
+
   const pageInfo = pageInfoOrError.data
   console.log(pageInfo)
 
@@ -62,19 +60,6 @@ export default async function OGImage(
             width: '100%',
             height: '100%',
             objectFit: 'cover'
-            // TODO: satori doesn't support background-size: cover and seems to
-            // have inconsistent support for filter + transform to get rid of the
-            // blurred edges. For now, we'll go without a blur filter on the
-            // background, but Satori is still very new, so hopefully we can re-add
-            // the blur soon.
-
-            // backgroundImage: pageInfo.image
-            //   ? `url(${pageInfo.image})`
-            //   : undefined,
-            // backgroundSize: '100% 100%'
-            // TODO: pageInfo.imageObjectPosition
-            // filter: 'blur(8px)'
-            // transform: 'scale(1.05)'
           }}
         />
       )}
@@ -87,8 +72,7 @@ export default async function OGImage(
           display: 'flex',
           flexDirection: 'column',
           border: '16px solid rgba(0,0,0,0.3)',
-          borderRadius: 8,
-          zIndex: '1'
+          borderRadius: 8
         }}
       >
         <div
@@ -134,8 +118,7 @@ export default async function OGImage(
             width: 128,
             display: 'flex',
             borderRadius: '50%',
-            border: '4px solid #fff',
-            zIndex: '5'
+            border: '4px solid #fff'
           }}
         >
           <img
@@ -143,7 +126,6 @@ export default async function OGImage(
             style={{
               width: '100%',
               height: '100%'
-              // transform: 'scale(1.04)'
             }}
           />
         </div>
@@ -164,7 +146,7 @@ export default async function OGImage(
   )
 }
 
-export async function getNotionPageInfo({
+async function getNotionPageInfo({
   pageId
 }: {
   pageId: string
@@ -229,22 +211,8 @@ export async function getNotionPageInfo({
   const author =
     getPageProperty<string>('Author', block, recordMap) || libConfig.author
 
-  // const socialDescription =
-  //   getPageProperty<string>('Description', block, recordMap) ||
-  //   libConfig.description
-
-  // const lastUpdatedTime = getPageProperty<number>(
-  //   'Last Updated',
-  //   block,
-  //   recordMap
-  // )
   const publishedTime = getPageProperty<number>('Published', block, recordMap)
   const datePublished = publishedTime ? new Date(publishedTime) : undefined
-  // const dateUpdated = lastUpdatedTime
-  //   ? new Date(lastUpdatedTime)
-  //   : publishedTime
-  //   ? new Date(publishedTime)
-  //   : undefined
   const date =
     isBlogPost && datePublished
       ? `${datePublished.toLocaleString('en-US', {

@@ -78,7 +78,7 @@
 .settings a,
 .social a {
   cursor: pointer;
-  font-size: 2em;
+  font-size: 1.5em;
   display: inline-flex;
   padding: 0.25em;
   transition: color 250ms ease-out;
@@ -87,6 +87,10 @@
 .settings a:hover,
 .social a:hover {
   transition: color 50ms ease-out;
+}
+
+.toggleDarkMode {
+  font-size: 2em !important;
 }
 
 .toggleDarkMode:hover {

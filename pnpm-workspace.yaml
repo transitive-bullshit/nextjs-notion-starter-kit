@@ -1,0 +1,18 @@
+allowBuilds:
+  canvas: true
+  core-js: true
+  protobufjs: true
+  sharp: true
+  simple-git-hooks: true
+
+enablePrePostScripts: true
+
+minimumReleaseAge: 1440
+
+minimumReleaseAgeExclude:
+  - '@fisch0920/config'
+  - lqip-modern
+  - react-notion-x
+  - notion-client
+  - notion-types
+  - notion-utils
