@@ -6,9 +6,21 @@ import type * as types from '@/lib/types'
 
 import styles from './styles.module.css'
 
+function displayPagePath(value: string | undefined): string | undefined {
+  if (!value) {
+    return value
+  }
+
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return value
+  }
+}
+
 export function Page404({ pageId, error }: types.PageProps) {
   const pathname = usePathname()
-  const missingPageId = pageId || pathname?.replace(/^\//, '')
+  const missingPageId = displayPagePath(pageId || pathname?.replace(/^\//, ''))
 
   return (
     <div className={styles.container}>

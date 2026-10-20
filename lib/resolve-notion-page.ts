@@ -8,6 +8,32 @@ import { db } from './db'
 import { getSiteMap } from './get-site-map'
 import { getPage } from './notion'
 
+/**
+ * Next.js App Router may pass dynamic segment params still percent-encoded
+ * (especially for non-ASCII slugs). Site-map keys use decoded Unicode paths.
+ */
+function normalizePagePathParam(value: string): string {
+  let current = value
+
+  for (let i = 0; i < 2; i++) {
+    if (!/%[0-9a-fA-F]{2}/.test(current)) {
+      break
+    }
+
+    try {
+      const decoded = decodeURIComponent(current)
+      if (decoded === current) {
+        break
+      }
+      current = decoded
+    } catch {
+      break
+    }
+  }
+
+  return current
+}
+
 export async function resolveNotionPage(
   domain: string,
   rawPageId?: string
@@ -16,13 +42,13 @@ export async function resolveNotionPage(
   let recordMap: ExtendedRecordMap
 
   if (rawPageId && rawPageId !== 'index') {
-    pageId = parsePageId(rawPageId)!
+    const pagePath = normalizePagePathParam(rawPageId)
+    pageId = parsePageId(pagePath)!
 
     if (!pageId) {
       // check if the site configuration provides an override or a fallback for
       // the page's URI
-      const override =
-        pageUrlOverrides[rawPageId] || pageUrlAdditions[rawPageId]
+      const override = pageUrlOverrides[pagePath] || pageUrlAdditions[pagePath]
 
       if (override) {
         pageId = parsePageId(override)!
@@ -30,7 +56,7 @@ export async function resolveNotionPage(
     }
 
     const useUriToPageIdCache = true
-    const cacheKey = `uri-to-page-id:${domain}:${environment}:${rawPageId}`
+    const cacheKey = `uri-to-page-id:${domain}:${environment}:${pagePath}`
     // TODO: should we use a TTL for these mappings or make them permanent?
     // const cacheTTL = 8.64e7 // one day in milliseconds
     const cacheTTL = undefined // disable cache TTL
@@ -53,7 +79,7 @@ export async function resolveNotionPage(
       // handle mapping of user-friendly canonical page paths to Notion page IDs
       // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
       const siteMap = await getSiteMap()
-      pageId = siteMap?.canonicalPageMap[rawPageId]
+      pageId = siteMap?.canonicalPageMap[pagePath]
 
       if (pageId) {
         // TODO: we're not re-using the page recordMap from siteMaps because it is
@@ -77,7 +103,7 @@ export async function resolveNotionPage(
         // note: we're purposefully not caching URI to pageId mappings for 404s
         return {
           error: {
-            message: `Not found "${rawPageId}"`,
+            message: `Not found "${pagePath}"`,
             statusCode: 404
           }
         }
