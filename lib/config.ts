@@ -64,6 +64,15 @@ export const linkedin: string | undefined = getSiteConfig('linkedin')
 export const newsletter: string | undefined = getSiteConfig('newsletter')
 export const zhihu: string | undefined = getSiteConfig('zhihu')
 
+// giscus config (optional; get values from https://giscus.app/)
+export const giscusRepo: `${string}/${string}` | undefined =
+  getSiteConfig('giscusRepo')
+export const giscusRepoId: string | undefined = getSiteConfig('giscusRepoId')
+export const giscusCategory: string | undefined =
+  getSiteConfig('giscusCategory')
+export const giscusCategoryId: string | undefined =
+  getSiteConfig('giscusCategoryId')
+
 export const getMastodonHandle = (): string | undefined => {
   if (!mastodon) {
     return

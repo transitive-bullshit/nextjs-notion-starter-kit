@@ -33,6 +33,12 @@ export interface SiteConfig {
 
   navigationStyle?: types.NavigationStyle
   navigationLinks?: Array<NavigationLink>
+
+  // optional giscus comments (https://giscus.app/)
+  giscusRepo?: `${string}/${string}`
+  giscusRepoId?: string
+  giscusCategory?: string
+  giscusCategoryId?: string
 }
 
 export interface NavigationLink {

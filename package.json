@@ -28,6 +28,7 @@
     "fix:lint": "oxlint --fix"
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
     "@keyvhq/core": "^2.2.7",
     "@keyvhq/redis": "^2.2.7",
     "classnames": "^2.5.1",

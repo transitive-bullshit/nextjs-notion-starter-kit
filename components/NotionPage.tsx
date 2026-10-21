@@ -27,6 +27,7 @@ import { Footer } from './Footer'
 import { GitHubShareButton } from './GitHubShareButton'
 import { NotionPageHeader } from './NotionPageHeader'
 import { PageAside } from './PageAside'
+import { PageFooter } from './PageFooter'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -228,6 +229,11 @@ export function NotionPage({
     [block, recordMap, isBlogPost]
   )
 
+  const pageFooter = React.useMemo(
+    () => <PageFooter isBlogPost={isBlogPost} />,
+    [isBlogPost]
+  )
+
   const title = getBlockTitle(block, recordMap) || site.name
 
   React.useEffect(() => {
@@ -269,6 +275,7 @@ export function NotionPage({
         mapImageUrl={mapImageUrl}
         searchNotion={config.isSearchEnabled ? searchNotion : undefined}
         pageAside={pageAside}
+        pageFooter={pageFooter}
         footer={<Footer />}
       />
 
