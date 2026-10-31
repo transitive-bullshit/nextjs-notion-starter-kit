@@ -20,6 +20,10 @@ export interface ExtendedTweetRecordMap extends ExtendedRecordMap {
   tweets: Record<string, any>
 }
 
+export interface PageParams extends ParsedUrlQuery {
+  pageId: string
+}
+
 export interface Site {
   name: string
   domain: string
