@@ -1,6 +1,6 @@
 import type React from 'react'
 
-import { BombermanCover } from '@/components/wustep/BombermanCover'
+// import { BombermanCover } from '@/components/wustep/BombermanCover'
 import { BookshelfCover } from '@/components/wustep/BookshelfCover'
 import { ContraptionsCover } from '@/components/wustep/ContraptionsCover'
 import { DominoCover } from '@/components/wustep/DominoCover'
@@ -214,22 +214,23 @@ export const playgroundSections: PlaygroundSection[] = [
         image: '/playground/covers/spot-it.png',
         ogImage: '/og/playground/spot-it.png',
         CoverComponent: SpotItCover
-      },
-      {
-        title: 'Bomberman',
-        url: '/playground/bomberman',
-        description:
-          'Two-player Bomberman clone with emojis. Fully vibe coded with Cursor & Claude 3.5 Sonnet.',
-        summary: 'Two-player Bomberman clone with pets & power-ups',
-        date: 'Nov 2024',
-        year: '2024',
-        article: '/bomberman',
-        source: 'https://github.com/wustep/bomberman',
-        gradient: 'from-orange-500 to-rose-500',
-        image: '/playground/covers/bomberman.png',
-        ogImage: '/og/playground/bomberman.png',
-        CoverComponent: BombermanCover
       }
+      // Hidden from playground for now
+      // {
+      //   title: 'Bomberman',
+      //   url: '/playground/bomberman',
+      //   description:
+      //     'Two-player Bomberman clone with emojis. Fully vibe coded with Cursor & Claude 3.5 Sonnet.',
+      //   summary: 'Two-player Bomberman clone with pets & power-ups',
+      //   date: 'Nov 2024',
+      //   year: '2024',
+      //   article: '/bomberman',
+      //   source: 'https://github.com/wustep/bomberman',
+      //   gradient: 'from-orange-500 to-rose-500',
+      //   image: '/playground/covers/bomberman.png',
+      //   ogImage: '/og/playground/bomberman.png',
+      //   CoverComponent: BombermanCover
+      // }
     ]
   },
   {
